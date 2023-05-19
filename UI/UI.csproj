@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9B67CE4-F929-4E8A-B3CA-ECF5B955BA43}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UI</RootNamespace>
+    <AssemblyName>UI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=6.2.1.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.6.2.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConfigConection.cs" />
+    <Compile Include="Ajustes\FormAjustarServidor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajustes\FormAjustarServidor.designer.cs">
+      <DependentUpon>FormAjustarServidor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ajustes\FormAjustes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajustes\FormAjustes.designer.cs">
+      <DependentUpon>FormAjustes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\FormRestaurarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\FormRestaurarContraseña.designer.cs">
+      <DependentUpon>FormRestaurarContraseña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\FormRegistrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\FormRegistrarUsuario.designer.cs">
+      <DependentUpon>FormRegistrarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licencia\FormActivador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licencia\FormActivador.designer.cs">
+      <DependentUpon>FormActivador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\FormInicioSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\FormInicioSesion.designer.cs">
+      <DependentUpon>FormInicioSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Secretaría\FormApuntes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Secretaría\FormApuntes.Designer.cs">
+      <DependentUpon>FormApuntes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Secretaría\FormReuniones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Secretaría\FormReuniones.Designer.cs">
+      <DependentUpon>FormReuniones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Secretaría\FormDirectivas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Secretaría\FormDirectivas.Designer.cs">
+      <DependentUpon>FormDirectivas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Secretaría\FormMiembros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Secretaría\FormMiembros.Designer.cs">
+      <DependentUpon>FormMiembros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Secretaría\FormDirectorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Secretaría\FormDirectorio.Designer.cs">
+      <DependentUpon>FormDirectorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal\FormSumario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal\FormSumario.designer.cs">
+      <DependentUpon>FormSumario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal\FormMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal\FormMenu.Designer.cs">
+      <DependentUpon>FormMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Ajustes\FormAjustarServidor.resx">
+      <DependentUpon>FormAjustarServidor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ajustes\FormAjustes.resx">
+      <DependentUpon>FormAjustes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\FormRestaurarContraseña.resx">
+      <DependentUpon>FormRestaurarContraseña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\FormRegistrarUsuario.resx">
+      <DependentUpon>FormRegistrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licencia\FormActivador.resx">
+      <DependentUpon>FormActivador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\FormInicioSesion.resx">
+      <DependentUpon>FormInicioSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Secretaría\FormApuntes.resx">
+      <DependentUpon>FormApuntes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Secretaría\FormReuniones.resx">
+      <DependentUpon>FormReuniones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Secretaría\FormDirectivas.resx">
+      <DependentUpon>FormDirectivas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Secretaría\FormMiembros.resx">
+      <DependentUpon>FormMiembros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Secretaría\FormDirectorio.resx">
+      <DependentUpon>FormDirectorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal\FormSumario.resx">
+      <DependentUpon>FormSumario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal\FormMenu.resx">
+      <DependentUpon>FormMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\17-03-11-60-512-unscreen.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{b7d8e351-b172-4af6-8f30-74c80e915596}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{8694a930-3e61-465d-ac74-10e7ba27ed83}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Miembros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apuntes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Directiva.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Directorio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reunion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\conexion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Contraseña.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deleRojBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fondo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Licencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\licencia_false.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\licencia_true.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LlavesLicencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Usuario.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
