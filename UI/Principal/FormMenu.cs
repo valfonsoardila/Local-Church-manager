@@ -271,5 +271,11 @@ namespace UI
             CerrarFormulariosCiclo();
             AbrirFormulario<FormDirectorio>();
         }
+
+        private void btnMiembros_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormMiembros>();
+        }
     }
 }

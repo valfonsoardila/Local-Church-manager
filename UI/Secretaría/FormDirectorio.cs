@@ -72,65 +72,65 @@ namespace UI
 
         private void textApellido_Enter(object sender, EventArgs e)
         {
-            if (textNombre.Text == "Apellido")
+            if (textApellido.Text == "Apellido")
             {
-                textNombre.Text = "";
+                textApellido.Text = "";
             }
         }
 
         private void textApellido_Leave(object sender, EventArgs e)
         {
-            if (textNombre.Text == "")
+            if (textApellido.Text == "")
             {
-                textNombre.Text = "Apellido";
+                textApellido.Text = "Apellido";
             }
         }
 
         private void textCelular_Enter(object sender, EventArgs e)
         {
-            if (textNombre.Text == "Celular")
+            if (textCelular.Text == "Celular")
             {
-                textNombre.Text = "";
+                textCelular.Text = "";
             }
         }
 
         private void textCelular_Leave(object sender, EventArgs e)
         {
-            if (textNombre.Text == "")
+            if (textCelular.Text == "")
             {
-                textNombre.Text = "Celular";
+                textCelular.Text = "Celular";
             }
         }
 
         private void textNumeroWhatsapp_Enter(object sender, EventArgs e)
         {
-            if (textNombre.Text == "Numero de whatsapp")
+            if (textNumeroWhatsapp.Text == "Numero de whatsapp")
             {
-                textNombre.Text = "";
+                textNumeroWhatsapp.Text = "";
             }
         }
 
         private void textNumeroWhatsapp_Leave(object sender, EventArgs e)
         {
-            if (textNombre.Text == "")
+            if (textNumeroWhatsapp.Text == "")
             {
-                textNombre.Text = "Numero de whatsapp";
+                textNumeroWhatsapp.Text = "Numero de whatsapp";
             }
         }
 
         private void comboOficio_Enter(object sender, EventArgs e)
         {
-            if (textNombre.Text == "Oficio")
+            if (comboOficio.Text == "Oficio")
             {
-                textNombre.Text = "";
+                comboOficio.Text = "";
             }
         }
 
         private void comboOficio_Leave(object sender, EventArgs e)
         {
-            if (textNombre.Text == "")
+            if (comboOficio.Text == "")
             {
-                textNombre.Text = "Oficio";
+                comboOficio.Text = "Oficio";
             }
         }
 

@@ -455,6 +455,7 @@ namespace UI
             this.btnMiembros.Text = "Miembros";
             this.btnMiembros.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMiembros.UseVisualStyleBackColor = false;
+            this.btnMiembros.Click += new System.EventHandler(this.btnMiembros_Click);
             // 
             // btnDirectorio
             // 
