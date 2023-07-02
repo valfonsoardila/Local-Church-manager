@@ -386,7 +386,7 @@ namespace UI
             this.labelAdvertencia.ForeColor = System.Drawing.Color.Maroon;
             this.labelAdvertencia.Location = new System.Drawing.Point(234, 39);
             this.labelAdvertencia.Name = "labelAdvertencia";
-            this.labelAdvertencia.Size = new System.Drawing.Size(91, 16);
+            this.labelAdvertencia.Size = new System.Drawing.Size(90, 16);
             this.labelAdvertencia.TabIndex = 57;
             this.labelAdvertencia.Text = "Advertencia";
             this.labelAdvertencia.Visible = false;
@@ -436,10 +436,11 @@ namespace UI
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::UI.Properties.Resources.Fondo;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::UI.Properties.Resources.Usuario;
-            this.pictureBox1.Location = new System.Drawing.Point(155, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 105);
+            this.pictureBox1.Size = new System.Drawing.Size(459, 120);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;

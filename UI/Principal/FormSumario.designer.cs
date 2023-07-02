@@ -30,28 +30,33 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelProductos = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelTitleEntrenadores = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblhora = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Tiempo = new System.Windows.Forms.Timer(this.components);
             this.panel13 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.labelEstantes = new FontAwesome.Sharp.IconButton();
             this.labelTitleAcerca = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.labelClientes = new FontAwesome.Sharp.IconButton();
             this.panel12 = new System.Windows.Forms.Panel();
             this.labelTitleServicios = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelCaja = new FontAwesome.Sharp.IconButton();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.labelTitleClientes = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelEmpleados = new FontAwesome.Sharp.IconButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelTitleCash = new System.Windows.Forms.Label();
@@ -62,28 +67,23 @@
             this.labelPapelera = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel12.SuspendLayout();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,6 +99,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(110, 150);
             this.panel1.TabIndex = 30;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::UI.Properties.Resources.Directiva;
+            this.pictureBox2.Location = new System.Drawing.Point(13, 34);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(82, 80);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 32;
+            this.pictureBox2.TabStop = false;
             // 
             // labelProductos
             // 
@@ -171,6 +181,10 @@
             this.lblhora.Text = "10:59:58";
             this.lblhora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Tiempo
+            // 
+            this.Tiempo.Tick += new System.EventHandler(this.Tiempo_Tick);
+            // 
             // panel13
             // 
             this.panel13.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -183,6 +197,16 @@
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(110, 150);
             this.panel13.TabIndex = 34;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::UI.Properties.Resources.Apuntes;
+            this.pictureBox5.Location = new System.Drawing.Point(13, 34);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(82, 80);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 31;
+            this.pictureBox5.TabStop = false;
             // 
             // labelEstantes
             // 
@@ -247,6 +271,16 @@
             this.panel11.Size = new System.Drawing.Size(110, 150);
             this.panel11.TabIndex = 35;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::UI.Properties.Resources.Reunion;
+            this.pictureBox3.Location = new System.Drawing.Point(13, 34);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(82, 80);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 33;
+            this.pictureBox3.TabStop = false;
+            // 
             // labelClientes
             // 
             this.labelClientes.FlatAppearance.BorderSize = 0;
@@ -299,6 +333,16 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(110, 150);
             this.panel9.TabIndex = 36;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::UI.Properties.Resources.Miembros;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 35);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(82, 80);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
             // 
             // labelCaja
             // 
@@ -375,9 +419,19 @@
             this.panel7.Size = new System.Drawing.Size(110, 150);
             this.panel7.TabIndex = 33;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::UI.Properties.Resources.Directorio;
+            this.pictureBox4.Location = new System.Drawing.Point(13, 34);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(82, 80);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 31;
+            this.pictureBox4.TabStop = false;
+            // 
             // labelEmpleados
             // 
-            this.labelEmpleados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.labelEmpleados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelEmpleados.FlatAppearance.BorderSize = 0;
             this.labelEmpleados.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -445,14 +499,14 @@
             this.labelRefresh.ForeColor = System.Drawing.Color.Black;
             this.labelRefresh.Location = new System.Drawing.Point(723, 31);
             this.labelRefresh.Name = "labelRefresh";
-            this.labelRefresh.Size = new System.Drawing.Size(105, 16);
+            this.labelRefresh.Size = new System.Drawing.Size(104, 16);
             this.labelRefresh.TabIndex = 41;
             this.labelRefresh.Text = "Actualizar Datos";
             this.labelRefresh.Visible = false;
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
             this.panel4.Controls.Add(this.iconPapelera);
@@ -492,14 +546,14 @@
             this.labelPapelera.ForeColor = System.Drawing.Color.Black;
             this.labelPapelera.Location = new System.Drawing.Point(778, 31);
             this.labelPapelera.Name = "labelPapelera";
-            this.labelPapelera.Size = new System.Drawing.Size(64, 16);
+            this.labelPapelera.Size = new System.Drawing.Size(63, 16);
             this.labelPapelera.TabIndex = 43;
             this.labelPapelera.Text = "Papelera";
             this.labelPapelera.Visible = false;
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.panel15);
             this.panel3.Controls.Add(this.panel1);
@@ -514,7 +568,7 @@
             // 
             // panel15
             // 
-            this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel15.Controls.Add(this.lblhora);
             this.panel15.Controls.Add(this.lblFecha);
@@ -522,56 +576,6 @@
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(865, 169);
             this.panel15.TabIndex = 37;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::UI.Properties.Resources.Miembros;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 35);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 80);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 30;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::UI.Properties.Resources.Directiva;
-            this.pictureBox2.Location = new System.Drawing.Point(13, 34);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(82, 80);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 32;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::UI.Properties.Resources.Reunion;
-            this.pictureBox3.Location = new System.Drawing.Point(13, 34);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(82, 80);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 33;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::UI.Properties.Resources.Directorio;
-            this.pictureBox4.Location = new System.Drawing.Point(13, 34);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(82, 80);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 31;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::UI.Properties.Resources.Apuntes;
-            this.pictureBox5.Location = new System.Drawing.Point(13, 34);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(82, 80);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 31;
-            this.pictureBox5.TabStop = false;
             // 
             // InicioResumen
             // 
@@ -587,29 +591,30 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InicioResumen";
             this.Text = "InicioResumen";
+            this.Load += new System.EventHandler(this.InicioResumen_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
             this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -621,7 +626,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblhora;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer Tiempo;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label labelTitleAcerca;
         private System.Windows.Forms.Panel panel14;

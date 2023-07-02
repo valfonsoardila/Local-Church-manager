@@ -51,6 +51,7 @@ namespace UI
             this.iconPassword = new FontAwesome.Sharp.IconPictureBox();
             this.iconUser = new FontAwesome.Sharp.IconPictureBox();
             this.btnAjustarServidor = new FontAwesome.Sharp.IconButton();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
@@ -62,6 +63,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.iconNoSeePasword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconUser)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -110,7 +112,6 @@ namespace UI
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.labelInicioSesion);
             this.panel2.Controls.Add(this.pictureLogo);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -126,7 +127,7 @@ namespace UI
             this.labelInicioSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInicioSesion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelInicioSesion.Image = global::UI.Properties.Resources.Fondo;
-            this.labelInicioSesion.Location = new System.Drawing.Point(129, 110);
+            this.labelInicioSesion.Location = new System.Drawing.Point(137, 5);
             this.labelInicioSesion.Name = "labelInicioSesion";
             this.labelInicioSesion.Size = new System.Drawing.Size(115, 20);
             this.labelInicioSesion.TabIndex = 1;
@@ -136,19 +137,21 @@ namespace UI
             // 
             this.pictureLogo.BackColor = System.Drawing.Color.Transparent;
             this.pictureLogo.BackgroundImage = global::UI.Properties.Resources.Fondo;
-            this.pictureLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureLogo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureLogo.Image = global::UI.Properties.Resources.logo;
-            this.pictureLogo.Location = new System.Drawing.Point(131, 6);
+            this.pictureLogo.Location = new System.Drawing.Point(0, 0);
             this.pictureLogo.Name = "pictureLogo";
-            this.pictureLogo.Size = new System.Drawing.Size(113, 104);
+            this.pictureLogo.Size = new System.Drawing.Size(375, 133);
             this.pictureLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureLogo.TabIndex = 0;
             this.pictureLogo.TabStop = false;
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::UI.Properties.Resources.Fondo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(0, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(375, 133);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -162,7 +165,7 @@ namespace UI
             this.labelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUser.Location = new System.Drawing.Point(58, 209);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(66, 16);
+            this.labelUser.Size = new System.Drawing.Size(65, 16);
             this.labelUser.TabIndex = 2;
             this.labelUser.Text = "Usuario:";
             // 
@@ -172,7 +175,7 @@ namespace UI
             this.labelPasword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPasword.Location = new System.Drawing.Point(58, 237);
             this.labelPasword.Name = "labelPasword";
-            this.labelPasword.Size = new System.Drawing.Size(91, 16);
+            this.labelPasword.Size = new System.Drawing.Size(90, 16);
             this.labelPasword.TabIndex = 3;
             this.labelPasword.Text = "Contraseña:";
             // 
@@ -256,7 +259,7 @@ namespace UI
             // 
             this.iconAdvertencia.BackColor = System.Drawing.SystemColors.Control;
             this.iconAdvertencia.ForeColor = System.Drawing.Color.Maroon;
-            this.iconAdvertencia.IconChar = FontAwesome.Sharp.IconChar.ExclamationTriangle;
+            this.iconAdvertencia.IconChar = FontAwesome.Sharp.IconChar.Warning;
             this.iconAdvertencia.IconColor = System.Drawing.Color.Maroon;
             this.iconAdvertencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconAdvertencia.IconSize = 20;
@@ -317,7 +320,7 @@ namespace UI
             // 
             this.iconUser.BackColor = System.Drawing.SystemColors.Control;
             this.iconUser.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.iconUser.IconChar = FontAwesome.Sharp.IconChar.UserLarge;
+            this.iconUser.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
             this.iconUser.IconColor = System.Drawing.SystemColors.ControlText;
             this.iconUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconUser.IconSize = 21;
@@ -333,7 +336,7 @@ namespace UI
             this.btnAjustarServidor.IconColor = System.Drawing.Color.Black;
             this.btnAjustarServidor.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAjustarServidor.IconSize = 20;
-            this.btnAjustarServidor.Location = new System.Drawing.Point(342, 161);
+            this.btnAjustarServidor.Location = new System.Drawing.Point(336, 4);
             this.btnAjustarServidor.Name = "btnAjustarServidor";
             this.btnAjustarServidor.Size = new System.Drawing.Size(30, 22);
             this.btnAjustarServidor.TabIndex = 15;
@@ -341,12 +344,25 @@ namespace UI
             this.btnAjustarServidor.Visible = false;
             this.btnAjustarServidor.Click += new System.EventHandler(this.btnAjustarServidor_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.BackgroundImage = global::UI.Properties.Resources.Fondo;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel3.Controls.Add(this.labelInicioSesion);
+            this.panel3.Controls.Add(this.btnAjustarServidor);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 160);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(375, 29);
+            this.panel3.TabIndex = 16;
+            // 
             // FormInicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 375);
-            this.Controls.Add(this.btnAjustarServidor);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.labelAdvertencia);
             this.Controls.Add(this.iconAdvertencia);
             this.Controls.Add(this.linkLabelRegistrarUsuario);
@@ -373,7 +389,6 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconAdvertencia)).EndInit();
@@ -381,6 +396,8 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.iconNoSeePasword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconUser)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,5 +426,6 @@ namespace UI
         private FontAwesome.Sharp.IconPictureBox iconAdvertencia;
         private System.Windows.Forms.Label labelAdvertencia;
         private FontAwesome.Sharp.IconButton btnAjustarServidor;
+        private System.Windows.Forms.Panel panel3;
     }
 }
