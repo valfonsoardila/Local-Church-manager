@@ -32,6 +32,10 @@ namespace UI
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.textLugarTraslado = new System.Windows.Forms.TextBox();
+            this.labelLugarTraslado = new System.Windows.Forms.Label();
+            this.comboEstadoMiembro = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.dateFechaDisciplina = new System.Windows.Forms.DateTimePicker();
             this.textTiempoDisciplina = new System.Windows.Forms.TextBox();
@@ -110,10 +114,6 @@ namespace UI
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label26 = new System.Windows.Forms.Label();
-            this.comboEstadoMiembro = new System.Windows.Forms.ComboBox();
-            this.labelLugarTraslado = new System.Windows.Forms.Label();
-            this.textLugarTraslado = new System.Windows.Forms.TextBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -149,7 +149,7 @@ namespace UI
             tabRegistrar.Controls.Add(this.panel4);
             tabRegistrar.Location = new System.Drawing.Point(4, 22);
             tabRegistrar.Name = "tabRegistrar";
-            tabRegistrar.Size = new System.Drawing.Size(792, 574);
+            tabRegistrar.Size = new System.Drawing.Size(792, 578);
             tabRegistrar.TabIndex = 1;
             tabRegistrar.Text = "Registrar nuevo miembro";
             tabRegistrar.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@ namespace UI
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(792, 574);
+            this.panel4.Size = new System.Drawing.Size(792, 578);
             this.panel4.TabIndex = 0;
             // 
             // panel8
@@ -202,8 +202,56 @@ namespace UI
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 58);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(792, 471);
+            this.panel8.Size = new System.Drawing.Size(792, 475);
             this.panel8.TabIndex = 18;
+            // 
+            // textLugarTraslado
+            // 
+            this.textLugarTraslado.Location = new System.Drawing.Point(465, 442);
+            this.textLugarTraslado.Multiline = true;
+            this.textLugarTraslado.Name = "textLugarTraslado";
+            this.textLugarTraslado.Size = new System.Drawing.Size(89, 25);
+            this.textLugarTraslado.TabIndex = 70;
+            this.textLugarTraslado.Text = "Lugar de traslado";
+            this.textLugarTraslado.Visible = false;
+            this.textLugarTraslado.Enter += new System.EventHandler(this.textLugarTraslado_Enter_1);
+            this.textLugarTraslado.Leave += new System.EventHandler(this.textLugarTraslado_Leave);
+            // 
+            // labelLugarTraslado
+            // 
+            this.labelLugarTraslado.AutoSize = true;
+            this.labelLugarTraslado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLugarTraslado.Location = new System.Drawing.Point(326, 444);
+            this.labelLugarTraslado.Name = "labelLugarTraslado";
+            this.labelLugarTraslado.Size = new System.Drawing.Size(133, 16);
+            this.labelLugarTraslado.TabIndex = 69;
+            this.labelLugarTraslado.Text = "Lugar de traslado:";
+            this.labelLugarTraslado.Visible = false;
+            // 
+            // comboEstadoMiembro
+            // 
+            this.comboEstadoMiembro.FormattingEnabled = true;
+            this.comboEstadoMiembro.Items.AddRange(new object[] {
+            "Congregando",
+            "Trasladado",
+            "No definido"});
+            this.comboEstadoMiembro.Location = new System.Drawing.Point(176, 442);
+            this.comboEstadoMiembro.Name = "comboEstadoMiembro";
+            this.comboEstadoMiembro.Size = new System.Drawing.Size(142, 21);
+            this.comboEstadoMiembro.TabIndex = 68;
+            this.comboEstadoMiembro.Text = "No Definido";
+            this.comboEstadoMiembro.TextChanged += new System.EventHandler(this.comboEstadoMiembro_TextChanged);
+            this.comboEstadoMiembro.Leave += new System.EventHandler(this.comboEstadoMiembro_Leave);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(8, 444);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(163, 16);
+            this.label26.TabIndex = 67;
+            this.label26.Text = "Estado de membresia:";
             // 
             // label25
             // 
@@ -319,10 +367,6 @@ namespace UI
             // comboPastorOficiante
             // 
             this.comboPastorOficiante.FormattingEnabled = true;
-            this.comboPastorOficiante.Items.AddRange(new object[] {
-            "CC",
-            "TI",
-            "OTRO"});
             this.comboPastorOficiante.Location = new System.Drawing.Point(129, 355);
             this.comboPastorOficiante.Name = "comboPastorOficiante";
             this.comboPastorOficiante.Size = new System.Drawing.Size(142, 21);
@@ -716,7 +760,7 @@ namespace UI
             this.panel7.Controls.Add(this.btnModificar);
             this.panel7.Controls.Add(this.btnRegistrar);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 529);
+            this.panel7.Location = new System.Drawing.Point(0, 533);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(792, 45);
             this.panel7.TabIndex = 17;
@@ -877,7 +921,7 @@ namespace UI
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 59);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 600);
+            this.panel2.Size = new System.Drawing.Size(800, 604);
             this.panel2.TabIndex = 3;
             // 
             // tabMiembros
@@ -888,7 +932,7 @@ namespace UI
             this.tabMiembros.Location = new System.Drawing.Point(0, 0);
             this.tabMiembros.Name = "tabMiembros";
             this.tabMiembros.SelectedIndex = 0;
-            this.tabMiembros.Size = new System.Drawing.Size(800, 600);
+            this.tabMiembros.Size = new System.Drawing.Size(800, 604);
             this.tabMiembros.TabIndex = 0;
             // 
             // tabLista
@@ -898,7 +942,7 @@ namespace UI
             this.tabLista.Location = new System.Drawing.Point(4, 22);
             this.tabLista.Name = "tabLista";
             this.tabLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLista.Size = new System.Drawing.Size(792, 551);
+            this.tabLista.Size = new System.Drawing.Size(792, 574);
             this.tabLista.TabIndex = 0;
             this.tabLista.Text = "Lista de miembros";
             this.tabLista.UseVisualStyleBackColor = true;
@@ -1102,61 +1146,11 @@ namespace UI
             this.panel1.Size = new System.Drawing.Size(800, 59);
             this.panel1.TabIndex = 2;
             // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(8, 444);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(163, 16);
-            this.label26.TabIndex = 67;
-            this.label26.Text = "Estado de membresia:";
-            // 
-            // comboEstadoMiembro
-            // 
-            this.comboEstadoMiembro.FormattingEnabled = true;
-            this.comboEstadoMiembro.Items.AddRange(new object[] {
-            "Congregando",
-            "Trasladado",
-            "No definido"});
-            this.comboEstadoMiembro.Location = new System.Drawing.Point(176, 442);
-            this.comboEstadoMiembro.Name = "comboEstadoMiembro";
-            this.comboEstadoMiembro.Size = new System.Drawing.Size(142, 21);
-            this.comboEstadoMiembro.TabIndex = 68;
-            this.comboEstadoMiembro.Text = "No Definido";
-            this.comboEstadoMiembro.TextChanged += new System.EventHandler(this.comboEstadoMiembro_TextChanged);
-            this.comboEstadoMiembro.Enter += new System.EventHandler(this.comboEstadoMiembro_Enter);
-            this.comboEstadoMiembro.Leave += new System.EventHandler(this.comboEstadoMiembro_Leave);
-            // 
-            // labelLugarTraslado
-            // 
-            this.labelLugarTraslado.AutoSize = true;
-            this.labelLugarTraslado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLugarTraslado.Location = new System.Drawing.Point(326, 444);
-            this.labelLugarTraslado.Name = "labelLugarTraslado";
-            this.labelLugarTraslado.Size = new System.Drawing.Size(133, 16);
-            this.labelLugarTraslado.TabIndex = 69;
-            this.labelLugarTraslado.Text = "Lugar de traslado:";
-            this.labelLugarTraslado.Visible = false;
-            // 
-            // textLugarTraslado
-            // 
-            this.textLugarTraslado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textLugarTraslado.Location = new System.Drawing.Point(465, 440);
-            this.textLugarTraslado.Multiline = true;
-            this.textLugarTraslado.Name = "textLugarTraslado";
-            this.textLugarTraslado.Size = new System.Drawing.Size(143, 26);
-            this.textLugarTraslado.TabIndex = 38;
-            this.textLugarTraslado.Text = "Lugar de traslado";
-            this.textLugarTraslado.Visible = false;
-            this.textLugarTraslado.Enter += new System.EventHandler(this.textLugarTraslado_Enter);
-            this.textLugarTraslado.Leave += new System.EventHandler(this.textLugarTraslado_Leave);
-            // 
             // FormMiembros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 659);
+            this.ClientSize = new System.Drawing.Size(800, 663);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1286,7 +1280,7 @@ namespace UI
         private System.Windows.Forms.TextBox textTiempoDisciplina;
         private System.Windows.Forms.ComboBox comboEstadoMiembro;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textLugarTraslado;
         private System.Windows.Forms.Label labelLugarTraslado;
+        private System.Windows.Forms.TextBox textLugarTraslado;
     }
 }

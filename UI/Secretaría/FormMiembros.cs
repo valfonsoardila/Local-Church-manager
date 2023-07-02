@@ -265,22 +265,6 @@ namespace UI
             }
         }
 
-        private void textLugarTraslado_Leave(object sender, EventArgs e)
-        {
-            if (textLugarTraslado.Text == "")
-            {
-                textLugarTraslado.Text = "Lugar de traslado";
-            }
-        }
-
-        private void comboEstadoMiembro_Enter(object sender, EventArgs e)
-        {
-            if (comboEstadoMiembro.Text == "No definido")
-            {
-                comboEstadoMiembro.Text = "";
-            }
-        }
-
         private void comboEstadoMiembro_Leave(object sender, EventArgs e)
         {
             if (comboEstadoMiembro.Text == "")
@@ -298,8 +282,28 @@ namespace UI
             }
             else
             {
-                labelLugarTraslado.Visible = false;
-                textLugarTraslado.Visible = false;
+                if (comboEstadoMiembro.Text == "" || comboEstadoMiembro.Text == "No definido")
+                {
+                    labelLugarTraslado.Visible = false;
+                    textLugarTraslado.Visible = false;
+                }
+                    
+            }
+        }
+
+        private void textLugarTraslado_Enter_1(object sender, EventArgs e)
+        {
+            if (textLugarTraslado.Text == "Lugar de traslado")
+            {
+                textLugarTraslado.Text = "";
+            }
+        }
+
+        private void textLugarTraslado_Leave(object sender, EventArgs e)
+        {
+            if (textLugarTraslado.Text == "")
+            {
+                textLugarTraslado.Text = "Lugar de traslado";
             }
         }
     }
