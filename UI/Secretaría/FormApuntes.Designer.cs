@@ -47,7 +47,7 @@ namespace UI
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tabDirectorio = new System.Windows.Forms.TabControl();
+            this.tabApuntes = new System.Windows.Forms.TabControl();
             this.tabLibro = new System.Windows.Forms.TabPage();
             this.btnGestionarContactos = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -72,7 +72,7 @@ namespace UI
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabDirectorio.SuspendLayout();
+            this.tabApuntes.SuspendLayout();
             this.tabLibro.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -148,6 +148,7 @@ namespace UI
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnRegistrar
             // 
@@ -165,6 +166,7 @@ namespace UI
             this.btnRegistrar.Text = "Guardar";
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // textTitulo
             // 
@@ -323,16 +325,16 @@ namespace UI
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // tabDirectorio
+            // tabApuntes
             // 
-            this.tabDirectorio.Controls.Add(this.tabLibro);
-            this.tabDirectorio.Controls.Add(tabNuevoApunte);
-            this.tabDirectorio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabDirectorio.Location = new System.Drawing.Point(0, 59);
-            this.tabDirectorio.Name = "tabDirectorio";
-            this.tabDirectorio.SelectedIndex = 0;
-            this.tabDirectorio.Size = new System.Drawing.Size(800, 476);
-            this.tabDirectorio.TabIndex = 3;
+            this.tabApuntes.Controls.Add(this.tabLibro);
+            this.tabApuntes.Controls.Add(tabNuevoApunte);
+            this.tabApuntes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabApuntes.Location = new System.Drawing.Point(0, 59);
+            this.tabApuntes.Name = "tabApuntes";
+            this.tabApuntes.SelectedIndex = 0;
+            this.tabApuntes.Size = new System.Drawing.Size(800, 476);
+            this.tabApuntes.TabIndex = 3;
             // 
             // tabLibro
             // 
@@ -360,6 +362,7 @@ namespace UI
             this.btnGestionarContactos.TabIndex = 1;
             this.btnGestionarContactos.Text = "Gestionar apuntes";
             this.btnGestionarContactos.UseVisualStyleBackColor = false;
+            this.btnGestionarContactos.Click += new System.EventHandler(this.btnGestionarContactos_Click);
             // 
             // panel3
             // 
@@ -514,7 +517,7 @@ namespace UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 535);
-            this.Controls.Add(this.tabDirectorio);
+            this.Controls.Add(this.tabApuntes);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormApuntes";
@@ -531,7 +534,7 @@ namespace UI
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabDirectorio.ResumeLayout(false);
+            this.tabApuntes.ResumeLayout(false);
             this.tabLibro.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -550,7 +553,7 @@ namespace UI
         private FontAwesome.Sharp.IconPictureBox btnAtras;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TabControl tabDirectorio;
+        private System.Windows.Forms.TabControl tabApuntes;
         private System.Windows.Forms.TabPage tabLibro;
         private FontAwesome.Sharp.IconButton btnGestionarContactos;
         private System.Windows.Forms.Panel panel3;

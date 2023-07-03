@@ -205,7 +205,7 @@ namespace UI
             // panelSelectionAjustes
             // 
             this.panelSelectionAjustes.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelSelectionAjustes.Location = new System.Drawing.Point(0, 472);
+            this.panelSelectionAjustes.Location = new System.Drawing.Point(0, 473);
             this.panelSelectionAjustes.Name = "panelSelectionAjustes";
             this.panelSelectionAjustes.Size = new System.Drawing.Size(6, 37);
             this.panelSelectionAjustes.TabIndex = 10;
@@ -226,13 +226,14 @@ namespace UI
             this.btnAjustes.IconColor = System.Drawing.Color.White;
             this.btnAjustes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAjustes.IconSize = 22;
-            this.btnAjustes.Location = new System.Drawing.Point(0, 475);
+            this.btnAjustes.Location = new System.Drawing.Point(0, 466);
             this.btnAjustes.Name = "btnAjustes";
             this.btnAjustes.Size = new System.Drawing.Size(186, 37);
             this.btnAjustes.TabIndex = 14;
             this.btnAjustes.Text = "   Ajustes";
             this.btnAjustes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAjustes.UseVisualStyleBackColor = false;
+            this.btnAjustes.Click += new System.EventHandler(this.btnAjustes_Click);
             // 
             // btnGestionFactura
             // 
@@ -249,7 +250,7 @@ namespace UI
             this.btnGestionFactura.IconColor = System.Drawing.Color.White;
             this.btnGestionFactura.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGestionFactura.IconSize = 22;
-            this.btnGestionFactura.Location = new System.Drawing.Point(0, 438);
+            this.btnGestionFactura.Location = new System.Drawing.Point(0, 429);
             this.btnGestionFactura.Name = "btnGestionFactura";
             this.btnGestionFactura.Size = new System.Drawing.Size(186, 37);
             this.btnGestionFactura.TabIndex = 13;
@@ -270,7 +271,7 @@ namespace UI
             // panelSelectionSecretaria
             // 
             this.panelSelectionSecretaria.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelSelectionSecretaria.Location = new System.Drawing.Point(0, 100);
+            this.panelSelectionSecretaria.Location = new System.Drawing.Point(0, 97);
             this.panelSelectionSecretaria.Name = "panelSelectionSecretaria";
             this.panelSelectionSecretaria.Size = new System.Drawing.Size(6, 37);
             this.panelSelectionSecretaria.TabIndex = 0;
@@ -282,7 +283,7 @@ namespace UI
             this.subMenuTesoreria.Controls.Add(this.btnEmpleados);
             this.subMenuTesoreria.Controls.Add(this.btnClientes);
             this.subMenuTesoreria.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuTesoreria.Location = new System.Drawing.Point(0, 362);
+            this.subMenuTesoreria.Location = new System.Drawing.Point(0, 353);
             this.subMenuTesoreria.Name = "subMenuTesoreria";
             this.subMenuTesoreria.Size = new System.Drawing.Size(186, 76);
             this.subMenuTesoreria.TabIndex = 10;
@@ -346,7 +347,7 @@ namespace UI
             this.btnGestionTesoreria.IconColor = System.Drawing.Color.White;
             this.btnGestionTesoreria.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGestionTesoreria.IconSize = 22;
-            this.btnGestionTesoreria.Location = new System.Drawing.Point(0, 325);
+            this.btnGestionTesoreria.Location = new System.Drawing.Point(0, 316);
             this.btnGestionTesoreria.Name = "btnGestionTesoreria";
             this.btnGestionTesoreria.Size = new System.Drawing.Size(186, 37);
             this.btnGestionTesoreria.TabIndex = 9;
@@ -364,7 +365,7 @@ namespace UI
             this.subMenuSecretaria.Controls.Add(this.btnMiembros);
             this.subMenuSecretaria.Controls.Add(this.btnDirectorio);
             this.subMenuSecretaria.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuSecretaria.Location = new System.Drawing.Point(0, 140);
+            this.subMenuSecretaria.Location = new System.Drawing.Point(0, 131);
             this.subMenuSecretaria.Name = "subMenuSecretaria";
             this.subMenuSecretaria.Size = new System.Drawing.Size(186, 185);
             this.subMenuSecretaria.TabIndex = 3;
@@ -498,7 +499,7 @@ namespace UI
             this.btnGestionSecretaria.IconColor = System.Drawing.Color.White;
             this.btnGestionSecretaria.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGestionSecretaria.IconSize = 22;
-            this.btnGestionSecretaria.Location = new System.Drawing.Point(0, 103);
+            this.btnGestionSecretaria.Location = new System.Drawing.Point(0, 94);
             this.btnGestionSecretaria.Name = "btnGestionSecretaria";
             this.btnGestionSecretaria.Size = new System.Drawing.Size(186, 37);
             this.btnGestionSecretaria.TabIndex = 2;
@@ -518,7 +519,7 @@ namespace UI
             this.panelLogoContainer.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogoContainer.Location = new System.Drawing.Point(0, 0);
             this.panelLogoContainer.Name = "panelLogoContainer";
-            this.panelLogoContainer.Size = new System.Drawing.Size(186, 103);
+            this.panelLogoContainer.Size = new System.Drawing.Size(186, 94);
             this.panelLogoContainer.TabIndex = 0;
             this.panelLogoContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelLogoContainer_MouseDown);
             // 
@@ -528,7 +529,7 @@ namespace UI
             this.panelSidebarClose.Controls.Add(this.pictureBox1);
             this.panelSidebarClose.Location = new System.Drawing.Point(0, 31);
             this.panelSidebarClose.Name = "panelSidebarClose";
-            this.panelSidebarClose.Size = new System.Drawing.Size(52, 69);
+            this.panelSidebarClose.Size = new System.Drawing.Size(52, 60);
             this.panelSidebarClose.TabIndex = 6;
             // 
             // labelMenu

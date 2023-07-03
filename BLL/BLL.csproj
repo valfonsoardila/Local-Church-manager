@@ -41,12 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApunteService.cs" />
     <Compile Include="ArchivoRespaldoConsultaResponse.cs" />
     <Compile Include="ArchivoRespaldoService.cs" />
     <Compile Include="CadenaConexionXMLService.cs" />
+    <Compile Include="ContactoService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="IglesiaService.cs" />
     <Compile Include="EmailConsultaResponse.cs" />
+    <Compile Include="MiembroService.cs" />
+    <Compile Include="ServidorService.cs" />
     <Compile Include="UsuarioService.cs" />
     <Compile Include="IdUsuarioTxtConsultaResponse.cs" />
     <Compile Include="IdUsuarioTxtService.cs" />

@@ -27,16 +27,6 @@ namespace UI
             tabMiembros.SelectedIndex = 1;
         }
 
-        private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-            tabMiembros.SelectedIndex = 0;
-        }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            tabMiembros.SelectedIndex = 0;
-        }
-
         private void btSearchLibreta_Click(object sender, EventArgs e)
         {
             btSearchLibreta.Visible = false;
@@ -293,6 +283,16 @@ namespace UI
             {
                 textLugar.Text = "Lugar";
             }
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            tabMiembros.SelectedIndex = 0;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            tabMiembros.SelectedIndex = 0;
         }
     }
 }

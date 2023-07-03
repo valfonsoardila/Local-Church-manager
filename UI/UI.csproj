@@ -71,6 +71,7 @@
     <Compile Include="Ajustes\FormAjustes.designer.cs">
       <DependentUpon>FormAjustes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Imprimir.cs" />
     <Compile Include="Login\FormRestaurarContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +101,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reporte.cs" />
     <Compile Include="Secretaría\FormApuntes.cs">
       <SubType>Form</SubType>
     </Compile>

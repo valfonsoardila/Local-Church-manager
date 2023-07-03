@@ -109,5 +109,20 @@ namespace UI
                 textSearchRegistrar.Text = "Buscar";
             }
         }
+
+        private void btnGestionarContactos_Click(object sender, EventArgs e)
+        {
+            tabApuntes.SelectedIndex = 1;
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            tabApuntes.SelectedIndex = 0;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            tabApuntes.SelectedIndex = 0;
+        }
     }
 }

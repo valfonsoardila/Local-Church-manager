@@ -21,5 +21,20 @@ namespace UI
         {
             this.Close();
         }
+
+        private void btnGestionarContactos_Click(object sender, EventArgs e)
+        {
+            tabDirectivas.SelectedIndex = 1;
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            tabDirectivas.SelectedIndex = 0;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            tabDirectivas.SelectedIndex = 0;
+        }
     }
 }

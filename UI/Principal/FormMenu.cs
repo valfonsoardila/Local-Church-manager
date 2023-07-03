@@ -295,7 +295,16 @@ namespace UI
             CerrarFormulariosCiclo();
             AbrirFormulario<FormApuntes>();
         }
-
+        private void btnAjustes_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormAjustes>();
+            labelHeaderRuta.Text = "Inicio > Ajustes";
+            panelSelectionAjustes.Location = btnAjustes.Location;
+            panelSelectionAjustes.Visible = true;
+            panelSelectionTesoreria.Visible = false;
+            panelSelectionSecretaria.Visible = false;
+        }
         private void panelHeaderbar_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();

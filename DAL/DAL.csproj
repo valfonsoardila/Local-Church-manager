@@ -41,11 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApunteRepository.cs" />
     <Compile Include="ArchivoRespaldoRepository.cs" />
     <Compile Include="CadenaConexionXMLRepository.cs" />
     <Compile Include="ConnectionManager.cs" />
+    <Compile Include="ContactoRepository.cs" />
     <Compile Include="IglesiaRepository.cs" />
     <Compile Include="EmailRepository.cs" />
+    <Compile Include="MiembroRepository.cs" />
+    <Compile Include="ReunionRepository.cs" />
+    <Compile Include="ServidorRepository.cs" />
     <Compile Include="UsuarioRepository.cs" />
     <Compile Include="IdEmpleadoTxtRepository.cs" />
     <Compile Include="LicenciaRepository.cs" />

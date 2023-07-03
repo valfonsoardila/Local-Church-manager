@@ -42,19 +42,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ajuste.cs" />
+    <Compile Include="Apunte.cs" />
     <Compile Include="ArchivoRespaldo.cs" />
     <Compile Include="CadenaConexionXML.cs" />
     <Compile Include="Comite.cs" />
     <Compile Include="Contacto.cs" />
+    <Compile Include="Reunion.cs" />
+    <Compile Include="Servidor.cs" />
     <Compile Include="Iglesia.cs" />
     <Compile Include="Email.cs" />
+    <Compile Include="Miembro.cs" />
     <Compile Include="Usuario.cs" />
-    <Compile Include="Feligres.cs" />
     <Compile Include="IdUsuarioTxt.cs" />
     <Compile Include="Licencia.cs" />
-    <Compile Include="Oficio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reporte.cs" />
     <Compile Include="RutasTxt.cs" />
     <Compile Include="Software.cs" />
   </ItemGroup>

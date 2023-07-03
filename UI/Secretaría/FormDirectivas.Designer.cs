@@ -31,6 +31,9 @@ namespace UI
         {
             System.Windows.Forms.TabPage tabNuevoIntegrante;
             this.panel9 = new System.Windows.Forms.Panel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnModificar = new FontAwesome.Sharp.IconButton();
+            this.btnRegistrar = new FontAwesome.Sharp.IconButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -57,24 +60,22 @@ namespace UI
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tabDirectorio = new System.Windows.Forms.TabControl();
+            this.tabDirectivas = new System.Windows.Forms.TabControl();
             this.tabLibro = new System.Windows.Forms.TabPage();
+            this.btnImprimir = new FontAwesome.Sharp.IconButton();
             this.btnGestionarContactos = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnModificar = new FontAwesome.Sharp.IconButton();
-            this.btnRegistrar = new FontAwesome.Sharp.IconButton();
-            this.btnImprimir = new FontAwesome.Sharp.IconButton();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             tabNuevoIntegrante = new System.Windows.Forms.TabPage();
             tabNuevoIntegrante.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -90,7 +91,7 @@ namespace UI
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabDirectorio.SuspendLayout();
+            this.tabDirectivas.SuspendLayout();
             this.tabLibro.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -118,6 +119,7 @@ namespace UI
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.iconButton1);
             this.panel9.Controls.Add(this.btnModificar);
             this.panel9.Controls.Add(this.btnRegistrar);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -125,6 +127,60 @@ namespace UI
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(836, 77);
             this.panel9.TabIndex = 8;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.Orange;
+            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 30;
+            this.iconButton1.Location = new System.Drawing.Point(461, 20);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton1.Size = new System.Drawing.Size(118, 35);
+            this.iconButton1.TabIndex = 18;
+            this.iconButton1.Text = "Imprimir";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnModificar.IconChar = FontAwesome.Sharp.IconChar.FileEdit;
+            this.btnModificar.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnModificar.IconSize = 30;
+            this.btnModificar.Location = new System.Drawing.Point(332, 20);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(123, 35);
+            this.btnModificar.TabIndex = 17;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnRegistrar
+            // 
+            this.btnRegistrar.BackColor = System.Drawing.Color.Green;
+            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRegistrar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnRegistrar.IconColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRegistrar.IconSize = 30;
+            this.btnRegistrar.Location = new System.Drawing.Point(226, 20);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(100, 35);
+            this.btnRegistrar.TabIndex = 16;
+            this.btnRegistrar.Text = "Guardar";
+            this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // panel8
             // 
@@ -197,6 +253,7 @@ namespace UI
             "Presidente(a)",
             "Vicepresidente(a)",
             "Secretario(a)",
+            "Recaudador(a)",
             "Tesorero(a)",
             "Vocal(a)",
             "Director(a)",
@@ -457,16 +514,16 @@ namespace UI
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // tabDirectorio
+            // tabDirectivas
             // 
-            this.tabDirectorio.Controls.Add(this.tabLibro);
-            this.tabDirectorio.Controls.Add(tabNuevoIntegrante);
-            this.tabDirectorio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabDirectorio.Location = new System.Drawing.Point(0, 59);
-            this.tabDirectorio.Name = "tabDirectorio";
-            this.tabDirectorio.SelectedIndex = 0;
-            this.tabDirectorio.Size = new System.Drawing.Size(844, 485);
-            this.tabDirectorio.TabIndex = 4;
+            this.tabDirectivas.Controls.Add(this.tabLibro);
+            this.tabDirectivas.Controls.Add(tabNuevoIntegrante);
+            this.tabDirectivas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabDirectivas.Location = new System.Drawing.Point(0, 59);
+            this.tabDirectivas.Name = "tabDirectivas";
+            this.tabDirectivas.SelectedIndex = 0;
+            this.tabDirectivas.Size = new System.Drawing.Size(844, 485);
+            this.tabDirectivas.TabIndex = 4;
             // 
             // tabLibro
             // 
@@ -480,6 +537,24 @@ namespace UI
             this.tabLibro.TabIndex = 0;
             this.tabLibro.Text = "Libro de directivas";
             this.tabLibro.UseVisualStyleBackColor = true;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackColor = System.Drawing.Color.Orange;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimir.IconColor = System.Drawing.Color.Black;
+            this.btnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimir.IconSize = 30;
+            this.btnImprimir.Location = new System.Drawing.Point(396, 412);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimir.Size = new System.Drawing.Size(142, 35);
+            this.btnImprimir.TabIndex = 15;
+            this.btnImprimir.Text = "Imprimir Lista";
+            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimir.UseVisualStyleBackColor = false;
             // 
             // btnGestionarContactos
             // 
@@ -495,6 +570,7 @@ namespace UI
             this.btnGestionarContactos.TabIndex = 1;
             this.btnGestionarContactos.Text = "Gestionar Directivas";
             this.btnGestionarContactos.UseVisualStyleBackColor = false;
+            this.btnGestionarContactos.Click += new System.EventHandler(this.btnGestionarContactos_Click);
             // 
             // panel3
             // 
@@ -552,15 +628,6 @@ namespace UI
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(714, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
             // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(347, 7);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 10;
-            this.comboBox3.Text = "Oficio";
-            // 
             // iconPictureBox3
             // 
             this.iconPictureBox3.BackColor = System.Drawing.Color.Transparent;
@@ -592,6 +659,9 @@ namespace UI
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "M",
+            "F"});
             this.comboBox1.Location = new System.Drawing.Point(218, 7);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
@@ -635,64 +705,44 @@ namespace UI
             this.label1.TabIndex = 0;
             this.label1.Text = "Libro de directivas";
             // 
-            // btnModificar
+            // comboBox3
             // 
-            this.btnModificar.BackColor = System.Drawing.Color.DarkRed;
-            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnModificar.IconChar = FontAwesome.Sharp.IconChar.FileEdit;
-            this.btnModificar.IconColor = System.Drawing.Color.WhiteSmoke;
-            this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnModificar.IconSize = 30;
-            this.btnModificar.Location = new System.Drawing.Point(410, 20);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(123, 35);
-            this.btnModificar.TabIndex = 17;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnModificar.UseVisualStyleBackColor = false;
-            // 
-            // btnRegistrar
-            // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.Green;
-            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRegistrar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.btnRegistrar.IconColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRegistrar.IconSize = 30;
-            this.btnRegistrar.Location = new System.Drawing.Point(304, 22);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(100, 35);
-            this.btnRegistrar.TabIndex = 16;
-            this.btnRegistrar.Text = "Guardar";
-            this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRegistrar.UseVisualStyleBackColor = false;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.BackColor = System.Drawing.Color.Orange;
-            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnImprimir.IconColor = System.Drawing.Color.Black;
-            this.btnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnImprimir.IconSize = 30;
-            this.btnImprimir.Location = new System.Drawing.Point(396, 412);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimir.Size = new System.Drawing.Size(142, 35);
-            this.btnImprimir.TabIndex = 15;
-            this.btnImprimir.Text = "Imprimir Lista";
-            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Junta Local",
+            "Jovenes",
+            "Damas Dorcas",
+            "Caballeros",
+            "Damas Jovenes",
+            "Primeros Auxilios",
+            "Vigilancia",
+            "Labores",
+            "Sonido",
+            "Alabanza",
+            "Adolescente",
+            "Misiones y evangelismo",
+            "Edad dorada",
+            "Intersesión",
+            "Decom",
+            "Ujieres",
+            "Decoración",
+            "Cultivadores",
+            "Obra social",
+            "Entre señas",
+            "Escuela Domnical",
+            "Comité de familia"});
+            this.comboBox3.Location = new System.Drawing.Point(347, 7);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.TabIndex = 10;
+            this.comboBox3.Text = "Labores";
             // 
             // FormDirectivas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 544);
-            this.Controls.Add(this.tabDirectorio);
+            this.Controls.Add(this.tabDirectivas);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormDirectivas";
@@ -718,7 +768,7 @@ namespace UI
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabDirectorio.ResumeLayout(false);
+            this.tabDirectivas.ResumeLayout(false);
             this.tabLibro.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -737,7 +787,7 @@ namespace UI
         private FontAwesome.Sharp.IconPictureBox btnAtras;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TabControl tabDirectorio;
+        private System.Windows.Forms.TabControl tabDirectivas;
         private System.Windows.Forms.TabPage tabLibro;
         private FontAwesome.Sharp.IconButton btnGestionarContactos;
         private System.Windows.Forms.Panel panel3;
@@ -745,7 +795,6 @@ namespace UI
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
-        private System.Windows.Forms.ComboBox comboBox3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -778,5 +827,7 @@ namespace UI
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnRegistrar;
         private FontAwesome.Sharp.IconButton btnImprimir;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }

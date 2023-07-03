@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    class Comite
+    public class Comite
     {
+        public Comite(string nombreComite)
+        {
+            NombreDeComite = nombreComite;
+        }
+        public string NombreDeComite { get; set; }
     }
 }
