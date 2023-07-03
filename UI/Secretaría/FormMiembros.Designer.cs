@@ -32,7 +32,7 @@ namespace UI
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.textLugarTraslado = new System.Windows.Forms.TextBox();
+            this.textLugar = new System.Windows.Forms.TextBox();
             this.labelLugarTraslado = new System.Windows.Forms.Label();
             this.comboEstadoMiembro = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -114,6 +114,8 @@ namespace UI
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnImprimir = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -149,7 +151,7 @@ namespace UI
             tabRegistrar.Controls.Add(this.panel4);
             tabRegistrar.Location = new System.Drawing.Point(4, 22);
             tabRegistrar.Name = "tabRegistrar";
-            tabRegistrar.Size = new System.Drawing.Size(792, 578);
+            tabRegistrar.Size = new System.Drawing.Size(792, 459);
             tabRegistrar.TabIndex = 1;
             tabRegistrar.Text = "Registrar nuevo miembro";
             tabRegistrar.UseVisualStyleBackColor = true;
@@ -163,13 +165,13 @@ namespace UI
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(792, 578);
+            this.panel4.Size = new System.Drawing.Size(792, 459);
             this.panel4.TabIndex = 0;
             // 
             // panel8
             // 
             this.panel8.AutoScroll = true;
-            this.panel8.Controls.Add(this.textLugarTraslado);
+            this.panel8.Controls.Add(this.textLugar);
             this.panel8.Controls.Add(this.labelLugarTraslado);
             this.panel8.Controls.Add(this.comboEstadoMiembro);
             this.panel8.Controls.Add(this.label26);
@@ -202,31 +204,30 @@ namespace UI
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 58);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(792, 475);
+            this.panel8.Size = new System.Drawing.Size(792, 356);
             this.panel8.TabIndex = 18;
             // 
-            // textLugarTraslado
+            // textLugar
             // 
-            this.textLugarTraslado.Location = new System.Drawing.Point(465, 442);
-            this.textLugarTraslado.Multiline = true;
-            this.textLugarTraslado.Name = "textLugarTraslado";
-            this.textLugarTraslado.Size = new System.Drawing.Size(89, 25);
-            this.textLugarTraslado.TabIndex = 70;
-            this.textLugarTraslado.Text = "Lugar de traslado";
-            this.textLugarTraslado.Visible = false;
-            this.textLugarTraslado.Enter += new System.EventHandler(this.textLugarTraslado_Enter_1);
-            this.textLugarTraslado.Leave += new System.EventHandler(this.textLugarTraslado_Leave);
+            this.textLugar.Enabled = false;
+            this.textLugar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textLugar.Location = new System.Drawing.Point(463, 440);
+            this.textLugar.Name = "textLugar";
+            this.textLugar.Size = new System.Drawing.Size(170, 22);
+            this.textLugar.TabIndex = 70;
+            this.textLugar.Text = "Lugar";
+            this.textLugar.Enter += new System.EventHandler(this.textLugar_Enter);
+            this.textLugar.Leave += new System.EventHandler(this.textLugar_Leave);
             // 
             // labelLugarTraslado
             // 
             this.labelLugarTraslado.AutoSize = true;
             this.labelLugarTraslado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLugarTraslado.Location = new System.Drawing.Point(326, 444);
+            this.labelLugarTraslado.Location = new System.Drawing.Point(324, 444);
             this.labelLugarTraslado.Name = "labelLugarTraslado";
             this.labelLugarTraslado.Size = new System.Drawing.Size(133, 16);
             this.labelLugarTraslado.TabIndex = 69;
             this.labelLugarTraslado.Text = "Lugar de traslado:";
-            this.labelLugarTraslado.Visible = false;
             // 
             // comboEstadoMiembro
             // 
@@ -349,9 +350,9 @@ namespace UI
             // 
             // dateFechaMembresia
             // 
-            this.dateFechaMembresia.Location = new System.Drawing.Point(487, 356);
+            this.dateFechaMembresia.Location = new System.Drawing.Point(571, 356);
             this.dateFechaMembresia.Name = "dateFechaMembresia";
-            this.dateFechaMembresia.Size = new System.Drawing.Size(180, 20);
+            this.dateFechaMembresia.Size = new System.Drawing.Size(211, 20);
             this.dateFechaMembresia.TabIndex = 58;
             // 
             // label18
@@ -360,9 +361,9 @@ namespace UI
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(277, 358);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(208, 16);
+            this.label18.Size = new System.Drawing.Size(291, 16);
             this.label18.TabIndex = 57;
-            this.label18.Text = "Fecha de membresia iglesia:";
+            this.label18.Text = "Fecha de membresia iglesia procedente:";
             // 
             // comboPastorOficiante
             // 
@@ -469,7 +470,7 @@ namespace UI
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.Location = new System.Drawing.Point(0, 263);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(792, 30);
+            this.panel12.Size = new System.Drawing.Size(782, 30);
             this.panel12.TabIndex = 46;
             // 
             // label11
@@ -492,7 +493,7 @@ namespace UI
             this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel11.Location = new System.Drawing.Point(0, 193);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(792, 70);
+            this.panel11.Size = new System.Drawing.Size(782, 70);
             this.panel11.TabIndex = 45;
             // 
             // textNombreMadre
@@ -546,7 +547,7 @@ namespace UI
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 163);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(792, 30);
+            this.panel10.Size = new System.Drawing.Size(782, 30);
             this.panel10.TabIndex = 44;
             // 
             // label9
@@ -579,7 +580,7 @@ namespace UI
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 30);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(792, 133);
+            this.panel9.Size = new System.Drawing.Size(782, 133);
             this.panel9.TabIndex = 43;
             // 
             // textTelefono
@@ -741,7 +742,7 @@ namespace UI
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 0);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(792, 30);
+            this.panel13.Size = new System.Drawing.Size(782, 30);
             this.panel13.TabIndex = 42;
             // 
             // label8
@@ -757,10 +758,11 @@ namespace UI
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.btnImprimir);
             this.panel7.Controls.Add(this.btnModificar);
             this.panel7.Controls.Add(this.btnRegistrar);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 533);
+            this.panel7.Location = new System.Drawing.Point(0, 414);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(792, 45);
             this.panel7.TabIndex = 17;
@@ -770,32 +772,34 @@ namespace UI
             this.btnModificar.BackColor = System.Drawing.Color.DarkRed;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnModificar.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnModificar.IconColor = System.Drawing.Color.Black;
+            this.btnModificar.IconChar = FontAwesome.Sharp.IconChar.FileEdit;
+            this.btnModificar.IconColor = System.Drawing.Color.WhiteSmoke;
             this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnModificar.Location = new System.Drawing.Point(366, 5);
+            this.btnModificar.IconSize = 30;
+            this.btnModificar.Location = new System.Drawing.Point(293, 3);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(123, 35);
-            this.btnModificar.TabIndex = 13;
-            this.btnModificar.Text = "Modificar existente";
+            this.btnModificar.TabIndex = 15;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = false;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnRegistrar
             // 
             this.btnRegistrar.BackColor = System.Drawing.Color.Green;
             this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRegistrar.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnRegistrar.IconColor = System.Drawing.Color.Black;
+            this.btnRegistrar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnRegistrar.IconColor = System.Drawing.Color.BlanchedAlmond;
             this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRegistrar.Location = new System.Drawing.Point(250, 5);
+            this.btnRegistrar.IconSize = 30;
+            this.btnRegistrar.Location = new System.Drawing.Point(190, 3);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(110, 35);
-            this.btnRegistrar.TabIndex = 12;
-            this.btnRegistrar.Text = "Registrar nuevo";
+            this.btnRegistrar.Size = new System.Drawing.Size(100, 35);
+            this.btnRegistrar.TabIndex = 14;
+            this.btnRegistrar.Text = "Guardar";
+            this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // panel6
             // 
@@ -921,7 +925,7 @@ namespace UI
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 59);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 604);
+            this.panel2.Size = new System.Drawing.Size(800, 485);
             this.panel2.TabIndex = 3;
             // 
             // tabMiembros
@@ -932,17 +936,18 @@ namespace UI
             this.tabMiembros.Location = new System.Drawing.Point(0, 0);
             this.tabMiembros.Name = "tabMiembros";
             this.tabMiembros.SelectedIndex = 0;
-            this.tabMiembros.Size = new System.Drawing.Size(800, 604);
+            this.tabMiembros.Size = new System.Drawing.Size(800, 485);
             this.tabMiembros.TabIndex = 0;
             // 
             // tabLista
             // 
+            this.tabLista.Controls.Add(this.iconButton1);
             this.tabLista.Controls.Add(this.btnGestionarMiembros);
             this.tabLista.Controls.Add(this.panel3);
             this.tabLista.Location = new System.Drawing.Point(4, 22);
             this.tabLista.Name = "tabLista";
             this.tabLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLista.Size = new System.Drawing.Size(792, 574);
+            this.tabLista.Size = new System.Drawing.Size(792, 459);
             this.tabLista.TabIndex = 0;
             this.tabLista.Text = "Lista de miembros";
             this.tabLista.UseVisualStyleBackColor = true;
@@ -955,7 +960,7 @@ namespace UI
             this.btnGestionarMiembros.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnGestionarMiembros.IconColor = System.Drawing.Color.Black;
             this.btnGestionarMiembros.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarMiembros.Location = new System.Drawing.Point(332, 412);
+            this.btnGestionarMiembros.Location = new System.Drawing.Point(239, 412);
             this.btnGestionarMiembros.Name = "btnGestionarMiembros";
             this.btnGestionarMiembros.Size = new System.Drawing.Size(135, 35);
             this.btnGestionarMiembros.TabIndex = 1;
@@ -1146,11 +1151,47 @@ namespace UI
             this.panel1.Size = new System.Drawing.Size(800, 59);
             this.panel1.TabIndex = 2;
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackColor = System.Drawing.Color.Orange;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimir.IconColor = System.Drawing.Color.Black;
+            this.btnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimir.IconSize = 30;
+            this.btnImprimir.Location = new System.Drawing.Point(422, 3);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimir.Size = new System.Drawing.Size(109, 35);
+            this.btnImprimir.TabIndex = 16;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.Orange;
+            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 30;
+            this.iconButton1.Location = new System.Drawing.Point(380, 412);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton1.Size = new System.Drawing.Size(128, 35);
+            this.iconButton1.TabIndex = 15;
+            this.iconButton1.Text = "Imprimir Lista";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            // 
             // FormMiembros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 663);
+            this.ClientSize = new System.Drawing.Size(800, 544);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1212,8 +1253,6 @@ namespace UI
         private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
-        private FontAwesome.Sharp.IconButton btnModificar;
-        private FontAwesome.Sharp.IconButton btnRegistrar;
         private System.Windows.Forms.Panel panel5;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private FontAwesome.Sharp.IconPictureBox btnSearchRegistrar;
@@ -1280,7 +1319,11 @@ namespace UI
         private System.Windows.Forms.TextBox textTiempoDisciplina;
         private System.Windows.Forms.ComboBox comboEstadoMiembro;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textLugar;
         private System.Windows.Forms.Label labelLugarTraslado;
-        private System.Windows.Forms.TextBox textLugarTraslado;
+        private FontAwesome.Sharp.IconButton btnModificar;
+        private FontAwesome.Sharp.IconButton btnRegistrar;
+        private FontAwesome.Sharp.IconButton btnImprimir;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

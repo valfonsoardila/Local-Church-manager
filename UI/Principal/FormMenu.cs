@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using BLL;
 using Entity;
 using System.Runtime.InteropServices;
+//se importa la libreria para arrastrar formulario
+using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace UI
@@ -38,7 +40,11 @@ namespace UI
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
-
+        //Drag Form
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         public void ValidarUsuario()
         {
             BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
@@ -260,12 +266,6 @@ namespace UI
                 CerrarFormularioSwicth(i);
             }
         }
-        //Drag Form
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
         private void btnDirectorio_Click(object sender, EventArgs e)
         {
             CerrarFormulariosCiclo();
@@ -276,6 +276,42 @@ namespace UI
         {
             CerrarFormulariosCiclo();
             AbrirFormulario<FormMiembros>();
+        }
+
+        private void btnReuniones_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormReuniones>();
+        }
+
+        private void btnDirectivas_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormDirectivas>();
+        }
+
+        private void btnApuntes_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormApuntes>();
+        }
+
+        private void panelHeaderbar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void panelHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void panelLogoContainer_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

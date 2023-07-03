@@ -256,15 +256,6 @@ namespace UI
                 comboActoServicio.Text = "Si";
             }
         }
-
-        private void textLugarTraslado_Enter(object sender, EventArgs e)
-        {
-            if (textLugarTraslado.Text == "Lugar de traslado")
-            {
-                textLugarTraslado.Text = "";
-            }
-        }
-
         private void comboEstadoMiembro_Leave(object sender, EventArgs e)
         {
             if (comboEstadoMiembro.Text == "")
@@ -275,35 +266,32 @@ namespace UI
 
         private void comboEstadoMiembro_TextChanged(object sender, EventArgs e)
         {
-            if (comboEstadoMiembro.Text !="" && comboEstadoMiembro.Text != "No definido")
+            if (comboEstadoMiembro.Text != "")
             {
-                labelLugarTraslado.Visible = true;
-                textLugarTraslado.Visible = true;
-            }
-            else
-            {
-                if (comboEstadoMiembro.Text == "" || comboEstadoMiembro.Text == "No definido")
+                if(comboEstadoMiembro.Text != "No definido")
                 {
-                    labelLugarTraslado.Visible = false;
-                    textLugarTraslado.Visible = false;
+                    textLugar.Enabled = true;
                 }
-                    
+                else
+                {
+                    textLugar.Enabled = false;
+                }
             }
         }
 
-        private void textLugarTraslado_Enter_1(object sender, EventArgs e)
+        private void textLugar_Enter(object sender, EventArgs e)
         {
-            if (textLugarTraslado.Text == "Lugar de traslado")
+            if (textLugar.Text == "Lugar")
             {
-                textLugarTraslado.Text = "";
+                textLugar.Text = "";
             }
         }
 
-        private void textLugarTraslado_Leave(object sender, EventArgs e)
+        private void textLugar_Leave(object sender, EventArgs e)
         {
-            if (textLugarTraslado.Text == "")
+            if (textLugar.Text == "")
             {
-                textLugarTraslado.Text = "Lugar de traslado";
+                textLugar.Text = "Lugar";
             }
         }
     }

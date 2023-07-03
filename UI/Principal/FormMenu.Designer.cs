@@ -106,6 +106,7 @@ namespace UI
             this.panelHeaderbar.Name = "panelHeaderbar";
             this.panelHeaderbar.Size = new System.Drawing.Size(1033, 27);
             this.panelHeaderbar.TabIndex = 2;
+            this.panelHeaderbar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHeaderbar_MouseDown);
             // 
             // btnWindowMaximize
             // 
@@ -225,7 +226,7 @@ namespace UI
             this.btnAjustes.IconColor = System.Drawing.Color.White;
             this.btnAjustes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAjustes.IconSize = 22;
-            this.btnAjustes.Location = new System.Drawing.Point(0, 472);
+            this.btnAjustes.Location = new System.Drawing.Point(0, 475);
             this.btnAjustes.Name = "btnAjustes";
             this.btnAjustes.Size = new System.Drawing.Size(186, 37);
             this.btnAjustes.TabIndex = 14;
@@ -248,7 +249,7 @@ namespace UI
             this.btnGestionFactura.IconColor = System.Drawing.Color.White;
             this.btnGestionFactura.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGestionFactura.IconSize = 22;
-            this.btnGestionFactura.Location = new System.Drawing.Point(0, 435);
+            this.btnGestionFactura.Location = new System.Drawing.Point(0, 438);
             this.btnGestionFactura.Name = "btnGestionFactura";
             this.btnGestionFactura.Size = new System.Drawing.Size(186, 37);
             this.btnGestionFactura.TabIndex = 13;
@@ -281,7 +282,7 @@ namespace UI
             this.subMenuTesoreria.Controls.Add(this.btnEmpleados);
             this.subMenuTesoreria.Controls.Add(this.btnClientes);
             this.subMenuTesoreria.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuTesoreria.Location = new System.Drawing.Point(0, 359);
+            this.subMenuTesoreria.Location = new System.Drawing.Point(0, 362);
             this.subMenuTesoreria.Name = "subMenuTesoreria";
             this.subMenuTesoreria.Size = new System.Drawing.Size(186, 76);
             this.subMenuTesoreria.TabIndex = 10;
@@ -345,7 +346,7 @@ namespace UI
             this.btnGestionTesoreria.IconColor = System.Drawing.Color.White;
             this.btnGestionTesoreria.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGestionTesoreria.IconSize = 22;
-            this.btnGestionTesoreria.Location = new System.Drawing.Point(0, 322);
+            this.btnGestionTesoreria.Location = new System.Drawing.Point(0, 325);
             this.btnGestionTesoreria.Name = "btnGestionTesoreria";
             this.btnGestionTesoreria.Size = new System.Drawing.Size(186, 37);
             this.btnGestionTesoreria.TabIndex = 9;
@@ -363,7 +364,7 @@ namespace UI
             this.subMenuSecretaria.Controls.Add(this.btnMiembros);
             this.subMenuSecretaria.Controls.Add(this.btnDirectorio);
             this.subMenuSecretaria.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuSecretaria.Location = new System.Drawing.Point(0, 137);
+            this.subMenuSecretaria.Location = new System.Drawing.Point(0, 140);
             this.subMenuSecretaria.Name = "subMenuSecretaria";
             this.subMenuSecretaria.Size = new System.Drawing.Size(186, 185);
             this.subMenuSecretaria.TabIndex = 3;
@@ -389,6 +390,7 @@ namespace UI
             this.btnApuntes.Text = "Apuntes";
             this.btnApuntes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnApuntes.UseVisualStyleBackColor = false;
+            this.btnApuntes.Click += new System.EventHandler(this.btnApuntes_Click);
             // 
             // btnReuniones
             // 
@@ -411,6 +413,7 @@ namespace UI
             this.btnReuniones.Text = "Reuniones";
             this.btnReuniones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReuniones.UseVisualStyleBackColor = false;
+            this.btnReuniones.Click += new System.EventHandler(this.btnReuniones_Click);
             // 
             // btnDirectivas
             // 
@@ -433,6 +436,7 @@ namespace UI
             this.btnDirectivas.Text = "Directivas";
             this.btnDirectivas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDirectivas.UseVisualStyleBackColor = false;
+            this.btnDirectivas.Click += new System.EventHandler(this.btnDirectivas_Click);
             // 
             // btnMiembros
             // 
@@ -494,7 +498,7 @@ namespace UI
             this.btnGestionSecretaria.IconColor = System.Drawing.Color.White;
             this.btnGestionSecretaria.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGestionSecretaria.IconSize = 22;
-            this.btnGestionSecretaria.Location = new System.Drawing.Point(0, 100);
+            this.btnGestionSecretaria.Location = new System.Drawing.Point(0, 103);
             this.btnGestionSecretaria.Name = "btnGestionSecretaria";
             this.btnGestionSecretaria.Size = new System.Drawing.Size(186, 37);
             this.btnGestionSecretaria.TabIndex = 2;
@@ -505,6 +509,7 @@ namespace UI
             // 
             // panelLogoContainer
             // 
+            this.panelLogoContainer.AutoSize = true;
             this.panelLogoContainer.Controls.Add(this.panelSidebarClose);
             this.panelLogoContainer.Controls.Add(this.btnOpenSidebar);
             this.panelLogoContainer.Controls.Add(this.btnCloseSidebar);
@@ -513,8 +518,9 @@ namespace UI
             this.panelLogoContainer.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogoContainer.Location = new System.Drawing.Point(0, 0);
             this.panelLogoContainer.Name = "panelLogoContainer";
-            this.panelLogoContainer.Size = new System.Drawing.Size(186, 100);
+            this.panelLogoContainer.Size = new System.Drawing.Size(186, 103);
             this.panelLogoContainer.TabIndex = 0;
+            this.panelLogoContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelLogoContainer_MouseDown);
             // 
             // panelSidebarClose
             // 
@@ -622,6 +628,7 @@ namespace UI
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(847, 25);
             this.panelHeader.TabIndex = 5;
+            this.panelHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHeader_MouseDown);
             // 
             // textTiempoLicencia
             // 
@@ -764,6 +771,7 @@ namespace UI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panelHeaderbar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnWindowMaximize)).EndInit();
@@ -771,6 +779,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.btnWindowCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnWindowMinimize)).EndInit();
             this.panelSidebar.ResumeLayout(false);
+            this.panelSidebar.PerformLayout();
             this.subMenuTesoreria.ResumeLayout(false);
             this.subMenuSecretaria.ResumeLayout(false);
             this.panelLogoContainer.ResumeLayout(false);
