@@ -362,13 +362,14 @@ namespace UI
             this.comboRol.ForeColor = System.Drawing.Color.Maroon;
             this.comboRol.FormattingEnabled = true;
             this.comboRol.Items.AddRange(new object[] {
-            "Administrador",
-            "Empleado"});
+            "Secretario(a)",
+            "Tesorero(a)",
+            "Pastor"});
             this.comboRol.Location = new System.Drawing.Point(353, 239);
             this.comboRol.Name = "comboRol";
             this.comboRol.Size = new System.Drawing.Size(94, 21);
             this.comboRol.TabIndex = 53;
-            this.comboRol.Text = "Administrador";
+            this.comboRol.Text = "Tesorero(a)";
             // 
             // label2
             // 
