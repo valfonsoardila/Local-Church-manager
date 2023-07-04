@@ -73,7 +73,7 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update REUNION set FechaDeReunion, LugarDeReunion, OrdenDelDia, TextoActa
+                command.CommandText = @"update REUNION set FechaDeReunion=@FechaDeReunion, LugarDeReunion=@LugarDeReunion, OrdenDelDia=@OrdenDelDia, TextoActa=@TextoActa
                                         where NumeroActa=@NumeroActa";
                 command.Parameters.AddWithValue("@NumeroActa", reunion.NumeroActa);
                 command.Parameters.AddWithValue("@FechaDeReunion", reunion.FechaDeReunion);

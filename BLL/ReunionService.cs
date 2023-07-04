@@ -8,26 +8,27 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class ServidorService
+    public class ReunionService
     {
         private readonly ConnectionManager conexion;
-        private readonly ServidorRepository repositorio;
-        public ServidorService(string connectionString)
+        private readonly ReunionRepository repositorio;
+        public ReunionService(string connectionString)
         {
             conexion = new ConnectionManager(connectionString);
-            repositorio = new ServidorRepository(conexion);
+            repositorio = new ReunionRepository(conexion);
         }
-        public string Guardar(Servidor servidor)
+        public string Guardar(Reunion reunion)
         {
             try
             {
+                reunion.GenerarNumeroActa();
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(servidor.IdServidor) == null)
+                if (repositorio.BuscarPorIdentificacion(reunion.NumeroActa) == null)
                 {
-                    repositorio.Guardar(servidor);
-                    return $"Servidor registrado correctamente";
+                    repositorio.Guardar(reunion);
+                    return $"Reunion registrado correctamente";
                 }
-                return $"Esta id de servidor ya existe";
+                return $"Esta id de reunion ya existe";
             }
             catch (Exception e)
             {
@@ -35,17 +36,17 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConsultaServidorRespuesta ConsultarTodos()
+        public ConsultaReunionRespuesta ConsultarTodos()
         {
-            ConsultaServidorRespuesta respuesta = new ConsultaServidorRespuesta();
+            ConsultaReunionRespuesta respuesta = new ConsultaReunionRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Servidores = repositorio.ConsultarTodos();
+                respuesta.Reuniones = repositorio.ConsultarTodos();
                 conexion.Close();
                 respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Servidores.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
+                respuesta.Mensaje = (respuesta.Reuniones.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
                 return respuesta;
             }
             catch (Exception e)
@@ -57,16 +58,16 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-        public BusquedaServidorRespuesta BuscarPorIdentificacion(string identificacion)
+        public BusquedaReunionRespuesta BuscarPorIdentificacion(string identificacion)
         {
-            BusquedaServidorRespuesta respuesta = new BusquedaServidorRespuesta();
+            BusquedaReunionRespuesta respuesta = new BusquedaReunionRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Servidor = repositorio.BuscarPorIdentificacion(identificacion);
+                respuesta.Reunion = repositorio.BuscarPorIdentificacion(identificacion);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Servidor != null) ? "Se encontró la id de servidor buscado" : "la id de servidor buscada no existe";
+                respuesta.Mensaje = (respuesta.Reunion != null) ? "Se encontró la id de reunion buscado" : "la id de reunion buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -83,12 +84,12 @@ namespace BLL
             try
             {
                 conexion.Open();
-                var servidor = repositorio.BuscarPorIdentificacion(identificacion);
-                if (servidor != null)
+                var reunion = repositorio.BuscarPorIdentificacion(identificacion);
+                if (reunion != null)
                 {
-                    repositorio.Eliminar(servidor);
+                    repositorio.Eliminar(reunion);
                     conexion.Close();
-                    return ($"El registro {servidor.IdServidor} se ha eliminado satisfactoriamente.");
+                    return ($"El registro {reunion.NumeroActa} se ha eliminado satisfactoriamente.");
                 }
                 return ($"Lo sentimos, {identificacion} no se encuentra registrada.");
             }
@@ -100,20 +101,21 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-        public string Modificar(Servidor servidorNuevo)
+        public string Modificar(Reunion reunionNuevo)
         {
             try
             {
+                reunionNuevo.GenerarNumeroActa();
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(servidorNuevo.IdServidor);
+                var cajaRegistradora = repositorio.BuscarPorIdentificacion(reunionNuevo.NumeroActa);
                 if (cajaRegistradora != null)
                 {
-                    repositorio.Modificar(servidorNuevo);
-                    return ($"El registro de {servidorNuevo.IdServidor} se ha modificado satisfactoriamente.");
+                    repositorio.Modificar(reunionNuevo);
+                    return ($"El registro de {reunionNuevo.NumeroActa} se ha modificado satisfactoriamente.");
                 }
                 else
                 {
-                    return ($"Lo sentimos, el servidor con Id {servidorNuevo.IdServidor} no se encuentra registrada.");
+                    return ($"Lo sentimos, el reunion con Id {reunionNuevo.NumeroActa} no se encuentra registrada.");
                 }
             }
             catch (Exception e)
@@ -123,9 +125,9 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConteoServidorRespuesta Totalizar()
+        public ConteoReunionRespuesta Totalizar()
         {
-            ConteoServidorRespuesta respuesta = new ConteoServidorRespuesta();
+            ConteoReunionRespuesta respuesta = new ConteoReunionRespuesta();
             try
             {
 
@@ -145,9 +147,9 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConteoServidorRespuesta TotalizarTipoRol(string tipo)
+        public ConteoReunionRespuesta TotalizarTipoRol(string tipo)
         {
-            ConteoServidorRespuesta respuesta = new ConteoServidorRespuesta();
+            ConteoReunionRespuesta respuesta = new ConteoReunionRespuesta();
             try
             {
 
@@ -167,9 +169,9 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConteoServidorRespuesta TotalizarTipo(string tipo)
+        public ConteoReunionRespuesta TotalizarTipo(string tipo)
         {
-            ConteoServidorRespuesta respuesta = new ConteoServidorRespuesta();
+            ConteoReunionRespuesta respuesta = new ConteoReunionRespuesta();
             try
             {
 
@@ -190,19 +192,19 @@ namespace BLL
             finally { conexion.Close(); }
         }
     }
-    public class ConsultaServidorRespuesta
+    public class ConsultaReunionRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Servidor> Servidores { get; set; }
+        public IList<Reunion> Reuniones { get; set; }
     }
-    public class BusquedaServidorRespuesta
+    public class BusquedaReunionRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public Servidor Servidor { get; set; }
+        public Reunion Reunion { get; set; }
     }
-    public class ConteoServidorRespuesta
+    public class ConteoReunionRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }

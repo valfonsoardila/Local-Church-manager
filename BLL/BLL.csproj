@@ -50,6 +50,7 @@
     <Compile Include="IglesiaService.cs" />
     <Compile Include="EmailConsultaResponse.cs" />
     <Compile Include="MiembroService.cs" />
+    <Compile Include="ReunionService.cs" />
     <Compile Include="ServidorService.cs" />
     <Compile Include="UsuarioService.cs" />
     <Compile Include="IdUsuarioTxtConsultaResponse.cs" />

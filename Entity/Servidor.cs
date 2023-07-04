@@ -8,8 +8,9 @@ namespace Entity
 {
     public class Servidor
     {
-        public Servidor(string nombre, string comite, string cargo, string vigencia, string observacion)
+        public Servidor(string idServidor, string nombre, string comite, string cargo, string vigencia, string observacion)
         {
+            IdServidor = idServidor;
             Nombre = nombre;
             Comite = comite;
             Cargo = cargo;
@@ -20,6 +21,7 @@ namespace Entity
         {
 
         }
+        public string IdServidor { get; set; }
         public string Nombre { get; set; }
         public string Comite { get; set; }
         public string Cargo { get; set; }

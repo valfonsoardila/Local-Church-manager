@@ -20,8 +20,9 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into REUNION(Nombre, Comite, Cargo, Vigencia, Observacion) " +
-                    "Values (@Nombre, @Comite, @Cargo, @Vigencia, @Observacion)";
+                command.CommandText = "Insert Into SERVIDOR(IdServidor, Nombre, Comite, Cargo, Vigencia, Observacion) " +
+                    "Values (@IdServidor, @Nombre, @Comite, @Cargo, @Vigencia, @Observacion)";
+                command.Parameters.AddWithValue("IdServidor", servidor.IdServidor);
                 command.Parameters.AddWithValue("@Nombre", servidor.Nombre);
                 command.Parameters.AddWithValue("@Comite", servidor.Comite);
                 command.Parameters.AddWithValue("@Cargo", servidor.Cargo);
@@ -34,8 +35,8 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Delete from Servidor where Nombre=@Nombre";
-                command.Parameters.AddWithValue("@Nombre", servidor.Nombre);
+                command.CommandText = "Delete from Servidor where IdServidor=@IdServidor";
+                command.Parameters.AddWithValue("@IdServidor", servidor.IdServidor);
                 command.ExecuteNonQuery();
             }
         }
@@ -44,7 +45,7 @@ namespace DAL
             List<Servidor> servidors = new List<Servidor>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Nombre, Comite, Cargo, Vigencia, Observacion from REUNION ";
+                command.CommandText = "Select IdServidor, Nombre, Comite, Cargo, Vigencia, Observacion from SERVIDOR ";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -57,13 +58,13 @@ namespace DAL
             }
             return servidors;
         }
-        public Servidor BuscarPorIdentificacion(string numeroActa)
+        public Servidor BuscarPorIdentificacion(string idServidor)
         {
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select * from REUNION where Nombre=@Nombre";
-                command.Parameters.AddWithValue("@Nombre", numeroActa);
+                command.CommandText = "select * from SERVIDOR where IdServidor=@IdServidor";
+                command.Parameters.AddWithValue("@IdServidor", idServidor);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 return DataReaderMapToCliente(dataReader);
@@ -73,8 +74,9 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update REUNION set Comite, Cargo, Vigencia, Observacion
-                                        where Nombre=@Nombre";
+                command.CommandText = @"update SERVIDOR set Nombre=@Nombre, Comite=@Comite, Cargo=@Cargo, Vigencia=@Vigencia, Observacion=@Observacion
+                                        where IdServidor=@IdServidor";
+                command.Parameters.AddWithValue("@IdServidor", servidor.IdServidor);
                 command.Parameters.AddWithValue("@Nombre", servidor.Nombre);
                 command.Parameters.AddWithValue("@Comite", servidor.Comite);
                 command.Parameters.AddWithValue("@Cargo", servidor.Cargo);
@@ -86,6 +88,7 @@ namespace DAL
         {
             if (!dataReader.HasRows) return null;
             Servidor servidor = new Servidor();
+            servidor.IdServidor = (string)dataReader["IdServidor"];
             servidor.Nombre = (string)dataReader["Nombre"];
             servidor.Comite = (string)dataReader["Comite"];
             servidor.Cargo = (string)dataReader["Cargo"];
