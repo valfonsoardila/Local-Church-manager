@@ -84,11 +84,12 @@ namespace UI
             this.panel13 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnImprimir = new FontAwesome.Sharp.IconButton();
             this.btnModificar = new FontAwesome.Sharp.IconButton();
             this.btnRegistrar = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboFolio = new System.Windows.Forms.ComboBox();
             this.labelFolio = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
@@ -99,15 +100,24 @@ namespace UI
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabMiembros = new System.Windows.Forms.TabControl();
             this.tabLista = new System.Windows.Forms.TabPage();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnGestionarMiembros = new FontAwesome.Sharp.IconButton();
+            this.btnImprimirLista = new FontAwesome.Sharp.IconButton();
+            this.panel14 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridMiembros = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            this.textTotalMujeres = new System.Windows.Forms.TextBox();
+            this.textTotalHombres = new System.Windows.Forms.TextBox();
+            this.textTotal = new System.Windows.Forms.TextBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboGenero = new System.Windows.Forms.ComboBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
@@ -127,6 +137,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.picturePerfil)).BeginInit();
             this.panel13.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
@@ -135,9 +146,14 @@ namespace UI
             this.panel2.SuspendLayout();
             this.tabMiembros.SuspendLayout();
             this.tabLista.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMiembros)).BeginInit();
             this.panelContenedorDeDirectorio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).BeginInit();
@@ -231,6 +247,7 @@ namespace UI
             // 
             // comboEstadoMiembro
             // 
+            this.comboEstadoMiembro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboEstadoMiembro.FormattingEnabled = true;
             this.comboEstadoMiembro.Items.AddRange(new object[] {
             "Congregando",
@@ -238,9 +255,9 @@ namespace UI
             "No definido"});
             this.comboEstadoMiembro.Location = new System.Drawing.Point(176, 442);
             this.comboEstadoMiembro.Name = "comboEstadoMiembro";
-            this.comboEstadoMiembro.Size = new System.Drawing.Size(142, 21);
+            this.comboEstadoMiembro.Size = new System.Drawing.Size(142, 24);
             this.comboEstadoMiembro.TabIndex = 68;
-            this.comboEstadoMiembro.Text = "No Definido";
+            this.comboEstadoMiembro.Text = "No definido";
             this.comboEstadoMiembro.TextChanged += new System.EventHandler(this.comboEstadoMiembro_TextChanged);
             this.comboEstadoMiembro.Leave += new System.EventHandler(this.comboEstadoMiembro_Leave);
             // 
@@ -266,16 +283,17 @@ namespace UI
             // 
             // dateFechaDisciplina
             // 
+            this.dateFechaDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateFechaDisciplina.Location = new System.Drawing.Point(176, 416);
             this.dateFechaDisciplina.Name = "dateFechaDisciplina";
-            this.dateFechaDisciplina.Size = new System.Drawing.Size(200, 20);
+            this.dateFechaDisciplina.Size = new System.Drawing.Size(246, 22);
             this.dateFechaDisciplina.TabIndex = 65;
             // 
             // textTiempoDisciplina
             // 
             this.textTiempoDisciplina.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textTiempoDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTiempoDisciplina.Location = new System.Drawing.Point(592, 413);
+            this.textTiempoDisciplina.Location = new System.Drawing.Point(636, 413);
             this.textTiempoDisciplina.Multiline = true;
             this.textTiempoDisciplina.Name = "textTiempoDisciplina";
             this.textTiempoDisciplina.Size = new System.Drawing.Size(75, 26);
@@ -286,7 +304,7 @@ namespace UI
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(381, 418);
+            this.label24.Location = new System.Drawing.Point(425, 419);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(208, 16);
             this.label24.TabIndex = 64;
@@ -389,10 +407,10 @@ namespace UI
             // textLugarRecepcionPromesa
             // 
             this.textLugarRecepcionPromesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textLugarRecepcionPromesa.Location = new System.Drawing.Point(525, 326);
+            this.textLugarRecepcionPromesa.Location = new System.Drawing.Point(558, 326);
             this.textLugarRecepcionPromesa.Multiline = true;
             this.textLugarRecepcionPromesa.Name = "textLugarRecepcionPromesa";
-            this.textLugarRecepcionPromesa.Size = new System.Drawing.Size(257, 26);
+            this.textLugarRecepcionPromesa.Size = new System.Drawing.Size(207, 26);
             this.textLugarRecepcionPromesa.TabIndex = 48;
             this.textLugarRecepcionPromesa.Text = "Lugar de recepción";
             this.textLugarRecepcionPromesa.Enter += new System.EventHandler(this.textLugarRecepcionPromesa_Enter);
@@ -402,7 +420,7 @@ namespace UI
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(469, 329);
+            this.label16.Location = new System.Drawing.Point(507, 330);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(50, 16);
             this.label16.TabIndex = 54;
@@ -410,9 +428,10 @@ namespace UI
             // 
             // dateFechaEspirituSanto
             // 
+            this.dateFechaEspirituSanto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateFechaEspirituSanto.Location = new System.Drawing.Point(263, 327);
             this.dateFechaEspirituSanto.Name = "dateFechaEspirituSanto";
-            this.dateFechaEspirituSanto.Size = new System.Drawing.Size(200, 20);
+            this.dateFechaEspirituSanto.Size = new System.Drawing.Size(238, 22);
             this.dateFechaEspirituSanto.TabIndex = 53;
             // 
             // label15
@@ -429,7 +448,7 @@ namespace UI
             // 
             this.textTiempoDeConversion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textTiempoDeConversion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTiempoDeConversion.Location = new System.Drawing.Point(560, 300);
+            this.textTiempoDeConversion.Location = new System.Drawing.Point(590, 299);
             this.textTiempoDeConversion.Multiline = true;
             this.textTiempoDeConversion.Name = "textTiempoDeConversion";
             this.textTiempoDeConversion.Size = new System.Drawing.Size(53, 26);
@@ -440,7 +459,7 @@ namespace UI
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(388, 303);
+            this.label12.Location = new System.Drawing.Point(424, 304);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(166, 16);
             this.label12.TabIndex = 50;
@@ -448,9 +467,10 @@ namespace UI
             // 
             // dateFechaDeBautismo
             // 
+            this.dateFechaDeBautismo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateFechaDeBautismo.Location = new System.Drawing.Point(184, 299);
             this.dateFechaDeBautismo.Name = "dateFechaDeBautismo";
-            this.dateFechaDeBautismo.Size = new System.Drawing.Size(200, 20);
+            this.dateFechaDeBautismo.Size = new System.Drawing.Size(238, 22);
             this.dateFechaDeBautismo.TabIndex = 49;
             // 
             // label14
@@ -470,7 +490,7 @@ namespace UI
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.Location = new System.Drawing.Point(0, 263);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(782, 30);
+            this.panel12.Size = new System.Drawing.Size(775, 30);
             this.panel12.TabIndex = 46;
             // 
             // label11
@@ -493,7 +513,7 @@ namespace UI
             this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel11.Location = new System.Drawing.Point(0, 193);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(782, 70);
+            this.panel11.Size = new System.Drawing.Size(775, 70);
             this.panel11.TabIndex = 45;
             // 
             // textNombreMadre
@@ -547,7 +567,7 @@ namespace UI
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 163);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(782, 30);
+            this.panel10.Size = new System.Drawing.Size(775, 30);
             this.panel10.TabIndex = 44;
             // 
             // label9
@@ -580,7 +600,7 @@ namespace UI
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 30);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(782, 133);
+            this.panel9.Size = new System.Drawing.Size(775, 133);
             this.panel9.TabIndex = 43;
             // 
             // textTelefono
@@ -638,6 +658,7 @@ namespace UI
             this.btnCargarFoto.TabIndex = 33;
             this.btnCargarFoto.Text = "Cargar Foto";
             this.btnCargarFoto.UseVisualStyleBackColor = true;
+            this.btnCargarFoto.Click += new System.EventHandler(this.btnCargarFoto_Click);
             // 
             // picturePerfil
             // 
@@ -742,7 +763,7 @@ namespace UI
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 0);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(782, 30);
+            this.panel13.Size = new System.Drawing.Size(775, 30);
             this.panel13.TabIndex = 42;
             // 
             // label8
@@ -758,14 +779,29 @@ namespace UI
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.btnImprimir);
-            this.panel7.Controls.Add(this.btnModificar);
-            this.panel7.Controls.Add(this.btnRegistrar);
+            this.panel7.Controls.Add(this.tableLayoutPanel2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel7.Location = new System.Drawing.Point(0, 414);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(792, 45);
             this.panel7.TabIndex = 17;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43F));
+            this.tableLayoutPanel2.Controls.Add(this.btnImprimir, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnModificar, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnRegistrar, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(792, 45);
+            this.tableLayoutPanel2.TabIndex = 38;
             // 
             // btnImprimir
             // 
@@ -776,10 +812,10 @@ namespace UI
             this.btnImprimir.IconColor = System.Drawing.Color.Black;
             this.btnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImprimir.IconSize = 30;
-            this.btnImprimir.Location = new System.Drawing.Point(422, 3);
+            this.btnImprimir.Location = new System.Drawing.Point(453, 3);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimir.Size = new System.Drawing.Size(109, 35);
+            this.btnImprimir.Size = new System.Drawing.Size(136, 35);
             this.btnImprimir.TabIndex = 16;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -787,6 +823,8 @@ namespace UI
             // 
             // btnModificar
             // 
+            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModificar.BackColor = System.Drawing.Color.DarkRed;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -794,9 +832,9 @@ namespace UI
             this.btnModificar.IconColor = System.Drawing.Color.WhiteSmoke;
             this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnModificar.IconSize = 30;
-            this.btnModificar.Location = new System.Drawing.Point(293, 3);
+            this.btnModificar.Location = new System.Drawing.Point(343, 3);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(123, 35);
+            this.btnModificar.Size = new System.Drawing.Size(104, 35);
             this.btnModificar.TabIndex = 15;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -805,6 +843,7 @@ namespace UI
             // 
             // btnRegistrar
             // 
+            this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegistrar.BackColor = System.Drawing.Color.Green;
             this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -812,9 +851,9 @@ namespace UI
             this.btnRegistrar.IconColor = System.Drawing.Color.BlanchedAlmond;
             this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRegistrar.IconSize = 30;
-            this.btnRegistrar.Location = new System.Drawing.Point(190, 3);
+            this.btnRegistrar.Location = new System.Drawing.Point(211, 3);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(100, 35);
+            this.btnRegistrar.Size = new System.Drawing.Size(126, 35);
             this.btnRegistrar.TabIndex = 14;
             this.btnRegistrar.Text = "Guardar";
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -823,7 +862,7 @@ namespace UI
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.comboBox3);
+            this.panel6.Controls.Add(this.comboFolio);
             this.panel6.Controls.Add(this.labelFolio);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 32);
@@ -831,16 +870,16 @@ namespace UI
             this.panel6.Size = new System.Drawing.Size(792, 26);
             this.panel6.TabIndex = 14;
             // 
-            // comboBox3
+            // comboFolio
             // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(666, 1);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 24);
-            this.comboBox3.TabIndex = 1;
-            this.comboBox3.Text = "0001";
+            this.comboFolio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFolio.FormattingEnabled = true;
+            this.comboFolio.Location = new System.Drawing.Point(666, 1);
+            this.comboFolio.Name = "comboFolio";
+            this.comboFolio.Size = new System.Drawing.Size(121, 24);
+            this.comboFolio.TabIndex = 1;
+            this.comboFolio.Text = "0001";
             // 
             // labelFolio
             // 
@@ -961,9 +1000,8 @@ namespace UI
             // 
             // tabLista
             // 
-            this.tabLista.Controls.Add(this.iconButton1);
-            this.tabLista.Controls.Add(this.btnGestionarMiembros);
-            this.tabLista.Controls.Add(this.panel3);
+            this.tabLista.Controls.Add(this.panel15);
+            this.tabLista.Controls.Add(this.panel14);
             this.tabLista.Location = new System.Drawing.Point(4, 22);
             this.tabLista.Name = "tabLista";
             this.tabLista.Padding = new System.Windows.Forms.Padding(3);
@@ -972,63 +1010,103 @@ namespace UI
             this.tabLista.Text = "Lista de miembros";
             this.tabLista.UseVisualStyleBackColor = true;
             // 
-            // iconButton1
+            // panel15
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.Orange;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(380, 412);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton1.Size = new System.Drawing.Size(128, 35);
-            this.iconButton1.TabIndex = 15;
-            this.iconButton1.Text = "Imprimir Lista";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.panel15.Controls.Add(this.tableLayoutPanel1);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel15.Location = new System.Drawing.Point(3, 407);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(786, 49);
+            this.panel15.TabIndex = 17;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.btnGestionarMiembros, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnImprimirLista, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(786, 49);
+            this.tableLayoutPanel1.TabIndex = 16;
             // 
             // btnGestionarMiembros
             // 
+            this.btnGestionarMiembros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGestionarMiembros.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnGestionarMiembros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
             this.btnGestionarMiembros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGestionarMiembros.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnGestionarMiembros.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnGestionarMiembros.IconColor = System.Drawing.Color.Black;
             this.btnGestionarMiembros.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarMiembros.Location = new System.Drawing.Point(239, 412);
+            this.btnGestionarMiembros.Location = new System.Drawing.Point(255, 3);
             this.btnGestionarMiembros.Name = "btnGestionarMiembros";
-            this.btnGestionarMiembros.Size = new System.Drawing.Size(135, 35);
+            this.btnGestionarMiembros.Size = new System.Drawing.Size(135, 40);
             this.btnGestionarMiembros.TabIndex = 1;
             this.btnGestionarMiembros.Text = "Gestionar miembros";
             this.btnGestionarMiembros.UseVisualStyleBackColor = false;
             this.btnGestionarMiembros.Click += new System.EventHandler(this.btnGestionarMiembros_Click);
             // 
+            // btnImprimirLista
+            // 
+            this.btnImprimirLista.BackColor = System.Drawing.Color.Orange;
+            this.btnImprimirLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirLista.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimirLista.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimirLista.IconColor = System.Drawing.Color.Black;
+            this.btnImprimirLista.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimirLista.IconSize = 30;
+            this.btnImprimirLista.Location = new System.Drawing.Point(396, 3);
+            this.btnImprimirLista.Name = "btnImprimirLista";
+            this.btnImprimirLista.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimirLista.Size = new System.Drawing.Size(182, 40);
+            this.btnImprimirLista.TabIndex = 15;
+            this.btnImprimirLista.Text = "Imprimir Lista";
+            this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimirLista.UseVisualStyleBackColor = false;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.panel3);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(3, 3);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(786, 453);
+            this.panel14.TabIndex = 16;
+            // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.dataGridMiembros);
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
-            this.panel3.Location = new System.Drawing.Point(37, 14);
+            this.panel3.Location = new System.Drawing.Point(26, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(714, 392);
-            this.panel3.TabIndex = 0;
+            this.panel3.Size = new System.Drawing.Size(723, 395);
+            this.panel3.TabIndex = 1;
             // 
-            // dataGridView1
+            // dataGridMiembros
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridMiembros.AllowUserToAddRows = false;
+            this.dataGridMiembros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridMiembros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
             this.Borrar});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 32);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(714, 360);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridMiembros.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridMiembros.Location = new System.Drawing.Point(0, 32);
+            this.dataGridMiembros.Name = "dataGridMiembros";
+            this.dataGridMiembros.ReadOnly = true;
+            this.dataGridMiembros.RowHeadersVisible = false;
+            this.dataGridMiembros.Size = new System.Drawing.Size(723, 363);
+            this.dataGridMiembros.TabIndex = 1;
             // 
             // Seleccionar
             // 
@@ -1048,8 +1126,14 @@ namespace UI
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.Controls.Add(this.label27);
+            this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox5);
+            this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox2);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalMujeres);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalHombres);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboBox1);
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboGenero);
             this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.btnCloseSearchLibreta);
@@ -1057,8 +1141,74 @@ namespace UI
             this.panelContenedorDeDirectorio.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContenedorDeDirectorio.Location = new System.Drawing.Point(0, 0);
             this.panelContenedorDeDirectorio.Name = "panelContenedorDeDirectorio";
-            this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(714, 32);
+            this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(723, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label27.Location = new System.Drawing.Point(131, 7);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(41, 16);
+            this.label27.TabIndex = 23;
+            this.label27.Text = "Total";
+            // 
+            // iconPictureBox5
+            // 
+            this.iconPictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.PersonDress;
+            this.iconPictureBox5.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox5.IconSize = 28;
+            this.iconPictureBox5.Location = new System.Drawing.Point(308, 2);
+            this.iconPictureBox5.Name = "iconPictureBox5";
+            this.iconPictureBox5.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox5.TabIndex = 22;
+            this.iconPictureBox5.TabStop = false;
+            // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Person;
+            this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox2.IconSize = 28;
+            this.iconPictureBox2.Location = new System.Drawing.Point(229, 2);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox2.TabIndex = 21;
+            this.iconPictureBox2.TabStop = false;
+            // 
+            // textTotalMujeres
+            // 
+            this.textTotalMujeres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalMujeres.Location = new System.Drawing.Point(334, 4);
+            this.textTotalMujeres.Name = "textTotalMujeres";
+            this.textTotalMujeres.Size = new System.Drawing.Size(46, 22);
+            this.textTotalMujeres.TabIndex = 20;
+            this.textTotalMujeres.Text = "0";
+            // 
+            // textTotalHombres
+            // 
+            this.textTotalHombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalHombres.Location = new System.Drawing.Point(260, 4);
+            this.textTotalHombres.Name = "textTotalHombres";
+            this.textTotalHombres.Size = new System.Drawing.Size(46, 22);
+            this.textTotalHombres.TabIndex = 19;
+            this.textTotalHombres.Text = "0";
+            // 
+            // textTotal
+            // 
+            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotal.Location = new System.Drawing.Point(177, 4);
+            this.textTotal.Name = "textTotal";
+            this.textTotal.Size = new System.Drawing.Size(46, 22);
+            this.textTotal.TabIndex = 18;
+            this.textTotal.Text = "0";
             // 
             // iconPictureBox3
             // 
@@ -1074,14 +1224,18 @@ namespace UI
             this.iconPictureBox3.TabIndex = 9;
             this.iconPictureBox3.TabStop = false;
             // 
-            // comboBox1
+            // comboGenero
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(374, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.Text = "Genero";
+            this.comboGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboGenero.FormattingEnabled = true;
+            this.comboGenero.Items.AddRange(new object[] {
+            "M",
+            "F"});
+            this.comboGenero.Location = new System.Drawing.Point(386, 4);
+            this.comboGenero.Name = "comboGenero";
+            this.comboGenero.Size = new System.Drawing.Size(121, 24);
+            this.comboGenero.TabIndex = 8;
+            this.comboGenero.Text = "Genero";
             // 
             // btSearchLibreta
             // 
@@ -1092,26 +1246,23 @@ namespace UI
             this.btSearchLibreta.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.btSearchLibreta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btSearchLibreta.IconSize = 28;
-            this.btSearchLibreta.Location = new System.Drawing.Point(683, 3);
+            this.btSearchLibreta.Location = new System.Drawing.Point(692, 3);
             this.btSearchLibreta.Name = "btSearchLibreta";
             this.btSearchLibreta.Size = new System.Drawing.Size(28, 28);
             this.btSearchLibreta.TabIndex = 7;
             this.btSearchLibreta.TabStop = false;
-            this.btSearchLibreta.Click += new System.EventHandler(this.btSearchLibreta_Click);
             // 
             // textSerachLibreta
             // 
             this.textSerachLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textSerachLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSerachLibreta.Location = new System.Drawing.Point(501, 1);
+            this.textSerachLibreta.Location = new System.Drawing.Point(510, 1);
             this.textSerachLibreta.Multiline = true;
             this.textSerachLibreta.Name = "textSerachLibreta";
             this.textSerachLibreta.Size = new System.Drawing.Size(180, 30);
             this.textSerachLibreta.TabIndex = 6;
             this.textSerachLibreta.Text = "Buscar";
             this.textSerachLibreta.Visible = false;
-            this.textSerachLibreta.Enter += new System.EventHandler(this.textSerachLibreta_Enter);
-            this.textSerachLibreta.Leave += new System.EventHandler(this.textSerachLibreta_Leave);
             // 
             // btnCloseSearchLibreta
             // 
@@ -1122,13 +1273,12 @@ namespace UI
             this.btnCloseSearchLibreta.IconColor = System.Drawing.Color.Red;
             this.btnCloseSearchLibreta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCloseSearchLibreta.IconSize = 28;
-            this.btnCloseSearchLibreta.Location = new System.Drawing.Point(683, 2);
+            this.btnCloseSearchLibreta.Location = new System.Drawing.Point(692, 2);
             this.btnCloseSearchLibreta.Name = "btnCloseSearchLibreta";
             this.btnCloseSearchLibreta.Size = new System.Drawing.Size(28, 28);
             this.btnCloseSearchLibreta.TabIndex = 5;
             this.btnCloseSearchLibreta.TabStop = false;
             this.btnCloseSearchLibreta.Visible = false;
-            this.btnCloseSearchLibreta.Click += new System.EventHandler(this.btnCloseSearchLibreta_Click);
             // 
             // label1
             // 
@@ -1137,9 +1287,9 @@ namespace UI
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(36, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 16);
+            this.label1.Size = new System.Drawing.Size(76, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Lista de miembros";
+            this.label1.Text = "Miembros";
             // 
             // pictureBox1
             // 
@@ -1215,6 +1365,7 @@ namespace UI
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             this.panel7.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -1225,10 +1376,15 @@ namespace UI
             this.panel2.ResumeLayout(false);
             this.tabMiembros.ResumeLayout(false);
             this.tabLista.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMiembros)).EndInit();
             this.panelContenedorDeDirectorio.ResumeLayout(false);
             this.panelContenedorDeDirectorio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).EndInit();
@@ -1245,15 +1401,6 @@ namespace UI
         private System.Windows.Forms.TabControl tabMiembros;
         private System.Windows.Forms.TabPage tabLista;
         private FontAwesome.Sharp.IconButton btnGestionarMiembros;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panelContenedorDeDirectorio;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
-        private System.Windows.Forms.TextBox textSerachLibreta;
-        private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
@@ -1261,8 +1408,6 @@ namespace UI
         private System.Windows.Forms.TextBox textSearchRegistrar;
         private FontAwesome.Sharp.IconPictureBox btnCloseSearchRegistrar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label labelFolio;
         private System.Windows.Forms.Panel panel7;
@@ -1314,7 +1459,7 @@ namespace UI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox comboActoServicio;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboFolio;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DateTimePicker dateFechaDisciplina;
@@ -1326,6 +1471,27 @@ namespace UI
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnRegistrar;
         private FontAwesome.Sharp.IconButton btnImprimir;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnImprimirLista;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dataGridMiembros;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private System.Windows.Forms.Panel panelContenedorDeDirectorio;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
+        private System.Windows.Forms.ComboBox comboGenero;
+        private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
+        private System.Windows.Forms.TextBox textSerachLibreta;
+        private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label27;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private System.Windows.Forms.TextBox textTotalMujeres;
+        private System.Windows.Forms.TextBox textTotalHombres;
+        private System.Windows.Forms.TextBox textTotal;
     }
 }

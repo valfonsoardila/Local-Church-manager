@@ -46,6 +46,7 @@
     <Compile Include="CadenaConexionXMLRepository.cs" />
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="ContactoRepository.cs" />
+    <Compile Include="DirectivaRepository.cs" />
     <Compile Include="IglesiaRepository.cs" />
     <Compile Include="EmailRepository.cs" />
     <Compile Include="MiembroRepository.cs" />

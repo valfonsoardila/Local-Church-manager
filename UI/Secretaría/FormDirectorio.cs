@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,19 +8,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entity;
+using static System.Net.Mime.MediaTypeNames;
+using System.IO;
 
 namespace UI
 {
     public partial class FormDirectorio : Form
     {
+        RutasTxtService rutasTxtService = new RutasTxtService();
+        ContactoService contactoService;
+        List<Contacto> contactos;
+        Contacto contacto;
         public FormDirectorio()
         {
+            contactoService = new ContactoService(ConfigConnection.ConnectionString);
             InitializeComponent();
             Inicializar();
         }
         private void Inicializar()
         {
-            
+            ConsultarYLlenarGridDeContactos();
+        }
+        private void ConsultarYLlenarGridDeContactos()
+        {
+            ConsultaContactoRespuesta respuesta = new ConsultaContactoRespuesta();
+            string tipo = comboOficioLibreta.Text;
+            if (tipo == "Oficio")
+            {
+                textTotal.Enabled = true;
+                textTotalHombres.Enabled = true;
+                textTotalMujeres.Enabled = true;
+                dataGridContactos.DataSource = null;
+                respuesta = contactoService.ConsultarTodos();
+                contactos = respuesta.Contactos.ToList();
+                if (respuesta.Contactos.Count != 0 && respuesta.Contactos != null) {
+                    dataGridContactos.DataSource = respuesta.Contactos;
+                    Borrar.Visible = true;
+                    textTotal.Text = contactoService.Totalizar().Cuenta.ToString();
+                    textTotalHombres.Text = contactoService.TotalizarTipo("Hombre").Cuenta.ToString();
+                    textTotalMujeres.Text = contactoService.TotalizarTipo("Mujer").Cuenta.ToString();
+                }
+            }
         }
         private void btnAtras_Click(object sender, EventArgs e)
         {
@@ -120,17 +150,17 @@ namespace UI
 
         private void comboOficio_Enter(object sender, EventArgs e)
         {
-            if (comboOficio.Text == "Oficio")
+            if (comboOficioRegistrar.Text == "Oficio")
             {
-                comboOficio.Text = "";
+                comboOficioRegistrar.Text = "";
             }
         }
 
         private void comboOficio_Leave(object sender, EventArgs e)
         {
-            if (comboOficio.Text == "")
+            if (comboOficioRegistrar.Text == "")
             {
-                comboOficio.Text = "Oficio";
+                comboOficioRegistrar.Text = "Oficio";
             }
         }
 
@@ -170,9 +200,22 @@ namespace UI
         {
             tabDirectorio.SelectedIndex = 1;
         }
-
+        private Contacto MapearDatosContacto()
+        {
+            contacto = new Contacto();
+            contacto.Nombre = textNombre.Text;
+            contacto.Apellido = textApellido.Text;
+            contacto.TelefonoContacto = textCelular.Text;
+            contacto.TelefonoWhatsapp = textNumeroWhatsapp.Text;
+            contacto.Oficio = comboOficioRegistrar.Text;
+            return contacto;
+        }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            Contacto contacto = MapearDatosContacto();
+            string mensaje = contactoService.Guardar(contacto);
+            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            ConsultarYLlenarGridDeContactos();
             tabDirectorio.SelectedIndex = 0;
         }
 

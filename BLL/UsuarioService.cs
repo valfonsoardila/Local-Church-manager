@@ -173,8 +173,8 @@ namespace BLL
                 usuarioNuevo.GenerarCodigoUsuario();
                 usuarioNuevo.CalcularEdad();
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(usuarioNuevo.Identificacion);
-                if (cajaRegistradora != null)
+                var usuario = repositorio.BuscarPorIdentificacion(usuarioNuevo.Identificacion);
+                if (usuario != null)
                 {
                     repositorio.Modificar(usuarioNuevo);
                     return ($"El registro de {usuarioNuevo.Identificacion} se ha modificado satisfactoriamente.");

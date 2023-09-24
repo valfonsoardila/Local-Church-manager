@@ -31,10 +31,11 @@ namespace UI
         {
             System.Windows.Forms.TabPage tabNuevoApunte;
             this.panel4 = new System.Windows.Forms.Panel();
-            this.labelNota = new System.Windows.Forms.Label();
-            this.textNota = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnModificar = new FontAwesome.Sharp.IconButton();
             this.btnRegistrar = new FontAwesome.Sharp.IconButton();
+            this.labelNota = new System.Windows.Forms.Label();
+            this.textNota = new System.Windows.Forms.TextBox();
             this.textTitulo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -49,22 +50,25 @@ namespace UI
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabApuntes = new System.Windows.Forms.TabControl();
             this.tabLibro = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.btnGestionarContactos = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridApunte = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboFecha = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textTotal = new System.Windows.Forms.TextBox();
             tabNuevoApunte = new System.Windows.Forms.TabPage();
             tabNuevoApunte.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).BeginInit();
@@ -74,8 +78,9 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabApuntes.SuspendLayout();
             this.tabLibro.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridApunte)).BeginInit();
             this.panelContenedorDeDirectorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
@@ -97,10 +102,9 @@ namespace UI
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.tableLayoutPanel1);
             this.panel4.Controls.Add(this.labelNota);
             this.panel4.Controls.Add(this.textNota);
-            this.panel4.Controls.Add(this.btnModificar);
-            this.panel4.Controls.Add(this.btnRegistrar);
             this.panel4.Controls.Add(this.textTitulo);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.panel5);
@@ -108,6 +112,56 @@ namespace UI
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(714, 392);
             this.panel4.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.btnModificar, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnRegistrar, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 352);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(714, 40);
+            this.tableLayoutPanel1.TabIndex = 18;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnModificar.IconChar = FontAwesome.Sharp.IconChar.FileEdit;
+            this.btnModificar.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnModificar.IconSize = 30;
+            this.btnModificar.Location = new System.Drawing.Point(360, 3);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(123, 34);
+            this.btnModificar.TabIndex = 20;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModificar.UseVisualStyleBackColor = false;
+            // 
+            // btnRegistrar
+            // 
+            this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegistrar.BackColor = System.Drawing.Color.Green;
+            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRegistrar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnRegistrar.IconColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRegistrar.IconSize = 30;
+            this.btnRegistrar.Location = new System.Drawing.Point(254, 3);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(100, 34);
+            this.btnRegistrar.TabIndex = 19;
+            this.btnRegistrar.Text = "Guardar";
+            this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRegistrar.UseVisualStyleBackColor = false;
             // 
             // labelNota
             // 
@@ -123,6 +177,7 @@ namespace UI
             // 
             this.textNota.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textNota.Location = new System.Drawing.Point(18, 98);
             this.textNota.Multiline = true;
             this.textNota.Name = "textNota";
@@ -132,46 +187,11 @@ namespace UI
             this.textNota.Enter += new System.EventHandler(this.textNota_Enter);
             this.textNota.Leave += new System.EventHandler(this.textNota_Leave);
             // 
-            // btnModificar
-            // 
-            this.btnModificar.BackColor = System.Drawing.Color.DarkRed;
-            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnModificar.IconChar = FontAwesome.Sharp.IconChar.FileEdit;
-            this.btnModificar.IconColor = System.Drawing.Color.WhiteSmoke;
-            this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnModificar.IconSize = 30;
-            this.btnModificar.Location = new System.Drawing.Point(348, 350);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(123, 35);
-            this.btnModificar.TabIndex = 15;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnModificar.UseVisualStyleBackColor = false;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
-            // btnRegistrar
-            // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.Green;
-            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRegistrar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.btnRegistrar.IconColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRegistrar.IconSize = 30;
-            this.btnRegistrar.Location = new System.Drawing.Point(242, 352);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(100, 35);
-            this.btnRegistrar.TabIndex = 14;
-            this.btnRegistrar.Text = "Guardar";
-            this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRegistrar.UseVisualStyleBackColor = false;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
-            // 
             // textTitulo
             // 
             this.textTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTitulo.Location = new System.Drawing.Point(71, 39);
             this.textTitulo.Multiline = true;
             this.textTitulo.Name = "textTitulo";
@@ -338,7 +358,7 @@ namespace UI
             // 
             // tabLibro
             // 
-            this.tabLibro.Controls.Add(this.btnGestionarContactos);
+            this.tabLibro.Controls.Add(this.panel7);
             this.tabLibro.Controls.Add(this.panel3);
             this.tabLibro.Location = new System.Drawing.Point(4, 22);
             this.tabLibro.Name = "tabLibro";
@@ -348,15 +368,27 @@ namespace UI
             this.tabLibro.Text = "Libro";
             this.tabLibro.UseVisualStyleBackColor = true;
             // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.btnGestionarContactos);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(3, 404);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(786, 43);
+            this.panel7.TabIndex = 4;
+            // 
             // btnGestionarContactos
             // 
+            this.btnGestionarContactos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGestionarContactos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
             this.btnGestionarContactos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGestionarContactos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnGestionarContactos.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnGestionarContactos.IconColor = System.Drawing.Color.Black;
             this.btnGestionarContactos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarContactos.Location = new System.Drawing.Point(332, 412);
+            this.btnGestionarContactos.Location = new System.Drawing.Point(332, 4);
             this.btnGestionarContactos.Name = "btnGestionarContactos";
             this.btnGestionarContactos.Size = new System.Drawing.Size(135, 35);
             this.btnGestionarContactos.TabIndex = 1;
@@ -366,29 +398,30 @@ namespace UI
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.dataGridApunte);
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
-            this.panel3.Location = new System.Drawing.Point(37, 14);
+            this.panel3.Location = new System.Drawing.Point(42, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(714, 392);
             this.panel3.TabIndex = 0;
             // 
-            // dataGridView1
+            // dataGridApunte
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridApunte.AllowUserToAddRows = false;
+            this.dataGridApunte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridApunte.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
             this.Borrar});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 32);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(714, 360);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridApunte.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridApunte.Location = new System.Drawing.Point(0, 32);
+            this.dataGridApunte.Name = "dataGridApunte";
+            this.dataGridApunte.ReadOnly = true;
+            this.dataGridApunte.RowHeadersVisible = false;
+            this.dataGridApunte.Size = new System.Drawing.Size(714, 360);
+            this.dataGridApunte.TabIndex = 1;
             // 
             // Seleccionar
             // 
@@ -409,10 +442,11 @@ namespace UI
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboBox3);
+            this.panelContenedorDeDirectorio.Controls.Add(this.label27);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboFecha);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
             this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboBox1);
             this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.btnCloseSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.label1);
@@ -422,14 +456,15 @@ namespace UI
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(714, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
             // 
-            // comboBox3
+            // comboFecha
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(347, 7);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 10;
-            this.comboBox3.Text = "Oficio";
+            this.comboFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFecha.FormattingEnabled = true;
+            this.comboFecha.Location = new System.Drawing.Point(374, 4);
+            this.comboFecha.Name = "comboFecha";
+            this.comboFecha.Size = new System.Drawing.Size(121, 24);
+            this.comboFecha.TabIndex = 10;
+            this.comboFecha.Text = "Fecha";
             // 
             // iconPictureBox3
             // 
@@ -460,15 +495,6 @@ namespace UI
             this.btSearchLibreta.TabIndex = 7;
             this.btSearchLibreta.TabStop = false;
             this.btSearchLibreta.Click += new System.EventHandler(this.btSearchLibreta_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(218, 7);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.Text = "Genero";
             // 
             // textSerachLibreta
             // 
@@ -512,6 +538,26 @@ namespace UI
             this.label1.TabIndex = 0;
             this.label1.Text = "Libro de apuntes";
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label27.Location = new System.Drawing.Point(276, 9);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(41, 16);
+            this.label27.TabIndex = 33;
+            this.label27.Text = "Total";
+            // 
+            // textTotal
+            // 
+            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotal.Location = new System.Drawing.Point(322, 6);
+            this.textTotal.Name = "textTotal";
+            this.textTotal.Size = new System.Drawing.Size(46, 22);
+            this.textTotal.TabIndex = 32;
+            this.textTotal.Text = "0";
+            // 
             // FormApuntes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -525,6 +571,7 @@ namespace UI
             tabNuevoApunte.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
@@ -536,8 +583,9 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabApuntes.ResumeLayout(false);
             this.tabLibro.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridApunte)).EndInit();
             this.panelContenedorDeDirectorio.ResumeLayout(false);
             this.panelContenedorDeDirectorio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
@@ -557,18 +605,15 @@ namespace UI
         private System.Windows.Forms.TabPage tabLibro;
         private FontAwesome.Sharp.IconButton btnGestionarContactos;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridApunte;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboFecha;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
         private System.Windows.Forms.TextBox textSerachLibreta;
         private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
-        private FontAwesome.Sharp.IconButton btnModificar;
-        private FontAwesome.Sharp.IconButton btnRegistrar;
         private System.Windows.Forms.TextBox textTitulo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
@@ -581,5 +626,11 @@ namespace UI
         private System.Windows.Forms.Label labelNota;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private FontAwesome.Sharp.IconButton btnModificar;
+        private FontAwesome.Sharp.IconButton btnRegistrar;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textTotal;
     }
 }

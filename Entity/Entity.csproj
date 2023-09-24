@@ -47,6 +47,7 @@
     <Compile Include="CadenaConexionXML.cs" />
     <Compile Include="Comite.cs" />
     <Compile Include="Contacto.cs" />
+    <Compile Include="Directiva.cs" />
     <Compile Include="Reunion.cs" />
     <Compile Include="Servidor.cs" />
     <Compile Include="Iglesia.cs" />

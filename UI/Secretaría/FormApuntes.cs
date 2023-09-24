@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +8,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entity;
 
 namespace UI
 {
     public partial class FormApuntes : Form
     {
+        RutasTxtService rutasTxtService = new RutasTxtService();
+        ApunteService apunteService;
+        List<Apunte> apuntes;
         public FormApuntes()
         {
+            apunteService = new ApunteService(ConfigConnection.ConnectionString);
             InitializeComponent();
+            Inicializar();
+        }
+        private void Inicializar()
+        {
+            ConsultarYLlenarGridDeApuntees();
+        }
+        private void ConsultarYLlenarGridDeApuntees()
+        {
+            ConsultaApunteRespuesta respuesta = new ConsultaApunteRespuesta();
+            string tipo = comboFecha.Text;
+            if (tipo == "Fecha")
+            {
+                textTotal.Enabled = true;
+                dataGridApunte.DataSource = null;
+                respuesta = apunteService.ConsultarTodos();
+                apuntes = respuesta.Apuntes.ToList();
+                if (respuesta.Apuntes.Count != 0 && respuesta.Apuntes != null)
+                {
+                    dataGridApunte.DataSource = respuesta.Apuntes;
+                    Borrar.Visible = true;
+                    textTotal.Text = apunteService.Totalizar().Cuenta.ToString();
+                }
+            }
         }
         private void btnAtras_Click(object sender, EventArgs e)
         {

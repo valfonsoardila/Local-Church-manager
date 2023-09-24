@@ -20,9 +20,9 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into CONTACTO(Id, Nombre, Apellido, TelefonoContacto, TelefonoWhatsapp, Oficio) " +
-                    "Values (@Id, @Nombre, @Apellido, @TelefonoContacto, TelefonoWhatsapp, Oficio)";
-                command.Parameters.AddWithValue("@Id", contacto.Id);
+                command.CommandText = "Insert Into CONTACTO(IdContacto, Nombre, Apellido, TelefonoContacto, TelefonoWhatsapp, Oficio) " +
+                    "Values (@IdContacto, @Nombre, @Apellido, @TelefonoContacto, TelefonoWhatsapp, Oficio)";
+                command.Parameters.AddWithValue("@IdContacto", contacto.IdContacto);
                 command.Parameters.AddWithValue("@Nombre", contacto.Nombre);
                 command.Parameters.AddWithValue("@Apellido", contacto.Apellido);
                 command.Parameters.AddWithValue("@TelefonoContacto", contacto.TelefonoContacto);
@@ -35,8 +35,8 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Delete from CONTACTO where Id=@Id";
-                command.Parameters.AddWithValue("@Id", contacto.Id);
+                command.CommandText = "Delete from CONTACTO where IdContacto=@IdContacto";
+                command.Parameters.AddWithValue("@IdContacto", contacto.IdContacto);
                 command.ExecuteNonQuery();
             }
         }
@@ -45,7 +45,7 @@ namespace DAL
             List<Contacto> contactos = new List<Contacto>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id, Nombre, Apellido, TelefonoContacto, TelefonoWhatsapp, Oficio from CONTACTO ";
+                command.CommandText = "Select IdContacto, Nombre, Apellido, TelefonoContacto, TelefonoWhatsapp, Oficio from CONTACTO ";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -63,8 +63,8 @@ namespace DAL
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select * from CONTACTO where Id=@Id";
-                command.Parameters.AddWithValue("@Id", id);
+                command.CommandText = "select * from CONTACTO where IdContacto=@IdContacto";
+                command.Parameters.AddWithValue("@IdContacto", id);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 return DataReaderMapToCliente(dataReader);
@@ -75,8 +75,8 @@ namespace DAL
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = @"update CONTACTO set Nombre=@Nombre, Apellido=@Apellido. TelefonoContacto=@TelefonoContacto, TelefonoWhatsapp=@TelefonoWhatsapp, Oficio=@Oficio
-                                        where Id=@Id";
-                command.Parameters.AddWithValue("@Id", contacto.Id);
+                                        where IdContacto=@IdContacto";
+                command.Parameters.AddWithValue("@IdContacto", contacto.IdContacto);
                 command.Parameters.AddWithValue("@Nombre", contacto.Nombre);
                 command.Parameters.AddWithValue("@Apellido", contacto.Apellido);
                 command.Parameters.AddWithValue("@TelefonoContacto", contacto.TelefonoContacto);
@@ -88,7 +88,7 @@ namespace DAL
         {
             if (!dataReader.HasRows) return null;
             Contacto contacto = new Contacto();
-            contacto.Id = (string)dataReader["Id"];
+            contacto.IdContacto = (string)dataReader["IdContacto"];
             contacto.Nombre = (string)dataReader["Nombre"];
             contacto.Apellido = (string)dataReader["Apellido"];
             contacto.TelefonoContacto = (string)dataReader["TelefonoContacto"];

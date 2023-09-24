@@ -322,5 +322,123 @@ namespace UI
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void panelLogoContainer_MouseEnter(object sender, EventArgs e)
+        {
+            panelSidebar.Width = 186;
+            btnOpenSidebar.Visible = false;
+            btnCloseSidebar.Visible = true;
+            labelLogoName.Visible = true;
+            btnGestionSecretaria.Text = "Gestion de secretaría";
+            btnGestionTesoreria.Text = "Gestion de tesoreria";
+            btnGestionFactura.Text = "Gestion de Factura";
+            btnAjustes.Text = "Ajustes";
+            panelSidebarClose.Visible = false;
+        }
+
+        private void btnGestionSecretaria_MouseEnter(object sender, EventArgs e)
+        {
+            panelSidebar.Width = 186;
+            btnOpenSidebar.Visible = false;
+            btnCloseSidebar.Visible = true;
+            labelLogoName.Visible = true;
+            btnGestionSecretaria.Text = "Gestion de secretaría";
+            btnGestionTesoreria.Text = "Gestion de tesoreria";
+            btnGestionFactura.Text = "Gestion de Factura";
+            btnAjustes.Text = "Ajustes";
+            panelSidebarClose.Visible = false;
+        }
+
+
+        private void btnAjustes_MouseEnter(object sender, EventArgs e)
+        {
+            panelSidebar.Width = 186;
+            btnOpenSidebar.Visible = false;
+            btnCloseSidebar.Visible = true;
+            labelLogoName.Visible = true;
+            btnGestionSecretaria.Text = "Gestion de secretaría";
+            btnGestionTesoreria.Text = "Gestion de tesoreria";
+            btnGestionFactura.Text = "Gestion de Factura";
+            btnAjustes.Text = "Ajustes";
+            panelSidebarClose.Visible = false;
+        }
+
+        private void panelSidebar_MouseEnter(object sender, EventArgs e)
+        {
+            panelSidebar.Width = 186;
+            btnOpenSidebar.Visible = false;
+            btnCloseSidebar.Visible = true;
+            labelLogoName.Visible = true;
+            btnGestionSecretaria.Text = "Gestion de secretaría";
+            btnGestionTesoreria.Text = "Gestion de tesoreria";
+            btnGestionFactura.Text = "Gestion de Factura";
+            btnAjustes.Text = "Ajustes";
+            panelSidebarClose.Visible = false;
+        }
+
+        private void btnDirectorio_MouseEnter(object sender, EventArgs e)
+        {
+            panelSidebar.Width = 186;
+            btnOpenSidebar.Visible = false;
+            btnCloseSidebar.Visible = true;
+            labelLogoName.Visible = true;
+            btnGestionSecretaria.Text = "Gestion de secretaría";
+            btnGestionTesoreria.Text = "Gestion de tesoreria";
+            btnGestionFactura.Text = "Gestion de Factura";
+            btnAjustes.Text = "Ajustes";
+            panelSidebarClose.Visible = false;
+        }
+
+        private void btnMiembros_MouseEnter(object sender, EventArgs e)
+        {
+            panelSidebar.Width = 186;
+            btnOpenSidebar.Visible = false;
+            btnCloseSidebar.Visible = true;
+            labelLogoName.Visible = true;
+            btnGestionSecretaria.Text = "Gestion de secretaría";
+            btnGestionTesoreria.Text = "Gestion de tesoreria";
+            btnGestionFactura.Text = "Gestion de Factura";
+            btnAjustes.Text = "Ajustes";
+            panelSidebarClose.Visible = false;
+        }
+
+        private void btnDirectivas_MouseEnter(object sender, EventArgs e)
+        {
+            panelSidebar.Width = 186;
+            btnOpenSidebar.Visible = false;
+            btnCloseSidebar.Visible = true;
+            labelLogoName.Visible = true;
+            btnGestionSecretaria.Text = "Gestion de secretaría";
+            btnGestionTesoreria.Text = "Gestion de tesoreria";
+            btnGestionFactura.Text = "Gestion de Factura";
+            btnAjustes.Text = "Ajustes";
+            panelSidebarClose.Visible = false;
+        }
+
+        private void btnReuniones_MouseEnter(object sender, EventArgs e)
+        {
+            panelSidebar.Width = 186;
+            btnOpenSidebar.Visible = false;
+            btnCloseSidebar.Visible = true;
+            labelLogoName.Visible = true;
+            btnGestionSecretaria.Text = "Gestion de secretaría";
+            btnGestionTesoreria.Text = "Gestion de tesoreria";
+            btnGestionFactura.Text = "Gestion de Factura";
+            btnAjustes.Text = "Ajustes";
+            panelSidebarClose.Visible = false;
+        }
+
+        private void btnApuntes_MouseEnter(object sender, EventArgs e)
+        {
+            panelSidebar.Width = 186;
+            btnOpenSidebar.Visible = false;
+            btnCloseSidebar.Visible = true;
+            labelLogoName.Visible = true;
+            btnGestionSecretaria.Text = "Gestion de secretaría";
+            btnGestionTesoreria.Text = "Gestion de tesoreria";
+            btnGestionFactura.Text = "Gestion de Factura";
+            btnAjustes.Text = "Ajustes";
+            panelSidebarClose.Visible = false;
+        }
     }
 }

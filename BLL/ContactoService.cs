@@ -24,7 +24,7 @@ namespace BLL
                 contacto.GenerarId();
                 contacto.GenerarWhatsapp();
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(contacto.Id) == null)
+                if (repositorio.BuscarPorIdentificacion(contacto.IdContacto) == null)
                 {
                     repositorio.Guardar(contacto);
                     return $"Contacto registrado correctamente";
@@ -44,10 +44,10 @@ namespace BLL
             {
 
                 conexion.Open();
-                respuesta.Contactoes = repositorio.ConsultarTodos();
+                respuesta.Contactos = repositorio.ConsultarTodos();
                 conexion.Close();
                 respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Contactoes.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
+                respuesta.Mensaje = (respuesta.Contactos.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
                 return respuesta;
             }
             catch (Exception e)
@@ -90,7 +90,7 @@ namespace BLL
                 {
                     repositorio.Eliminar(contacto);
                     conexion.Close();
-                    return ($"El registro {contacto.Id} se ha eliminado satisfactoriamente.");
+                    return ($"El registro {contacto.IdContacto} se ha eliminado satisfactoriamente.");
                 }
                 return ($"Lo sentimos, {identificacion} no se encuentra registrada.");
             }
@@ -109,15 +109,15 @@ namespace BLL
                 contactoNuevo.GenerarId();
                 contactoNuevo.GenerarWhatsapp();
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(contactoNuevo.Id);
-                if (cajaRegistradora != null)
+                var contacto = repositorio.BuscarPorIdentificacion(contactoNuevo.IdContacto);
+                if (contacto != null)
                 {
                     repositorio.Modificar(contactoNuevo);
-                    return ($"El registro de {contactoNuevo.Id} se ha modificado satisfactoriamente.");
+                    return ($"El registro de {contactoNuevo.IdContacto} se ha modificado satisfactoriamente.");
                 }
                 else
                 {
-                    return ($"Lo sentimos, el contacto con Id {contactoNuevo.Id} no se encuentra registrada.");
+                    return ($"Lo sentimos, el contacto con IdContacto {contactoNuevo.IdContacto} no se encuentra registrada.");
                 }
             }
             catch (Exception e)
@@ -198,7 +198,7 @@ namespace BLL
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Contacto> Contactoes { get; set; }
+        public IList<Contacto> Contactos { get; set; }
     }
     public class BusquedaContactoRespuesta
     {

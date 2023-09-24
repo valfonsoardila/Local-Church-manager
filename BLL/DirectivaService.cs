@@ -1,37 +1,34 @@
 ﻿using DAL;
-using Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entity;
 
 namespace BLL
 {
-    public class MiembroService
+    public class DirectivaService
     {
         private readonly ConnectionManager conexion;
-        private readonly MiembroRepository repositorio;
-        public MiembroService(string connectionString)
+        private readonly DirectivaRepository repositorio;
+        public DirectivaService(string connectionString)
         {
             conexion = new ConnectionManager(connectionString);
-            repositorio = new MiembroRepository(conexion);
+            repositorio = new DirectivaRepository(conexion);
         }
-        public string Guardar(Miembro miembro)
+        public string Guardar(Directiva directiva)
         {
             try
             {
-                miembro.GenerarFolio();
-                miembro.CalcularTiempoDeConversion();
-                miembro.CalcularMembresiaIglesiaProcedente();
-                miembro.CalcularTiempoDeCorecion();
+                directiva.GenerarIdDirectiva();
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(miembro.Folio) == null)
+                if (repositorio.BuscarPorIdentificacion(directiva.IdDirectiva) == null)
                 {
-                    repositorio.Guardar(miembro);
-                    return $"Miembro registrado correctamente";
+                    repositorio.Guardar(directiva);
+                    return $"Directiva registrado correctamente";
                 }
-                return $"Esta id de miembro ya existe";
+                return $"Esta id de directiva ya existe";
             }
             catch (Exception e)
             {
@@ -39,17 +36,17 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConsultaMiembroRespuesta ConsultarTodos()
+        public ConsultaDirectivaRespuesta ConsultarTodos()
         {
-            ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
+            ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Miembroes = repositorio.ConsultarTodos();
+                respuesta.Directivas = repositorio.ConsultarTodos();
                 conexion.Close();
                 respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Miembroes.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
+                respuesta.Mensaje = (respuesta.Directivas.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
                 return respuesta;
             }
             catch (Exception e)
@@ -61,16 +58,16 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-        public BusquedaMiembroRespuesta BuscarPorIdentificacion(string identificacion)
+        public BusquedaDirectivaRespuesta BuscarPorIdentificacion(string identificacion)
         {
-            BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
+            BusquedaDirectivaRespuesta respuesta = new BusquedaDirectivaRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Miembro = repositorio.BuscarPorIdentificacion(identificacion);
+                respuesta.Directiva = repositorio.BuscarPorIdentificacion(identificacion);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Miembro != null) ? "Se encontró la id de miembro buscado" : "la id de miembro buscada no existe";
+                respuesta.Mensaje = (respuesta.Directiva != null) ? "Se encontró la id de directiva buscado" : "la id de directiva buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -87,12 +84,12 @@ namespace BLL
             try
             {
                 conexion.Open();
-                var miembro = repositorio.BuscarPorIdentificacion(identificacion);
-                if (miembro != null)
+                var directiva = repositorio.BuscarPorIdentificacion(identificacion);
+                if (directiva != null)
                 {
-                    repositorio.Eliminar(miembro);
+                    repositorio.Eliminar(directiva);
                     conexion.Close();
-                    return ($"El registro {miembro.Folio} se ha eliminado satisfactoriamente.");
+                    return ($"El registro {directiva.IdDirectiva} se ha eliminado satisfactoriamente.");
                 }
                 return ($"Lo sentimos, {identificacion} no se encuentra registrada.");
             }
@@ -104,24 +101,20 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-        public string Modificar(Miembro miembroNuevo)
+        public string Modificar(Directiva directivaNueva)
         {
             try
-            {
-                miembroNuevo.GenerarFolio();
-                miembroNuevo.CalcularTiempoDeConversion();
-                miembroNuevo.CalcularMembresiaIglesiaProcedente();
-                miembroNuevo.CalcularTiempoDeCorecion();
+            {      
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(miembroNuevo.Folio);
-                if (cajaRegistradora != null)
+                var directiva = repositorio.BuscarPorIdentificacion(directivaNueva.IdDirectiva);
+                if (directiva != null)
                 {
-                    repositorio.Modificar(miembroNuevo);
-                    return ($"El registro de {miembroNuevo.Folio} se ha modificado satisfactoriamente.");
+                    repositorio.Modificar(directivaNueva);
+                    return ($"El registro de {directivaNueva.IdDirectiva} se ha modificado satisfactoriamente.");
                 }
                 else
                 {
-                    return ($"Lo sentimos, el miembro con Id {miembroNuevo.Folio} no se encuentra registrada.");
+                    return ($"Lo sentimos, el directiva con IdDirectiva {directivaNueva.IdDirectiva} no se encuentra registrada.");
                 }
             }
             catch (Exception e)
@@ -131,9 +124,9 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConteoMiembroRespuesta Totalizar()
+        public ConteoDirectivaRespuesta Totalizar()
         {
-            ConteoMiembroRespuesta respuesta = new ConteoMiembroRespuesta();
+            ConteoDirectivaRespuesta respuesta = new ConteoDirectivaRespuesta();
             try
             {
 
@@ -153,9 +146,9 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConteoMiembroRespuesta TotalizarTipoRol(string tipo)
+        public ConteoDirectivaRespuesta TotalizarTipoRol(string tipo)
         {
-            ConteoMiembroRespuesta respuesta = new ConteoMiembroRespuesta();
+            ConteoDirectivaRespuesta respuesta = new ConteoDirectivaRespuesta();
             try
             {
 
@@ -175,9 +168,9 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConteoMiembroRespuesta TotalizarTipo(string tipo)
+        public ConteoDirectivaRespuesta TotalizarTipo(string tipo)
         {
-            ConteoMiembroRespuesta respuesta = new ConteoMiembroRespuesta();
+            ConteoDirectivaRespuesta respuesta = new ConteoDirectivaRespuesta();
             try
             {
 
@@ -198,19 +191,19 @@ namespace BLL
             finally { conexion.Close(); }
         }
     }
-    public class ConsultaMiembroRespuesta
+    public class ConsultaDirectivaRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Miembro> Miembros { get; set; }
+        public IList<Directiva> Directivas { get; set; }
     }
-    public class BusquedaMiembroRespuesta
+    public class BusquedaDirectivaRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public Miembro Miembro { get; set; }
+        public Directiva Directiva { get; set; }
     }
-    public class ConteoMiembroRespuesta
+    public class ConteoDirectivaRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }

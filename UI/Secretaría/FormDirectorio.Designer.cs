@@ -31,9 +31,10 @@ namespace UI
         {
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnModificar = new FontAwesome.Sharp.IconButton();
             this.btnRegistrar = new FontAwesome.Sharp.IconButton();
-            this.comboOficio = new System.Windows.Forms.ComboBox();
+            this.comboOficioRegistrar = new System.Windows.Forms.ComboBox();
             this.textNumeroWhatsapp = new System.Windows.Forms.TextBox();
             this.textCelular = new System.Windows.Forms.TextBox();
             this.textApellido = new System.Windows.Forms.TextBox();
@@ -56,23 +57,31 @@ namespace UI
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabDirectorio = new System.Windows.Forms.TabControl();
             this.tabLibreta = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.btnGestionarContactos = new FontAwesome.Sharp.IconButton();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridContactos = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Whatsapp = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboOficioLibreta = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textTotal = new System.Windows.Forms.TextBox();
+            this.textTotalHombres = new System.Windows.Forms.TextBox();
+            this.textTotalMujeres = new System.Windows.Forms.TextBox();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).BeginInit();
@@ -83,12 +92,16 @@ namespace UI
             this.panel2.SuspendLayout();
             this.tabDirectorio.SuspendLayout();
             this.tabLibreta.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridContactos)).BeginInit();
             this.panelContenedorDeDirectorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -103,9 +116,11 @@ namespace UI
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.btnModificar);
-            this.panel4.Controls.Add(this.btnRegistrar);
-            this.panel4.Controls.Add(this.comboOficio);
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.tableLayoutPanel1);
+            this.panel4.Controls.Add(this.comboOficioRegistrar);
             this.panel4.Controls.Add(this.textNumeroWhatsapp);
             this.panel4.Controls.Add(this.textCelular);
             this.panel4.Controls.Add(this.textApellido);
@@ -121,6 +136,21 @@ namespace UI
             this.panel4.Size = new System.Drawing.Size(714, 392);
             this.panel4.TabIndex = 0;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.btnModificar, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnRegistrar, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 337);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(714, 55);
+            this.tableLayoutPanel1.TabIndex = 16;
+            // 
             // btnModificar
             // 
             this.btnModificar.BackColor = System.Drawing.Color.DarkRed;
@@ -130,9 +160,9 @@ namespace UI
             this.btnModificar.IconColor = System.Drawing.Color.WhiteSmoke;
             this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnModificar.IconSize = 30;
-            this.btnModificar.Location = new System.Drawing.Point(353, 301);
+            this.btnModificar.Location = new System.Drawing.Point(360, 3);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(123, 35);
+            this.btnModificar.Size = new System.Drawing.Size(123, 41);
             this.btnModificar.TabIndex = 15;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -141,6 +171,7 @@ namespace UI
             // 
             // btnRegistrar
             // 
+            this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegistrar.BackColor = System.Drawing.Color.Green;
             this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -148,28 +179,30 @@ namespace UI
             this.btnRegistrar.IconColor = System.Drawing.Color.BlanchedAlmond;
             this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRegistrar.IconSize = 30;
-            this.btnRegistrar.Location = new System.Drawing.Point(250, 301);
+            this.btnRegistrar.Location = new System.Drawing.Point(240, 3);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(100, 35);
+            this.btnRegistrar.Size = new System.Drawing.Size(114, 41);
             this.btnRegistrar.TabIndex = 14;
             this.btnRegistrar.Text = "Guardar";
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
-            // comboOficio
+            // comboOficioRegistrar
             // 
-            this.comboOficio.FormattingEnabled = true;
-            this.comboOficio.Location = new System.Drawing.Point(159, 199);
-            this.comboOficio.Name = "comboOficio";
-            this.comboOficio.Size = new System.Drawing.Size(278, 21);
-            this.comboOficio.TabIndex = 11;
-            this.comboOficio.Text = "Oficio";
-            this.comboOficio.Enter += new System.EventHandler(this.comboOficio_Enter);
-            this.comboOficio.Leave += new System.EventHandler(this.comboOficio_Leave);
+            this.comboOficioRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboOficioRegistrar.FormattingEnabled = true;
+            this.comboOficioRegistrar.Location = new System.Drawing.Point(159, 197);
+            this.comboOficioRegistrar.Name = "comboOficioRegistrar";
+            this.comboOficioRegistrar.Size = new System.Drawing.Size(278, 24);
+            this.comboOficioRegistrar.TabIndex = 11;
+            this.comboOficioRegistrar.Text = "Oficio";
+            this.comboOficioRegistrar.Enter += new System.EventHandler(this.comboOficio_Enter);
+            this.comboOficioRegistrar.Leave += new System.EventHandler(this.comboOficio_Leave);
             // 
             // textNumeroWhatsapp
             // 
+            this.textNumeroWhatsapp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textNumeroWhatsapp.Location = new System.Drawing.Point(197, 166);
             this.textNumeroWhatsapp.Multiline = true;
             this.textNumeroWhatsapp.Name = "textNumeroWhatsapp";
@@ -181,6 +214,7 @@ namespace UI
             // 
             // textCelular
             // 
+            this.textCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textCelular.Location = new System.Drawing.Point(197, 134);
             this.textCelular.Multiline = true;
             this.textCelular.Name = "textCelular";
@@ -192,6 +226,7 @@ namespace UI
             // 
             // textApellido
             // 
+            this.textApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textApellido.Location = new System.Drawing.Point(119, 102);
             this.textApellido.Multiline = true;
             this.textApellido.Name = "textApellido";
@@ -203,6 +238,7 @@ namespace UI
             // 
             // textNombre
             // 
+            this.textNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textNombre.Location = new System.Drawing.Point(115, 70);
             this.textNombre.Multiline = true;
             this.textNombre.Name = "textNombre";
@@ -292,6 +328,7 @@ namespace UI
             // 
             // btnSearchRegistrar
             // 
+            this.btnSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchRegistrar.BackColor = System.Drawing.Color.Transparent;
             this.btnSearchRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSearchRegistrar.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
@@ -307,6 +344,7 @@ namespace UI
             // 
             // textSearchRegistrar
             // 
+            this.textSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textSearchRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textSearchRegistrar.Location = new System.Drawing.Point(501, 1);
             this.textSearchRegistrar.Multiline = true;
@@ -320,6 +358,7 @@ namespace UI
             // 
             // btnCloseSearchRegistrar
             // 
+            this.btnCloseSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseSearchRegistrar.BackColor = System.Drawing.Color.Transparent;
             this.btnCloseSearchRegistrar.ForeColor = System.Drawing.Color.Red;
             this.btnCloseSearchRegistrar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
@@ -415,8 +454,8 @@ namespace UI
             // 
             // tabLibreta
             // 
-            this.tabLibreta.Controls.Add(this.btnGestionarContactos);
-            this.tabLibreta.Controls.Add(this.panel3);
+            this.tabLibreta.Controls.Add(this.panel7);
+            this.tabLibreta.Controls.Add(this.panel6);
             this.tabLibreta.Location = new System.Drawing.Point(4, 22);
             this.tabLibreta.Name = "tabLibreta";
             this.tabLibreta.Padding = new System.Windows.Forms.Padding(3);
@@ -425,46 +464,70 @@ namespace UI
             this.tabLibreta.Text = "Libreta";
             this.tabLibreta.UseVisualStyleBackColor = true;
             // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.btnGestionarContactos);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(3, 409);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(786, 56);
+            this.panel7.TabIndex = 3;
+            // 
             // btnGestionarContactos
             // 
+            this.btnGestionarContactos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGestionarContactos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.btnGestionarContactos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionarContactos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGestionarContactos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnGestionarContactos.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnGestionarContactos.IconColor = System.Drawing.Color.Black;
             this.btnGestionarContactos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarContactos.Location = new System.Drawing.Point(332, 412);
+            this.btnGestionarContactos.Location = new System.Drawing.Point(328, 11);
             this.btnGestionarContactos.Name = "btnGestionarContactos";
-            this.btnGestionarContactos.Size = new System.Drawing.Size(135, 35);
+            this.btnGestionarContactos.Size = new System.Drawing.Size(153, 35);
             this.btnGestionarContactos.TabIndex = 1;
             this.btnGestionarContactos.Text = "Gestionar contactos";
             this.btnGestionarContactos.UseVisualStyleBackColor = false;
             this.btnGestionarContactos.Click += new System.EventHandler(this.btnGestionarContactos_Click);
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel3);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(3, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(786, 462);
+            this.panel6.TabIndex = 2;
+            // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.dataGridContactos);
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
-            this.panel3.Location = new System.Drawing.Point(37, 14);
+            this.panel3.Location = new System.Drawing.Point(27, 8);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(714, 392);
+            this.panel3.Size = new System.Drawing.Size(724, 392);
             this.panel3.TabIndex = 0;
             // 
-            // dataGridView1
+            // dataGridContactos
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridContactos.AllowUserToAddRows = false;
+            this.dataGridContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridContactos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
             this.Borrar,
             this.Whatsapp});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 32);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(714, 360);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridContactos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridContactos.Location = new System.Drawing.Point(0, 32);
+            this.dataGridContactos.Name = "dataGridContactos";
+            this.dataGridContactos.ReadOnly = true;
+            this.dataGridContactos.RowHeadersVisible = false;
+            this.dataGridContactos.Size = new System.Drawing.Size(724, 360);
+            this.dataGridContactos.TabIndex = 1;
             // 
             // Seleccionar
             // 
@@ -493,9 +556,14 @@ namespace UI
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboBox3);
+            this.panelContenedorDeDirectorio.Controls.Add(this.label9);
+            this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox5);
+            this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox2);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalMujeres);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalHombres);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboOficioLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboBox1);
             this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.btnCloseSearchLibreta);
@@ -503,17 +571,18 @@ namespace UI
             this.panelContenedorDeDirectorio.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContenedorDeDirectorio.Location = new System.Drawing.Point(0, 0);
             this.panelContenedorDeDirectorio.Name = "panelContenedorDeDirectorio";
-            this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(714, 32);
+            this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(724, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
             // 
-            // comboBox3
+            // comboOficioLibreta
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(347, 7);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 10;
-            this.comboBox3.Text = "Oficio";
+            this.comboOficioLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboOficioLibreta.FormattingEnabled = true;
+            this.comboOficioLibreta.Location = new System.Drawing.Point(374, 4);
+            this.comboOficioLibreta.Name = "comboOficioLibreta";
+            this.comboOficioLibreta.Size = new System.Drawing.Size(121, 24);
+            this.comboOficioLibreta.TabIndex = 10;
+            this.comboOficioLibreta.Text = "Oficio";
             // 
             // iconPictureBox3
             // 
@@ -529,24 +598,16 @@ namespace UI
             this.iconPictureBox3.TabIndex = 9;
             this.iconPictureBox3.TabStop = false;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(218, 7);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.Text = "Genero";
-            // 
             // btSearchLibreta
             // 
+            this.btSearchLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btSearchLibreta.BackColor = System.Drawing.Color.Transparent;
             this.btSearchLibreta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btSearchLibreta.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
             this.btSearchLibreta.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.btSearchLibreta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btSearchLibreta.IconSize = 28;
-            this.btSearchLibreta.Location = new System.Drawing.Point(683, 3);
+            this.btSearchLibreta.Location = new System.Drawing.Point(684, 3);
             this.btSearchLibreta.Name = "btSearchLibreta";
             this.btSearchLibreta.Size = new System.Drawing.Size(28, 28);
             this.btSearchLibreta.TabIndex = 7;
@@ -555,6 +616,7 @@ namespace UI
             // 
             // textSerachLibreta
             // 
+            this.textSerachLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textSerachLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textSerachLibreta.Location = new System.Drawing.Point(501, 1);
             this.textSerachLibreta.Multiline = true;
@@ -568,6 +630,7 @@ namespace UI
             // 
             // btnCloseSearchLibreta
             // 
+            this.btnCloseSearchLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseSearchLibreta.BackColor = System.Drawing.Color.Transparent;
             this.btnCloseSearchLibreta.ForeColor = System.Drawing.Color.Red;
             this.btnCloseSearchLibreta.IconChar = FontAwesome.Sharp.IconChar.Xmark;
@@ -593,6 +656,72 @@ namespace UI
             this.label1.TabIndex = 0;
             this.label1.Text = "Libreta";
             // 
+            // textTotal
+            // 
+            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotal.Location = new System.Drawing.Point(161, 5);
+            this.textTotal.Name = "textTotal";
+            this.textTotal.Size = new System.Drawing.Size(46, 22);
+            this.textTotal.TabIndex = 11;
+            this.textTotal.Text = "0";
+            // 
+            // textTotalHombres
+            // 
+            this.textTotalHombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalHombres.Location = new System.Drawing.Point(244, 5);
+            this.textTotalHombres.Name = "textTotalHombres";
+            this.textTotalHombres.Size = new System.Drawing.Size(46, 22);
+            this.textTotalHombres.TabIndex = 12;
+            this.textTotalHombres.Text = "0";
+            // 
+            // textTotalMujeres
+            // 
+            this.textTotalMujeres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalMujeres.Location = new System.Drawing.Point(318, 5);
+            this.textTotalMujeres.Name = "textTotalMujeres";
+            this.textTotalMujeres.Size = new System.Drawing.Size(46, 22);
+            this.textTotalMujeres.TabIndex = 13;
+            this.textTotalMujeres.Text = "0";
+            // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Person;
+            this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox2.IconSize = 28;
+            this.iconPictureBox2.Location = new System.Drawing.Point(213, 3);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox2.TabIndex = 15;
+            this.iconPictureBox2.TabStop = false;
+            // 
+            // iconPictureBox5
+            // 
+            this.iconPictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.PersonDress;
+            this.iconPictureBox5.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox5.IconSize = 28;
+            this.iconPictureBox5.Location = new System.Drawing.Point(292, 3);
+            this.iconPictureBox5.Name = "iconPictureBox5";
+            this.iconPictureBox5.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox5.TabIndex = 16;
+            this.iconPictureBox5.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label9.Location = new System.Drawing.Point(115, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 16);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Total";
+            // 
             // FormDirectorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -606,6 +735,7 @@ namespace UI
             tabRegistrar.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
@@ -618,13 +748,17 @@ namespace UI
             this.panel2.ResumeLayout(false);
             this.tabDirectorio.ResumeLayout(false);
             this.tabLibreta.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridContactos)).EndInit();
             this.panelContenedorDeDirectorio.ResumeLayout(false);
             this.panelContenedorDeDirectorio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -642,11 +776,10 @@ namespace UI
         private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
         private System.Windows.Forms.TextBox textSerachLibreta;
-        private System.Windows.Forms.ComboBox comboBox1;
         private FontAwesome.Sharp.IconPictureBox btnAtras;
         private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridContactos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.DataGridViewImageColumn Whatsapp;
@@ -662,14 +795,23 @@ namespace UI
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboOficio;
+        private System.Windows.Forms.ComboBox comboOficioRegistrar;
         private System.Windows.Forms.TextBox textNumeroWhatsapp;
         private System.Windows.Forms.TextBox textCelular;
         private System.Windows.Forms.TextBox textApellido;
         private System.Windows.Forms.TextBox textNombre;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboOficioLibreta;
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnRegistrar;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox textTotal;
+        private System.Windows.Forms.TextBox textTotalMujeres;
+        private System.Windows.Forms.TextBox textTotalHombres;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private System.Windows.Forms.Label label9;
     }
 }

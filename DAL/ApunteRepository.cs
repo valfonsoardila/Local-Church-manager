@@ -20,9 +20,9 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into APUNTE(Id, Titulo, Nota) " +
-                    "Values (@Id, @Titulo, @Nota)";
-                command.Parameters.AddWithValue("@Id", apunte.Id);
+                command.CommandText = "Insert Into APUNTE(IdNota, Titulo, Nota) " +
+                    "Values (@IdNota, @Titulo, @Nota)";
+                command.Parameters.AddWithValue("@IdNota", apunte.IdNota);
                 command.Parameters.AddWithValue("@Titulo", apunte.Titulo);
                 command.Parameters.AddWithValue("@Nota", apunte.Nota);
                 command.ExecuteNonQuery();
@@ -32,8 +32,8 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Delete from Apunte where Id=@Id";
-                command.Parameters.AddWithValue("@Id", apunte.Id);
+                command.CommandText = "Delete from Apunte where IdNota=@IdNota";
+                command.Parameters.AddWithValue("@IdNota", apunte.IdNota);
                 command.ExecuteNonQuery();
             }
         }
@@ -42,7 +42,7 @@ namespace DAL
             List<Apunte> apuntes = new List<Apunte>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id, Titulo, Nota from APUNTE ";
+                command.CommandText = "Select IdNota, Titulo, Nota from APUNTE ";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -60,8 +60,8 @@ namespace DAL
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select * from APUNTE where Id=@Id";
-                command.Parameters.AddWithValue("@Id", id);
+                command.CommandText = "select * from APUNTE where IdNota=@IdNota";
+                command.Parameters.AddWithValue("@IdNota", id);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 return DataReaderMapToCliente(dataReader);
@@ -72,8 +72,8 @@ namespace DAL
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = @"update APUNTE set Titulo=@Titulo, Nota=@Nota
-                                        where Id=@Id";
-                command.Parameters.AddWithValue("@Id", apunte.Id);
+                                        where IdNota=@IdNota";
+                command.Parameters.AddWithValue("@IdNota", apunte.IdNota);
                 command.Parameters.AddWithValue("@Titulo", apunte.Titulo);
                 command.Parameters.AddWithValue("@Nota", apunte.Nota);
             }
@@ -82,7 +82,7 @@ namespace DAL
         {
             if (!dataReader.HasRows) return null;
             Apunte apunte = new Apunte();
-            apunte.Id = (string)dataReader["Id"];
+            apunte.IdNota = (string)dataReader["IdNota"];
             apunte.Titulo = (string)dataReader["Titulo"];
             apunte.Nota = (string)dataReader["Nota"];
             return apunte;

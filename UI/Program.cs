@@ -17,7 +17,7 @@ namespace UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormInicioSesion());
-            Application.Run(new FormMenu());
+            Application.Run(new FormInicioSesion());
         }
     }
 }

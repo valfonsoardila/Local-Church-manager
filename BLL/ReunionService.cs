@@ -107,8 +107,8 @@ namespace BLL
             {
                 reunionNuevo.GenerarNumeroActa();
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(reunionNuevo.NumeroActa);
-                if (cajaRegistradora != null)
+                var reunion = repositorio.BuscarPorIdentificacion(reunionNuevo.NumeroActa);
+                if (reunion != null)
                 {
                     repositorio.Modificar(reunionNuevo);
                     return ($"El registro de {reunionNuevo.NumeroActa} se ha modificado satisfactoriamente.");

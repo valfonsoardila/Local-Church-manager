@@ -1,7 +1,10 @@
-﻿using System;
+﻿using BLL;
+using Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +15,37 @@ namespace UI
 {
     public partial class FormReuniones : Form
     {
+        RutasTxtService rutasTxtService = new RutasTxtService();
+        ReunionService reunionService;
+        List<Reunion> reunions;
+        Reunion reunion;
         public FormReuniones()
         {
+            reunionService = new ReunionService(ConfigConnection.ConnectionString);
             InitializeComponent();
+            Inicializar();
+        }
+        private void Inicializar()
+        {
+            ConsultarYLlenarGridDeReuniones();
+        }
+        private void ConsultarYLlenarGridDeReuniones()
+        {
+            ConsultaReunionRespuesta respuesta = new ConsultaReunionRespuesta();
+            string tipo = comboFecha.Text;
+            if (tipo == "Fecha")
+            {
+                textTotal.Enabled = true;
+                dataGridReunion.DataSource = null;
+                respuesta = reunionService.ConsultarTodos();
+                reunions = respuesta.Reuniones.ToList();
+                if (respuesta.Reuniones.Count != 0 && respuesta.Reuniones != null)
+                {
+                    dataGridReunion.DataSource = respuesta.Reuniones;
+                    Borrar.Visible = true;
+                    textTotal.Text = reunionService.Totalizar().Cuenta.ToString();
+                }
+            }
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -22,20 +53,6 @@ namespace UI
             this.Close();
         }
 
-        private void btnGestionarReuniones_Click(object sender, EventArgs e)
-        {
-            tabReuniones.SelectedIndex = 1;
-        }
-
-        private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-            tabReuniones.SelectedIndex = 0;
-        }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            tabReuniones.SelectedIndex = 0;
-        }
         private void textSerachLibreta_Enter(object sender, EventArgs e)
         {
             if (textSerachLibreta.Text == "Buscar")
@@ -141,6 +158,44 @@ namespace UI
             {
                 textLugarReunion.Text = "Texto";
             }
+        }
+
+        private void btnGestionarReuniones_Click(object sender, EventArgs e)
+        {
+            tabReuniones.SelectedIndex = 1;
+        }
+        private Reunion MapearDatosReunion()
+        {
+            reunion = new Reunion();
+            reunion.NumeroActa = labelNumeroActa.Text;
+            reunion.FechaDeReunion = dateFechaDeReunion.Value;
+            reunion.LugarDeReunion = textLugarReunion.Text;
+            reunion.OrdenDelDia = textOrdenDja.Text;
+            reunion.TextoActa = textActa.Text;
+            return reunion;
+        }
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            Reunion reunion = MapearDatosReunion();
+            string mensaje = reunionService.Guardar(reunion);
+            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            ConsultarYLlenarGridDeReuniones();
+            tabReuniones.SelectedIndex = 0;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            tabReuniones.SelectedIndex = 0;
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnImprimirLista_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

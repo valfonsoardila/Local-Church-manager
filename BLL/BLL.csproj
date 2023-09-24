@@ -46,6 +46,7 @@
     <Compile Include="ArchivoRespaldoService.cs" />
     <Compile Include="CadenaConexionXMLService.cs" />
     <Compile Include="ContactoService.cs" />
+    <Compile Include="DirectivaService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="IglesiaService.cs" />
     <Compile Include="EmailConsultaResponse.cs" />

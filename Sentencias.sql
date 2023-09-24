@@ -1,6 +1,7 @@
 --Crea base de datos
 create database LocalChurch
 --Comando para eliminar(drop database YouGym)
+use LocalChurch
 
 create table USUARIO(
 Id varchar(12) primary key not null,
@@ -38,4 +39,55 @@ Numero_De_Iglesia text,
 PBX nvarchar(30),
 Direccion nvarchar(100),
 Telefono varchar(15)
+);
+create table CONTACTO(
+IdContacto nvarchar(15) primary key not null,
+Nombre varchar(40) not null,
+Apellido varchar(40) not null,
+TelefonoContacto varchar(15) not null,
+TelefonoWhatsapp varchar(15) not null,
+Oficio varchar(30) not null,
+);
+create table MIEMBRO(
+Folio nvarchar(5) primary key not null,
+ImagenPerfil image,
+Nombre varchar(70) not null,
+TipoDoc varchar(3) not null,
+NumeroDoc varchar(12) not null,
+FechaDeNacimiento datetime not null,
+Direccion nvarchar(70) not null,
+Telefono varchar(12) not null,
+ParentezcoPadre varchar(70) not null,
+ParentezcoMadre varchar(70) not null,
+FechaBautizo datetime not null,
+TiempoDeConversion int not null,
+FechaRecepcionEspirituSanto datetime not null,
+LugarRecepcionespirituSanto varchar(70) not null,
+PastorOficiante varchar(70) not null,
+FechaMembresiaIglesiaProcedente datetime not null,
+TiempoDeMembresiaIglesiaProcedente int not null,
+EstadoServicio varchar(11) not null,
+FechaDeCorreccion datetime not null,
+TiempoEnActoCorrectivo int not null,
+EstadoMembresia varchar(12) not null,
+LugarDeTraslado varchar(100) not null,
+);
+create table DIRECTIVA(
+IdDirectiva nvarchar(15) primary key not null,
+Nombre varchar(70) not null,
+Comite varchar(40) not null,
+Vigencia varchar(10) not null,
+Observacion nvarchar(1000) not null,
+);
+create table REUNION(
+NumeroActa nvarchar(10) primary key not null,
+FechaDeReunion datetime not null,
+LugarDeReunion varchar(70) not null,
+OrdenDelDia varchar(500) not null,
+TextoActa varchar(5000) not null,
+);
+create table APUNTE(
+IdNota nvarchar(10) primary key not null,
+Titulo varchar(70) not null,
+Nota varchar(600) not null,
 );

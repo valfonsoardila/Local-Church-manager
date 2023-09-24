@@ -192,6 +192,7 @@ namespace UI
             this.panelSidebar.Name = "panelSidebar";
             this.panelSidebar.Size = new System.Drawing.Size(186, 577);
             this.panelSidebar.TabIndex = 3;
+            this.panelSidebar.MouseEnter += new System.EventHandler(this.panelSidebar_MouseEnter);
             // 
             // panelSelectionFactura
             // 
@@ -234,6 +235,7 @@ namespace UI
             this.btnAjustes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAjustes.UseVisualStyleBackColor = false;
             this.btnAjustes.Click += new System.EventHandler(this.btnAjustes_Click);
+            this.btnAjustes.MouseEnter += new System.EventHandler(this.btnAjustes_MouseEnter);
             // 
             // btnGestionFactura
             // 
@@ -392,6 +394,7 @@ namespace UI
             this.btnApuntes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnApuntes.UseVisualStyleBackColor = false;
             this.btnApuntes.Click += new System.EventHandler(this.btnApuntes_Click);
+            this.btnApuntes.MouseEnter += new System.EventHandler(this.btnApuntes_MouseEnter);
             // 
             // btnReuniones
             // 
@@ -415,6 +418,7 @@ namespace UI
             this.btnReuniones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReuniones.UseVisualStyleBackColor = false;
             this.btnReuniones.Click += new System.EventHandler(this.btnReuniones_Click);
+            this.btnReuniones.MouseEnter += new System.EventHandler(this.btnReuniones_MouseEnter);
             // 
             // btnDirectivas
             // 
@@ -438,6 +442,7 @@ namespace UI
             this.btnDirectivas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDirectivas.UseVisualStyleBackColor = false;
             this.btnDirectivas.Click += new System.EventHandler(this.btnDirectivas_Click);
+            this.btnDirectivas.MouseEnter += new System.EventHandler(this.btnDirectivas_MouseEnter);
             // 
             // btnMiembros
             // 
@@ -461,6 +466,7 @@ namespace UI
             this.btnMiembros.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMiembros.UseVisualStyleBackColor = false;
             this.btnMiembros.Click += new System.EventHandler(this.btnMiembros_Click);
+            this.btnMiembros.MouseEnter += new System.EventHandler(this.btnMiembros_MouseEnter);
             // 
             // btnDirectorio
             // 
@@ -484,6 +490,7 @@ namespace UI
             this.btnDirectorio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDirectorio.UseVisualStyleBackColor = false;
             this.btnDirectorio.Click += new System.EventHandler(this.btnDirectorio_Click);
+            this.btnDirectorio.MouseEnter += new System.EventHandler(this.btnDirectorio_MouseEnter);
             // 
             // btnGestionSecretaria
             // 
@@ -507,6 +514,7 @@ namespace UI
             this.btnGestionSecretaria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGestionSecretaria.UseVisualStyleBackColor = false;
             this.btnGestionSecretaria.Click += new System.EventHandler(this.btnGestionSecretaria_Click);
+            this.btnGestionSecretaria.MouseEnter += new System.EventHandler(this.btnGestionSecretaria_MouseEnter);
             // 
             // panelLogoContainer
             // 
@@ -522,6 +530,7 @@ namespace UI
             this.panelLogoContainer.Size = new System.Drawing.Size(186, 94);
             this.panelLogoContainer.TabIndex = 0;
             this.panelLogoContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelLogoContainer_MouseDown);
+            this.panelLogoContainer.MouseEnter += new System.EventHandler(this.panelLogoContainer_MouseEnter);
             // 
             // panelSidebarClose
             // 

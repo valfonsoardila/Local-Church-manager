@@ -105,8 +105,8 @@ namespace BLL
             try
             {
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(servidorNuevo.IdServidor);
-                if (cajaRegistradora != null)
+                var servidor = repositorio.BuscarPorIdentificacion(servidorNuevo.IdServidor);
+                if (servidor != null)
                 {
                     repositorio.Modificar(servidorNuevo);
                     return ($"El registro de {servidorNuevo.IdServidor} se ha modificado satisfactoriamente.");

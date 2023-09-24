@@ -11,7 +11,7 @@ namespace Entity
     {
         public Contacto(string id, string nombre, string apellido, string telefonoContacto, string telefonoWhatsapp, string oficio)
         {
-            Id = oficio;
+            IdContacto = oficio;
             Nombre=nombre;
             Apellido = apellido;
             TelefonoContacto=telefonoContacto;
@@ -22,7 +22,7 @@ namespace Entity
         {
 
         }
-        public string Id { get; set; }
+        public string IdContacto { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string TelefonoContacto { get; set; }
@@ -36,7 +36,7 @@ namespace Entity
             Random aleatorio = new Random();
             b = aleatorio.Next(100000, 200000);
             codigo = a + b;
-            Id = codigo;
+            IdContacto = codigo;
         }
         public void GenerarWhatsapp()
         {

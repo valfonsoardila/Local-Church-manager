@@ -41,9 +41,10 @@ namespace UI
             this.dateFechaDeReunion = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnImprimir = new FontAwesome.Sharp.IconButton();
-            this.btnModificar = new FontAwesome.Sharp.IconButton();
             this.btnRegistrar = new FontAwesome.Sharp.IconButton();
+            this.btnModificar = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.labelNumeroActa = new System.Windows.Forms.Label();
             this.labelFolio = new System.Windows.Forms.Label();
@@ -60,24 +61,28 @@ namespace UI
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabReuniones = new System.Windows.Forms.TabControl();
             this.tabLista = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnImprimirLista = new FontAwesome.Sharp.IconButton();
             this.btnGestionarReuniones = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridReunion = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textTotal = new System.Windows.Forms.TextBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboFecha = new System.Windows.Forms.ComboBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.labelListaDeReuniones = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).BeginInit();
@@ -89,8 +94,9 @@ namespace UI
             this.panel2.SuspendLayout();
             this.tabReuniones.SuspendLayout();
             this.tabLista.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReunion)).BeginInit();
             this.panelContenedorDeDirectorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
@@ -148,6 +154,8 @@ namespace UI
             // 
             // textOrdenDja
             // 
+            this.textOrdenDja.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textOrdenDja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textOrdenDja.Location = new System.Drawing.Point(14, 73);
             this.textOrdenDja.Multiline = true;
@@ -160,11 +168,13 @@ namespace UI
             // 
             // textActa
             // 
+            this.textActa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textActa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textActa.Location = new System.Drawing.Point(8, 227);
             this.textActa.Multiline = true;
             this.textActa.Name = "textActa";
-            this.textActa.Size = new System.Drawing.Size(761, 203);
+            this.textActa.Size = new System.Drawing.Size(761, 130);
             this.textActa.TabIndex = 33;
             this.textActa.Text = "Texto";
             this.textActa.Enter += new System.EventHandler(this.textActa_Enter);
@@ -221,14 +231,29 @@ namespace UI
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.btnImprimir);
-            this.panel7.Controls.Add(this.btnModificar);
-            this.panel7.Controls.Add(this.btnRegistrar);
+            this.panel7.Controls.Add(this.tableLayoutPanel2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel7.Location = new System.Drawing.Point(0, 421);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(803, 45);
             this.panel7.TabIndex = 17;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43F));
+            this.tableLayoutPanel2.Controls.Add(this.btnImprimir, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnRegistrar, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnModificar, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(803, 45);
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnImprimir
             // 
@@ -239,35 +264,19 @@ namespace UI
             this.btnImprimir.IconColor = System.Drawing.Color.Black;
             this.btnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImprimir.IconSize = 30;
-            this.btnImprimir.Location = new System.Drawing.Point(462, 5);
+            this.btnImprimir.Location = new System.Drawing.Point(460, 3);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnImprimir.Size = new System.Drawing.Size(109, 35);
-            this.btnImprimir.TabIndex = 14;
+            this.btnImprimir.TabIndex = 38;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = false;
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.BackColor = System.Drawing.Color.DarkRed;
-            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnModificar.IconChar = FontAwesome.Sharp.IconChar.FileEdit;
-            this.btnModificar.IconColor = System.Drawing.Color.WhiteSmoke;
-            this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnModificar.IconSize = 30;
-            this.btnModificar.Location = new System.Drawing.Point(333, 6);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(123, 35);
-            this.btnModificar.TabIndex = 13;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnModificar.UseVisualStyleBackColor = false;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnRegistrar
             // 
+            this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegistrar.BackColor = System.Drawing.Color.Green;
             this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -275,14 +284,34 @@ namespace UI
             this.btnRegistrar.IconColor = System.Drawing.Color.BlanchedAlmond;
             this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRegistrar.IconSize = 30;
-            this.btnRegistrar.Location = new System.Drawing.Point(230, 6);
+            this.btnRegistrar.Location = new System.Drawing.Point(242, 3);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(100, 35);
-            this.btnRegistrar.TabIndex = 12;
+            this.btnRegistrar.TabIndex = 36;
             this.btnRegistrar.Text = "Guardar";
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModificar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnModificar.IconChar = FontAwesome.Sharp.IconChar.FileEdit;
+            this.btnModificar.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnModificar.IconSize = 30;
+            this.btnModificar.Location = new System.Drawing.Point(348, 3);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(106, 35);
+            this.btnModificar.TabIndex = 37;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // panel6
             // 
@@ -472,8 +501,7 @@ namespace UI
             // 
             // tabLista
             // 
-            this.tabLista.Controls.Add(this.iconButton1);
-            this.tabLista.Controls.Add(this.btnGestionarReuniones);
+            this.tabLista.Controls.Add(this.tableLayoutPanel1);
             this.tabLista.Controls.Add(this.panel3);
             this.tabLista.Location = new System.Drawing.Point(4, 22);
             this.tabLista.Name = "tabLista";
@@ -483,45 +511,83 @@ namespace UI
             this.tabLista.Text = "Lista de reuniones";
             this.tabLista.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.btnImprimirLista, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnGestionarReuniones, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 412);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(797, 51);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // btnImprimirLista
+            // 
+            this.btnImprimirLista.BackColor = System.Drawing.Color.Orange;
+            this.btnImprimirLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirLista.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimirLista.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimirLista.IconColor = System.Drawing.Color.Black;
+            this.btnImprimirLista.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimirLista.IconSize = 30;
+            this.btnImprimirLista.Location = new System.Drawing.Point(401, 3);
+            this.btnImprimirLista.Name = "btnImprimirLista";
+            this.btnImprimirLista.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimirLista.Size = new System.Drawing.Size(124, 35);
+            this.btnImprimirLista.TabIndex = 17;
+            this.btnImprimirLista.Text = "Imprimir Lista";
+            this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimirLista.UseVisualStyleBackColor = false;
+            this.btnImprimirLista.Click += new System.EventHandler(this.btnImprimirLista_Click);
+            // 
             // btnGestionarReuniones
             // 
+            this.btnGestionarReuniones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGestionarReuniones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
             this.btnGestionarReuniones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGestionarReuniones.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnGestionarReuniones.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnGestionarReuniones.IconColor = System.Drawing.Color.Black;
             this.btnGestionarReuniones.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarReuniones.Location = new System.Drawing.Point(243, 412);
+            this.btnGestionarReuniones.Location = new System.Drawing.Point(260, 3);
             this.btnGestionarReuniones.Name = "btnGestionarReuniones";
             this.btnGestionarReuniones.Size = new System.Drawing.Size(135, 35);
-            this.btnGestionarReuniones.TabIndex = 1;
+            this.btnGestionarReuniones.TabIndex = 16;
             this.btnGestionarReuniones.Text = "Gestionar reuniones";
             this.btnGestionarReuniones.UseVisualStyleBackColor = false;
             this.btnGestionarReuniones.Click += new System.EventHandler(this.btnGestionarReuniones_Click);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.dataGridReunion);
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(37, 14);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(714, 392);
             this.panel3.TabIndex = 0;
             // 
-            // dataGridView1
+            // dataGridReunion
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridReunion.AllowUserToAddRows = false;
+            this.dataGridReunion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridReunion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
             this.Borrar});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 32);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(714, 360);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridReunion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridReunion.Location = new System.Drawing.Point(0, 32);
+            this.dataGridReunion.Name = "dataGridReunion";
+            this.dataGridReunion.ReadOnly = true;
+            this.dataGridReunion.RowHeadersVisible = false;
+            this.dataGridReunion.Size = new System.Drawing.Size(714, 360);
+            this.dataGridReunion.TabIndex = 1;
             // 
             // Seleccionar
             // 
@@ -541,8 +607,10 @@ namespace UI
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.Controls.Add(this.label27);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboBox1);
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboFecha);
             this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.btnCloseSearchLibreta);
@@ -552,6 +620,26 @@ namespace UI
             this.panelContenedorDeDirectorio.Name = "panelContenedorDeDirectorio";
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(714, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label27.Location = new System.Drawing.Point(269, 9);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(41, 16);
+            this.label27.TabIndex = 31;
+            this.label27.Text = "Total";
+            // 
+            // textTotal
+            // 
+            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotal.Location = new System.Drawing.Point(315, 6);
+            this.textTotal.Name = "textTotal";
+            this.textTotal.Size = new System.Drawing.Size(46, 22);
+            this.textTotal.TabIndex = 30;
+            this.textTotal.Text = "0";
             // 
             // iconPictureBox3
             // 
@@ -567,14 +655,15 @@ namespace UI
             this.iconPictureBox3.TabIndex = 9;
             this.iconPictureBox3.TabStop = false;
             // 
-            // comboBox1
+            // comboFecha
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(374, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.Text = "Genero";
+            this.comboFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFecha.FormattingEnabled = true;
+            this.comboFecha.Location = new System.Drawing.Point(374, 4);
+            this.comboFecha.Name = "comboFecha";
+            this.comboFecha.Size = new System.Drawing.Size(121, 24);
+            this.comboFecha.TabIndex = 8;
+            this.comboFecha.Text = "Fecha";
             // 
             // btSearchLibreta
             // 
@@ -634,24 +723,6 @@ namespace UI
             this.labelListaDeReuniones.TabIndex = 0;
             this.labelListaDeReuniones.Text = "Lista de reuniones";
             // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.Orange;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(384, 412);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton1.Size = new System.Drawing.Size(124, 35);
-            this.iconButton1.TabIndex = 15;
-            this.iconButton1.Text = "Imprimir Lista";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            // 
             // FormReuniones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -667,6 +738,7 @@ namespace UI
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -681,8 +753,9 @@ namespace UI
             this.panel2.ResumeLayout(false);
             this.tabReuniones.ResumeLayout(false);
             this.tabLista.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReunion)).EndInit();
             this.panelContenedorDeDirectorio.ResumeLayout(false);
             this.panelContenedorDeDirectorio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
@@ -701,22 +774,19 @@ namespace UI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TabControl tabReuniones;
         private System.Windows.Forms.TabPage tabLista;
-        private FontAwesome.Sharp.IconButton btnGestionarReuniones;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridReunion;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboFecha;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
         private System.Windows.Forms.TextBox textSerachLibreta;
         private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
         private System.Windows.Forms.Label labelListaDeReuniones;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel7;
-        private FontAwesome.Sharp.IconButton btnModificar;
-        private FontAwesome.Sharp.IconButton btnRegistrar;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label labelNumeroActa;
         private System.Windows.Forms.Label labelFolio;
@@ -733,9 +803,16 @@ namespace UI
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textActa;
         private System.Windows.Forms.Label label1;
-        private FontAwesome.Sharp.IconButton btnImprimir;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textOrdenDja;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnImprimirLista;
+        private FontAwesome.Sharp.IconButton btnGestionarReuniones;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private FontAwesome.Sharp.IconButton btnImprimir;
+        private FontAwesome.Sharp.IconButton btnRegistrar;
+        private FontAwesome.Sharp.IconButton btnModificar;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textTotal;
     }
 }

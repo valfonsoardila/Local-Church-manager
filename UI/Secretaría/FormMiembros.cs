@@ -2,19 +2,55 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using Entity;
 
 namespace UI
 {
     public partial class FormMiembros : Form
     {
+        RutasTxtService rutasTxtService = new RutasTxtService();
+        MiembroService miembroService;
+        List<Miembro> miembros;
+        Miembro miembro;
         public FormMiembros()
         {
+            miembroService = new MiembroService(ConfigConnection.ConnectionString);
             InitializeComponent();
+            Inicializar();
+        }
+        private void Inicializar()
+        {
+            ConsultarYLlenarGridDeMiembros();
+        }
+        private void ConsultarYLlenarGridDeMiembros()
+        {
+            ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
+            string tipo = comboGenero.Text;
+            if (tipo == "Genero")
+            {
+                textTotal.Enabled = true;
+                textTotalHombres.Enabled = true;
+                textTotalMujeres.Enabled = true;
+                dataGridMiembros.DataSource = null;
+                respuesta = miembroService.ConsultarTodos();
+                miembros = respuesta.Miembros.ToList();
+                if (respuesta.Miembros.Count != 0 && respuesta.Miembros != null)
+                {
+                    dataGridMiembros.DataSource = respuesta.Miembros;
+                    Borrar.Visible = true;
+                    textTotal.Text = miembroService.Totalizar().Cuenta.ToString();
+                    textTotalHombres.Text = miembroService.TotalizarTipo("Hombre").Cuenta.ToString();
+                    textTotalMujeres.Text = miembroService.TotalizarTipo("Mujer").Cuenta.ToString();
+                }
+            }
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -284,15 +320,55 @@ namespace UI
                 textLugar.Text = "Lugar";
             }
         }
-
+        private Miembro MapearDatosMiembro()
+        {
+            miembro = new Miembro();
+            miembro.Folio = comboFolio.Text;
+            miembro.Nombre = textNombre.Text;
+            miembro.TipoDoc = comboTipoDocumento.Text;
+            miembro.NumeroDoc = textNumeroDeIdentificacion.Text;
+            miembro.FechaNacimiento = dateFechaDeNacimiento.Value;
+            miembro.Direccion = textDireccion.Text;
+            miembro.Telefono = textTelefono.Text;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                picturePerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                miembro.ImagenPerfil = ms.ToArray();
+            }
+            miembro.ParentezcoPadre = textNombrePadre.Text;
+            miembro.ParentezcoMadre = textNombreMadre.Text;
+            miembro.FechaBautizmo = dateFechaDeBautismo.Value;
+            miembro.TiempoDeConversion = Convert.ToInt32(textTiempoDeConversion.Text);
+            miembro.FechaRecepcionEspirituSanto = dateFechaEspirituSanto.Value;
+            miembro.LugarRecepcionespirituSanto = textLugarRecepcionPromesa.Text;
+            miembro.PastorOficiante = comboPastorOficiante.Text;
+            miembro.FechaMembresiaIglesiaProcedente = dateFechaMembresia.Value;
+            miembro.TiempoDeConversion = Convert.ToInt32(textTiempoDeConversion.Text);
+            miembro.EstadoServicio = comboEstadoMiembro.Text;
+            miembro.FechaDeCorreccion = dateFechaDisciplina.Value;
+            miembro.TiempoEnActoCorrectivo = Convert.ToInt32(textTiempoDisciplina.Text);
+            miembro.LugarRecepcionespirituSanto = textLugarRecepcionPromesa.Text;
+            miembro.EstadoMembresia = comboEstadoMiembro.Text;
+            miembro.LugarDeTraslado = textLugar.Text;
+            return miembro;
+        }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            Miembro miembro = MapearDatosMiembro();
+            string mensaje = miembroService.Guardar(miembro);
+            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            ConsultarYLlenarGridDeMiembros();
             tabMiembros.SelectedIndex = 0;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             tabMiembros.SelectedIndex = 0;
+        }
+
+        private void btnCargarFoto_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

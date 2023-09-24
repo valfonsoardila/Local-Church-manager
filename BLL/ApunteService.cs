@@ -23,7 +23,7 @@ namespace BLL
             {
                 apunte.GenerarIdNota();
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(apunte.Id) == null)
+                if (repositorio.BuscarPorIdentificacion(apunte.IdNota) == null)
                 {
                     repositorio.Guardar(apunte);
                     return $"Apunte registrado correctamente";
@@ -152,7 +152,7 @@ namespace BLL
                 {
                     repositorio.Eliminar(apunte);
                     conexion.Close();
-                    return ($"El registro {apunte.Id} se ha eliminado satisfactoriamente.");
+                    return ($"El registro {apunte.IdNota} se ha eliminado satisfactoriamente.");
                 }
                 return ($"Lo sentimos, {identificacion} no se encuentra registrada.");
             }
@@ -170,15 +170,15 @@ namespace BLL
             {
                 apunteNuevo.GenerarIdNota();
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(apunteNuevo.Id);
-                if (cajaRegistradora != null)
+                var apunte = repositorio.BuscarPorIdentificacion(apunteNuevo.IdNota);
+                if (apunte != null)
                 {
                     repositorio.Modificar(apunteNuevo);
-                    return ($"El registro de {apunteNuevo.Id} se ha modificado satisfactoriamente.");
+                    return ($"El registro de {apunteNuevo.IdNota} se ha modificado satisfactoriamente.");
                 }
                 else
                 {
-                    return ($"Lo sentimos, el apunte con Id {apunteNuevo.Id} no se encuentra registrada.");
+                    return ($"Lo sentimos, el apunte con IdNota {apunteNuevo.IdNota} no se encuentra registrada.");
                 }
             }
             catch (Exception e)
@@ -259,7 +259,7 @@ namespace BLL
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Apunte> Apuntees { get; set; }
+        public IList<Apunte> Apuntes { get; set; }
     }
     public class BusquedaApunteRespuesta
     {
