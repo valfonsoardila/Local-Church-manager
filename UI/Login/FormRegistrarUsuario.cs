@@ -146,7 +146,7 @@ namespace UI
         {
             BuscarPorProgramador();
             BuscarPorRol();
-            if (comboRol.Text == "Usuario" || comboRol.Text == "Administrador" || comboRol.Text == "Programador")
+            if (comboRol.Text == "Secretario(a)" || comboRol.Text == "Tesorero(a)" || comboRol.Text == "Pastor" || comboRol.Text == "Programador")
             {
                 if (programadorExistenteValido != true)
                 {

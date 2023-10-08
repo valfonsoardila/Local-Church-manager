@@ -15,11 +15,26 @@ namespace BLL
         {
             cadenaConexionRepository = new CadenaConexionXMLRepository();
         }
-        public string Modificar(CadenaConexionXML cadenaConexion, string oldServer)
+        public string Consultar()
         {
             try
             {
-                cadenaConexionRepository.Modificar(cadenaConexion, oldServer);
+                List<CadenaConexionXML> appConfig = cadenaConexionRepository.Consultar();
+                string cadenaConvertida = appConfig[8].Cadena;
+                return cadenaConvertida;
+            }
+            catch (Exception e)
+            {
+                // Manejo de excepciones aquí, si es necesario
+                // Puedes lanzar una excepción personalizada o manejarla de otra manera
+                throw e;
+            }
+        }
+        public string Modificar(CadenaConexionXML cadenaConexion, string oldServer, string ui)
+        {
+            try
+            {
+                cadenaConexionRepository.Modificar(cadenaConexion, oldServer, ui);
                 return "Producto en txt registro Satisfactoriamente";
             }
             catch (Exception e)

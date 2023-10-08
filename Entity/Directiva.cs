@@ -29,7 +29,7 @@ namespace Entity
         public string Observacion { get; set; }
         public void GenerarIdDirectiva()
         {
-            string a = "#Directiva";
+            string a = "#Servidor";
             int b;
             string codigo;
             Random aleatorio = new Random();

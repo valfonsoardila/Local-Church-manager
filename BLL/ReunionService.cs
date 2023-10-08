@@ -21,7 +21,6 @@ namespace BLL
         {
             try
             {
-                reunion.GenerarNumeroActa();
                 conexion.Open();
                 if (repositorio.BuscarPorIdentificacion(reunion.NumeroActa) == null)
                 {
@@ -105,7 +104,6 @@ namespace BLL
         {
             try
             {
-                reunionNuevo.GenerarNumeroActa();
                 conexion.Open();
                 var reunion = repositorio.BuscarPorIdentificacion(reunionNuevo.NumeroActa);
                 if (reunion != null)

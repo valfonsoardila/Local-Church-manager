@@ -20,8 +20,7 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into APUNTE(IdNota, Titulo, Nota) " +
-                    "Values (@IdNota, @Titulo, @Nota)";
+                command.CommandText = "Insert Into APUNTE(IdNota, Titulo, Nota) Values (@IdNota, @Titulo, @Nota)";
                 command.Parameters.AddWithValue("@IdNota", apunte.IdNota);
                 command.Parameters.AddWithValue("@Titulo", apunte.Titulo);
                 command.Parameters.AddWithValue("@Nota", apunte.Nota);
@@ -76,6 +75,7 @@ namespace DAL
                 command.Parameters.AddWithValue("@IdNota", apunte.IdNota);
                 command.Parameters.AddWithValue("@Titulo", apunte.Titulo);
                 command.Parameters.AddWithValue("@Nota", apunte.Nota);
+                var filas = command.ExecuteNonQuery();
             }
         }
         private Apunte DataReaderMapToCliente(SqlDataReader dataReader)

@@ -25,9 +25,5 @@ namespace Entity
         public string LugarDeReunion { get; set; }
         public string OrdenDelDia { get; set; }
         public string TextoActa { get; set; }
-        public void GenerarNumeroActa()
-        {
-
-        }
     }
 }

@@ -11,7 +11,7 @@ namespace Entity
     {
         public Contacto(string id, string nombre, string apellido, string telefonoContacto, string telefonoWhatsapp, string oficio)
         {
-            IdContacto = oficio;
+            IdContacto = id;
             Nombre=nombre;
             Apellido = apellido;
             TelefonoContacto=telefonoContacto;
@@ -40,9 +40,9 @@ namespace Entity
         }
         public void GenerarWhatsapp()
         {
-            string indicativo = "+57 ";
+            string indicativo = "+57";
             string numeroCelular = TelefonoContacto;
-            TelefonoWhatsapp = indicativo + numeroCelular;
+            TelefonoWhatsapp = indicativo+TelefonoContacto;
         }
 
     }

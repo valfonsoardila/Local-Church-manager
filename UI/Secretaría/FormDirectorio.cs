@@ -11,6 +11,12 @@ using System.Windows.Forms;
 using Entity;
 using static System.Net.Mime.MediaTypeNames;
 using System.IO;
+using System.Windows.Markup;
+using System.Diagnostics;
+using WhatsAppApi;
+using System.Windows.Controls;
+using System.Net.Http.Headers;
+using System.Net.Http;
 
 namespace UI
 {
@@ -20,6 +26,8 @@ namespace UI
         ContactoService contactoService;
         List<Contacto> contactos;
         Contacto contacto;
+        string id = "";
+        bool encontrado = false;
         public FormDirectorio()
         {
             contactoService = new ContactoService(ConfigConnection.ConnectionString);
@@ -34,11 +42,9 @@ namespace UI
         {
             ConsultaContactoRespuesta respuesta = new ConsultaContactoRespuesta();
             string tipo = comboOficioLibreta.Text;
-            if (tipo == "Oficio")
+            if (tipo == "Oficio" || tipo == "Todos")
             {
                 textTotal.Enabled = true;
-                textTotalHombres.Enabled = true;
-                textTotalMujeres.Enabled = true;
                 dataGridContactos.DataSource = null;
                 respuesta = contactoService.ConsultarTodos();
                 contactos = respuesta.Contactos.ToList();
@@ -46,10 +52,16 @@ namespace UI
                     dataGridContactos.DataSource = respuesta.Contactos;
                     Borrar.Visible = true;
                     textTotal.Text = contactoService.Totalizar().Cuenta.ToString();
-                    textTotalHombres.Text = contactoService.TotalizarTipo("Hombre").Cuenta.ToString();
-                    textTotalMujeres.Text = contactoService.TotalizarTipo("Mujer").Cuenta.ToString();
                 }
             }
+        }
+        void LimpiarCampos()
+        {
+            textNombre.Text= "Nombre";
+            textApellido.Text = "Apellido";
+            textCelular.Text = "Celular";
+            textNumeroWhatsapp.Text = "Numero de whatsapp";
+            comboOficioRegistrar.Text="Oficio";
         }
         private void btnAtras_Click(object sender, EventArgs e)
         {
@@ -62,26 +74,61 @@ namespace UI
             btnCloseSearchLibreta.Visible = true;
             textSerachLibreta.Visible = true;
         }
+        void FiltroPorId(string id)
+        {
+            BusquedaContactoRespuesta respuesta = new BusquedaContactoRespuesta();
+            respuesta = contactoService.BuscarPorIdentificacion(id);
+            var registro = respuesta.Contacto;
+            if (registro != null)
+            {
+                encontrado = true;
+                var contactos = new List<Contacto> { registro };
+                textNombre.Text = contactos[0].Nombre;
+                textApellido.Text= contactos[0].Apellido;
+                textCelular.Text= contactos[0].TelefonoContacto;
+                textNumeroWhatsapp.Text= contactos[0].TelefonoWhatsapp;
+                comboOficioRegistrar.Text= contactos[0].Oficio;
+            }
+        }
+        void FiltroPorNombre(string filtro)
+        {
+            BusquedaContactoRespuesta respuesta = new BusquedaContactoRespuesta();
+            respuesta = contactoService.BuscarPorNombre(filtro);
+            var registro = respuesta.Contacto;
+            if (registro != null)
+            {
+                dataGridContactos.DataSource = null;
+                var contactos = new List<Contacto> { registro };
+                dataGridContactos.DataSource = contactos;
+                encontrado = true;
+            } 
+        }
+        void FiltroPorOficio(string filtro)
+        {
+            BusquedaContactoRespuesta respuesta = new BusquedaContactoRespuesta();
+            respuesta = contactoService.BuscarPorOficio(filtro);
+            var registro = respuesta.Contacto;
+            if (registro != null)
+            {
+                dataGridContactos.DataSource = null;
+                var contactos = new List<Contacto> { registro };
+                dataGridContactos.DataSource = contactos;
+            }
+            else
+            {
+                dataGridContactos.DataSource = null;
+            }
+        }
 
         private void btnCloseSearchLibreta_Click(object sender, EventArgs e)
         {
             btnCloseSearchLibreta.Visible = false;
             btSearchLibreta.Visible = true;
             textSerachLibreta.Visible = false;
-        }
-
-        private void btnSearchRegistrar_Click(object sender, EventArgs e)
-        {
-            btnSearchRegistrar.Visible = false;
-            btnCloseSearchRegistrar.Visible = true;
-            textSearchRegistrar.Visible = true;
-        }
-
-        private void btnCloseSearchRegistrar_Click(object sender, EventArgs e)
-        {
-            btnCloseSearchRegistrar.Visible = false;
-            btnSearchRegistrar.Visible = true;
-            textSearchRegistrar.Visible = false;
+            if (textSerachLibreta.Text != "")
+            {
+                textSerachLibreta.Text = "Buscar por nombre";
+            }
         }
 
         private void textNombre_Enter(object sender, EventArgs e)
@@ -164,22 +211,6 @@ namespace UI
             }
         }
 
-        private void textSearchRegistrar_Enter(object sender, EventArgs e)
-        {
-            if (textSearchRegistrar.Text == "Buscar")
-            {
-                textSearchRegistrar.Text = "";
-            }
-        }
-
-        private void textSearchRegistrar_Leave(object sender, EventArgs e)
-        {
-            if (textSearchRegistrar.Text == "")
-            {
-                textSearchRegistrar.Text = "Buscar";
-            }
-        }
-
         private void textSerachLibreta_Enter(object sender, EventArgs e)
         {
             if (textSerachLibreta.Text == "Buscar")
@@ -203,6 +234,7 @@ namespace UI
         private Contacto MapearDatosContacto()
         {
             contacto = new Contacto();
+            contacto.IdContacto = id;
             contacto.Nombre = textNombre.Text;
             contacto.Apellido = textApellido.Text;
             contacto.TelefonoContacto = textCelular.Text;
@@ -216,12 +248,157 @@ namespace UI
             string mensaje = contactoService.Guardar(contacto);
             MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             ConsultarYLlenarGridDeContactos();
+            LimpiarCampos();
             tabDirectorio.SelectedIndex = 0;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            Contacto nuevoContacto = MapearDatosContacto();
+            string mensaje = contactoService.Modificar(nuevoContacto);
+            MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            ConsultarYLlenarGridDeContactos();
+            LimpiarCampos();
             tabDirectorio.SelectedIndex = 0;
+        }
+
+        private void textCelular_TextChanged(object sender, EventArgs e)
+        {
+            if (textCelular.Text != "")
+            {
+                textNumeroWhatsapp.Text = "+57"+textCelular.Text;
+            }
+        }
+
+        private void textNumeroWhatsapp_TextChanged(object sender, EventArgs e)
+        {
+            //if (textNumeroWhatsapp.Text.StartsWith("+57"))
+            //{
+            //    textCelular.Text = textNumeroWhatsapp.Text.Substring(3);
+            //}
+        }
+
+        private void textSerachLibreta_TextChanged(object sender, EventArgs e)
+        {
+            var filtro = textSerachLibreta.Text;
+            if (textSerachLibreta.Text != "" && textSerachLibreta.Text != "Buscar por nombre")
+            {
+                FiltroPorNombre(filtro);
+                if (encontrado == false)
+                {
+                    dataGridContactos.CurrentCell = null;
+                    foreach (DataGridViewRow fila in dataGridContactos.Rows)
+                    {
+                        fila.Visible = false;
+                    };
+                    foreach (DataGridViewRow fila in dataGridContactos.Rows)
+                    {
+                        int i = 0;
+                        foreach (DataGridViewCell celda in fila.Cells)
+                        {
+                            if (i == 4)
+                            {
+                                if ((celda.Value.ToString().ToUpper()).IndexOf(textSerachLibreta.Text.ToUpper()) == 0)
+                                {
+                                    fila.Visible = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    if ((celda.Value.ToString() == (textSerachLibreta.Text.ToUpper())))
+                                    {
+                                        fila.Visible = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            i = i + 1;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ConsultarYLlenarGridDeContactos();
+            }
+        }
+        void EliminarContacto(string id)
+        {
+            string mensaje = contactoService.Eliminar(id);
+            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void comboOficioLibreta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var filtro = comboOficioLibreta.Text;
+            if (comboOficioLibreta.Text != "" && comboOficioLibreta.Text != "Todos")
+            {
+                FiltroPorOficio(filtro);
+            }
+            else
+            {
+                ConsultarYLlenarGridDeContactos();
+            }
+        }
+
+        private void comboOficioLibreta_TextChanged(object sender, EventArgs e)
+        {
+            var filtro = comboOficioLibreta.Text;
+            if (comboOficioLibreta.Text != "")
+            {
+                FiltroPorOficio(filtro);
+            }
+        }
+        async Task enviarMensajeAsync(string celular)
+        {
+            //Token
+            string token = "EAAcZBA5ZAs09QBO5TC6HJrcI56BJVBSB3uyiYbguTYpjf67lL9cDczXSsYI4BiROHw2n9BIpp0nBuVmuvNv0AZCzIlIKEcwNZAnlD8AmZBf7dnIZAmPDmzxu3zbY2MGZAVuB9FLFn42UM8Cz3xG3Af3RAZBbHCdVADFF3vGgL7hhpX1ahQmCUFXFqaUC96fucu9GeAemsevGyAeRUSuEKo8ZD";
+            //Identificador de número de teléfono
+            string idTelefono = "115288798221114";
+            //Nuestro telefono
+            string telefono = $"57{celular}";
+            HttpClient client = new HttpClient();
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://graph.facebook.com/v15.0/" + idTelefono + "/messages");
+            request.Headers.Add("Authorization", "Bearer " + token);
+            request.Content = new StringContent("{ \"messaging_product\": \"whatsapp\", \"to\": \"" + telefono + "\", \"type\": \"template\", \"template\": { \"name\": \"hello_world\", \"language\": { \"code\": \"en_US\" } } }");
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            HttpResponseMessage response = await client.SendAsync(request);
+            //response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+        }
+        private void dataGridContactos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var telefono = "";
+            if (dataGridContactos.DataSource != null)
+            {
+                if (dataGridContactos.Columns[e.ColumnIndex].Name == "Borrar")
+                {
+                    id = Convert.ToString(dataGridContactos.CurrentRow.Cells["IdContacto"].Value.ToString());
+                    telefono = Convert.ToString(dataGridContactos.CurrentRow.Cells["TelefonoContacto"].Value.ToString());
+                    EliminarContacto(id);
+                    ConsultarYLlenarGridDeContactos();
+                }
+                else
+                {
+                    if (dataGridContactos.Columns[e.ColumnIndex].Name == "Whatsapp")
+                    {
+                        telefono = Convert.ToString(dataGridContactos.CurrentRow.Cells["TelefonoContacto"].Value.ToString());
+                        enviarMensajeAsync(telefono);
+                    }
+                    else
+                    {
+                        if (dataGridContactos.Columns[e.ColumnIndex].Name == "Editar")
+                        {
+                            id = Convert.ToString(dataGridContactos.CurrentRow.Cells["IdContacto"].Value.ToString());
+                            FiltroPorId(id);
+                            if (encontrado == true)
+                            {
+                                tabDirectorio.SelectedIndex = 1;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

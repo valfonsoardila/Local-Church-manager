@@ -43,10 +43,10 @@ namespace BLL
             {
 
                 conexion.Open();
-                respuesta.Apuntees = repositorio.ConsultarTodos();
+                respuesta.Apuntes = repositorio.ConsultarTodos();
                 conexion.Close();
                 respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Apuntees.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
+                respuesta.Mensaje = (respuesta.Apuntes.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
                 return respuesta;
             }
             catch (Exception e)
@@ -168,7 +168,6 @@ namespace BLL
         {
             try
             {
-                apunteNuevo.GenerarIdNota();
                 conexion.Open();
                 var apunte = repositorio.BuscarPorIdentificacion(apunteNuevo.IdNota);
                 if (apunte != null)

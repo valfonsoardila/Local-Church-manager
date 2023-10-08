@@ -28,6 +28,8 @@ namespace UI
         string idIglesia = "#Iglesia";
         string Server;
         string newServer;
+        string newBd;
+        string newUi;
         string connectionString;
         string originalConnection;
         string primeraCadena;
@@ -272,7 +274,7 @@ namespace UI
             if (result == DialogResult.OK)
             {
                 string ruta = dialog.SelectedPath;
-                textCadenaConexion.Text = ruta;
+                textServidor.Text = ruta;
             }
         }
         private void btnBuscarRutaVendido_Click(object sender, EventArgs e)
@@ -287,15 +289,15 @@ namespace UI
         }
         private void ModificarCadenaConexion()
         {
-            if (textCadenaConexion.Text != "")
+            if (textServidor.Text != "")
             {
                 primeraCadena = "        <add name=" + '"' + "conexion" + '"' + " connectionString=" + '"';
-                segundaCadenaModificada = "Server=" + newServer + ";Database=AdminPharm;Trusted_Connection = True; MultipleActiveResultSets = true" + '"' + " />";
+                segundaCadenaModificada = "Server=" + newServer + ";Database="+newBd+";Trusted_Connection = True; MultipleActiveResultSets = true" + '"' + " />";
                 segundaCadenaOriginal = Server + '"' + " />";
 
                 cadenaConexion.Cadena = primeraCadena + segundaCadenaModificada;
                 originalConnection = primeraCadena + segundaCadenaOriginal;
-                cadenaConexionService.Modificar(cadenaConexion, originalConnection);
+                cadenaConexionService.Modificar(cadenaConexion, originalConnection, newUi);
             }
         }
         private void EncontrarCadenaDeConexion()
@@ -319,9 +321,19 @@ namespace UI
             }
         }
 
-        private void textCadenaConexion_TextChanged(object sender, EventArgs e)
+        private void textUI_TextChanged(object sender, EventArgs e)
         {
-            newServer = textCadenaConexion.Text;
+            newUi = textUI.Text;
+        }
+
+        private void textServidor_TextChanged(object sender, EventArgs e)
+        {
+            newServer = textServidor.Text;
+        }
+
+        private void textBD_TextChanged(object sender, EventArgs e)
+        {
+            newBd = textBD.Text;
         }
     }
 }

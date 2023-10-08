@@ -20,8 +20,8 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into DIRECTIVA(IdDirectiva, Nombre, Cargo, Comite, Vigencia, Observacion, ) " +
-                    "Values (@IdDirectiva, @Nombre, @Cargo, @Comite, @Vigencia, Observacion, )";
+                command.CommandText = "Insert Into DIRECTIVA(IdDirectiva, Nombre, Cargo, Comite, Vigencia, Observacion) " +
+                    "Values (@IdDirectiva, @Nombre, @Cargo, @Comite, @Vigencia, @Observacion)";
                 command.Parameters.AddWithValue("@IdDirectiva", directiva.IdDirectiva);
                 command.Parameters.AddWithValue("@Nombre", directiva.Nombre);
                 command.Parameters.AddWithValue("@Cargo", directiva.Cargo);
@@ -42,7 +42,7 @@ namespace DAL
         }
         public List<Directiva> ConsultarTodos()
         {
-            List<Directiva> contactos = new List<Directiva>();
+            List<Directiva> directivas = new List<Directiva>();
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = "Select IdDirectiva, Nombre, Cargo, Comite, Vigencia, Observacion from DIRECTIVA ";
@@ -51,12 +51,50 @@ namespace DAL
                 {
                     while (dataReader.Read())
                     {
-                        Directiva directiva = DataReaderMapToCliente(dataReader);
-                        contactos.Add(directiva);
+                        Directiva directiva = DataReaderMapToDirectiva(dataReader);
+                        directivas.Add(directiva);
                     }
                 }
             }
-            return contactos;
+            return directivas;
+        }
+        public List<Directiva> BuscarPorDirectiva(string dirctiva)
+        {
+            List<Directiva> directivas = new List<Directiva>();
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from DIRECTIVA where Comite=@Comite";
+                command.Parameters.AddWithValue("@Comite", dirctiva);
+                var dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        Directiva directiva = DataReaderMapToDirectiva(dataReader);
+                        directivas.Add(directiva);
+                    }
+                }
+            }
+            return directivas;
+        }
+        public List<Directiva> BuscarPorNombre(string nombre)
+        {
+            List<Directiva> directivas = new List<Directiva>();
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from DIRECTIVA where Nombre=@Nombre";
+                command.Parameters.AddWithValue("@Apellido", nombre);
+                var dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        Directiva directiva = DataReaderMapToDirectiva(dataReader);
+                        directivas.Add(directiva);
+                    }
+                }
+            }
+            return directivas;
         }
         public Directiva BuscarPorIdentificacion(string id)
         {
@@ -67,14 +105,14 @@ namespace DAL
                 command.Parameters.AddWithValue("@IdDirectiva", id);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
-                return DataReaderMapToCliente(dataReader);
+                return DataReaderMapToDirectiva(dataReader);
             }
         }
         public void Modificar(Directiva directiva)
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update DIRECTIVA set Nombre=@Nombre, Cargo=@Cargo, Comite=@Comite. Vigencia=@Vigencia, Observacion=@Observacion
+                command.CommandText = @"update DIRECTIVA set Nombre=@Nombre, Cargo=@Cargo, Comite=@Comite, Vigencia=@Vigencia, Observacion=@Observacion
                                         where IdDirectiva=@IdDirectiva";
                 command.Parameters.AddWithValue("@IdDirectiva", directiva.IdDirectiva);
                 command.Parameters.AddWithValue("@Nombre", directiva.Nombre);
@@ -82,9 +120,10 @@ namespace DAL
                 command.Parameters.AddWithValue("@Comite", directiva.Comite);
                 command.Parameters.AddWithValue("@Vigencia", directiva.Vigencia);
                 command.Parameters.AddWithValue("@Observacion", directiva.Observacion);
+                var filas = command.ExecuteNonQuery();
             }
         }
-        private Directiva DataReaderMapToCliente(SqlDataReader dataReader)
+        private Directiva DataReaderMapToDirectiva(SqlDataReader dataReader)
         {
             if (!dataReader.HasRows) return null;
             Directiva directiva = new Directiva();

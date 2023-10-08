@@ -12,7 +12,7 @@ namespace DAL
 {
     public class CadenaConexionXMLRepository
     {
-        private string ruta = @"AdminPharm.exe.config";
+        private string ruta = @"";
         
         public void Guardar(CadenaConexionXML cadenaConexion)
         {
@@ -22,27 +22,40 @@ namespace DAL
             escritor.Close();
             file.Close();
         }
-        public void Modificar(CadenaConexionXML cadenaConexion, string oldServer)
+        public void Modificar(CadenaConexionXML cadenaConexion, string oldServer, string ui)
         {
-            List<CadenaConexionXML> cadenaConexions = new List<CadenaConexionXML>();
-            cadenaConexions = Consultar();
+            if (ui != "")
+            {
+                ruta = @"" + ui + ".exe.config";
+            }
+            else
+            {
+                ruta = @"UI.exe.config";
+            }
+            List<CadenaConexionXML> appconfig = new List<CadenaConexionXML>();
+            appconfig = Consultar();
             FileStream file = new FileStream(ruta, FileMode.Create);
             file.Close();
-            foreach (var item in cadenaConexions)
+            if (appconfig.Count > 0)
             {
-                if (!EsEncontrado(item.Cadena, oldServer))
+                int i = 0;
+                foreach (var item in appconfig)
                 {
-                    Guardar(item);
-                }
-                else
-                {
-                    Guardar(cadenaConexion);
+                    if (i == 8)
+                    {
+                        Guardar(cadenaConexion);
+                    }
+                    else
+                    {
+                        Guardar(item);
+                    }
+                    i = i + 1;
                 }
             }
         }
         public List<CadenaConexionXML> Consultar()
         {
-            List<CadenaConexionXML> cadenaConexions = new List<CadenaConexionXML>();
+            List<CadenaConexionXML> appconfig = new List<CadenaConexionXML>();
             FileStream file = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader lector = new StreamReader(ruta);
             var linea = "";
@@ -53,11 +66,11 @@ namespace DAL
                 {
                     Cadena = dato[0] + ">",
                 };
-                cadenaConexions.Add(cadenaConexion);
+                appconfig.Add(cadenaConexion);
             }
             lector.Close();
             file.Close();
-            return cadenaConexions;
+            return appconfig;
         }
         private bool EsEncontrado(string cadenaConexionRegistrada, string newServerBuscada)
         {

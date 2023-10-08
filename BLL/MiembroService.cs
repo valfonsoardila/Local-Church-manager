@@ -21,10 +21,10 @@ namespace BLL
         {
             try
             {
-                miembro.GenerarFolio();
+                miembro.CalcularEdad();
                 miembro.CalcularTiempoDeConversion();
                 miembro.CalcularMembresiaIglesiaProcedente();
-                miembro.CalcularTiempoDeCorecion();
+                miembro.CalcularTiempoDeCorrecion();
                 conexion.Open();
                 if (repositorio.BuscarPorIdentificacion(miembro.Folio) == null)
                 {
@@ -46,10 +46,10 @@ namespace BLL
             {
 
                 conexion.Open();
-                respuesta.Miembroes = repositorio.ConsultarTodos();
+                respuesta.Miembros = repositorio.ConsultarTodos();
                 conexion.Close();
                 respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Miembroes.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
+                respuesta.Mensaje = (respuesta.Miembros.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
                 return respuesta;
             }
             catch (Exception e)
@@ -60,6 +60,48 @@ namespace BLL
             }
             finally { conexion.Close(); }
 
+        }
+        public BusquedaMiembroRespuesta BuscarPorGenero(string genero)
+        {
+            BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.Miembro = repositorio.BuscarPorgnero(genero);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Miembro != null) ? "Se encontró la id de miembro buscado" : "la id de miembro buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
+        public ConsultaMiembroRespuesta BuscarPorFamilia(string familia)
+        {
+            ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.Miembros = repositorio.BuscarPorFamilia(familia);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Miembros != null) ? "Se consulto el estante buscado" : "el estante consultado no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
         }
         public BusquedaMiembroRespuesta BuscarPorIdentificacion(string identificacion)
         {
@@ -108,13 +150,12 @@ namespace BLL
         {
             try
             {
-                miembroNuevo.GenerarFolio();
                 miembroNuevo.CalcularTiempoDeConversion();
                 miembroNuevo.CalcularMembresiaIglesiaProcedente();
-                miembroNuevo.CalcularTiempoDeCorecion();
+                miembroNuevo.CalcularTiempoDeCorrecion();
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(miembroNuevo.Folio);
-                if (cajaRegistradora != null)
+                var miembroAntiguo = repositorio.BuscarPorIdentificacion(miembroNuevo.Folio);
+                if (miembroAntiguo != null)
                 {
                     repositorio.Modificar(miembroNuevo);
                     return ($"El registro de {miembroNuevo.Folio} se ha modificado satisfactoriamente.");

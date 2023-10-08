@@ -67,6 +67,10 @@ namespace UI
             this.panel10 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.comboOficio = new System.Windows.Forms.ComboBox();
+            this.comboGeneroRegistrar = new System.Windows.Forms.ComboBox();
+            this.labelGenero = new System.Windows.Forms.Label();
             this.textTelefono = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.textDireccion = new System.Windows.Forms.TextBox();
@@ -89,13 +93,10 @@ namespace UI
             this.btnModificar = new FontAwesome.Sharp.IconButton();
             this.btnRegistrar = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.comboFolio = new System.Windows.Forms.ComboBox();
+            this.labelNumeroFolio = new System.Windows.Forms.Label();
             this.labelFolio = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
-            this.btnSearchRegistrar = new FontAwesome.Sharp.IconPictureBox();
-            this.textSearchRegistrar = new System.Windows.Forms.TextBox();
-            this.btnCloseSearchRegistrar = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabMiembros = new System.Windows.Forms.TabControl();
@@ -108,6 +109,7 @@ namespace UI
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridMiembros = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
@@ -119,13 +121,13 @@ namespace UI
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.comboGenero = new System.Windows.Forms.ComboBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
-            this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textSearch = new System.Windows.Forms.TextBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -141,8 +143,6 @@ namespace UI
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchRegistrar)).BeginInit();
             this.panel2.SuspendLayout();
             this.tabMiembros.SuspendLayout();
             this.tabLista.SuspendLayout();
@@ -247,6 +247,12 @@ namespace UI
             // 
             // comboEstadoMiembro
             // 
+            this.comboEstadoMiembro.AutoCompleteCustomSource.AddRange(new string[] {
+            "Congregando",
+            "Trasladado",
+            "No definido"});
+            this.comboEstadoMiembro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboEstadoMiembro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboEstadoMiembro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboEstadoMiembro.FormattingEnabled = true;
             this.comboEstadoMiembro.Items.AddRange(new object[] {
@@ -288,17 +294,18 @@ namespace UI
             this.dateFechaDisciplina.Name = "dateFechaDisciplina";
             this.dateFechaDisciplina.Size = new System.Drawing.Size(246, 22);
             this.dateFechaDisciplina.TabIndex = 65;
+            this.dateFechaDisciplina.ValueChanged += new System.EventHandler(this.dateFechaDisciplina_ValueChanged);
             // 
             // textTiempoDisciplina
             // 
             this.textTiempoDisciplina.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textTiempoDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTiempoDisciplina.Location = new System.Drawing.Point(636, 413);
+            this.textTiempoDisciplina.Location = new System.Drawing.Point(636, 420);
             this.textTiempoDisciplina.Multiline = true;
             this.textTiempoDisciplina.Name = "textTiempoDisciplina";
-            this.textTiempoDisciplina.Size = new System.Drawing.Size(75, 26);
+            this.textTiempoDisciplina.Size = new System.Drawing.Size(75, 14);
             this.textTiempoDisciplina.TabIndex = 38;
-            this.textTiempoDisciplina.Text = "*                 ";
+            this.textTiempoDisciplina.Text = "0                     ";
             // 
             // label24
             // 
@@ -312,6 +319,12 @@ namespace UI
             // 
             // comboActoServicio
             // 
+            this.comboActoServicio.AutoCompleteCustomSource.AddRange(new string[] {
+            "Si",
+            "No",
+            "Disciplina"});
+            this.comboActoServicio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboActoServicio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboActoServicio.FormattingEnabled = true;
             this.comboActoServicio.Items.AddRange(new object[] {
             "Si",
@@ -349,12 +362,12 @@ namespace UI
             // 
             this.textTiempoMembresia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textTiempoMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTiempoMembresia.Location = new System.Drawing.Point(230, 382);
+            this.textTiempoMembresia.Location = new System.Drawing.Point(230, 388);
             this.textTiempoMembresia.Multiline = true;
             this.textTiempoMembresia.Name = "textTiempoMembresia";
-            this.textTiempoMembresia.Size = new System.Drawing.Size(57, 26);
+            this.textTiempoMembresia.Size = new System.Drawing.Size(57, 17);
             this.textTiempoMembresia.TabIndex = 60;
-            this.textTiempoMembresia.Text = "*";
+            this.textTiempoMembresia.Text = "0";
             // 
             // label19
             // 
@@ -372,6 +385,7 @@ namespace UI
             this.dateFechaMembresia.Name = "dateFechaMembresia";
             this.dateFechaMembresia.Size = new System.Drawing.Size(194, 20);
             this.dateFechaMembresia.TabIndex = 58;
+            this.dateFechaMembresia.ValueChanged += new System.EventHandler(this.dateFechaMembresia_ValueChanged);
             // 
             // label18
             // 
@@ -385,7 +399,34 @@ namespace UI
             // 
             // comboPastorOficiante
             // 
+            this.comboPastorOficiante.AutoCompleteCustomSource.AddRange(new string[] {
+            "Carlos Orozco",
+            "Emiro Diaz",
+            "Eduardo Alvear",
+            "Edinson Bermesí",
+            "Jorge Salóm",
+            "José Payarez",
+            "Juan Orozco",
+            "Joaquin Hernandez",
+            "Jhon Mena",
+            "Pablo Camargo",
+            "Pedro Ardila"});
+            this.comboPastorOficiante.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboPastorOficiante.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboPastorOficiante.FormattingEnabled = true;
+            this.comboPastorOficiante.Items.AddRange(new object[] {
+            "Carlos Orozco",
+            "Emiro Diaz",
+            "Eduardo Alvear",
+            "Edinson Bermesí",
+            "Jorge Salóm",
+            "José Payarez",
+            "Juan Orozco",
+            "Joaquin Hernandez",
+            "Jhon Mena",
+            "Pablo Camargo",
+            "Pedro Ardila",
+            ""});
             this.comboPastorOficiante.Location = new System.Drawing.Point(129, 355);
             this.comboPastorOficiante.Name = "comboPastorOficiante";
             this.comboPastorOficiante.Size = new System.Drawing.Size(142, 21);
@@ -448,12 +489,12 @@ namespace UI
             // 
             this.textTiempoDeConversion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textTiempoDeConversion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTiempoDeConversion.Location = new System.Drawing.Point(590, 299);
+            this.textTiempoDeConversion.Location = new System.Drawing.Point(594, 305);
             this.textTiempoDeConversion.Multiline = true;
             this.textTiempoDeConversion.Name = "textTiempoDeConversion";
-            this.textTiempoDeConversion.Size = new System.Drawing.Size(53, 26);
+            this.textTiempoDeConversion.Size = new System.Drawing.Size(53, 16);
             this.textTiempoDeConversion.TabIndex = 51;
-            this.textTiempoDeConversion.Text = "*";
+            this.textTiempoDeConversion.Text = "0";
             // 
             // label12
             // 
@@ -472,6 +513,7 @@ namespace UI
             this.dateFechaDeBautismo.Name = "dateFechaDeBautismo";
             this.dateFechaDeBautismo.Size = new System.Drawing.Size(238, 22);
             this.dateFechaDeBautismo.TabIndex = 49;
+            this.dateFechaDeBautismo.ValueChanged += new System.EventHandler(this.dateFechaDeBautismo_ValueChanged);
             // 
             // label14
             // 
@@ -583,6 +625,10 @@ namespace UI
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.label28);
+            this.panel9.Controls.Add(this.comboOficio);
+            this.panel9.Controls.Add(this.comboGeneroRegistrar);
+            this.panel9.Controls.Add(this.labelGenero);
             this.panel9.Controls.Add(this.textTelefono);
             this.panel9.Controls.Add(this.label22);
             this.panel9.Controls.Add(this.textDireccion);
@@ -603,15 +649,138 @@ namespace UI
             this.panel9.Size = new System.Drawing.Size(775, 133);
             this.panel9.TabIndex = 43;
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(4, 106);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(51, 16);
+            this.label28.TabIndex = 41;
+            this.label28.Text = "Oficio:";
+            // 
+            // comboOficio
+            // 
+            this.comboOficio.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboOficio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboOficio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboOficio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboOficio.FormattingEnabled = true;
+            this.comboOficio.Items.AddRange(new object[] {
+            "Todos",
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboOficio.Location = new System.Drawing.Point(54, 101);
+            this.comboOficio.Name = "comboOficio";
+            this.comboOficio.Size = new System.Drawing.Size(121, 24);
+            this.comboOficio.TabIndex = 40;
+            this.comboOficio.Text = "Oficio";
+            // 
+            // comboGeneroRegistrar
+            // 
+            this.comboGeneroRegistrar.AutoCompleteCustomSource.AddRange(new string[] {
+            "Masculino",
+            "Femenino"});
+            this.comboGeneroRegistrar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboGeneroRegistrar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboGeneroRegistrar.FormattingEnabled = true;
+            this.comboGeneroRegistrar.Items.AddRange(new object[] {
+            "Masculino",
+            "Femenino"});
+            this.comboGeneroRegistrar.Location = new System.Drawing.Point(438, 73);
+            this.comboGeneroRegistrar.Name = "comboGeneroRegistrar";
+            this.comboGeneroRegistrar.Size = new System.Drawing.Size(69, 21);
+            this.comboGeneroRegistrar.TabIndex = 39;
+            this.comboGeneroRegistrar.Text = "Masculino";
+            // 
+            // labelGenero
+            // 
+            this.labelGenero.AutoSize = true;
+            this.labelGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGenero.Location = new System.Drawing.Point(374, 75);
+            this.labelGenero.Name = "labelGenero";
+            this.labelGenero.Size = new System.Drawing.Size(62, 16);
+            this.labelGenero.TabIndex = 38;
+            this.labelGenero.Text = "Genero:";
+            // 
             // textTelefono
             // 
             this.textTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTelefono.Location = new System.Drawing.Point(318, 102);
+            this.textTelefono.Location = new System.Drawing.Point(463, 101);
             this.textTelefono.Multiline = true;
             this.textTelefono.Name = "textTelefono";
             this.textTelefono.Size = new System.Drawing.Size(143, 26);
             this.textTelefono.TabIndex = 37;
             this.textTelefono.Text = "Telefono";
+            this.textTelefono.TextChanged += new System.EventHandler(this.textTelefono_TextChanged);
             this.textTelefono.Enter += new System.EventHandler(this.textTelefono_Enter);
             this.textTelefono.Leave += new System.EventHandler(this.textTelefono_Leave);
             // 
@@ -619,7 +788,7 @@ namespace UI
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(239, 107);
+            this.label22.Location = new System.Drawing.Point(390, 107);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(73, 16);
             this.label22.TabIndex = 36;
@@ -628,7 +797,7 @@ namespace UI
             // textDireccion
             // 
             this.textDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDireccion.Location = new System.Drawing.Point(89, 100);
+            this.textDireccion.Location = new System.Drawing.Point(249, 101);
             this.textDireccion.Multiline = true;
             this.textDireccion.Name = "textDireccion";
             this.textDireccion.Size = new System.Drawing.Size(143, 26);
@@ -641,7 +810,7 @@ namespace UI
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(6, 105);
+            this.label21.Location = new System.Drawing.Point(174, 106);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(77, 16);
             this.label21.TabIndex = 34;
@@ -672,6 +841,12 @@ namespace UI
             // 
             // comboTipoDocumento
             // 
+            this.comboTipoDocumento.AutoCompleteCustomSource.AddRange(new string[] {
+            "CC",
+            "TI",
+            "OTRO"});
+            this.comboTipoDocumento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboTipoDocumento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboTipoDocumento.FormattingEnabled = true;
             this.comboTipoDocumento.Items.AddRange(new object[] {
             "CC",
@@ -721,7 +896,7 @@ namespace UI
             // 
             this.dateFechaDeNacimiento.Location = new System.Drawing.Point(160, 75);
             this.dateFechaDeNacimiento.Name = "dateFechaDeNacimiento";
-            this.dateFechaDeNacimiento.Size = new System.Drawing.Size(341, 20);
+            this.dateFechaDeNacimiento.Size = new System.Drawing.Size(208, 20);
             this.dateFechaDeNacimiento.TabIndex = 27;
             // 
             // label5
@@ -862,7 +1037,7 @@ namespace UI
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.comboFolio);
+            this.panel6.Controls.Add(this.labelNumeroFolio);
             this.panel6.Controls.Add(this.labelFolio);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 32);
@@ -870,23 +1045,23 @@ namespace UI
             this.panel6.Size = new System.Drawing.Size(792, 26);
             this.panel6.TabIndex = 14;
             // 
-            // comboFolio
+            // labelNumeroFolio
             // 
-            this.comboFolio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboFolio.FormattingEnabled = true;
-            this.comboFolio.Location = new System.Drawing.Point(666, 1);
-            this.comboFolio.Name = "comboFolio";
-            this.comboFolio.Size = new System.Drawing.Size(121, 24);
-            this.comboFolio.TabIndex = 1;
-            this.comboFolio.Text = "0001";
+            this.labelNumeroFolio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelNumeroFolio.AutoSize = true;
+            this.labelNumeroFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumeroFolio.Location = new System.Drawing.Point(685, 5);
+            this.labelNumeroFolio.Name = "labelNumeroFolio";
+            this.labelNumeroFolio.Size = new System.Drawing.Size(81, 16);
+            this.labelNumeroFolio.TabIndex = 1;
+            this.labelNumeroFolio.Text = "*                 ";
             // 
             // labelFolio
             // 
             this.labelFolio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelFolio.AutoSize = true;
             this.labelFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFolio.Location = new System.Drawing.Point(598, 5);
+            this.labelFolio.Location = new System.Drawing.Point(617, 5);
             this.labelFolio.Name = "labelFolio";
             this.labelFolio.Size = new System.Drawing.Size(62, 16);
             this.labelFolio.TabIndex = 0;
@@ -896,9 +1071,6 @@ namespace UI
             // 
             this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.Controls.Add(this.iconPictureBox4);
-            this.panel5.Controls.Add(this.btnSearchRegistrar);
-            this.panel5.Controls.Add(this.textSearchRegistrar);
-            this.panel5.Controls.Add(this.btnCloseSearchRegistrar);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -919,53 +1091,6 @@ namespace UI
             this.iconPictureBox4.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox4.TabIndex = 9;
             this.iconPictureBox4.TabStop = false;
-            // 
-            // btnSearchRegistrar
-            // 
-            this.btnSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchRegistrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearchRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearchRegistrar.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            this.btnSearchRegistrar.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearchRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSearchRegistrar.IconSize = 28;
-            this.btnSearchRegistrar.Location = new System.Drawing.Point(759, 2);
-            this.btnSearchRegistrar.Name = "btnSearchRegistrar";
-            this.btnSearchRegistrar.Size = new System.Drawing.Size(28, 28);
-            this.btnSearchRegistrar.TabIndex = 7;
-            this.btnSearchRegistrar.TabStop = false;
-            this.btnSearchRegistrar.Click += new System.EventHandler(this.btnSearchRegistrar_Click);
-            // 
-            // textSearchRegistrar
-            // 
-            this.textSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textSearchRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSearchRegistrar.Location = new System.Drawing.Point(577, 1);
-            this.textSearchRegistrar.Multiline = true;
-            this.textSearchRegistrar.Name = "textSearchRegistrar";
-            this.textSearchRegistrar.Size = new System.Drawing.Size(180, 30);
-            this.textSearchRegistrar.TabIndex = 6;
-            this.textSearchRegistrar.Text = "Buscar";
-            this.textSearchRegistrar.Visible = false;
-            this.textSearchRegistrar.Enter += new System.EventHandler(this.textSearchRegistrar_Enter);
-            this.textSearchRegistrar.Leave += new System.EventHandler(this.textSearchRegistrar_Leave);
-            // 
-            // btnCloseSearchRegistrar
-            // 
-            this.btnCloseSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseSearchRegistrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseSearchRegistrar.ForeColor = System.Drawing.Color.Red;
-            this.btnCloseSearchRegistrar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.btnCloseSearchRegistrar.IconColor = System.Drawing.Color.Red;
-            this.btnCloseSearchRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCloseSearchRegistrar.IconSize = 28;
-            this.btnCloseSearchRegistrar.Location = new System.Drawing.Point(759, 2);
-            this.btnCloseSearchRegistrar.Name = "btnCloseSearchRegistrar";
-            this.btnCloseSearchRegistrar.Size = new System.Drawing.Size(28, 28);
-            this.btnCloseSearchRegistrar.TabIndex = 5;
-            this.btnCloseSearchRegistrar.TabStop = false;
-            this.btnCloseSearchRegistrar.Visible = false;
-            this.btnCloseSearchRegistrar.Click += new System.EventHandler(this.btnCloseSearchRegistrar_Click);
             // 
             // label3
             // 
@@ -1099,14 +1224,17 @@ namespace UI
             this.dataGridMiembros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMiembros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
+            this.Editar,
             this.Borrar});
             this.dataGridMiembros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridMiembros.Location = new System.Drawing.Point(0, 32);
             this.dataGridMiembros.Name = "dataGridMiembros";
             this.dataGridMiembros.ReadOnly = true;
             this.dataGridMiembros.RowHeadersVisible = false;
+            this.dataGridMiembros.RowTemplate.Height = 30;
             this.dataGridMiembros.Size = new System.Drawing.Size(723, 363);
             this.dataGridMiembros.TabIndex = 1;
+            this.dataGridMiembros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMiembros_CellClick);
             // 
             // Seleccionar
             // 
@@ -1115,9 +1243,19 @@ namespace UI
             this.Seleccionar.ReadOnly = true;
             this.Seleccionar.Width = 70;
             // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 50;
+            // 
             // Borrar
             // 
             this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Image = global::UI.Properties.Resources.borrar;
             this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Borrar.Name = "Borrar";
             this.Borrar.ReadOnly = true;
@@ -1126,6 +1264,7 @@ namespace UI
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.Controls.Add(this.textSearch);
             this.panelContenedorDeDirectorio.Controls.Add(this.label27);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox5);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox2);
@@ -1135,7 +1274,6 @@ namespace UI
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
             this.panelContenedorDeDirectorio.Controls.Add(this.comboGenero);
             this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.btnCloseSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.label1);
             this.panelContenedorDeDirectorio.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1226,16 +1364,24 @@ namespace UI
             // 
             // comboGenero
             // 
+            this.comboGenero.AutoCompleteCustomSource.AddRange(new string[] {
+            "Todos",
+            "M",
+            "F"});
+            this.comboGenero.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboGenero.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboGenero.FormattingEnabled = true;
             this.comboGenero.Items.AddRange(new object[] {
-            "M",
-            "F"});
+            "Todos",
+            "Masculino",
+            "Femenino"});
             this.comboGenero.Location = new System.Drawing.Point(386, 4);
             this.comboGenero.Name = "comboGenero";
             this.comboGenero.Size = new System.Drawing.Size(121, 24);
             this.comboGenero.TabIndex = 8;
             this.comboGenero.Text = "Genero";
+            this.comboGenero.SelectedIndexChanged += new System.EventHandler(this.comboGenero_SelectedIndexChanged);
             // 
             // btSearchLibreta
             // 
@@ -1251,18 +1397,7 @@ namespace UI
             this.btSearchLibreta.Size = new System.Drawing.Size(28, 28);
             this.btSearchLibreta.TabIndex = 7;
             this.btSearchLibreta.TabStop = false;
-            // 
-            // textSerachLibreta
-            // 
-            this.textSerachLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textSerachLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSerachLibreta.Location = new System.Drawing.Point(510, 1);
-            this.textSerachLibreta.Multiline = true;
-            this.textSerachLibreta.Name = "textSerachLibreta";
-            this.textSerachLibreta.Size = new System.Drawing.Size(180, 30);
-            this.textSerachLibreta.TabIndex = 6;
-            this.textSerachLibreta.Text = "Buscar";
-            this.textSerachLibreta.Visible = false;
+            this.btSearchLibreta.Click += new System.EventHandler(this.btSearchLibreta_Click);
             // 
             // btnCloseSearchLibreta
             // 
@@ -1279,6 +1414,7 @@ namespace UI
             this.btnCloseSearchLibreta.TabIndex = 5;
             this.btnCloseSearchLibreta.TabStop = false;
             this.btnCloseSearchLibreta.Visible = false;
+            this.btnCloseSearchLibreta.Click += new System.EventHandler(this.btnCloseSearchLibreta_Click);
             // 
             // label1
             // 
@@ -1339,6 +1475,21 @@ namespace UI
             this.panel1.Size = new System.Drawing.Size(800, 59);
             this.panel1.TabIndex = 2;
             // 
+            // textSearch
+            // 
+            this.textSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textSearch.Location = new System.Drawing.Point(533, 2);
+            this.textSearch.Multiline = true;
+            this.textSearch.Name = "textSearch";
+            this.textSearch.Size = new System.Drawing.Size(153, 29);
+            this.textSearch.TabIndex = 24;
+            this.textSearch.Text = "Buscar";
+            this.textSearch.Visible = false;
+            this.textSearch.TextChanged += new System.EventHandler(this.textSearch_TextChanged);
+            this.textSearch.Enter += new System.EventHandler(this.textSearch_Enter);
+            this.textSearch.Leave += new System.EventHandler(this.textSearch_Leave);
+            // 
             // FormMiembros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1371,8 +1522,6 @@ namespace UI
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchRegistrar)).EndInit();
             this.panel2.ResumeLayout(false);
             this.tabMiembros.ResumeLayout(false);
             this.tabLista.ResumeLayout(false);
@@ -1404,9 +1553,6 @@ namespace UI
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
-        private FontAwesome.Sharp.IconPictureBox btnSearchRegistrar;
-        private System.Windows.Forms.TextBox textSearchRegistrar;
-        private FontAwesome.Sharp.IconPictureBox btnCloseSearchRegistrar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label labelFolio;
@@ -1459,7 +1605,6 @@ namespace UI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox comboActoServicio;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox comboFolio;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DateTimePicker dateFechaDisciplina;
@@ -1475,13 +1620,10 @@ namespace UI
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridMiembros;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private System.Windows.Forms.ComboBox comboGenero;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
-        private System.Windows.Forms.TextBox textSerachLibreta;
         private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel15;
@@ -1493,5 +1635,14 @@ namespace UI
         private System.Windows.Forms.TextBox textTotalMujeres;
         private System.Windows.Forms.TextBox textTotalHombres;
         private System.Windows.Forms.TextBox textTotal;
+        private System.Windows.Forms.Label labelNumeroFolio;
+        private System.Windows.Forms.ComboBox comboGeneroRegistrar;
+        private System.Windows.Forms.Label labelGenero;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ComboBox comboOficio;
+        private System.Windows.Forms.TextBox textSearch;
     }
 }

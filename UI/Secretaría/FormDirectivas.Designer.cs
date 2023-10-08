@@ -53,9 +53,6 @@ namespace UI
             this.comboFiltroComite = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
-            this.btnSearchRegistrar = new FontAwesome.Sharp.IconPictureBox();
-            this.textSearchRegistrar = new System.Windows.Forms.TextBox();
-            this.btnCloseSearchRegistrar = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
@@ -68,8 +65,6 @@ namespace UI
             this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridDirectiva = new System.Windows.Forms.DataGridView();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
@@ -83,6 +78,9 @@ namespace UI
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             tabNuevoIntegrante = new System.Windows.Forms.TabPage();
             tabNuevoIntegrante.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -94,8 +92,6 @@ namespace UI
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchRegistrar)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -278,6 +274,22 @@ namespace UI
             // 
             // comboCargo
             // 
+            this.comboCargo.AutoCompleteCustomSource.AddRange(new string[] {
+            "Acesor(a)",
+            "Presidente(a)",
+            "Vicepresidente(a)",
+            "Secretario(a)",
+            "Recaudador(a)",
+            "Tesorero(a)",
+            "Vocal(a)",
+            "Director(a)",
+            "Coordinador(a)",
+            "Representante",
+            "Tutor(a)",
+            "Auxiliar",
+            "Modelo"});
+            this.comboCargo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboCargo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboCargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboCargo.FormattingEnabled = true;
             this.comboCargo.Items.AddRange(new object[] {
@@ -391,6 +403,31 @@ namespace UI
             // 
             // comboFiltroComite
             // 
+            this.comboFiltroComite.AutoCompleteCustomSource.AddRange(new string[] {
+            "Junta Local",
+            "Jovenes",
+            "Damas Dorcas",
+            "Caballeros",
+            "Damas Jovenes",
+            "Primeros Auxilios",
+            "Vigilancia",
+            "Labores",
+            "Sonido",
+            "Alabanza",
+            "Adolescente",
+            "Misiones y evangelismo",
+            "Edad dorada",
+            "Intersesión",
+            "Decom",
+            "Ujieres",
+            "Decoración",
+            "Cultivadores",
+            "Obra social",
+            "Entre señas",
+            "Escuela Domnical",
+            "Comité de familia"});
+            this.comboFiltroComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboFiltroComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboFiltroComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboFiltroComite.FormattingEnabled = true;
             this.comboFiltroComite.Items.AddRange(new object[] {
@@ -426,9 +463,6 @@ namespace UI
             // 
             this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.Controls.Add(this.iconPictureBox4);
-            this.panel5.Controls.Add(this.btnSearchRegistrar);
-            this.panel5.Controls.Add(this.textSearchRegistrar);
-            this.panel5.Controls.Add(this.btnCloseSearchRegistrar);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -449,46 +483,6 @@ namespace UI
             this.iconPictureBox4.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox4.TabIndex = 9;
             this.iconPictureBox4.TabStop = false;
-            // 
-            // btnSearchRegistrar
-            // 
-            this.btnSearchRegistrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearchRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearchRegistrar.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            this.btnSearchRegistrar.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearchRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSearchRegistrar.IconSize = 28;
-            this.btnSearchRegistrar.Location = new System.Drawing.Point(818, 2);
-            this.btnSearchRegistrar.Name = "btnSearchRegistrar";
-            this.btnSearchRegistrar.Size = new System.Drawing.Size(28, 28);
-            this.btnSearchRegistrar.TabIndex = 7;
-            this.btnSearchRegistrar.TabStop = false;
-            // 
-            // textSearchRegistrar
-            // 
-            this.textSearchRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSearchRegistrar.Location = new System.Drawing.Point(635, 1);
-            this.textSearchRegistrar.Multiline = true;
-            this.textSearchRegistrar.Name = "textSearchRegistrar";
-            this.textSearchRegistrar.Size = new System.Drawing.Size(180, 30);
-            this.textSearchRegistrar.TabIndex = 6;
-            this.textSearchRegistrar.Text = "Buscar";
-            this.textSearchRegistrar.Visible = false;
-            // 
-            // btnCloseSearchRegistrar
-            // 
-            this.btnCloseSearchRegistrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseSearchRegistrar.ForeColor = System.Drawing.Color.Red;
-            this.btnCloseSearchRegistrar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.btnCloseSearchRegistrar.IconColor = System.Drawing.Color.Red;
-            this.btnCloseSearchRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCloseSearchRegistrar.IconSize = 28;
-            this.btnCloseSearchRegistrar.Location = new System.Drawing.Point(818, 2);
-            this.btnCloseSearchRegistrar.Name = "btnCloseSearchRegistrar";
-            this.btnCloseSearchRegistrar.Size = new System.Drawing.Size(28, 28);
-            this.btnCloseSearchRegistrar.TabIndex = 5;
-            this.btnCloseSearchRegistrar.TabStop = false;
-            this.btnCloseSearchRegistrar.Visible = false;
             // 
             // label3
             // 
@@ -640,6 +634,7 @@ namespace UI
             this.dataGridDirectiva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDirectiva.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
+            this.Editar,
             this.Borrar});
             this.dataGridDirectiva.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridDirectiva.Location = new System.Drawing.Point(0, 32);
@@ -648,22 +643,7 @@ namespace UI
             this.dataGridDirectiva.RowHeadersVisible = false;
             this.dataGridDirectiva.Size = new System.Drawing.Size(759, 360);
             this.dataGridDirectiva.TabIndex = 1;
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 70;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Image = global::UI.Properties.Resources.borrar;
-            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 60;
+            this.dataGridDirectiva.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDirectiva_CellClick);
             // 
             // panelContenedorDeDirectorio
             // 
@@ -754,9 +734,36 @@ namespace UI
             // 
             // comboDirectiva
             // 
+            this.comboDirectiva.AutoCompleteCustomSource.AddRange(new string[] {
+            "Todos",
+            "Junta Local",
+            "Jovenes",
+            "Damas Dorcas",
+            "Caballeros",
+            "Damas Jovenes",
+            "Primeros Auxilios",
+            "Vigilancia",
+            "Labores",
+            "Sonido",
+            "Alabanza",
+            "Adolescente",
+            "Misiones y evangelismo",
+            "Edad dorada",
+            "Intersesión",
+            "Decom",
+            "Ujieres",
+            "Decoración",
+            "Cultivadores",
+            "Obra social",
+            "Entre señas",
+            "Escuela Domnical",
+            "Comité de familia"});
+            this.comboDirectiva.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboDirectiva.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboDirectiva.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboDirectiva.FormattingEnabled = true;
             this.comboDirectiva.Items.AddRange(new object[] {
+            "Todos",
             "Junta Local",
             "Jovenes",
             "Damas Dorcas",
@@ -784,6 +791,7 @@ namespace UI
             this.comboDirectiva.Size = new System.Drawing.Size(121, 24);
             this.comboDirectiva.TabIndex = 10;
             this.comboDirectiva.Text = "Directiva";
+            this.comboDirectiva.SelectedIndexChanged += new System.EventHandler(this.comboDirectiva_SelectedIndexChanged);
             // 
             // iconPictureBox3
             // 
@@ -813,6 +821,7 @@ namespace UI
             this.btSearchLibreta.Size = new System.Drawing.Size(28, 28);
             this.btSearchLibreta.TabIndex = 7;
             this.btSearchLibreta.TabStop = false;
+            this.btSearchLibreta.Click += new System.EventHandler(this.btSearchLibreta_Click);
             // 
             // textSerachLibreta
             // 
@@ -823,8 +832,11 @@ namespace UI
             this.textSerachLibreta.Name = "textSerachLibreta";
             this.textSerachLibreta.Size = new System.Drawing.Size(180, 30);
             this.textSerachLibreta.TabIndex = 6;
-            this.textSerachLibreta.Text = "Buscar";
+            this.textSerachLibreta.Text = "Buscar miembro";
             this.textSerachLibreta.Visible = false;
+            this.textSerachLibreta.TextChanged += new System.EventHandler(this.textSerachLibreta_TextChanged);
+            this.textSerachLibreta.Enter += new System.EventHandler(this.textSerachLibreta_Enter);
+            this.textSerachLibreta.Leave += new System.EventHandler(this.textSerachLibreta_Leave);
             // 
             // btnCloseSearchLibreta
             // 
@@ -841,6 +853,7 @@ namespace UI
             this.btnCloseSearchLibreta.TabIndex = 5;
             this.btnCloseSearchLibreta.TabStop = false;
             this.btnCloseSearchLibreta.Visible = false;
+            this.btnCloseSearchLibreta.Click += new System.EventHandler(this.btnCloseSearchLibreta_Click);
             // 
             // label1
             // 
@@ -852,6 +865,31 @@ namespace UI
             this.label1.Size = new System.Drawing.Size(82, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Directivas";
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Width = 70;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 50;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Width = 60;
             // 
             // FormDirectivas
             // 
@@ -879,8 +917,6 @@ namespace UI
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchRegistrar)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
@@ -912,8 +948,6 @@ namespace UI
         private FontAwesome.Sharp.IconButton btnGestionarDirectivas;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridDirectiva;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
@@ -922,9 +956,6 @@ namespace UI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel5;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
-        private FontAwesome.Sharp.IconPictureBox btnSearchRegistrar;
-        private System.Windows.Forms.TextBox textSearchRegistrar;
-        private FontAwesome.Sharp.IconPictureBox btnCloseSearchRegistrar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox comboFiltroComite;
@@ -956,5 +987,8 @@ namespace UI
         private System.Windows.Forms.TextBox textTotalMujeres;
         private System.Windows.Forms.TextBox textTotalHombres;
         private System.Windows.Forms.TextBox textTotal;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
     }
 }

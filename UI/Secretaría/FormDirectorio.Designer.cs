@@ -46,9 +46,6 @@ namespace UI
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
-            this.btnSearchRegistrar = new FontAwesome.Sharp.IconPictureBox();
-            this.textSearchRegistrar = new System.Windows.Forms.TextBox();
-            this.btnCloseSearchRegistrar = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
@@ -63,29 +60,24 @@ namespace UI
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridContactos = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Whatsapp = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textTotal = new System.Windows.Forms.TextBox();
             this.comboOficioLibreta = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textTotal = new System.Windows.Forms.TextBox();
-            this.textTotalHombres = new System.Windows.Forms.TextBox();
-            this.textTotalMujeres = new System.Windows.Forms.TextBox();
-            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
-            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
-            this.label9 = new System.Windows.Forms.Label();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchRegistrar)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,8 +92,6 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -190,8 +180,81 @@ namespace UI
             // 
             // comboOficioRegistrar
             // 
+            this.comboOficioRegistrar.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboOficioRegistrar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboOficioRegistrar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboOficioRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboOficioRegistrar.FormattingEnabled = true;
+            this.comboOficioRegistrar.Items.AddRange(new object[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
             this.comboOficioRegistrar.Location = new System.Drawing.Point(159, 197);
             this.comboOficioRegistrar.Name = "comboOficioRegistrar";
             this.comboOficioRegistrar.Size = new System.Drawing.Size(278, 24);
@@ -209,6 +272,7 @@ namespace UI
             this.textNumeroWhatsapp.Size = new System.Drawing.Size(240, 26);
             this.textNumeroWhatsapp.TabIndex = 10;
             this.textNumeroWhatsapp.Text = "Numero de whatsapp";
+            this.textNumeroWhatsapp.TextChanged += new System.EventHandler(this.textNumeroWhatsapp_TextChanged);
             this.textNumeroWhatsapp.Enter += new System.EventHandler(this.textNumeroWhatsapp_Enter);
             this.textNumeroWhatsapp.Leave += new System.EventHandler(this.textNumeroWhatsapp_Leave);
             // 
@@ -221,6 +285,7 @@ namespace UI
             this.textCelular.Size = new System.Drawing.Size(240, 26);
             this.textCelular.TabIndex = 9;
             this.textCelular.Text = "Celular";
+            this.textCelular.TextChanged += new System.EventHandler(this.textCelular_TextChanged);
             this.textCelular.Enter += new System.EventHandler(this.textCelular_Enter);
             this.textCelular.Leave += new System.EventHandler(this.textCelular_Leave);
             // 
@@ -302,9 +367,6 @@ namespace UI
             // 
             this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.Controls.Add(this.iconPictureBox4);
-            this.panel5.Controls.Add(this.btnSearchRegistrar);
-            this.panel5.Controls.Add(this.textSearchRegistrar);
-            this.panel5.Controls.Add(this.btnCloseSearchRegistrar);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -325,53 +387,6 @@ namespace UI
             this.iconPictureBox4.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox4.TabIndex = 9;
             this.iconPictureBox4.TabStop = false;
-            // 
-            // btnSearchRegistrar
-            // 
-            this.btnSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchRegistrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearchRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearchRegistrar.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            this.btnSearchRegistrar.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearchRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSearchRegistrar.IconSize = 28;
-            this.btnSearchRegistrar.Location = new System.Drawing.Point(683, 2);
-            this.btnSearchRegistrar.Name = "btnSearchRegistrar";
-            this.btnSearchRegistrar.Size = new System.Drawing.Size(28, 28);
-            this.btnSearchRegistrar.TabIndex = 7;
-            this.btnSearchRegistrar.TabStop = false;
-            this.btnSearchRegistrar.Click += new System.EventHandler(this.btnSearchRegistrar_Click);
-            // 
-            // textSearchRegistrar
-            // 
-            this.textSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textSearchRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSearchRegistrar.Location = new System.Drawing.Point(501, 1);
-            this.textSearchRegistrar.Multiline = true;
-            this.textSearchRegistrar.Name = "textSearchRegistrar";
-            this.textSearchRegistrar.Size = new System.Drawing.Size(180, 30);
-            this.textSearchRegistrar.TabIndex = 6;
-            this.textSearchRegistrar.Text = "Buscar";
-            this.textSearchRegistrar.Visible = false;
-            this.textSearchRegistrar.Enter += new System.EventHandler(this.textSearchRegistrar_Enter);
-            this.textSearchRegistrar.Leave += new System.EventHandler(this.textSearchRegistrar_Leave);
-            // 
-            // btnCloseSearchRegistrar
-            // 
-            this.btnCloseSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseSearchRegistrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseSearchRegistrar.ForeColor = System.Drawing.Color.Red;
-            this.btnCloseSearchRegistrar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.btnCloseSearchRegistrar.IconColor = System.Drawing.Color.Red;
-            this.btnCloseSearchRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCloseSearchRegistrar.IconSize = 28;
-            this.btnCloseSearchRegistrar.Location = new System.Drawing.Point(683, 2);
-            this.btnCloseSearchRegistrar.Name = "btnCloseSearchRegistrar";
-            this.btnCloseSearchRegistrar.Size = new System.Drawing.Size(28, 28);
-            this.btnCloseSearchRegistrar.TabIndex = 5;
-            this.btnCloseSearchRegistrar.TabStop = false;
-            this.btnCloseSearchRegistrar.Visible = false;
-            this.btnCloseSearchRegistrar.Click += new System.EventHandler(this.btnCloseSearchRegistrar_Click);
             // 
             // label3
             // 
@@ -516,25 +531,45 @@ namespace UI
             // dataGridContactos
             // 
             this.dataGridContactos.AllowUserToAddRows = false;
+            this.dataGridContactos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridContactos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridContactos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dataGridContactos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridContactos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
+            this.Editar,
             this.Borrar,
             this.Whatsapp});
+            this.dataGridContactos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridContactos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridContactos.Location = new System.Drawing.Point(0, 32);
             this.dataGridContactos.Name = "dataGridContactos";
             this.dataGridContactos.ReadOnly = true;
+            this.dataGridContactos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridContactos.RowHeadersVisible = false;
+            this.dataGridContactos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridContactos.RowTemplate.DividerHeight = 2;
+            this.dataGridContactos.RowTemplate.Height = 30;
             this.dataGridContactos.Size = new System.Drawing.Size(724, 360);
             this.dataGridContactos.TabIndex = 1;
+            this.dataGridContactos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridContactos_CellClick);
             // 
             // Seleccionar
             // 
             this.Seleccionar.HeaderText = "Seleccionar";
             this.Seleccionar.Name = "Seleccionar";
             this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 70;
+            this.Seleccionar.Width = 69;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 40;
             // 
             // Borrar
             // 
@@ -543,7 +578,7 @@ namespace UI
             this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Borrar.Name = "Borrar";
             this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 60;
+            this.Borrar.Width = 41;
             // 
             // Whatsapp
             // 
@@ -552,15 +587,12 @@ namespace UI
             this.Whatsapp.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Whatsapp.Name = "Whatsapp";
             this.Whatsapp.ReadOnly = true;
+            this.Whatsapp.Width = 62;
             // 
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
             this.panelContenedorDeDirectorio.Controls.Add(this.label9);
-            this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox5);
-            this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox2);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalMujeres);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalHombres);
             this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
             this.panelContenedorDeDirectorio.Controls.Add(this.comboOficioLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
@@ -574,15 +606,112 @@ namespace UI
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(724, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label9.Location = new System.Drawing.Point(115, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 16);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Total";
+            // 
+            // textTotal
+            // 
+            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotal.Location = new System.Drawing.Point(161, 5);
+            this.textTotal.Name = "textTotal";
+            this.textTotal.Size = new System.Drawing.Size(46, 22);
+            this.textTotal.TabIndex = 11;
+            this.textTotal.Text = "0";
+            // 
             // comboOficioLibreta
             // 
+            this.comboOficioLibreta.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboOficioLibreta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboOficioLibreta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboOficioLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboOficioLibreta.FormattingEnabled = true;
+            this.comboOficioLibreta.Items.AddRange(new object[] {
+            "Todos",
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
             this.comboOficioLibreta.Location = new System.Drawing.Point(374, 4);
             this.comboOficioLibreta.Name = "comboOficioLibreta";
             this.comboOficioLibreta.Size = new System.Drawing.Size(121, 24);
             this.comboOficioLibreta.TabIndex = 10;
             this.comboOficioLibreta.Text = "Oficio";
+            this.comboOficioLibreta.SelectedIndexChanged += new System.EventHandler(this.comboOficioLibreta_SelectedIndexChanged);
+            this.comboOficioLibreta.TextChanged += new System.EventHandler(this.comboOficioLibreta_TextChanged);
             // 
             // iconPictureBox3
             // 
@@ -623,8 +752,9 @@ namespace UI
             this.textSerachLibreta.Name = "textSerachLibreta";
             this.textSerachLibreta.Size = new System.Drawing.Size(180, 30);
             this.textSerachLibreta.TabIndex = 6;
-            this.textSerachLibreta.Text = "Buscar";
+            this.textSerachLibreta.Text = "Buscar por nombre";
             this.textSerachLibreta.Visible = false;
+            this.textSerachLibreta.TextChanged += new System.EventHandler(this.textSerachLibreta_TextChanged);
             this.textSerachLibreta.Enter += new System.EventHandler(this.textSerachLibreta_Enter);
             this.textSerachLibreta.Leave += new System.EventHandler(this.textSerachLibreta_Leave);
             // 
@@ -656,72 +786,6 @@ namespace UI
             this.label1.TabIndex = 0;
             this.label1.Text = "Libreta";
             // 
-            // textTotal
-            // 
-            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotal.Location = new System.Drawing.Point(161, 5);
-            this.textTotal.Name = "textTotal";
-            this.textTotal.Size = new System.Drawing.Size(46, 22);
-            this.textTotal.TabIndex = 11;
-            this.textTotal.Text = "0";
-            // 
-            // textTotalHombres
-            // 
-            this.textTotalHombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalHombres.Location = new System.Drawing.Point(244, 5);
-            this.textTotalHombres.Name = "textTotalHombres";
-            this.textTotalHombres.Size = new System.Drawing.Size(46, 22);
-            this.textTotalHombres.TabIndex = 12;
-            this.textTotalHombres.Text = "0";
-            // 
-            // textTotalMujeres
-            // 
-            this.textTotalMujeres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalMujeres.Location = new System.Drawing.Point(318, 5);
-            this.textTotalMujeres.Name = "textTotalMujeres";
-            this.textTotalMujeres.Size = new System.Drawing.Size(46, 22);
-            this.textTotalMujeres.TabIndex = 13;
-            this.textTotalMujeres.Text = "0";
-            // 
-            // iconPictureBox2
-            // 
-            this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Person;
-            this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.IconSize = 28;
-            this.iconPictureBox2.Location = new System.Drawing.Point(213, 3);
-            this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(28, 28);
-            this.iconPictureBox2.TabIndex = 15;
-            this.iconPictureBox2.TabStop = false;
-            // 
-            // iconPictureBox5
-            // 
-            this.iconPictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.PersonDress;
-            this.iconPictureBox5.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox5.IconSize = 28;
-            this.iconPictureBox5.Location = new System.Drawing.Point(292, 3);
-            this.iconPictureBox5.Name = "iconPictureBox5";
-            this.iconPictureBox5.Size = new System.Drawing.Size(28, 28);
-            this.iconPictureBox5.TabIndex = 16;
-            this.iconPictureBox5.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(115, 8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 16);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Total";
-            // 
             // FormDirectorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -739,8 +803,6 @@ namespace UI
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchRegistrar)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
@@ -757,8 +819,6 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -780,16 +840,10 @@ namespace UI
         private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private System.Windows.Forms.DataGridView dataGridContactos;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewImageColumn Borrar;
-        private System.Windows.Forms.DataGridViewImageColumn Whatsapp;
         private FontAwesome.Sharp.IconButton btnGestionarContactos;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
-        private FontAwesome.Sharp.IconPictureBox btnSearchRegistrar;
-        private System.Windows.Forms.TextBox textSearchRegistrar;
-        private FontAwesome.Sharp.IconPictureBox btnCloseSearchRegistrar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -808,10 +862,10 @@ namespace UI
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox textTotal;
-        private System.Windows.Forms.TextBox textTotalMujeres;
-        private System.Windows.Forms.TextBox textTotalHombres;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private System.Windows.Forms.DataGridViewImageColumn Whatsapp;
     }
 }

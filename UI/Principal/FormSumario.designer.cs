@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.labelProductos = new FontAwesome.Sharp.IconButton();
+            this.labelDirectivas = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelTitleEntrenadores = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
@@ -39,25 +39,25 @@
             this.Tiempo = new System.Windows.Forms.Timer(this.components);
             this.panel13 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.labelEstantes = new FontAwesome.Sharp.IconButton();
+            this.labelApuntes = new FontAwesome.Sharp.IconButton();
             this.labelTitleAcerca = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.labelClientes = new FontAwesome.Sharp.IconButton();
+            this.labelReuniones = new FontAwesome.Sharp.IconButton();
             this.panel12 = new System.Windows.Forms.Panel();
             this.labelTitleServicios = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelCaja = new FontAwesome.Sharp.IconButton();
+            this.pictureMiembros = new System.Windows.Forms.PictureBox();
+            this.labelMiembros = new FontAwesome.Sharp.IconButton();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.labelTitleClientes = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.labelEmpleados = new FontAwesome.Sharp.IconButton();
+            this.labelDirectorio = new FontAwesome.Sharp.IconButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelTitleCash = new System.Windows.Forms.Label();
             this.btnRefresh = new FontAwesome.Sharp.IconButton();
@@ -76,7 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel12.SuspendLayout();
             this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMiembros)).BeginInit();
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -92,7 +92,7 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.labelProductos);
+            this.panel1.Controls.Add(this.labelDirectivas);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.ForeColor = System.Drawing.Color.SeaGreen;
             this.panel1.Location = new System.Drawing.Point(233, 34);
@@ -110,23 +110,23 @@
             this.pictureBox2.TabIndex = 32;
             this.pictureBox2.TabStop = false;
             // 
-            // labelProductos
+            // labelDirectivas
             // 
-            this.labelProductos.FlatAppearance.BorderSize = 0;
-            this.labelProductos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.labelProductos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.labelProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProductos.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.labelProductos.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.labelProductos.IconColor = System.Drawing.Color.Black;
-            this.labelProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.labelProductos.Location = new System.Drawing.Point(3, 115);
-            this.labelProductos.Name = "labelProductos";
-            this.labelProductos.Size = new System.Drawing.Size(109, 30);
-            this.labelProductos.TabIndex = 31;
-            this.labelProductos.Text = "lbl1";
-            this.labelProductos.UseVisualStyleBackColor = true;
+            this.labelDirectivas.FlatAppearance.BorderSize = 0;
+            this.labelDirectivas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.labelDirectivas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.labelDirectivas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelDirectivas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDirectivas.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.labelDirectivas.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.labelDirectivas.IconColor = System.Drawing.Color.Black;
+            this.labelDirectivas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.labelDirectivas.Location = new System.Drawing.Point(3, 115);
+            this.labelDirectivas.Name = "labelDirectivas";
+            this.labelDirectivas.Size = new System.Drawing.Size(109, 30);
+            this.labelDirectivas.TabIndex = 31;
+            this.labelDirectivas.Text = "lbl1";
+            this.labelDirectivas.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -190,7 +190,7 @@
             this.panel13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel13.Controls.Add(this.pictureBox5);
-            this.panel13.Controls.Add(this.labelEstantes);
+            this.panel13.Controls.Add(this.labelApuntes);
             this.panel13.Controls.Add(this.labelTitleAcerca);
             this.panel13.Controls.Add(this.panel14);
             this.panel13.Location = new System.Drawing.Point(662, 36);
@@ -208,23 +208,23 @@
             this.pictureBox5.TabIndex = 31;
             this.pictureBox5.TabStop = false;
             // 
-            // labelEstantes
+            // labelApuntes
             // 
-            this.labelEstantes.FlatAppearance.BorderSize = 0;
-            this.labelEstantes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.labelEstantes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.labelEstantes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelEstantes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEstantes.ForeColor = System.Drawing.Color.Orange;
-            this.labelEstantes.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.labelEstantes.IconColor = System.Drawing.Color.Black;
-            this.labelEstantes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.labelEstantes.Location = new System.Drawing.Point(0, 115);
-            this.labelEstantes.Name = "labelEstantes";
-            this.labelEstantes.Size = new System.Drawing.Size(109, 30);
-            this.labelEstantes.TabIndex = 30;
-            this.labelEstantes.Text = "lbl1";
-            this.labelEstantes.UseVisualStyleBackColor = true;
+            this.labelApuntes.FlatAppearance.BorderSize = 0;
+            this.labelApuntes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.labelApuntes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.labelApuntes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelApuntes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelApuntes.ForeColor = System.Drawing.Color.Orange;
+            this.labelApuntes.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.labelApuntes.IconColor = System.Drawing.Color.Black;
+            this.labelApuntes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.labelApuntes.Location = new System.Drawing.Point(0, 115);
+            this.labelApuntes.Name = "labelApuntes";
+            this.labelApuntes.Size = new System.Drawing.Size(109, 30);
+            this.labelApuntes.TabIndex = 30;
+            this.labelApuntes.Text = "lbl1";
+            this.labelApuntes.UseVisualStyleBackColor = true;
             // 
             // labelTitleAcerca
             // 
@@ -264,7 +264,7 @@
             this.panel11.BackColor = System.Drawing.Color.Transparent;
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel11.Controls.Add(this.pictureBox3);
-            this.panel11.Controls.Add(this.labelClientes);
+            this.panel11.Controls.Add(this.labelReuniones);
             this.panel11.Controls.Add(this.panel12);
             this.panel11.Location = new System.Drawing.Point(378, 35);
             this.panel11.Name = "panel11";
@@ -281,23 +281,23 @@
             this.pictureBox3.TabIndex = 33;
             this.pictureBox3.TabStop = false;
             // 
-            // labelClientes
+            // labelReuniones
             // 
-            this.labelClientes.FlatAppearance.BorderSize = 0;
-            this.labelClientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.labelClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.labelClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelClientes.ForeColor = System.Drawing.Color.Crimson;
-            this.labelClientes.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.labelClientes.IconColor = System.Drawing.Color.Black;
-            this.labelClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.labelClientes.Location = new System.Drawing.Point(0, 115);
-            this.labelClientes.Name = "labelClientes";
-            this.labelClientes.Size = new System.Drawing.Size(109, 30);
-            this.labelClientes.TabIndex = 32;
-            this.labelClientes.Text = "lbl1";
-            this.labelClientes.UseVisualStyleBackColor = true;
+            this.labelReuniones.FlatAppearance.BorderSize = 0;
+            this.labelReuniones.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.labelReuniones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.labelReuniones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelReuniones.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelReuniones.ForeColor = System.Drawing.Color.Crimson;
+            this.labelReuniones.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.labelReuniones.IconColor = System.Drawing.Color.Black;
+            this.labelReuniones.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.labelReuniones.Location = new System.Drawing.Point(0, 115);
+            this.labelReuniones.Name = "labelReuniones";
+            this.labelReuniones.Size = new System.Drawing.Size(109, 30);
+            this.labelReuniones.TabIndex = 32;
+            this.labelReuniones.Text = "lbl1";
+            this.labelReuniones.UseVisualStyleBackColor = true;
             // 
             // panel12
             // 
@@ -326,41 +326,41 @@
             this.panel9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel9.BackColor = System.Drawing.Color.Transparent;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.pictureBox1);
-            this.panel9.Controls.Add(this.labelCaja);
+            this.panel9.Controls.Add(this.pictureMiembros);
+            this.panel9.Controls.Add(this.labelMiembros);
             this.panel9.Controls.Add(this.panel10);
             this.panel9.Location = new System.Drawing.Point(89, 33);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(110, 150);
             this.panel9.TabIndex = 36;
             // 
-            // pictureBox1
+            // pictureMiembros
             // 
-            this.pictureBox1.Image = global::UI.Properties.Resources.Miembros;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 35);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 80);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 30;
-            this.pictureBox1.TabStop = false;
+            this.pictureMiembros.Image = global::UI.Properties.Resources.Miembros;
+            this.pictureMiembros.Location = new System.Drawing.Point(12, 35);
+            this.pictureMiembros.Name = "pictureMiembros";
+            this.pictureMiembros.Size = new System.Drawing.Size(82, 80);
+            this.pictureMiembros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureMiembros.TabIndex = 30;
+            this.pictureMiembros.TabStop = false;
             // 
-            // labelCaja
+            // labelMiembros
             // 
-            this.labelCaja.FlatAppearance.BorderSize = 0;
-            this.labelCaja.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.labelCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.labelCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCaja.ForeColor = System.Drawing.Color.SeaGreen;
-            this.labelCaja.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.labelCaja.IconColor = System.Drawing.Color.Black;
-            this.labelCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.labelCaja.Location = new System.Drawing.Point(0, 116);
-            this.labelCaja.Name = "labelCaja";
-            this.labelCaja.Size = new System.Drawing.Size(109, 30);
-            this.labelCaja.TabIndex = 30;
-            this.labelCaja.Text = "lbl1";
-            this.labelCaja.UseVisualStyleBackColor = true;
+            this.labelMiembros.FlatAppearance.BorderSize = 0;
+            this.labelMiembros.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.labelMiembros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.labelMiembros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelMiembros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMiembros.ForeColor = System.Drawing.Color.SeaGreen;
+            this.labelMiembros.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.labelMiembros.IconColor = System.Drawing.Color.Black;
+            this.labelMiembros.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.labelMiembros.Location = new System.Drawing.Point(0, 116);
+            this.labelMiembros.Name = "labelMiembros";
+            this.labelMiembros.Size = new System.Drawing.Size(109, 30);
+            this.labelMiembros.TabIndex = 30;
+            this.labelMiembros.Text = "lbl1";
+            this.labelMiembros.UseVisualStyleBackColor = true;
             // 
             // panel10
             // 
@@ -412,7 +412,7 @@
             this.panel7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.pictureBox4);
-            this.panel7.Controls.Add(this.labelEmpleados);
+            this.panel7.Controls.Add(this.labelDirectorio);
             this.panel7.Controls.Add(this.panel8);
             this.panel7.Location = new System.Drawing.Point(519, 36);
             this.panel7.Name = "panel7";
@@ -429,25 +429,25 @@
             this.pictureBox4.TabIndex = 31;
             this.pictureBox4.TabStop = false;
             // 
-            // labelEmpleados
+            // labelDirectorio
             // 
-            this.labelEmpleados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelDirectorio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelEmpleados.FlatAppearance.BorderSize = 0;
-            this.labelEmpleados.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.labelEmpleados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.labelEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelEmpleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmpleados.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.labelEmpleados.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.labelEmpleados.IconColor = System.Drawing.Color.Black;
-            this.labelEmpleados.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.labelEmpleados.Location = new System.Drawing.Point(0, 114);
-            this.labelEmpleados.Name = "labelEmpleados";
-            this.labelEmpleados.Size = new System.Drawing.Size(109, 30);
-            this.labelEmpleados.TabIndex = 29;
-            this.labelEmpleados.Text = "lbl1";
-            this.labelEmpleados.UseVisualStyleBackColor = true;
+            this.labelDirectorio.FlatAppearance.BorderSize = 0;
+            this.labelDirectorio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.labelDirectorio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.labelDirectorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelDirectorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDirectorio.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.labelDirectorio.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.labelDirectorio.IconColor = System.Drawing.Color.Black;
+            this.labelDirectorio.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.labelDirectorio.Location = new System.Drawing.Point(0, 114);
+            this.labelDirectorio.Name = "labelDirectorio";
+            this.labelDirectorio.Size = new System.Drawing.Size(109, 30);
+            this.labelDirectorio.TabIndex = 29;
+            this.labelDirectorio.Text = "lbl1";
+            this.labelDirectorio.UseVisualStyleBackColor = true;
             // 
             // panel8
             // 
@@ -490,6 +490,7 @@
             this.btnRefresh.Size = new System.Drawing.Size(27, 28);
             this.btnRefresh.TabIndex = 40;
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // labelRefresh
             // 
@@ -604,7 +605,7 @@
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
             this.panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMiembros)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -642,11 +643,11 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label labelTitleCash;
         private System.Windows.Forms.Panel panel8;
-        private FontAwesome.Sharp.IconButton labelEmpleados;
-        private FontAwesome.Sharp.IconButton labelProductos;
-        private FontAwesome.Sharp.IconButton labelEstantes;
-        private FontAwesome.Sharp.IconButton labelClientes;
-        private FontAwesome.Sharp.IconButton labelCaja;
+        private FontAwesome.Sharp.IconButton labelDirectorio;
+        private FontAwesome.Sharp.IconButton labelDirectivas;
+        private FontAwesome.Sharp.IconButton labelApuntes;
+        private FontAwesome.Sharp.IconButton labelReuniones;
+        private FontAwesome.Sharp.IconButton labelMiembros;
         private FontAwesome.Sharp.IconButton btnRefresh;
         private System.Windows.Forms.Label labelRefresh;
         private System.Windows.Forms.Panel panel4;
@@ -657,7 +658,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureMiembros;
         private System.Windows.Forms.PictureBox pictureBox4;
     }
 }

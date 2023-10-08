@@ -17,8 +17,11 @@ namespace UI
     {
         RutasTxtService rutasTxtService = new RutasTxtService();
         ReunionService reunionService;
-        List<Reunion> reunions;
+        List<Reunion> reuniones;
         Reunion reunion;
+        bool encontrado = false;
+        string id = "";
+        string reunionId = "";
         public FormReuniones()
         {
             reunionService = new ReunionService(ConfigConnection.ConnectionString);
@@ -27,24 +30,40 @@ namespace UI
         }
         private void Inicializar()
         {
+            Calcularreunion();
             ConsultarYLlenarGridDeReuniones();
+        }
+        private void Calcularreunion()
+        {
+            ConsultaReunionRespuesta respuesta = new ConsultaReunionRespuesta();
+            respuesta = reunionService.ConsultarTodos();
+            reuniones = respuesta.Reuniones.ToList();
+            if (respuesta.Reuniones.Count != 0 && respuesta.Reuniones != null)
+            {
+                textTotal.Text = reunionService.Totalizar().Cuenta.ToString();
+                var totalFolio = Convert.ToInt32(textTotal.Text);
+                reunionId = (totalFolio + 1).ToString("0000");
+                labelNumeroActa.Text = reunionId;
+            }
+            else
+            {
+                var totalFolio = 1;
+                reunionId = totalFolio.ToString("0000");
+                labelNumeroActa.Text = reunionId;
+            }
         }
         private void ConsultarYLlenarGridDeReuniones()
         {
             ConsultaReunionRespuesta respuesta = new ConsultaReunionRespuesta();
-            string tipo = comboFecha.Text;
-            if (tipo == "Fecha")
+            textTotal.Enabled = true;
+            dataGridReunion.DataSource = null;
+            respuesta = reunionService.ConsultarTodos();
+            reuniones = respuesta.Reuniones.ToList();
+            if (respuesta.Reuniones.Count != 0 && respuesta.Reuniones != null)
             {
-                textTotal.Enabled = true;
-                dataGridReunion.DataSource = null;
-                respuesta = reunionService.ConsultarTodos();
-                reunions = respuesta.Reuniones.ToList();
-                if (respuesta.Reuniones.Count != 0 && respuesta.Reuniones != null)
-                {
-                    dataGridReunion.DataSource = respuesta.Reuniones;
-                    Borrar.Visible = true;
-                    textTotal.Text = reunionService.Totalizar().Cuenta.ToString();
-                }
+                dataGridReunion.DataSource = respuesta.Reuniones;
+                Borrar.Visible = true;
+                textTotal.Text = reunionService.Totalizar().Cuenta.ToString();
             }
         }
 
@@ -68,22 +87,6 @@ namespace UI
                 textSerachLibreta.Text = "Buscar";
             }
         }
-
-        private void textSearchRegistrar_Enter(object sender, EventArgs e)
-        {
-            if (textSearchRegistrar.Text == "Buscar")
-            {
-                textSearchRegistrar.Text = "";
-            }
-        }
-
-        private void textSearchRegistrar_Leave(object sender, EventArgs e)
-        {
-            if (textSearchRegistrar.Text == "")
-            {
-                textSearchRegistrar.Text = "Buscar";
-            }
-        }
         private void btSearchLibreta_Click(object sender, EventArgs e)
         {
             btSearchLibreta.Visible = false;
@@ -96,20 +99,6 @@ namespace UI
             btSearchLibreta.Visible = true;
             textSerachLibreta.Visible = false;
             btnCloseSearchLibreta.Visible = false;
-        }
-
-        private void btnSearchRegistrar_Click(object sender, EventArgs e)
-        {
-            btnSearchRegistrar.Visible = false;
-            textSearchRegistrar.Visible = true;
-            btnCloseSearchRegistrar.Visible = true;
-        }
-
-        private void btnCloseSearchRegistrar_Click(object sender, EventArgs e)
-        {
-            btnSearchRegistrar.Visible = true;
-            textSearchRegistrar.Visible = false;
-            btnCloseSearchRegistrar.Visible = false;
         }
 
         private void textActa_Enter(object sender, EventArgs e)
@@ -176,15 +165,24 @@ namespace UI
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            Reunion reunion = MapearDatosReunion();
-            string mensaje = reunionService.Guardar(reunion);
-            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            ConsultarYLlenarGridDeReuniones();
-            tabReuniones.SelectedIndex = 0;
+            if(textLugarReunion.Text!="" && textOrdenDja.Text != "" && textActa.Text!="")
+            {
+                Reunion reunion = MapearDatosReunion();
+                string mensaje = reunionService.Guardar(reunion);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeReuniones();
+                Limpiar();
+                tabReuniones.SelectedIndex = 0;
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            Reunion nuevaReunion = MapearDatosReunion();
+            string mensaje = reunionService.Modificar(nuevaReunion);
+            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            ConsultarYLlenarGridDeReuniones();
+            Limpiar();
             tabReuniones.SelectedIndex = 0;
         }
 
@@ -196,6 +194,101 @@ namespace UI
         private void btnImprimirLista_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FiltroPorId(string id)
+        {
+            BusquedaReunionRespuesta respuesta = new BusquedaReunionRespuesta();
+            respuesta = reunionService.BuscarPorIdentificacion(id);
+            var registro = respuesta.Reunion;
+            if (registro != null)
+            {
+                encontrado = true;
+                var directivas = new List<Reunion> { registro };
+                labelNumeroActa.Text = registro.NumeroActa;
+                dateFechaDeReunion.Value = registro.FechaDeReunion;
+                textLugarReunion.Text = registro.LugarDeReunion;
+                textOrdenDja.Text = registro.OrdenDelDia;
+                textActa.Text = registro.TextoActa;
+            }
+        }
+        private void Limpiar()
+        {
+            labelNumeroActa.Text = "*";
+            dateFechaDeReunion.Value = DateTime.Now;
+            textLugarReunion.Text = "";
+            textOrdenDja.Text = "";
+            textActa.Text = "";
+        }
+        private void EliminarPorId(string id)
+        {
+            string mensaje = reunionService.Eliminar(id);
+            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            textTotal.Text = "0";
+        }
+        private void dataGridReunion_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridReunion.DataSource != null)
+            {
+                if (dataGridReunion.Columns[e.ColumnIndex].Name == "Borrar")
+                {
+                    id = Convert.ToString(dataGridReunion.CurrentRow.Cells["NumeroActa"].Value.ToString());
+                    EliminarPorId(id);
+                    ConsultarYLlenarGridDeReuniones();
+                }
+                else
+                {
+                    if (dataGridReunion.Columns[e.ColumnIndex].Name == "Editar")
+                    {
+                        id = Convert.ToString(dataGridReunion.CurrentRow.Cells["NumeroActa"].Value.ToString());
+                        FiltroPorId(id);
+                        if (encontrado == true)
+                        {
+                            tabReuniones.SelectedIndex = 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void textSerachLibreta_TextChanged(object sender, EventArgs e)
+        {
+            if (textSerachLibreta.Text != "" && textSerachLibreta.Text != "Buscar por miembro")
+            {
+                dataGridReunion.CurrentCell = null;
+                foreach (DataGridViewRow fila in dataGridReunion.Rows)
+                {
+                    fila.Visible = false;
+                };
+                foreach (DataGridViewRow fila in dataGridReunion.Rows)
+                {
+                    int i = 0;
+                    foreach (DataGridViewCell celda in fila.Cells)
+                    {
+                        if (i == 4)
+                        {
+                            if ((celda.Value.ToString().ToUpper()).IndexOf(textSerachLibreta.Text.ToUpper()) == 0)
+                            {
+                                fila.Visible = true;
+                                break;
+                            }
+                            else
+                            {
+                                if ((celda.Value.ToString() == (textSerachLibreta.Text.ToUpper())))
+                                {
+                                    fila.Visible = true;
+                                    break;
+                                }
+                            }
+                        }
+                        i = i + 1;
+                    }
+                }
+            }
+            else
+            {
+                ConsultarYLlenarGridDeReuniones();
+            }
         }
     }
 }

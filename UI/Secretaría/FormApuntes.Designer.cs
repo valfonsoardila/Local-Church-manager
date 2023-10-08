@@ -40,9 +40,6 @@ namespace UI
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
-            this.btnSearchRegistrar = new FontAwesome.Sharp.IconPictureBox();
-            this.textSearchRegistrar = new System.Windows.Forms.TextBox();
-            this.btnCloseSearchRegistrar = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
@@ -55,24 +52,22 @@ namespace UI
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridApunte = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
-            this.comboFecha = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textTotal = new System.Windows.Forms.TextBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.textTotal = new System.Windows.Forms.TextBox();
             tabNuevoApunte = new System.Windows.Forms.TabPage();
             tabNuevoApunte.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchRegistrar)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -144,6 +139,7 @@ namespace UI
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click_1);
             // 
             // btnRegistrar
             // 
@@ -162,6 +158,7 @@ namespace UI
             this.btnRegistrar.Text = "Guardar";
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click_1);
             // 
             // labelNota
             // 
@@ -215,9 +212,6 @@ namespace UI
             // 
             this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.Controls.Add(this.iconPictureBox4);
-            this.panel5.Controls.Add(this.btnSearchRegistrar);
-            this.panel5.Controls.Add(this.textSearchRegistrar);
-            this.panel5.Controls.Add(this.btnCloseSearchRegistrar);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -238,53 +232,6 @@ namespace UI
             this.iconPictureBox4.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox4.TabIndex = 9;
             this.iconPictureBox4.TabStop = false;
-            // 
-            // btnSearchRegistrar
-            // 
-            this.btnSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchRegistrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearchRegistrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearchRegistrar.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            this.btnSearchRegistrar.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearchRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSearchRegistrar.IconSize = 28;
-            this.btnSearchRegistrar.Location = new System.Drawing.Point(683, 2);
-            this.btnSearchRegistrar.Name = "btnSearchRegistrar";
-            this.btnSearchRegistrar.Size = new System.Drawing.Size(28, 28);
-            this.btnSearchRegistrar.TabIndex = 7;
-            this.btnSearchRegistrar.TabStop = false;
-            this.btnSearchRegistrar.Click += new System.EventHandler(this.btnSearchRegistrar_Click);
-            // 
-            // textSearchRegistrar
-            // 
-            this.textSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textSearchRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSearchRegistrar.Location = new System.Drawing.Point(501, 1);
-            this.textSearchRegistrar.Multiline = true;
-            this.textSearchRegistrar.Name = "textSearchRegistrar";
-            this.textSearchRegistrar.Size = new System.Drawing.Size(180, 30);
-            this.textSearchRegistrar.TabIndex = 6;
-            this.textSearchRegistrar.Text = "Buscar";
-            this.textSearchRegistrar.Visible = false;
-            this.textSearchRegistrar.Enter += new System.EventHandler(this.textSearchRegistrar_Enter);
-            this.textSearchRegistrar.Leave += new System.EventHandler(this.textSearchRegistrar_Leave);
-            // 
-            // btnCloseSearchRegistrar
-            // 
-            this.btnCloseSearchRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseSearchRegistrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseSearchRegistrar.ForeColor = System.Drawing.Color.Red;
-            this.btnCloseSearchRegistrar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.btnCloseSearchRegistrar.IconColor = System.Drawing.Color.Red;
-            this.btnCloseSearchRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCloseSearchRegistrar.IconSize = 28;
-            this.btnCloseSearchRegistrar.Location = new System.Drawing.Point(683, 2);
-            this.btnCloseSearchRegistrar.Name = "btnCloseSearchRegistrar";
-            this.btnCloseSearchRegistrar.Size = new System.Drawing.Size(28, 28);
-            this.btnCloseSearchRegistrar.TabIndex = 5;
-            this.btnCloseSearchRegistrar.TabStop = false;
-            this.btnCloseSearchRegistrar.Visible = false;
-            this.btnCloseSearchRegistrar.Click += new System.EventHandler(this.btnCloseSearchRegistrar_Click);
             // 
             // label3
             // 
@@ -414,6 +361,7 @@ namespace UI
             this.dataGridApunte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridApunte.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
+            this.Editar,
             this.Borrar});
             this.dataGridApunte.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridApunte.Location = new System.Drawing.Point(0, 32);
@@ -422,6 +370,7 @@ namespace UI
             this.dataGridApunte.RowHeadersVisible = false;
             this.dataGridApunte.Size = new System.Drawing.Size(714, 360);
             this.dataGridApunte.TabIndex = 1;
+            this.dataGridApunte.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridApunte_CellClick);
             // 
             // Seleccionar
             // 
@@ -429,6 +378,15 @@ namespace UI
             this.Seleccionar.Name = "Seleccionar";
             this.Seleccionar.ReadOnly = true;
             this.Seleccionar.Width = 70;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 50;
             // 
             // Borrar
             // 
@@ -444,7 +402,6 @@ namespace UI
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
             this.panelContenedorDeDirectorio.Controls.Add(this.label27);
             this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboFecha);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
             this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
@@ -456,15 +413,27 @@ namespace UI
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(714, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
             // 
-            // comboFecha
+            // label27
             // 
-            this.comboFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboFecha.FormattingEnabled = true;
-            this.comboFecha.Location = new System.Drawing.Point(374, 4);
-            this.comboFecha.Name = "comboFecha";
-            this.comboFecha.Size = new System.Drawing.Size(121, 24);
-            this.comboFecha.TabIndex = 10;
-            this.comboFecha.Text = "Fecha";
+            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label27.Location = new System.Drawing.Point(403, 8);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(41, 16);
+            this.label27.TabIndex = 33;
+            this.label27.Text = "Total";
+            // 
+            // textTotal
+            // 
+            this.textTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotal.Location = new System.Drawing.Point(449, 5);
+            this.textTotal.Name = "textTotal";
+            this.textTotal.Size = new System.Drawing.Size(46, 22);
+            this.textTotal.TabIndex = 32;
+            this.textTotal.Text = "0";
             // 
             // iconPictureBox3
             // 
@@ -505,8 +474,9 @@ namespace UI
             this.textSerachLibreta.Name = "textSerachLibreta";
             this.textSerachLibreta.Size = new System.Drawing.Size(180, 30);
             this.textSerachLibreta.TabIndex = 6;
-            this.textSerachLibreta.Text = "Buscar";
+            this.textSerachLibreta.Text = "Buscar por titulo";
             this.textSerachLibreta.Visible = false;
+            this.textSerachLibreta.TextChanged += new System.EventHandler(this.textSerachLibreta_TextChanged);
             this.textSerachLibreta.Enter += new System.EventHandler(this.textSerachLibreta_Enter);
             this.textSerachLibreta.Leave += new System.EventHandler(this.textSerachLibreta_Leave);
             // 
@@ -538,26 +508,6 @@ namespace UI
             this.label1.TabIndex = 0;
             this.label1.Text = "Libro de apuntes";
             // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label27.Location = new System.Drawing.Point(276, 9);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(41, 16);
-            this.label27.TabIndex = 33;
-            this.label27.Text = "Total";
-            // 
-            // textTotal
-            // 
-            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotal.Location = new System.Drawing.Point(322, 6);
-            this.textTotal.Name = "textTotal";
-            this.textTotal.Size = new System.Drawing.Size(46, 22);
-            this.textTotal.TabIndex = 32;
-            this.textTotal.Text = "0";
-            // 
             // FormApuntes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -575,8 +525,6 @@ namespace UI
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchRegistrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchRegistrar)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
@@ -607,7 +555,6 @@ namespace UI
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridApunte;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
-        private System.Windows.Forms.ComboBox comboFecha;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
         private System.Windows.Forms.TextBox textSerachLibreta;
@@ -618,19 +565,17 @@ namespace UI
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
-        private FontAwesome.Sharp.IconPictureBox btnSearchRegistrar;
-        private System.Windows.Forms.TextBox textSearchRegistrar;
-        private FontAwesome.Sharp.IconPictureBox btnCloseSearchRegistrar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textNota;
         private System.Windows.Forms.Label labelNota;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnRegistrar;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox textTotal;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
     }
 }

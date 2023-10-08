@@ -58,6 +58,48 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
+        public ConsultaDirectivaRespuesta BuscarPorNombre(string nombre)
+        {
+            ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.Directivas = repositorio.BuscarPorNombre(nombre);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Directivas != null) ? "Se consulto el estante buscado" : "el estante consultado no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
+        public ConsultaDirectivaRespuesta BuscarPorDirectiva(string directiva)
+        {
+            ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.Directivas = repositorio.BuscarPorDirectiva(directiva);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Directivas != null) ? "Se consulto el estante buscado" : "el estante consultado no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
         public BusquedaDirectivaRespuesta BuscarPorIdentificacion(string identificacion)
         {
             BusquedaDirectivaRespuesta respuesta = new BusquedaDirectivaRespuesta();

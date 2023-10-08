@@ -39,9 +39,16 @@ namespace UI
             this.panelTituloAvanzado = new System.Windows.Forms.Panel();
             this.labelInstruccionAvanzado = new System.Windows.Forms.Label();
             this.labelTituloAvanzado = new System.Windows.Forms.Label();
-            this.textCadenaConexion = new System.Windows.Forms.TextBox();
+            this.textServidor = new System.Windows.Forms.TextBox();
             this.labelCadenaConexion = new System.Windows.Forms.Label();
             this.btnModificarConexion = new FontAwesome.Sharp.IconButton();
+            this.textBD = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textUI = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
@@ -95,17 +102,24 @@ namespace UI
             // 
             // panelAvanzado
             // 
-            this.panelAvanzado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panelAvanzado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelAvanzado.Controls.Add(this.label3);
+            this.panelAvanzado.Controls.Add(this.button2);
+            this.panelAvanzado.Controls.Add(this.textUI);
+            this.panelAvanzado.Controls.Add(this.label2);
+            this.panelAvanzado.Controls.Add(this.label1);
+            this.panelAvanzado.Controls.Add(this.button1);
+            this.panelAvanzado.Controls.Add(this.textBD);
             this.panelAvanzado.Controls.Add(this.labelConnectionString);
             this.panelAvanzado.Controls.Add(this.pictureCadenaConexion);
             this.panelAvanzado.Controls.Add(this.btnBuscarCadenaConexion);
             this.panelAvanzado.Controls.Add(this.panelTituloAvanzado);
-            this.panelAvanzado.Controls.Add(this.textCadenaConexion);
+            this.panelAvanzado.Controls.Add(this.textServidor);
             this.panelAvanzado.Controls.Add(this.labelCadenaConexion);
             this.panelAvanzado.Location = new System.Drawing.Point(10, 33);
             this.panelAvanzado.Name = "panelAvanzado";
-            this.panelAvanzado.Size = new System.Drawing.Size(457, 82);
+            this.panelAvanzado.Size = new System.Drawing.Size(457, 177);
             this.panelAvanzado.TabIndex = 95;
             // 
             // labelConnectionString
@@ -132,7 +146,7 @@ namespace UI
             this.btnBuscarCadenaConexion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
             this.btnBuscarCadenaConexion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuscarCadenaConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarCadenaConexion.Location = new System.Drawing.Point(361, 51);
+            this.btnBuscarCadenaConexion.Location = new System.Drawing.Point(357, 108);
             this.btnBuscarCadenaConexion.Name = "btnBuscarCadenaConexion";
             this.btnBuscarCadenaConexion.Size = new System.Drawing.Size(37, 22);
             this.btnBuscarCadenaConexion.TabIndex = 82;
@@ -164,17 +178,17 @@ namespace UI
             this.labelTituloAvanzado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTituloAvanzado.Location = new System.Drawing.Point(5, 4);
             this.labelTituloAvanzado.Name = "labelTituloAvanzado";
-            this.labelTituloAvanzado.Size = new System.Drawing.Size(77, 16);
+            this.labelTituloAvanzado.Size = new System.Drawing.Size(76, 16);
             this.labelTituloAvanzado.TabIndex = 84;
             this.labelTituloAvanzado.Text = "Avanzado";
             // 
-            // textCadenaConexion
+            // textServidor
             // 
-            this.textCadenaConexion.Location = new System.Drawing.Point(12, 51);
-            this.textCadenaConexion.Name = "textCadenaConexion";
-            this.textCadenaConexion.Size = new System.Drawing.Size(344, 20);
-            this.textCadenaConexion.TabIndex = 61;
-            this.textCadenaConexion.TextChanged += new System.EventHandler(this.textCadenaConexion_TextChanged);
+            this.textServidor.Location = new System.Drawing.Point(8, 109);
+            this.textServidor.Name = "textServidor";
+            this.textServidor.Size = new System.Drawing.Size(344, 20);
+            this.textServidor.TabIndex = 61;
+            this.textServidor.TextChanged += new System.EventHandler(this.textCadenaConexion_TextChanged);
             // 
             // labelCadenaConexion
             // 
@@ -199,7 +213,7 @@ namespace UI
             this.btnModificarConexion.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnModificarConexion.IconSize = 30;
             this.btnModificarConexion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModificarConexion.Location = new System.Drawing.Point(165, 131);
+            this.btnModificarConexion.Location = new System.Drawing.Point(180, 216);
             this.btnModificarConexion.Name = "btnModificarConexion";
             this.btnModificarConexion.Size = new System.Drawing.Size(123, 35);
             this.btnModificarConexion.TabIndex = 96;
@@ -208,11 +222,78 @@ namespace UI
             this.btnModificarConexion.UseVisualStyleBackColor = false;
             this.btnModificarConexion.Click += new System.EventHandler(this.btnModificarConexion_Click);
             // 
+            // textBD
+            // 
+            this.textBD.Location = new System.Drawing.Point(8, 141);
+            this.textBD.Name = "textBD";
+            this.textBD.Size = new System.Drawing.Size(344, 20);
+            this.textBD.TabIndex = 88;
+            this.textBD.TextChanged += new System.EventHandler(this.textBD_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(357, 139);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(37, 22);
+            this.button1.TabIndex = 89;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.TabIndex = 90;
+            this.label1.Text = "Nombre del servidor:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.TabIndex = 91;
+            this.label2.Text = "Nombre de la BD:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 13);
+            this.label3.TabIndex = 94;
+            this.label3.Text = "Nombre de la UI";
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(357, 71);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(37, 22);
+            this.button2.TabIndex = 93;
+            this.button2.Text = "...";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textUI
+            // 
+            this.textUI.Location = new System.Drawing.Point(8, 72);
+            this.textUI.Name = "textUI";
+            this.textUI.Size = new System.Drawing.Size(344, 20);
+            this.textUI.TabIndex = 92;
+            this.textUI.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // FormAjustarServidor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 178);
+            this.ClientSize = new System.Drawing.Size(477, 263);
             this.Controls.Add(this.btnModificarConexion);
             this.Controls.Add(this.panelAvanzado);
             this.Controls.Add(this.panel1);
@@ -244,8 +325,15 @@ namespace UI
         private System.Windows.Forms.Panel panelTituloAvanzado;
         private System.Windows.Forms.Label labelInstruccionAvanzado;
         private System.Windows.Forms.Label labelTituloAvanzado;
-        private System.Windows.Forms.TextBox textCadenaConexion;
+        private System.Windows.Forms.TextBox textServidor;
         private System.Windows.Forms.Label labelCadenaConexion;
         private FontAwesome.Sharp.IconButton btnModificarConexion;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBD;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textUI;
     }
 }

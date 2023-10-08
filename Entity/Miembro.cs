@@ -11,10 +11,14 @@ namespace Entity
         public Miembro(
             string folio,
             byte[] imagenPerfil,
+            string idContacto,
             string nombre,
+            string apellido,
             string tipoDoc,
             string numeroDoc,
             DateTime fechaDeNacimiento,
+            string genero,
+            int edad,
             string direccion,
             string telefono,
             string parentezcoPadre,
@@ -35,10 +39,14 @@ namespace Entity
         {
             Folio = folio;
             ImagenPerfil= imagenPerfil;
-            Nombre= nombre;
+            IdContacto = idContacto;
+            Nombre = nombre;
+            Apellido = apellido; 
             TipoDoc= tipoDoc;
             NumeroDoc= numeroDoc;
             FechaNacimiento = fechaDeNacimiento;
+            Genero = genero;
+            Edad = edad;
             Direccion = direccion;
             Telefono = telefono;
             ParentezcoPadre = parentezcoPadre;
@@ -62,10 +70,14 @@ namespace Entity
         }
         public string Folio { get; set; }
         public byte[] ImagenPerfil { get; set; }
+        public string IdContacto { get; set; }
         public string Nombre { get; set; }
+        public string Apellido { get; set; }
         public string TipoDoc { get; set; }
         public string NumeroDoc { get; set; }
         public DateTime FechaNacimiento { get; set; }
+        public string Genero { get; set; }
+        public int Edad { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string ParentezcoPadre { get; set; }
@@ -82,59 +94,72 @@ namespace Entity
         public int TiempoEnActoCorrectivo { get; set; }
         public string EstadoMembresia { get; set; }
         public string LugarDeTraslado { get; set; }
-        public void GenerarFolio()
+        public void CalcularEdad()
         {
+            DateTime fechaActual = DateTime.Now;
+            int edad = fechaActual.Year - FechaNacimiento.Year;
 
+            // Verificar si el cumpleaños ya ocurrió este año
+            if (fechaActual.Month < FechaNacimiento.Month || (fechaActual.Month == FechaNacimiento.Month && fechaActual.Day < FechaNacimiento.Day))
+            {
+                edad--;
+            }
+
+            Edad = edad;
         }
         public void CalcularTiempoDeConversion()
         {
-            string añoActual = DateTime.Now.Year.ToString();
-            int mesActual= Convert.ToInt32(DateTime.Now.Month.ToString());
-            string añoBautizo = FechaBautizmo.Year.ToString();
-            int mesBautizo = Convert.ToInt32(FechaBautizmo.Month.ToString());
-            int difereciaAños;
-            if (mesActual > mesBautizo) { 
-                difereciaAños = Convert.ToInt32(añoActual) - Convert.ToInt32(añoBautizo);
-                TiempoDeConversion = difereciaAños;
-            }
-            else
+            DateTime fechaActual = DateTime.Now;
+            int tiempoDeConversion = fechaActual.Year - FechaBautizmo.Year;
+
+            // Verificar si el aniversario de bautismo ya ocurrió este año
+            if (fechaActual.Month < FechaBautizmo.Month || (fechaActual.Month == FechaBautizmo.Month && fechaActual.Day < FechaBautizmo.Day))
             {
-                if (mesActual < mesBautizo)
-                {
-                    difereciaAños = (Convert.ToInt32(añoActual)-1) - Convert.ToInt32(añoBautizo);
-                    TiempoDeConversion = difereciaAños;
-                }
+                tiempoDeConversion--;
             }
+
+            TiempoDeConversion = tiempoDeConversion;
         }
         public void CalcularMembresiaIglesiaProcedente()
         {
-            string añoActual = DateTime.Now.Year.ToString();
-            int mesActual = Convert.ToInt32(DateTime.Now.Month.ToString());
-            string añoDeMembresia = FechaMembresiaIglesiaProcedente.Year.ToString();
-            int mesDeMembresia = Convert.ToInt32(FechaMembresiaIglesiaProcedente.Month.ToString());
-            int difereciaAños;
-            if (mesActual > mesDeMembresia)
+            DateTime fechaActual = DateTime.Now;
+            int mesDeMembresia = FechaMembresiaIglesiaProcedente.Month;
+            int mesActual = fechaActual.Month;
+
+            int tiempoDeMembresiaIglesiaProcedente = 0;
+
+            if (mesActual >= mesDeMembresia)
             {
-                difereciaAños = Convert.ToInt32(añoActual) - Convert.ToInt32(añoDeMembresia);
-                TiempoDeMembresiaIglesiaProcedente = difereciaAños;
+                tiempoDeMembresiaIglesiaProcedente = fechaActual.Year - FechaMembresiaIglesiaProcedente.Year;
             }
             else
             {
-                if (mesActual < mesDeMembresia)
-                {
-                    difereciaAños = (Convert.ToInt32(añoActual) - 1) - Convert.ToInt32(añoDeMembresia);
-                    TiempoDeMembresiaIglesiaProcedente = difereciaAños;
-                }
+                // Si el mes actual es menor que el mes de membresía, significa que ha pasado un año completo.
+                tiempoDeMembresiaIglesiaProcedente = (fechaActual.Year - 1) - FechaMembresiaIglesiaProcedente.Year;
             }
+
+            TiempoDeMembresiaIglesiaProcedente = tiempoDeMembresiaIglesiaProcedente;
         }
-        public void CalcularTiempoDeCorecion()
+
+        public void CalcularTiempoDeCorrecion()
         {
-            int mesDeInicio = Convert.ToInt32(FechaDeCorreccion.Month);
-            int mesActual = Convert.ToInt32(DateTime.Now.Month.ToString());
-            if(mesActual>= mesDeInicio)
+            DateTime fechaActual = DateTime.Now;
+            int mesDeCorreccion = FechaDeCorreccion.Month;
+            int mesActual = fechaActual.Month;
+
+            int tiempoEnActoCorrectivo = 0;
+
+            if (mesActual >= mesDeCorreccion)
             {
-                TiempoEnActoCorrectivo=mesActual - mesDeInicio;
+                tiempoEnActoCorrectivo = mesActual - mesDeCorreccion;
             }
+            else
+            {
+                // Si el mes actual es menor que el mes de corrección, significa que ha pasado un año completo.
+                tiempoEnActoCorrectivo = 12 - (mesDeCorreccion - mesActual);
+            }
+
+            TiempoEnActoCorrectivo = tiempoEnActoCorrectivo;
         }
     }
 }

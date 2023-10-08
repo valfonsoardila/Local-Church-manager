@@ -21,7 +21,6 @@ namespace BLL
         {
             try
             {
-                contacto.GenerarId();
                 contacto.GenerarWhatsapp();
                 conexion.Open();
                 if (repositorio.BuscarPorIdentificacion(contacto.IdContacto) == null)
@@ -58,6 +57,66 @@ namespace BLL
             }
             finally { conexion.Close(); }
 
+        }
+        public BusquedaContactoRespuesta BuscarPorNombre(string nombre)
+        {
+            BusquedaContactoRespuesta respuesta = new BusquedaContactoRespuesta();
+            try
+            {
+                conexion.Open();
+                respuesta.Contacto = repositorio.BuscarPorNombre(nombre);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Contacto != null) ? "Se encontró la id de contacto buscado" : "la id de contacto buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
+        public BusquedaContactoRespuesta BuscarPorApellido(string apellido)
+        {
+            BusquedaContactoRespuesta respuesta = new BusquedaContactoRespuesta();
+            try
+            {
+                conexion.Open();
+                respuesta.Contacto = repositorio.BuscarPorApellido(apellido);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Contacto != null) ? "Se encontró la id de contacto buscado" : "la id de contacto buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
+        public BusquedaContactoRespuesta BuscarPorOficio(string oficio)
+        {
+            BusquedaContactoRespuesta respuesta = new BusquedaContactoRespuesta();
+            try
+            {
+                conexion.Open();
+                respuesta.Contacto = repositorio.BuscarPorOficio(oficio);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Contacto != null) ? "Se encontró la id de contacto buscado" : "la id de contacto buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
         }
         public BusquedaContactoRespuesta BuscarPorIdentificacion(string identificacion)
         {
@@ -106,8 +165,6 @@ namespace BLL
         {
             try
             {
-                contactoNuevo.GenerarId();
-                contactoNuevo.GenerarWhatsapp();
                 conexion.Open();
                 var contacto = repositorio.BuscarPorIdentificacion(contactoNuevo.IdContacto);
                 if (contacto != null)

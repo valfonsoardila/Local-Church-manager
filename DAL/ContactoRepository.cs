@@ -20,8 +20,8 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into CONTACTO(IdContacto, Nombre, Apellido, TelefonoContacto, TelefonoWhatsapp, Oficio) " +
-                    "Values (@IdContacto, @Nombre, @Apellido, @TelefonoContacto, TelefonoWhatsapp, Oficio)";
+                command.CommandText = @"Insert Into CONTACTO (IdContacto, Nombre, Apellido, TelefonoContacto, TelefonoWhatsapp, Oficio) 
+                                        values (@IdContacto, @Nombre, @Apellido, @TelefonoContacto, @TelefonoWhatsapp, @Oficio)";
                 command.Parameters.AddWithValue("@IdContacto", contacto.IdContacto);
                 command.Parameters.AddWithValue("@Nombre", contacto.Nombre);
                 command.Parameters.AddWithValue("@Apellido", contacto.Apellido);
@@ -58,6 +58,42 @@ namespace DAL
             }
             return contactos;
         }
+        public Contacto BuscarPorNombre(string nombre)
+        {
+            SqlDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from CONTACTO where Nombre=@Nombre";
+                command.Parameters.AddWithValue("@Nombre", nombre);
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                return DataReaderMapToCliente(dataReader);
+            }
+        }
+        public Contacto BuscarPorApellido(string apellido)
+        {
+            SqlDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from CONTACTO where Apellido=@Apellido";
+                command.Parameters.AddWithValue("@Apellido", apellido);
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                return DataReaderMapToCliente(dataReader);
+            }
+        }
+        public Contacto BuscarPorOficio(string oficio)
+        {
+            SqlDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from CONTACTO where Oficio=@Oficio";
+                command.Parameters.AddWithValue("@Oficio", oficio);
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                return DataReaderMapToCliente(dataReader);
+            }
+        }
         public Contacto BuscarPorIdentificacion(string id)
         {
             SqlDataReader dataReader;
@@ -74,7 +110,7 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update CONTACTO set Nombre=@Nombre, Apellido=@Apellido. TelefonoContacto=@TelefonoContacto, TelefonoWhatsapp=@TelefonoWhatsapp, Oficio=@Oficio
+                command.CommandText = @"update CONTACTO set Nombre=@Nombre, Apellido=@Apellido, TelefonoContacto=@TelefonoContacto, TelefonoWhatsapp=@TelefonoWhatsapp, Oficio=@Oficio
                                         where IdContacto=@IdContacto";
                 command.Parameters.AddWithValue("@IdContacto", contacto.IdContacto);
                 command.Parameters.AddWithValue("@Nombre", contacto.Nombre);
@@ -82,6 +118,7 @@ namespace DAL
                 command.Parameters.AddWithValue("@TelefonoContacto", contacto.TelefonoContacto);
                 command.Parameters.AddWithValue("@TelefonoWhatsapp", contacto.TelefonoWhatsapp);
                 command.Parameters.AddWithValue("@Oficio", contacto.Oficio);
+                var filas = command.ExecuteNonQuery();
             }
         }
         private Contacto DataReaderMapToCliente(SqlDataReader dataReader)
