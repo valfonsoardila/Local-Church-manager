@@ -25,9 +25,7 @@ namespace BLL
             }
             catch (Exception e)
             {
-                // Manejo de excepciones aquí, si es necesario
-                // Puedes lanzar una excepción personalizada o manejarla de otra manera
-                throw e;
+                return "Error al Consultar:" + e.Message;
             }
         }
         public string Modificar(CadenaConexionXML cadenaConexion, string oldServer, string ui)

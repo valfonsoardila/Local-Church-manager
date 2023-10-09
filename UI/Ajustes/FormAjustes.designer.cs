@@ -70,6 +70,15 @@ namespace UI
             this.textRutaCierreDeCaja = new System.Windows.Forms.TextBox();
             this.labelRutaCierreCaja = new System.Windows.Forms.Label();
             this.panelAvanzado = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textUI = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBD = new System.Windows.Forms.TextBox();
+            this.btnBuscarCadenaConexion = new System.Windows.Forms.Button();
+            this.textServidor = new System.Windows.Forms.TextBox();
             this.labelConnectionString = new System.Windows.Forms.Label();
             this.pictureCadenaConexion = new System.Windows.Forms.PictureBox();
             this.panelTituloAvanzado = new System.Windows.Forms.Panel();
@@ -92,15 +101,6 @@ namespace UI
             this.btnEliminarInfo = new FontAwesome.Sharp.IconButton();
             this.btnModificarInfo = new FontAwesome.Sharp.IconButton();
             this.btnRegistrarInfo = new FontAwesome.Sharp.IconButton();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textUI = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBD = new System.Windows.Forms.TextBox();
-            this.btnBuscarCadenaConexion = new System.Windows.Forms.Button();
-            this.textServidor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInfoIglesia)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelRegistrarDatos.SuspendLayout();
@@ -549,6 +549,93 @@ namespace UI
             this.panelAvanzado.Size = new System.Drawing.Size(630, 171);
             this.panelAvanzado.TabIndex = 93;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 55);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 13);
+            this.label8.TabIndex = 103;
+            this.label8.Text = "Nombre de la UI";
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(363, 68);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(37, 22);
+            this.button2.TabIndex = 102;
+            this.button2.Text = "...";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textUI
+            // 
+            this.textUI.Location = new System.Drawing.Point(14, 69);
+            this.textUI.Name = "textUI";
+            this.textUI.Size = new System.Drawing.Size(344, 20);
+            this.textUI.TabIndex = 101;
+            this.textUI.TextChanged += new System.EventHandler(this.textUI_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(16, 126);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(91, 13);
+            this.label9.TabIndex = 100;
+            this.label9.Text = "Nombre de la BD:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 92);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(104, 13);
+            this.label10.TabIndex = 99;
+            this.label10.Text = "Nombre del servidor:";
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(363, 136);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(37, 22);
+            this.button1.TabIndex = 98;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBD
+            // 
+            this.textBD.Location = new System.Drawing.Point(14, 138);
+            this.textBD.Name = "textBD";
+            this.textBD.Size = new System.Drawing.Size(344, 20);
+            this.textBD.TabIndex = 97;
+            this.textBD.TextChanged += new System.EventHandler(this.textBD_TextChanged);
+            // 
+            // btnBuscarCadenaConexion
+            // 
+            this.btnBuscarCadenaConexion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnBuscarCadenaConexion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBuscarCadenaConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarCadenaConexion.Location = new System.Drawing.Point(363, 105);
+            this.btnBuscarCadenaConexion.Name = "btnBuscarCadenaConexion";
+            this.btnBuscarCadenaConexion.Size = new System.Drawing.Size(37, 22);
+            this.btnBuscarCadenaConexion.TabIndex = 96;
+            this.btnBuscarCadenaConexion.Text = "...";
+            this.btnBuscarCadenaConexion.UseVisualStyleBackColor = true;
+            // 
+            // textServidor
+            // 
+            this.textServidor.Location = new System.Drawing.Point(14, 106);
+            this.textServidor.Name = "textServidor";
+            this.textServidor.Size = new System.Drawing.Size(344, 20);
+            this.textServidor.TabIndex = 95;
+            this.textServidor.TextChanged += new System.EventHandler(this.textServidor_TextChanged);
+            // 
             // labelConnectionString
             // 
             this.labelConnectionString.AutoSize = true;
@@ -610,7 +697,7 @@ namespace UI
             // 
             this.panelTituloDatos.Controls.Add(this.labelTituloDatos);
             this.panelTituloDatos.Controls.Add(this.labelAdvertencia);
-            this.panelTituloDatos.Location = new System.Drawing.Point(86, 58);
+            this.panelTituloDatos.Location = new System.Drawing.Point(86, 57);
             this.panelTituloDatos.Name = "panelTituloDatos";
             this.panelTituloDatos.Size = new System.Drawing.Size(630, 25);
             this.panelTituloDatos.TabIndex = 85;
@@ -799,93 +886,6 @@ namespace UI
             this.btnRegistrarInfo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrarInfo.UseVisualStyleBackColor = false;
             this.btnRegistrarInfo.Click += new System.EventHandler(this.btnRegistrarInfo_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 55);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(84, 13);
-            this.label8.TabIndex = 103;
-            this.label8.Text = "Nombre de la UI";
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(363, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(37, 22);
-            this.button2.TabIndex = 102;
-            this.button2.Text = "...";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // textUI
-            // 
-            this.textUI.Location = new System.Drawing.Point(14, 69);
-            this.textUI.Name = "textUI";
-            this.textUI.Size = new System.Drawing.Size(344, 20);
-            this.textUI.TabIndex = 101;
-            this.textUI.TextChanged += new System.EventHandler(this.textUI_TextChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 126);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(91, 13);
-            this.label9.TabIndex = 100;
-            this.label9.Text = "Nombre de la BD:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 92);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 13);
-            this.label10.TabIndex = 99;
-            this.label10.Text = "Nombre del servidor:";
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(363, 136);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 22);
-            this.button1.TabIndex = 98;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBD
-            // 
-            this.textBD.Location = new System.Drawing.Point(14, 138);
-            this.textBD.Name = "textBD";
-            this.textBD.Size = new System.Drawing.Size(344, 20);
-            this.textBD.TabIndex = 97;
-            this.textBD.TextChanged += new System.EventHandler(this.textBD_TextChanged);
-            // 
-            // btnBuscarCadenaConexion
-            // 
-            this.btnBuscarCadenaConexion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnBuscarCadenaConexion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBuscarCadenaConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarCadenaConexion.Location = new System.Drawing.Point(363, 105);
-            this.btnBuscarCadenaConexion.Name = "btnBuscarCadenaConexion";
-            this.btnBuscarCadenaConexion.Size = new System.Drawing.Size(37, 22);
-            this.btnBuscarCadenaConexion.TabIndex = 96;
-            this.btnBuscarCadenaConexion.Text = "...";
-            this.btnBuscarCadenaConexion.UseVisualStyleBackColor = true;
-            // 
-            // textServidor
-            // 
-            this.textServidor.Location = new System.Drawing.Point(14, 106);
-            this.textServidor.Name = "textServidor";
-            this.textServidor.Size = new System.Drawing.Size(344, 20);
-            this.textServidor.TabIndex = 95;
-            this.textServidor.TextChanged += new System.EventHandler(this.textServidor_TextChanged);
             // 
             // FormAjustes
             // 

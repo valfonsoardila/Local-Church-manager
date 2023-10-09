@@ -26,7 +26,10 @@ namespace UI
         Iglesia iglesia;
         List<Iglesia> iglesias;
         string idIglesia = "#Iglesia";
-        string Server;
+        string cadenaConsultada;
+        string cadena;
+        string server;
+        string db;
         string newServer;
         string newBd;
         string newUi;
@@ -239,9 +242,18 @@ namespace UI
                 string mensaje = iglesiaService.Modificar(iglesia);
                 MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 BuscarPorId();
-                ModificarCadenaConexion();
                 ModificarCarpetasRaiz(rutasTxtService);
                 ModificarCorreo();
+                ConsultarCadena();
+                if (textBD.Text != "" && textServidor.Text != "" && textUI.Text != "")
+                {
+                    ModificarCadenaConexion();
+                }
+                else
+                {
+                    string message = "No se puede modificar la cadena de conexion uno o los 3 campos estan vacios";
+                    MessageBox.Show(message, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -289,32 +301,103 @@ namespace UI
         }
         private void ModificarCadenaConexion()
         {
-            if (textServidor.Text != "")
+            if (textServidor.Text != "" && textBD.Text != "")
             {
-                primeraCadena = "        <add name=" + '"' + "conexion" + '"' + " connectionString=" + '"';
-                segundaCadenaModificada = "Server=" + newServer + ";Database="+newBd+";Trusted_Connection = True; MultipleActiveResultSets = true" + '"' + " />";
-                segundaCadenaOriginal = Server + '"' + " />";
+                primeraCadena = "                <add name=" + '"' + "conexion" + '"' + " connectionString=" + '"';
+                segundaCadenaModificada = "server=" + newServer + ";Database=" + newBd + ";Trusted_Connection = True; MultipleActiveResultSets = true" + '"' + " />";
+                segundaCadenaOriginal = server + '"' + " />";
 
                 cadenaConexion.Cadena = primeraCadena + segundaCadenaModificada;
                 originalConnection = primeraCadena + segundaCadenaOriginal;
                 cadenaConexionService.Modificar(cadenaConexion, originalConnection, newUi);
             }
+            else
+            {
+                if (textServidor.Text == "" && textBD.Text != "")
+                {
+                    primeraCadena = "                <add name=" + '"' + "conexion" + '"' + " connectionString=" + '"';
+                    segundaCadenaModificada = "server=" + server + ";Database=" + newBd + ";Trusted_Connection = True; MultipleActiveResultSets = true" + '"' + " />";
+                    segundaCadenaOriginal = server + '"' + " />";
+
+                    cadenaConexion.Cadena = primeraCadena + segundaCadenaModificada;
+                    originalConnection = primeraCadena + segundaCadenaOriginal;
+                    cadenaConexionService.Modificar(cadenaConexion, originalConnection, newUi);
+                }
+                else
+                {
+                    if (textServidor.Text != "" && textBD.Text == "")
+                    {
+                        primeraCadena = "                <add name=" + '"' + "conexion" + '"' + " connectionString=" + '"';
+                        segundaCadenaModificada = "server=" + newServer + ";Database=" + db + ";Trusted_Connection = True; MultipleActiveResultSets = true" + '"' + " />";
+                        segundaCadenaOriginal = server + '"' + " />";
+
+                        cadenaConexion.Cadena = primeraCadena + segundaCadenaModificada;
+                        originalConnection = primeraCadena + segundaCadenaOriginal;
+                        cadenaConexionService.Modificar(cadenaConexion, originalConnection, newUi);
+                    }
+                    else
+                    {
+                        if (textServidor.Text == "" && textBD.Text == "")
+                        {
+                            primeraCadena = "                <add name=" + '"' + "conexion" + '"' + " connectionString=" + '"';
+                            segundaCadenaModificada = "server=" + server + ";Database=" + db + ";Trusted_Connection = True; MultipleActiveResultSets = true" + '"' + " />";
+                            segundaCadenaOriginal = server + '"' + " />";
+
+                            cadenaConexion.Cadena = primeraCadena + segundaCadenaModificada;
+                            originalConnection = primeraCadena + segundaCadenaOriginal;
+                            cadenaConexionService.Modificar(cadenaConexion, originalConnection, newUi);
+                        }
+                    }
+                }
+            }
+        }
+
+        private string ObtenerCadenaConexion(string xml)
+        {
+            // Buscar el inicio de la cadena de conexión
+            int startIndex = xml.IndexOf("connectionString=\"") + 18;
+
+            // Buscar el final de la cadena de conexión
+            int endIndex = xml.IndexOf("\"", startIndex);
+
+            // Extraer la cadena de conexión completa
+            string cadenaConexionCompleta = xml.Substring(startIndex, endIndex - startIndex);
+
+            return cadenaConexionCompleta;
+        }
+        private void ConsultarCadena()
+        {
+            cadenaConsultada = cadenaConexionService.Consultar();
+            string cadenaConexionCompleta = ObtenerCadenaConexion(cadenaConsultada);
+            labelConnectionString.Text = cadenaConexionCompleta;
         }
         private void EncontrarCadenaDeConexion()
         {
-            connectionString = ConfigurationManager.ConnectionStrings ["conexion"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
             labelConnectionString.Text = connectionString;
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
-            foreach(XmlElement xmlElement in xmlDocument.DocumentElement)
+            foreach (XmlElement xmlElement in xmlDocument.DocumentElement)
             {
                 if (xmlElement.Name.Equals("connectionStrings"))
                 {
-                    foreach(XmlNode node in xmlElement.ChildNodes)
+                    foreach (XmlNode node in xmlElement.ChildNodes)
                     {
                         if (node.Attributes[0].Value == "conexion")
                         {
-                            Server = node.Attributes[1].Value;
+                            cadena = node.Attributes[1].Value;
+                            string[] partesConexion = cadena.Split(';');
+                            foreach (string parte in partesConexion)
+                            {
+                                if (parte.StartsWith("Server="))
+                                {
+                                    server = parte.Substring("Server=".Length);
+                                }
+                                else if (parte.StartsWith("Database="))
+                                {
+                                    db = parte.Substring("Database=".Length);
+                                }
+                            }
                         }
                     }
                 }

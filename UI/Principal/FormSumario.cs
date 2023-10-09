@@ -22,10 +22,22 @@ namespace UI
         MiembroService miembroService;
         List<Miembro> miembros;
         Miembro miembro;
+        DirectivaService directivaService;
+        List<Directiva> directivas;
+        Directiva directiva;
+        ReunionService reunionService;
+        List<Reunion> reuniones;
+        Reunion reunion;
+        ApunteService apunteService;
+        List<Apunte> apuntes;
+        Apunte apunte;
         public InicioResumen()
         {
             contactoService = new ContactoService(ConfigConnection.ConnectionString);
             miembroService = new MiembroService(ConfigConnection.ConnectionString);
+            directivaService = new DirectivaService(ConfigConnection.ConnectionString);
+            reunionService = new ReunionService(ConfigConnection.ConnectionString);
+            apunteService = new ApunteService(ConfigConnection.ConnectionString);
             InitializeComponent();
             Inicializar();
         }
@@ -45,6 +57,51 @@ namespace UI
         {
             ConsultarContactos();
             ConsultarMiembros();
+            ConsultarDirectivas();
+            ConsultarReuniones();
+            ConsultarApuntes();
+        }
+        void ConsultarApuntes()
+        {
+            ConsultaApunteRespuesta respuesta = new ConsultaApunteRespuesta();
+            respuesta = apunteService.ConsultarTodos();
+            apuntes = respuesta.Apuntes.ToList();
+            if (respuesta.Apuntes.Count != 0 && respuesta.Apuntes != null)
+            {
+                labelApuntes.Text = contactoService.Totalizar().Cuenta.ToString();
+            }
+            else
+            {
+                labelApuntes.Text = "0";
+            }
+        }
+        void ConsultarReuniones()
+        {
+            ConsultaReunionRespuesta respuesta = new ConsultaReunionRespuesta();
+            respuesta = reunionService.ConsultarTodos();
+            reuniones = respuesta.Reuniones.ToList();
+            if (respuesta.Reuniones.Count != 0 && respuesta.Reuniones != null)
+            {
+                labelReuniones.Text = contactoService.Totalizar().Cuenta.ToString();
+            }
+            else
+            {
+                labelReuniones.Text = "0";
+            }
+        }
+        void ConsultarDirectivas()
+        {
+            ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
+            respuesta = directivaService.ConsultarTodos();
+            directivas = respuesta.Directivas.ToList();
+            if (respuesta.Directivas.Count != 0 && respuesta.Directivas != null)
+            {
+                labelDirectivas.Text = contactoService.Totalizar().Cuenta.ToString();
+            }
+            else
+            {
+                labelDirectivas.Text = "0";
+            }
         }
         void ConsultarContactos()
         {

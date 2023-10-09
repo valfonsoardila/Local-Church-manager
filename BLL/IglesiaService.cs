@@ -71,7 +71,7 @@ namespace BLL
                 }
                 else
                 {
-                    return ($"Lo sentimos, la drogueria con Id {drogueriaNueva.NIT} no se encuentra registrada.");
+                    return ($"Lo sentimos, la iglesia con Id {drogueriaNueva.NIT} no se encuentra registrada.");
                 }
             }
             catch (Exception e)

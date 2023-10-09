@@ -55,6 +55,10 @@ namespace DAL
         }
         public List<CadenaConexionXML> Consultar()
         {
+            if (ruta == "")
+            {
+                ruta = @"UI.exe.config";
+            }
             List<CadenaConexionXML> appconfig = new List<CadenaConexionXML>();
             FileStream file = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader lector = new StreamReader(ruta);
