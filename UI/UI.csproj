@@ -90,6 +90,12 @@
       <HintPath>..\packages\WhatsAppAPI.15.4.29\lib\net40\WhatsAppApi.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Document.NET, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.2.5.0\lib\net40\Xceed.Document.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.2.5.0\lib\net40\Xceed.Words.NET.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigConection.cs" />
@@ -104,6 +110,36 @@
     </Compile>
     <Compile Include="Ajustes\FormAjustes.designer.cs">
       <DependentUpon>FormAjustes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base de Datos\FormBaseDeDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base de Datos\FormBaseDeDatos.Designer.cs">
+      <DependentUpon>FormBaseDeDatos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tesoreria\FormEnviables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tesoreria\FormEnviables.Designer.cs">
+      <DependentUpon>FormEnviables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tesoreria\FormEgresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tesoreria\FormEgresos.Designer.cs">
+      <DependentUpon>FormEgresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tesoreria\FormLiquidacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tesoreria\FormLiquidacion.Designer.cs">
+      <DependentUpon>FormLiquidacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tesoreria\FormIngresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tesoreria\FormIngresos.Designer.cs">
+      <DependentUpon>FormIngresos.cs</DependentUpon>
     </Compile>
     <Compile Include="Imprimir.cs" />
     <Compile Include="Login\FormRestaurarContraseña.cs">
@@ -187,6 +223,18 @@
     <EmbeddedResource Include="Ajustes\FormAjustes.resx">
       <DependentUpon>FormAjustes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Base de Datos\FormBaseDeDatos.resx">
+      <DependentUpon>FormBaseDeDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tesoreria\FormEnviables.resx">
+      <DependentUpon>FormEnviables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tesoreria\FormEgresos.resx">
+      <DependentUpon>FormEgresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tesoreria\FormLiquidacion.resx">
+      <DependentUpon>FormLiquidacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\FormRestaurarContraseña.resx">
       <DependentUpon>FormRestaurarContraseña.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +272,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tesoreria\FormIngresos.resx">
+      <DependentUpon>FormIngresos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -354,6 +405,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\BaseDatos.png" />
+    <None Include="Resources\Enviables2.png" />
+    <None Include="Resources\Egresos2.png" />
+    <None Include="Resources\Egresos.png" />
+    <None Include="Resources\Enviables.png" />
+    <None Include="Resources\Liquidacion.png" />
+    <None Include="Resources\Ingresos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Doc%27s\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -58,6 +58,7 @@ namespace UI
                     btnGestionSecretaria.Visible = true;
                     btnGestionTesoreria.Enabled = true;
                     btnGestionTesoreria.Visible = true;
+                    btnGestionBD.Visible = true;
                     btnAjustes.Enabled = true;
                 }
                 else
@@ -68,6 +69,7 @@ namespace UI
                         btnGestionSecretaria.Enabled = true;
                         btnGestionTesoreria.Enabled = false;
                         btnGestionTesoreria.Visible = false;
+                        btnGestionBD.Visible = false;
                         btnAjustes.Enabled = false;
                     }
                     else
@@ -78,6 +80,7 @@ namespace UI
                             btnGestionTesoreria.Enabled = true;
                             btnGestionSecretaria.Enabled = false;
                             btnGestionSecretaria.Visible = false;
+                            btnGestionBD.Visible = false;
                             btnAjustes.Enabled = false;
                         }
                     }
@@ -106,9 +109,10 @@ namespace UI
             showSubMenu(subMenuSecretaria);
             panelSelectionSecretaria.Location = btnGestionSecretaria.Location;
             panelSelectionSecretaria.Visible = true;
-            panelSelectionFactura.Visible = false;
+            panelSelectionBD.Visible = false;
             panelSelectionTesoreria.Visible = false;
             panelSelectionAjustes.Visible = false;
+            panelSelectionSalir.Visible = false;
         }
 
         private void btnGestionTesoreria_Click(object sender, EventArgs e)
@@ -117,9 +121,10 @@ namespace UI
             showSubMenu(subMenuTesoreria);
             panelSelectionTesoreria.Location = btnGestionTesoreria.Location;
             panelSelectionTesoreria.Visible = true;
-            panelSelectionFactura.Visible = false;
+            panelSelectionBD.Visible = false;
             panelSelectionSecretaria.Visible = false;
             panelSelectionAjustes.Visible = false;
+            panelSelectionSalir.Visible = false;
         }
         private void EliminarIdSesionDeUsuario()
         {
@@ -187,8 +192,9 @@ namespace UI
             labelLogoName.Visible = false;
             btnGestionSecretaria.Text = "";
             btnGestionTesoreria.Text = "";
-            btnGestionFactura.Text = "";
+            btnGestionBD.Text = "";
             btnAjustes.Text = "";
+            btnCerrarSesion.Text = "";
             panelSidebarClose.Visible = true;
         }
 
@@ -200,8 +206,9 @@ namespace UI
             labelLogoName.Visible = true;
             btnGestionSecretaria.Text = "Gestion de secretaría";
             btnGestionTesoreria.Text = "Gestion de tesoreria";
-            btnGestionFactura.Text = "Gestion de Factura";
+            btnGestionBD.Text = "Gestion de BD";
             btnAjustes.Text = "Ajustes";
+            btnCerrarSesion.Text = "Cerrar sesion";
             panelSidebarClose.Visible = false;
         }
         private void AbrirSumadorDelSistema()
@@ -256,6 +263,24 @@ namespace UI
                 case 4:
                     CerrarFormulario<FormDirectivas>();
                     break;
+                case 5:
+                    CerrarFormulario<FormIngresos>();
+                    break;
+                case 6:
+                    CerrarFormulario<FormEgresos>();
+                    break;
+                case 7:
+                    CerrarFormulario<FormLiquidacion>();
+                    break;
+                case 8:
+                    CerrarFormulario<FormEnviables>();
+                    break;
+                case 9:
+                    CerrarFormulario<FormBaseDeDatos>();
+                    break;
+                case 10:
+                    CerrarFormulario<FormAjustes>();
+                    break;
             }
         }
         //Cerrar los formularios abiertos
@@ -304,6 +329,8 @@ namespace UI
             panelSelectionAjustes.Visible = true;
             panelSelectionTesoreria.Visible = false;
             panelSelectionSecretaria.Visible = false;
+            panelSelectionBD.Visible = false;
+            panelSelectionSalir.Visible = false;
         }
         private void panelHeaderbar_MouseDown(object sender, MouseEventArgs e)
         {
@@ -331,8 +358,9 @@ namespace UI
             labelLogoName.Visible = true;
             btnGestionSecretaria.Text = "Gestion de secretaría";
             btnGestionTesoreria.Text = "Gestion de tesoreria";
-            btnGestionFactura.Text = "Gestion de Factura";
+            btnGestionBD.Text = "Gestion de BD";
             btnAjustes.Text = "Ajustes";
+            btnCerrarSesion.Text = "Cerrar sesion";
             panelSidebarClose.Visible = false;
         }
 
@@ -344,8 +372,9 @@ namespace UI
             labelLogoName.Visible = true;
             btnGestionSecretaria.Text = "Gestion de secretaría";
             btnGestionTesoreria.Text = "Gestion de tesoreria";
-            btnGestionFactura.Text = "Gestion de Factura";
+            btnGestionBD.Text = "Gestion de BD";
             btnAjustes.Text = "Ajustes";
+            btnCerrarSesion.Text = "Cerrar sesion";
             panelSidebarClose.Visible = false;
         }
 
@@ -358,7 +387,7 @@ namespace UI
             labelLogoName.Visible = true;
             btnGestionSecretaria.Text = "Gestion de secretaría";
             btnGestionTesoreria.Text = "Gestion de tesoreria";
-            btnGestionFactura.Text = "Gestion de Factura";
+            btnGestionBD.Text = "Gestion de BD";
             btnAjustes.Text = "Ajustes";
             panelSidebarClose.Visible = false;
         }
@@ -371,8 +400,9 @@ namespace UI
             labelLogoName.Visible = true;
             btnGestionSecretaria.Text = "Gestion de secretaría";
             btnGestionTesoreria.Text = "Gestion de tesoreria";
-            btnGestionFactura.Text = "Gestion de Factura";
+            btnGestionBD.Text = "Gestion de BD";
             btnAjustes.Text = "Ajustes";
+            btnCerrarSesion.Text = "Cerrar sesion";
             panelSidebarClose.Visible = false;
         }
 
@@ -384,8 +414,9 @@ namespace UI
             labelLogoName.Visible = true;
             btnGestionSecretaria.Text = "Gestion de secretaría";
             btnGestionTesoreria.Text = "Gestion de tesoreria";
-            btnGestionFactura.Text = "Gestion de Factura";
+            btnGestionBD.Text = "Gestion de BD";
             btnAjustes.Text = "Ajustes";
+            btnCerrarSesion.Text = "Cerrar sesion";
             panelSidebarClose.Visible = false;
         }
 
@@ -397,8 +428,9 @@ namespace UI
             labelLogoName.Visible = true;
             btnGestionSecretaria.Text = "Gestion de secretaría";
             btnGestionTesoreria.Text = "Gestion de tesoreria";
-            btnGestionFactura.Text = "Gestion de Factura";
+            btnGestionBD.Text = "Gestion de BD";
             btnAjustes.Text = "Ajustes";
+            btnCerrarSesion.Text = "Cerrar sesion";
             panelSidebarClose.Visible = false;
         }
 
@@ -410,8 +442,9 @@ namespace UI
             labelLogoName.Visible = true;
             btnGestionSecretaria.Text = "Gestion de secretaría";
             btnGestionTesoreria.Text = "Gestion de tesoreria";
-            btnGestionFactura.Text = "Gestion de Factura";
+            btnGestionBD.Text = "Gestion de BD";
             btnAjustes.Text = "Ajustes";
+            btnCerrarSesion.Text = "Cerrar sesion";
             panelSidebarClose.Visible = false;
         }
 
@@ -423,8 +456,9 @@ namespace UI
             labelLogoName.Visible = true;
             btnGestionSecretaria.Text = "Gestion de secretaría";
             btnGestionTesoreria.Text = "Gestion de tesoreria";
-            btnGestionFactura.Text = "Gestion de Factura";
+            btnGestionBD.Text = "Gestion de BD";
             btnAjustes.Text = "Ajustes";
+            btnCerrarSesion.Text = "Cerrar sesion";
             panelSidebarClose.Visible = false;
         }
 
@@ -436,9 +470,60 @@ namespace UI
             labelLogoName.Visible = true;
             btnGestionSecretaria.Text = "Gestion de secretaría";
             btnGestionTesoreria.Text = "Gestion de tesoreria";
-            btnGestionFactura.Text = "Gestion de Factura";
+            btnGestionBD.Text = "Gestion de BD";
             btnAjustes.Text = "Ajustes";
+            btnCerrarSesion.Text = "Cerrar sesion";
             panelSidebarClose.Visible = false;
+        }
+
+        private void btnIngresos_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormIngresos>();
+        }
+
+        private void btnEgresos_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormEgresos>();
+        }
+
+        private void btnLiquidaciones_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormLiquidacion>();
+        }
+
+        private void btnEnviables_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormEnviables>();
+        }
+
+        private void btnGestionBD_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormBaseDeDatos>();
+            labelHeaderRuta.Text = "Inicio > Gestion Base de datos";
+            panelSelectionBD.Location = btnGestionBD.Location;
+            panelSelectionBD.Visible = true;
+            panelSelectionTesoreria.Visible = false;
+            panelSelectionSecretaria.Visible = false;
+            panelSelectionAjustes.Visible = false;
+            panelSelectionSalir.Visible = false;
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            panelSelectionSalir.Location = btnCerrarSesion.Location;
+            panelSelectionSalir.Visible = true;
+            panelSelectionBD.Visible = false;
+            panelSelectionSecretaria.Visible = false;
+            panelSelectionAjustes.Visible = false;
+            panelSelectionTesoreria.Visible = false;
+            FormInicioSesion login = new FormInicioSesion();
+            login.Show();
+            this.Hide();
         }
     }
 }

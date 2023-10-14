@@ -112,6 +112,7 @@ namespace UI
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.textSearch = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
@@ -127,7 +128,6 @@ namespace UI
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textSearch = new System.Windows.Forms.TextBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -1196,6 +1196,7 @@ namespace UI
             this.btnImprimirLista.Text = "Imprimir Lista";
             this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimirLista.UseVisualStyleBackColor = false;
+            this.btnImprimirLista.Click += new System.EventHandler(this.btnImprimirLista_Click);
             // 
             // panel14
             // 
@@ -1281,6 +1282,21 @@ namespace UI
             this.panelContenedorDeDirectorio.Name = "panelContenedorDeDirectorio";
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(723, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
+            // 
+            // textSearch
+            // 
+            this.textSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textSearch.Location = new System.Drawing.Point(533, 2);
+            this.textSearch.Multiline = true;
+            this.textSearch.Name = "textSearch";
+            this.textSearch.Size = new System.Drawing.Size(153, 29);
+            this.textSearch.TabIndex = 24;
+            this.textSearch.Text = "Buscar";
+            this.textSearch.Visible = false;
+            this.textSearch.TextChanged += new System.EventHandler(this.textSearch_TextChanged);
+            this.textSearch.Enter += new System.EventHandler(this.textSearch_Enter);
+            this.textSearch.Leave += new System.EventHandler(this.textSearch_Leave);
             // 
             // label27
             // 
@@ -1474,21 +1490,6 @@ namespace UI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 59);
             this.panel1.TabIndex = 2;
-            // 
-            // textSearch
-            // 
-            this.textSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSearch.Location = new System.Drawing.Point(533, 2);
-            this.textSearch.Multiline = true;
-            this.textSearch.Name = "textSearch";
-            this.textSearch.Size = new System.Drawing.Size(153, 29);
-            this.textSearch.TabIndex = 24;
-            this.textSearch.Text = "Buscar";
-            this.textSearch.Visible = false;
-            this.textSearch.TextChanged += new System.EventHandler(this.textSearch_TextChanged);
-            this.textSearch.Enter += new System.EventHandler(this.textSearch_Enter);
-            this.textSearch.Leave += new System.EventHandler(this.textSearch_Leave);
             // 
             // FormMiembros
             // 
