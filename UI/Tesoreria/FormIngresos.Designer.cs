@@ -30,18 +30,19 @@
         {
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.textDineroIngreso = new System.Windows.Forms.TextBox();
+            this.comboConcepto = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboComite = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textNumeroComprobante = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateFechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnModificar = new FontAwesome.Sharp.IconButton();
             this.btnRegistrar = new FontAwesome.Sharp.IconButton();
-            this.textNombre = new System.Windows.Forms.TextBox();
+            this.textDetalle = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
@@ -58,14 +59,15 @@
             this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridContactos = new System.Windows.Forms.DataGridView();
+            this.dataGridIngresos = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.textTotal = new System.Windows.Forms.TextBox();
-            this.comboOficioLibreta = new System.Windows.Forms.ComboBox();
+            this.comboFiltroComite = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
@@ -106,7 +108,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridContactos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridIngresos)).BeginInit();
             this.panelContenedorDeDirectorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
@@ -136,16 +138,17 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.comboBox3);
+            this.panel4.Controls.Add(this.textDineroIngreso);
+            this.panel4.Controls.Add(this.comboConcepto);
             this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.comboBox1);
+            this.panel4.Controls.Add(this.comboComite);
             this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.textNumeroComprobante);
             this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.dateTimePicker1);
+            this.panel4.Controls.Add(this.dateFechaIngreso);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.tableLayoutPanel1);
-            this.panel4.Controls.Add(this.textNombre);
+            this.panel4.Controls.Add(this.textDetalle);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Location = new System.Drawing.Point(40, 35);
@@ -153,9 +156,23 @@
             this.panel4.Size = new System.Drawing.Size(714, 392);
             this.panel4.TabIndex = 0;
             // 
-            // comboBox3
+            // textDineroIngreso
             // 
-            this.comboBox3.AutoCompleteCustomSource.AddRange(new string[] {
+            this.textDineroIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textDineroIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textDineroIngreso.Location = new System.Drawing.Point(302, 108);
+            this.textDineroIngreso.Name = "textDineroIngreso";
+            this.textDineroIngreso.Size = new System.Drawing.Size(181, 26);
+            this.textDineroIngreso.TabIndex = 25;
+            this.textDineroIngreso.Text = "$ 000.00";
+            this.textDineroIngreso.TextChanged += new System.EventHandler(this.textDineroIngreo_TextChanged);
+            this.textDineroIngreso.Enter += new System.EventHandler(this.textDineroIngreo_Enter);
+            this.textDineroIngreso.Leave += new System.EventHandler(this.textDineroIngreo_Leave);
+            this.textDineroIngreso.Validated += new System.EventHandler(this.textDineroIngreso_Validated);
+            // 
+            // comboConcepto
+            // 
+            this.comboConcepto.AutoCompleteCustomSource.AddRange(new string[] {
             "Ingeniero(a) de sistemas",
             "Ingeniero(a) de electronica",
             "Ingeniero(a) Industrial",
@@ -191,20 +208,22 @@
             "Modista",
             "Electronico",
             "Tecnico"});
-            this.comboBox3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.comboConcepto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboConcepto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboConcepto.FormattingEnabled = true;
+            this.comboConcepto.Items.AddRange(new object[] {
             "Ofrenda",
             "Voto",
             "Actividades",
             "Otro"});
-            this.comboBox3.Location = new System.Drawing.Point(115, 110);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(181, 24);
-            this.comboBox3.TabIndex = 24;
-            this.comboBox3.Text = "Concepto";
+            this.comboConcepto.Location = new System.Drawing.Point(115, 110);
+            this.comboConcepto.Name = "comboConcepto";
+            this.comboConcepto.Size = new System.Drawing.Size(181, 24);
+            this.comboConcepto.TabIndex = 24;
+            this.comboConcepto.Text = "Concepto";
+            this.comboConcepto.Enter += new System.EventHandler(this.comboConcepto_Enter);
+            this.comboConcepto.Leave += new System.EventHandler(this.comboConcepto_Leave);
             // 
             // label13
             // 
@@ -216,9 +235,9 @@
             this.label13.TabIndex = 23;
             this.label13.Text = "Concepto:";
             // 
-            // comboBox1
+            // comboComite
             // 
-            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            this.comboComite.AutoCompleteCustomSource.AddRange(new string[] {
             "Ingeniero(a) de sistemas",
             "Ingeniero(a) de electronica",
             "Ingeniero(a) Industrial",
@@ -254,12 +273,12 @@
             "Modista",
             "Electronico",
             "Tecnico"});
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Todos",
+            this.comboComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboComite.FormattingEnabled = true;
+            this.comboComite.Items.AddRange(new object[] {
+            "Comite",
             "Junta Local",
             "Jovenes",
             "Damas Dorcas",
@@ -284,11 +303,13 @@
             "Comité de familia",
             "Donacion",
             "Aporte de liquidacion"});
-            this.comboBox1.Location = new System.Drawing.Point(115, 74);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(181, 24);
-            this.comboBox1.TabIndex = 22;
-            this.comboBox1.Text = "Comite";
+            this.comboComite.Location = new System.Drawing.Point(115, 74);
+            this.comboComite.Name = "comboComite";
+            this.comboComite.Size = new System.Drawing.Size(181, 24);
+            this.comboComite.TabIndex = 22;
+            this.comboComite.Text = "Comite";
+            this.comboComite.Enter += new System.EventHandler(this.comboComite_Enter);
+            this.comboComite.Leave += new System.EventHandler(this.comboComite_Leave);
             // 
             // label7
             // 
@@ -300,16 +321,16 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Comite:";
             // 
-            // textBox1
+            // textNumeroComprobante
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(631, 44);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(80, 19);
-            this.textBox1.TabIndex = 20;
-            this.textBox1.Text = "Numero";
+            this.textNumeroComprobante.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textNumeroComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNumeroComprobante.Location = new System.Drawing.Point(631, 44);
+            this.textNumeroComprobante.Multiline = true;
+            this.textNumeroComprobante.Name = "textNumeroComprobante";
+            this.textNumeroComprobante.Size = new System.Drawing.Size(80, 19);
+            this.textNumeroComprobante.TabIndex = 20;
+            this.textNumeroComprobante.Text = "Numero";
             // 
             // label6
             // 
@@ -321,12 +342,12 @@
             this.label6.TabIndex = 19;
             this.label6.Text = "Numero de comprobante:";
             // 
-            // dateTimePicker1
+            // dateFechaIngreso
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(115, 47);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 18;
+            this.dateFechaIngreso.Location = new System.Drawing.Point(115, 47);
+            this.dateFechaIngreso.Name = "dateFechaIngreso";
+            this.dateFechaIngreso.Size = new System.Drawing.Size(200, 20);
+            this.dateFechaIngreso.TabIndex = 18;
             // 
             // label5
             // 
@@ -388,16 +409,18 @@
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
             // 
-            // textNombre
+            // textDetalle
             // 
-            this.textNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textNombre.Location = new System.Drawing.Point(116, 147);
-            this.textNombre.Multiline = true;
-            this.textNombre.Name = "textNombre";
-            this.textNombre.Size = new System.Drawing.Size(368, 80);
-            this.textNombre.TabIndex = 7;
-            this.textNombre.Text = "Detalle";
+            this.textDetalle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textDetalle.Location = new System.Drawing.Point(116, 147);
+            this.textDetalle.Multiline = true;
+            this.textDetalle.Name = "textDetalle";
+            this.textDetalle.Size = new System.Drawing.Size(368, 80);
+            this.textDetalle.TabIndex = 7;
+            this.textDetalle.Text = "Detalle";
+            this.textDetalle.Enter += new System.EventHandler(this.textDetalle_Enter);
+            this.textDetalle.Leave += new System.EventHandler(this.textDetalle_Leave);
             // 
             // label4
             // 
@@ -424,7 +447,7 @@
             // 
             this.iconPictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.AddressCard;
+            this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTrendUp;
             this.iconPictureBox4.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox4.IconSize = 28;
@@ -574,6 +597,7 @@
             this.btnGestionarDirectivas.TabIndex = 1;
             this.btnGestionarDirectivas.Text = "Gestionar Ingresos";
             this.btnGestionarDirectivas.UseVisualStyleBackColor = false;
+            this.btnGestionarDirectivas.Click += new System.EventHandler(this.btnGestionarDirectivas_Click);
             // 
             // panel6
             // 
@@ -589,37 +613,39 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.dataGridContactos);
+            this.panel3.Controls.Add(this.dataGridIngresos);
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(27, 8);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(804, 374);
             this.panel3.TabIndex = 0;
             // 
-            // dataGridContactos
+            // dataGridIngresos
             // 
-            this.dataGridContactos.AllowUserToAddRows = false;
-            this.dataGridContactos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridContactos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridContactos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            this.dataGridContactos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridContactos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridIngresos.AllowUserToAddRows = false;
+            this.dataGridIngresos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridIngresos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridIngresos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dataGridIngresos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridIngresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
             this.Editar,
+            this.Detallar,
             this.Borrar});
-            this.dataGridContactos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridContactos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridContactos.Location = new System.Drawing.Point(0, 32);
-            this.dataGridContactos.Name = "dataGridContactos";
-            this.dataGridContactos.ReadOnly = true;
-            this.dataGridContactos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridContactos.RowHeadersVisible = false;
-            this.dataGridContactos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridContactos.RowTemplate.DividerHeight = 2;
-            this.dataGridContactos.RowTemplate.Height = 30;
-            this.dataGridContactos.Size = new System.Drawing.Size(804, 342);
-            this.dataGridContactos.TabIndex = 1;
+            this.dataGridIngresos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridIngresos.Location = new System.Drawing.Point(0, 32);
+            this.dataGridIngresos.Name = "dataGridIngresos";
+            this.dataGridIngresos.ReadOnly = true;
+            this.dataGridIngresos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridIngresos.RowHeadersVisible = false;
+            this.dataGridIngresos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridIngresos.RowTemplate.DividerHeight = 2;
+            this.dataGridIngresos.RowTemplate.Height = 30;
+            this.dataGridIngresos.Size = new System.Drawing.Size(804, 342);
+            this.dataGridIngresos.TabIndex = 1;
+            this.dataGridIngresos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridIngresos_CellClick);
             // 
             // Seleccionar
             // 
@@ -637,6 +663,14 @@
             this.Editar.ReadOnly = true;
             this.Editar.Width = 40;
             // 
+            // Detallar
+            // 
+            this.Detallar.HeaderText = "Detallar";
+            this.Detallar.Image = global::UI.Properties.Resources.Detallar;
+            this.Detallar.Name = "Detallar";
+            this.Detallar.ReadOnly = true;
+            this.Detallar.Width = 49;
+            // 
             // Borrar
             // 
             this.Borrar.HeaderText = "Borrar";
@@ -651,7 +685,7 @@
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
             this.panelContenedorDeDirectorio.Controls.Add(this.label9);
             this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboOficioLibreta);
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboFiltroComite);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
             this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
@@ -683,9 +717,9 @@
             this.textTotal.TabIndex = 11;
             this.textTotal.Text = "0";
             // 
-            // comboOficioLibreta
+            // comboFiltroComite
             // 
-            this.comboOficioLibreta.AutoCompleteCustomSource.AddRange(new string[] {
+            this.comboFiltroComite.AutoCompleteCustomSource.AddRange(new string[] {
             "Ingeniero(a) de sistemas",
             "Ingeniero(a) de electronica",
             "Ingeniero(a) Industrial",
@@ -721,11 +755,11 @@
             "Modista",
             "Electronico",
             "Tecnico"});
-            this.comboOficioLibreta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboOficioLibreta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboOficioLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboOficioLibreta.FormattingEnabled = true;
-            this.comboOficioLibreta.Items.AddRange(new object[] {
+            this.comboFiltroComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboFiltroComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboFiltroComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltroComite.FormattingEnabled = true;
+            this.comboFiltroComite.Items.AddRange(new object[] {
             "Todos",
             "Junta Local",
             "Jovenes",
@@ -751,11 +785,11 @@
             "Comité de familia",
             "Donacion",
             "Aporte de liquidacion"});
-            this.comboOficioLibreta.Location = new System.Drawing.Point(374, 4);
-            this.comboOficioLibreta.Name = "comboOficioLibreta";
-            this.comboOficioLibreta.Size = new System.Drawing.Size(121, 24);
-            this.comboOficioLibreta.TabIndex = 10;
-            this.comboOficioLibreta.Text = "Comite";
+            this.comboFiltroComite.Location = new System.Drawing.Point(374, 4);
+            this.comboFiltroComite.Name = "comboFiltroComite";
+            this.comboFiltroComite.Size = new System.Drawing.Size(121, 24);
+            this.comboFiltroComite.TabIndex = 10;
+            this.comboFiltroComite.Text = "Comite";
             // 
             // iconPictureBox3
             // 
@@ -785,6 +819,7 @@
             this.btSearchLibreta.Size = new System.Drawing.Size(28, 28);
             this.btSearchLibreta.TabIndex = 7;
             this.btSearchLibreta.TabStop = false;
+            this.btSearchLibreta.Click += new System.EventHandler(this.btSearchLibreta_Click);
             // 
             // textSerachLibreta
             // 
@@ -797,6 +832,9 @@
             this.textSerachLibreta.TabIndex = 6;
             this.textSerachLibreta.Text = "Buscar por detalle";
             this.textSerachLibreta.Visible = false;
+            this.textSerachLibreta.TextChanged += new System.EventHandler(this.textSerachLibreta_TextChanged);
+            this.textSerachLibreta.Enter += new System.EventHandler(this.textSerachLibreta_Enter);
+            this.textSerachLibreta.Leave += new System.EventHandler(this.textSerachLibreta_Leave);
             // 
             // btnCloseSearchLibreta
             // 
@@ -813,6 +851,7 @@
             this.btnCloseSearchLibreta.TabIndex = 5;
             this.btnCloseSearchLibreta.TabStop = false;
             this.btnCloseSearchLibreta.Visible = false;
+            this.btnCloseSearchLibreta.Click += new System.EventHandler(this.btnCloseSearchLibreta_Click);
             // 
             // label1
             // 
@@ -834,7 +873,6 @@
             this.tabDetalle.Size = new System.Drawing.Size(872, 450);
             this.tabDetalle.TabIndex = 2;
             this.tabDetalle.Text = "Detalle x Comite";
-            this.tabDetalle.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -1118,6 +1156,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormIngresos";
             this.Text = "FormIngresos";
+            this.Load += new System.EventHandler(this.FormIngresos_Load);
             tabRegistrar.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -1135,7 +1174,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridContactos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridIngresos)).EndInit();
             this.panelContenedorDeDirectorio.ResumeLayout(false);
             this.panelContenedorDeDirectorio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
@@ -1165,11 +1204,11 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridContactos;
+        private System.Windows.Forms.DataGridView dataGridIngresos;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textTotal;
-        private System.Windows.Forms.ComboBox comboOficioLibreta;
+        private System.Windows.Forms.ComboBox comboFiltroComite;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
         private System.Windows.Forms.TextBox textSerachLibreta;
@@ -1179,17 +1218,17 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnRegistrar;
-        private System.Windows.Forms.TextBox textNombre;
+        private System.Windows.Forms.TextBox textDetalle;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateFechaIngreso;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textNumeroComprobante;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboComite;
         private System.Windows.Forms.TabPage tabDetalle;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel8;
@@ -1210,13 +1249,15 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboConcepto;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private FontAwesome.Sharp.IconButton btnImprimir;
         private FontAwesome.Sharp.IconButton btnGestionarDirectivas;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Detallar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private System.Windows.Forms.TextBox textDineroIngreso;
     }
 }

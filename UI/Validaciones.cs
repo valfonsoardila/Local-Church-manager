@@ -117,5 +117,201 @@ namespace UI
             }
             return estado;
         }
+        public string TextoPlaceHolderEnter(string textPlaceHolder)
+        {
+            string textChanged="";
+            if (textPlaceHolder != "")
+            {
+                textChanged = "";
+            }
+            return textChanged;
+        }
+        public string TextoPlaceHolderLeave(string textPlaceHolder, string nombreDelComponente)
+        {
+            string textChanged = "";
+            if (textPlaceHolder == "")
+            {
+                if (nombreDelComponente.StartsWith("text"))
+                {
+                    // Elimina "text" del inicio para obtener el nombre deseado
+                    nombreDelComponente = nombreDelComponente.Substring(4);
+                    // Dividir el nombre por espacios
+                    string[] palabras = Regex.Split(nombreDelComponente, @"(?<!^)(?=[A-Z])");
+                    for (int i = 0; i < palabras.Length; i++)
+                    {
+                        if (i == 0)
+                        {
+                            palabras[i] = palabras[i].Substring(0, 1).ToUpper() + palabras[i].Substring(1).ToLower();
+                        }
+                        else
+                        {
+                            palabras[i] = palabras[i].ToLower();
+                        }
+                    }
+
+                    // Unir las palabras nuevamente
+                    textChanged = string.Join(" ", palabras);
+                }
+                else
+                {
+                    if (nombreDelComponente.StartsWith("combo"))
+                    {
+                        // Elimina "combo" del inicio para obtener el nombre deseado
+                        nombreDelComponente = nombreDelComponente.Substring(5);
+                        if (nombreDelComponente.Contains("Genero"))
+                        {
+                            textChanged = "Masculino";
+                        }
+                        else
+                        {
+                            if (nombreDelComponente.Contains("TipoDocumento"))
+                            {
+                                textChanged = "CC";
+                            }
+                            else
+                            {
+                                if (nombreDelComponente.Contains("EstadoCivil"))
+                                {
+                                    textChanged = "Sin especificar";
+                                }
+                                else
+                                {
+                                    if (nombreDelComponente.Contains("Bautizado"))
+                                    {
+                                        textChanged = "No";
+                                    }
+                                    else
+                                    {
+                                        if (nombreDelComponente.Contains("PastorOficiante"))
+                                        {
+                                            textChanged = "Emiro Diaz";
+                                        }
+                                        else
+                                        {
+                                            if (nombreDelComponente.Contains("Sellado"))
+                                            {
+                                                textChanged = "No";
+                                            }
+                                            else
+                                            {
+                                                if (nombreDelComponente.Contains("Recuerda"))
+                                                {
+                                                    textChanged = "No";
+                                                }
+                                                else
+                                                {
+                                                    if (nombreDelComponente.Contains("PastorAsistente"))
+                                                    {
+                                                        textChanged = "No";
+                                                    }
+                                                    else
+                                                    {
+                                                        if (nombreDelComponente.Contains("PastorAsistente"))
+                                                        {
+                                                            textChanged = "No";
+                                                        }
+                                                        else
+                                                        {
+                                                            if (nombreDelComponente.Contains("Membresia"))
+                                                            {
+                                                                textChanged = "Congregado";
+                                                            }
+                                                            else
+                                                            {
+                                                                if (nombreDelComponente.Contains("Oficio"))
+                                                                {
+                                                                    textChanged = "Oficio";
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (nombreDelComponente.Contains("EstadoCivil"))
+                                                                    {
+                                                                        textChanged = "Sin especificar";
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return textChanged;
+        }
+        public bool ComboResponse(string item, string nombreDelComponente)
+        {
+            bool response = false;
+            if (item != "" && item!="Sin especificar")
+            {
+                if (nombreDelComponente.StartsWith("combo"))
+                {
+                    nombreDelComponente = nombreDelComponente.Substring(5);
+                    if (nombreDelComponente.Contains("EstadoCivil"))
+                    {
+                        if (item != "No")
+                        {
+                            response = true;
+                        }
+                    }
+                    else
+                    {
+                        if (nombreDelComponente.Contains("Bautizado"))
+                        {
+                            if (item != "No")
+                            {
+                                response = true;
+                            }
+                        }
+                        else
+                        {
+                            if (nombreDelComponente.Contains("Sellado"))
+                            {
+                                if (item != "No")
+                                {
+                                    response = true;
+                                }
+                            }
+                            else
+                            {
+                                if (nombreDelComponente.Contains("Recuerda"))
+                                {
+                                    if (item != "No recuerda")
+                                    {
+                                        response = true;
+                                    }
+                                }
+                                else
+                                {
+                                    if (nombreDelComponente.Contains("ActoParaServir"))
+                                    {
+                                        if (item == "Disciplina")
+                                        {
+                                            response = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (nombreDelComponente.Contains("Membresia"))
+                                        {
+                                            if (item != "Congregado")
+                                            {
+                                                response = true;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return response;
+        }
     }
 }

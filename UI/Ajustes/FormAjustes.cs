@@ -50,10 +50,6 @@ namespace UI
             EstablecerCarpetasRaiz(rutasTxtService);
             EstablecerCorreo();
         }
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         private void BuscarPorId()
         {
             BusquedaIglesiaRespuesta respuesta = new BusquedaIglesiaRespuesta();
@@ -417,6 +413,11 @@ namespace UI
         private void textBD_TextChanged(object sender, EventArgs e)
         {
             newBd = textBD.Text;
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -67,6 +67,8 @@
             this.labelPapelera = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.linkDeveloper = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -578,6 +580,38 @@
             this.panel15.Size = new System.Drawing.Size(865, 169);
             this.panel15.TabIndex = 37;
             // 
+            // linkDeveloper
+            // 
+            this.linkDeveloper.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkDeveloper.AutoSize = true;
+            this.linkDeveloper.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linkDeveloper.Font = new System.Drawing.Font("Monotype Corsiva", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkDeveloper.LinkArea = new System.Windows.Forms.LinkArea(0, 0);
+            this.linkDeveloper.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkDeveloper.LinkColor = System.Drawing.Color.Black;
+            this.linkDeveloper.Location = new System.Drawing.Point(749, 524);
+            this.linkDeveloper.Name = "linkDeveloper";
+            this.linkDeveloper.Size = new System.Drawing.Size(104, 47);
+            this.linkDeveloper.TabIndex = 45;
+            this.linkDeveloper.Text = "By VA";
+            this.linkDeveloper.UseCompatibleTextRendering = true;
+            this.linkDeveloper.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.linkDeveloper.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDeveloper_LinkClicked);
+            this.linkDeveloper.Click += new System.EventHandler(this.linkDeveloper_Click);
+            // 
+            // label1
+            // 
+            this.label1.AllowDrop = true;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoEllipsis = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(764, 565);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 16);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Developer";
+            // 
             // InicioResumen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,6 +619,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(865, 610);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.linkDeveloper);
             this.Controls.Add(this.labelRefresh);
             this.Controls.Add(this.labelPapelera);
             this.Controls.Add(this.panel3);
@@ -660,5 +696,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureMiembros;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.LinkLabel linkDeveloper;
+        private System.Windows.Forms.Label label1;
     }
 }

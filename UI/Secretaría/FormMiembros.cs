@@ -112,7 +112,7 @@ namespace UI
         {
             textNombre.Text="Nombre";
             comboTipoDocumento.Text="CC";
-            textNumeroDeIdentificacion.Text="# de documento";
+            textNumeroDeId.Text="# de documento";
             dateFechaDeNacimiento.Value=DateTime.Now;
             textDireccion.Text="Direccion";
             textTelefono.Text="Telefono";
@@ -120,20 +120,20 @@ namespace UI
             {
                 picturePerfil.Image = Properties.Resources.User;
             }
-            textNombrePadre.Text="Nombre del padre";
-            textNombreMadre.Text = "Nombre de la madre";
+            textNombreDelPadre.Text="Nombre del padre";
+            textNombreDeLaMadre.Text = "Nombre de la madre";
             dateFechaDeBautismo.Value = DateTime.Now;
             textTiempoDeConversion.Text="0";
             dateFechaEspirituSanto.Value = DateTime.Now;
-            textLugarRecepcionPromesa.Text="Lugar de recepción";
+            textLugarBautizmo.Text="Lugar de recepción";
             comboPastorOficiante.Text="Emiro Diaz";
-            dateFechaMembresia.Value = DateTime.Now;
-            textTiempoDeConversion.Text="0";
-            comboEstadoMiembro.Text="Si";
-            dateFechaDisciplina.Value = DateTime.Now;
-            textTiempoDisciplina.Text="0";
-            comboEstadoMiembro.Text="No definido";
-            textLugar.Text="Lugar";
+            //dateFechaMembresia.Value = DateTime.Now;
+            //textTiempoDeConversion.Text="0";
+            //comboEstadoMiembro.Text="Si";
+            //dateFechaDisciplina.Value = DateTime.Now;
+            //textTiempoDisciplina.Text="0";
+            //comboEstadoMiembro.Text="No definido";
+            //textLugar.Text="Lugar";
         }
         private void btnAtras_Click(object sender, EventArgs e)
         {
@@ -143,204 +143,6 @@ namespace UI
         private void btnGestionarMiembros_Click(object sender, EventArgs e)
         {
             tabMiembros.SelectedIndex = 1;
-        }
-
-        private void textNombre_Enter(object sender, EventArgs e)
-        {
-            if (textNombre.Text == "Nombre")
-            {
-                textNombre.Text = "";
-            }
-        }
-
-        private void textNombre_Leave(object sender, EventArgs e)
-        {
-            if (textNombre.Text == "")
-            {
-                textNombre.Text = "Nombre";
-            }
-        }
-
-        private void comboTipoDocumento_Enter(object sender, EventArgs e)
-        {
-            if (comboTipoDocumento.Text == "CC")
-            {
-                comboTipoDocumento.Text = "";
-            }
-        }
-
-        private void comboTipoDocumento_Leave(object sender, EventArgs e)
-        {
-            if (comboTipoDocumento.Text == "")
-            {
-                comboTipoDocumento.Text = "CC";
-            }
-        }
-
-        private void textNumeroDeIdentificacion_Enter(object sender, EventArgs e)
-        {
-            if(textNumeroDeIdentificacion.Text== "# de documento")
-            {
-                textNumeroDeIdentificacion.Text = "";
-            }
-        }
-
-        private void textNumeroDeIdentificacion_Leave(object sender, EventArgs e)
-        {
-            if (textNumeroDeIdentificacion.Text == "")
-            {
-                textNumeroDeIdentificacion.Text = "# de documento";
-            }
-        }
-
-        private void textDireccion_Enter(object sender, EventArgs e)
-        {
-            if (textDireccion.Text == "Direccion")
-            {
-                textDireccion.Text = "";
-            }
-        }
-
-        private void textDireccion_Leave(object sender, EventArgs e)
-        {
-            if (textDireccion.Text == "")
-            {
-                textDireccion.Text = "Direccion";
-            }
-        }
-
-        private void textTelefono_Enter(object sender, EventArgs e)
-        {
-            if (textTelefono.Text == "Telefono")
-            {
-                textTelefono.Text = "";
-            }
-        }
-
-        private void textTelefono_Leave(object sender, EventArgs e)
-        {
-            if (textTelefono.Text == "")
-            {
-                textTelefono.Text = "Telefono";
-            }
-        }
-
-        private void textNombrePadre_Enter(object sender, EventArgs e)
-        {
-            if (textNombrePadre.Text == "Nombre del padre")
-            {
-                textNombrePadre.Text = "";
-            }
-        }
-
-        private void textNombrePadre_Leave(object sender, EventArgs e)
-        {
-            if (textNombrePadre.Text == "")
-            {
-                textNombrePadre.Text = "Nombre del padre";
-            }
-        }
-
-        private void textNombreMadre_Enter(object sender, EventArgs e)
-        {
-            if (textNombreMadre.Text == "Nombre de la madre")
-            {
-                textNombreMadre.Text = "";
-            }
-        }
-
-        private void textNombreMadre_Leave(object sender, EventArgs e)
-        {
-            if (textNombreMadre.Text == "")
-            {
-                textNombreMadre.Text = "Nombre de la madre";
-            }
-        }
-
-        private void textLugarRecepcionPromesa_Enter(object sender, EventArgs e)
-        {
-            if(textLugarRecepcionPromesa.Text== "Lugar de recepción")
-            {
-                textLugarRecepcionPromesa.Text = "";
-            }
-        }
-
-        private void textLugarRecepcionPromesa_Leave(object sender, EventArgs e)
-        {
-            if (textLugarRecepcionPromesa.Text == "")
-            {
-                textLugarRecepcionPromesa.Text = "Lugar de recepción";
-            }
-        }
-
-        private void comboPastorOficiante_Enter(object sender, EventArgs e)
-        {
-            if(comboPastorOficiante.Text=="Emiro Diaz")
-            {
-                comboPastorOficiante.Text = "";
-            }
-        }
-
-        private void comboPastorOficiante_Leave(object sender, EventArgs e)
-        {
-            if (comboPastorOficiante.Text == "")
-            {
-                comboPastorOficiante.Text = "Emiro Diaz";
-            }
-        }
-
-        private void comboActoServicio_Enter(object sender, EventArgs e)
-        {
-            if (comboActoServicio.Text == "Si")
-            {
-                comboActoServicio.Text = "";
-            }
-        }
-
-        private void comboActoServicio_Leave(object sender, EventArgs e)
-        {
-            if (comboActoServicio.Text == "")
-            {
-                comboActoServicio.Text = "Si";
-            }
-        }
-        private void comboEstadoMiembro_Leave(object sender, EventArgs e)
-        {
-            if (comboEstadoMiembro.Text == "")
-            {
-                comboEstadoMiembro.Text = "No definido";
-            }
-        }
-
-        private void comboEstadoMiembro_TextChanged(object sender, EventArgs e)
-        {
-            if (comboEstadoMiembro.Text != "")
-            {
-                if(comboEstadoMiembro.Text != "No definido")
-                {
-                    textLugar.Enabled = true;
-                }
-                else
-                {
-                    textLugar.Enabled = false;
-                }
-            }
-        }
-
-        private void textLugar_Enter(object sender, EventArgs e)
-        {
-            if (textLugar.Text == "Lugar")
-            {
-                textLugar.Text = "";
-            }
-        }
-
-        private void textLugar_Leave(object sender, EventArgs e)
-        {
-            if (textLugar.Text == "")
-            {
-                textLugar.Text = "Lugar";
-            }
         }
         private void CalcularFolio()
         {
@@ -400,7 +202,7 @@ namespace UI
                 labelNumeroFolio.Text = registro.Folio;
                 textNombre.Text = registro.Nombre + " " + registro.Apellido;
                 comboTipoDocumento.Text = registro.TipoDoc;
-                textNumeroDeIdentificacion.Text = registro.NumeroDoc;
+                textNumeroDeId.Text = registro.NumeroDoc;
                 dateFechaDeNacimiento.Value = registro.FechaNacimiento;
                 textDireccion.Text = registro.Direccion;
                 textTelefono.Text =registro.Telefono;
@@ -413,20 +215,20 @@ namespace UI
                     picturePerfil.Image = imagen;
                     imagenPicture = ss.ToArray();
                 }
-                textNombrePadre.Text = registro.ParentezcoPadre;
-                textNombreMadre.Text = registro.ParentezcoMadre;
+                textNombreDelPadre.Text = registro.ParentezcoPadre;
+                textNombreDeLaMadre.Text = registro.ParentezcoMadre;
                 dateFechaDeBautismo.Value = registro.FechaNacimiento;
                 textTiempoDeConversion.Text = registro.TiempoDeConversion.ToString();
                 dateFechaEspirituSanto.Value = registro.FechaRecepcionEspirituSanto;
-                textLugarRecepcionPromesa.Text = registro.LugarRecepcionespirituSanto;
+                textLugarBautizmo.Text = registro.LugarRecepcionespirituSanto;
                 comboPastorOficiante.Text = registro.PastorOficiante;
-                dateFechaMembresia.Value = registro.FechaMembresiaIglesiaProcedente;
-                textTiempoMembresia.Text = registro.TiempoDeMembresiaIglesiaProcedente.ToString();
-                comboEstadoMiembro.Text = registro.EstadoMembresia;
-                dateFechaDisciplina.Value = registro.FechaDeCorreccion;
-                textTiempoDisciplina.Text = registro.TiempoEnActoCorrectivo.ToString();
-                comboEstadoMiembro.Text = registro.EstadoMembresia;
-                textLugar.Text = registro.LugarDeTraslado;
+                //dateFechaMembresia.Value = registro.FechaMembresiaIglesiaProcedente;
+                //textTiempoMembresia.Text = registro.TiempoDeMembresiaIglesiaProcedente.ToString();
+                //comboEstadoMiembro.Text = registro.EstadoMembresia;
+                //dateFechaDisciplina.Value = registro.FechaDeCorreccion;
+                //textTiempoDisciplina.Text = registro.TiempoEnActoCorrectivo.ToString();
+                //comboEstadoMiembro.Text = registro.EstadoMembresia;
+                //textLugar.Text = registro.LugarDeTraslado;
             }
         }
         void FiltroPorApellido(string filtro)
@@ -468,7 +270,7 @@ namespace UI
             miembro.Nombre = nombres;
             miembro.Apellido = apellidos;
             miembro.TipoDoc = comboTipoDocumento.Text;
-            miembro.NumeroDoc = textNumeroDeIdentificacion.Text;
+            miembro.NumeroDoc = textNumeroDeId.Text;
             miembro.FechaNacimiento = dateFechaDeNacimiento.Value;
             miembro.Genero = comboGeneroRegistrar.Text;
             miembro.Direccion = textDireccion.Text;
@@ -496,17 +298,17 @@ namespace UI
                     miembro.ImagenPerfil = ms.ToArray();
                 }
             }
-            miembro.ParentezcoPadre = textNombrePadre.Text;
-            miembro.ParentezcoMadre = textNombreMadre.Text;
+            miembro.ParentezcoPadre = textNombreDelPadre.Text;
+            miembro.ParentezcoMadre = textNombreDeLaMadre.Text;
             miembro.FechaBautizmo = dateFechaDeBautismo.Value;
             miembro.FechaRecepcionEspirituSanto = dateFechaEspirituSanto.Value;
-            miembro.LugarRecepcionespirituSanto = textLugarRecepcionPromesa.Text;
+            miembro.LugarRecepcionespirituSanto = textLugarBautizmo.Text;
             miembro.PastorOficiante = comboPastorOficiante.Text;
-            miembro.FechaMembresiaIglesiaProcedente = dateFechaMembresia.Value;
-            miembro.EstadoServicio = comboEstadoMiembro.Text;
-            miembro.FechaDeCorreccion = dateFechaDisciplina.Value;
-            miembro.EstadoMembresia = comboEstadoMiembro.Text;
-            miembro.LugarDeTraslado = textLugar.Text;
+            //miembro.FechaMembresiaIglesiaProcedente = dateFechaMembresia.Value;
+            //miembro.EstadoServicio = comboEstadoMiembro.Text;
+            //miembro.FechaDeCorreccion = dateFechaDisciplina.Value;
+            //miembro.EstadoMembresia = comboEstadoMiembro.Text;
+            //miembro.LugarDeTraslado = textLugar.Text;
             return miembro;
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -524,6 +326,7 @@ namespace UI
                 MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 ConsultarYLlenarGridDeMiembros();
                 LimpiarCampos();
+                CalcularFolio();
                 tabMiembros.SelectedIndex = 0;
             }
         }
@@ -577,13 +380,13 @@ namespace UI
             miembro.CalcularTiempoDeConversion();
             textTiempoDeConversion.Text = miembro.TiempoDeConversion.ToString();
 
-            miembro.FechaMembresiaIglesiaProcedente = dateFechaMembresia.Value;
-            miembro.CalcularMembresiaIglesiaProcedente();
-            textTiempoMembresia.Text = miembro.TiempoDeMembresiaIglesiaProcedente.ToString();
+            //miembro.FechaMembresiaIglesiaProcedente = dateFechaMembresia.Value;
+            //miembro.CalcularMembresiaIglesiaProcedente();
+            //textTiempoMembresia.Text = miembro.TiempoDeMembresiaIglesiaProcedente.ToString();
 
-            miembro.FechaDeCorreccion = dateFechaDisciplina.Value;
-            miembro.CalcularTiempoDeCorrecion();
-            textTiempoDisciplina.Text = miembro.TiempoEnActoCorrectivo.ToString();
+            //miembro.FechaDeCorreccion = dateFechaDisciplina.Value;
+            //miembro.CalcularTiempoDeCorrecion();
+            //textTiempoDisciplina.Text = miembro.TiempoEnActoCorrectivo.ToString();
         }
         private void dateFechaDeBautismo_ValueChanged(object sender, EventArgs e)
         {
@@ -786,6 +589,283 @@ namespace UI
             // Llama al método EditarDocumento
             Imprimir imprimir = new Imprimir();
             imprimir.EditarDocumentoMiembros(rutaDelArchivo);
+        }
+        //Validaciones de campos
+        private void textNombre_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textNombre.Text;
+            textNombre.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textNombre_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textNombre.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textNombre.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textNumeroDeId_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textNombre.Text;
+            textNumeroDeId.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textNumeroDeId_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textNumeroDeId.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textNumeroDeId.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void comboTipoDocumento_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = comboTipoDocumento.Text;
+            comboTipoDocumento.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void comboTipoDocumento_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = comboTipoDocumento.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            comboTipoDocumento.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void comboGeneroRegistrar_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = comboGeneroRegistrar.Text;
+            comboGeneroRegistrar.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void comboGeneroRegistrar_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = comboGeneroRegistrar.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            comboGeneroRegistrar.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void comboOficio_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = comboOficio.Text;
+            comboOficio.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void comboOficio_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = comboOficio.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            comboOficio.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textDireccion_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textDireccion.Text;
+            textDireccion.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textDireccion_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textDireccion.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textDireccion.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textTelefono_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textTelefono.Text;
+            textTelefono.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textTelefono_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textTelefono.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textTelefono.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textNombreDelPadre_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textNombreDelPadre.Text;
+            textNombreDelPadre.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textNombreDelPadre_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textNombreDelPadre.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textNombreDelPadre.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textNombreDeLaMadre_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textNombreDeLaMadre.Text;
+            textNombreDeLaMadre.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textNombreDeLaMadre_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textNombreDeLaMadre.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textNombreDeLaMadre.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+        private void textNumeroDeHijos_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textNumeroDeHijos.Text;
+            textNumeroDeHijos.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textNumeroDeHijos_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textNumeroDeHijos.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textNumeroDeHijos.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textNombreDelConyugue_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textNombreDelConyugue.Text;
+            textNombreDelConyugue.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textNombreDelConyugue_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textNombreDelConyugue.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textNombreDelConyugue.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textLugarBautizmo_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textLugarBautizmo.Text;
+            textLugarBautizmo.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textLugarBautizmo_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textLugarBautizmo.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textLugarBautizmo.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textIglesiaProcedente_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textIglesiaProcedente.Text;
+            textIglesiaProcedente.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textIglesiaProcedente_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textIglesiaProcedente.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textIglesiaProcedente.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textCargosDesempeñados_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textCargosDesempeñados.Text;
+            textCargosDesempeñados.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textCargosDesempeñados_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textCargosDesempeñados.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textCargosDesempeñados.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textMotivo_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textMotivo.Text;
+            textMotivo.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textMotivo_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textMotivo.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textMotivo.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textLugarTraslado_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textLugarTraslado.Text;
+            textLugarTraslado.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textLugarTraslado_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textLugarTraslado.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textLugarTraslado.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textObservaciones_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textObservaciones.Text;
+            textObservaciones.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void textObservaciones_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textObservaciones.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textObservaciones.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void comboEstadoCivil_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = comboEstadoCivil.Text;
+            comboEstadoCivil.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+        }
+
+        private void comboEstadoCivil_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = comboEstadoCivil.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            comboEstadoCivil.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void comboEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string item = comboEstadoCivil.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textNumeroDeHijos.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+            textNombreDelConyugue.Enabled= validaciones.ComboResponse(item, nombreDelComponente);
+        }
+        private void comboBautizado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string item = comboBautizado.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            dateFechaDeBautismo.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+            textLugarBautizmo.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+            comboPastorOficiante.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+        }
+        private void comboSellado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string item = comboSellado.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            comboRecuerda.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+        }
+        private void comboRecuerda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string item = comboRecuerda.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            dateFechaEspirituSanto.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+        }
+
+        private void comboActoParaServir_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string item = comboActoParaServir.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            dateDeCorreccion.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+            textMotivo.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+        }
+
+        private void comboMembresia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string item = comboMembresia.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textLugarTraslado.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+            textObservaciones.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
         }
     }
 }

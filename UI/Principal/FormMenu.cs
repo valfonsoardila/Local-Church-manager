@@ -187,6 +187,7 @@ namespace UI
         private void btnCloseSidebar_Click(object sender, EventArgs e)
         {
             panelSidebar.Width = 46;
+            hideSubMenu();
             btnOpenSidebar.Visible = true;
             btnCloseSidebar.Visible = false;
             labelLogoName.Visible = false;

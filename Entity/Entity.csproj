@@ -48,6 +48,10 @@
     <Compile Include="Comite.cs" />
     <Compile Include="Contacto.cs" />
     <Compile Include="Directiva.cs" />
+    <Compile Include="Egreso.cs" />
+    <Compile Include="Enviable.cs" />
+    <Compile Include="Ingreso.cs" />
+    <Compile Include="Liquidacion.cs" />
     <Compile Include="Reunion.cs" />
     <Compile Include="Servidor.cs" />
     <Compile Include="Iglesia.cs" />

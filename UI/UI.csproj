@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backup%27s.cs" />
     <Compile Include="ConfigConection.cs" />
     <Compile Include="Ajustes\FormAjustarServidor.cs">
       <SubType>Form</SubType>
@@ -405,6 +406,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\Detallar.png" />
     <None Include="Resources\BaseDatos.png" />
     <None Include="Resources\Enviables2.png" />
     <None Include="Resources\Egresos2.png" />

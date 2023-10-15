@@ -12,6 +12,7 @@ namespace UI
 {
     public partial class FormLiquidacion : Form
     {
+        string originalText;
         public FormLiquidacion()
         {
             InitializeComponent();
@@ -20,6 +21,103 @@ namespace UI
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnGestionarDirectivas_Click(object sender, EventArgs e)
+        {
+            tabLiquidaciones.SelectedIndex = 1;
+        }
+
+        private void btSearchLibreta_Click(object sender, EventArgs e)
+        {
+            btSearchLibreta.Visible = false;
+            btnCloseSearchLibreta.Visible = true;
+            textSerachLibreta.Visible = true;
+        }
+
+        private void btnCloseSearchLibreta_Click(object sender, EventArgs e)
+        {
+            btSearchLibreta.Visible = true;
+            btnCloseSearchLibreta.Visible = false;
+            textSerachLibreta.Visible = false;
+            if (textSerachLibreta.Text == "")
+            {
+                textSerachLibreta.Text = "Buscar por fecha";
+            }
+        }
+
+        private void textSerachLibreta_Enter(object sender, EventArgs e)
+        {
+            if (textSerachLibreta.Text == "Buscar por fecha")
+            {
+                textSerachLibreta.Text = "";
+            }
+        }
+
+        private void textSerachLibreta_Leave(object sender, EventArgs e)
+        {
+            if (textSerachLibreta.Text == "")
+            {
+                textSerachLibreta.Text = "Buscar por fecha";
+            }
+        }
+
+        private void textDetalle_Enter(object sender, EventArgs e)
+        {
+            if (textDetalle.Text == "Detalle")
+            {
+                textDetalle.Text = "";
+            }
+        }
+
+        private void textDetalle_Leave(object sender, EventArgs e)
+        {
+            if (textDetalle.Text == "")
+            {
+                textDetalle.Text = "Detalle";
+            }
+        }
+
+        private void textDineroIngreso_Enter(object sender, EventArgs e)
+        {
+            originalText = textDineroIngreso.Text;
+            if (textDineroIngreso.Text == "$ 000.00")
+            {
+                textDineroIngreso.Text = "";
+            }
+            else
+            {
+
+                if (textDineroIngreso.Text.StartsWith("$ "))
+                {
+                    // Borra el contenido del TextBox si comienza con "$ "
+                    textDineroIngreso.Text = "";
+                }
+            }
+        }
+
+        private void textDineroIngreso_Leave(object sender, EventArgs e)
+        {
+            if (textDineroIngreso.Text == "")
+            {
+                textDineroIngreso.Text = "$ 000.00";
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(textDineroIngreso.Text))
+                {
+                    // Restaura el contenido original al salir del TextBox
+                    textDineroIngreso.Text = originalText;
+                }
+            }
+        }
+
+        private void textDineroIngreso_Validated(object sender, EventArgs e)
+        {
+            if (textDineroIngreso.Text != "" && textDineroIngreso.Text != "$ 000.00")
+            {
+                textDineroIngreso.Text = "$ " + textDineroIngreso.Text;
+            }
         }
     }
 }

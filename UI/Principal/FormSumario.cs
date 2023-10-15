@@ -138,5 +138,21 @@ namespace UI
             ConsultarContactos();
             ConsultarMiembros();
         }
+
+        private void linkDeveloper_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string url = "https://portafolio-web-profesional.web.app";
+
+            // Abre la URL en un navegador web predeterminado
+            System.Diagnostics.Process.Start(url);
+        }
+
+        private void linkDeveloper_Click(object sender, EventArgs e)
+        {
+            string url = "https://portafolio-web-profesional.web.app";
+
+            // Abre la URL en un navegador web predeterminado
+            System.Diagnostics.Process.Start(url);
+        }
     }
 }

@@ -39,8 +39,6 @@ namespace UI
             this.textCamaraDeComercio = new System.Windows.Forms.TextBox();
             this.labelCamaraComercio = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnVolver = new FontAwesome.Sharp.IconButton();
             this.panelRegistrarDatos = new System.Windows.Forms.Panel();
             this.comboRegimen = new System.Windows.Forms.ComboBox();
             this.textTelefono = new System.Windows.Forms.TextBox();
@@ -101,6 +99,7 @@ namespace UI
             this.btnEliminarInfo = new FontAwesome.Sharp.IconButton();
             this.btnModificarInfo = new FontAwesome.Sharp.IconButton();
             this.btnRegistrarInfo = new FontAwesome.Sharp.IconButton();
+            this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInfoIglesia)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelRegistrarDatos.SuspendLayout();
@@ -117,6 +116,7 @@ namespace UI
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -204,40 +204,12 @@ namespace UI
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.MenuText;
-            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.btnAtras);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnVolver);
             this.panel1.Location = new System.Drawing.Point(0, 18);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(798, 36);
             this.panel1.TabIndex = 82;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.panel3.Location = new System.Drawing.Point(10, 1);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(7, 35);
-            this.panel3.TabIndex = 54;
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnVolver.IconChar = FontAwesome.Sharp.IconChar.CaretLeft;
-            this.btnVolver.IconColor = System.Drawing.Color.White;
-            this.btnVolver.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnVolver.IconSize = 30;
-            this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVolver.Location = new System.Drawing.Point(22, 1);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(31, 34);
-            this.btnVolver.TabIndex = 58;
-            this.btnVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // panelRegistrarDatos
             // 
@@ -887,6 +859,21 @@ namespace UI
             this.btnRegistrarInfo.UseVisualStyleBackColor = false;
             this.btnRegistrarInfo.Click += new System.EventHandler(this.btnRegistrarInfo_Click);
             // 
+            // btnAtras
+            // 
+            this.btnAtras.BackColor = System.Drawing.Color.Transparent;
+            this.btnAtras.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
+            this.btnAtras.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAtras.IconSize = 28;
+            this.btnAtras.Location = new System.Drawing.Point(12, 4);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(28, 28);
+            this.btnAtras.TabIndex = 60;
+            this.btnAtras.TabStop = false;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
+            // 
             // FormAjustes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -932,6 +919,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -939,7 +927,6 @@ namespace UI
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private FontAwesome.Sharp.IconButton btnVolver;
         private System.Windows.Forms.Label labelNombreDrogueria;
         private System.Windows.Forms.TextBox textNombreIglesia;
         private System.Windows.Forms.TextBox textNIT;
@@ -952,7 +939,6 @@ namespace UI
         private System.Windows.Forms.TextBox textCamaraDeComercio;
         private System.Windows.Forms.Label labelCamaraComercio;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panelRegistrarDatos;
         private System.Windows.Forms.ComboBox comboRegimen;
         private System.Windows.Forms.TextBox textTelefono;
@@ -1010,5 +996,6 @@ namespace UI
         private System.Windows.Forms.TextBox textBD;
         private System.Windows.Forms.Button btnBuscarCadenaConexion;
         private System.Windows.Forms.TextBox textServidor;
+        private FontAwesome.Sharp.IconPictureBox btnAtras;
     }
 }

@@ -30,14 +30,13 @@
         {
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateFechaLiquidacion = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnModificar = new FontAwesome.Sharp.IconButton();
             this.btnRegistrar = new FontAwesome.Sharp.IconButton();
-            this.textNombre = new System.Windows.Forms.TextBox();
+            this.textDetalle = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
@@ -67,6 +66,7 @@
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textDineroIngreso = new System.Windows.Forms.TextBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -104,12 +104,12 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.textDineroIngreso);
             this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.dateTimePicker1);
+            this.panel4.Controls.Add(this.dateFechaLiquidacion);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.tableLayoutPanel1);
-            this.panel4.Controls.Add(this.textNombre);
+            this.panel4.Controls.Add(this.textDetalle);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Location = new System.Drawing.Point(40, 35);
@@ -117,32 +117,22 @@
             this.panel4.Size = new System.Drawing.Size(670, 349);
             this.panel4.TabIndex = 0;
             // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(115, 159);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(144, 22);
-            this.textBox1.TabIndex = 24;
-            this.textBox1.Text = "Valor";
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(36, 163);
+            this.label13.Location = new System.Drawing.Point(36, 83);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 16);
             this.label13.TabIndex = 23;
             this.label13.Text = "Valor:";
             // 
-            // dateTimePicker1
+            // dateFechaLiquidacion
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(115, 47);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 18;
+            this.dateFechaLiquidacion.Location = new System.Drawing.Point(115, 47);
+            this.dateFechaLiquidacion.Name = "dateFechaLiquidacion";
+            this.dateFechaLiquidacion.Size = new System.Drawing.Size(200, 20);
+            this.dateFechaLiquidacion.TabIndex = 18;
             // 
             // label5
             // 
@@ -204,22 +194,24 @@
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
             // 
-            // textNombre
+            // textDetalle
             // 
-            this.textNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textNombre.Location = new System.Drawing.Point(115, 73);
-            this.textNombre.Multiline = true;
-            this.textNombre.Name = "textNombre";
-            this.textNombre.Size = new System.Drawing.Size(368, 80);
-            this.textNombre.TabIndex = 7;
-            this.textNombre.Text = "Detalle";
+            this.textDetalle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textDetalle.Location = new System.Drawing.Point(115, 112);
+            this.textDetalle.Multiline = true;
+            this.textDetalle.Name = "textDetalle";
+            this.textDetalle.Size = new System.Drawing.Size(368, 80);
+            this.textDetalle.TabIndex = 7;
+            this.textDetalle.Text = "Detalle";
+            this.textDetalle.Enter += new System.EventHandler(this.textDetalle_Enter);
+            this.textDetalle.Leave += new System.EventHandler(this.textDetalle_Leave);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(35, 101);
+            this.label4.Location = new System.Drawing.Point(35, 140);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 16);
             this.label4.TabIndex = 2;
@@ -389,6 +381,7 @@
             this.btnGestionarDirectivas.TabIndex = 1;
             this.btnGestionarDirectivas.Text = "Gestionar Liquidaciones";
             this.btnGestionarDirectivas.UseVisualStyleBackColor = false;
+            this.btnGestionarDirectivas.Click += new System.EventHandler(this.btnGestionarDirectivas_Click);
             // 
             // panel6
             // 
@@ -564,7 +557,7 @@
             // 
             this.iconPictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.Bookmark;
+            this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.BlackTie;
             this.iconPictureBox3.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox3.IconSize = 28;
@@ -588,6 +581,7 @@
             this.btSearchLibreta.Size = new System.Drawing.Size(28, 28);
             this.btSearchLibreta.TabIndex = 7;
             this.btSearchLibreta.TabStop = false;
+            this.btSearchLibreta.Click += new System.EventHandler(this.btSearchLibreta_Click);
             // 
             // textSerachLibreta
             // 
@@ -600,6 +594,8 @@
             this.textSerachLibreta.TabIndex = 6;
             this.textSerachLibreta.Text = "Buscar por fecha";
             this.textSerachLibreta.Visible = false;
+            this.textSerachLibreta.Enter += new System.EventHandler(this.textSerachLibreta_Enter);
+            this.textSerachLibreta.Leave += new System.EventHandler(this.textSerachLibreta_Leave);
             // 
             // btnCloseSearchLibreta
             // 
@@ -616,6 +612,7 @@
             this.btnCloseSearchLibreta.TabIndex = 5;
             this.btnCloseSearchLibreta.TabStop = false;
             this.btnCloseSearchLibreta.Visible = false;
+            this.btnCloseSearchLibreta.Click += new System.EventHandler(this.btnCloseSearchLibreta_Click);
             // 
             // label1
             // 
@@ -627,6 +624,19 @@
             this.label1.Size = new System.Drawing.Size(76, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registros";
+            // 
+            // textDineroIngreso
+            // 
+            this.textDineroIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textDineroIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textDineroIngreso.Location = new System.Drawing.Point(115, 77);
+            this.textDineroIngreso.Name = "textDineroIngreso";
+            this.textDineroIngreso.Size = new System.Drawing.Size(181, 26);
+            this.textDineroIngreso.TabIndex = 29;
+            this.textDineroIngreso.Text = "$ 000.00";
+            this.textDineroIngreso.Enter += new System.EventHandler(this.textDineroIngreso_Enter);
+            this.textDineroIngreso.Leave += new System.EventHandler(this.textDineroIngreso_Leave);
+            this.textDineroIngreso.Validated += new System.EventHandler(this.textDineroIngreso_Validated);
             // 
             // FormLiquidacion
             // 
@@ -694,16 +704,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateFechaLiquidacion;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnRegistrar;
-        private System.Windows.Forms.TextBox textNombre;
+        private System.Windows.Forms.TextBox textDetalle;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textDineroIngreso;
     }
 }

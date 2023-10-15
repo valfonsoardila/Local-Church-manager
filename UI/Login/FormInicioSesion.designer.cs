@@ -34,9 +34,9 @@ namespace UI
             this.btnCerrar = new FontAwesome.Sharp.IconPictureBox();
             this.btnMinimizar = new FontAwesome.Sharp.IconPictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.labelInicioSesion = new System.Windows.Forms.Label();
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelInicioSesion = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
             this.labelPasword = new System.Windows.Forms.Label();
             this.textBoxUser = new System.Windows.Forms.TextBox();
@@ -120,19 +120,6 @@ namespace UI
             this.panel2.Size = new System.Drawing.Size(375, 133);
             this.panel2.TabIndex = 1;
             // 
-            // labelInicioSesion
-            // 
-            this.labelInicioSesion.AutoSize = true;
-            this.labelInicioSesion.BackColor = System.Drawing.Color.Transparent;
-            this.labelInicioSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInicioSesion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelInicioSesion.Image = global::UI.Properties.Resources.Fondo;
-            this.labelInicioSesion.Location = new System.Drawing.Point(137, 5);
-            this.labelInicioSesion.Name = "labelInicioSesion";
-            this.labelInicioSesion.Size = new System.Drawing.Size(115, 20);
-            this.labelInicioSesion.TabIndex = 1;
-            this.labelInicioSesion.Text = "Iniciar sesion";
-            // 
             // pictureLogo
             // 
             this.pictureLogo.BackColor = System.Drawing.Color.Transparent;
@@ -159,6 +146,19 @@ namespace UI
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
+            // labelInicioSesion
+            // 
+            this.labelInicioSesion.AutoSize = true;
+            this.labelInicioSesion.BackColor = System.Drawing.Color.Transparent;
+            this.labelInicioSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInicioSesion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelInicioSesion.Image = global::UI.Properties.Resources.Fondo;
+            this.labelInicioSesion.Location = new System.Drawing.Point(137, 5);
+            this.labelInicioSesion.Name = "labelInicioSesion";
+            this.labelInicioSesion.Size = new System.Drawing.Size(115, 20);
+            this.labelInicioSesion.TabIndex = 1;
+            this.labelInicioSesion.Text = "Iniciar sesion";
+            // 
             // labelUser
             // 
             this.labelUser.AutoSize = true;
@@ -181,10 +181,12 @@ namespace UI
             // 
             // textBoxUser
             // 
+            this.textBoxUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxUser.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxUser.Location = new System.Drawing.Point(150, 204);
+            this.textBoxUser.Location = new System.Drawing.Point(150, 202);
             this.textBoxUser.Name = "textBoxUser";
-            this.textBoxUser.Size = new System.Drawing.Size(160, 20);
+            this.textBoxUser.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxUser.Size = new System.Drawing.Size(160, 24);
             this.textBoxUser.TabIndex = 4;
             this.textBoxUser.Text = "@Usuario";
             this.textBoxUser.TextChanged += new System.EventHandler(this.textBoxUser_TextChanged);
@@ -193,10 +195,11 @@ namespace UI
             // 
             // textBoxPasword
             // 
+            this.textBoxPasword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPasword.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxPasword.Location = new System.Drawing.Point(150, 237);
+            this.textBoxPasword.Location = new System.Drawing.Point(150, 231);
             this.textBoxPasword.Name = "textBoxPasword";
-            this.textBoxPasword.Size = new System.Drawing.Size(160, 20);
+            this.textBoxPasword.Size = new System.Drawing.Size(160, 24);
             this.textBoxPasword.TabIndex = 5;
             this.textBoxPasword.Text = "Contraseña";
             this.textBoxPasword.TextChanged += new System.EventHandler(this.textBoxPasword_TextChanged);
@@ -209,8 +212,7 @@ namespace UI
             this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.ForeColor = System.Drawing.Color.White;
             this.btnIngresar.Location = new System.Drawing.Point(131, 319);
             this.btnIngresar.Name = "btnIngresar";
@@ -279,7 +281,7 @@ namespace UI
             this.iconSeePasword.IconColor = System.Drawing.SystemColors.ControlText;
             this.iconSeePasword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconSeePasword.IconSize = 21;
-            this.iconSeePasword.Location = new System.Drawing.Point(316, 235);
+            this.iconSeePasword.Location = new System.Drawing.Point(316, 233);
             this.iconSeePasword.Name = "iconSeePasword";
             this.iconSeePasword.Size = new System.Drawing.Size(21, 22);
             this.iconSeePasword.TabIndex = 10;
@@ -295,7 +297,7 @@ namespace UI
             this.iconNoSeePasword.IconColor = System.Drawing.SystemColors.ControlText;
             this.iconNoSeePasword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconNoSeePasword.IconSize = 21;
-            this.iconNoSeePasword.Location = new System.Drawing.Point(316, 235);
+            this.iconNoSeePasword.Location = new System.Drawing.Point(316, 233);
             this.iconNoSeePasword.Name = "iconNoSeePasword";
             this.iconNoSeePasword.Size = new System.Drawing.Size(21, 22);
             this.iconNoSeePasword.TabIndex = 9;
@@ -332,13 +334,16 @@ namespace UI
             // 
             // btnAjustarServidor
             // 
+            this.btnAjustarServidor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnAjustarServidor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnAjustarServidor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAjustarServidor.IconChar = FontAwesome.Sharp.IconChar.Gear;
-            this.btnAjustarServidor.IconColor = System.Drawing.Color.Black;
+            this.btnAjustarServidor.IconColor = System.Drawing.Color.White;
             this.btnAjustarServidor.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAjustarServidor.IconSize = 20;
-            this.btnAjustarServidor.Location = new System.Drawing.Point(336, 4);
+            this.btnAjustarServidor.Location = new System.Drawing.Point(331, 2);
             this.btnAjustarServidor.Name = "btnAjustarServidor";
-            this.btnAjustarServidor.Size = new System.Drawing.Size(30, 22);
+            this.btnAjustarServidor.Size = new System.Drawing.Size(35, 25);
             this.btnAjustarServidor.TabIndex = 15;
             this.btnAjustarServidor.UseVisualStyleBackColor = true;
             this.btnAjustarServidor.Visible = false;

@@ -32,37 +32,64 @@ namespace UI
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.textLugar = new System.Windows.Forms.TextBox();
-            this.labelLugarTraslado = new System.Windows.Forms.Label();
-            this.comboEstadoMiembro = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.groupEstadoFeligresia = new System.Windows.Forms.GroupBox();
+            this.textObservaciones = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.textLugarTraslado = new System.Windows.Forms.TextBox();
+            this.comboMembresia = new System.Windows.Forms.ComboBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.groupEstadoServicio = new System.Windows.Forms.GroupBox();
+            this.textMotivo = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.dateDeCorreccion = new System.Windows.Forms.DateTimePicker();
+            this.label32 = new System.Windows.Forms.Label();
+            this.comboActoParaServir = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.groupProcedencia = new System.Windows.Forms.GroupBox();
+            this.textCargosDesempeñados = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.dateFechaDisciplina = new System.Windows.Forms.DateTimePicker();
-            this.textTiempoDisciplina = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.comboActoServicio = new System.Windows.Forms.ComboBox();
+            this.comboPastorAsistente = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.textIglesiaProcedente = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textTiempoMembresia = new System.Windows.Forms.TextBox();
+            this.groupBautismo = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.comboRecuerda = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.dateFechaMembresia = new System.Windows.Forms.DateTimePicker();
+            this.comboSellado = new System.Windows.Forms.ComboBox();
+            this.dateFechaEspirituSanto = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
+            this.comboBautizado = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.comboPastorOficiante = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textLugarRecepcionPromesa = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dateFechaEspirituSanto = new System.Windows.Forms.DateTimePicker();
-            this.label15 = new System.Windows.Forms.Label();
             this.textTiempoDeConversion = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.dateFechaDeBautismo = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
+            this.dateFechaDeBautismo = new System.Windows.Forms.DateTimePicker();
+            this.textLugarBautizmo = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.panel19 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.textNumeroDeHijos = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.textNombreDelConyugue = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.comboEstadoCivil = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.textNombreMadre = new System.Windows.Forms.TextBox();
+            this.textNombreDeLaMadre = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textNombrePadre = new System.Windows.Forms.TextBox();
+            this.textNombreDelPadre = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -79,7 +106,7 @@ namespace UI
             this.picturePerfil = new System.Windows.Forms.PictureBox();
             this.comboTipoDocumento = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textNumeroDeIdentificacion = new System.Windows.Forms.TextBox();
+            this.textNumeroDeId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dateFechaDeNacimiento = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -133,6 +160,14 @@ namespace UI
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel12.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.groupEstadoFeligresia.SuspendLayout();
+            this.groupEstadoServicio.SuspendLayout();
+            this.groupProcedencia.SuspendLayout();
+            this.groupBautismo.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -187,31 +222,6 @@ namespace UI
             // panel8
             // 
             this.panel8.AutoScroll = true;
-            this.panel8.Controls.Add(this.textLugar);
-            this.panel8.Controls.Add(this.labelLugarTraslado);
-            this.panel8.Controls.Add(this.comboEstadoMiembro);
-            this.panel8.Controls.Add(this.label26);
-            this.panel8.Controls.Add(this.label25);
-            this.panel8.Controls.Add(this.dateFechaDisciplina);
-            this.panel8.Controls.Add(this.textTiempoDisciplina);
-            this.panel8.Controls.Add(this.label24);
-            this.panel8.Controls.Add(this.comboActoServicio);
-            this.panel8.Controls.Add(this.label23);
-            this.panel8.Controls.Add(this.label20);
-            this.panel8.Controls.Add(this.textTiempoMembresia);
-            this.panel8.Controls.Add(this.label19);
-            this.panel8.Controls.Add(this.dateFechaMembresia);
-            this.panel8.Controls.Add(this.label18);
-            this.panel8.Controls.Add(this.comboPastorOficiante);
-            this.panel8.Controls.Add(this.label17);
-            this.panel8.Controls.Add(this.textLugarRecepcionPromesa);
-            this.panel8.Controls.Add(this.label16);
-            this.panel8.Controls.Add(this.dateFechaEspirituSanto);
-            this.panel8.Controls.Add(this.label15);
-            this.panel8.Controls.Add(this.textTiempoDeConversion);
-            this.panel8.Controls.Add(this.label12);
-            this.panel8.Controls.Add(this.dateFechaDeBautismo);
-            this.panel8.Controls.Add(this.label14);
             this.panel8.Controls.Add(this.panel12);
             this.panel8.Controls.Add(this.panel11);
             this.panel8.Controls.Add(this.panel10);
@@ -223,179 +233,492 @@ namespace UI
             this.panel8.Size = new System.Drawing.Size(792, 356);
             this.panel8.TabIndex = 18;
             // 
-            // textLugar
+            // panel12
             // 
-            this.textLugar.Enabled = false;
-            this.textLugar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textLugar.Location = new System.Drawing.Point(463, 440);
-            this.textLugar.Name = "textLugar";
-            this.textLugar.Size = new System.Drawing.Size(170, 22);
-            this.textLugar.TabIndex = 70;
-            this.textLugar.Text = "Lugar";
-            this.textLugar.Enter += new System.EventHandler(this.textLugar_Enter);
-            this.textLugar.Leave += new System.EventHandler(this.textLugar_Leave);
+            this.panel12.Controls.Add(this.panel18);
+            this.panel12.Controls.Add(this.panel19);
+            this.panel12.Controls.Add(this.panel17);
+            this.panel12.Controls.Add(this.panel16);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel12.Location = new System.Drawing.Point(0, 263);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(775, 614);
+            this.panel12.TabIndex = 46;
             // 
-            // labelLugarTraslado
+            // panel18
             // 
-            this.labelLugarTraslado.AutoSize = true;
-            this.labelLugarTraslado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLugarTraslado.Location = new System.Drawing.Point(324, 444);
-            this.labelLugarTraslado.Name = "labelLugarTraslado";
-            this.labelLugarTraslado.Size = new System.Drawing.Size(133, 16);
-            this.labelLugarTraslado.TabIndex = 69;
-            this.labelLugarTraslado.Text = "Lugar de traslado:";
+            this.panel18.Controls.Add(this.groupEstadoFeligresia);
+            this.panel18.Controls.Add(this.groupEstadoServicio);
+            this.panel18.Controls.Add(this.groupProcedencia);
+            this.panel18.Controls.Add(this.groupBautismo);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel18.Location = new System.Drawing.Point(0, 150);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(775, 464);
+            this.panel18.TabIndex = 50;
             // 
-            // comboEstadoMiembro
+            // groupEstadoFeligresia
             // 
-            this.comboEstadoMiembro.AutoCompleteCustomSource.AddRange(new string[] {
-            "Congregando",
+            this.groupEstadoFeligresia.Controls.Add(this.textObservaciones);
+            this.groupEstadoFeligresia.Controls.Add(this.label37);
+            this.groupEstadoFeligresia.Controls.Add(this.label36);
+            this.groupEstadoFeligresia.Controls.Add(this.textLugarTraslado);
+            this.groupEstadoFeligresia.Controls.Add(this.comboMembresia);
+            this.groupEstadoFeligresia.Controls.Add(this.label35);
+            this.groupEstadoFeligresia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupEstadoFeligresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupEstadoFeligresia.Location = new System.Drawing.Point(0, 303);
+            this.groupEstadoFeligresia.Name = "groupEstadoFeligresia";
+            this.groupEstadoFeligresia.Size = new System.Drawing.Size(775, 161);
+            this.groupEstadoFeligresia.TabIndex = 32;
+            this.groupEstadoFeligresia.TabStop = false;
+            this.groupEstadoFeligresia.Text = "Estado de membresia";
+            // 
+            // textObservaciones
+            // 
+            this.textObservaciones.Enabled = false;
+            this.textObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textObservaciones.Location = new System.Drawing.Point(9, 77);
+            this.textObservaciones.Multiline = true;
+            this.textObservaciones.Name = "textObservaciones";
+            this.textObservaciones.Size = new System.Drawing.Size(692, 78);
+            this.textObservaciones.TabIndex = 89;
+            this.textObservaciones.Text = "Escriba aqui el lugar de traslado ";
+            this.textObservaciones.Enter += new System.EventHandler(this.textObservaciones_Enter);
+            this.textObservaciones.Leave += new System.EventHandler(this.textObservaciones_Leave);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(8, 58);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(116, 16);
+            this.label37.TabIndex = 88;
+            this.label37.Text = "Observaciones:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(242, 27);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(50, 16);
+            this.label36.TabIndex = 87;
+            this.label36.Text = "Lugar:";
+            // 
+            // textLugarTraslado
+            // 
+            this.textLugarTraslado.Enabled = false;
+            this.textLugarTraslado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textLugarTraslado.Location = new System.Drawing.Point(296, 20);
+            this.textLugarTraslado.Multiline = true;
+            this.textLugarTraslado.Name = "textLugarTraslado";
+            this.textLugarTraslado.Size = new System.Drawing.Size(405, 30);
+            this.textLugarTraslado.TabIndex = 87;
+            this.textLugarTraslado.Text = "Escriba aqui el lugar de traslado ";
+            this.textLugarTraslado.Enter += new System.EventHandler(this.textLugarTraslado_Enter);
+            this.textLugarTraslado.Leave += new System.EventHandler(this.textLugarTraslado_Leave);
+            // 
+            // comboMembresia
+            // 
+            this.comboMembresia.AutoCompleteCustomSource.AddRange(new string[] {
+            "Congregado",
             "Trasladado",
-            "No definido"});
-            this.comboEstadoMiembro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboEstadoMiembro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboEstadoMiembro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboEstadoMiembro.FormattingEnabled = true;
-            this.comboEstadoMiembro.Items.AddRange(new object[] {
-            "Congregando",
+            "Otro"});
+            this.comboMembresia.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboMembresia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboMembresia.FormattingEnabled = true;
+            this.comboMembresia.Items.AddRange(new object[] {
+            "Congregado",
             "Trasladado",
-            "No definido"});
-            this.comboEstadoMiembro.Location = new System.Drawing.Point(176, 442);
-            this.comboEstadoMiembro.Name = "comboEstadoMiembro";
-            this.comboEstadoMiembro.Size = new System.Drawing.Size(142, 24);
-            this.comboEstadoMiembro.TabIndex = 68;
-            this.comboEstadoMiembro.Text = "No definido";
-            this.comboEstadoMiembro.TextChanged += new System.EventHandler(this.comboEstadoMiembro_TextChanged);
-            this.comboEstadoMiembro.Leave += new System.EventHandler(this.comboEstadoMiembro_Leave);
+            "Otro"});
+            this.comboMembresia.Location = new System.Drawing.Point(112, 22);
+            this.comboMembresia.Name = "comboMembresia";
+            this.comboMembresia.Size = new System.Drawing.Size(124, 24);
+            this.comboMembresia.TabIndex = 87;
+            this.comboMembresia.Text = "Congregado";
+            this.comboMembresia.SelectedIndexChanged += new System.EventHandler(this.comboMembresia_SelectedIndexChanged);
             // 
-            // label26
+            // label35
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(8, 444);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(163, 16);
-            this.label26.TabIndex = 67;
-            this.label26.Text = "Estado de membresia:";
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(6, 27);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(100, 16);
+            this.label35.TabIndex = 76;
+            this.label35.Text = "¿Membresia?";
+            // 
+            // groupEstadoServicio
+            // 
+            this.groupEstadoServicio.Controls.Add(this.textMotivo);
+            this.groupEstadoServicio.Controls.Add(this.label34);
+            this.groupEstadoServicio.Controls.Add(this.textBox5);
+            this.groupEstadoServicio.Controls.Add(this.label33);
+            this.groupEstadoServicio.Controls.Add(this.dateDeCorreccion);
+            this.groupEstadoServicio.Controls.Add(this.label32);
+            this.groupEstadoServicio.Controls.Add(this.comboActoParaServir);
+            this.groupEstadoServicio.Controls.Add(this.label31);
+            this.groupEstadoServicio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupEstadoServicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupEstadoServicio.Location = new System.Drawing.Point(0, 216);
+            this.groupEstadoServicio.Name = "groupEstadoServicio";
+            this.groupEstadoServicio.Size = new System.Drawing.Size(775, 87);
+            this.groupEstadoServicio.TabIndex = 31;
+            this.groupEstadoServicio.TabStop = false;
+            this.groupEstadoServicio.Text = "Estado servicio";
+            // 
+            // textMotivo
+            // 
+            this.textMotivo.Enabled = false;
+            this.textMotivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textMotivo.Location = new System.Drawing.Point(69, 51);
+            this.textMotivo.Multiline = true;
+            this.textMotivo.Name = "textMotivo";
+            this.textMotivo.Size = new System.Drawing.Size(405, 30);
+            this.textMotivo.TabIndex = 86;
+            this.textMotivo.Text = "Escriba aqui el motivo ";
+            this.textMotivo.Enter += new System.EventHandler(this.textMotivo_Enter);
+            this.textMotivo.Leave += new System.EventHandler(this.textMotivo_Leave);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(6, 57);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(57, 16);
+            this.label34.TabIndex = 84;
+            this.label34.Text = "Motivo:";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.ForeColor = System.Drawing.Color.Green;
+            this.textBox5.Location = new System.Drawing.Point(688, 27);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(30, 17);
+            this.textBox5.TabIndex = 83;
+            this.textBox5.Text = "0";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(617, 26);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(64, 16);
+            this.label33.TabIndex = 82;
+            this.label33.Text = "Tiempo:";
+            // 
+            // dateDeCorreccion
+            // 
+            this.dateDeCorreccion.Enabled = false;
+            this.dateDeCorreccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDeCorreccion.Location = new System.Drawing.Point(396, 22);
+            this.dateDeCorreccion.Name = "dateDeCorreccion";
+            this.dateDeCorreccion.Size = new System.Drawing.Size(216, 22);
+            this.dateDeCorreccion.TabIndex = 81;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(242, 26);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(153, 16);
+            this.label32.TabIndex = 80;
+            this.label32.Text = "Fecha de correccion:";
+            // 
+            // comboActoParaServir
+            // 
+            this.comboActoParaServir.AutoCompleteCustomSource.AddRange(new string[] {
+            "Si",
+            "No",
+            "No sabe"});
+            this.comboActoParaServir.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboActoParaServir.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboActoParaServir.FormattingEnabled = true;
+            this.comboActoParaServir.Items.AddRange(new object[] {
+            "Si",
+            "No",
+            "Disciplina"});
+            this.comboActoParaServir.Location = new System.Drawing.Point(143, 21);
+            this.comboActoParaServir.Name = "comboActoParaServir";
+            this.comboActoParaServir.Size = new System.Drawing.Size(93, 24);
+            this.comboActoParaServir.TabIndex = 76;
+            this.comboActoParaServir.Text = "Si";
+            this.comboActoParaServir.SelectedIndexChanged += new System.EventHandler(this.comboActoParaServir_SelectedIndexChanged);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(6, 27);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(133, 16);
+            this.label31.TabIndex = 75;
+            this.label31.Text = "¿Acto para servir?";
+            // 
+            // groupProcedencia
+            // 
+            this.groupProcedencia.Controls.Add(this.textCargosDesempeñados);
+            this.groupProcedencia.Controls.Add(this.label25);
+            this.groupProcedencia.Controls.Add(this.comboPastorAsistente);
+            this.groupProcedencia.Controls.Add(this.label23);
+            this.groupProcedencia.Controls.Add(this.textIglesiaProcedente);
+            this.groupProcedencia.Controls.Add(this.label20);
+            this.groupProcedencia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupProcedencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupProcedencia.Location = new System.Drawing.Point(0, 105);
+            this.groupProcedencia.Name = "groupProcedencia";
+            this.groupProcedencia.Size = new System.Drawing.Size(775, 111);
+            this.groupProcedencia.TabIndex = 30;
+            this.groupProcedencia.TabStop = false;
+            this.groupProcedencia.Text = "Procedencia";
+            // 
+            // textCargosDesempeñados
+            // 
+            this.textCargosDesempeñados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textCargosDesempeñados.Location = new System.Drawing.Point(183, 46);
+            this.textCargosDesempeñados.Multiline = true;
+            this.textCargosDesempeñados.Name = "textCargosDesempeñados";
+            this.textCargosDesempeñados.Size = new System.Drawing.Size(405, 59);
+            this.textCargosDesempeñados.TabIndex = 85;
+            this.textCargosDesempeñados.Text = "Escriba aqui los cargos";
+            this.textCargosDesempeñados.Enter += new System.EventHandler(this.textCargosDesempeñados_Enter);
+            this.textCargosDesempeñados.Leave += new System.EventHandler(this.textCargosDesempeñados_Leave);
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(8, 418);
+            this.label25.Location = new System.Drawing.Point(6, 68);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(162, 16);
-            this.label25.TabIndex = 66;
-            this.label25.Text = "Fecha de la correcion:";
+            this.label25.Size = new System.Drawing.Size(173, 16);
+            this.label25.TabIndex = 84;
+            this.label25.Text = "Cargos desempeñados:";
             // 
-            // dateFechaDisciplina
+            // comboPastorAsistente
             // 
-            this.dateFechaDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateFechaDisciplina.Location = new System.Drawing.Point(176, 416);
-            this.dateFechaDisciplina.Name = "dateFechaDisciplina";
-            this.dateFechaDisciplina.Size = new System.Drawing.Size(246, 22);
-            this.dateFechaDisciplina.TabIndex = 65;
-            this.dateFechaDisciplina.ValueChanged += new System.EventHandler(this.dateFechaDisciplina_ValueChanged);
-            // 
-            // textTiempoDisciplina
-            // 
-            this.textTiempoDisciplina.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textTiempoDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTiempoDisciplina.Location = new System.Drawing.Point(636, 420);
-            this.textTiempoDisciplina.Multiline = true;
-            this.textTiempoDisciplina.Name = "textTiempoDisciplina";
-            this.textTiempoDisciplina.Size = new System.Drawing.Size(75, 14);
-            this.textTiempoDisciplina.TabIndex = 38;
-            this.textTiempoDisciplina.Text = "0                     ";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(425, 419);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(208, 16);
-            this.label24.TabIndex = 64;
-            this.label24.Text = "Tiempo en acto disciplinario:";
-            // 
-            // comboActoServicio
-            // 
-            this.comboActoServicio.AutoCompleteCustomSource.AddRange(new string[] {
-            "Si",
-            "No",
-            "Disciplina"});
-            this.comboActoServicio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboActoServicio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboActoServicio.FormattingEnabled = true;
-            this.comboActoServicio.Items.AddRange(new object[] {
-            "Si",
-            "No",
-            "Disciplina"});
-            this.comboActoServicio.Location = new System.Drawing.Point(483, 386);
-            this.comboActoServicio.Name = "comboActoServicio";
-            this.comboActoServicio.Size = new System.Drawing.Size(142, 21);
-            this.comboActoServicio.TabIndex = 63;
-            this.comboActoServicio.Text = "Si";
-            this.comboActoServicio.Enter += new System.EventHandler(this.comboActoServicio_Enter);
-            this.comboActoServicio.Leave += new System.EventHandler(this.comboActoServicio_Leave);
+            this.comboPastorAsistente.AutoCompleteCustomSource.AddRange(new string[] {
+            "Carlos Orozco",
+            "Emiro Diaz",
+            "Eduardo Alvear",
+            "Edinson Bermesí",
+            "Jorge Salóm",
+            "José Payarez",
+            "Juan Orozco",
+            "Joaquin Hernandez",
+            "Jhon Mena",
+            "Pablo Camargo",
+            "Pedro Ardila"});
+            this.comboPastorAsistente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboPastorAsistente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboPastorAsistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboPastorAsistente.FormattingEnabled = true;
+            this.comboPastorAsistente.Items.AddRange(new object[] {
+            "Carlos Orozco",
+            "Emiro Diaz",
+            "Eduardo Alvear",
+            "Edinson Bermesí",
+            "Jorge Salóm",
+            "José Payarez",
+            "Juan Orozco",
+            "Joaquin Hernandez",
+            "Jhon Mena",
+            "Pablo Camargo",
+            "Pedro Ardila"});
+            this.comboPastorAsistente.Location = new System.Drawing.Point(467, 18);
+            this.comboPastorAsistente.Name = "comboPastorAsistente";
+            this.comboPastorAsistente.Size = new System.Drawing.Size(122, 24);
+            this.comboPastorAsistente.TabIndex = 83;
+            this.comboPastorAsistente.Text = "Emiro Diaz";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(344, 388);
+            this.label23.Location = new System.Drawing.Point(343, 23);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(133, 16);
-            this.label23.TabIndex = 62;
-            this.label23.Text = "¿Acto para servir?";
+            this.label23.Size = new System.Drawing.Size(123, 16);
+            this.label23.TabIndex = 82;
+            this.label23.Text = "Pastor asistente:";
+            // 
+            // textIglesiaProcedente
+            // 
+            this.textIglesiaProcedente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textIglesiaProcedente.Location = new System.Drawing.Point(145, 18);
+            this.textIglesiaProcedente.Multiline = true;
+            this.textIglesiaProcedente.Name = "textIglesiaProcedente";
+            this.textIglesiaProcedente.Size = new System.Drawing.Size(192, 26);
+            this.textIglesiaProcedente.TabIndex = 28;
+            this.textIglesiaProcedente.Text = "Iglesia del que procede";
+            this.textIglesiaProcedente.Enter += new System.EventHandler(this.textIglesiaProcedente_Enter);
+            this.textIglesiaProcedente.Leave += new System.EventHandler(this.textIglesiaProcedente_Leave);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(282, 387);
+            this.label20.Location = new System.Drawing.Point(5, 24);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(53, 16);
-            this.label20.TabIndex = 61;
-            this.label20.Text = "Meses";
+            this.label20.Size = new System.Drawing.Size(141, 16);
+            this.label20.TabIndex = 81;
+            this.label20.Text = "Iglesia procedente:";
             // 
-            // textTiempoMembresia
+            // groupBautismo
             // 
-            this.textTiempoMembresia.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textTiempoMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTiempoMembresia.Location = new System.Drawing.Point(230, 388);
-            this.textTiempoMembresia.Multiline = true;
-            this.textTiempoMembresia.Name = "textTiempoMembresia";
-            this.textTiempoMembresia.Size = new System.Drawing.Size(57, 17);
-            this.textTiempoMembresia.TabIndex = 60;
-            this.textTiempoMembresia.Text = "0";
+            this.groupBautismo.Controls.Add(this.textBox2);
+            this.groupBautismo.Controls.Add(this.label24);
+            this.groupBautismo.Controls.Add(this.comboRecuerda);
+            this.groupBautismo.Controls.Add(this.label19);
+            this.groupBautismo.Controls.Add(this.comboSellado);
+            this.groupBautismo.Controls.Add(this.dateFechaEspirituSanto);
+            this.groupBautismo.Controls.Add(this.label18);
+            this.groupBautismo.Controls.Add(this.comboBautizado);
+            this.groupBautismo.Controls.Add(this.label15);
+            this.groupBautismo.Controls.Add(this.comboPastorOficiante);
+            this.groupBautismo.Controls.Add(this.label17);
+            this.groupBautismo.Controls.Add(this.textTiempoDeConversion);
+            this.groupBautismo.Controls.Add(this.label12);
+            this.groupBautismo.Controls.Add(this.label14);
+            this.groupBautismo.Controls.Add(this.dateFechaDeBautismo);
+            this.groupBautismo.Controls.Add(this.textLugarBautizmo);
+            this.groupBautismo.Controls.Add(this.label16);
+            this.groupBautismo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBautismo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBautismo.Location = new System.Drawing.Point(0, 0);
+            this.groupBautismo.Name = "groupBautismo";
+            this.groupBautismo.Size = new System.Drawing.Size(775, 105);
+            this.groupBautismo.TabIndex = 29;
+            this.groupBautismo.TabStop = false;
+            this.groupBautismo.Text = "Bautismo y promesa";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.Green;
+            this.textBox2.Location = new System.Drawing.Point(305, 80);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(30, 17);
+            this.textBox2.TabIndex = 82;
+            this.textBox2.Text = "0";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(127, 79);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(175, 16);
+            this.label24.TabIndex = 81;
+            this.label24.Text = "Tiempo con la promesa:";
+            // 
+            // comboRecuerda
+            // 
+            this.comboRecuerda.AutoCompleteCustomSource.AddRange(new string[] {
+            "Si",
+            "No",
+            "No sabe"});
+            this.comboRecuerda.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboRecuerda.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboRecuerda.Enabled = false;
+            this.comboRecuerda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboRecuerda.FormattingEnabled = true;
+            this.comboRecuerda.Items.AddRange(new object[] {
+            "Recuerda",
+            "No recuerda"});
+            this.comboRecuerda.Location = new System.Drawing.Point(444, 47);
+            this.comboRecuerda.Name = "comboRecuerda";
+            this.comboRecuerda.Size = new System.Drawing.Size(101, 24);
+            this.comboRecuerda.TabIndex = 80;
+            this.comboRecuerda.Text = "No recuerda";
+            this.comboRecuerda.SelectedIndexChanged += new System.EventHandler(this.comboRecuerda_SelectedIndexChanged);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(4, 387);
+            this.label19.Location = new System.Drawing.Point(387, 51);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(226, 16);
-            this.label19.TabIndex = 59;
-            this.label19.Text = "Tiempo de tener su membresia:";
+            this.label19.Size = new System.Drawing.Size(54, 16);
+            this.label19.TabIndex = 79;
+            this.label19.Text = "Fecha:";
             // 
-            // dateFechaMembresia
+            // comboSellado
             // 
-            this.dateFechaMembresia.Location = new System.Drawing.Point(571, 356);
-            this.dateFechaMembresia.Name = "dateFechaMembresia";
-            this.dateFechaMembresia.Size = new System.Drawing.Size(194, 20);
-            this.dateFechaMembresia.TabIndex = 58;
-            this.dateFechaMembresia.ValueChanged += new System.EventHandler(this.dateFechaMembresia_ValueChanged);
+            this.comboSellado.AutoCompleteCustomSource.AddRange(new string[] {
+            "Si",
+            "No",
+            "No sabe"});
+            this.comboSellado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboSellado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboSellado.FormattingEnabled = true;
+            this.comboSellado.Items.AddRange(new object[] {
+            "Si",
+            "No",
+            "No recuerda"});
+            this.comboSellado.Location = new System.Drawing.Point(316, 46);
+            this.comboSellado.Name = "comboSellado";
+            this.comboSellado.Size = new System.Drawing.Size(67, 24);
+            this.comboSellado.TabIndex = 78;
+            this.comboSellado.Text = "No";
+            this.comboSellado.SelectedIndexChanged += new System.EventHandler(this.comboSellado_SelectedIndexChanged);
+            // 
+            // dateFechaEspirituSanto
+            // 
+            this.dateFechaEspirituSanto.Enabled = false;
+            this.dateFechaEspirituSanto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFechaEspirituSanto.Location = new System.Drawing.Point(548, 48);
+            this.dateFechaEspirituSanto.Name = "dateFechaEspirituSanto";
+            this.dateFechaEspirituSanto.Size = new System.Drawing.Size(216, 22);
+            this.dateFechaEspirituSanto.TabIndex = 77;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(277, 358);
+            this.label18.Location = new System.Drawing.Point(232, 51);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(291, 16);
-            this.label18.TabIndex = 57;
-            this.label18.Text = "Fecha de membresia iglesia procedente:";
+            this.label18.Size = new System.Drawing.Size(77, 16);
+            this.label18.TabIndex = 76;
+            this.label18.Text = "¿Sellado?";
+            // 
+            // comboBautizado
+            // 
+            this.comboBautizado.AutoCompleteCustomSource.AddRange(new string[] {
+            "Si",
+            "No",
+            "No sabe"});
+            this.comboBautizado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBautizado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBautizado.FormattingEnabled = true;
+            this.comboBautizado.Items.AddRange(new object[] {
+            "Si",
+            "No",
+            "No sabe"});
+            this.comboBautizado.Location = new System.Drawing.Point(103, 16);
+            this.comboBautizado.Name = "comboBautizado";
+            this.comboBautizado.Size = new System.Drawing.Size(93, 24);
+            this.comboBautizado.TabIndex = 75;
+            this.comboBautizado.Text = "No";
+            this.comboBautizado.SelectedIndexChanged += new System.EventHandler(this.comboBautizado_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(5, 21);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(92, 16);
+            this.label15.TabIndex = 74;
+            this.label15.Text = "¿Bautizado?";
             // 
             // comboPastorOficiante
             // 
@@ -413,6 +736,8 @@ namespace UI
             "Pedro Ardila"});
             this.comboPastorOficiante.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboPastorOficiante.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboPastorOficiante.Enabled = false;
+            this.comboPastorOficiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboPastorOficiante.FormattingEnabled = true;
             this.comboPastorOficiante.Items.AddRange(new object[] {
             "Carlos Orozco",
@@ -425,74 +750,32 @@ namespace UI
             "Joaquin Hernandez",
             "Jhon Mena",
             "Pablo Camargo",
-            "Pedro Ardila",
-            ""});
-            this.comboPastorOficiante.Location = new System.Drawing.Point(129, 355);
+            "Pedro Ardila"});
+            this.comboPastorOficiante.Location = new System.Drawing.Point(122, 46);
             this.comboPastorOficiante.Name = "comboPastorOficiante";
-            this.comboPastorOficiante.Size = new System.Drawing.Size(142, 21);
-            this.comboPastorOficiante.TabIndex = 56;
+            this.comboPastorOficiante.Size = new System.Drawing.Size(104, 24);
+            this.comboPastorOficiante.TabIndex = 73;
             this.comboPastorOficiante.Text = "Emiro Diaz";
-            this.comboPastorOficiante.Enter += new System.EventHandler(this.comboPastorOficiante_Enter);
-            this.comboPastorOficiante.Leave += new System.EventHandler(this.comboPastorOficiante_Leave);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(6, 356);
+            this.label17.Location = new System.Drawing.Point(5, 51);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(119, 16);
-            this.label17.TabIndex = 55;
+            this.label17.TabIndex = 72;
             this.label17.Text = "Pastor oficiante:";
-            // 
-            // textLugarRecepcionPromesa
-            // 
-            this.textLugarRecepcionPromesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textLugarRecepcionPromesa.Location = new System.Drawing.Point(558, 326);
-            this.textLugarRecepcionPromesa.Multiline = true;
-            this.textLugarRecepcionPromesa.Name = "textLugarRecepcionPromesa";
-            this.textLugarRecepcionPromesa.Size = new System.Drawing.Size(207, 26);
-            this.textLugarRecepcionPromesa.TabIndex = 48;
-            this.textLugarRecepcionPromesa.Text = "Lugar de recepción";
-            this.textLugarRecepcionPromesa.Enter += new System.EventHandler(this.textLugarRecepcionPromesa_Enter);
-            this.textLugarRecepcionPromesa.Leave += new System.EventHandler(this.textLugarRecepcionPromesa_Leave);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(507, 330);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(50, 16);
-            this.label16.TabIndex = 54;
-            this.label16.Text = "Lugar:";
-            // 
-            // dateFechaEspirituSanto
-            // 
-            this.dateFechaEspirituSanto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateFechaEspirituSanto.Location = new System.Drawing.Point(263, 327);
-            this.dateFechaEspirituSanto.Name = "dateFechaEspirituSanto";
-            this.dateFechaEspirituSanto.Size = new System.Drawing.Size(238, 22);
-            this.dateFechaEspirituSanto.TabIndex = 53;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(5, 329);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(253, 16);
-            this.label15.TabIndex = 52;
-            this.label15.Text = "Fecha recepción del Espiritu Santo:";
             // 
             // textTiempoDeConversion
             // 
             this.textTiempoDeConversion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textTiempoDeConversion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTiempoDeConversion.Location = new System.Drawing.Point(594, 305);
+            this.textTiempoDeConversion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTiempoDeConversion.ForeColor = System.Drawing.Color.Green;
+            this.textTiempoDeConversion.Location = new System.Drawing.Point(98, 79);
             this.textTiempoDeConversion.Multiline = true;
             this.textTiempoDeConversion.Name = "textTiempoDeConversion";
-            this.textTiempoDeConversion.Size = new System.Drawing.Size(53, 16);
+            this.textTiempoDeConversion.Size = new System.Drawing.Size(30, 17);
             this.textTiempoDeConversion.TabIndex = 51;
             this.textTiempoDeConversion.Text = "0";
             // 
@@ -500,57 +783,201 @@ namespace UI
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(424, 304);
+            this.label12.Location = new System.Drawing.Point(5, 79);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(166, 16);
+            this.label12.Size = new System.Drawing.Size(89, 16);
             this.label12.TabIndex = 50;
-            this.label12.Text = "Tiempo de conversion;";
-            // 
-            // dateFechaDeBautismo
-            // 
-            this.dateFechaDeBautismo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateFechaDeBautismo.Location = new System.Drawing.Point(184, 299);
-            this.dateFechaDeBautismo.Name = "dateFechaDeBautismo";
-            this.dateFechaDeBautismo.Size = new System.Drawing.Size(238, 22);
-            this.dateFechaDeBautismo.TabIndex = 49;
-            this.dateFechaDeBautismo.ValueChanged += new System.EventHandler(this.dateFechaDeBautismo_ValueChanged);
+            this.label12.Text = "Conversion:";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(5, 299);
+            this.label14.Location = new System.Drawing.Point(206, 19);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(177, 16);
+            this.label14.Size = new System.Drawing.Size(143, 16);
             this.label14.TabIndex = 47;
-            this.label14.Text = "Fecha acto de bautismo:";
+            this.label14.Text = "Fecha de bautismo:";
             // 
-            // panel12
+            // dateFechaDeBautismo
             // 
-            this.panel12.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel12.Controls.Add(this.label11);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel12.Location = new System.Drawing.Point(0, 263);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(775, 30);
-            this.panel12.TabIndex = 46;
+            this.dateFechaDeBautismo.Enabled = false;
+            this.dateFechaDeBautismo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFechaDeBautismo.Location = new System.Drawing.Point(350, 16);
+            this.dateFechaDeBautismo.Name = "dateFechaDeBautismo";
+            this.dateFechaDeBautismo.Size = new System.Drawing.Size(238, 22);
+            this.dateFechaDeBautismo.TabIndex = 49;
+            // 
+            // textLugarBautizmo
+            // 
+            this.textLugarBautizmo.Enabled = false;
+            this.textLugarBautizmo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textLugarBautizmo.Location = new System.Drawing.Point(643, 14);
+            this.textLugarBautizmo.Multiline = true;
+            this.textLugarBautizmo.Name = "textLugarBautizmo";
+            this.textLugarBautizmo.Size = new System.Drawing.Size(121, 26);
+            this.textLugarBautizmo.TabIndex = 48;
+            this.textLugarBautizmo.Text = "Lugar de bautizmo";
+            this.textLugarBautizmo.Enter += new System.EventHandler(this.textLugarBautizmo_Enter);
+            this.textLugarBautizmo.Leave += new System.EventHandler(this.textLugarBautizmo_Leave);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(592, 20);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(50, 16);
+            this.label16.TabIndex = 54;
+            this.label16.Text = "Lugar:";
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel19.Controls.Add(this.label11);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel19.ForeColor = System.Drawing.Color.Gainsboro;
+            this.panel19.Location = new System.Drawing.Point(0, 120);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(775, 30);
+            this.panel19.TabIndex = 48;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(12, 7);
+            this.label11.Location = new System.Drawing.Point(313, 7);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(148, 16);
             this.label11.TabIndex = 1;
             this.label11.Text = "Datos de feligresía";
             // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.textNumeroDeHijos);
+            this.panel17.Controls.Add(this.label38);
+            this.panel17.Controls.Add(this.textNombreDelConyugue);
+            this.panel17.Controls.Add(this.label30);
+            this.panel17.Controls.Add(this.comboEstadoCivil);
+            this.panel17.Controls.Add(this.label29);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel17.Location = new System.Drawing.Point(0, 30);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(775, 90);
+            this.panel17.TabIndex = 1;
+            // 
+            // textNumeroDeHijos
+            // 
+            this.textNumeroDeHijos.Enabled = false;
+            this.textNumeroDeHijos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNumeroDeHijos.Location = new System.Drawing.Point(343, 17);
+            this.textNumeroDeHijos.Multiline = true;
+            this.textNumeroDeHijos.Name = "textNumeroDeHijos";
+            this.textNumeroDeHijos.Size = new System.Drawing.Size(168, 26);
+            this.textNumeroDeHijos.TabIndex = 88;
+            this.textNumeroDeHijos.Text = "Numero de hijos";
+            this.textNumeroDeHijos.Enter += new System.EventHandler(this.textNumeroDeHijos_Enter);
+            this.textNumeroDeHijos.Leave += new System.EventHandler(this.textNumeroDeHijos_Leave);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(221, 21);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(124, 16);
+            this.label38.TabIndex = 87;
+            this.label38.Text = "Numero de hijos:";
+            // 
+            // textNombreDelConyugue
+            // 
+            this.textNombreDelConyugue.Enabled = false;
+            this.textNombreDelConyugue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNombreDelConyugue.Location = new System.Drawing.Point(175, 49);
+            this.textNombreDelConyugue.Multiline = true;
+            this.textNombreDelConyugue.Name = "textNombreDelConyugue";
+            this.textNombreDelConyugue.Size = new System.Drawing.Size(336, 26);
+            this.textNombreDelConyugue.TabIndex = 86;
+            this.textNombreDelConyugue.Text = "Nombre del conyugue";
+            this.textNombreDelConyugue.Enter += new System.EventHandler(this.textNombreDelConyugue_Enter);
+            this.textNombreDelConyugue.Leave += new System.EventHandler(this.textNombreDelConyugue_Leave);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(8, 54);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(163, 16);
+            this.label30.TabIndex = 85;
+            this.label30.Text = "Nombre del conyugue:";
+            // 
+            // comboEstadoCivil
+            // 
+            this.comboEstadoCivil.AutoCompleteCustomSource.AddRange(new string[] {
+            "Casado(a)",
+            "Soltero(a)",
+            "Union libre",
+            "Viudo(a)",
+            "Divorciado(a)"});
+            this.comboEstadoCivil.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboEstadoCivil.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboEstadoCivil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboEstadoCivil.FormattingEnabled = true;
+            this.comboEstadoCivil.Items.AddRange(new object[] {
+            "Sin especificar",
+            "Casado(a)",
+            "Por notaría",
+            "Soltero(a)",
+            "Union libre",
+            "Viudo(a)",
+            "Divorciado(a)"});
+            this.comboEstadoCivil.Location = new System.Drawing.Point(103, 16);
+            this.comboEstadoCivil.Name = "comboEstadoCivil";
+            this.comboEstadoCivil.Size = new System.Drawing.Size(112, 24);
+            this.comboEstadoCivil.TabIndex = 84;
+            this.comboEstadoCivil.Text = "Sin especificar";
+            this.comboEstadoCivil.SelectedIndexChanged += new System.EventHandler(this.comboEstadoCivil_SelectedIndexChanged);
+            this.comboEstadoCivil.Enter += new System.EventHandler(this.comboEstadoCivil_Enter);
+            this.comboEstadoCivil.Leave += new System.EventHandler(this.comboEstadoCivil_Leave);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(8, 21);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(92, 16);
+            this.label29.TabIndex = 83;
+            this.label29.Text = "Estado civil:";
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel16.Controls.Add(this.label26);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel16.Location = new System.Drawing.Point(0, 0);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(775, 30);
+            this.panel16.TabIndex = 0;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label26.Location = new System.Drawing.Point(269, 6);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(251, 16);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "Lazos sentimentales y familiares";
+            // 
             // panel11
             // 
-            this.panel11.Controls.Add(this.textNombreMadre);
+            this.panel11.Controls.Add(this.textNombreDeLaMadre);
             this.panel11.Controls.Add(this.label10);
-            this.panel11.Controls.Add(this.textNombrePadre);
+            this.panel11.Controls.Add(this.textNombreDelPadre);
             this.panel11.Controls.Add(this.label13);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel11.Location = new System.Drawing.Point(0, 193);
@@ -558,17 +985,17 @@ namespace UI
             this.panel11.Size = new System.Drawing.Size(775, 70);
             this.panel11.TabIndex = 45;
             // 
-            // textNombreMadre
+            // textNombreDeLaMadre
             // 
-            this.textNombreMadre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textNombreMadre.Location = new System.Drawing.Point(158, 39);
-            this.textNombreMadre.Multiline = true;
-            this.textNombreMadre.Name = "textNombreMadre";
-            this.textNombreMadre.Size = new System.Drawing.Size(336, 26);
-            this.textNombreMadre.TabIndex = 27;
-            this.textNombreMadre.Text = "Nombre de la madre";
-            this.textNombreMadre.Enter += new System.EventHandler(this.textNombreMadre_Enter);
-            this.textNombreMadre.Leave += new System.EventHandler(this.textNombreMadre_Leave);
+            this.textNombreDeLaMadre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNombreDeLaMadre.Location = new System.Drawing.Point(158, 39);
+            this.textNombreDeLaMadre.Multiline = true;
+            this.textNombreDeLaMadre.Name = "textNombreDeLaMadre";
+            this.textNombreDeLaMadre.Size = new System.Drawing.Size(336, 26);
+            this.textNombreDeLaMadre.TabIndex = 27;
+            this.textNombreDeLaMadre.Text = "Nombre de la madre";
+            this.textNombreDeLaMadre.Enter += new System.EventHandler(this.textNombreDeLaMadre_Enter);
+            this.textNombreDeLaMadre.Leave += new System.EventHandler(this.textNombreDeLaMadre_Leave);
             // 
             // label10
             // 
@@ -580,17 +1007,17 @@ namespace UI
             this.label10.TabIndex = 26;
             this.label10.Text = "Nombre de la madre:";
             // 
-            // textNombrePadre
+            // textNombreDelPadre
             // 
-            this.textNombrePadre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textNombrePadre.Location = new System.Drawing.Point(145, 6);
-            this.textNombrePadre.Multiline = true;
-            this.textNombrePadre.Name = "textNombrePadre";
-            this.textNombrePadre.Size = new System.Drawing.Size(336, 26);
-            this.textNombrePadre.TabIndex = 25;
-            this.textNombrePadre.Text = "Nombre del padre";
-            this.textNombrePadre.Enter += new System.EventHandler(this.textNombrePadre_Enter);
-            this.textNombrePadre.Leave += new System.EventHandler(this.textNombrePadre_Leave);
+            this.textNombreDelPadre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNombreDelPadre.Location = new System.Drawing.Point(145, 6);
+            this.textNombreDelPadre.Multiline = true;
+            this.textNombreDelPadre.Name = "textNombreDelPadre";
+            this.textNombreDelPadre.Size = new System.Drawing.Size(336, 26);
+            this.textNombreDelPadre.TabIndex = 25;
+            this.textNombreDelPadre.Text = "Nombre del padre";
+            this.textNombreDelPadre.Enter += new System.EventHandler(this.textNombreDelPadre_Enter);
+            this.textNombreDelPadre.Leave += new System.EventHandler(this.textNombreDelPadre_Leave);
             // 
             // label13
             // 
@@ -617,7 +1044,7 @@ namespace UI
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label9.Location = new System.Drawing.Point(12, 7);
+            this.label9.Location = new System.Drawing.Point(331, 6);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 16);
             this.label9.TabIndex = 1;
@@ -637,7 +1064,7 @@ namespace UI
             this.panel9.Controls.Add(this.picturePerfil);
             this.panel9.Controls.Add(this.comboTipoDocumento);
             this.panel9.Controls.Add(this.label7);
-            this.panel9.Controls.Add(this.textNumeroDeIdentificacion);
+            this.panel9.Controls.Add(this.textNumeroDeId);
             this.panel9.Controls.Add(this.label6);
             this.panel9.Controls.Add(this.dateFechaDeNacimiento);
             this.panel9.Controls.Add(this.label5);
@@ -738,11 +1165,13 @@ namespace UI
             "Modista",
             "Electronico",
             "Tecnico"});
-            this.comboOficio.Location = new System.Drawing.Point(54, 101);
+            this.comboOficio.Location = new System.Drawing.Point(56, 101);
             this.comboOficio.Name = "comboOficio";
             this.comboOficio.Size = new System.Drawing.Size(121, 24);
             this.comboOficio.TabIndex = 40;
             this.comboOficio.Text = "Oficio";
+            this.comboOficio.Enter += new System.EventHandler(this.comboOficio_Enter);
+            this.comboOficio.Leave += new System.EventHandler(this.comboOficio_Leave);
             // 
             // comboGeneroRegistrar
             // 
@@ -757,9 +1186,11 @@ namespace UI
             "Femenino"});
             this.comboGeneroRegistrar.Location = new System.Drawing.Point(438, 73);
             this.comboGeneroRegistrar.Name = "comboGeneroRegistrar";
-            this.comboGeneroRegistrar.Size = new System.Drawing.Size(69, 21);
+            this.comboGeneroRegistrar.Size = new System.Drawing.Size(82, 21);
             this.comboGeneroRegistrar.TabIndex = 39;
             this.comboGeneroRegistrar.Text = "Masculino";
+            this.comboGeneroRegistrar.Enter += new System.EventHandler(this.comboGeneroRegistrar_Enter);
+            this.comboGeneroRegistrar.Leave += new System.EventHandler(this.comboGeneroRegistrar_Leave);
             // 
             // labelGenero
             // 
@@ -774,10 +1205,10 @@ namespace UI
             // textTelefono
             // 
             this.textTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTelefono.Location = new System.Drawing.Point(463, 101);
+            this.textTelefono.Location = new System.Drawing.Point(466, 101);
             this.textTelefono.Multiline = true;
             this.textTelefono.Name = "textTelefono";
-            this.textTelefono.Size = new System.Drawing.Size(143, 26);
+            this.textTelefono.Size = new System.Drawing.Size(126, 26);
             this.textTelefono.TabIndex = 37;
             this.textTelefono.Text = "Telefono";
             this.textTelefono.TextChanged += new System.EventHandler(this.textTelefono_TextChanged);
@@ -788,7 +1219,7 @@ namespace UI
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(390, 107);
+            this.label22.Location = new System.Drawing.Point(393, 107);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(73, 16);
             this.label22.TabIndex = 36;
@@ -797,7 +1228,7 @@ namespace UI
             // textDireccion
             // 
             this.textDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDireccion.Location = new System.Drawing.Point(249, 101);
+            this.textDireccion.Location = new System.Drawing.Point(252, 101);
             this.textDireccion.Multiline = true;
             this.textDireccion.Name = "textDireccion";
             this.textDireccion.Size = new System.Drawing.Size(143, 26);
@@ -810,7 +1241,7 @@ namespace UI
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(174, 106);
+            this.label21.Location = new System.Drawing.Point(177, 106);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(77, 16);
             this.label21.TabIndex = 34;
@@ -870,17 +1301,17 @@ namespace UI
             this.label7.TabIndex = 30;
             this.label7.Text = "Tipo de documento:";
             // 
-            // textNumeroDeIdentificacion
+            // textNumeroDeId
             // 
-            this.textNumeroDeIdentificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textNumeroDeIdentificacion.Location = new System.Drawing.Point(371, 37);
-            this.textNumeroDeIdentificacion.Multiline = true;
-            this.textNumeroDeIdentificacion.Name = "textNumeroDeIdentificacion";
-            this.textNumeroDeIdentificacion.Size = new System.Drawing.Size(130, 26);
-            this.textNumeroDeIdentificacion.TabIndex = 29;
-            this.textNumeroDeIdentificacion.Text = "# de documento";
-            this.textNumeroDeIdentificacion.Enter += new System.EventHandler(this.textNumeroDeIdentificacion_Enter);
-            this.textNumeroDeIdentificacion.Leave += new System.EventHandler(this.textNumeroDeIdentificacion_Leave);
+            this.textNumeroDeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNumeroDeId.Location = new System.Drawing.Point(363, 37);
+            this.textNumeroDeId.Multiline = true;
+            this.textNumeroDeId.Name = "textNumeroDeId";
+            this.textNumeroDeId.Size = new System.Drawing.Size(158, 26);
+            this.textNumeroDeId.TabIndex = 29;
+            this.textNumeroDeId.Text = "Numero de documento";
+            this.textNumeroDeId.Enter += new System.EventHandler(this.textNumeroDeId_Enter);
+            this.textNumeroDeId.Leave += new System.EventHandler(this.textNumeroDeId_Leave);
             // 
             // label6
             // 
@@ -946,7 +1377,7 @@ namespace UI
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(12, 7);
+            this.label8.Location = new System.Drawing.Point(314, 7);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(136, 16);
             this.label8.TabIndex = 1;
@@ -1504,9 +1935,22 @@ namespace UI
             tabRegistrar.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.groupEstadoFeligresia.ResumeLayout(false);
+            this.groupEstadoFeligresia.PerformLayout();
+            this.groupEstadoServicio.ResumeLayout(false);
+            this.groupEstadoServicio.PerformLayout();
+            this.groupProcedencia.ResumeLayout(false);
+            this.groupProcedencia.PerformLayout();
+            this.groupBautismo.ResumeLayout(false);
+            this.groupBautismo.PerformLayout();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -1558,62 +2002,10 @@ namespace UI
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label labelFolio;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textTiempoMembresia;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DateTimePicker dateFechaMembresia;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox comboPastorOficiante;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textLugarRecepcionPromesa;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DateTimePicker dateFechaEspirituSanto;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textTiempoDeConversion;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker dateFechaDeBautismo;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.TextBox textNombreMadre;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textNombrePadre;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox textTelefono;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textDireccion;
-        private System.Windows.Forms.Label label21;
-        private FontAwesome.Sharp.IconButton btnCargarFoto;
-        private System.Windows.Forms.PictureBox picturePerfil;
-        private System.Windows.Forms.ComboBox comboTipoDocumento;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textNumeroDeIdentificacion;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateFechaDeNacimiento;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textNombre;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconPictureBox btnAtras;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboActoServicio;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.DateTimePicker dateFechaDisciplina;
-        private System.Windows.Forms.TextBox textTiempoDisciplina;
-        private System.Windows.Forms.ComboBox comboEstadoMiembro;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textLugar;
-        private System.Windows.Forms.Label labelLugarTraslado;
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnRegistrar;
         private FontAwesome.Sharp.IconButton btnImprimir;
@@ -1637,13 +2029,92 @@ namespace UI
         private System.Windows.Forms.TextBox textTotalHombres;
         private System.Windows.Forms.TextBox textTotal;
         private System.Windows.Forms.Label labelNumeroFolio;
-        private System.Windows.Forms.ComboBox comboGeneroRegistrar;
-        private System.Windows.Forms.Label labelGenero;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private System.Windows.Forms.TextBox textSearch;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.TextBox textNombreDeLaMadre;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textNombreDelPadre;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ComboBox comboOficio;
-        private System.Windows.Forms.TextBox textSearch;
+        private System.Windows.Forms.ComboBox comboGeneroRegistrar;
+        private System.Windows.Forms.Label labelGenero;
+        private System.Windows.Forms.TextBox textTelefono;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox textDireccion;
+        private System.Windows.Forms.Label label21;
+        private FontAwesome.Sharp.IconButton btnCargarFoto;
+        private System.Windows.Forms.PictureBox picturePerfil;
+        private System.Windows.Forms.ComboBox comboTipoDocumento;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textNumeroDeId;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dateFechaDeNacimiento;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textNombre;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.GroupBox groupProcedencia;
+        private System.Windows.Forms.TextBox textCargosDesempeñados;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox comboPastorAsistente;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox textIglesiaProcedente;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.GroupBox groupBautismo;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox comboRecuerda;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox comboSellado;
+        private System.Windows.Forms.DateTimePicker dateFechaEspirituSanto;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox comboBautizado;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox comboPastorOficiante;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textTiempoDeConversion;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DateTimePicker dateFechaDeBautismo;
+        private System.Windows.Forms.TextBox textLugarBautizmo;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.ComboBox comboEstadoCivil;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textNombreDelConyugue;
+        private System.Windows.Forms.GroupBox groupEstadoServicio;
+        private System.Windows.Forms.ComboBox comboActoParaServir;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.DateTimePicker dateDeCorreccion;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox textMotivo;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.GroupBox groupEstadoFeligresia;
+        private System.Windows.Forms.ComboBox comboMembresia;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox textLugarTraslado;
+        private System.Windows.Forms.TextBox textObservaciones;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox textNumeroDeHijos;
+        private System.Windows.Forms.Label label38;
     }
 }
