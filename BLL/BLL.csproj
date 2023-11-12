@@ -63,9 +63,9 @@
     <Compile Include="SoftwareService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
+    <ProjectReference Include="..\DAL\Dal.csproj">
       <Project>{266a3cdb-7250-485c-8812-8b68330ee2eb}</Project>
-      <Name>DAL</Name>
+      <Name>Dal</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{8694a930-3e61-465d-ac74-10e7ba27ed83}</Project>

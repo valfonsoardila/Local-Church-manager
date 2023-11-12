@@ -11,12 +11,18 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using BLL;
 using Entity;
+using Microsoft.Win32;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Windows.Documents;
+using Google.Cloud.Firestore;
+using Cloud;
 
 namespace UI
 {
     public partial class FormRegistrarUsuario : Form
     {
         UsuarioService usuarioService;
+        UserMaps userMaps;
         List<Usuario> usuarios;
         Usuario usuario;
         string rol = "Administrador";
@@ -26,6 +32,7 @@ namespace UI
         public FormRegistrarUsuario()
         {
             usuarioService = new UsuarioService(ConfigConnection.ConnectionString);
+            userMaps = new UserMaps();
             InitializeComponent();
         }
         //Drag Form
@@ -142,6 +149,7 @@ namespace UI
             textDireccion.Text = "";
             textTelefono.Text = "";
         }
+
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             BuscarPorProgramador();
@@ -152,7 +160,14 @@ namespace UI
                 {
                     if (rolExistenteValidado != true)
                     {
+                        //Obtenemos los datos del usuario y construimos el dato de la nube
                         Usuario usuario = MapearUsuario();
+                        //Guardamos en la nube
+                        var db = FirebaseService.Database;
+                        var user = userMaps.UserMap(usuario);
+                        Google.Cloud.Firestore.DocumentReference docRef = db.Collection("UserData").Document(user.ID);
+                        docRef.SetAsync(user);
+                        // Guardamos localmente
                         var msg = usuarioService.Guardar(usuario);
                         MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Limpiar();

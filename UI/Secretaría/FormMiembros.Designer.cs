@@ -397,7 +397,7 @@ namespace UI
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.ForeColor = System.Drawing.Color.Green;
-            this.textBox5.Location = new System.Drawing.Point(688, 27);
+            this.textBox5.Location = new System.Drawing.Point(718, 27);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(30, 17);
@@ -408,7 +408,7 @@ namespace UI
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(617, 26);
+            this.label33.Location = new System.Drawing.Point(647, 26);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(64, 16);
             this.label33.TabIndex = 82;
@@ -420,7 +420,7 @@ namespace UI
             this.dateDeCorreccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateDeCorreccion.Location = new System.Drawing.Point(396, 22);
             this.dateDeCorreccion.Name = "dateDeCorreccion";
-            this.dateDeCorreccion.Size = new System.Drawing.Size(216, 22);
+            this.dateDeCorreccion.Size = new System.Drawing.Size(246, 22);
             this.dateDeCorreccion.TabIndex = 81;
             // 
             // label32

@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33214.272
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{C9B67CE4-F929-4E8A-B3CA-ECF5B955BA43}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{8694A930-3E61-465D-AC74-10E7BA27ED83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{266A3CDB-7250-485C-8812-8B68330EE2EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "DAL\Dal.csproj", "{266A3CDB-7250-485C-8812-8B68330EE2EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{B7D8E351-B172-4AF6-8F30-74C80E915596}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bll", "BLL\Bll.csproj", "{B7D8E351-B172-4AF6-8F30-74C80E915596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloud", "Cloud\Cloud.csproj", "{0A03DC74-9404-43F5-BED9-3D600F96839F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B7D8E351-B172-4AF6-8F30-74C80E915596}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7D8E351-B172-4AF6-8F30-74C80E915596}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7D8E351-B172-4AF6-8F30-74C80E915596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A03DC74-9404-43F5-BED9-3D600F96839F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A03DC74-9404-43F5-BED9-3D600F96839F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A03DC74-9404-43F5-BED9-3D600F96839F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A03DC74-9404-43F5-BED9-3D600F96839F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

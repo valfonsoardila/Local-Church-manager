@@ -13,7 +13,7 @@ using Entity;
 //se importa la libreria para arrastrar formulario
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Threading.Tasks;
+using Cloud;
 
 namespace UI
 {
@@ -215,13 +215,40 @@ namespace UI
         {
             MapearDatos();
             BuscarPorNombreDeUsuario();
-            if (UsuarioValido == true)
+            //Consulta en la nube
+            try
             {
-                FormMenu mainMenu = new FormMenu();
-                mainMenu.idUsuario = Id_Usuario;
-                mainMenu.ValidarUsuario();
-                mainMenu.Show();
-                this.Hide();
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("UserData").Document(Id_Usuario);
+                UserData user = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+                //verifica si el usuario esta registrado en firebase
+                if (user != null)
+                {
+                    if (FirebaseSecurity.Decrypt(user.Password) == contraseña)
+                    {
+                        FormMenu mainMenu = new FormMenu();
+                        mainMenu.idUsuario = Id_Usuario;
+                        mainMenu.ValidarUsuario();
+                        mainMenu.Show();
+                        this.Hide();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                int count = ex.Message.Length;
+                if (count > 0)
+                {
+                    //verifica de forma local
+                    if (UsuarioValido == true)
+                    {
+                        FormMenu mainMenu = new FormMenu();
+                        mainMenu.idUsuario = Id_Usuario;
+                        mainMenu.ValidarUsuario();
+                        mainMenu.Show();
+                        this.Hide();
+                    }
+                }
             }
         }
 
