@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +15,16 @@ namespace UI
 {
     public partial class FormIngresos : Form
     {
+        Ingreso ingreso;
+        IngresoService ingresoService;
+        List<Ingreso> ingresos;
         string originalText;
         string id;
         string telefono;
         bool enciontrado;
         public FormIngresos()
         {
+            ingresoService = new IngresoService(ConfigConnection.ConnectionString);
             InitializeComponent();
         }
 
@@ -211,6 +217,19 @@ namespace UI
                 btSearchLibreta.Visible = true;
                 btnCloseSearchLibreta.Visible = false;
             }
+        }
+        private Ingreso MapearIngreso()
+        {
+            apunte = new Ingreso();
+            apunte.IdNota = id;
+            apunte.Titulo = textTitulo.Text;
+            apunte.Nota = textNota.Text;
+            return apunte;
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

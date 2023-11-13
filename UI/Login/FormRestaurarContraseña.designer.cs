@@ -35,8 +35,6 @@ namespace UI
             this.btnMinimizar = new FontAwesome.Sharp.IconPictureBox();
             this.panelBarraVolver = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnVolver = new FontAwesome.Sharp.IconButton();
             this.textIdentificacion = new System.Windows.Forms.TextBox();
             this.labelIdentificacion = new System.Windows.Forms.Label();
@@ -50,13 +48,15 @@ namespace UI
             this.labelAdvertencia = new System.Windows.Forms.Label();
             this.iconNoSeePasword = new FontAwesome.Sharp.IconPictureBox();
             this.iconSeePasword = new FontAwesome.Sharp.IconPictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconNoSeePasword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconSeePasword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -121,27 +121,6 @@ namespace UI
             this.label1.Size = new System.Drawing.Size(211, 24);
             this.label1.TabIndex = 35;
             this.label1.Text = "Restaurar Contraseña";
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::UI.Properties.Resources.Fondo;
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(0, 57);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(356, 114);
-            this.panel2.TabIndex = 53;
-            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::UI.Properties.Resources.Fondo;
-            this.pictureBox1.Image = global::UI.Properties.Resources.Contraseña;
-            this.pictureBox1.Location = new System.Drawing.Point(110, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 105);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // btnVolver
             // 
@@ -306,6 +285,29 @@ namespace UI
             this.iconSeePasword.Visible = false;
             this.iconSeePasword.Click += new System.EventHandler(this.iconSeePasword_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::UI.Properties.Resources.Fondo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::UI.Properties.Resources.Contraseña;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(356, 114);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Location = new System.Drawing.Point(0, 57);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(356, 114);
+            this.panel2.TabIndex = 53;
+            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
+            // 
             // FormRestaurarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,10 +339,10 @@ namespace UI
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconNoSeePasword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconSeePasword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,8 +356,6 @@ namespace UI
         private FontAwesome.Sharp.IconButton btnVolver;
         private System.Windows.Forms.Panel panelBarraVolver;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textIdentificacion;
         private System.Windows.Forms.Label labelIdentificacion;
         private System.Windows.Forms.TextBox textUsuario;
@@ -368,5 +368,7 @@ namespace UI
         private System.Windows.Forms.Label labelAdvertencia;
         private FontAwesome.Sharp.IconPictureBox iconNoSeePasword;
         private FontAwesome.Sharp.IconPictureBox iconSeePasword;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

@@ -17,6 +17,7 @@ namespace UI
     public partial class FormRestaurarContraseña : Form
     {
         UsuarioService usuarioService;
+        UserMaps userMaps;
         List<Usuario> usuarios;
         Usuario usuario;
         string nombreDeUsuario;
@@ -38,6 +39,7 @@ namespace UI
         public FormRestaurarContraseña()
         {
             usuarioService = new UsuarioService(ConfigConnection.ConnectionString);
+            userMaps = new UserMaps();
             InitializeComponent();
         }
         //Drag Form
@@ -165,9 +167,27 @@ namespace UI
         private void btnRestaurar_Click(object sender, EventArgs e)
         {
             Usuario usuario = MapearDatosDeUsuario();
-            var msg = usuarioService.Modificar(usuario);
-            MessageBox.Show(msg, "Modificacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Limpiar();
+            try
+            {
+                var msg = usuarioService.Modificar(usuario);
+                //Guardamos en la nube
+                var db = FirebaseService.Database;
+                var user = userMaps.UserMap(usuario);
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("UserData").Document(user.ID);
+                docRef.SetAsync(user);
+                MessageBox.Show(msg, "Modificacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Limpiar();
+            }
+            catch(Exception ex)
+            {
+                int count = ex.Message.Length;
+                if (count > 0)
+                {
+                    var msg = usuarioService.Modificar(usuario);
+                    MessageBox.Show(msg, "Modificacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
+                }
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

@@ -21,6 +21,8 @@ namespace Cloud
         [FirestoreProperty]
         public string Birthdate { get; set; }
         [FirestoreProperty]
+        public string Age { get; set; }
+        [FirestoreProperty]
         public string Gender { get; set; }
         [FirestoreProperty]
         public string Address { get; set; }
@@ -34,5 +36,7 @@ namespace Cloud
         public string UserName { get; set; }
         [FirestoreProperty]
         public string Password { get; set; }
+        [FirestoreProperty]
+        public string UserCode { get; set; }
     }
 }

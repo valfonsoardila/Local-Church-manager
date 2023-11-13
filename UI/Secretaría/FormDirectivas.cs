@@ -99,7 +99,6 @@ namespace UI
             {
                 string mensaje = "No se puede registrar no ha llenado ningun campo";
                 MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
             }
         }
         private void EliminarServidor(string id)

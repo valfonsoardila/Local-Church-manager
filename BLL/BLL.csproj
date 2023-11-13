@@ -47,9 +47,11 @@
     <Compile Include="CadenaConexionXMLService.cs" />
     <Compile Include="ContactoService.cs" />
     <Compile Include="DirectivaService.cs" />
+    <Compile Include="EgresoService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="IglesiaService.cs" />
     <Compile Include="EmailConsultaResponse.cs" />
+    <Compile Include="IngresoService.cs" />
     <Compile Include="MiembroService.cs" />
     <Compile Include="ReunionService.cs" />
     <Compile Include="ServidorService.cs" />

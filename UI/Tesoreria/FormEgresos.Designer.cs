@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboComite = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.textDineroIngreso = new System.Windows.Forms.TextBox();
             this.comboConcepto = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -69,6 +71,27 @@
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabDetalle = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.dataGridIngresos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboFiltroComite = new System.Windows.Forms.ComboBox();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -89,6 +112,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).BeginInit();
+            this.tabDetalle.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridIngresos)).BeginInit();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -106,6 +139,8 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.comboComite);
+            this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.textDineroIngreso);
             this.panel4.Controls.Add(this.comboConcepto);
             this.panel4.Controls.Add(this.label13);
@@ -117,14 +152,98 @@
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Location = new System.Drawing.Point(40, 35);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(634, 364);
+            this.panel4.Size = new System.Drawing.Size(701, 364);
             this.panel4.TabIndex = 0;
+            // 
+            // comboComite
+            // 
+            this.comboComite.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboComite.FormattingEnabled = true;
+            this.comboComite.Items.AddRange(new object[] {
+            "Comite",
+            "Junta Local",
+            "Jovenes",
+            "Damas Dorcas",
+            "Caballeros",
+            "Damas Jovenes",
+            "Primeros Auxilios",
+            "Vigilancia",
+            "Labores",
+            "Sonido",
+            "Alabanza",
+            "Adolescente",
+            "Misiones y evangelismo",
+            "Edad dorada",
+            "Intersesión",
+            "Decom",
+            "Ujieres",
+            "Decoración",
+            "Cultivadores",
+            "Obra social",
+            "Entre señas",
+            "Escuela Domnical",
+            "Comité de familia",
+            "Donacion",
+            "Aporte de liquidacion"});
+            this.comboComite.Location = new System.Drawing.Point(115, 74);
+            this.comboComite.Name = "comboComite";
+            this.comboComite.Size = new System.Drawing.Size(181, 24);
+            this.comboComite.TabIndex = 30;
+            this.comboComite.Text = "Comite";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(36, 79);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 16);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "Comite:";
             // 
             // textDineroIngreso
             // 
             this.textDineroIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textDineroIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDineroIngreso.Location = new System.Drawing.Point(302, 86);
+            this.textDineroIngreso.Location = new System.Drawing.Point(302, 106);
             this.textDineroIngreso.Name = "textDineroIngreso";
             this.textDineroIngreso.Size = new System.Drawing.Size(181, 26);
             this.textDineroIngreso.TabIndex = 28;
@@ -192,7 +311,7 @@
             "Cantante invitado",
             "Actividad",
             "Otro"});
-            this.comboConcepto.Location = new System.Drawing.Point(115, 88);
+            this.comboConcepto.Location = new System.Drawing.Point(115, 108);
             this.comboConcepto.Name = "comboConcepto";
             this.comboConcepto.Size = new System.Drawing.Size(181, 24);
             this.comboConcepto.TabIndex = 27;
@@ -204,7 +323,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(36, 92);
+            this.label13.Location = new System.Drawing.Point(36, 112);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(77, 16);
             this.label13.TabIndex = 26;
@@ -214,7 +333,7 @@
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(115, 47);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(215, 20);
             this.dateTimePicker1.TabIndex = 18;
             // 
             // label5
@@ -239,7 +358,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(634, 55);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(701, 55);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
             // btnModificar
@@ -251,7 +370,7 @@
             this.btnModificar.IconColor = System.Drawing.Color.WhiteSmoke;
             this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnModificar.IconSize = 30;
-            this.btnModificar.Location = new System.Drawing.Point(320, 3);
+            this.btnModificar.Location = new System.Drawing.Point(353, 3);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(123, 41);
             this.btnModificar.TabIndex = 15;
@@ -269,7 +388,7 @@
             this.btnRegistrar.IconColor = System.Drawing.Color.BlanchedAlmond;
             this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRegistrar.IconSize = 30;
-            this.btnRegistrar.Location = new System.Drawing.Point(200, 3);
+            this.btnRegistrar.Location = new System.Drawing.Point(233, 3);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(114, 41);
             this.btnRegistrar.TabIndex = 14;
@@ -281,7 +400,7 @@
             // 
             this.textDetalle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDetalle.Location = new System.Drawing.Point(115, 127);
+            this.textDetalle.Location = new System.Drawing.Point(115, 147);
             this.textDetalle.Multiline = true;
             this.textDetalle.Name = "textDetalle";
             this.textDetalle.Size = new System.Drawing.Size(368, 80);
@@ -294,7 +413,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(36, 156);
+            this.label4.Location = new System.Drawing.Point(36, 176);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 16);
             this.label4.TabIndex = 2;
@@ -308,7 +427,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(634, 32);
+            this.panel5.Size = new System.Drawing.Size(701, 32);
             this.panel5.TabIndex = 1;
             // 
             // iconPictureBox4
@@ -388,6 +507,7 @@
             // 
             this.tabEgresos.Controls.Add(this.tabListaEgresos);
             this.tabEgresos.Controls.Add(tabRegistrar);
+            this.tabEgresos.Controls.Add(this.tabDetalle);
             this.tabEgresos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabEgresos.Location = new System.Drawing.Point(0, 59);
             this.tabEgresos.Name = "tabEgresos";
@@ -717,6 +837,334 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Lista";
             // 
+            // tabDetalle
+            // 
+            this.tabDetalle.Controls.Add(this.panel8);
+            this.tabDetalle.Controls.Add(this.panel2);
+            this.tabDetalle.Location = new System.Drawing.Point(4, 22);
+            this.tabDetalle.Name = "tabDetalle";
+            this.tabDetalle.Size = new System.Drawing.Size(792, 450);
+            this.tabDetalle.TabIndex = 2;
+            this.tabDetalle.Text = "Detalle x Comite";
+            this.tabDetalle.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.tableLayoutPanel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 394);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(792, 56);
+            this.panel2.TabIndex = 4;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.iconButton1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnGestionarDirectivas, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 12);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(792, 44);
+            this.tableLayoutPanel3.TabIndex = 17;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.Orange;
+            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 30;
+            this.iconButton1.Location = new System.Drawing.Point(399, 3);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton1.Size = new System.Drawing.Size(142, 35);
+            this.iconButton1.TabIndex = 15;
+            this.iconButton1.Text = "Imprimir Lista";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            // 
+            // btnGestionarDirectivas
+            // 
+            this.btnGestionarDirectivas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGestionarDirectivas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnGestionarDirectivas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionarDirectivas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGestionarDirectivas.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnGestionarDirectivas.IconColor = System.Drawing.Color.Black;
+            this.btnGestionarDirectivas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGestionarDirectivas.Location = new System.Drawing.Point(258, 3);
+            this.btnGestionarDirectivas.Name = "btnGestionarDirectivas";
+            this.btnGestionarDirectivas.Size = new System.Drawing.Size(135, 35);
+            this.btnGestionarDirectivas.TabIndex = 1;
+            this.btnGestionarDirectivas.Text = "Gestionar Ingresos";
+            this.btnGestionarDirectivas.UseVisualStyleBackColor = false;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.panel9);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(792, 394);
+            this.panel8.TabIndex = 5;
+            // 
+            // panel9
+            // 
+            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel9.Controls.Add(this.dataGridIngresos);
+            this.panel9.Controls.Add(this.panel10);
+            this.panel9.Location = new System.Drawing.Point(27, 8);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(730, 324);
+            this.panel9.TabIndex = 0;
+            // 
+            // dataGridIngresos
+            // 
+            this.dataGridIngresos.AllowUserToAddRows = false;
+            this.dataGridIngresos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridIngresos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridIngresos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dataGridIngresos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridIngresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewImageColumn1,
+            this.dataGridViewImageColumn2,
+            this.dataGridViewImageColumn3});
+            this.dataGridIngresos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridIngresos.Location = new System.Drawing.Point(0, 32);
+            this.dataGridIngresos.Name = "dataGridIngresos";
+            this.dataGridIngresos.ReadOnly = true;
+            this.dataGridIngresos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridIngresos.RowHeadersVisible = false;
+            this.dataGridIngresos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridIngresos.RowTemplate.DividerHeight = 2;
+            this.dataGridIngresos.RowTemplate.Height = 30;
+            this.dataGridIngresos.Size = new System.Drawing.Size(730, 292);
+            this.dataGridIngresos.TabIndex = 1;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Seleccionar";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 69;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Editar";
+            this.dataGridViewImageColumn1.Image = global::UI.Properties.Resources.edit_user;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Width = 40;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "Detallar";
+            this.dataGridViewImageColumn2.Image = global::UI.Properties.Resources.Detallar;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Width = 49;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.HeaderText = "Borrar";
+            this.dataGridViewImageColumn3.Image = global::UI.Properties.Resources.borrar;
+            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.ReadOnly = true;
+            this.dataGridViewImageColumn3.Width = 41;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.Black;
+            this.panel10.Controls.Add(this.label6);
+            this.panel10.Controls.Add(this.textBox1);
+            this.panel10.Controls.Add(this.comboFiltroComite);
+            this.panel10.Controls.Add(this.iconPictureBox1);
+            this.panel10.Controls.Add(this.iconPictureBox2);
+            this.panel10.Controls.Add(this.textBox2);
+            this.panel10.Controls.Add(this.iconPictureBox5);
+            this.panel10.Controls.Add(this.label8);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(730, 32);
+            this.panel10.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label6.Location = new System.Drawing.Point(115, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 16);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Total";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(161, 5);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(46, 22);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.Text = "0";
+            // 
+            // comboFiltroComite
+            // 
+            this.comboFiltroComite.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboFiltroComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboFiltroComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboFiltroComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltroComite.FormattingEnabled = true;
+            this.comboFiltroComite.Items.AddRange(new object[] {
+            "Todos",
+            "Junta Local",
+            "Jovenes",
+            "Damas Dorcas",
+            "Caballeros",
+            "Damas Jovenes",
+            "Primeros Auxilios",
+            "Vigilancia",
+            "Labores",
+            "Sonido",
+            "Alabanza",
+            "Adolescente",
+            "Misiones y evangelismo",
+            "Edad dorada",
+            "Intersesión",
+            "Decom",
+            "Ujieres",
+            "Decoración",
+            "Cultivadores",
+            "Obra social",
+            "Entre señas",
+            "Escuela Domnical",
+            "Comité de familia",
+            "Donacion",
+            "Aporte de liquidacion"});
+            this.comboFiltroComite.Location = new System.Drawing.Point(374, 4);
+            this.comboFiltroComite.Name = "comboFiltroComite";
+            this.comboFiltroComite.Size = new System.Drawing.Size(121, 24);
+            this.comboFiltroComite.TabIndex = 10;
+            this.comboFiltroComite.Text = "Comite";
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.BookOpen;
+            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 28;
+            this.iconPictureBox1.Location = new System.Drawing.Point(5, 3);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox1.TabIndex = 9;
+            this.iconPictureBox1.TabStop = false;
+            // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
+            this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox2.IconSize = 28;
+            this.iconPictureBox2.Location = new System.Drawing.Point(690, 3);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox2.TabIndex = 7;
+            this.iconPictureBox2.TabStop = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(507, 1);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(180, 30);
+            this.textBox2.TabIndex = 6;
+            this.textBox2.Text = "Buscar por detalle";
+            this.textBox2.Visible = false;
+            // 
+            // iconPictureBox5
+            // 
+            this.iconPictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconPictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox5.ForeColor = System.Drawing.Color.Red;
+            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.iconPictureBox5.IconColor = System.Drawing.Color.Red;
+            this.iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox5.IconSize = 28;
+            this.iconPictureBox5.Location = new System.Drawing.Point(689, 2);
+            this.iconPictureBox5.Name = "iconPictureBox5";
+            this.iconPictureBox5.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox5.TabIndex = 5;
+            this.iconPictureBox5.TabStop = false;
+            this.iconPictureBox5.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label8.Location = new System.Drawing.Point(36, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 16);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Libro";
+            // 
             // FormEgresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -750,6 +1198,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).EndInit();
+            this.tabDetalle.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridIngresos)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -796,5 +1255,28 @@
         private System.Windows.Forms.TextBox textDineroIngreso;
         private System.Windows.Forms.ComboBox comboConcepto;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboComite;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TabPage tabDetalle;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnGestionarDirectivas;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.DataGridView dataGridIngresos;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboFiltroComite;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private System.Windows.Forms.TextBox textBox2;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
+        private System.Windows.Forms.Label label8;
     }
 }

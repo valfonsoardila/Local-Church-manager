@@ -162,15 +162,28 @@ namespace UI
                     {
                         //Obtenemos los datos del usuario y construimos el dato de la nube
                         Usuario usuario = MapearUsuario();
-                        //Guardamos en la nube
-                        var db = FirebaseService.Database;
-                        var user = userMaps.UserMap(usuario);
-                        Google.Cloud.Firestore.DocumentReference docRef = db.Collection("UserData").Document(user.ID);
-                        docRef.SetAsync(user);
-                        // Guardamos localmente
-                        var msg = usuarioService.Guardar(usuario);
-                        MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Limpiar();
+                        try
+                        {
+                            var msg = usuarioService.Guardar(usuario);
+                            //Guardamos en la nube
+                            var db = FirebaseService.Database;
+                            var user = userMaps.UserMap(usuario);
+                            Google.Cloud.Firestore.DocumentReference docRef = db.Collection("UserData").Document(user.ID);
+                            docRef.SetAsync(user);
+                            // Guardamos localmente
+                            MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Limpiar();
+                        }
+                        catch(Exception ex)
+                        {
+                            int count = ex.Message.Length;
+                            if (count > 0) {
+                                // Guardamos localmente
+                                var msg = usuarioService.Guardar(usuario);
+                                MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Limpiar();
+                            }
+                        }
                     }
                 }
             }

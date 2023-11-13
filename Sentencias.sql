@@ -96,3 +96,20 @@ IdNota nvarchar(12) primary key not null,
 Titulo varchar(70) not null,
 Nota varchar(600) not null,
 );
+--Tesoreria
+create table INGRESO(
+CodigoComprobante int primary key not null,
+FechaDeIngreso datetime not null,
+Comite varchar(70) not null,
+Concepto varchar(150) not null,
+Valor int not null,
+Detalle varchar(250) not null,
+);
+create table EGRESO(
+CodigoComprobante int primary key not null,
+FechaDeEgreso datetime not null,
+Comite varchar(70) not null,
+Concepto varchar(150) not null,
+Valor int not null,
+Detalle varchar(250) not null,
+);

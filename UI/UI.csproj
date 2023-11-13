@@ -200,7 +200,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backup%27s.cs" />
+    <Compile Include="Base de Datos\Backup%27s.cs" />
     <Compile Include="ConfigConection.cs" />
     <Compile Include="Ajustes\FormAjustarServidor.cs">
       <SubType>Form</SubType>
@@ -220,8 +220,10 @@
     <Compile Include="Base de Datos\FormBaseDeDatos.Designer.cs">
       <DependentUpon>FormBaseDeDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Firebase\EgressMap.cs" />
     <Compile Include="Firebase\FirebaseSecurity.cs" />
     <Compile Include="Firebase\FirebaseService.cs" />
+    <Compile Include="Firebase\IngressMap.cs" />
     <Compile Include="Tesoreria\FormEnviables.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,7 +248,7 @@
     <Compile Include="Tesoreria\FormIngresos.Designer.cs">
       <DependentUpon>FormIngresos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Imprimir.cs" />
+    <Compile Include="Doc%27s\Imprimir.cs" />
     <Compile Include="Login\FormRestaurarContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,7 +278,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Reporte.cs" />
+    <Compile Include="Doc%27s\Reporte.cs" />
     <Compile Include="Secretaría\FormApuntes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -524,9 +526,7 @@
     <None Include="Resources\Liquidacion.png" />
     <None Include="Resources\Ingresos.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Doc%27s\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

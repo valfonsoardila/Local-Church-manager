@@ -16,7 +16,22 @@ namespace UI
         {
             if (CheckIfUserAlreadyExist(usuario.Identificacion))
             {
-                return new UserData() { };
+                return new UserData() {
+                    ID = usuario.Identificacion.Trim(),
+                    TypeID = usuario.TipoDeIdentificacion.Trim(),
+                    Name = usuario.Nombres,
+                    LastName = usuario.Apellidos,
+                    Birthdate = usuario.FechaDeNacimiento.ToString(),
+                    Age = usuario.Edad.ToString().Trim(),
+                    Gender = usuario.Sexo.Trim(),
+                    Address = usuario.Direccion,
+                    PhoneNumber = usuario.Telefono.Trim(),
+                    Rol = usuario.Rol.Trim(),
+                    Email = usuario.CorreoElectronico.Trim(),
+                    UserName = usuario.NombreUsuario,
+                    Password = FirebaseSecurity.Encrypt(usuario.Contraseña),
+                    UserCode = FirebaseSecurity.Encrypt(usuario.CodigoUsuario.Trim())
+                };
             }
             else
             {
@@ -27,13 +42,15 @@ namespace UI
                     Name = usuario.Nombres,
                     LastName = usuario.Apellidos,
                     Birthdate = usuario.FechaDeNacimiento.ToString(),
+                    Age = usuario.Edad.ToString().Trim(),
                     Gender = usuario.Sexo.Trim(),
                     Address = usuario.Direccion,
                     PhoneNumber = usuario.Telefono.Trim(),
                     Rol = usuario.Rol.Trim(),
                     Email = usuario.CorreoElectronico.Trim(),
                     UserName = usuario.NombreUsuario,
-                    Password = FirebaseSecurity.Encrypt(usuario.Contraseña)
+                    Password = FirebaseSecurity.Encrypt(usuario.Contraseña),
+                    UserCode = FirebaseSecurity.Encrypt(usuario.CodigoUsuario.Trim())
                 };
             }
         }
