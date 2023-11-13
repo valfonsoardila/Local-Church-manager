@@ -220,9 +220,9 @@ namespace UI
         }
         private Ingreso MapearIngreso()
         {
-            apunte = new Ingreso();
-            apunte.IdNota = id;
-            apunte.Titulo = textTitulo.Text;
+            ingreso = new Ingreso();
+            ingreso.CodigoComprobante = "";
+            ingreso.Titulo = textTitulo.Text;
             apunte.Nota = textNota.Text;
             return apunte;
         }
