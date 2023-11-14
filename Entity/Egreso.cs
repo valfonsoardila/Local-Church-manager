@@ -8,9 +8,10 @@ namespace Entity
 {
     public class Egreso
     {
-        public Egreso(DateTime fechaDeEgreso, string comite, string concepto, int valor, string detalle)
+        public Egreso(string codigoComprobante, DateTime fechaDeEgreso, string comite, string concepto, int valor, string detalle)
         {
-            FechaDeEgreso=fechaDeEgreso;
+            CodigoComprobante = codigoComprobante;
+            FechaDeEgreso =fechaDeEgreso;
             Comite=comite;
             Concepto=concepto;
             Valor=valor;
@@ -20,7 +21,7 @@ namespace Entity
         {
 
         }
-        public int CodigoComprobante { get; set; }
+        public string CodigoComprobante { get; set; }
         public DateTime FechaDeEgreso { get; set; }
         public string Comite { get; set; }
         public string Concepto { get; set; }

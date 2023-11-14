@@ -66,7 +66,7 @@
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.textTotal = new System.Windows.Forms.TextBox();
+            this.textTotalLocal = new System.Windows.Forms.TextBox();
             this.comboFiltroComite = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
@@ -76,23 +76,21 @@
             this.tabDetalle = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridDetalle = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textTotalComite = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textTotalNube = new System.Windows.Forms.TextBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -116,7 +114,7 @@
             this.tabDetalle.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalle)).BeginInit();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
@@ -390,6 +388,7 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnRegistrar
             // 
@@ -528,6 +527,7 @@
             this.tabLibroIngresos.SelectedIndex = 0;
             this.tabLibroIngresos.Size = new System.Drawing.Size(880, 476);
             this.tabLibroIngresos.TabIndex = 3;
+            this.tabLibroIngresos.SelectedIndexChanged += new System.EventHandler(this.tabLibroIngresos_SelectedIndexChanged);
             // 
             // tabLibro
             // 
@@ -668,6 +668,7 @@
             // 
             this.Detallar.HeaderText = "Detallar";
             this.Detallar.Image = global::UI.Properties.Resources.Detallar;
+            this.Detallar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Detallar.Name = "Detallar";
             this.Detallar.ReadOnly = true;
             this.Detallar.Width = 49;
@@ -684,8 +685,10 @@
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.Controls.Add(this.label15);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalNube);
             this.panelContenedorDeDirectorio.Controls.Add(this.label9);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalLocal);
             this.panelContenedorDeDirectorio.Controls.Add(this.comboFiltroComite);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
             this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
@@ -703,20 +706,20 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(115, 8);
+            this.label9.Location = new System.Drawing.Point(87, 8);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 16);
+            this.label9.Size = new System.Drawing.Size(80, 16);
             this.label9.TabIndex = 17;
-            this.label9.Text = "Total";
+            this.label9.Text = "Total Local";
             // 
-            // textTotal
+            // textTotalLocal
             // 
-            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotal.Location = new System.Drawing.Point(161, 5);
-            this.textTotal.Name = "textTotal";
-            this.textTotal.Size = new System.Drawing.Size(46, 22);
-            this.textTotal.TabIndex = 11;
-            this.textTotal.Text = "0";
+            this.textTotalLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalLocal.Location = new System.Drawing.Point(171, 6);
+            this.textTotalLocal.Name = "textTotalLocal";
+            this.textTotalLocal.Size = new System.Drawing.Size(46, 22);
+            this.textTotalLocal.TabIndex = 11;
+            this.textTotalLocal.Text = "0";
             // 
             // comboFiltroComite
             // 
@@ -786,7 +789,7 @@
             "Comité de familia",
             "Donacion",
             "Aporte de liquidacion"});
-            this.comboFiltroComite.Location = new System.Drawing.Point(374, 4);
+            this.comboFiltroComite.Location = new System.Drawing.Point(409, 4);
             this.comboFiltroComite.Name = "comboFiltroComite";
             this.comboFiltroComite.Size = new System.Drawing.Size(121, 24);
             this.comboFiltroComite.TabIndex = 10;
@@ -889,37 +892,37 @@
             this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.Controls.Add(this.dataGridView1);
+            this.panel8.Controls.Add(this.dataGridDetalle);
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Location = new System.Drawing.Point(27, 8);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(804, 374);
             this.panel8.TabIndex = 0;
             // 
-            // dataGridView1
+            // dataGridDetalle
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridDetalle.AllowUserToAddRows = false;
+            this.dataGridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridDetalle.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dataGridDetalle.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewImageColumn1,
             this.dataGridViewImageColumn2});
-            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 32);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.RowTemplate.DividerHeight = 2;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.Size = new System.Drawing.Size(804, 342);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridDetalle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridDetalle.Location = new System.Drawing.Point(0, 32);
+            this.dataGridDetalle.Name = "dataGridDetalle";
+            this.dataGridDetalle.ReadOnly = true;
+            this.dataGridDetalle.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridDetalle.RowHeadersVisible = false;
+            this.dataGridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridDetalle.RowTemplate.DividerHeight = 2;
+            this.dataGridDetalle.RowTemplate.Height = 30;
+            this.dataGridDetalle.Size = new System.Drawing.Size(804, 342);
+            this.dataGridDetalle.TabIndex = 1;
             // 
             // dataGridViewCheckBoxColumn1
             // 
@@ -949,12 +952,8 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.Black;
-            this.panel9.Controls.Add(this.label12);
-            this.panel9.Controls.Add(this.label11);
-            this.panel9.Controls.Add(this.textBox5);
-            this.panel9.Controls.Add(this.textBox4);
             this.panel9.Controls.Add(this.label8);
-            this.panel9.Controls.Add(this.textBox2);
+            this.panel9.Controls.Add(this.textTotalComite);
             this.panel9.Controls.Add(this.comboBox2);
             this.panel9.Controls.Add(this.iconPictureBox1);
             this.panel9.Controls.Add(this.iconPictureBox2);
@@ -967,46 +966,6 @@
             this.panel9.Size = new System.Drawing.Size(804, 32);
             this.panel9.TabIndex = 0;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label12.Location = new System.Drawing.Point(317, 8);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 16);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Egresos:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(200, 8);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 16);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Ingresos";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(382, 5);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(46, 22);
-            this.textBox5.TabIndex = 19;
-            this.textBox5.Text = "0";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(269, 5);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(46, 22);
-            this.textBox4.TabIndex = 18;
-            this.textBox4.Text = "0";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -1018,14 +977,14 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "Total";
             // 
-            // textBox2
+            // textTotalComite
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(148, 5);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(46, 22);
-            this.textBox2.TabIndex = 11;
-            this.textBox2.Text = "0";
+            this.textTotalComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalComite.Location = new System.Drawing.Point(148, 5);
+            this.textTotalComite.Name = "textTotalComite";
+            this.textTotalComite.Size = new System.Drawing.Size(46, 22);
+            this.textTotalComite.TabIndex = 11;
+            this.textTotalComite.Text = "0";
             // 
             // comboBox2
             // 
@@ -1147,6 +1106,26 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Detalle";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.Location = new System.Drawing.Point(223, 8);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 16);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "Total en Nube";
+            // 
+            // textTotalNube
+            // 
+            this.textTotalNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalNube.Location = new System.Drawing.Point(329, 5);
+            this.textTotalNube.Name = "textTotalNube";
+            this.textTotalNube.Size = new System.Drawing.Size(46, 22);
+            this.textTotalNube.TabIndex = 20;
+            this.textTotalNube.Text = "0";
+            // 
             // FormIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1184,7 +1163,7 @@
             this.tabDetalle.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalle)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
@@ -1208,7 +1187,7 @@
         private System.Windows.Forms.DataGridView dataGridIngresos;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textTotal;
+        private System.Windows.Forms.TextBox textTotalLocal;
         private System.Windows.Forms.ComboBox comboFiltroComite;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
@@ -1233,14 +1212,10 @@
         private System.Windows.Forms.TabPage tabDetalle;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridDetalle;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textTotalComite;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private System.Windows.Forms.TextBox textBox3;
@@ -1255,10 +1230,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private FontAwesome.Sharp.IconButton btnImprimir;
         private FontAwesome.Sharp.IconButton btnGestionarDirectivas;
+        private System.Windows.Forms.TextBox textDineroIngreso;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Detallar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
-        private System.Windows.Forms.TextBox textDineroIngreso;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textTotalNube;
     }
 }

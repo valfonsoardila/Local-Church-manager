@@ -60,7 +60,7 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-        public BusquedaEgresoRespuesta BuscarPorIdentificacion(int comprobante)
+        public BusquedaEgresoRespuesta BuscarPorIdentificacion(string comprobante)
         {
             BusquedaEgresoRespuesta respuesta = new BusquedaEgresoRespuesta();
             try
@@ -81,7 +81,7 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public string Eliminar(int comprobante)
+        public string Eliminar(string comprobante)
         {
             try
             {

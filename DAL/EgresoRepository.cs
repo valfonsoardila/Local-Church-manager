@@ -57,7 +57,7 @@ namespace DAL
             }
             return egresos;
         }
-        public Egreso BuscarPorIdentificacion(int codigo)
+        public Egreso BuscarPorIdentificacion(string codigo)
         {
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
@@ -86,7 +86,7 @@ namespace DAL
         {
             if (!dataReader.HasRows) return null;
             Egreso egreso = new Egreso();
-            egreso.CodigoComprobante = (int)dataReader["CodigoComprobante"];
+            egreso.CodigoComprobante = (string)dataReader["CodigoComprobante"];
             egreso.FechaDeEgreso = (DateTime)dataReader["FechaDeEgreso"];
             egreso.Comite = (string)dataReader["Comite"];
             egreso.Concepto = (string)dataReader["Concepto"];

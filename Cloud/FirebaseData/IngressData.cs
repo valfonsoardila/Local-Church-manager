@@ -11,16 +11,16 @@ namespace Cloud
     public class IngressData
     {
         [FirestoreProperty]
-        public int VoucherCode { get; set; }
+        public string CodigoComprobante { get; set; }
         [FirestoreProperty]
-        public string DateOfIngress { get; set; }
+        public string FechaDeIngreso { get; set; }
         [FirestoreProperty]
-        public string Committee { get; set; }
+        public string Comite { get; set; }
         [FirestoreProperty]
-        public string Concept { get; set; }
+        public string Concepto { get; set; }
         [FirestoreProperty]
-        public int Ammount { get; set; }
+        public int Valor { get; set; }
         [FirestoreProperty]
-        public string Detail { get; set; }
+        public string Detalle { get; set; }
     }
 }

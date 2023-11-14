@@ -11,7 +11,7 @@ namespace UI
     public class EgressMap
     {
         EgressData egressData;
-        public EgressData Egress_Map(Egreso egreso)
+        public EgressData EgressMaps(Egreso egreso)
         {
             if (CheckIfUserAlreadyExist(egreso.CodigoComprobante.ToString()))
             {

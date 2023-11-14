@@ -30,12 +30,14 @@
         {
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
+            this.textNumeroComprobante = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.comboComite = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textDineroIngreso = new System.Windows.Forms.TextBox();
             this.comboConcepto = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeEgreso = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnModificar = new FontAwesome.Sharp.IconButton();
@@ -57,7 +59,7 @@
             this.btnGestionarEgresos = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridContactos = new System.Windows.Forms.DataGridView();
+            this.dataGridEgresos = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
@@ -72,10 +74,6 @@
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabDetalle = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dataGridIngresos = new System.Windows.Forms.DataGridView();
@@ -92,6 +90,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -107,14 +109,12 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridContactos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEgresos)).BeginInit();
             this.panelContenedorDeDirectorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).BeginInit();
             this.tabDetalle.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridIngresos)).BeginInit();
@@ -122,6 +122,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -139,12 +141,14 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.textNumeroComprobante);
+            this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.comboComite);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.textDineroIngreso);
             this.panel4.Controls.Add(this.comboConcepto);
             this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.dateTimePicker1);
+            this.panel4.Controls.Add(this.dateTimeEgreso);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.tableLayoutPanel1);
             this.panel4.Controls.Add(this.textDetalle);
@@ -154,6 +158,27 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(701, 364);
             this.panel4.TabIndex = 0;
+            // 
+            // textNumeroComprobante
+            // 
+            this.textNumeroComprobante.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textNumeroComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNumeroComprobante.Location = new System.Drawing.Point(618, 37);
+            this.textNumeroComprobante.Multiline = true;
+            this.textNumeroComprobante.Name = "textNumeroComprobante";
+            this.textNumeroComprobante.Size = new System.Drawing.Size(80, 19);
+            this.textNumeroComprobante.TabIndex = 32;
+            this.textNumeroComprobante.Text = "Numero";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(434, 38);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(182, 16);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Numero de comprobante:";
             // 
             // comboComite
             // 
@@ -329,12 +354,12 @@
             this.label13.TabIndex = 26;
             this.label13.Text = "Concepto:";
             // 
-            // dateTimePicker1
+            // dateTimeEgreso
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(115, 47);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(215, 20);
-            this.dateTimePicker1.TabIndex = 18;
+            this.dateTimeEgreso.Location = new System.Drawing.Point(115, 47);
+            this.dateTimeEgreso.Name = "dateTimeEgreso";
+            this.dateTimeEgreso.Size = new System.Drawing.Size(215, 20);
+            this.dateTimeEgreso.TabIndex = 18;
             // 
             // label5
             // 
@@ -395,6 +420,7 @@
             this.btnRegistrar.Text = "Guardar";
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // textDetalle
             // 
@@ -600,38 +626,39 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.dataGridContactos);
+            this.panel3.Controls.Add(this.dataGridEgresos);
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(27, 8);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(724, 374);
             this.panel3.TabIndex = 0;
             // 
-            // dataGridContactos
+            // dataGridEgresos
             // 
-            this.dataGridContactos.AllowUserToAddRows = false;
-            this.dataGridContactos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridContactos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridContactos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            this.dataGridContactos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridContactos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridEgresos.AllowUserToAddRows = false;
+            this.dataGridEgresos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridEgresos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridEgresos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dataGridEgresos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridEgresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridEgresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
             this.Editar,
             this.Detallar,
             this.Borrar});
-            this.dataGridContactos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridContactos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridContactos.Location = new System.Drawing.Point(0, 32);
-            this.dataGridContactos.Name = "dataGridContactos";
-            this.dataGridContactos.ReadOnly = true;
-            this.dataGridContactos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridContactos.RowHeadersVisible = false;
-            this.dataGridContactos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridContactos.RowTemplate.DividerHeight = 2;
-            this.dataGridContactos.RowTemplate.Height = 30;
-            this.dataGridContactos.Size = new System.Drawing.Size(724, 342);
-            this.dataGridContactos.TabIndex = 1;
+            this.dataGridEgresos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridEgresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridEgresos.Location = new System.Drawing.Point(0, 32);
+            this.dataGridEgresos.Name = "dataGridEgresos";
+            this.dataGridEgresos.ReadOnly = true;
+            this.dataGridEgresos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridEgresos.RowHeadersVisible = false;
+            this.dataGridEgresos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridEgresos.RowTemplate.DividerHeight = 2;
+            this.dataGridEgresos.RowTemplate.Height = 30;
+            this.dataGridEgresos.Size = new System.Drawing.Size(724, 342);
+            this.dataGridEgresos.TabIndex = 1;
+            this.dataGridEgresos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEgresos_CellClick);
             // 
             // Seleccionar
             // 
@@ -847,64 +874,6 @@
             this.tabDetalle.TabIndex = 2;
             this.tabDetalle.Text = "Detalle x Comite";
             this.tabDetalle.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.tableLayoutPanel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 394);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(792, 56);
-            this.panel2.TabIndex = 4;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.iconButton1, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnGestionarDirectivas, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 12);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(792, 44);
-            this.tableLayoutPanel3.TabIndex = 17;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.Orange;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(399, 3);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton1.Size = new System.Drawing.Size(142, 35);
-            this.iconButton1.TabIndex = 15;
-            this.iconButton1.Text = "Imprimir Lista";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            // 
-            // btnGestionarDirectivas
-            // 
-            this.btnGestionarDirectivas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGestionarDirectivas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.btnGestionarDirectivas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionarDirectivas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnGestionarDirectivas.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnGestionarDirectivas.IconColor = System.Drawing.Color.Black;
-            this.btnGestionarDirectivas.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarDirectivas.Location = new System.Drawing.Point(258, 3);
-            this.btnGestionarDirectivas.Name = "btnGestionarDirectivas";
-            this.btnGestionarDirectivas.Size = new System.Drawing.Size(135, 35);
-            this.btnGestionarDirectivas.TabIndex = 1;
-            this.btnGestionarDirectivas.Text = "Gestionar Ingresos";
-            this.btnGestionarDirectivas.UseVisualStyleBackColor = false;
             // 
             // panel8
             // 
@@ -1165,6 +1134,64 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Libro";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.tableLayoutPanel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 394);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(792, 56);
+            this.panel2.TabIndex = 4;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.iconButton1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnGestionarDirectivas, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 12);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(792, 44);
+            this.tableLayoutPanel3.TabIndex = 17;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.Orange;
+            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 30;
+            this.iconButton1.Location = new System.Drawing.Point(399, 3);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton1.Size = new System.Drawing.Size(142, 35);
+            this.iconButton1.TabIndex = 15;
+            this.iconButton1.Text = "Imprimir Lista";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            // 
+            // btnGestionarDirectivas
+            // 
+            this.btnGestionarDirectivas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGestionarDirectivas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnGestionarDirectivas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionarDirectivas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGestionarDirectivas.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnGestionarDirectivas.IconColor = System.Drawing.Color.Black;
+            this.btnGestionarDirectivas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGestionarDirectivas.Location = new System.Drawing.Point(258, 3);
+            this.btnGestionarDirectivas.Name = "btnGestionarDirectivas";
+            this.btnGestionarDirectivas.Size = new System.Drawing.Size(135, 35);
+            this.btnGestionarDirectivas.TabIndex = 1;
+            this.btnGestionarDirectivas.Text = "Gestionar Ingresos";
+            this.btnGestionarDirectivas.UseVisualStyleBackColor = false;
+            // 
             // FormEgresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1192,15 +1219,13 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridContactos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEgresos)).EndInit();
             this.panelContenedorDeDirectorio.ResumeLayout(false);
             this.panelContenedorDeDirectorio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).EndInit();
             this.tabDetalle.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridIngresos)).EndInit();
@@ -1209,6 +1234,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1227,7 +1254,7 @@
         private FontAwesome.Sharp.IconButton btnGestionarEgresos;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridContactos;
+        private System.Windows.Forms.DataGridView dataGridEgresos;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textTotal;
@@ -1238,7 +1265,7 @@
         private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimeEgreso;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private FontAwesome.Sharp.IconButton btnModificar;
@@ -1278,5 +1305,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textNumeroComprobante;
+        private System.Windows.Forms.Label label10;
     }
 }

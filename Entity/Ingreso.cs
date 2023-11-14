@@ -8,7 +8,7 @@ namespace Entity
 {
     public class Ingreso
     {
-        public Ingreso(int codigoComprobante, DateTime fechaDeIngreso, string comite, string concepto, int valor, string detalle)
+        public Ingreso(string codigoComprobante, DateTime fechaDeIngreso, string comite, string concepto, int valor, string detalle)
         {
             CodigoComprobante=codigoComprobante;
             FechaDeIngreso = fechaDeIngreso;
@@ -21,7 +21,7 @@ namespace Entity
         {
 
         }
-        public int CodigoComprobante { get; set; }
+        public string CodigoComprobante { get; set; }
         public DateTime FechaDeIngreso { get; set; }
         public string Comite { get; set; }
         public string Concepto { get; set; }

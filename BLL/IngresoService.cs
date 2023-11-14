@@ -58,7 +58,29 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-        public BusquedaIngresoRespuesta BuscarPorIdentificacion(int comprobante)
+        public ConsultaIngresoRespuesta FiltrarIngresosPorComite(string comite)
+        {
+            ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.Ingresos = repositorio.FiltrarIngresosPorComite(comite);
+                conexion.Close();
+                respuesta.Error = false;
+                respuesta.Mensaje = (respuesta.Ingresos.Count > 0) ? "Se filtraron los Datos concordantes" : "No hay datos para consultar";
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+
+        }
+        public BusquedaIngresoRespuesta BuscarPorIdentificacion(string comprobante)
         {
             BusquedaIngresoRespuesta respuesta = new BusquedaIngresoRespuesta();
             try
@@ -79,7 +101,7 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public string Eliminar(int comprobante)
+        public string Eliminar(string comprobante)
         {
             try
             {
@@ -132,28 +154,6 @@ namespace BLL
 
                 conexion.Open();
                 respuesta.Cuenta = repositorio.Totalizar(); ;
-                conexion.Close();
-                respuesta.Error = false;
-                respuesta.Mensaje = "Se consultan los Datos";
-
-                return respuesta;
-            }
-            catch (Exception e)
-            {
-                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
-                respuesta.Error = true;
-                return respuesta;
-            }
-            finally { conexion.Close(); }
-        }
-        public ConteoApunteRespuesta TotalizarTipoRol(string tipo)
-        {
-            ConteoApunteRespuesta respuesta = new ConteoApunteRespuesta();
-            try
-            {
-
-                conexion.Open();
-                respuesta.Cuenta = repositorio.TotalizarTipo(tipo);
                 conexion.Close();
                 respuesta.Error = false;
                 respuesta.Mensaje = "Se consultan los Datos";

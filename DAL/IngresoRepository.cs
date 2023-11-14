@@ -57,7 +57,26 @@ namespace DAL
             }
             return ingresos;
         }
-        public Ingreso BuscarPorIdentificacion(int codigo)
+        public List<Ingreso> FiltrarIngresosPorComite(string comite)
+        {
+            List<Ingreso> ingresos = new List<Ingreso>();
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from INGRESO where Comite=@Comite";
+                command.Parameters.AddWithValue("@Comite", comite);
+                var dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        Ingreso ingreso = DataReaderMapToIngreso(dataReader);
+                        ingresos.Add(ingreso);
+                    }
+                }
+            }
+            return ingresos;
+        }
+        public Ingreso BuscarPorIdentificacion(string codigo)
         {
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
@@ -86,7 +105,7 @@ namespace DAL
         {
             if (!dataReader.HasRows) return null;
             Ingreso ingreso = new Ingreso();
-            ingreso.CodigoComprobante = (int)dataReader["CodigoComprobante"];
+            ingreso.CodigoComprobante = (string)dataReader["CodigoComprobante"];
             ingreso.FechaDeIngreso = (DateTime)dataReader["FechaDeIngreso"];
             ingreso.Comite = (string)dataReader["Comite"];
             ingreso.Concepto = (string)dataReader["Concepto"];
@@ -100,7 +119,7 @@ namespace DAL
         }
         public int TotalizarTipo(string tipo)
         {
-            return ConsultarTodos().Where(p => p.Valor.Equals(tipo)).Count();
+            return ConsultarTodos().Where(p => p.Comite.Equals(tipo)).Count();
         }
     }
 }

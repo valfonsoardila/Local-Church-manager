@@ -8,33 +8,34 @@ using System.Threading.Tasks;
 
 namespace UI
 {
-    public class IngressMap
+    public class IngressMaps
     {
         IngressData ingressData;
-        public IngressData Ingress_Map(Ingreso ingreso)
+        //Map to save in firestore
+        public IngressData IngressMap(Ingreso ingreso)
         {
             if (CheckIfUserAlreadyExist(ingreso.CodigoComprobante.ToString()))
             {
                 return new IngressData()
                 {
-                    VoucherCode = ingreso.CodigoComprobante,
-                    DateOfIngress = ingreso.FechaDeIngreso.ToString(),
-                    Committee = ingreso.Comite,
-                    Concept = ingreso.Concepto,
-                    Ammount = ingreso.Valor,
-                    Detail = ingreso.Detalle,
+                    CodigoComprobante = ingreso.CodigoComprobante,
+                    FechaDeIngreso = ingreso.FechaDeIngreso.ToString(),
+                    Comite = ingreso.Comite,
+                    Concepto = ingreso.Concepto,
+                    Valor = ingreso.Valor,
+                    Detalle = ingreso.Detalle,
                 };
             }
             else
             {
                 return new IngressData()
                 {
-                    VoucherCode = ingreso.CodigoComprobante,
-                    DateOfIngress = ingreso.FechaDeIngreso.ToString(),
-                    Committee = ingreso.Comite,
-                    Concept = ingreso.Concepto,
-                    Ammount = ingreso.Valor,
-                    Detail = ingreso.Detalle,
+                    CodigoComprobante = ingreso.CodigoComprobante,
+                    FechaDeIngreso = ingreso.FechaDeIngreso.ToString(),
+                    Comite = ingreso.Comite,
+                    Concepto = ingreso.Concepto,
+                    Valor = ingreso.Valor,
+                    Detalle = ingreso.Detalle,
                 };
             }
         }
