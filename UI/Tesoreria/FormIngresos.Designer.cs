@@ -98,7 +98,6 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
             this.btnImprimirDetalle = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
@@ -129,7 +128,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             this.panel10.SuspendLayout();
-            this.panel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -494,10 +492,11 @@
             // 
             // label11
             // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(489, 18);
+            this.label11.Location = new System.Drawing.Point(511, 18);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(183, 24);
             this.label11.TabIndex = 13;
@@ -505,11 +504,12 @@
             // 
             // textTotalIngresos
             // 
+            this.textTotalIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textTotalIngresos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.textTotalIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textTotalIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTotalIngresos.ForeColor = System.Drawing.SystemColors.Info;
-            this.textTotalIngresos.Location = new System.Drawing.Point(671, 17);
+            this.textTotalIngresos.Location = new System.Drawing.Point(693, 17);
             this.textTotalIngresos.Name = "textTotalIngresos";
             this.textTotalIngresos.Size = new System.Drawing.Size(177, 28);
             this.textTotalIngresos.TabIndex = 12;
@@ -1190,7 +1190,7 @@
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.panel13);
+            this.panel10.Controls.Add(this.btnImprimirDetalle);
             this.panel10.Controls.Add(this.panel12);
             this.panel10.Controls.Add(this.panel11);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1201,7 +1201,6 @@
             // 
             // panel11
             // 
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(346, 42);
@@ -1215,29 +1214,22 @@
             this.panel12.Size = new System.Drawing.Size(330, 42);
             this.panel12.TabIndex = 1;
             // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.btnImprimirDetalle);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(346, 0);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(190, 42);
-            this.panel13.TabIndex = 2;
-            // 
             // btnImprimirDetalle
             // 
+            this.btnImprimirDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImprimirDetalle.BackColor = System.Drawing.Color.Orange;
-            this.btnImprimirDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnImprimirDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimirDetalle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnImprimirDetalle.IconChar = FontAwesome.Sharp.IconChar.Print;
             this.btnImprimirDetalle.IconColor = System.Drawing.Color.Black;
             this.btnImprimirDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImprimirDetalle.IconSize = 30;
-            this.btnImprimirDetalle.Location = new System.Drawing.Point(0, 0);
+            this.btnImprimirDetalle.Location = new System.Drawing.Point(352, 2);
             this.btnImprimirDetalle.Name = "btnImprimirDetalle";
             this.btnImprimirDetalle.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimirDetalle.Size = new System.Drawing.Size(190, 42);
+            this.btnImprimirDetalle.Size = new System.Drawing.Size(178, 37);
             this.btnImprimirDetalle.TabIndex = 16;
             this.btnImprimirDetalle.Text = "Imprimir Detalle";
             this.btnImprimirDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1288,7 +1280,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
             this.panel10.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1362,9 +1353,8 @@
         private System.Windows.Forms.ComboBox comboConceptoDetalle;
         private System.Windows.Forms.TextBox textValorConcepto;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel13;
-        private FontAwesome.Sharp.IconButton btnImprimirDetalle;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel11;
+        private FontAwesome.Sharp.IconButton btnImprimirDetalle;
     }
 }
