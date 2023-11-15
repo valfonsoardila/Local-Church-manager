@@ -384,6 +384,10 @@
     <EmbeddedResource Include="Tesoreria\FormIngresos.resx">
       <DependentUpon>FormIngresos.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Doc%27s\Secretaria\ReporteMiembros.docx" />
+    <None Include="Doc%27s\Secretaria\ReporteMiembros.pdf" />
+    <None Include="Doc%27s\Tesoreria\InformeIndividualTesoreria.docx" />
+    <None Include="Doc%27s\Tesoreria\InformeTesoreriaGeneral.docx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
