@@ -234,6 +234,30 @@ namespace UI
                 textTotalComite.Text = "0";
             }
         }
+        void FiltrarPorConcepto(string concepto)
+        {
+            ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+            respuesta = egresoService.FiltrarEgresosPorConcepto(concepto);
+            if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+            {
+                var conceptos = new List<Egreso>();
+                dataGridDetalle.DataSource = null;
+                egresos = respuesta.Egresos.ToList();
+                for (int i = 0; i < egresos.Count; i++)
+                {
+                    if (egresos[i].Comite == comite)
+                    {
+                        conceptos.Add(egresos[i]);
+                    }
+                }
+                dataGridDetalle.DataSource = conceptos;
+                Borrar.Visible = true;
+            }
+            else
+            {
+                textTotalComite.Text = "0";
+            }
+        }
         private void dataGridEgresos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridEgresos.DataSource != null)
@@ -529,6 +553,19 @@ namespace UI
             else
             {
                 FiltroPorComite(filtro);
+            }
+        }
+
+        private void comboConceptoDetalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtro = comboConceptoDetalle.Text;
+            if (filtro == "Ninguno")
+            {
+                FiltrarIngresosPorComite(comite);
+            }
+            else
+            {
+                FiltrarPorConcepto(filtro);
             }
         }
     }

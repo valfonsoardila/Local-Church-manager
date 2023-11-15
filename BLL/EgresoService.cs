@@ -81,6 +81,27 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
+        public ConsultaEgresoRespuesta FiltrarEgresosPorConcepto(string concepto)
+        {
+            ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+            try
+            {
+                conexion.Open();
+                respuesta.Egresos = repositorio.FiltrarEgresosPorConcepto(concepto);
+                conexion.Close();
+                respuesta.Error = false;
+                respuesta.Mensaje = (respuesta.Egresos.Count > 0) ? "Se filtraron los Datos concordantes" : "No hay datos para consultar";
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+
+        }
         public BusquedaEgresoRespuesta BuscarPorIdentificacion(string comprobante)
         {
             BusquedaEgresoRespuesta respuesta = new BusquedaEgresoRespuesta();

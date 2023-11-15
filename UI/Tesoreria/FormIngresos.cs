@@ -239,7 +239,30 @@ namespace UI
                 }
             }
         }
-
+        void FiltrarPorConcepto(string concepto)
+        {
+            ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
+            respuesta = ingresoService.FiltrarIngresosPorConcepto(concepto);
+            if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
+            {
+                var conceptos = new List<Ingreso>();
+                dataGridDetalle.DataSource = null;
+                ingresos = respuesta.Ingresos.ToList();
+                for (int i = 0; i < ingresos.Count; i++)
+                {
+                    if (ingresos[i].Comite == comite)
+                    {
+                        conceptos.Add(ingresos[i]);
+                    }
+                }
+                dataGridDetalle.DataSource = conceptos;
+                Borrar.Visible = true;
+            }
+            else
+            {
+                textTotalComite.Text = "0";
+            }
+        }
         private void dataGridIngresos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridIngresos.DataSource != null)
@@ -548,6 +571,19 @@ namespace UI
             else
             {
                 FiltroPorComite(filtro);
+            }
+        }
+
+        private void comboConceptoDetalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtro = comboConceptoDetalle.Text;
+            if (filtro == "Ninguno")
+            {
+                FiltrarIngresosPorComite(comite);
+            }
+            else
+            {
+                FiltrarPorConcepto(filtro);
             }
         }
     }

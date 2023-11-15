@@ -76,6 +76,25 @@ namespace DAL
             }
             return ingresos;
         }
+        public List<Ingreso> FiltrarIngresosPorConcepto(string concepto)
+        {
+            List<Ingreso> ingresos = new List<Ingreso>();
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from INGRESO where Concepto=@Concepto";
+                command.Parameters.AddWithValue("@Concepto", concepto);
+                var dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        Ingreso ingreso = DataReaderMapToIngreso(dataReader);
+                        ingresos.Add(ingreso);
+                    }
+                }
+            }
+            return ingresos;
+        }
         public Ingreso BuscarPorIdentificacion(string codigo)
         {
             SqlDataReader dataReader;

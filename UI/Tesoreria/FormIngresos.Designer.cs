@@ -85,6 +85,9 @@
             this.Editar2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.textValorConcepto = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboConceptoDetalle = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textTotalComite = new System.Windows.Forms.TextBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
@@ -998,6 +1001,9 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.Black;
+            this.panel9.Controls.Add(this.textValorConcepto);
+            this.panel9.Controls.Add(this.label12);
+            this.panel9.Controls.Add(this.comboConceptoDetalle);
             this.panel9.Controls.Add(this.label8);
             this.panel9.Controls.Add(this.textTotalComite);
             this.panel9.Controls.Add(this.iconPictureBox1);
@@ -1011,12 +1017,87 @@
             this.panel9.Size = new System.Drawing.Size(804, 32);
             this.panel9.TabIndex = 0;
             // 
+            // textValorConcepto
+            // 
+            this.textValorConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textValorConcepto.Location = new System.Drawing.Point(433, 4);
+            this.textValorConcepto.Name = "textValorConcepto";
+            this.textValorConcepto.Size = new System.Drawing.Size(142, 22);
+            this.textValorConcepto.TabIndex = 26;
+            this.textValorConcepto.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label12.Location = new System.Drawing.Point(375, 7);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(61, 16);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Total $";
+            // 
+            // comboConceptoDetalle
+            // 
+            this.comboConceptoDetalle.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboConceptoDetalle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboConceptoDetalle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboConceptoDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboConceptoDetalle.FormattingEnabled = true;
+            this.comboConceptoDetalle.Items.AddRange(new object[] {
+            "Ninguno",
+            "Ofrenda",
+            "Voto",
+            "Actividades",
+            "Otro"});
+            this.comboConceptoDetalle.Location = new System.Drawing.Point(274, 3);
+            this.comboConceptoDetalle.Name = "comboConceptoDetalle";
+            this.comboConceptoDetalle.Size = new System.Drawing.Size(94, 24);
+            this.comboConceptoDetalle.TabIndex = 25;
+            this.comboConceptoDetalle.Text = "Concepto";
+            this.comboConceptoDetalle.SelectedIndexChanged += new System.EventHandler(this.comboConceptoDetalle_SelectedIndexChanged);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(135, 8);
+            this.label8.Location = new System.Drawing.Point(111, 8);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 16);
             this.label8.TabIndex = 17;
@@ -1025,7 +1106,7 @@
             // textTotalComite
             // 
             this.textTotalComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalComite.Location = new System.Drawing.Point(241, 4);
+            this.textTotalComite.Location = new System.Drawing.Point(217, 4);
             this.textTotalComite.Name = "textTotalComite";
             this.textTotalComite.Size = new System.Drawing.Size(46, 22);
             this.textTotalComite.TabIndex = 11;
@@ -1211,5 +1292,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewImageColumn Editar2;
         private System.Windows.Forms.DataGridViewImageColumn Borrar2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboConceptoDetalle;
+        private System.Windows.Forms.TextBox textValorConcepto;
     }
 }

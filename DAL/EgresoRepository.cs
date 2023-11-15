@@ -76,6 +76,25 @@ namespace DAL
             }
             return egresos;
         }
+        public List<Egreso> FiltrarEgresosPorConcepto(string concepto)
+        {
+            List<Egreso> egresos = new List<Egreso>();
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from EGRESO where Concepto=@Concepto";
+                command.Parameters.AddWithValue("@Concepto", concepto);
+                var dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        Egreso egreso = DataReaderMapToIngreso(dataReader);
+                        egresos.Add(egreso);
+                    }
+                }
+            }
+            return egresos;
+        }
         public Egreso BuscarPorIdentificacion(string codigo)
         {
             SqlDataReader dataReader;
