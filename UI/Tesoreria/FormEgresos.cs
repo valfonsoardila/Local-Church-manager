@@ -10,7 +10,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace UI
 {
@@ -20,18 +22,99 @@ namespace UI
         EgresoService egresoService;
         List<Egreso> egresos;
         EgressMap egressMaps;
+        TabPage tabPage;
         string originalText;
-        bool encontrado = false;
         string comprobante = "";
         string id;
+        string comite;
+        bool encontrado = false;
+        bool detallo = false;
         public FormEgresos()
         {
+            egresoService = new EgresoService(ConfigConnection.ConnectionString);
+            egressMaps = new EgressMap();
             InitializeComponent();
+            ConsultarEgresos();
+            CalcularComprobante();
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void btnGestionarEgresos_Click(object sender, EventArgs e)
+        {
+            tabEgresos.SelectedIndex = 1;
+        }
+        private async void TotalizarEgresos()
+        {
+            int sumEgreso = 0;
+            try
+            {
+                var db = FirebaseService.Database;
+                var egresos = new List<EgressData>();
+                Query egressQuery = db.Collection("EgressData");
+                QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap.Documents)
+                {
+                    EgressData egressData = docsnap.ConvertTo<EgressData>();
+                    sumEgreso = sumEgreso + egressData.Valor;
+                    if (sumEgreso > 0)
+                    {
+                        textTotalEgresos.Text = sumEgreso.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+                respuesta = egresoService.ConsultarTodos();
+                if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+                {
+                    egresos = respuesta.Egresos.ToList();
+                    for (int i = 0; i < egresos.Count; i++)
+                    {
+                        sumEgreso = sumEgreso + respuesta.Egresos[i].Valor;
+                    }
+                }
+            }
+        }
+        private async void TotalizarRegistros()
+        {
+            ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+            respuesta = egresoService.ConsultarTodos();
+            if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+            {
+                dataGridEgresos.DataSource = null;
+                egresos = respuesta.Egresos.ToList();
+                if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+                {
+                    textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
+                    var db = FirebaseService.Database;
+                    var egresos = new List<EgressData>();
+                    Query egressQuery = db.Collection("EgressData");
+                    QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
+                    foreach (DocumentSnapshot docsnap in snap.Documents)
+                    {
+                        EgressData egressData = docsnap.ConvertTo<EgressData>();
+                        egresos.Add(egressData);
+                        textTotalNube.Text = egresos.Count.ToString();
+                    }
+                }
+                else
+                {
+                    textTotalLocal.Text = "0";
+                    textTotalNube.Text = "0";
+                }
+            }
+        }
+        private void FormEgresos_Load(object sender, EventArgs e)
+        {
+            if (tabEgresos.TabCount > 0)
+            {
+                tabPage = tabEgresos.TabPages["tabDetalle"];
+                tabEgresos.TabPages.RemoveAt(2);
+            }
         }
         private void CalcularComprobante()
         {
@@ -40,8 +123,8 @@ namespace UI
             egresos = respuesta.Egresos.ToList();
             if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
             {
-                textTotal.Text = egresoService.Totalizar().Cuenta.ToString();
-                var totalComprobante = Convert.ToInt32(textTotal.Text);
+                textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
+                var totalComprobante = Convert.ToInt32(textTotalLocal.Text);
                 comprobante = (totalComprobante + 1).ToString("0000");
                 textNumeroComprobante.Text = comprobante;
             }
@@ -54,6 +137,8 @@ namespace UI
         }
         private async void ConsultarEgresos()
         {
+            TotalizarEgresos();
+            TotalizarRegistros();
             try
             {
                 bool isNotEmpty = false;
@@ -64,7 +149,7 @@ namespace UI
                 foreach (DocumentSnapshot docsnap in snap.Documents)
                 {
                     EgressData egressData = docsnap.ConvertTo<EgressData>();
-                    egresos = new List<EgressData> { egressData };
+                    egresos.Add(egressData);
                     if (egresos.Count > 0)
                     {
                         isNotEmpty = true;
@@ -78,28 +163,20 @@ namespace UI
                 else
                 {
                     dataGridEgresos.DataSource = null;
-                    textTotal.Text = "0";
+                    textTotalLocal.Text = "0";
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
                 respuesta = egresoService.ConsultarTodos();
                 if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
                 {
-                    dataGridEgresos.DataSource = null;
-                    respuesta = egresoService.ConsultarTodos();
+                    dataGridDetalle.DataSource = null;
                     egresos = respuesta.Egresos.ToList();
-                    if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
-                    {
-                        dataGridEgresos.DataSource = respuesta.Egresos;
-                        Borrar.Visible = true;
-                        textTotal.Text = egresoService.Totalizar().Cuenta.ToString();
-                    }
-                    else
-                    {
-                        textTotal.Text = "0";
-                    }
+                    dataGridDetalle.DataSource = respuesta.Egresos;
+                    Borrar.Visible = true;
+                    textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
                 }
             }
         }
@@ -111,20 +188,112 @@ namespace UI
             if (registro != null)
             {
                 encontrado = true;
-                var ingresos = new List<Egreso> { registro };
-                textNumeroComprobante.Text = ingresos[0].CodigoComprobante;
-                dateTimeEgreso.Value = ingresos[0].FechaDeEgreso;
-                comboComite.Text = ingresos[0].Comite;
-                comboConcepto.Text = ingresos[0].Concepto;
-                textDineroIngreso.Text = ingresos[0].Valor.ToString();
-                textDetalle.Text = ingresos[0].Detalle;
+                var egresos = new List<Egreso> { registro };
+                textNumeroComprobante.Text = egresos[0].CodigoComprobante;
+                dateTimeEgreso.Value = egresos[0].FechaDeEgreso;
+                comboComite.Text = egresos[0].Comite;
+                comboConcepto.Text = egresos[0].Concepto;
+                textDineroIngreso.Text = egresos[0].Valor.ToString();
+                textDetalle.Text = egresos[0].Detalle;
             }
         }
-        private void btnGestionarEgresos_Click(object sender, EventArgs e)
+        void FiltroPorComite(string comite)
         {
-            tabEgresos.SelectedIndex = 1;
+            ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+            respuesta = egresoService.FiltrarIngresosPorComite(comite);
+            if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+            {
+                dataGridEgresos.DataSource = null;
+                egresos = respuesta.Egresos.ToList();
+                if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+                {
+                    dataGridEgresos.DataSource = respuesta.Egresos;
+                    Borrar.Visible = true;
+                }
+            }
+            else
+            {
+                dataGridEgresos.DataSource = null;
+                egresos = respuesta.Egresos.ToList();
+            }
         }
-
+        void FiltrarIngresosPorComite(string comite)
+        {
+            ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+            respuesta = egresoService.FiltrarIngresosPorComite(comite);
+            if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+            {
+                dataGridDetalle.DataSource = null;
+                egresos = respuesta.Egresos.ToList();
+                dataGridDetalle.DataSource = respuesta.Egresos;
+                Borrar.Visible = true;
+                textTotalComite.Text = egresoService.TotalizarTipo(comite).Cuenta.ToString();
+            }
+            else
+            {
+                textTotalComite.Text = "0";
+            }
+        }
+        private void dataGridEgresos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridEgresos.DataSource != null)
+            {
+                if (dataGridEgresos.Columns[e.ColumnIndex].Name == "Borrar")
+                {
+                    id = Convert.ToString(dataGridEgresos.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
+                    EliminarIngreso(id);
+                    ConsultarEgresos();
+                }
+                else
+                {
+                    if (dataGridEgresos.Columns[e.ColumnIndex].Name == "Detallar")
+                    {
+                        comite = Convert.ToString(dataGridEgresos.CurrentRow.Cells["Comite"].Value.ToString());
+                        FiltrarIngresosPorComite(comite);
+                        tabEgresos.TabPages.Add(tabPage);
+                        tabEgresos.SelectedIndex = 2;
+                        detallo = true;
+                    }
+                    else
+                    {
+                        if (dataGridEgresos.Columns[e.ColumnIndex].Name == "Editar")
+                        {
+                            id = Convert.ToString(dataGridEgresos.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
+                            FiltroPorId(id);
+                            if (encontrado == true)
+                            {
+                                tabEgresos.SelectedIndex = 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void dataGridDetalle_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridDetalle.DataSource != null)
+            {
+                if (dataGridDetalle.Columns[e.ColumnIndex].Name == "Borrar2")
+                {
+                    id = Convert.ToString(dataGridDetalle.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
+                    EliminarIngreso(id);
+                    ConsultarEgresos();
+                    tabEgresos.SelectedIndex = 0;
+                }
+                else
+                {
+                    if (dataGridDetalle.Columns[e.ColumnIndex].Name == "Editar2")
+                    {
+                        id = Convert.ToString(dataGridDetalle.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
+                        FiltroPorId(id);
+                        if (encontrado == true)
+                        {
+                            tabEgresos.SelectedIndex = 1;
+                        }
+                    }
+                }
+            }
+        }
         private void comboConcepto_Enter(object sender, EventArgs e)
         {
             if (comboConcepto.Text == "Concepto")
@@ -244,7 +413,10 @@ namespace UI
             egreso.FechaDeEgreso = dateTimeEgreso.Value;
             egreso.Comite = comboComite.Text;
             egreso.Concepto = comboConcepto.Text;
-            egreso.Valor = int.Parse(textDineroIngreso.Text);
+            string cantidadConSigno = textDineroIngreso.Text; // Esto contiene "$ 30000"
+            string cantidadSinSigno = cantidadConSigno.Replace("$", "").Trim(); // Esto quita el signo "$"
+            int cantidadEntera = int.Parse(cantidadSinSigno); // Convierte el valor a un entero
+            egreso.Valor = cantidadEntera;
             egreso.Detalle = textDetalle.Text;
             return egreso;
         }
@@ -268,11 +440,13 @@ namespace UI
                 //Guardamos en la nube
                 var db = FirebaseService.Database;
                 var egress = egressMaps.EgressMaps(egreso);
-                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("EgressData").Document(egress.VoucherCode.ToString());
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("EgressData").Document(egress.CodigoComprobante);
                 docRef.SetAsync(egress);
                 // Guardamos localmente
                 MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarEgresos();
                 Limpiar();
+                tabEgresos.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -282,45 +456,79 @@ namespace UI
                     // Guardamos localmente
                     var msg = egresoService.Guardar(egreso);
                     MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConsultarEgresos();
                     Limpiar();
+                    tabEgresos.SelectedIndex = 0;
                 }
             }
         }
-        private void EliminarIngreso(string id)
+        private void EliminarIngreso(string codigo)
         {
-            string mensaje = egresoService.Eliminar(id);
-            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                //Elimina primero de firebase o la nube
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("EgressData").Document(codigo);
+                docRef.DeleteAsync();
+                string mensaje = egresoService.Eliminar(codigo);
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarEgresos();
+            }
+            catch (Exception e)
+            {
+                string mensaje = egresoService.Eliminar(id);
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarEgresos();
+            }
         }
 
-        private void dataGridEgresos_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void tabEgresos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dataGridEgresos.DataSource != null)
+            if (tabEgresos.SelectedIndex != 2 && detallo != false)
             {
-                if (dataGridEgresos.Columns[e.ColumnIndex].Name == "Borrar")
-                {
-                    id = Convert.ToString(dataGridEgresos.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
-                    EliminarIngreso(id);
-                    ConsultarEgresos();
-                }
-                else
-                {
-                    if (dataGridEgresos.Columns[e.ColumnIndex].Name == "Detallar")
-                    {
-                        id = Convert.ToString(dataGridEgresos.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
-                    }
-                    else
-                    {
-                        if (dataGridEgresos.Columns[e.ColumnIndex].Name == "Editar")
-                        {
-                            id = Convert.ToString(dataGridEgresos.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
-                            FiltroPorId(id);
-                            if (encontrado == true)
-                            {
-                                tabEgresos.SelectedIndex = 1;
-                            }
-                        }
-                    }
-                }
+                tabPage = tabEgresos.TabPages["tabDetalle"];
+                tabEgresos.TabPages.RemoveAt(2);
+                detallo = false;
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Egreso nuevoEgreso = MapearEgreso();
+            try
+            {
+                nuevoEgreso.CodigoComprobante = id;
+                string mensaje = egresoService.Modificar(nuevoEgreso);
+                //Guardamos en la nube
+                var db = FirebaseService.Database;
+                var ingress = egressMaps.EgressMaps(nuevoEgreso);
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("EgressData").Document(ingress.CodigoComprobante.ToString());
+                docRef.SetAsync(ingress);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarEgresos();
+                Limpiar();
+                tabEgresos.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                string mensaje = egresoService.Modificar(nuevoEgreso);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarEgresos();
+                Limpiar();
+                tabEgresos.SelectedIndex = 0;
+            }
+        }
+
+        private void comboFiltroComite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtro = comboFiltroComite.Text;
+            if (filtro == "Todos")
+            {
+                ConsultarEgresos();
+            }
+            else
+            {
+                FiltroPorComite(filtro);
             }
         }
     }

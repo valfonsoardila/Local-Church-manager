@@ -48,6 +48,8 @@
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textTotalIngresos = new System.Windows.Forms.TextBox();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -56,7 +58,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnImprimir = new FontAwesome.Sharp.IconButton();
-            this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
+            this.btnGestionarIngresos = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridIngresos = new System.Windows.Forms.DataGridView();
@@ -65,6 +67,8 @@
             this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textTotalNube = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textTotalLocal = new System.Windows.Forms.TextBox();
             this.comboFiltroComite = new System.Windows.Forms.ComboBox();
@@ -78,19 +82,16 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.dataGridDetalle = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.textTotalComite = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textTotalNube = new System.Windows.Forms.TextBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -163,7 +164,6 @@
             this.textDineroIngreso.Size = new System.Drawing.Size(181, 26);
             this.textDineroIngreso.TabIndex = 25;
             this.textDineroIngreso.Text = "$ 000.00";
-            this.textDineroIngreso.TextChanged += new System.EventHandler(this.textDineroIngreo_TextChanged);
             this.textDineroIngreso.Enter += new System.EventHandler(this.textDineroIngreo_Enter);
             this.textDineroIngreso.Leave += new System.EventHandler(this.textDineroIngreo_Leave);
             this.textDineroIngreso.Validated += new System.EventHandler(this.textDineroIngreso_Validated);
@@ -471,6 +471,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.textTotalIngresos);
             this.panel1.Controls.Add(this.btnAtras);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -479,6 +481,29 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(880, 59);
             this.panel1.TabIndex = 2;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label11.Location = new System.Drawing.Point(489, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(183, 24);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Total Ingresos $";
+            // 
+            // textTotalIngresos
+            // 
+            this.textTotalIngresos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textTotalIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTotalIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalIngresos.ForeColor = System.Drawing.SystemColors.Info;
+            this.textTotalIngresos.Location = new System.Drawing.Point(671, 17);
+            this.textTotalIngresos.Name = "textTotalIngresos";
+            this.textTotalIngresos.Size = new System.Drawing.Size(177, 28);
+            this.textTotalIngresos.TabIndex = 12;
+            this.textTotalIngresos.Text = "0";
             // 
             // btnAtras
             // 
@@ -556,7 +581,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.btnImprimir, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnGestionarDirectivas, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnGestionarIngresos, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 12);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -583,22 +608,22 @@
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = false;
             // 
-            // btnGestionarDirectivas
+            // btnGestionarIngresos
             // 
-            this.btnGestionarDirectivas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGestionarDirectivas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.btnGestionarDirectivas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionarDirectivas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnGestionarDirectivas.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnGestionarDirectivas.IconColor = System.Drawing.Color.Black;
-            this.btnGestionarDirectivas.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarDirectivas.Location = new System.Drawing.Point(295, 3);
-            this.btnGestionarDirectivas.Name = "btnGestionarDirectivas";
-            this.btnGestionarDirectivas.Size = new System.Drawing.Size(135, 35);
-            this.btnGestionarDirectivas.TabIndex = 1;
-            this.btnGestionarDirectivas.Text = "Gestionar Ingresos";
-            this.btnGestionarDirectivas.UseVisualStyleBackColor = false;
-            this.btnGestionarDirectivas.Click += new System.EventHandler(this.btnGestionarDirectivas_Click);
+            this.btnGestionarIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGestionarIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnGestionarIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionarIngresos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGestionarIngresos.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnGestionarIngresos.IconColor = System.Drawing.Color.Black;
+            this.btnGestionarIngresos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGestionarIngresos.Location = new System.Drawing.Point(295, 3);
+            this.btnGestionarIngresos.Name = "btnGestionarIngresos";
+            this.btnGestionarIngresos.Size = new System.Drawing.Size(135, 35);
+            this.btnGestionarIngresos.TabIndex = 1;
+            this.btnGestionarIngresos.Text = "Gestionar Ingresos";
+            this.btnGestionarIngresos.UseVisualStyleBackColor = false;
+            this.btnGestionarIngresos.Click += new System.EventHandler(this.btnGestionarIngresos_Click_1);
             // 
             // panel6
             // 
@@ -701,12 +726,32 @@
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(804, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.Location = new System.Drawing.Point(213, 8);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 16);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "Total en Nube";
+            // 
+            // textTotalNube
+            // 
+            this.textTotalNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalNube.Location = new System.Drawing.Point(314, 5);
+            this.textTotalNube.Name = "textTotalNube";
+            this.textTotalNube.Size = new System.Drawing.Size(46, 22);
+            this.textTotalNube.TabIndex = 20;
+            this.textTotalNube.Text = "0";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(87, 8);
+            this.label9.Location = new System.Drawing.Point(85, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 16);
             this.label9.TabIndex = 17;
@@ -715,7 +760,7 @@
             // textTotalLocal
             // 
             this.textTotalLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalLocal.Location = new System.Drawing.Point(171, 6);
+            this.textTotalLocal.Location = new System.Drawing.Point(166, 5);
             this.textTotalLocal.Name = "textTotalLocal";
             this.textTotalLocal.Size = new System.Drawing.Size(46, 22);
             this.textTotalLocal.TabIndex = 11;
@@ -789,11 +834,12 @@
             "Comité de familia",
             "Donacion",
             "Aporte de liquidacion"});
-            this.comboFiltroComite.Location = new System.Drawing.Point(409, 4);
+            this.comboFiltroComite.Location = new System.Drawing.Point(399, 5);
             this.comboFiltroComite.Name = "comboFiltroComite";
             this.comboFiltroComite.Size = new System.Drawing.Size(121, 24);
             this.comboFiltroComite.TabIndex = 10;
             this.comboFiltroComite.Text = "Comite";
+            this.comboFiltroComite.SelectedIndexChanged += new System.EventHandler(this.comboFiltroComite_SelectedIndexChanged);
             // 
             // iconPictureBox3
             // 
@@ -836,7 +882,6 @@
             this.textSerachLibreta.TabIndex = 6;
             this.textSerachLibreta.Text = "Buscar por detalle";
             this.textSerachLibreta.Visible = false;
-            this.textSerachLibreta.TextChanged += new System.EventHandler(this.textSerachLibreta_TextChanged);
             this.textSerachLibreta.Enter += new System.EventHandler(this.textSerachLibreta_Enter);
             this.textSerachLibreta.Leave += new System.EventHandler(this.textSerachLibreta_Leave);
             // 
@@ -909,8 +954,8 @@
             this.dataGridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewImageColumn1,
-            this.dataGridViewImageColumn2});
+            this.Editar2,
+            this.Borrar2});
             this.dataGridDetalle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridDetalle.Location = new System.Drawing.Point(0, 32);
@@ -923,6 +968,7 @@
             this.dataGridDetalle.RowTemplate.Height = 30;
             this.dataGridDetalle.Size = new System.Drawing.Size(804, 342);
             this.dataGridDetalle.TabIndex = 1;
+            this.dataGridDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDetalle_CellClick);
             // 
             // dataGridViewCheckBoxColumn1
             // 
@@ -931,30 +977,29 @@
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             this.dataGridViewCheckBoxColumn1.Width = 69;
             // 
-            // dataGridViewImageColumn1
+            // Editar2
             // 
-            this.dataGridViewImageColumn1.HeaderText = "Editar";
-            this.dataGridViewImageColumn1.Image = global::UI.Properties.Resources.edit_user;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Width = 40;
+            this.Editar2.HeaderText = "Editar";
+            this.Editar2.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar2.Name = "Editar2";
+            this.Editar2.ReadOnly = true;
+            this.Editar2.Width = 40;
             // 
-            // dataGridViewImageColumn2
+            // Borrar2
             // 
-            this.dataGridViewImageColumn2.HeaderText = "Borrar";
-            this.dataGridViewImageColumn2.Image = global::UI.Properties.Resources.borrar;
-            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Width = 41;
+            this.Borrar2.HeaderText = "Borrar";
+            this.Borrar2.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar2.Name = "Borrar2";
+            this.Borrar2.ReadOnly = true;
+            this.Borrar2.Width = 41;
             // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.Black;
             this.panel9.Controls.Add(this.label8);
             this.panel9.Controls.Add(this.textTotalComite);
-            this.panel9.Controls.Add(this.comboBox2);
             this.panel9.Controls.Add(this.iconPictureBox1);
             this.panel9.Controls.Add(this.iconPictureBox2);
             this.panel9.Controls.Add(this.textBox3);
@@ -971,72 +1016,20 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(101, 8);
+            this.label8.Location = new System.Drawing.Point(135, 8);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 16);
+            this.label8.Size = new System.Drawing.Size(103, 16);
             this.label8.TabIndex = 17;
-            this.label8.Text = "Total";
+            this.label8.Text = "Total registros";
             // 
             // textTotalComite
             // 
             this.textTotalComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalComite.Location = new System.Drawing.Point(148, 5);
+            this.textTotalComite.Location = new System.Drawing.Point(241, 4);
             this.textTotalComite.Name = "textTotalComite";
             this.textTotalComite.Size = new System.Drawing.Size(46, 22);
             this.textTotalComite.TabIndex = 11;
             this.textTotalComite.Text = "0";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.AutoCompleteCustomSource.AddRange(new string[] {
-            "Ingeniero(a) de sistemas",
-            "Ingeniero(a) de electronica",
-            "Ingeniero(a) Industrial",
-            "Enfermero(a)",
-            "Electricista",
-            "Albañil",
-            "Abogado",
-            "Acesor comercial",
-            "Estudiante",
-            "Medico(a)",
-            "Farmaceutico(a)",
-            "Odontologo(a)",
-            "Fontaneros(a)",
-            "Docente",
-            "Contadores",
-            "Psicologos",
-            "Chef",
-            "Repostero(a)",
-            "Vigilante",
-            "Escolta",
-            "Ebanista",
-            "Peluquero",
-            "Domiciliario",
-            "Soldador",
-            "Diseñador Grafico",
-            "Maestro de obra",
-            "Mecanico",
-            "Chofer",
-            "Impulsador",
-            "Optometra",
-            "Naturista",
-            "Vendedor",
-            "Modista",
-            "Electronico",
-            "Tecnico"});
-            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Todos",
-            "Ingresos",
-            "Egresos"});
-            this.comboBox2.Location = new System.Drawing.Point(440, 5);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 10;
-            this.comboBox2.Text = "Todos";
             // 
             // iconPictureBox1
             // 
@@ -1105,26 +1098,6 @@
             this.label10.Size = new System.Drawing.Size(59, 16);
             this.label10.TabIndex = 0;
             this.label10.Text = "Detalle";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label15.Location = new System.Drawing.Point(223, 8);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(100, 16);
-            this.label15.TabIndex = 21;
-            this.label15.Text = "Total en Nube";
-            // 
-            // textTotalNube
-            // 
-            this.textTotalNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalNube.Location = new System.Drawing.Point(329, 5);
-            this.textTotalNube.Name = "textTotalNube";
-            this.textTotalNube.Size = new System.Drawing.Size(46, 22);
-            this.textTotalNube.TabIndex = 20;
-            this.textTotalNube.Text = "0";
             // 
             // FormIngresos
             // 
@@ -1221,15 +1194,11 @@
         private System.Windows.Forms.TextBox textBox3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboConcepto;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private FontAwesome.Sharp.IconButton btnImprimir;
-        private FontAwesome.Sharp.IconButton btnGestionarDirectivas;
+        private FontAwesome.Sharp.IconButton btnGestionarIngresos;
         private System.Windows.Forms.TextBox textDineroIngreso;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
@@ -1237,5 +1206,10 @@
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textTotalNube;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textTotalIngresos;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn Editar2;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar2;
     }
 }

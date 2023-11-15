@@ -57,6 +57,25 @@ namespace DAL
             }
             return egresos;
         }
+        public List<Egreso> FiltrarIngresosPorComite(string comite)
+        {
+            List<Egreso> egresos = new List<Egreso>();
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from EGRESO where Comite=@Comite";
+                command.Parameters.AddWithValue("@Comite", comite);
+                var dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        Egreso egreso = DataReaderMapToIngreso(dataReader);
+                        egresos.Add(egreso);
+                    }
+                }
+            }
+            return egresos;
+        }
         public Egreso BuscarPorIdentificacion(string codigo)
         {
             SqlDataReader dataReader;
@@ -100,7 +119,7 @@ namespace DAL
         }
         public int TotalizarTipo(string tipo)
         {
-            return ConsultarTodos().Where(p => p.Valor.Equals(tipo)).Count();
+            return ConsultarTodos().Where(p => p.Comite.Equals(tipo)).Count();
         }
     }
 }

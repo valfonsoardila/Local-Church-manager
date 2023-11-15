@@ -94,8 +94,10 @@ namespace DAL
             {
                 command.CommandText = @"update INGRESO set FechaDeIngreso=@FechaDeIngreso, Comite=@Comite, Concepto=@Concepto, Valor=@Valor, Detalle=@Detalle
                                         where CodigoComprobante=@CodigoComprobante";
+                command.Parameters.AddWithValue("@CodigoComprobante", ingreso.CodigoComprobante);
                 command.Parameters.AddWithValue("@FechaDeIngreso", ingreso.FechaDeIngreso);
                 command.Parameters.AddWithValue("@Comite", ingreso.Comite);
+                command.Parameters.AddWithValue("@Concepto", ingreso.Concepto);
                 command.Parameters.AddWithValue("@Valor", ingreso.Valor);
                 command.Parameters.AddWithValue("@Detalle", ingreso.Detalle);
                 var filas = command.ExecuteNonQuery();

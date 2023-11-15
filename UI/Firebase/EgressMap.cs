@@ -17,24 +17,24 @@ namespace UI
             {
                 return new EgressData()
                 {
-                    VoucherCode = egreso.CodigoComprobante.ToString(),
-                    DateOfIngress = egreso.FechaDeEgreso.ToString(),
-                    Committee = egreso.Comite,
-                    Concept = egreso.Concepto,
-                    Ammount = egreso.Valor,
-                    Detail = egreso.Detalle,
+                    CodigoComprobante = egreso.CodigoComprobante.ToString(),
+                    FechaDeEgreso = egreso.FechaDeEgreso.ToString(),
+                    Comite = egreso.Comite,
+                    Concepto = egreso.Concepto,
+                    Valor = egreso.Valor,
+                    Detalle = egreso.Detalle,
                 };
             }
             else
             {
                 return new EgressData()
                 {
-                    VoucherCode = egreso.CodigoComprobante.ToString(),
-                    DateOfIngress = egreso.FechaDeEgreso.ToString(),
-                    Committee = egreso.Comite,
-                    Concept = egreso.Concepto,
-                    Ammount = egreso.Valor,
-                    Detail = egreso.Detalle,
+                    CodigoComprobante = egreso.CodigoComprobante.ToString(),
+                    FechaDeEgreso = egreso.FechaDeEgreso.ToString(),
+                    Comite = egreso.Comite,
+                    Concepto = egreso.Concepto,
+                    Valor = egreso.Valor,
+                    Detalle = egreso.Detalle,
                 };
             }
         }

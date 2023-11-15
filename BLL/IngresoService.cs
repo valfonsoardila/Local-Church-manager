@@ -21,7 +21,6 @@ namespace BLL
         {
             try
             {
-                //ingreso.GenerarIdNota();
                 conexion.Open();
                 if (repositorio.BuscarPorIdentificacion(ingreso.CodigoComprobante) == null)
                 {
@@ -63,7 +62,6 @@ namespace BLL
             ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
             try
             {
-
                 conexion.Open();
                 respuesta.Ingresos = repositorio.FiltrarIngresosPorComite(comite);
                 conexion.Close();
@@ -131,7 +129,7 @@ namespace BLL
                 var ingresoNuevo = repositorio.BuscarPorIdentificacion(ingreso.CodigoComprobante);
                 if (ingreso != null)
                 {
-                    repositorio.Modificar(ingresoNuevo);
+                    repositorio.Modificar(ingreso);
                     return ($"El registro de {ingresoNuevo.CodigoComprobante} se ha modificado satisfactoriamente.");
                 }
                 else

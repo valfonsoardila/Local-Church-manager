@@ -37,7 +37,6 @@ namespace UI
             InitializeComponent();
             ConsultarIngresos();
             CalcularComprobante();
-            TotalizarRegistros();
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -45,9 +44,42 @@ namespace UI
             this.Close();
         }
 
-        private void btnGestionarDirectivas_Click(object sender, EventArgs e)
+        private void btnGestionarIngresos_Click_1(object sender, EventArgs e)
         {
             tabLibroIngresos.SelectedIndex = 1;
+        }
+        private async void TotalizarIngresos()
+        {
+            int sumIngreso = 0;
+            try
+            {
+                var db = FirebaseService.Database;
+                var ingresos = new List<IngressData>();
+                Query ingressQuery = db.Collection("IngressData");
+                QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap.Documents)
+                {
+                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
+                    sumIngreso = sumIngreso + ingressData.Valor;
+                    if (sumIngreso > 0)
+                    {
+                        textTotalIngresos.Text = sumIngreso.ToString();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
+                respuesta = ingresoService.ConsultarTodos();
+                if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
+                {
+                    ingresos = respuesta.Ingresos.ToList();
+                    for(int i=0; i< ingresos.Count; i++)
+                    {
+                        sumIngreso = sumIngreso + respuesta.Ingresos[i].Valor;
+                    }
+                }
+            }
         }
         private async void TotalizarRegistros()
         {
@@ -107,6 +139,8 @@ namespace UI
         }
         private async void ConsultarIngresos()
         {
+            TotalizarIngresos();
+            TotalizarRegistros();
             try
             {
                 bool isNotEmpty = false;
@@ -142,16 +176,9 @@ namespace UI
                 {
                     dataGridIngresos.DataSource = null;
                     ingresos = respuesta.Ingresos.ToList();
-                    if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
-                    {
-                        dataGridIngresos.DataSource = respuesta.Ingresos;
-                        Borrar.Visible = true;
-                        textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
-                    }
-                    else
-                    {
-                        textTotalLocal.Text = "0";
-                    }
+                    dataGridIngresos.DataSource = respuesta.Ingresos;
+                    Borrar.Visible = true;
+                    textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
                 }
             }
         }
@@ -170,6 +197,26 @@ namespace UI
                 comboConcepto.Text = ingresos[0].Concepto;
                 textDineroIngreso.Text = ingresos[0].Valor.ToString();
                 textDetalle.Text = ingresos[0].Detalle;
+            }
+        }
+        void FiltroPorComite(string comite)
+        {
+            ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
+            respuesta = ingresoService.FiltrarIngresosPorComite(comite);
+            if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
+            {
+                dataGridIngresos.DataSource = null;
+                ingresos = respuesta.Ingresos.ToList();
+                if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
+                {
+                    dataGridIngresos.DataSource = respuesta.Ingresos;
+                    Borrar.Visible = true;
+                }
+            }
+            else
+            {
+                dataGridIngresos.DataSource = null;
+                ingresos = respuesta.Ingresos.ToList();
             }
         }
         void FiltrarIngresosPorComite(string comite)
@@ -228,17 +275,29 @@ namespace UI
                 }
             }
         }
-
-        private void textDineroIngreo_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void textSerachLibreta_TextChanged(object sender, EventArgs e)
-        {
-            if(textSerachLibreta.Text!="" && textSerachLibreta.Text != "Buscar por detalle")
+        private void dataGridDetalle_CellClick(object sender, DataGridViewCellEventArgs e)
+        {   
+            if (dataGridDetalle.DataSource != null)
             {
-
+                if (dataGridDetalle.Columns[e.ColumnIndex].Name == "Borrar2")
+                {
+                    id = Convert.ToString(dataGridDetalle.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
+                    EliminarIngreso(id);
+                    ConsultarIngresos();
+                    tabLibroIngresos.SelectedIndex = 0;
+                }
+                else
+                {
+                    if (dataGridDetalle.Columns[e.ColumnIndex].Name == "Editar2")
+                    {
+                        id = Convert.ToString(dataGridDetalle.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
+                        FiltroPorId(id);
+                        if (encontrado == true)
+                        {
+                            tabLibroIngresos.SelectedIndex = 1;
+                        }
+                    }
+                }
             }
         }
 
@@ -407,6 +466,7 @@ namespace UI
                 MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarIngresos();
                 Limpiar();
+                tabLibroIngresos.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -416,21 +476,29 @@ namespace UI
                     // Guardamos localmente
                     var msg = ingresoService.Guardar(ingreso);
                     MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConsultarIngresos();
                     Limpiar();
+                    tabLibroIngresos.SelectedIndex = 0;
                 }
             }
         }
-        private void EliminarIngreso(string id)
+        private void EliminarIngreso(string codigo)
         {
             try
             {
-                string mensaje = ingresoService.Eliminar(id);
+                //Elimina primero de firebase o la nube
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("IngressData").Document(codigo);
+                docRef.DeleteAsync();
+                string mensaje = ingresoService.Eliminar(codigo);
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarIngresos();
             }
             catch(Exception e)
             {
                 string mensaje = ingresoService.Eliminar(id);
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarIngresos();
             }
         }
 
@@ -445,7 +513,42 @@ namespace UI
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            Ingreso nuevoIngreso = MapearIngreso();
+            try
+            {
+                nuevoIngreso.CodigoComprobante = id;
+                string mensaje = ingresoService.Modificar(nuevoIngreso);
+                //Guardamos en la nube
+                var db = FirebaseService.Database;
+                var ingress = ingressMaps.IngressMap(nuevoIngreso);
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("IngressData").Document(ingress.CodigoComprobante.ToString());
+                docRef.SetAsync(ingress);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarIngresos();
+                Limpiar();
+                tabLibroIngresos.SelectedIndex = 0;
+            }
+            catch(Exception ex)
+            {
+                string mensaje = ingresoService.Modificar(nuevoIngreso);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarIngresos();
+                Limpiar();
+                tabLibroIngresos.SelectedIndex = 0;
+            }
+        }
 
+        private void comboFiltroComite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtro = comboFiltroComite.Text;
+            if (filtro == "Todos")
+            {
+                ConsultarIngresos();
+            }
+            else
+            {
+                FiltroPorComite(filtro);
+            }
         }
     }
 }

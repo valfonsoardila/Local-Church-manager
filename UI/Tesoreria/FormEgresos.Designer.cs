@@ -48,6 +48,8 @@
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textTotalEgresos = new System.Windows.Forms.TextBox();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -60,14 +62,11 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridEgresos = new System.Windows.Forms.DataGridView();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textTotalNube = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textTotal = new System.Windows.Forms.TextBox();
-            this.comboOficioLibreta = new System.Windows.Forms.ComboBox();
+            this.textTotalLocal = new System.Windows.Forms.TextBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
@@ -76,15 +75,13 @@
             this.tabDetalle = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.dataGridIngresos = new System.Windows.Forms.DataGridView();
+            this.dataGridDetalle = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboFiltroComite = new System.Windows.Forms.ComboBox();
+            this.textTotalComite = new System.Windows.Forms.TextBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -94,6 +91,11 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
+            this.comboFiltroComite = new System.Windows.Forms.ComboBox();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -117,7 +119,7 @@
             this.tabDetalle.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridIngresos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalle)).BeginInit();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
@@ -402,6 +404,7 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnRegistrar
             // 
@@ -484,6 +487,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.textTotalEgresos);
             this.panel1.Controls.Add(this.btnAtras);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -492,6 +497,29 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 59);
             this.panel1.TabIndex = 4;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label11.Location = new System.Drawing.Point(411, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(174, 24);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Total Egresos $";
+            // 
+            // textTotalEgresos
+            // 
+            this.textTotalEgresos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textTotalEgresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTotalEgresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalEgresos.ForeColor = System.Drawing.SystemColors.Info;
+            this.textTotalEgresos.Location = new System.Drawing.Point(593, 17);
+            this.textTotalEgresos.Name = "textTotalEgresos";
+            this.textTotalEgresos.Size = new System.Drawing.Size(177, 28);
+            this.textTotalEgresos.TabIndex = 14;
+            this.textTotalEgresos.Text = "0";
             // 
             // btnAtras
             // 
@@ -540,6 +568,7 @@
             this.tabEgresos.SelectedIndex = 0;
             this.tabEgresos.Size = new System.Drawing.Size(800, 476);
             this.tabEgresos.TabIndex = 5;
+            this.tabEgresos.SelectedIndexChanged += new System.EventHandler(this.tabEgresos_SelectedIndexChanged);
             // 
             // tabListaEgresos
             // 
@@ -660,45 +689,14 @@
             this.dataGridEgresos.TabIndex = 1;
             this.dataGridEgresos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEgresos_CellClick);
             // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 69;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::UI.Properties.Resources.edit_user;
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Width = 40;
-            // 
-            // Detallar
-            // 
-            this.Detallar.HeaderText = "Detallar";
-            this.Detallar.Image = global::UI.Properties.Resources.Detallar;
-            this.Detallar.Name = "Detallar";
-            this.Detallar.ReadOnly = true;
-            this.Detallar.Width = 49;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Image = global::UI.Properties.Resources.borrar;
-            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 41;
-            // 
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboFiltroComite);
+            this.panelContenedorDeDirectorio.Controls.Add(this.label15);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalNube);
             this.panelContenedorDeDirectorio.Controls.Add(this.label9);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboOficioLibreta);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalLocal);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
             this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
@@ -710,87 +708,45 @@
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(724, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.Location = new System.Drawing.Point(220, 8);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 16);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "Total en Nube";
+            // 
+            // textTotalNube
+            // 
+            this.textTotalNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalNube.Location = new System.Drawing.Point(321, 5);
+            this.textTotalNube.Name = "textTotalNube";
+            this.textTotalNube.Size = new System.Drawing.Size(46, 22);
+            this.textTotalNube.TabIndex = 24;
+            this.textTotalNube.Text = "0";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(115, 8);
+            this.label9.Location = new System.Drawing.Point(92, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 16);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Total";
+            this.label9.Size = new System.Drawing.Size(80, 16);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Total Local";
             // 
-            // textTotal
+            // textTotalLocal
             // 
-            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotal.Location = new System.Drawing.Point(161, 5);
-            this.textTotal.Name = "textTotal";
-            this.textTotal.Size = new System.Drawing.Size(46, 22);
-            this.textTotal.TabIndex = 11;
-            this.textTotal.Text = "0";
-            // 
-            // comboOficioLibreta
-            // 
-            this.comboOficioLibreta.AutoCompleteCustomSource.AddRange(new string[] {
-            "Ingeniero(a) de sistemas",
-            "Ingeniero(a) de electronica",
-            "Ingeniero(a) Industrial",
-            "Enfermero(a)",
-            "Electricista",
-            "Albañil",
-            "Abogado",
-            "Acesor comercial",
-            "Estudiante",
-            "Medico(a)",
-            "Farmaceutico(a)",
-            "Odontologo(a)",
-            "Fontaneros(a)",
-            "Docente",
-            "Contadores",
-            "Psicologos",
-            "Chef",
-            "Repostero(a)",
-            "Vigilante",
-            "Escolta",
-            "Ebanista",
-            "Peluquero",
-            "Domiciliario",
-            "Soldador",
-            "Diseñador Grafico",
-            "Maestro de obra",
-            "Mecanico",
-            "Chofer",
-            "Impulsador",
-            "Optometra",
-            "Naturista",
-            "Vendedor",
-            "Modista",
-            "Electronico",
-            "Tecnico"});
-            this.comboOficioLibreta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboOficioLibreta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboOficioLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboOficioLibreta.FormattingEnabled = true;
-            this.comboOficioLibreta.Items.AddRange(new object[] {
-            "Todos",
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.comboOficioLibreta.Location = new System.Drawing.Point(374, 4);
-            this.comboOficioLibreta.Name = "comboOficioLibreta";
-            this.comboOficioLibreta.Size = new System.Drawing.Size(121, 24);
-            this.comboOficioLibreta.TabIndex = 10;
-            this.comboOficioLibreta.Text = "Mes";
+            this.textTotalLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalLocal.Location = new System.Drawing.Point(173, 5);
+            this.textTotalLocal.Name = "textTotalLocal";
+            this.textTotalLocal.Size = new System.Drawing.Size(46, 22);
+            this.textTotalLocal.TabIndex = 22;
+            this.textTotalLocal.Text = "0";
             // 
             // iconPictureBox3
             // 
@@ -889,38 +845,38 @@
             this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel9.Controls.Add(this.dataGridIngresos);
+            this.panel9.Controls.Add(this.dataGridDetalle);
             this.panel9.Controls.Add(this.panel10);
             this.panel9.Location = new System.Drawing.Point(27, 8);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(730, 324);
             this.panel9.TabIndex = 0;
             // 
-            // dataGridIngresos
+            // dataGridDetalle
             // 
-            this.dataGridIngresos.AllowUserToAddRows = false;
-            this.dataGridIngresos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridIngresos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridIngresos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            this.dataGridIngresos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridIngresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridDetalle.AllowUserToAddRows = false;
+            this.dataGridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridDetalle.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dataGridDetalle.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewImageColumn1,
-            this.dataGridViewImageColumn2,
-            this.dataGridViewImageColumn3});
-            this.dataGridIngresos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridIngresos.Location = new System.Drawing.Point(0, 32);
-            this.dataGridIngresos.Name = "dataGridIngresos";
-            this.dataGridIngresos.ReadOnly = true;
-            this.dataGridIngresos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridIngresos.RowHeadersVisible = false;
-            this.dataGridIngresos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridIngresos.RowTemplate.DividerHeight = 2;
-            this.dataGridIngresos.RowTemplate.Height = 30;
-            this.dataGridIngresos.Size = new System.Drawing.Size(730, 292);
-            this.dataGridIngresos.TabIndex = 1;
+            this.Editar2,
+            this.Borrar2});
+            this.dataGridDetalle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridDetalle.Location = new System.Drawing.Point(0, 32);
+            this.dataGridDetalle.Name = "dataGridDetalle";
+            this.dataGridDetalle.ReadOnly = true;
+            this.dataGridDetalle.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridDetalle.RowHeadersVisible = false;
+            this.dataGridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridDetalle.RowTemplate.DividerHeight = 2;
+            this.dataGridDetalle.RowTemplate.Height = 30;
+            this.dataGridDetalle.Size = new System.Drawing.Size(730, 292);
+            this.dataGridDetalle.TabIndex = 1;
+            this.dataGridDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDetalle_CellClick);
             // 
             // dataGridViewCheckBoxColumn1
             // 
@@ -929,38 +885,29 @@
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             this.dataGridViewCheckBoxColumn1.Width = 69;
             // 
-            // dataGridViewImageColumn1
+            // Editar2
             // 
-            this.dataGridViewImageColumn1.HeaderText = "Editar";
-            this.dataGridViewImageColumn1.Image = global::UI.Properties.Resources.edit_user;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Width = 40;
+            this.Editar2.HeaderText = "Editar";
+            this.Editar2.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar2.Name = "Editar2";
+            this.Editar2.ReadOnly = true;
+            this.Editar2.Width = 40;
             // 
-            // dataGridViewImageColumn2
+            // Borrar2
             // 
-            this.dataGridViewImageColumn2.HeaderText = "Detallar";
-            this.dataGridViewImageColumn2.Image = global::UI.Properties.Resources.Detallar;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Width = 49;
-            // 
-            // dataGridViewImageColumn3
-            // 
-            this.dataGridViewImageColumn3.HeaderText = "Borrar";
-            this.dataGridViewImageColumn3.Image = global::UI.Properties.Resources.borrar;
-            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.ReadOnly = true;
-            this.dataGridViewImageColumn3.Width = 41;
+            this.Borrar2.HeaderText = "Borrar";
+            this.Borrar2.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar2.Name = "Borrar2";
+            this.Borrar2.ReadOnly = true;
+            this.Borrar2.Width = 41;
             // 
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.Black;
             this.panel10.Controls.Add(this.label6);
-            this.panel10.Controls.Add(this.textBox1);
-            this.panel10.Controls.Add(this.comboFiltroComite);
+            this.panel10.Controls.Add(this.textTotalComite);
             this.panel10.Controls.Add(this.iconPictureBox1);
             this.panel10.Controls.Add(this.iconPictureBox2);
             this.panel10.Controls.Add(this.textBox2);
@@ -977,94 +924,20 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(115, 8);
+            this.label6.Location = new System.Drawing.Point(133, 9);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 16);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Total";
+            this.label6.Size = new System.Drawing.Size(103, 16);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Total registros";
             // 
-            // textBox1
+            // textTotalComite
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(161, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(46, 22);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.Text = "0";
-            // 
-            // comboFiltroComite
-            // 
-            this.comboFiltroComite.AutoCompleteCustomSource.AddRange(new string[] {
-            "Ingeniero(a) de sistemas",
-            "Ingeniero(a) de electronica",
-            "Ingeniero(a) Industrial",
-            "Enfermero(a)",
-            "Electricista",
-            "Albañil",
-            "Abogado",
-            "Acesor comercial",
-            "Estudiante",
-            "Medico(a)",
-            "Farmaceutico(a)",
-            "Odontologo(a)",
-            "Fontaneros(a)",
-            "Docente",
-            "Contadores",
-            "Psicologos",
-            "Chef",
-            "Repostero(a)",
-            "Vigilante",
-            "Escolta",
-            "Ebanista",
-            "Peluquero",
-            "Domiciliario",
-            "Soldador",
-            "Diseñador Grafico",
-            "Maestro de obra",
-            "Mecanico",
-            "Chofer",
-            "Impulsador",
-            "Optometra",
-            "Naturista",
-            "Vendedor",
-            "Modista",
-            "Electronico",
-            "Tecnico"});
-            this.comboFiltroComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboFiltroComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboFiltroComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboFiltroComite.FormattingEnabled = true;
-            this.comboFiltroComite.Items.AddRange(new object[] {
-            "Todos",
-            "Junta Local",
-            "Jovenes",
-            "Damas Dorcas",
-            "Caballeros",
-            "Damas Jovenes",
-            "Primeros Auxilios",
-            "Vigilancia",
-            "Labores",
-            "Sonido",
-            "Alabanza",
-            "Adolescente",
-            "Misiones y evangelismo",
-            "Edad dorada",
-            "Intersesión",
-            "Decom",
-            "Ujieres",
-            "Decoración",
-            "Cultivadores",
-            "Obra social",
-            "Entre señas",
-            "Escuela Domnical",
-            "Comité de familia",
-            "Donacion",
-            "Aporte de liquidacion"});
-            this.comboFiltroComite.Location = new System.Drawing.Point(374, 4);
-            this.comboFiltroComite.Name = "comboFiltroComite";
-            this.comboFiltroComite.Size = new System.Drawing.Size(121, 24);
-            this.comboFiltroComite.TabIndex = 10;
-            this.comboFiltroComite.Text = "Comite";
+            this.textTotalComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalComite.Location = new System.Drawing.Point(239, 5);
+            this.textTotalComite.Name = "textTotalComite";
+            this.textTotalComite.Size = new System.Drawing.Size(46, 22);
+            this.textTotalComite.TabIndex = 18;
+            this.textTotalComite.Text = "0";
             // 
             // iconPictureBox1
             // 
@@ -1192,6 +1065,115 @@
             this.btnGestionarDirectivas.Text = "Gestionar Ingresos";
             this.btnGestionarDirectivas.UseVisualStyleBackColor = false;
             // 
+            // comboFiltroComite
+            // 
+            this.comboFiltroComite.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboFiltroComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboFiltroComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboFiltroComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltroComite.FormattingEnabled = true;
+            this.comboFiltroComite.Items.AddRange(new object[] {
+            "Todos",
+            "Junta Local",
+            "Jovenes",
+            "Damas Dorcas",
+            "Caballeros",
+            "Damas Jovenes",
+            "Primeros Auxilios",
+            "Vigilancia",
+            "Labores",
+            "Sonido",
+            "Alabanza",
+            "Adolescente",
+            "Misiones y evangelismo",
+            "Edad dorada",
+            "Intersesión",
+            "Decom",
+            "Ujieres",
+            "Decoración",
+            "Cultivadores",
+            "Obra social",
+            "Entre señas",
+            "Escuela Domnical",
+            "Comité de familia",
+            "Donacion",
+            "Aporte de liquidacion"});
+            this.comboFiltroComite.Location = new System.Drawing.Point(373, 4);
+            this.comboFiltroComite.Name = "comboFiltroComite";
+            this.comboFiltroComite.Size = new System.Drawing.Size(121, 24);
+            this.comboFiltroComite.TabIndex = 26;
+            this.comboFiltroComite.Text = "Comite";
+            this.comboFiltroComite.SelectedIndexChanged += new System.EventHandler(this.comboFiltroComite_SelectedIndexChanged);
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Width = 69;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 40;
+            // 
+            // Detallar
+            // 
+            this.Detallar.HeaderText = "Detallar";
+            this.Detallar.Image = global::UI.Properties.Resources.Detallar;
+            this.Detallar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Detallar.Name = "Detallar";
+            this.Detallar.ReadOnly = true;
+            this.Detallar.Width = 49;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Width = 41;
+            // 
             // FormEgresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1202,6 +1184,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEgresos";
             this.Text = "FormEgresos";
+            this.Load += new System.EventHandler(this.FormEgresos_Load);
             tabRegistrar.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -1228,7 +1211,7 @@
             this.tabDetalle.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridIngresos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalle)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
@@ -1256,9 +1239,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridEgresos;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textTotal;
-        private System.Windows.Forms.ComboBox comboOficioLibreta;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
         private System.Windows.Forms.TextBox textSerachLibreta;
@@ -1275,10 +1255,6 @@
         private System.Windows.Forms.Panel panel5;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
-        private System.Windows.Forms.DataGridViewImageColumn Detallar;
-        private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.TextBox textDineroIngreso;
         private System.Windows.Forms.ComboBox comboConcepto;
         private System.Windows.Forms.Label label13;
@@ -1291,15 +1267,8 @@
         private FontAwesome.Sharp.IconButton btnGestionarDirectivas;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.DataGridView dataGridIngresos;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
+        private System.Windows.Forms.DataGridView dataGridDetalle;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboFiltroComite;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private System.Windows.Forms.TextBox textBox2;
@@ -1307,5 +1276,21 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textNumeroComprobante;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textTotalEgresos;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textTotalNube;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textTotalLocal;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textTotalComite;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn Editar2;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar2;
+        private System.Windows.Forms.ComboBox comboFiltroComite;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Detallar;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
     }
 }
