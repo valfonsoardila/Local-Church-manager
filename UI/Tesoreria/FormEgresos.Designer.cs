@@ -98,9 +98,8 @@
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.btnImprimirDetalle = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -130,7 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             this.panel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -1234,61 +1233,40 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.tableLayoutPanel3);
+            this.panel2.Controls.Add(this.panel11);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 394);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(871, 56);
             this.panel2.TabIndex = 4;
             // 
-            // tableLayoutPanel3
+            // panel11
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.iconButton1, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnGestionarDirectivas, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 12);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(871, 44);
-            this.tableLayoutPanel3.TabIndex = 17;
+            this.panel11.Controls.Add(this.btnImprimirDetalle);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(871, 56);
+            this.panel11.TabIndex = 2;
             // 
-            // iconButton1
+            // btnImprimirDetalle
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.Orange;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(438, 3);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton1.Size = new System.Drawing.Size(142, 35);
-            this.iconButton1.TabIndex = 15;
-            this.iconButton1.Text = "Imprimir Lista";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            // 
-            // btnGestionarDirectivas
-            // 
-            this.btnGestionarDirectivas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGestionarDirectivas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.btnGestionarDirectivas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionarDirectivas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnGestionarDirectivas.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnGestionarDirectivas.IconColor = System.Drawing.Color.Black;
-            this.btnGestionarDirectivas.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarDirectivas.Location = new System.Drawing.Point(297, 3);
-            this.btnGestionarDirectivas.Name = "btnGestionarDirectivas";
-            this.btnGestionarDirectivas.Size = new System.Drawing.Size(135, 35);
-            this.btnGestionarDirectivas.TabIndex = 1;
-            this.btnGestionarDirectivas.Text = "Gestionar Ingresos";
-            this.btnGestionarDirectivas.UseVisualStyleBackColor = false;
+            this.btnImprimirDetalle.BackColor = System.Drawing.Color.Orange;
+            this.btnImprimirDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirDetalle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimirDetalle.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimirDetalle.IconColor = System.Drawing.Color.Black;
+            this.btnImprimirDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimirDetalle.IconSize = 30;
+            this.btnImprimirDetalle.Location = new System.Drawing.Point(369, 11);
+            this.btnImprimirDetalle.Name = "btnImprimirDetalle";
+            this.btnImprimirDetalle.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimirDetalle.Size = new System.Drawing.Size(142, 35);
+            this.btnImprimirDetalle.TabIndex = 15;
+            this.btnImprimirDetalle.Text = "Imprimir Detalle";
+            this.btnImprimirDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimirDetalle.UseVisualStyleBackColor = false;
+            this.btnImprimirDetalle.Click += new System.EventHandler(this.btnImprimirDetalle_Click);
             // 
             // FormEgresos
             // 
@@ -1334,7 +1312,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1378,9 +1356,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TabPage tabDetalle;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton btnGestionarDirectivas;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.DataGridView dataGridDetalle;
@@ -1413,5 +1388,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboConceptoDetalle;
+        private System.Windows.Forms.Panel panel11;
+        private FontAwesome.Sharp.IconButton btnImprimirDetalle;
     }
 }

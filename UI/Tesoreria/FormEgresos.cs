@@ -241,6 +241,7 @@ namespace UI
             if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
             {
                 var conceptos = new List<Egreso>();
+                var sumTotal = 0;
                 dataGridDetalle.DataSource = null;
                 egresos = respuesta.Egresos.ToList();
                 for (int i = 0; i < egresos.Count; i++)
@@ -248,14 +249,17 @@ namespace UI
                     if (egresos[i].Comite == comite)
                     {
                         conceptos.Add(egresos[i]);
+                        sumTotal = sumTotal + egresos[i].Valor;
                     }
                 }
+                textValorConcepto.Text = sumTotal.ToString();
                 dataGridDetalle.DataSource = conceptos;
                 Borrar.Visible = true;
             }
             else
             {
-                textTotalComite.Text = "0";
+                textValorConcepto.Text = "0";
+                dataGridDetalle.DataSource = null;
             }
         }
         private void dataGridEgresos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -567,6 +571,11 @@ namespace UI
             {
                 FiltrarPorConcepto(filtro);
             }
+        }
+
+        private void btnImprimirDetalle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -95,6 +95,11 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.btnImprimirDetalle = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -123,6 +128,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
+            this.panel10.SuspendLayout();
+            this.panel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -928,6 +935,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel10);
             this.panel2.Controls.Add(this.panel8);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
@@ -1180,6 +1188,62 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Detalle";
             // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.panel13);
+            this.panel10.Controls.Add(this.panel12);
+            this.panel10.Controls.Add(this.panel11);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel10.Location = new System.Drawing.Point(0, 402);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(866, 42);
+            this.panel10.TabIndex = 1;
+            // 
+            // panel11
+            // 
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(346, 42);
+            this.panel11.TabIndex = 0;
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel12.Location = new System.Drawing.Point(536, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(330, 42);
+            this.panel12.TabIndex = 1;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.btnImprimirDetalle);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(346, 0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(190, 42);
+            this.panel13.TabIndex = 2;
+            // 
+            // btnImprimirDetalle
+            // 
+            this.btnImprimirDetalle.BackColor = System.Drawing.Color.Orange;
+            this.btnImprimirDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnImprimirDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirDetalle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimirDetalle.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimirDetalle.IconColor = System.Drawing.Color.Black;
+            this.btnImprimirDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimirDetalle.IconSize = 30;
+            this.btnImprimirDetalle.Location = new System.Drawing.Point(0, 0);
+            this.btnImprimirDetalle.Name = "btnImprimirDetalle";
+            this.btnImprimirDetalle.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimirDetalle.Size = new System.Drawing.Size(190, 42);
+            this.btnImprimirDetalle.TabIndex = 16;
+            this.btnImprimirDetalle.Text = "Imprimir Detalle";
+            this.btnImprimirDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimirDetalle.UseVisualStyleBackColor = false;
+            this.btnImprimirDetalle.Click += new System.EventHandler(this.btnImprimirDetalle_Click);
+            // 
             // FormIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1223,6 +1287,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1295,5 +1361,10 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboConceptoDetalle;
         private System.Windows.Forms.TextBox textValorConcepto;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel13;
+        private FontAwesome.Sharp.IconButton btnImprimirDetalle;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel11;
     }
 }

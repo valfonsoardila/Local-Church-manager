@@ -246,6 +246,7 @@ namespace UI
             if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
             {
                 var conceptos = new List<Ingreso>();
+                var sumTotal = 0;
                 dataGridDetalle.DataSource = null;
                 ingresos = respuesta.Ingresos.ToList();
                 for (int i = 0; i < ingresos.Count; i++)
@@ -253,14 +254,21 @@ namespace UI
                     if (ingresos[i].Comite == comite)
                     {
                         conceptos.Add(ingresos[i]);
+                        sumTotal = sumTotal + ingresos[i].Valor;
+                    }
+                    else
+                    {
+                        sumTotal = 0;
                     }
                 }
+                textValorConcepto.Text = sumTotal.ToString();
                 dataGridDetalle.DataSource = conceptos;
                 Borrar.Visible = true;
             }
             else
             {
-                textTotalComite.Text = "0";
+                textValorConcepto.Text = "0";
+                dataGridDetalle.DataSource = null;
             }
         }
         private void dataGridIngresos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -585,6 +593,11 @@ namespace UI
             {
                 FiltrarPorConcepto(filtro);
             }
+        }
+
+        private void btnImprimirDetalle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
