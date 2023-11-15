@@ -39,6 +39,7 @@ namespace UI
             this.textCamaraDeComercio = new System.Windows.Forms.TextBox();
             this.labelCamaraComercio = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panelRegistrarDatos = new System.Windows.Forms.Panel();
             this.comboRegimen = new System.Windows.Forms.ComboBox();
             this.textTelefono = new System.Windows.Forms.TextBox();
@@ -53,19 +54,23 @@ namespace UI
             this.panelTituloRegistrarDatos = new System.Windows.Forms.Panel();
             this.labelTituloRegistrarDatos = new System.Windows.Forms.Label();
             this.panelConfigDeGuardado = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnRutaGuardadoBautizados = new System.Windows.Forms.Button();
+            this.textRutaBautizados = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.pictureFolderRutaVendido = new System.Windows.Forms.PictureBox();
-            this.btnBuscarRutaVendido = new System.Windows.Forms.Button();
-            this.textRutaVendido = new System.Windows.Forms.TextBox();
+            this.btnRutaGuardadoMiembros = new System.Windows.Forms.Button();
+            this.textRutaMiembros = new System.Windows.Forms.TextBox();
             this.labelRutaVendido = new System.Windows.Forms.Label();
             this.pictureFolderCierreCaja = new System.Windows.Forms.PictureBox();
             this.pictureFolderFacturaVenta = new System.Windows.Forms.PictureBox();
-            this.btnBuscarRutaCierreCaja = new System.Windows.Forms.Button();
-            this.btnBuscarRutaFacturaVenta = new System.Windows.Forms.Button();
+            this.btnGnerarGeneralTesoreria = new System.Windows.Forms.Button();
+            this.btnGnerarIndividualTesoreria = new System.Windows.Forms.Button();
             this.panelTituloConfigDeGuardado = new System.Windows.Forms.Panel();
             this.labelTituloConfigDeGuardado = new System.Windows.Forms.Label();
-            this.textRutaFacturaVentas = new System.Windows.Forms.TextBox();
+            this.textRutaInformeIndividual = new System.Windows.Forms.TextBox();
             this.labelRutaFacturaVentas = new System.Windows.Forms.Label();
-            this.textRutaCierreDeCaja = new System.Windows.Forms.TextBox();
+            this.textRutaInformeGeneral = new System.Windows.Forms.TextBox();
             this.labelRutaCierreCaja = new System.Windows.Forms.Label();
             this.panelAvanzado = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -99,12 +104,13 @@ namespace UI
             this.btnEliminarInfo = new FontAwesome.Sharp.IconButton();
             this.btnModificarInfo = new FontAwesome.Sharp.IconButton();
             this.btnRegistrarInfo = new FontAwesome.Sharp.IconButton();
-            this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInfoIglesia)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             this.panelRegistrarDatos.SuspendLayout();
             this.panelTituloRegistrarDatos.SuspendLayout();
             this.panelConfigDeGuardado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFolderRutaVendido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFolderCierreCaja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFolderFacturaVenta)).BeginInit();
@@ -116,7 +122,6 @@ namespace UI
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -210,6 +215,21 @@ namespace UI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(798, 36);
             this.panel1.TabIndex = 82;
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.BackColor = System.Drawing.Color.Transparent;
+            this.btnAtras.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
+            this.btnAtras.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAtras.IconSize = 28;
+            this.btnAtras.Location = new System.Drawing.Point(12, 4);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(28, 28);
+            this.btnAtras.TabIndex = 60;
+            this.btnAtras.TabStop = false;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // panelRegistrarDatos
             // 
@@ -345,23 +365,67 @@ namespace UI
             // 
             this.panelConfigDeGuardado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelConfigDeGuardado.AutoScroll = true;
+            this.panelConfigDeGuardado.Controls.Add(this.pictureBox2);
+            this.panelConfigDeGuardado.Controls.Add(this.btnRutaGuardadoBautizados);
+            this.panelConfigDeGuardado.Controls.Add(this.textRutaBautizados);
+            this.panelConfigDeGuardado.Controls.Add(this.label11);
             this.panelConfigDeGuardado.Controls.Add(this.pictureFolderRutaVendido);
-            this.panelConfigDeGuardado.Controls.Add(this.btnBuscarRutaVendido);
-            this.panelConfigDeGuardado.Controls.Add(this.textRutaVendido);
+            this.panelConfigDeGuardado.Controls.Add(this.btnRutaGuardadoMiembros);
+            this.panelConfigDeGuardado.Controls.Add(this.textRutaMiembros);
             this.panelConfigDeGuardado.Controls.Add(this.labelRutaVendido);
             this.panelConfigDeGuardado.Controls.Add(this.pictureFolderCierreCaja);
             this.panelConfigDeGuardado.Controls.Add(this.pictureFolderFacturaVenta);
-            this.panelConfigDeGuardado.Controls.Add(this.btnBuscarRutaCierreCaja);
-            this.panelConfigDeGuardado.Controls.Add(this.btnBuscarRutaFacturaVenta);
+            this.panelConfigDeGuardado.Controls.Add(this.btnGnerarGeneralTesoreria);
+            this.panelConfigDeGuardado.Controls.Add(this.btnGnerarIndividualTesoreria);
             this.panelConfigDeGuardado.Controls.Add(this.panelTituloConfigDeGuardado);
-            this.panelConfigDeGuardado.Controls.Add(this.textRutaFacturaVentas);
+            this.panelConfigDeGuardado.Controls.Add(this.textRutaInformeIndividual);
             this.panelConfigDeGuardado.Controls.Add(this.labelRutaFacturaVentas);
-            this.panelConfigDeGuardado.Controls.Add(this.textRutaCierreDeCaja);
+            this.panelConfigDeGuardado.Controls.Add(this.textRutaInformeGeneral);
             this.panelConfigDeGuardado.Controls.Add(this.labelRutaCierreCaja);
             this.panelConfigDeGuardado.Location = new System.Drawing.Point(86, 318);
             this.panelConfigDeGuardado.Name = "panelConfigDeGuardado";
-            this.panelConfigDeGuardado.Size = new System.Drawing.Size(629, 172);
+            this.panelConfigDeGuardado.Size = new System.Drawing.Size(629, 175);
             this.panelConfigDeGuardado.TabIndex = 92;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::UI.Properties.Resources.folder;
+            this.pictureBox2.Location = new System.Drawing.Point(13, 161);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(23, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 93;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnRutaGuardadoBautizados
+            // 
+            this.btnRutaGuardadoBautizados.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnRutaGuardadoBautizados.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRutaGuardadoBautizados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRutaGuardadoBautizados.Location = new System.Drawing.Point(362, 183);
+            this.btnRutaGuardadoBautizados.Name = "btnRutaGuardadoBautizados";
+            this.btnRutaGuardadoBautizados.Size = new System.Drawing.Size(37, 22);
+            this.btnRutaGuardadoBautizados.TabIndex = 92;
+            this.btnRutaGuardadoBautizados.Text = "...";
+            this.btnRutaGuardadoBautizados.UseVisualStyleBackColor = true;
+            this.btnRutaGuardadoBautizados.Click += new System.EventHandler(this.btnRutaGuardadoBautizados_Click);
+            // 
+            // textRutaBautizados
+            // 
+            this.textRutaBautizados.Location = new System.Drawing.Point(9, 185);
+            this.textRutaBautizados.Name = "textRutaBautizados";
+            this.textRutaBautizados.Size = new System.Drawing.Size(347, 20);
+            this.textRutaBautizados.TabIndex = 91;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(39, 169);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(147, 13);
+            this.label11.TabIndex = 90;
+            this.label11.Text = "Ruta de guardado bautizados";
             // 
             // pictureFolderRutaVendido
             // 
@@ -373,34 +437,34 @@ namespace UI
             this.pictureFolderRutaVendido.TabIndex = 89;
             this.pictureFolderRutaVendido.TabStop = false;
             // 
-            // btnBuscarRutaVendido
+            // btnRutaGuardadoMiembros
             // 
-            this.btnBuscarRutaVendido.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnBuscarRutaVendido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBuscarRutaVendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarRutaVendido.Location = new System.Drawing.Point(362, 138);
-            this.btnBuscarRutaVendido.Name = "btnBuscarRutaVendido";
-            this.btnBuscarRutaVendido.Size = new System.Drawing.Size(37, 22);
-            this.btnBuscarRutaVendido.TabIndex = 88;
-            this.btnBuscarRutaVendido.Text = "...";
-            this.btnBuscarRutaVendido.UseVisualStyleBackColor = true;
-            this.btnBuscarRutaVendido.Click += new System.EventHandler(this.btnBuscarRutaVendido_Click);
+            this.btnRutaGuardadoMiembros.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnRutaGuardadoMiembros.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRutaGuardadoMiembros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRutaGuardadoMiembros.Location = new System.Drawing.Point(362, 138);
+            this.btnRutaGuardadoMiembros.Name = "btnRutaGuardadoMiembros";
+            this.btnRutaGuardadoMiembros.Size = new System.Drawing.Size(37, 22);
+            this.btnRutaGuardadoMiembros.TabIndex = 88;
+            this.btnRutaGuardadoMiembros.Text = "...";
+            this.btnRutaGuardadoMiembros.UseVisualStyleBackColor = true;
+            this.btnRutaGuardadoMiembros.Click += new System.EventHandler(this.btnRutaGuardadoMiembros_Click);
             // 
-            // textRutaVendido
+            // textRutaMiembros
             // 
-            this.textRutaVendido.Location = new System.Drawing.Point(9, 140);
-            this.textRutaVendido.Name = "textRutaVendido";
-            this.textRutaVendido.Size = new System.Drawing.Size(347, 20);
-            this.textRutaVendido.TabIndex = 87;
+            this.textRutaMiembros.Location = new System.Drawing.Point(9, 140);
+            this.textRutaMiembros.Name = "textRutaMiembros";
+            this.textRutaMiembros.Size = new System.Drawing.Size(347, 20);
+            this.textRutaMiembros.TabIndex = 87;
             // 
             // labelRutaVendido
             // 
             this.labelRutaVendido.AutoSize = true;
             this.labelRutaVendido.Location = new System.Drawing.Point(39, 124);
             this.labelRutaVendido.Name = "labelRutaVendido";
-            this.labelRutaVendido.Size = new System.Drawing.Size(192, 13);
+            this.labelRutaVendido.Size = new System.Drawing.Size(143, 13);
             this.labelRutaVendido.TabIndex = 86;
-            this.labelRutaVendido.Text = "Ruta de guardado productos vendidos:";
+            this.labelRutaVendido.Text = "Ruta de guardado miembros:";
             // 
             // pictureFolderCierreCaja
             // 
@@ -422,31 +486,31 @@ namespace UI
             this.pictureFolderFacturaVenta.TabIndex = 84;
             this.pictureFolderFacturaVenta.TabStop = false;
             // 
-            // btnBuscarRutaCierreCaja
+            // btnGnerarGeneralTesoreria
             // 
-            this.btnBuscarRutaCierreCaja.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnBuscarRutaCierreCaja.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBuscarRutaCierreCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarRutaCierreCaja.Location = new System.Drawing.Point(362, 93);
-            this.btnBuscarRutaCierreCaja.Name = "btnBuscarRutaCierreCaja";
-            this.btnBuscarRutaCierreCaja.Size = new System.Drawing.Size(37, 22);
-            this.btnBuscarRutaCierreCaja.TabIndex = 83;
-            this.btnBuscarRutaCierreCaja.Text = "...";
-            this.btnBuscarRutaCierreCaja.UseVisualStyleBackColor = true;
-            this.btnBuscarRutaCierreCaja.Click += new System.EventHandler(this.btnBuscarRutaCierreCaja_Click);
+            this.btnGnerarGeneralTesoreria.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnGnerarGeneralTesoreria.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGnerarGeneralTesoreria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGnerarGeneralTesoreria.Location = new System.Drawing.Point(362, 93);
+            this.btnGnerarGeneralTesoreria.Name = "btnGnerarGeneralTesoreria";
+            this.btnGnerarGeneralTesoreria.Size = new System.Drawing.Size(37, 22);
+            this.btnGnerarGeneralTesoreria.TabIndex = 83;
+            this.btnGnerarGeneralTesoreria.Text = "...";
+            this.btnGnerarGeneralTesoreria.UseVisualStyleBackColor = true;
+            this.btnGnerarGeneralTesoreria.Click += new System.EventHandler(this.btnGnerarGeneralTesoreria_Click);
             // 
-            // btnBuscarRutaFacturaVenta
+            // btnGnerarIndividualTesoreria
             // 
-            this.btnBuscarRutaFacturaVenta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnBuscarRutaFacturaVenta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBuscarRutaFacturaVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarRutaFacturaVenta.Location = new System.Drawing.Point(361, 51);
-            this.btnBuscarRutaFacturaVenta.Name = "btnBuscarRutaFacturaVenta";
-            this.btnBuscarRutaFacturaVenta.Size = new System.Drawing.Size(37, 22);
-            this.btnBuscarRutaFacturaVenta.TabIndex = 82;
-            this.btnBuscarRutaFacturaVenta.Text = "...";
-            this.btnBuscarRutaFacturaVenta.UseVisualStyleBackColor = true;
-            this.btnBuscarRutaFacturaVenta.Click += new System.EventHandler(this.btnBuscarRutaFacturaVenta_Click);
+            this.btnGnerarIndividualTesoreria.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnGnerarIndividualTesoreria.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGnerarIndividualTesoreria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGnerarIndividualTesoreria.Location = new System.Drawing.Point(361, 51);
+            this.btnGnerarIndividualTesoreria.Name = "btnGnerarIndividualTesoreria";
+            this.btnGnerarIndividualTesoreria.Size = new System.Drawing.Size(37, 22);
+            this.btnGnerarIndividualTesoreria.TabIndex = 82;
+            this.btnGnerarIndividualTesoreria.Text = "...";
+            this.btnGnerarIndividualTesoreria.UseVisualStyleBackColor = true;
+            this.btnGnerarIndividualTesoreria.Click += new System.EventHandler(this.btnGnerarIndividualTesoreria_Click);
             // 
             // panelTituloConfigDeGuardado
             // 
@@ -454,7 +518,7 @@ namespace UI
             this.panelTituloConfigDeGuardado.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTituloConfigDeGuardado.Location = new System.Drawing.Point(0, 0);
             this.panelTituloConfigDeGuardado.Name = "panelTituloConfigDeGuardado";
-            this.panelTituloConfigDeGuardado.Size = new System.Drawing.Size(629, 25);
+            this.panelTituloConfigDeGuardado.Size = new System.Drawing.Size(612, 25);
             this.panelTituloConfigDeGuardado.TabIndex = 0;
             // 
             // labelTituloConfigDeGuardado
@@ -467,42 +531,43 @@ namespace UI
             this.labelTituloConfigDeGuardado.TabIndex = 84;
             this.labelTituloConfigDeGuardado.Text = "Configuracion de guardado";
             // 
-            // textRutaFacturaVentas
+            // textRutaInformeIndividual
             // 
-            this.textRutaFacturaVentas.Location = new System.Drawing.Point(12, 51);
-            this.textRutaFacturaVentas.Name = "textRutaFacturaVentas";
-            this.textRutaFacturaVentas.Size = new System.Drawing.Size(344, 20);
-            this.textRutaFacturaVentas.TabIndex = 61;
+            this.textRutaInformeIndividual.Location = new System.Drawing.Point(12, 51);
+            this.textRutaInformeIndividual.Name = "textRutaInformeIndividual";
+            this.textRutaInformeIndividual.Size = new System.Drawing.Size(344, 20);
+            this.textRutaInformeIndividual.TabIndex = 61;
             // 
             // labelRutaFacturaVentas
             // 
             this.labelRutaFacturaVentas.AutoSize = true;
             this.labelRutaFacturaVentas.Location = new System.Drawing.Point(37, 34);
             this.labelRutaFacturaVentas.Name = "labelRutaFacturaVentas";
-            this.labelRutaFacturaVentas.Size = new System.Drawing.Size(202, 13);
+            this.labelRutaFacturaVentas.Size = new System.Drawing.Size(264, 13);
             this.labelRutaFacturaVentas.TabIndex = 60;
-            this.labelRutaFacturaVentas.Text = "Ruta de guardado de facturas de ventas:";
+            this.labelRutaFacturaVentas.Text = "Ruta de guardado de informes individuales (Tesoreria):";
             // 
-            // textRutaCierreDeCaja
+            // textRutaInformeGeneral
             // 
-            this.textRutaCierreDeCaja.Location = new System.Drawing.Point(9, 95);
-            this.textRutaCierreDeCaja.Name = "textRutaCierreDeCaja";
-            this.textRutaCierreDeCaja.Size = new System.Drawing.Size(347, 20);
-            this.textRutaCierreDeCaja.TabIndex = 81;
+            this.textRutaInformeGeneral.Location = new System.Drawing.Point(9, 95);
+            this.textRutaInformeGeneral.Name = "textRutaInformeGeneral";
+            this.textRutaInformeGeneral.Size = new System.Drawing.Size(347, 20);
+            this.textRutaInformeGeneral.TabIndex = 81;
             // 
             // labelRutaCierreCaja
             // 
             this.labelRutaCierreCaja.AutoSize = true;
             this.labelRutaCierreCaja.Location = new System.Drawing.Point(39, 79);
             this.labelRutaCierreCaja.Name = "labelRutaCierreCaja";
-            this.labelRutaCierreCaja.Size = new System.Drawing.Size(188, 13);
+            this.labelRutaCierreCaja.Size = new System.Drawing.Size(255, 13);
             this.labelRutaCierreCaja.TabIndex = 80;
-            this.labelRutaCierreCaja.Text = "Ruta de guardado de cierres de cajas:";
+            this.labelRutaCierreCaja.Text = "Ruta de guardado de informes generales (Tesoreria):";
             // 
             // panelAvanzado
             // 
             this.panelAvanzado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelAvanzado.AutoScroll = true;
             this.panelAvanzado.Controls.Add(this.label8);
             this.panelAvanzado.Controls.Add(this.button2);
             this.panelAvanzado.Controls.Add(this.textUI);
@@ -516,9 +581,9 @@ namespace UI
             this.panelAvanzado.Controls.Add(this.pictureCadenaConexion);
             this.panelAvanzado.Controls.Add(this.panelTituloAvanzado);
             this.panelAvanzado.Controls.Add(this.labelCadenaConexion);
-            this.panelAvanzado.Location = new System.Drawing.Point(86, 565);
+            this.panelAvanzado.Location = new System.Drawing.Point(86, 574);
             this.panelAvanzado.Name = "panelAvanzado";
-            this.panelAvanzado.Size = new System.Drawing.Size(630, 171);
+            this.panelAvanzado.Size = new System.Drawing.Size(630, 153);
             this.panelAvanzado.TabIndex = 93;
             // 
             // label8
@@ -634,7 +699,7 @@ namespace UI
             this.panelTituloAvanzado.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTituloAvanzado.Location = new System.Drawing.Point(0, 0);
             this.panelTituloAvanzado.Name = "panelTituloAvanzado";
-            this.panelTituloAvanzado.Size = new System.Drawing.Size(630, 25);
+            this.panelTituloAvanzado.Size = new System.Drawing.Size(613, 25);
             this.panelTituloAvanzado.TabIndex = 0;
             // 
             // labelInstruccionAvanzado
@@ -696,7 +761,7 @@ namespace UI
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.textCorreo);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(85, 484);
+            this.panel2.Location = new System.Drawing.Point(85, 492);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(630, 82);
             this.panel2.TabIndex = 94;
@@ -859,21 +924,6 @@ namespace UI
             this.btnRegistrarInfo.UseVisualStyleBackColor = false;
             this.btnRegistrarInfo.Click += new System.EventHandler(this.btnRegistrarInfo_Click);
             // 
-            // btnAtras
-            // 
-            this.btnAtras.BackColor = System.Drawing.Color.Transparent;
-            this.btnAtras.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
-            this.btnAtras.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAtras.IconSize = 28;
-            this.btnAtras.Location = new System.Drawing.Point(12, 4);
-            this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(28, 28);
-            this.btnAtras.TabIndex = 60;
-            this.btnAtras.TabStop = false;
-            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
-            // 
             // FormAjustes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -896,12 +946,14 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInfoIglesia)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             this.panelRegistrarDatos.ResumeLayout(false);
             this.panelRegistrarDatos.PerformLayout();
             this.panelTituloRegistrarDatos.ResumeLayout(false);
             this.panelTituloRegistrarDatos.PerformLayout();
             this.panelConfigDeGuardado.ResumeLayout(false);
             this.panelConfigDeGuardado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFolderRutaVendido)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFolderCierreCaja)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFolderFacturaVenta)).EndInit();
@@ -919,7 +971,6 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -955,12 +1006,12 @@ namespace UI
         private System.Windows.Forms.Panel panelConfigDeGuardado;
         private System.Windows.Forms.Panel panelTituloConfigDeGuardado;
         private System.Windows.Forms.Label labelTituloConfigDeGuardado;
-        private System.Windows.Forms.TextBox textRutaFacturaVentas;
+        private System.Windows.Forms.TextBox textRutaInformeIndividual;
         private System.Windows.Forms.Label labelRutaFacturaVentas;
-        private System.Windows.Forms.TextBox textRutaCierreDeCaja;
+        private System.Windows.Forms.TextBox textRutaInformeGeneral;
         private System.Windows.Forms.Label labelRutaCierreCaja;
-        private System.Windows.Forms.Button btnBuscarRutaCierreCaja;
-        private System.Windows.Forms.Button btnBuscarRutaFacturaVenta;
+        private System.Windows.Forms.Button btnGnerarGeneralTesoreria;
+        private System.Windows.Forms.Button btnGnerarIndividualTesoreria;
         private System.Windows.Forms.PictureBox pictureFolderFacturaVenta;
         private System.Windows.Forms.PictureBox pictureFolderCierreCaja;
         private System.Windows.Forms.Panel panelAvanzado;
@@ -973,8 +1024,8 @@ namespace UI
         private System.Windows.Forms.Label labelTituloDatos;
         private System.Windows.Forms.Label labelConnectionString;
         private System.Windows.Forms.PictureBox pictureFolderRutaVendido;
-        private System.Windows.Forms.Button btnBuscarRutaVendido;
-        private System.Windows.Forms.TextBox textRutaVendido;
+        private System.Windows.Forms.Button btnRutaGuardadoMiembros;
+        private System.Windows.Forms.TextBox textRutaMiembros;
         private System.Windows.Forms.Label labelRutaVendido;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
@@ -997,5 +1048,9 @@ namespace UI
         private System.Windows.Forms.Button btnBuscarCadenaConexion;
         private System.Windows.Forms.TextBox textServidor;
         private FontAwesome.Sharp.IconPictureBox btnAtras;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnRutaGuardadoBautizados;
+        private System.Windows.Forms.TextBox textRutaBautizados;
+        private System.Windows.Forms.Label label11;
     }
 }

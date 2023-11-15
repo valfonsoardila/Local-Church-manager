@@ -22,8 +22,10 @@ namespace UI
         UsuarioService empleadoService;
         IdUsuarioTxtService idUsuarioTxtService = new IdUsuarioTxtService();
         int cantidadFormularios = 4;
-        string rutaFacturasVenta;
-        string rutaCierreDeCaja;
+        string rutaInformeIndividualTesoreria;
+        string rutaInformeGeneralTesoreria;
+        string rutaReporteMiembros;
+        string rutaReporteBautizados;
         public string idUsuario;
 
         string rol;

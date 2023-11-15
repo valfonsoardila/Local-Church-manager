@@ -8,12 +8,13 @@ namespace Entity
 {
     public class RutasTxt
     {
-        public RutasTxt(int referencia, string rutaCierreDeCaja, string rutaFacturasVenta, string rutaProductosVendidos)
+        public RutasTxt(int referencia, string rutaInformeIndividual, string rutaInformeGeneral, string rutaMiembros, string rutaBautizados)
         {
             Referencia = referencia;
-            RutaCierreDeCaja = rutaCierreDeCaja;
-            RutaFacturasVenta = rutaFacturasVenta;
-            RutaProductosVendidos = rutaProductosVendidos;
+            RutaInformeIndividual = rutaInformeIndividual;
+            RutaInformeGeneral = rutaInformeGeneral;
+            RutaMiembros = rutaMiembros;
+            RutaBautizados = rutaBautizados;
         }
         //Constructor Sobrecargado
         public RutasTxt()
@@ -22,8 +23,9 @@ namespace Entity
         }
         /*Atributos de la clase*/
         public int Referencia { get; set; }
-        public string RutaCierreDeCaja { get; set; }
-        public string RutaFacturasVenta { get; set; }
-        public string RutaProductosVendidos { get; set; }
+        public string RutaInformeIndividual { get; set; }
+        public string RutaInformeGeneral { get; set; }
+        public string RutaMiembros { get; set; }
+        public string RutaBautizados { get; set; }
     }
 }

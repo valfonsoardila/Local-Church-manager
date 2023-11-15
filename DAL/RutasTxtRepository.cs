@@ -15,7 +15,7 @@ namespace DAL
         {
             FileStream file = new FileStream(ruta, FileMode.Append);
             StreamWriter escritor = new StreamWriter(file);
-            escritor.WriteLine($"{rutasTxt.RutaFacturasVenta};{rutasTxt.RutaCierreDeCaja};{rutasTxt.RutaProductosVendidos}");
+            escritor.WriteLine($"{rutasTxt.RutaInformeIndividual};{rutasTxt.RutaInformeGeneral};{rutasTxt.RutaMiembros};{rutasTxt.RutaBautizados}");
             escritor.Close();
             file.Close();
         }
@@ -30,9 +30,10 @@ namespace DAL
                 string[] dato = linea.Split(';');
                 RutasTxt rutasTxt = new RutasTxt()
                 {
-                    RutaFacturasVenta = dato[0],
-                    RutaCierreDeCaja = dato[1],
-                    RutaProductosVendidos=dato[2],
+                    RutaInformeIndividual = dato[0],
+                    RutaInformeGeneral = dato[1],
+                    RutaMiembros=dato[2],
+                    RutaBautizados = dato[3]
                 };
                 rutasTxts.Add(rutasTxt);
             }
@@ -92,7 +93,7 @@ namespace DAL
             file.Close();
             foreach (var item in rutasTxts)
             {
-                if (!EsEncontrado(item.RutaCierreDeCaja, referencia))
+                if (!EsEncontrado(item.RutaInformeIndividual, referencia))
                 {
                     Guardar(item);
                 }
@@ -128,7 +129,7 @@ namespace DAL
             file.Close();
             foreach (var item in rutasTxts)
             {
-                if (!EsEncontrado(item.RutaFacturasVenta, referencia))
+                if (!EsEncontrado(item.RutaInformeGeneral, referencia))
                 {
                     Guardar(item);
                 }
@@ -150,7 +151,7 @@ namespace DAL
 
             foreach (var item in rutasTxts)
             {
-                if (!item.RutaCierreDeCaja.Equals(referencia))
+                if (!item.RutaInformeIndividual.Equals(referencia))
                 {
                     Guardar(item);
                 }
@@ -164,7 +165,7 @@ namespace DAL
 
             foreach (var item in rutasTxts)
             {
-                if (!item.RutaFacturasVenta.Equals(referencia))
+                if (!item.RutaInformeIndividual.Equals(referencia))
                 {
                     Guardar(item);
                 }

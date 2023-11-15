@@ -38,9 +38,9 @@ namespace UI
         string primeraCadena;
         string segundaCadenaModificada;
         string segundaCadenaOriginal;
-        string RutaFacturasVenta;
-        string RutaCierreDeCaja;
-        string RutaProductosVendidos;
+        string RutaInformeIndividual;
+        string RutaInformeGeneral;
+        string RutaMiembros;
         public FormAjustes()
         {
             iglesiaService = new IglesiaService(ConfigConnection.ConnectionString);
@@ -123,9 +123,9 @@ namespace UI
                 {
                     string referencia = item.Referencia.ToString();                    
                     rutasTxt.Referencia = item.Referencia;
-                    rutasTxt.RutaCierreDeCaja = textRutaCierreDeCaja.Text;
-                    rutasTxt.RutaFacturasVenta = textRutaFacturaVentas.Text;
-                    rutasTxt.RutaProductosVendidos = textRutaVendido.Text;
+                    rutasTxt.RutaInformeGeneral = textRutaInformeGeneral.Text;
+                    rutasTxt.RutaInformeIndividual = textRutaInformeIndividual.Text;
+                    rutasTxt.RutaMiembros = textRutaMiembros.Text;
                     rutasTxtService.ModificarRutasTxt(rutasTxt, referencia);
                 }
             }
@@ -133,13 +133,13 @@ namespace UI
             {
                 if (rutasTxtConsultaResponse.RutasTxts.Count == 0)
                 {
-                    RutaCierreDeCaja = textRutaCierreDeCaja.Text;
-                    RutaFacturasVenta = textRutaFacturaVentas.Text;
-                    RutaProductosVendidos = textRutaVendido.Text;
+                    RutaInformeGeneral = textRutaInformeGeneral.Text;
+                    RutaInformeIndividual = textRutaInformeIndividual.Text;
+                    RutaMiembros = textRutaMiembros.Text;
                     rutasTxt.Referencia = 1;
-                    rutasTxt.RutaCierreDeCaja = RutaCierreDeCaja;
-                    rutasTxt.RutaFacturasVenta = RutaFacturasVenta;
-                    rutasTxt.RutaProductosVendidos = RutaProductosVendidos;
+                    rutasTxt.RutaInformeGeneral = RutaInformeGeneral;
+                    rutasTxt.RutaInformeIndividual = RutaInformeIndividual;
+                    rutasTxt.RutaMiembros = RutaMiembros;
                     rutasTxtService.Guardar(rutasTxt);
                 }
             }
@@ -172,27 +172,28 @@ namespace UI
             {
                 foreach (var item in rutasTxtConsultaResponse.RutasTxts)
                 {
-                    textRutaCierreDeCaja.Text = item.RutaCierreDeCaja;
-                    textRutaFacturaVentas.Text = item.RutaFacturasVenta;
-                    textRutaVendido.Text=item.RutaProductosVendidos;
-                    RutaCierreDeCaja = textRutaCierreDeCaja.Text;
-                    RutaFacturasVenta = textRutaFacturaVentas.Text;
-                    RutaProductosVendidos = textRutaVendido.Text;
+                    textRutaInformeGeneral.Text = item.RutaInformeGeneral;
+                    textRutaInformeIndividual.Text = item.RutaInformeIndividual;
+                    textRutaMiembros.Text=item.RutaMiembros;
+                    RutaInformeGeneral = textRutaInformeGeneral.Text;
+                    RutaInformeIndividual = textRutaInformeIndividual.Text;
+                    textRutaBautizados.Text=item.RutaBautizados;
+                    RutaMiembros = textRutaMiembros.Text;
                 }
             }
             else
             {
                 if (rutasTxtConsultaResponse.RutasTxts.Count == 0)
                 {
-                    if (textRutaCierreDeCaja.Text != "" && textRutaFacturaVentas.Text != "")
+                    if (textRutaInformeGeneral.Text != "" && textRutaInformeIndividual.Text != "")
                     {
-                        RutaCierreDeCaja = textRutaCierreDeCaja.Text;
-                        RutaFacturasVenta = textRutaFacturaVentas.Text;
-                        RutaProductosVendidos = textRutaVendido.Text;
+                        RutaInformeGeneral = textRutaInformeGeneral.Text;
+                        RutaInformeIndividual = textRutaInformeIndividual.Text;
+                        RutaMiembros = textRutaMiembros.Text;
                         rutasTxt.Referencia = 1;
-                        rutasTxt.RutaCierreDeCaja = RutaCierreDeCaja;
-                        rutasTxt.RutaFacturasVenta = RutaFacturasVenta;
-                        rutasTxt.RutaProductosVendidos = RutaProductosVendidos;
+                        rutasTxt.RutaInformeGeneral = RutaInformeGeneral;
+                        rutasTxt.RutaInformeIndividual = RutaInformeIndividual;
+                        rutasTxt.RutaMiembros = RutaMiembros;
                         rutasTxtService.Guardar(rutasTxt);
                     }
                 }
@@ -253,28 +254,6 @@ namespace UI
             }
         }
 
-        private void btnBuscarRutaFacturaVenta_Click(object sender, EventArgs e)
-        {
-            var dialog = new FolderBrowserDialog();
-            DialogResult result = dialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                string ruta = dialog.SelectedPath;
-                textRutaFacturaVentas.Text = ruta;
-            }
-        }
-
-        private void btnBuscarRutaCierreCaja_Click(object sender, EventArgs e)
-        {
-            var dialog = new FolderBrowserDialog();
-            DialogResult result = dialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                string ruta = dialog.SelectedPath;
-                textRutaCierreDeCaja.Text = ruta;
-            }
-        }
-
         private void btnBuscarCadenaConexion_Click(object sender, EventArgs e)
         {
             var dialog = new FolderBrowserDialog();
@@ -283,16 +262,6 @@ namespace UI
             {
                 string ruta = dialog.SelectedPath;
                 textServidor.Text = ruta;
-            }
-        }
-        private void btnBuscarRutaVendido_Click(object sender, EventArgs e)
-        {
-            var dialog = new FolderBrowserDialog();
-            DialogResult result = dialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                string ruta = dialog.SelectedPath;
-                textRutaVendido.Text = ruta;
             }
         }
         private void ModificarCadenaConexion()
@@ -418,6 +387,50 @@ namespace UI
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnGnerarIndividualTesoreria_Click(object sender, EventArgs e)
+        {
+            var dialog = new FolderBrowserDialog();
+            DialogResult result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string ruta = dialog.SelectedPath;
+                textRutaInformeIndividual.Text = ruta;
+            }
+        }
+
+        private void btnGnerarGeneralTesoreria_Click(object sender, EventArgs e)
+        {
+            var dialog = new FolderBrowserDialog();
+            DialogResult result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string ruta = dialog.SelectedPath;
+                textRutaInformeGeneral.Text = ruta;
+            }
+        }
+
+        private void btnRutaGuardadoMiembros_Click(object sender, EventArgs e)
+        {
+            var dialog = new FolderBrowserDialog();
+            DialogResult result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string ruta = dialog.SelectedPath;
+                textRutaMiembros.Text = ruta;
+            }
+        }
+
+        private void btnRutaGuardadoBautizados_Click(object sender, EventArgs e)
+        {
+            var dialog = new FolderBrowserDialog();
+            DialogResult result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string ruta = dialog.SelectedPath;
+                textRutaBautizados.Text = ruta;
+            }
         }
     }
 }

@@ -14,6 +14,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using System.IO;
 
 namespace UI
 {
@@ -55,7 +58,7 @@ namespace UI
             {
                 var db = FirebaseService.Database;
                 var ingresos = new List<IngressData>();
-                Query ingressQuery = db.Collection("IngressData");
+                Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
                 QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
                 foreach (DocumentSnapshot docsnap in snap.Documents)
                 {
@@ -94,7 +97,7 @@ namespace UI
                     textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
                     var db = FirebaseService.Database;
                     var ingresos = new List<IngressData>();
-                    Query ingressQuery = db.Collection("IngressData");
+                    Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
                     QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
                     foreach (DocumentSnapshot docsnap in snap.Documents)
                     {
@@ -146,7 +149,7 @@ namespace UI
                 bool isNotEmpty = false;
                 var db = FirebaseService.Database;
                 var ingresos = new List<IngressData>();
-                Query ingressQuery = db.Collection("IngressData");
+                Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
                 QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
                 foreach(DocumentSnapshot docsnap in snap.Documents)
                 {
@@ -597,7 +600,57 @@ namespace UI
 
         private void btnImprimirDetalle_Click(object sender, EventArgs e)
         {
+            // Ruta relativa del archivo .docx que quieres editar
+            string filePath = "Doc's\\Tesoreria\\InformeIndividualTesoreria.docx";
 
+            try
+            {
+                // Obtén la ruta completa del archivo dentro del directorio del proyecto
+                string directorioProyecto = AppDomain.CurrentDomain.BaseDirectory;
+                string rutaCompleta = Path.Combine(directorioProyecto, filePath);
+
+                using (WordprocessingDocument doc = WordprocessingDocument.Open(rutaCompleta, true))
+                {
+                    // Obtén el cuerpo del documento
+                    Body body = doc.MainDocumentPart.Document.Body;
+
+                    // Busca la posición donde agregar la tabla (puedes ajustar esto según tu necesidad)
+                    Paragraph ingresosParagraph = body.Elements<Paragraph>().FirstOrDefault(p => p.InnerText.Contains("INGRESOS"));
+
+                    if (ingresosParagraph != null)
+                    {
+                        // Crea una nueva tabla con 2 columnas y 5 filas
+                        Table nuevaTabla = new Table(
+                            new TableProperties(
+                                new TableLayout { Type = TableLayoutValues.Fixed },
+                                new TableWidth { Width = "0", Type = TableWidthUnitValues.Auto }
+                            )
+                        );
+
+                        for (int i = 0; i < 5; i++)
+                        {
+                            TableRow fila = new TableRow();
+                            fila.Append(
+                                new TableCell(new Paragraph(new Run(new Text($"Celda {i + 1}")))),
+                                new TableCell(new Paragraph(new Run(new Text($"Otra Celda {i + 1}"))))
+                            );
+                            nuevaTabla.Append(fila);
+                        }
+
+                        // Inserta la tabla después del párrafo de "INGRESOS"
+                        body.InsertAfter(nuevaTabla, ingresosParagraph);
+                    }
+
+                    // Guarda los cambios en el documento
+                    doc.MainDocumentPart.Document.Save();
+                }
+
+                MessageBox.Show("Tabla agregada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al editar el documento: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

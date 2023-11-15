@@ -61,6 +61,16 @@ namespace UI
             ConsultarReuniones();
             ConsultarApuntes();
         }
+        private void btnSyncUp_Click(object sender, EventArgs e)
+        {
+            ConsultarContactos();
+            ConsultarMiembros();
+        }
+
+        private void SincronizarConNube()
+        {
+
+        }
         void ConsultarApuntes()
         {
             ConsultaApunteRespuesta respuesta = new ConsultaApunteRespuesta();
@@ -130,13 +140,6 @@ namespace UI
             {
                 labelMiembros.Text = "0";
             }
-        }
-
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            ConsultarContactos();
-            ConsultarMiembros();
         }
 
         private void linkDeveloper_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

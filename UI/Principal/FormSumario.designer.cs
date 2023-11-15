@@ -60,7 +60,7 @@
             this.labelDirectorio = new FontAwesome.Sharp.IconButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelTitleCash = new System.Windows.Forms.Label();
-            this.btnRefresh = new FontAwesome.Sharp.IconButton();
+            this.btnSyncUp = new FontAwesome.Sharp.IconButton();
             this.labelRefresh = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.iconPapelera = new FontAwesome.Sharp.IconButton();
@@ -473,26 +473,26 @@
             this.labelTitleCash.TabIndex = 15;
             this.labelTitleCash.Text = "Directorio";
             // 
-            // btnRefresh
+            // btnSyncUp
             // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.btnRefresh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnRefresh.IconChar = FontAwesome.Sharp.IconChar.Rotate;
-            this.btnRefresh.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnRefresh.IconSize = 30;
-            this.btnRefresh.Location = new System.Drawing.Point(762, 1);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(27, 28);
-            this.btnRefresh.TabIndex = 40;
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnSyncUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSyncUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSyncUp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
+            this.btnSyncUp.FlatAppearance.BorderSize = 0;
+            this.btnSyncUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnSyncUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnSyncUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSyncUp.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnSyncUp.IconChar = FontAwesome.Sharp.IconChar.Rotate;
+            this.btnSyncUp.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSyncUp.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnSyncUp.IconSize = 30;
+            this.btnSyncUp.Location = new System.Drawing.Point(762, 1);
+            this.btnSyncUp.Name = "btnSyncUp";
+            this.btnSyncUp.Size = new System.Drawing.Size(27, 28);
+            this.btnSyncUp.TabIndex = 40;
+            this.btnSyncUp.UseVisualStyleBackColor = true;
+            this.btnSyncUp.Click += new System.EventHandler(this.btnSyncUp_Click);
             // 
             // labelRefresh
             // 
@@ -500,11 +500,11 @@
             this.labelRefresh.AutoSize = true;
             this.labelRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRefresh.ForeColor = System.Drawing.Color.Black;
-            this.labelRefresh.Location = new System.Drawing.Point(723, 31);
+            this.labelRefresh.Location = new System.Drawing.Point(599, 7);
             this.labelRefresh.Name = "labelRefresh";
-            this.labelRefresh.Size = new System.Drawing.Size(104, 16);
+            this.labelRefresh.Size = new System.Drawing.Size(159, 16);
             this.labelRefresh.TabIndex = 41;
-            this.labelRefresh.Text = "Actualizar Datos";
+            this.labelRefresh.Text = "Sincronizar con la nube ->";
             this.labelRefresh.Visible = false;
             // 
             // panel4
@@ -514,7 +514,8 @@
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
             this.panel4.Controls.Add(this.iconPapelera);
             this.panel4.Controls.Add(this.label15);
-            this.panel4.Controls.Add(this.btnRefresh);
+            this.panel4.Controls.Add(this.labelRefresh);
+            this.panel4.Controls.Add(this.btnSyncUp);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(865, 30);
@@ -621,7 +622,6 @@
             this.ClientSize = new System.Drawing.Size(865, 610);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkDeveloper);
-            this.Controls.Add(this.labelRefresh);
             this.Controls.Add(this.labelPapelera);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
@@ -684,7 +684,7 @@
         private FontAwesome.Sharp.IconButton labelApuntes;
         private FontAwesome.Sharp.IconButton labelReuniones;
         private FontAwesome.Sharp.IconButton labelMiembros;
-        private FontAwesome.Sharp.IconButton btnRefresh;
+        private FontAwesome.Sharp.IconButton btnSyncUp;
         private System.Windows.Forms.Label labelRefresh;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label labelPapelera;
