@@ -1,5 +1,6 @@
 ﻿using BLL;
 using Cloud;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Entity;
 using Google.Cloud.Firestore;
 using System;
@@ -89,16 +90,24 @@ namespace UI
                 egresos = respuesta.Egresos.ToList();
                 if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
                 {
-                    textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
-                    var db = FirebaseService.Database;
-                    var egresos = new List<EgressData>();
-                    Query egressQuery = db.Collection("EgressData");
-                    QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
-                    foreach (DocumentSnapshot docsnap in snap.Documents)
+                    try
                     {
-                        EgressData egressData = docsnap.ConvertTo<EgressData>();
-                        egresos.Add(egressData);
-                        textTotalNube.Text = egresos.Count.ToString();
+                        var db = FirebaseService.Database;
+                        var egresos = new List<EgressData>();
+                        Query egressQuery = db.Collection("EgressData");
+                        QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
+                        foreach (DocumentSnapshot docsnap in snap.Documents)
+                        {
+                            EgressData egressData = docsnap.ConvertTo<EgressData>();
+                            egresos.Add(egressData);
+                            textTotalNube.Text = egresos.Count.ToString();
+                        }
+                        textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
+                    }
+                    catch(Exception ex)
+                    {
+                        textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
+                        textTotalNube.Text = "0";
                     }
                 }
                 else
@@ -200,7 +209,7 @@ namespace UI
         void FiltroPorComite(string comite)
         {
             ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
-            respuesta = egresoService.FiltrarIngresosPorComite(comite);
+            respuesta = egresoService.FiltrarEgresosPorComite(comite);
             if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
             {
                 dataGridEgresos.DataSource = null;
@@ -217,17 +226,23 @@ namespace UI
                 egresos = respuesta.Egresos.ToList();
             }
         }
-        void FiltrarIngresosPorComite(string comite)
+        void FiltrarEgresosPorComite(string comite)
         {
             ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
-            respuesta = egresoService.FiltrarIngresosPorComite(comite);
+            respuesta = egresoService.FiltrarEgresosPorComite(comite);
             if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
             {
                 dataGridDetalle.DataSource = null;
                 egresos = respuesta.Egresos.ToList();
+                int sumTotal = 0;
                 dataGridDetalle.DataSource = respuesta.Egresos;
                 Borrar.Visible = true;
                 textTotalComite.Text = egresoService.TotalizarTipo(comite).Cuenta.ToString();
+                for (int i = 0; i < respuesta.Egresos.Count; i++)
+                {
+                    sumTotal = sumTotal + respuesta.Egresos[i].Valor;
+                    textValorConcepto.Text = sumTotal.ToString();
+                }
             }
             else
             {
@@ -277,7 +292,7 @@ namespace UI
                     if (dataGridEgresos.Columns[e.ColumnIndex].Name == "Detallar")
                     {
                         comite = Convert.ToString(dataGridEgresos.CurrentRow.Cells["Comite"].Value.ToString());
-                        FiltrarIngresosPorComite(comite);
+                        FiltrarEgresosPorComite(comite);
                         tabEgresos.TabPages.Add(tabPage);
                         tabEgresos.SelectedIndex = 2;
                         detallo = true;
@@ -565,7 +580,7 @@ namespace UI
             string filtro = comboConceptoDetalle.Text;
             if (filtro == "Ninguno")
             {
-                FiltrarIngresosPorComite(comite);
+                FiltrarEgresosPorComite(comite);
             }
             else
             {

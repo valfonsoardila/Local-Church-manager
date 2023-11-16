@@ -79,6 +79,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabDetalle = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnImprimirDetalle = new FontAwesome.Sharp.IconButton();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dataGridDetalle = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -96,10 +100,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnImprimirDetalle = new FontAwesome.Sharp.IconButton();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -122,13 +122,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).BeginInit();
             this.tabDetalle.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalle)).BeginInit();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -340,6 +340,16 @@
             "Predicador invitado",
             "Cantante invitado",
             "Actividad",
+            "Servicios publicos",
+            "Santa cena",
+            "Ayuda social",
+            "Aporte al distrito",
+            "EPS Pastor",
+            "Aportes a comite",
+            "Asamblea de pastores",
+            "Insumos de tesoreria",
+            "Insumos de secretaria ",
+            "Imprevisto",
             "Otro"});
             this.comboConcepto.Location = new System.Drawing.Point(115, 108);
             this.comboConcepto.Name = "comboConcepto";
@@ -954,6 +964,53 @@
             this.panel8.Size = new System.Drawing.Size(871, 450);
             this.panel8.TabIndex = 5;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnImprimirDetalle);
+            this.panel2.Controls.Add(this.panel12);
+            this.panel2.Controls.Add(this.panel11);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 408);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(871, 42);
+            this.panel2.TabIndex = 2;
+            // 
+            // btnImprimirDetalle
+            // 
+            this.btnImprimirDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirDetalle.BackColor = System.Drawing.Color.Orange;
+            this.btnImprimirDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirDetalle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimirDetalle.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimirDetalle.IconColor = System.Drawing.Color.Black;
+            this.btnImprimirDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimirDetalle.IconSize = 30;
+            this.btnImprimirDetalle.Location = new System.Drawing.Point(352, 2);
+            this.btnImprimirDetalle.Name = "btnImprimirDetalle";
+            this.btnImprimirDetalle.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimirDetalle.Size = new System.Drawing.Size(183, 37);
+            this.btnImprimirDetalle.TabIndex = 16;
+            this.btnImprimirDetalle.Text = "Imprimir Detalle";
+            this.btnImprimirDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimirDetalle.UseVisualStyleBackColor = false;
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel12.Location = new System.Drawing.Point(541, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(330, 42);
+            this.panel12.TabIndex = 1;
+            // 
+            // panel11
+            // 
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(346, 42);
+            this.panel11.TabIndex = 0;
+            // 
             // panel9
             // 
             this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1222,53 +1279,6 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Libro";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnImprimirDetalle);
-            this.panel2.Controls.Add(this.panel12);
-            this.panel2.Controls.Add(this.panel11);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 408);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(871, 42);
-            this.panel2.TabIndex = 2;
-            // 
-            // btnImprimirDetalle
-            // 
-            this.btnImprimirDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimirDetalle.BackColor = System.Drawing.Color.Orange;
-            this.btnImprimirDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirDetalle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnImprimirDetalle.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnImprimirDetalle.IconColor = System.Drawing.Color.Black;
-            this.btnImprimirDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnImprimirDetalle.IconSize = 30;
-            this.btnImprimirDetalle.Location = new System.Drawing.Point(352, 2);
-            this.btnImprimirDetalle.Name = "btnImprimirDetalle";
-            this.btnImprimirDetalle.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimirDetalle.Size = new System.Drawing.Size(183, 37);
-            this.btnImprimirDetalle.TabIndex = 16;
-            this.btnImprimirDetalle.Text = "Imprimir Detalle";
-            this.btnImprimirDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimirDetalle.UseVisualStyleBackColor = false;
-            // 
-            // panel12
-            // 
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel12.Location = new System.Drawing.Point(541, 0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(330, 42);
-            this.panel12.TabIndex = 1;
-            // 
-            // panel11
-            // 
-            this.panel11.Location = new System.Drawing.Point(0, 0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(346, 42);
-            this.panel11.TabIndex = 0;
-            // 
             // FormEgresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1305,6 +1315,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).EndInit();
             this.tabDetalle.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalle)).EndInit();
             this.panel10.ResumeLayout(false);
@@ -1312,7 +1323,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

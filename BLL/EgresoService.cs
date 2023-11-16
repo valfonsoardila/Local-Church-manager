@@ -60,7 +60,7 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-        public ConsultaEgresoRespuesta FiltrarIngresosPorComite(string comite)
+        public ConsultaEgresoRespuesta FiltrarEgresosPorComite(string comite)
         {
             ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
             try

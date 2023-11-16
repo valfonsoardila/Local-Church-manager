@@ -94,16 +94,24 @@ namespace UI
                 ingresos = respuesta.Ingresos.ToList();
                 if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
                 {
-                    textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
-                    var db = FirebaseService.Database;
-                    var ingresos = new List<IngressData>();
-                    Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
-                    QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-                    foreach (DocumentSnapshot docsnap in snap.Documents)
+                    try
                     {
-                        IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                        ingresos.Add(ingressData);
-                        textTotalNube.Text = ingresos.Count.ToString();
+                        var db = FirebaseService.Database;
+                        var ingresos = new List<IngressData>();
+                        Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
+                        QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
+                        foreach (DocumentSnapshot docsnap in snap.Documents)
+                        {
+                            IngressData ingressData = docsnap.ConvertTo<IngressData>();
+                            ingresos.Add(ingressData);
+                            textTotalNube.Text = ingresos.Count.ToString();
+                        }
+                        textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
+                        textTotalNube.Text = "0";
                     }
                 }
                 else
@@ -229,16 +237,15 @@ namespace UI
             if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
             {
                 dataGridDetalle.DataSource = null;
+                int sumTotal = 0;
                 ingresos = respuesta.Ingresos.ToList();
-                if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
+                dataGridDetalle.DataSource = respuesta.Ingresos;
+                Borrar.Visible = true;
+                textTotalComite.Text = ingresoService.TotalizarTipo(comite).Cuenta.ToString();
+                for (int i = 0; i < respuesta.Ingresos.Count; i++)
                 {
-                    dataGridDetalle.DataSource = respuesta.Ingresos;
-                    Borrar.Visible = true;
-                    textTotalComite.Text = ingresoService.TotalizarTipo(comite).Cuenta.ToString();
-                }
-                else
-                {
-                    textTotalComite.Text = "0";
+                    sumTotal = sumTotal + respuesta.Ingresos[i].Valor;
+                    textValorConcepto.Text = sumTotal.ToString();
                 }
             }
         }
@@ -258,10 +265,6 @@ namespace UI
                     {
                         conceptos.Add(ingresos[i]);
                         sumTotal = sumTotal + ingresos[i].Valor;
-                    }
-                    else
-                    {
-                        sumTotal = 0;
                     }
                 }
                 textValorConcepto.Text = sumTotal.ToString();

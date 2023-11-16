@@ -15,6 +15,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Cloud;
 using FirebaseAdmin.Messaging;
+using Google.Cloud.Firestore;
 
 namespace UI
 {
@@ -27,7 +28,7 @@ namespace UI
         string nombreDeUsuario;
         string contraseña;
         string Id_Usuario;
-        bool UsuarioValido;
+        bool UsuarioValido=false;
         object sender;
         EventArgs e;
         public FormInicioSesion()
@@ -212,27 +213,44 @@ namespace UI
         {
             nombreDeUsuario = textBoxUser.Text;
         }
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private async void VaidarUsuaro()
         {
             MapearDatos();
-            BuscarPorNombreDeUsuario();
+            var contraseña = textBoxPasword.Text;
             //Consulta en la nube
             try
             {
                 var db = FirebaseService.Database;
-                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("UserData").Document(Id_Usuario);
-                UserData user = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-                //verifica si el usuario esta registrado en firebase
-                if (user != null)
+                var users = new List<UserData>();
+                Google.Cloud.Firestore.Query userQuery = db.Collection("UserData");
+                QuerySnapshot snap = await userQuery.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap.Documents)
                 {
-                    if (FirebaseSecurity.Decrypt(user.Password) == contraseña)
+                    UserData userData = docsnap.ConvertTo<UserData>();
+                    if(userData.UserName == nombreDeUsuario)
                     {
-                        FormMenu mainMenu = new FormMenu();
-                        mainMenu.idUsuario = Id_Usuario;
-                        mainMenu.ValidarUsuario();
-                        mainMenu.Show();
-                        this.Hide();
+                        if(FirebaseSecurity.Decrypt(userData.Password)== contraseña)
+                        {
+                            UsuarioValido = true;
+                        }
                     }
+                }
+                if (UsuarioValido == true)
+                {
+                    FormMenu mainMenu = new FormMenu();
+                    mainMenu.idUsuario = Id_Usuario;
+                    mainMenu.ValidarUsuario();
+                    mainMenu.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    labelAdvertencia.Visible = true;
+                    iconAdvertencia.Visible = true;
+                    labelAdvertencia.Text = "El nombre de usuario no existe";
+                    linkLabelRegistrarUsuario.ForeColor = Color.Maroon;
+                    textBoxUser.ForeColor = Color.Maroon;
+                    UbicacionesPorAdvertencia();
                 }
             }
             catch (Exception ex)
@@ -240,6 +258,7 @@ namespace UI
                 int count = ex.Message.Length;
                 if (count > 0)
                 {
+                    BuscarPorNombreDeUsuario();
                     //verifica de forma local
                     if (UsuarioValido == true)
                     {
@@ -251,6 +270,10 @@ namespace UI
                     }
                 }
             }
+        }
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            VaidarUsuaro();
         }
 
         private void textBoxUser_TextChanged(object sender, EventArgs e)
