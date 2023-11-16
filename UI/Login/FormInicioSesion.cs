@@ -220,6 +220,7 @@ namespace UI
             //Consulta en la nube
             try
             {
+                string idUser = "";
                 var db = FirebaseService.Database;
                 var users = new List<UserData>();
                 Google.Cloud.Firestore.Query userQuery = db.Collection("UserData");
@@ -229,7 +230,8 @@ namespace UI
                     UserData userData = docsnap.ConvertTo<UserData>();
                     if(userData.UserName == nombreDeUsuario)
                     {
-                        if(FirebaseSecurity.Decrypt(userData.Password)== contraseña)
+                        idUser = userData.ID;
+                        if (FirebaseSecurity.Decrypt(userData.Password)== contraseña)
                         {
                             UsuarioValido = true;
                         }
@@ -238,7 +240,7 @@ namespace UI
                 if (UsuarioValido == true)
                 {
                     FormMenu mainMenu = new FormMenu();
-                    mainMenu.idUsuario = Id_Usuario;
+                    mainMenu.idUsuario = idUser;
                     mainMenu.ValidarUsuario();
                     mainMenu.Show();
                     this.Hide();
