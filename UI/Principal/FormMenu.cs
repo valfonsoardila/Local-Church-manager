@@ -27,8 +27,7 @@ namespace UI
         string rutaReporteMiembros;
         string rutaReporteBautizados;
         public string idUsuario;
-
-        string rol;
+        public string rol;
         private readonly EventArgs e;
         private readonly object sender;
         public FormMenu()
@@ -53,7 +52,7 @@ namespace UI
             respuesta = empleadoService.BuscarPorIdentificacion(idUsuario);
             if (respuesta.Usuario != null)
             {
-                rol = respuesta.Usuario.Rol;
+                var rolConsultado = respuesta.Usuario.Rol;
                 if (rol == "Programador")
                 {
                     btnGestionSecretaria.Enabled = true;
