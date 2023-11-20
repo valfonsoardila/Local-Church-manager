@@ -227,6 +227,7 @@
     <Compile Include="Firebase\FirebaseSecurity.cs" />
     <Compile Include="Firebase\FirebaseService.cs" />
     <Compile Include="Firebase\IngressMaps.cs" />
+    <Compile Include="Firebase\MemberMaps.cs" />
     <Compile Include="Tesoreria\FormEnviables.cs">
       <SubType>Form</SubType>
     </Compile>

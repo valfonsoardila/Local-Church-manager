@@ -20,6 +20,7 @@ namespace UI
         public readonly Validaciones validaciones;
         RutasTxtService rutasTxtService = new RutasTxtService();
         MiembroService miembroService;
+        MemberMaps memberMaps;
         List<Miembro> miembros;
         Miembro miembro;
         ContactoService contactoService;
@@ -40,6 +41,7 @@ namespace UI
         {
             contactoService = new ContactoService(ConfigConnection.ConnectionString);
             miembroService = new MiembroService(ConfigConnection.ConnectionString);
+            memberMaps = new MemberMaps();
             InitializeComponent();
             Inicializar();
             validaciones = new Validaciones();
@@ -110,30 +112,46 @@ namespace UI
         }
         void LimpiarCampos()
         {
-            textNombre.Text="Nombre";
-            comboTipoDocumento.Text="CC";
-            textNumeroDeId.Text="# de documento";
-            dateFechaDeNacimiento.Value=DateTime.Now;
-            textDireccion.Text="Direccion";
-            textTelefono.Text="Telefono";
+            textNombre.Text = "Nombre";
+            comboTipoDocumento.Text = "CC";
+            textNumeroDeId.Text = "# de documento";
+            dateFechaDeNacimiento.Value = DateTime.Now;
+            textDireccion.Text = "Direccion";
+            textTelefono.Text = "Telefono";
             using (MemoryStream ms = new MemoryStream())
             {
                 picturePerfil.Image = Properties.Resources.User;
             }
-            textNombreDelPadre.Text="Nombre del padre";
+            textNombreDelPadre.Text = "Nombre del padre";
             textNombreDeLaMadre.Text = "Nombre de la madre";
             dateFechaDeBautismo.Value = DateTime.Now;
-            textTiempoDeConversion.Text="0";
+            textTiempoDeConversion.Text = "0";
             dateFechaEspirituSanto.Value = DateTime.Now;
-            textLugarBautizmo.Text="Lugar de recepción";
-            comboPastorOficiante.Text="Emiro Diaz";
-            //dateFechaMembresia.Value = DateTime.Now;
-            //textTiempoDeConversion.Text="0";
-            //comboEstadoMiembro.Text="Si";
-            //dateFechaDisciplina.Value = DateTime.Now;
-            //textTiempoDisciplina.Text="0";
-            //comboEstadoMiembro.Text="No definido";
-            //textLugar.Text="Lugar";
+            textLugarBautizmo.Text = "Lugar de recepción";
+            comboPastorOficiante.Text = "Emiro Diaz";
+
+            // Campos adicionales
+            comboOficio.Text = "Oficio";
+            comboEstadoCivil.Text = "Estado Civil";
+            textNumeroDeHijos.Text = "0";
+            textNombreDelConyugue.Text = "Nombre del cónyuge";
+            comboBautizado.Text = "Sí";
+            textLugarBautizmo.Text = "Lugar de bautismo";
+            comboPastorOficiante.Text = "Nombre del pastor";
+            comboSellado.Text = "Sí";
+            comboRecuerda.Text = "Recuerdo";
+            dateFechaEspirituSanto.Value = DateTime.Now;
+            textTiempoDeConversion.Text = "0";
+            textTiempoPromesa.Text = "0";
+            textIglesiaProcedente.Text = "Iglesia de procedencia";
+            comboPastorAsistente.Text = "Nombre del pastor asistente";
+            textCargosDesempeñados.Text = "Cargos desempeñados";
+            comboActoParaServir.Text = "Acto para servir";
+            dateFechaDeCorreccion.Value = DateTime.Now;
+            textTiempoCorreccion.Text = "0";
+            comboMembresia.Text = "Membresía";
+            textLugarTraslado.Text = "Lugar de traslado";
+            textObservaciones.Text = "Observaciones";
         }
         private void btnAtras_Click(object sender, EventArgs e)
         {
@@ -204,6 +222,8 @@ namespace UI
                 comboTipoDocumento.Text = registro.TipoDoc;
                 textNumeroDeId.Text = registro.NumeroDoc;
                 dateFechaDeNacimiento.Value = registro.FechaNacimiento;
+                miembro.Oficio = comboOficio.Text;
+                comboGenero.Text = registro.Genero;
                 textDireccion.Text = registro.Direccion;
                 textTelefono.Text =registro.Telefono;
                 imagenPerfil = registro.ImagenPerfil;
@@ -217,18 +237,28 @@ namespace UI
                 }
                 textNombreDelPadre.Text = registro.ParentezcoPadre;
                 textNombreDeLaMadre.Text = registro.ParentezcoMadre;
-                dateFechaDeBautismo.Value = registro.FechaNacimiento;
-                textTiempoDeConversion.Text = registro.TiempoDeConversion.ToString();
-                dateFechaEspirituSanto.Value = registro.FechaRecepcionEspirituSanto;
-                textLugarBautizmo.Text = registro.LugarRecepcionespirituSanto;
-                comboPastorOficiante.Text = registro.PastorOficiante;
-                //dateFechaMembresia.Value = registro.FechaMembresiaIglesiaProcedente;
-                //textTiempoMembresia.Text = registro.TiempoDeMembresiaIglesiaProcedente.ToString();
-                //comboEstadoMiembro.Text = registro.EstadoMembresia;
-                //dateFechaDisciplina.Value = registro.FechaDeCorreccion;
-                //textTiempoDisciplina.Text = registro.TiempoEnActoCorrectivo.ToString();
-                //comboEstadoMiembro.Text = registro.EstadoMembresia;
-                //textLugar.Text = registro.LugarDeTraslado;
+                comboEstadoCivil.Text = registro.EstadoCivil;
+                textNumeroDeHijos.Text= registro.NumeroHijos.ToString(); // Agregar número de hijos
+                textNombreDelConyugue.Text = registro.NombreConyugue; // Agregar nombre del cónyuge
+                comboBautizado.Text = registro.Bautizado; // Agregar campo de bautizado
+                dateFechaDeBautismo.Value = registro.FechaDeBautizmo;
+                textLugarBautizmo.Text = registro.LugarBautizmo; // Agregar lugar de bautismo
+                comboPastorOficiante.Text = registro.PastorOficiante; // Agregar pastor oficiante en el bautismo
+                comboSellado.Text= registro.Sellado; // Agregar campo de sellado
+                comboRecuerda.Text = registro.SelladoRecuerdo; // Agregar sellado recuerdo
+                dateFechaEspirituSanto.Value = registro.FechaPromesa; // Agregar fecha de promesa
+                textTiempoDeConversion.Text=registro.TiempoConversion.ToString(); // Agregar tiempo de conversión
+                textTiempoPromesa.Text = registro.TiempoPromesa.ToString(); // Agregar tiempo de promesa
+                textIglesiaProcedente.Text= registro.IglesiaProcedente; // Agregar iglesia de procedencia
+                comboPastorAsistente.Text=registro.PastorAsistente; // Agregar pastor asistente
+                textCargosDesempeñados.Text = registro.CargosDesempenados; // Agregar cargos desempeñados
+                comboActoParaServir.Text = registro.Acto; // Agregar acto
+                dateFechaDeCorreccion.Value = registro.FechaCorreccion; // Agregar fecha de corrección
+                textTiempoCorreccion.Text = registro.TiempoCorreccion.ToString(); // Agregar tiempo de corrección
+                comboMembresia.Text = registro.Membresia; // Agregar membresía
+                textLugarTraslado.Text = registro.LugarTraslado; // Agregar lugar de traslado
+                textObservaciones.Text = registro.Observaciones; // Agregar observaciones
+
             }
         }
         void FiltroPorApellido(string filtro)
@@ -273,8 +303,11 @@ namespace UI
             miembro.NumeroDoc = textNumeroDeId.Text;
             miembro.FechaNacimiento = dateFechaDeNacimiento.Value;
             miembro.Genero = comboGeneroRegistrar.Text;
+            miembro.Oficio=comboOficio.Text;
             miembro.Direccion = textDireccion.Text;
             miembro.Telefono = textTelefono.Text;
+
+            // Mapeo de la imagen del perfil
             if (imagenPerfil != null)
             {
                 if (imagenPicture.Length != imagenPerfil.Length)
@@ -300,15 +333,28 @@ namespace UI
             }
             miembro.ParentezcoPadre = textNombreDelPadre.Text;
             miembro.ParentezcoMadre = textNombreDeLaMadre.Text;
-            miembro.FechaBautizmo = dateFechaDeBautismo.Value;
-            miembro.FechaRecepcionEspirituSanto = dateFechaEspirituSanto.Value;
-            miembro.LugarRecepcionespirituSanto = textLugarBautizmo.Text;
-            miembro.PastorOficiante = comboPastorOficiante.Text;
-            //miembro.FechaMembresiaIglesiaProcedente = dateFechaMembresia.Value;
-            //miembro.EstadoServicio = comboEstadoMiembro.Text;
-            //miembro.FechaDeCorreccion = dateFechaDisciplina.Value;
-            //miembro.EstadoMembresia = comboEstadoMiembro.Text;
-            //miembro.LugarDeTraslado = textLugar.Text;
+            miembro.EstadoCivil = comboEstadoCivil.Text; // Agregar estado civil
+            miembro.NumeroHijos = Convert.ToInt32(textNumeroDeHijos.Text); // Agregar número de hijos
+            miembro.NombreConyugue = textNombreDelConyugue.Text; // Agregar nombre del cónyuge
+            miembro.Bautizado = comboBautizado.Text; // Agregar campo de bautizado
+            miembro.FechaDeBautizmo = dateFechaDeBautismo.Value;
+            miembro.LugarBautizmo = textLugarBautizmo.Text; // Agregar lugar de bautismo
+            miembro.PastorOficiante = comboPastorOficiante.Text; // Agregar pastor oficiante en el bautismo
+            miembro.Sellado = comboSellado.Text; // Agregar campo de sellado
+            miembro.SelladoRecuerdo = comboRecuerda.Text; // Agregar sellado recuerdo
+            miembro.FechaPromesa = dateFechaEspirituSanto.Value; // Agregar fecha de promesa
+            miembro.TiempoConversion = Convert.ToInt32(textTiempoDeConversion.Text); // Agregar tiempo de conversión
+            miembro.TiempoPromesa = Convert.ToInt32(textTiempoPromesa.Text); // Agregar tiempo de promesa
+            miembro.IglesiaProcedente = textIglesiaProcedente.Text; // Agregar iglesia de procedencia
+            miembro.PastorAsistente = comboPastorAsistente.Text; // Agregar pastor asistente
+            miembro.CargosDesempenados = textCargosDesempeñados.Text; // Agregar cargos desempeñados
+            miembro.Acto = comboActoParaServir.Text; // Agregar acto
+            miembro.FechaCorreccion = dateFechaDeCorreccion.Value; // Agregar fecha de corrección
+            miembro.TiempoCorreccion = Convert.ToInt32(textTiempoCorreccion.Text); // Agregar tiempo de corrección
+            miembro.Membresia = comboMembresia.Text; // Agregar membresía
+            miembro.LugarTraslado = textLugarTraslado.Text; // Agregar lugar de traslado
+            miembro.Observaciones = textObservaciones.Text; // Agregar observaciones
+
             return miembro;
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -316,18 +362,39 @@ namespace UI
             ExtraerNombreYApellido();
             GenerarIdContacto();
             Contacto contacto = MapearDatosContacto();
-            Miembro miembro = MapearDatosMiembro();
+            Miembro nuevoMiembro = MapearDatosMiembro();
             FiltroPorNombre(nombres);
             FiltroPorApellido(apellidos);
-            if(encontradoNombre!=true && encontradoApellido != true)
+            try
             {
-                contactoService.Guardar(contacto);
-                string mensaje = miembroService.Guardar(miembro);
-                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                ConsultarYLlenarGridDeMiembros();
-                LimpiarCampos();
-                CalcularFolio();
-                tabMiembros.SelectedIndex = 0;
+                if (encontradoNombre != true && encontradoApellido != true)
+                {
+                    contactoService.Guardar(contacto);
+                    string mensaje = miembroService.Guardar(nuevoMiembro);
+                    //Guardamos en la nube
+                    var db = FirebaseService.Database;
+                    var member = memberMaps.MemberMap(nuevoMiembro);
+                    Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(member.Folio.ToString());
+                    docRef.SetAsync(member);
+                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeMiembros();
+                    LimpiarCampos();
+                    CalcularFolio();
+                    tabMiembros.SelectedIndex = 0;
+                }
+            }
+            catch(Exception ex)
+            {
+                if (encontradoNombre != true && encontradoApellido != true)
+                {
+                    contactoService.Guardar(contacto);
+                    string mensaje = miembroService.Guardar(miembro);
+                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeMiembros();
+                    LimpiarCampos();
+                    CalcularFolio();
+                    tabMiembros.SelectedIndex = 0;
+                }
             }
         }
 
@@ -338,14 +405,33 @@ namespace UI
             Miembro miembro = MapearDatosMiembro();
             FiltroPorNombre(nombres);
             FiltroPorApellido(apellidos);
-            if (encontradoNombre == true && encontradoApellido == true)
+            try
             {
-                string mensaje = miembroService.Modificar(miembro);
-                contactoService.Modificar(contacto);
-                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                ConsultarYLlenarGridDeMiembros();
-                LimpiarCampos();
-                tabMiembros.SelectedIndex = 0;
+                if (encontradoNombre == true && encontradoApellido == true)
+                {
+                    contactoService.Modificar(contacto);
+                    string mensaje = miembroService.Modificar(miembro);
+                    var db = FirebaseService.Database;
+                    var member = memberMaps.MemberMap(miembro);
+                    Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(member.Folio.ToString());
+                    docRef.SetAsync(member);
+                    MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeMiembros();
+                    LimpiarCampos();
+                    tabMiembros.SelectedIndex = 0;
+                }
+            }
+            catch(Exception ex)
+            {
+                if (encontradoNombre == true && encontradoApellido == true)
+                {
+                    string mensaje = miembroService.Modificar(miembro);
+                    contactoService.Modificar(contacto);
+                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeMiembros();
+                    LimpiarCampos();
+                    tabMiembros.SelectedIndex = 0;
+                }
             }
         }
 
@@ -376,17 +462,10 @@ namespace UI
         void CalculosPorFecha()
         {
             miembro = new Miembro();
-            miembro.FechaBautizmo = dateFechaDeBautismo.Value;
+            miembro.FechaDeBautizmo = dateFechaDeBautismo.Value;
             miembro.CalcularTiempoDeConversion();
-            textTiempoDeConversion.Text = miembro.TiempoDeConversion.ToString();
+            textTiempoDeConversion.Text = miembro.TiempoConversion.ToString();
 
-            //miembro.FechaMembresiaIglesiaProcedente = dateFechaMembresia.Value;
-            //miembro.CalcularMembresiaIglesiaProcedente();
-            //textTiempoMembresia.Text = miembro.TiempoDeMembresiaIglesiaProcedente.ToString();
-
-            //miembro.FechaDeCorreccion = dateFechaDisciplina.Value;
-            //miembro.CalcularTiempoDeCorrecion();
-            //textTiempoDisciplina.Text = miembro.TiempoEnActoCorrectivo.ToString();
         }
         private void dateFechaDeBautismo_ValueChanged(object sender, EventArgs e)
         {
@@ -411,9 +490,22 @@ namespace UI
         }
         void EliminarMiembro(string id)
         {
-            string mensaje = miembroService.Eliminar(id);
-            contactoService.Eliminar(idContacto);
-            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                //Elimina primero de firebase o la nube
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(id);
+                docRef.DeleteAsync();
+                string mensaje = miembroService.Eliminar(id);
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeMiembros();
+            }
+            catch(Exception ex)
+            {
+                string mensaje = miembroService.Eliminar(id);
+                contactoService.Eliminar(idContacto);
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         private void dataGridMiembros_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -856,7 +948,7 @@ namespace UI
         {
             string item = comboActoParaServir.Text;
             string nombreDelComponente = ((Control)sender).Name;
-            dateDeCorreccion.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+            dateFechaDeCorreccion.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
             textMotivo.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
         }
 

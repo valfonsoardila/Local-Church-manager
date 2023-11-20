@@ -9,7 +9,7 @@ namespace Entity
     public class Miembro
     {
         public Miembro(
-            string folio,
+                string folio,
             byte[] imagenPerfil,
             string idContacto,
             string nombre,
@@ -23,18 +23,27 @@ namespace Entity
             string telefono,
             string parentezcoPadre,
             string parentezcoMadre,
-            DateTime fechaBautizo,
-            int tiempoDeConversion,
-            DateTime fechaRecepcionEspirituSanto,
-            string lugarRecepcionespirituSanto,
+            string oficio,
+            string estadoCivil,
+            int numeroHijos,
+            string nombreConyugue,
+            string bautizado,
+            DateTime fechaDeBautizmo,
+            string lugarBautizmo,
             string pastorOficiante,
-            DateTime fechaMembresiaIglesiaProcedente,
-            int tiempoDeMembresiaIglesiaProcedente,
-            string estadoServicio,
-            DateTime fechaDeCorreccion,
-            int tiempoEnActoCorrectivo,
-            string estadoMembresia,
-            string lugarDeTraslado
+            string sellado,
+            string selladoRecuerdo,
+            DateTime fechaPromesa,
+            int tiempoPromesa,
+            int tiempoConversion,
+            string cargosDesempenados,
+            string acto,
+            DateTime fechaCorreccion,
+            int tiempoCorreccion,
+            string membresia,
+            string iglesiaProcedente,
+            string pastorAsistente,
+            string observaciones
         )
         {
             Folio = folio;
@@ -45,24 +54,33 @@ namespace Entity
             TipoDoc= tipoDoc;
             NumeroDoc= numeroDoc;
             FechaNacimiento = fechaDeNacimiento;
-            Genero = genero;
             Edad = edad;
+            Genero = genero;
+            Oficio = oficio;
             Direccion = direccion;
             Telefono = telefono;
             ParentezcoPadre = parentezcoPadre;
             ParentezcoMadre = parentezcoMadre;
-            FechaBautizmo = fechaBautizo;
-            TiempoDeConversion = tiempoDeConversion;
-            FechaRecepcionEspirituSanto = fechaRecepcionEspirituSanto;
-            LugarRecepcionespirituSanto = lugarRecepcionespirituSanto;
+            EstadoCivil = estadoCivil;
+            NumeroHijos = numeroHijos;
+            NombreConyugue = nombreConyugue;
+            Bautizado = bautizado;
+            FechaDeBautizmo = fechaDeBautizmo;
+            LugarBautizmo = lugarBautizmo;
             PastorOficiante = pastorOficiante;
-            FechaMembresiaIglesiaProcedente = fechaMembresiaIglesiaProcedente;
-            TiempoDeMembresiaIglesiaProcedente = tiempoDeMembresiaIglesiaProcedente;
-            EstadoServicio = estadoServicio;
-            FechaDeCorreccion = fechaDeCorreccion;
-            TiempoEnActoCorrectivo = tiempoEnActoCorrectivo;
-            EstadoMembresia = estadoMembresia;
-            LugarDeTraslado = lugarDeTraslado;
+            Sellado = sellado;
+            SelladoRecuerdo = selladoRecuerdo;
+            FechaPromesa = fechaPromesa;
+            TiempoPromesa = tiempoPromesa;
+            TiempoConversion = tiempoConversion;
+            CargosDesempenados = cargosDesempenados;
+            Acto = acto;
+            FechaCorreccion = fechaCorreccion;
+            TiempoCorreccion = tiempoCorreccion;
+            Membresia = membresia;
+            IglesiaProcedente = iglesiaProcedente;
+            PastorAsistente = pastorAsistente;
+            Observaciones = observaciones;
         }
         public Miembro()
         {
@@ -76,24 +94,34 @@ namespace Entity
         public string TipoDoc { get; set; }
         public string NumeroDoc { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public string Genero { get; set; }
         public int Edad { get; set; }
+        public string Genero { get; set; }
+        public string Oficio { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string ParentezcoPadre { get; set; }
         public string ParentezcoMadre { get; set; }
-        public DateTime FechaBautizmo { get; set; }
-        public int TiempoDeConversion { get; set; }
-        public DateTime FechaRecepcionEspirituSanto { get; set; }
-        public string LugarRecepcionespirituSanto { get; set; }
+        public string EstadoCivil { get; set; }
+        public int NumeroHijos { get; set; }
+        public string NombreConyugue { get; set; }
+        public string Bautizado { get; set; }
+        public DateTime FechaDeBautizmo { get; set; }
+        public string LugarBautizmo { get; set; }
         public string PastorOficiante { get; set; }
-        public DateTime FechaMembresiaIglesiaProcedente { get; set; }
-        public int TiempoDeMembresiaIglesiaProcedente { get; set; }
-        public string EstadoServicio { get; set; }
-        public DateTime FechaDeCorreccion { get; set; }
-        public int TiempoEnActoCorrectivo { get; set; }
-        public string EstadoMembresia { get; set; }
-        public string LugarDeTraslado { get; set; }
+        public string Sellado { get; set; }
+        public string SelladoRecuerdo { get; set; }
+        public DateTime FechaPromesa { get; set; }
+        public int TiempoConversion { get; set; }
+        public int TiempoPromesa { get; set; }
+        public string IglesiaProcedente { get; set; }
+        public string PastorAsistente { get; set; }
+        public string CargosDesempenados { get; set; }
+        public string Acto { get; set; }
+        public DateTime FechaCorreccion { get; set; }
+        public int TiempoCorreccion { get; set; }
+        public string Membresia { get; set; }
+        public string LugarTraslado { get; set; }
+        public string Observaciones { get; set; }
         public void CalcularEdad()
         {
             DateTime fechaActual = DateTime.Now;
@@ -110,41 +138,41 @@ namespace Entity
         public void CalcularTiempoDeConversion()
         {
             DateTime fechaActual = DateTime.Now;
-            int tiempoDeConversion = fechaActual.Year - FechaBautizmo.Year;
+            int tiempoDeConversion = fechaActual.Year - FechaDeBautizmo.Year;
 
             // Verificar si el aniversario de bautismo ya ocurrió este año
-            if (fechaActual.Month < FechaBautizmo.Month || (fechaActual.Month == FechaBautizmo.Month && fechaActual.Day < FechaBautizmo.Day))
+            if (fechaActual.Month < FechaDeBautizmo.Month || (fechaActual.Month == FechaDeBautizmo.Month && fechaActual.Day < FechaDeBautizmo.Day))
             {
                 tiempoDeConversion--;
             }
 
-            TiempoDeConversion = tiempoDeConversion;
+            TiempoConversion = tiempoDeConversion;
         }
-        public void CalcularMembresiaIglesiaProcedente()
+        public void CalculartTiempoDePromesa()
         {
             DateTime fechaActual = DateTime.Now;
-            int mesDeMembresia = FechaMembresiaIglesiaProcedente.Month;
+            int mesDeRecepcion= FechaPromesa.Month;
             int mesActual = fechaActual.Month;
 
-            int tiempoDeMembresiaIglesiaProcedente = 0;
+            int tiempoDePromesa = 0;
 
-            if (mesActual >= mesDeMembresia)
+            if (mesActual >= mesDeRecepcion)
             {
-                tiempoDeMembresiaIglesiaProcedente = fechaActual.Year - FechaMembresiaIglesiaProcedente.Year;
+                tiempoDePromesa = fechaActual.Year - FechaPromesa.Year;
             }
             else
             {
                 // Si el mes actual es menor que el mes de membresía, significa que ha pasado un año completo.
-                tiempoDeMembresiaIglesiaProcedente = (fechaActual.Year - 1) - FechaMembresiaIglesiaProcedente.Year;
+                tiempoDePromesa = (fechaActual.Year - 1) - FechaPromesa.Year;
             }
 
-            TiempoDeMembresiaIglesiaProcedente = tiempoDeMembresiaIglesiaProcedente;
+            TiempoPromesa = tiempoDePromesa;
         }
 
         public void CalcularTiempoDeCorrecion()
         {
             DateTime fechaActual = DateTime.Now;
-            int mesDeCorreccion = FechaDeCorreccion.Month;
+            int mesDeCorreccion = FechaCorreccion.Month;
             int mesActual = fechaActual.Month;
 
             int tiempoEnActoCorrectivo = 0;
@@ -159,7 +187,7 @@ namespace Entity
                 tiempoEnActoCorrectivo = 12 - (mesDeCorreccion - mesActual);
             }
 
-            TiempoEnActoCorrectivo = tiempoEnActoCorrectivo;
+            TiempoCorreccion = tiempoEnActoCorrectivo;
         }
     }
 }

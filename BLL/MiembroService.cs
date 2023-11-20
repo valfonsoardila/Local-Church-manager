@@ -23,7 +23,7 @@ namespace BLL
             {
                 miembro.CalcularEdad();
                 miembro.CalcularTiempoDeConversion();
-                miembro.CalcularMembresiaIglesiaProcedente();
+                miembro.CalculartTiempoDePromesa();
                 miembro.CalcularTiempoDeCorrecion();
                 conexion.Open();
                 if (repositorio.BuscarPorIdentificacion(miembro.Folio) == null)
@@ -151,7 +151,7 @@ namespace BLL
             try
             {
                 miembroNuevo.CalcularTiempoDeConversion();
-                miembroNuevo.CalcularMembresiaIglesiaProcedente();
+                miembroNuevo.CalculartTiempoDePromesa();
                 miembroNuevo.CalcularTiempoDeCorrecion();
                 conexion.Open();
                 var miembroAntiguo = repositorio.BuscarPorIdentificacion(miembroNuevo.Folio);

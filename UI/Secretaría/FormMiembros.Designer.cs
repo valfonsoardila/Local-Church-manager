@@ -44,9 +44,9 @@ namespace UI
             this.groupEstadoServicio = new System.Windows.Forms.GroupBox();
             this.textMotivo = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textTiempoCorreccion = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.dateDeCorreccion = new System.Windows.Forms.DateTimePicker();
+            this.dateFechaDeCorreccion = new System.Windows.Forms.DateTimePicker();
             this.label32 = new System.Windows.Forms.Label();
             this.comboActoParaServir = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@ namespace UI
             this.textIglesiaProcedente = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBautismo = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textTiempoPromesa = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.comboRecuerda = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -354,9 +354,9 @@ namespace UI
             // 
             this.groupEstadoServicio.Controls.Add(this.textMotivo);
             this.groupEstadoServicio.Controls.Add(this.label34);
-            this.groupEstadoServicio.Controls.Add(this.textBox5);
+            this.groupEstadoServicio.Controls.Add(this.textTiempoCorreccion);
             this.groupEstadoServicio.Controls.Add(this.label33);
-            this.groupEstadoServicio.Controls.Add(this.dateDeCorreccion);
+            this.groupEstadoServicio.Controls.Add(this.dateFechaDeCorreccion);
             this.groupEstadoServicio.Controls.Add(this.label32);
             this.groupEstadoServicio.Controls.Add(this.comboActoParaServir);
             this.groupEstadoServicio.Controls.Add(this.label31);
@@ -392,17 +392,17 @@ namespace UI
             this.label34.TabIndex = 84;
             this.label34.Text = "Motivo:";
             // 
-            // textBox5
+            // textTiempoCorreccion
             // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.Green;
-            this.textBox5.Location = new System.Drawing.Point(718, 27);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(30, 17);
-            this.textBox5.TabIndex = 83;
-            this.textBox5.Text = "0";
+            this.textTiempoCorreccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTiempoCorreccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTiempoCorreccion.ForeColor = System.Drawing.Color.Green;
+            this.textTiempoCorreccion.Location = new System.Drawing.Point(718, 27);
+            this.textTiempoCorreccion.Multiline = true;
+            this.textTiempoCorreccion.Name = "textTiempoCorreccion";
+            this.textTiempoCorreccion.Size = new System.Drawing.Size(30, 17);
+            this.textTiempoCorreccion.TabIndex = 83;
+            this.textTiempoCorreccion.Text = "0";
             // 
             // label33
             // 
@@ -414,14 +414,14 @@ namespace UI
             this.label33.TabIndex = 82;
             this.label33.Text = "Tiempo:";
             // 
-            // dateDeCorreccion
+            // dateFechaDeCorreccion
             // 
-            this.dateDeCorreccion.Enabled = false;
-            this.dateDeCorreccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateDeCorreccion.Location = new System.Drawing.Point(396, 22);
-            this.dateDeCorreccion.Name = "dateDeCorreccion";
-            this.dateDeCorreccion.Size = new System.Drawing.Size(246, 22);
-            this.dateDeCorreccion.TabIndex = 81;
+            this.dateFechaDeCorreccion.Enabled = false;
+            this.dateFechaDeCorreccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFechaDeCorreccion.Location = new System.Drawing.Point(396, 22);
+            this.dateFechaDeCorreccion.Name = "dateFechaDeCorreccion";
+            this.dateFechaDeCorreccion.Size = new System.Drawing.Size(246, 22);
+            this.dateFechaDeCorreccion.TabIndex = 81;
             // 
             // label32
             // 
@@ -572,7 +572,7 @@ namespace UI
             // 
             // groupBautismo
             // 
-            this.groupBautismo.Controls.Add(this.textBox2);
+            this.groupBautismo.Controls.Add(this.textTiempoPromesa);
             this.groupBautismo.Controls.Add(this.label24);
             this.groupBautismo.Controls.Add(this.comboRecuerda);
             this.groupBautismo.Controls.Add(this.label19);
@@ -598,17 +598,17 @@ namespace UI
             this.groupBautismo.TabStop = false;
             this.groupBautismo.Text = "Bautismo y promesa";
             // 
-            // textBox2
+            // textTiempoPromesa
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Green;
-            this.textBox2.Location = new System.Drawing.Point(305, 80);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(30, 17);
-            this.textBox2.TabIndex = 82;
-            this.textBox2.Text = "0";
+            this.textTiempoPromesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTiempoPromesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTiempoPromesa.ForeColor = System.Drawing.Color.Green;
+            this.textTiempoPromesa.Location = new System.Drawing.Point(305, 80);
+            this.textTiempoPromesa.Multiline = true;
+            this.textTiempoPromesa.Name = "textTiempoPromesa";
+            this.textTiempoPromesa.Size = new System.Drawing.Size(30, 17);
+            this.textTiempoPromesa.TabIndex = 82;
+            this.textTiempoPromesa.Text = "0";
             // 
             // label24
             // 
@@ -2074,7 +2074,7 @@ namespace UI
         private System.Windows.Forms.TextBox textIglesiaProcedente;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.GroupBox groupBautismo;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textTiempoPromesa;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox comboRecuerda;
         private System.Windows.Forms.Label label19;
@@ -2101,9 +2101,9 @@ namespace UI
         private System.Windows.Forms.GroupBox groupEstadoServicio;
         private System.Windows.Forms.ComboBox comboActoParaServir;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textTiempoCorreccion;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.DateTimePicker dateDeCorreccion;
+        private System.Windows.Forms.DateTimePicker dateFechaDeCorreccion;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TextBox textMotivo;
         private System.Windows.Forms.Label label34;
