@@ -132,10 +132,29 @@ namespace UI
             egresos = respuesta.Egresos.ToList();
             if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
             {
-                textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
-                var totalComprobante = Convert.ToInt32(textTotalLocal.Text);
-                comprobante = (totalComprobante + 1).ToString("0000");
-                textNumeroComprobante.Text = comprobante;
+                List<int> comprobantes = new List<int>();
+                string numeroComprobanteFinal = "";
+
+                for (int i = 0; i < respuesta.Egresos.Count; i++)
+                {
+                    // Obtener el número del comprobante del egreso actual
+                    int numeroComprobanteActual = int.Parse(respuesta.Egresos[i].CodigoComprobante);
+
+                    // Agregarlo a la lista de comprobantes
+                    comprobantes.Add(numeroComprobanteActual);
+                }
+
+                // Verificar si hay elementos en la lista de comprobantes
+                if (comprobantes.Count > 0)
+                {
+                    // Obtener el número mayor de la lista
+                    int numeroMayor = comprobantes.Max();
+                    numeroMayor = numeroMayor + 1;
+                    // Asignar el número mayor a la variable final
+                    // Supongamos que tienes una variable final llamada 'numeroComprobanteFinal'
+                    numeroComprobanteFinal = numeroMayor.ToString("0000");
+                    textNumeroComprobante.Text = numeroComprobanteFinal;
+                }
             }
             else
             {
@@ -465,7 +484,8 @@ namespace UI
         }
         private void Limpiar()
         {
-            textNumeroComprobante.Text = "0000";
+            int seguimiento = int.Parse(textNumeroComprobante.Text);
+            textNumeroComprobante.Text = (seguimiento + 1).ToString();
             CalcularComprobante();
             dateTimeEgreso.Value = DateTime.Now;
             comboComite.Text = "Comite";

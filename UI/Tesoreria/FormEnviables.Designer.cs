@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
+            this.textDineroIngreso = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -65,8 +67,10 @@
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textDineroIngreso = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.comboConcepto = new System.Windows.Forms.ComboBox();
+            this.comboComite = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -104,6 +108,10 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.comboConcepto);
+            this.panel4.Controls.Add(this.comboComite);
             this.panel4.Controls.Add(this.textDineroIngreso);
             this.panel4.Controls.Add(this.label13);
             this.panel4.Controls.Add(this.dateTimePicker1);
@@ -116,6 +124,29 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(634, 364);
             this.panel4.TabIndex = 0;
+            // 
+            // textDineroIngreso
+            // 
+            this.textDineroIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textDineroIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textDineroIngreso.Location = new System.Drawing.Point(115, 237);
+            this.textDineroIngreso.Name = "textDineroIngreso";
+            this.textDineroIngreso.Size = new System.Drawing.Size(181, 26);
+            this.textDineroIngreso.TabIndex = 31;
+            this.textDineroIngreso.Text = "$ 000.00";
+            this.textDineroIngreso.Enter += new System.EventHandler(this.textDineroIngreso_Enter);
+            this.textDineroIngreso.Leave += new System.EventHandler(this.textDineroIngreso_Leave);
+            this.textDineroIngreso.Validated += new System.EventHandler(this.textDineroIngreso_Validated);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(36, 243);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(48, 16);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Valor:";
             // 
             // dateTimePicker1
             // 
@@ -188,7 +219,7 @@
             // 
             this.textDetalle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDetalle.Location = new System.Drawing.Point(115, 73);
+            this.textDetalle.Location = new System.Drawing.Point(115, 150);
             this.textDetalle.Multiline = true;
             this.textDetalle.Name = "textDetalle";
             this.textDetalle.Size = new System.Drawing.Size(368, 80);
@@ -201,7 +232,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(35, 101);
+            this.label4.Location = new System.Drawing.Point(35, 178);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 16);
             this.label4.TabIndex = 2;
@@ -613,28 +644,134 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Lista";
             // 
-            // textDineroIngreso
+            // comboConcepto
             // 
-            this.textDineroIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textDineroIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDineroIngreso.Location = new System.Drawing.Point(115, 160);
-            this.textDineroIngreso.Name = "textDineroIngreso";
-            this.textDineroIngreso.Size = new System.Drawing.Size(181, 26);
-            this.textDineroIngreso.TabIndex = 31;
-            this.textDineroIngreso.Text = "$ 000.00";
-            this.textDineroIngreso.Enter += new System.EventHandler(this.textDineroIngreso_Enter);
-            this.textDineroIngreso.Leave += new System.EventHandler(this.textDineroIngreso_Leave);
-            this.textDineroIngreso.Validated += new System.EventHandler(this.textDineroIngreso_Validated);
+            this.comboConcepto.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboConcepto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboConcepto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboConcepto.FormattingEnabled = true;
+            this.comboConcepto.Items.AddRange(new object[] {
+            "El 21% nacional",
+            "Ofrenda rayo de luz",
+            "Ofenda gavillas para Cristo",
+            "Ofrenda misionera mitad de año",
+            "Ofrenda misionera fin de año",
+            "Ofrenda obra social"});
+            this.comboConcepto.Location = new System.Drawing.Point(115, 113);
+            this.comboConcepto.Name = "comboConcepto";
+            this.comboConcepto.Size = new System.Drawing.Size(209, 24);
+            this.comboConcepto.TabIndex = 33;
+            this.comboConcepto.Text = "Concepto";
             // 
-            // label13
+            // comboComite
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(36, 166);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(48, 16);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "Valor:";
+            this.comboComite.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboComite.FormattingEnabled = true;
+            this.comboComite.Items.AddRange(new object[] {
+            "Comite",
+            "Damas dorcas",
+            "Jovenes",
+            "Junta local",
+            "Obra social"});
+            this.comboComite.Location = new System.Drawing.Point(115, 77);
+            this.comboComite.Name = "comboComite";
+            this.comboComite.Size = new System.Drawing.Size(209, 24);
+            this.comboComite.TabIndex = 32;
+            this.comboComite.Text = "Comite";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(34, 118);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 16);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Concepto:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(34, 82);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 16);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "Comite:";
             // 
             // FormEnviables
             // 
@@ -713,5 +850,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textDineroIngreso;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboConcepto;
+        private System.Windows.Forms.ComboBox comboComite;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

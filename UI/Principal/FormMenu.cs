@@ -53,7 +53,7 @@ namespace UI
             if (respuesta.Usuario != null)
             {
                 var rolConsultado = respuesta.Usuario.Rol;
-                if (rol == "Programador")
+                if (rol == "Programador" || rolConsultado == "Programador")
                 {
                     btnGestionSecretaria.Enabled = true;
                     btnGestionSecretaria.Visible = true;
@@ -64,7 +64,7 @@ namespace UI
                 }
                 else
                 {
-                    if (rol == "Secretario(a)")
+                    if (rol == "Secretario(a)" || rolConsultado == "Secretario(a)")
                     {
                         btnGestionSecretaria.Visible = true;
                         btnGestionSecretaria.Enabled = true;
@@ -75,7 +75,7 @@ namespace UI
                     }
                     else
                     {
-                        if (rol == "Tesorero(a)")
+                        if (rol == "Tesorero(a)" || rolConsultado == "Tesorero(a)")
                         {
                             btnGestionTesoreria.Visible = true;
                             btnGestionTesoreria.Enabled = true;

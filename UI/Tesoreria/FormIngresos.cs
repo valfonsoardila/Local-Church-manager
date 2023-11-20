@@ -136,10 +136,32 @@ namespace UI
             ingresos = respuesta.Ingresos.ToList();
             if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
             {
-                textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
-                var totalComprobante = Convert.ToInt32(textTotalLocal.Text);
-                comprobante = (totalComprobante + 1).ToString("0000");
-                textNumeroComprobante.Text = comprobante;
+                List<int> comprobantes = new List<int>();
+                string numeroComprobanteFinal = "";
+                //for(int i=0; i < respuesta.Ingresos.Count; i++)
+                //{
+
+                //}
+                for (int i = 0; i < respuesta.Ingresos.Count; i++)
+                {
+                    // Obtener el número del comprobante del ingreso actual
+                    int numeroComprobanteActual = int.Parse(respuesta.Ingresos[i].CodigoComprobante);
+
+                    // Agregarlo a la lista de comprobantes
+                    comprobantes.Add(numeroComprobanteActual);
+                }
+
+                // Verificar si hay elementos en la lista de comprobantes
+                if (comprobantes.Count > 0)
+                {
+                    // Obtener el número mayor de la lista
+                    int numeroMayor = comprobantes.Max();
+                    numeroMayor = numeroMayor + 1;
+                    // Asignar el número mayor a la variable final
+                    // Supongamos que tienes una variable final llamada 'numeroComprobanteFinal'
+                    numeroComprobanteFinal = numeroMayor.ToString("0000");
+                    textNumeroComprobante.Text = numeroComprobanteFinal;
+                }
             }
             else
             {
@@ -479,7 +501,8 @@ namespace UI
         }
         private void Limpiar()
         {
-            textNumeroComprobante.Text = "0000";
+            int seguimiento =int.Parse(textNumeroComprobante.Text );
+            textNumeroComprobante.Text = (seguimiento+1).ToString();
             CalcularComprobante();
             dateFechaIngreso.Value = DateTime.Now;
             comboComite.Text = "Comite";

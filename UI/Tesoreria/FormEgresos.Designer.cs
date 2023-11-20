@@ -100,6 +100,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -344,12 +345,13 @@
             "Santa cena",
             "Ayuda social",
             "Aporte al distrito",
-            "EPS Pastor",
+            "EPS del Pastor",
             "Aportes a comite",
             "Asamblea de pastores",
             "Insumos de tesoreria",
             "Insumos de secretaria ",
             "Imprevisto",
+            "Proyecto de inversion NAL",
             "Otro"});
             this.comboConcepto.Location = new System.Drawing.Point(115, 108);
             this.comboConcepto.Name = "comboConcepto";
@@ -740,7 +742,8 @@
             // 
             // panelContenedorDeDirectorio
             // 
-            this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Maroon;
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboBox1);
             this.panelContenedorDeDirectorio.Controls.Add(this.comboFiltroComite);
             this.panelContenedorDeDirectorio.Controls.Add(this.label15);
             this.panelContenedorDeDirectorio.Controls.Add(this.textTotalNube);
@@ -1279,6 +1282,72 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Libro";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Año",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030",
+            "2031",
+            "2032",
+            "2033",
+            "2034",
+            "2035",
+            "2036",
+            "2037",
+            "2040"});
+            this.comboBox1.Location = new System.Drawing.Point(500, 4);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(68, 24);
+            this.comboBox1.TabIndex = 27;
+            this.comboBox1.Text = "Año";
+            // 
             // FormEgresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1400,5 +1469,6 @@
         private FontAwesome.Sharp.IconButton btnImprimirDetalle;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
