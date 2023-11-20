@@ -121,7 +121,7 @@ namespace UI
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
-        {
+        { 
             tabApuntes.SelectedIndex = 0;
         }
 
