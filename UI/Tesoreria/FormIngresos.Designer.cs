@@ -100,6 +100,8 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -220,6 +222,7 @@
             this.comboConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboConcepto.FormattingEnabled = true;
             this.comboConcepto.Items.AddRange(new object[] {
+            "Aporte de liquidacion",
             "Ofrenda",
             "Voto",
             "Actividades",
@@ -480,6 +483,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.textTotalIngresos);
             this.panel1.Controls.Add(this.btnAtras);
@@ -497,11 +502,11 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(511, 18);
+            this.label11.Location = new System.Drawing.Point(549, 17);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(183, 24);
+            this.label11.Size = new System.Drawing.Size(162, 24);
             this.label11.TabIndex = 13;
-            this.label11.Text = "Total Ingresos $";
+            this.label11.Text = "Total Ingresos";
             // 
             // textTotalIngresos
             // 
@@ -510,9 +515,9 @@
             this.textTotalIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textTotalIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTotalIngresos.ForeColor = System.Drawing.SystemColors.Info;
-            this.textTotalIngresos.Location = new System.Drawing.Point(693, 17);
+            this.textTotalIngresos.Location = new System.Drawing.Point(731, 16);
             this.textTotalIngresos.Name = "textTotalIngresos";
-            this.textTotalIngresos.Size = new System.Drawing.Size(177, 28);
+            this.textTotalIngresos.Size = new System.Drawing.Size(139, 28);
             this.textTotalIngresos.TabIndex = 12;
             this.textTotalIngresos.Text = "0";
             // 
@@ -1304,6 +1309,31 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Detalle";
             // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Yellow;
+            this.label16.Location = new System.Drawing.Point(332, 17);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(90, 24);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "Saldo $";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Yellow;
+            this.textBox1.Location = new System.Drawing.Point(426, 16);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(122, 28);
+            this.textBox1.TabIndex = 18;
+            this.textBox1.Text = "0";
+            // 
             // FormIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1425,5 +1455,7 @@
         private System.Windows.Forms.Panel panel11;
         private FontAwesome.Sharp.IconButton btnImprimirDetalle;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

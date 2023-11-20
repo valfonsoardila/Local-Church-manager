@@ -51,6 +51,15 @@ namespace UI
         {
             tabLibroIngresos.SelectedIndex = 1;
         }
+        private string LecturaCifra(int totalDeIngresos)
+        {
+            // Convierte el total de ingresos a una cadena con separadores de miles
+            string cifraFormateada = totalDeIngresos.ToString("N0");
+
+            // Muestra la cifra formateada en el TextBox o donde desees
+            string valorFormateado = $"${cifraFormateada}";
+            return valorFormateado;
+        }
         private async void TotalizarIngresos()
         {
             int sumIngreso = 0;
@@ -66,7 +75,7 @@ namespace UI
                     sumIngreso = sumIngreso + ingressData.Valor;
                     if (sumIngreso > 0)
                     {
-                        textTotalIngresos.Text = sumIngreso.ToString();
+                        textTotalIngresos.Text = LecturaCifra(sumIngreso);
                     }
                 }
             }
@@ -462,7 +471,8 @@ namespace UI
         {
             if (textDineroIngreso.Text != "" && textDineroIngreso.Text != "$ 000.00")
             {
-                textDineroIngreso.Text = "$ " + textDineroIngreso.Text;
+                int sumIngreso = int.Parse(textDineroIngreso.Text);
+                textDineroIngreso.Text = LecturaCifra(sumIngreso);
             }
         }
 
