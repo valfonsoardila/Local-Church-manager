@@ -50,7 +50,7 @@ namespace DAL
                 {
                     while (dataReader.Read())
                     {
-                        Egreso egreso = DataReaderMapToIngreso(dataReader);
+                        Egreso egreso = DataReaderMapToEgreso(dataReader);
                         egresos.Add(egreso);
                     }
                 }
@@ -69,7 +69,7 @@ namespace DAL
                 {
                     while (dataReader.Read())
                     {
-                        Egreso egreso = DataReaderMapToIngreso(dataReader);
+                        Egreso egreso = DataReaderMapToEgreso(dataReader);
                         egresos.Add(egreso);
                     }
                 }
@@ -88,7 +88,7 @@ namespace DAL
                 {
                     while (dataReader.Read())
                     {
-                        Egreso egreso = DataReaderMapToIngreso(dataReader);
+                        Egreso egreso = DataReaderMapToEgreso(dataReader);
                         egresos.Add(egreso);
                     }
                 }
@@ -104,7 +104,7 @@ namespace DAL
                 command.Parameters.AddWithValue("@CodigoComprobante", codigo);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
-                return DataReaderMapToIngreso(dataReader);
+                return DataReaderMapToEgreso(dataReader);
             }
         }
         public void Modificar(Egreso egreso)
@@ -120,7 +120,7 @@ namespace DAL
                 var filas = command.ExecuteNonQuery();
             }
         }
-        private Egreso DataReaderMapToIngreso(SqlDataReader dataReader)
+        private Egreso DataReaderMapToEgreso(SqlDataReader dataReader)
         {
             if (!dataReader.HasRows) return null;
             Egreso egreso = new Egreso();

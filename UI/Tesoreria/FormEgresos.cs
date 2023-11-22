@@ -30,6 +30,9 @@ namespace UI
         string comite;
         bool encontrado = false;
         bool detallo = false;
+        int sumIngreso = 0;
+        int sumEgreso = 0;
+        int saldo = 0;
         public FormEgresos()
         {
             egresoService = new EgresoService(ConfigConnection.ConnectionString);
@@ -56,9 +59,26 @@ namespace UI
             string valorFormateado = $"${cifraFormateada}";
             return valorFormateado;
         }
+        private async void CalculoDeSaldo()
+        {
+            var db = FirebaseService.Database;
+            var ingresos = new List<IngressData>();
+            Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
+            QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
+            foreach (DocumentSnapshot docsnap in snap.Documents)
+            {
+                EgressData ingressData = docsnap.ConvertTo<EgressData>();
+                sumIngreso = sumIngreso + ingressData.Valor;
+                if (sumEgreso > 0)
+                {
+                    saldo = sumIngreso - sumEgreso;
+                    textSaldo.Text = LecturaCifra(saldo);
+                }
+            }
+        }
         private async void TotalizarEgresos()
         {
-            int sumEgreso = 0;
+            sumEgreso = 0;
             try
             {
                 var db = FirebaseService.Database;
@@ -74,6 +94,7 @@ namespace UI
                         textTotalEgresos.Text = LecturaCifra(sumEgreso);
                     }
                 }
+                CalculoDeSaldo();
             }
             catch (Exception ex)
             {
@@ -254,27 +275,68 @@ namespace UI
                 egresos = respuesta.Egresos.ToList();
             }
         }
-        void FiltrarEgresosPorComite(string comite)
+        private async void FiltrarEgresosPorComite(string comite)
         {
-            ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
-            respuesta = egresoService.FiltrarEgresosPorComite(comite);
-            if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+            int sumTotal = 0;
+            bool isNotEmpty = false;
+            try
             {
-                dataGridDetalle.DataSource = null;
-                egresos = respuesta.Egresos.ToList();
-                int sumTotal = 0;
-                dataGridDetalle.DataSource = respuesta.Egresos;
-                Borrar.Visible = true;
-                textTotalComite.Text = egresoService.TotalizarTipo(comite).Cuenta.ToString();
-                for (int i = 0; i < respuesta.Egresos.Count; i++)
+                var db = FirebaseService.Database;
+                var egresos = new List<EgressData>();
+                Query egressQuery = db.Collection("EgressData");
+                QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap.Documents)
                 {
-                    sumTotal = sumTotal + respuesta.Egresos[i].Valor;
+                    EgressData egressData = docsnap.ConvertTo<EgressData>();
+                    egresos.Add(egressData);
+                    if (egresos.Count > 0)
+                    {
+                        isNotEmpty = true;
+                    }
+                }
+                if (isNotEmpty)
+                {
+                    var egressFilterData = new List<EgressData>();
+                    for (int i = 0; i < egresos.Count; i++)
+                    {
+                        if (egresos[i].Comite == comite)
+                        {
+                            egressFilterData.Add(egresos[i]);
+                            sumTotal = sumTotal + egresos[i].Valor;
+                        }
+                    }
+                    textTotalComite.Text = egressFilterData.Count.ToString();
                     textValorConcepto.Text = sumTotal.ToString();
+                    dataGridDetalle.DataSource = null;
+                    dataGridDetalle.DataSource = egressFilterData;
+                }
+                else
+                {
+                    dataGridDetalle.DataSource = null;
                 }
             }
-            else
+            catch(Exception ex)
             {
-                textTotalComite.Text = "0";
+                ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+                respuesta = egresoService.FiltrarEgresosPorComite(comite);
+                if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+                {
+                    dataGridDetalle.DataSource = null;
+                    egresos = respuesta.Egresos.ToList();
+                    sumTotal = 0;
+                    dataGridDetalle.DataSource = respuesta.Egresos;
+                    Borrar.Visible = true;
+                    textTotalComite.Text = egresoService.TotalizarTipo(comite).Cuenta.ToString();
+                    for (int i = 0; i < respuesta.Egresos.Count; i++)
+                    {
+                        sumTotal = sumTotal + respuesta.Egresos[i].Valor;
+                        textValorConcepto.Text = sumTotal.ToString();
+                    }
+                }
+                else
+                {
+                    textTotalComite.Text = "0";
+                }
             }
         }
         void FiltrarPorConcepto(string concepto)
@@ -487,7 +549,8 @@ namespace UI
             egreso.Concepto = comboConcepto.Text;
             string cantidadConSigno = textDineroIngreso.Text; // Esto contiene "$ 30000"
             string cantidadSinSigno = cantidadConSigno.Replace("$", "").Trim(); // Esto quita el signo "$"
-            int cantidadEntera = int.Parse(cantidadSinSigno); // Convierte el valor a un entero
+            string cantidadSinPuntos = cantidadSinSigno.Replace(".", "").Trim();
+            int cantidadEntera = int.Parse(cantidadSinPuntos); // Convierte el valor a un entero
             egreso.Valor = cantidadEntera;
             egreso.Detalle = textDetalle.Text;
             return egreso;

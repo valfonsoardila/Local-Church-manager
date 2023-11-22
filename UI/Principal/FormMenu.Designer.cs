@@ -108,7 +108,7 @@ namespace UI
             this.panelHeaderbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeaderbar.Location = new System.Drawing.Point(0, 0);
             this.panelHeaderbar.Name = "panelHeaderbar";
-            this.panelHeaderbar.Size = new System.Drawing.Size(1033, 27);
+            this.panelHeaderbar.Size = new System.Drawing.Size(1182, 27);
             this.panelHeaderbar.TabIndex = 2;
             this.panelHeaderbar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHeaderbar_MouseDown);
             // 
@@ -121,7 +121,7 @@ namespace UI
             this.btnWindowMaximize.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnWindowMaximize.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnWindowMaximize.IconSize = 20;
-            this.btnWindowMaximize.Location = new System.Drawing.Point(981, 4);
+            this.btnWindowMaximize.Location = new System.Drawing.Point(1130, 4);
             this.btnWindowMaximize.Name = "btnWindowMaximize";
             this.btnWindowMaximize.Size = new System.Drawing.Size(20, 20);
             this.btnWindowMaximize.TabIndex = 4;
@@ -137,7 +137,7 @@ namespace UI
             this.btnWindowRestore.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnWindowRestore.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnWindowRestore.IconSize = 20;
-            this.btnWindowRestore.Location = new System.Drawing.Point(981, 4);
+            this.btnWindowRestore.Location = new System.Drawing.Point(1130, 4);
             this.btnWindowRestore.Name = "btnWindowRestore";
             this.btnWindowRestore.Size = new System.Drawing.Size(20, 20);
             this.btnWindowRestore.TabIndex = 5;
@@ -153,7 +153,7 @@ namespace UI
             this.btnWindowCerrar.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnWindowCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnWindowCerrar.IconSize = 20;
-            this.btnWindowCerrar.Location = new System.Drawing.Point(1004, 4);
+            this.btnWindowCerrar.Location = new System.Drawing.Point(1153, 4);
             this.btnWindowCerrar.Name = "btnWindowCerrar";
             this.btnWindowCerrar.Size = new System.Drawing.Size(20, 20);
             this.btnWindowCerrar.TabIndex = 3;
@@ -169,7 +169,7 @@ namespace UI
             this.btnWindowMinimize.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnWindowMinimize.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnWindowMinimize.IconSize = 20;
-            this.btnWindowMinimize.Location = new System.Drawing.Point(958, 4);
+            this.btnWindowMinimize.Location = new System.Drawing.Point(1107, 4);
             this.btnWindowMinimize.Name = "btnWindowMinimize";
             this.btnWindowMinimize.Size = new System.Drawing.Size(20, 20);
             this.btnWindowMinimize.TabIndex = 1;
@@ -705,7 +705,7 @@ namespace UI
             this.panelContenedorInterno.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedorInterno.Location = new System.Drawing.Point(186, 52);
             this.panelContenedorInterno.Name = "panelContenedorInterno";
-            this.panelContenedorInterno.Size = new System.Drawing.Size(847, 552);
+            this.panelContenedorInterno.Size = new System.Drawing.Size(996, 552);
             this.panelContenedorInterno.TabIndex = 6;
             // 
             // panelHeader
@@ -723,14 +723,14 @@ namespace UI
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(186, 27);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(847, 25);
+            this.panelHeader.Size = new System.Drawing.Size(996, 25);
             this.panelHeader.TabIndex = 5;
             this.panelHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHeader_MouseDown);
             // 
             // textTiempoLicencia
             // 
             this.textTiempoLicencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textTiempoLicencia.Location = new System.Drawing.Point(696, 3);
+            this.textTiempoLicencia.Location = new System.Drawing.Point(845, 3);
             this.textTiempoLicencia.Name = "textTiempoLicencia";
             this.textTiempoLicencia.Size = new System.Drawing.Size(35, 20);
             this.textTiempoLicencia.TabIndex = 54;
@@ -741,7 +741,7 @@ namespace UI
             this.labelTiempoLicencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTiempoLicencia.AutoSize = true;
             this.labelTiempoLicencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTiempoLicencia.Location = new System.Drawing.Point(549, 4);
+            this.labelTiempoLicencia.Location = new System.Drawing.Point(698, 4);
             this.labelTiempoLicencia.Name = "labelTiempoLicencia";
             this.labelTiempoLicencia.Size = new System.Drawing.Size(115, 16);
             this.labelTiempoLicencia.TabIndex = 13;
@@ -755,7 +755,7 @@ namespace UI
             this.btnVerLicencia.IconColor = System.Drawing.Color.DarkGoldenrod;
             this.btnVerLicencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnVerLicencia.IconSize = 20;
-            this.btnVerLicencia.Location = new System.Drawing.Point(664, -1);
+            this.btnVerLicencia.Location = new System.Drawing.Point(813, -1);
             this.btnVerLicencia.Name = "btnVerLicencia";
             this.btnVerLicencia.Size = new System.Drawing.Size(32, 26);
             this.btnVerLicencia.TabIndex = 12;
@@ -792,7 +792,7 @@ namespace UI
             this.iconThemeSun.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.iconThemeSun.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconThemeSun.IconSize = 24;
-            this.iconThemeSun.Location = new System.Drawing.Point(819, 1);
+            this.iconThemeSun.Location = new System.Drawing.Point(968, 1);
             this.iconThemeSun.Name = "iconThemeSun";
             this.iconThemeSun.Size = new System.Drawing.Size(24, 25);
             this.iconThemeSun.TabIndex = 9;
@@ -808,7 +808,7 @@ namespace UI
             this.iconThemeMoon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(140)))), ((int)(((byte)(128)))));
             this.iconThemeMoon.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconThemeMoon.IconSize = 24;
-            this.iconThemeMoon.Location = new System.Drawing.Point(819, 0);
+            this.iconThemeMoon.Location = new System.Drawing.Point(968, 0);
             this.iconThemeMoon.Name = "iconThemeMoon";
             this.iconThemeMoon.Size = new System.Drawing.Size(24, 25);
             this.iconThemeMoon.TabIndex = 8;
@@ -819,7 +819,7 @@ namespace UI
             this.labelTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTheme.AutoSize = true;
             this.labelTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTheme.Location = new System.Drawing.Point(731, 4);
+            this.labelTheme.Location = new System.Drawing.Point(880, 4);
             this.labelTheme.Name = "labelTheme";
             this.labelTheme.Size = new System.Drawing.Size(59, 16);
             this.labelTheme.TabIndex = 6;
@@ -835,7 +835,7 @@ namespace UI
             this.btnModeLight.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.btnModeLight.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnModeLight.IconSize = 24;
-            this.btnModeLight.Location = new System.Drawing.Point(792, 1);
+            this.btnModeLight.Location = new System.Drawing.Point(941, 1);
             this.btnModeLight.Name = "btnModeLight";
             this.btnModeLight.Size = new System.Drawing.Size(24, 25);
             this.btnModeLight.TabIndex = 6;
@@ -850,7 +850,7 @@ namespace UI
             this.btnModeDark.IconColor = System.Drawing.Color.White;
             this.btnModeDark.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnModeDark.IconSize = 24;
-            this.btnModeDark.Location = new System.Drawing.Point(792, 0);
+            this.btnModeDark.Location = new System.Drawing.Point(941, 0);
             this.btnModeDark.Name = "btnModeDark";
             this.btnModeDark.Size = new System.Drawing.Size(24, 25);
             this.btnModeDark.TabIndex = 7;
@@ -860,7 +860,7 @@ namespace UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1033, 604);
+            this.ClientSize = new System.Drawing.Size(1182, 604);
             this.Controls.Add(this.panelContenedorInterno);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelSidebar);

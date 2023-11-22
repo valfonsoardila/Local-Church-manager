@@ -25,6 +25,9 @@ namespace UI
         Ingreso ingreso;
         IngresoService ingresoService;
         List<Ingreso> ingresos;
+        Egreso egreso;
+        EgresoService egresoService;
+        List<Egreso> egresos;
         IngressMaps ingressMaps;
         TabPage tabPage;
         string originalText;
@@ -33,6 +36,9 @@ namespace UI
         string comite;
         bool encontrado = false;
         bool detallo = false;
+        int sumIngreso = 0;
+        int sumEgreso = 0;
+        int saldo = 0;
         public FormIngresos()
         {
             ingresoService = new IngresoService(ConfigConnection.ConnectionString);
@@ -60,9 +66,26 @@ namespace UI
             string valorFormateado = $"${cifraFormateada}";
             return valorFormateado;
         }
+        private async void CalculoDeSaldo()
+        {
+            var db = FirebaseService.Database;
+            var egresos = new List<EgressData>();
+            Google.Cloud.Firestore.Query egressQuery = db.Collection("EgressData");
+            QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
+            foreach (DocumentSnapshot docsnap in snap.Documents)
+            {
+                EgressData egressData = docsnap.ConvertTo<EgressData>();
+                sumEgreso = sumEgreso + egressData.Valor;
+                if (sumEgreso > 0)
+                {
+                    saldo = sumIngreso - sumEgreso;
+                    textSaldo.Text = LecturaCifra(saldo);
+                }
+            }
+        }
         private async void TotalizarIngresos()
         {
-            int sumIngreso = 0;
+            sumIngreso = 0;
             try
             {
                 var db = FirebaseService.Database;
@@ -78,6 +101,7 @@ namespace UI
                         textTotalIngresos.Text = LecturaCifra(sumIngreso);
                     }
                 }
+                CalculoDeSaldo();
             }
             catch(Exception ex)
             {
@@ -261,22 +285,63 @@ namespace UI
                 ingresos = respuesta.Ingresos.ToList();
             }
         }
-        void FiltrarIngresosPorComite(string comite)
+        private async void FiltrarIngresosPorComite(string comite)
         {
-            ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
-            respuesta = ingresoService.FiltrarIngresosPorComite(comite);
-            if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
+            int sumTotal = 0;
+            bool isNotEmpty = false;
+            try
             {
-                dataGridDetalle.DataSource = null;
-                int sumTotal = 0;
-                ingresos = respuesta.Ingresos.ToList();
-                dataGridDetalle.DataSource = respuesta.Ingresos;
-                Borrar.Visible = true;
-                textTotalComite.Text = ingresoService.TotalizarTipo(comite).Cuenta.ToString();
-                for (int i = 0; i < respuesta.Ingresos.Count; i++)
+                var db = FirebaseService.Database;
+                var ingresos = new List<IngressData>();
+                Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
+                QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap.Documents)
                 {
-                    sumTotal = sumTotal + respuesta.Ingresos[i].Valor;
+                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
+                    ingresos.Add(ingressData);
+                    if (ingresos.Count > 0)
+                    {
+                        isNotEmpty = true;
+                    }
+                }
+                if (isNotEmpty)
+                {
+                    var ingressFilterData = new List<IngressData>();
+                    for (int i = 0; i < ingresos.Count; i++)
+                    {
+                        if (ingresos[i].Comite == comite)
+                        {
+                            ingressFilterData.Add(ingresos[i]);
+                            sumTotal = sumTotal + ingresos[i].Valor;
+                        }
+                    }
+                    textTotalComite.Text = ingressFilterData.Count.ToString();
                     textValorConcepto.Text = sumTotal.ToString();
+                    dataGridDetalle.DataSource = null;
+                    dataGridDetalle.DataSource = ingressFilterData;
+                }
+                else
+                {
+                    dataGridDetalle.DataSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
+                respuesta = ingresoService.FiltrarIngresosPorComite(comite);
+                if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
+                {
+                    dataGridDetalle.DataSource = null;
+                    sumTotal = 0;
+                    ingresos = respuesta.Ingresos.ToList();
+                    dataGridDetalle.DataSource = respuesta.Ingresos;
+                    Borrar.Visible = true;
+                    textTotalComite.Text = ingresoService.TotalizarTipo(comite).Cuenta.ToString();
+                    for (int i = 0; i < respuesta.Ingresos.Count; i++)
+                    {
+                        sumTotal = sumTotal + respuesta.Ingresos[i].Valor;
+                        textValorConcepto.Text = sumTotal.ToString();
+                    }
                 }
             }
         }
@@ -504,7 +569,8 @@ namespace UI
             ingreso.Concepto = comboConcepto.Text;
             string cantidadConSigno = textDineroIngreso.Text; // Esto contiene "$ 30000"
             string cantidadSinSigno = cantidadConSigno.Replace("$", "").Trim(); // Esto quita el signo "$"
-            int cantidadEntera = int.Parse(cantidadSinSigno); // Convierte el valor a un entero
+            string cantidadSinPuntos = cantidadSinSigno.Replace(".", "").Trim();
+            int cantidadEntera = int.Parse(cantidadSinPuntos); // Convierte el valor a un entero
             ingreso.Valor = cantidadEntera;
             ingreso.Detalle = textDetalle.Text;
             return ingreso;

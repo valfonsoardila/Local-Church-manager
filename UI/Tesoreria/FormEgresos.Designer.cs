@@ -49,7 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textSaldo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textTotalEgresos = new System.Windows.Forms.TextBox();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
@@ -506,7 +506,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textSaldo);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.textTotalEgresos);
             this.panel1.Controls.Add(this.btnAtras);
@@ -524,24 +524,24 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Yellow;
-            this.label16.Location = new System.Drawing.Point(231, 18);
+            this.label16.Location = new System.Drawing.Point(250, 21);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(90, 24);
+            this.label16.Size = new System.Drawing.Size(69, 24);
             this.label16.TabIndex = 17;
-            this.label16.Text = "Saldo $";
+            this.label16.Text = "Saldo";
             // 
-            // textBox1
+            // textSaldo
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Yellow;
-            this.textBox1.Location = new System.Drawing.Point(325, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(177, 28);
-            this.textBox1.TabIndex = 16;
-            this.textBox1.Text = "0";
+            this.textSaldo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textSaldo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textSaldo.ForeColor = System.Drawing.Color.Yellow;
+            this.textSaldo.Location = new System.Drawing.Point(323, 14);
+            this.textSaldo.Name = "textSaldo";
+            this.textSaldo.Size = new System.Drawing.Size(177, 35);
+            this.textSaldo.TabIndex = 16;
+            this.textSaldo.Text = "0";
             // 
             // label11
             // 
@@ -1501,6 +1501,6 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textSaldo;
     }
 }
