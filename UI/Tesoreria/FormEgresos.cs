@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,20 +62,21 @@ namespace UI
         }
         private async void CalculoDeSaldo()
         {
+            sumIngreso = 0;
             var db = FirebaseService.Database;
             var ingresos = new List<IngressData>();
             Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
             QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap.Documents)
             {
-                EgressData ingressData = docsnap.ConvertTo<EgressData>();
+                IngressData ingressData = docsnap.ConvertTo<IngressData>();
                 sumIngreso = sumIngreso + ingressData.Valor;
                 if (sumEgreso > 0)
                 {
                     saldo = sumIngreso - sumEgreso;
-                    textSaldo.Text = LecturaCifra(saldo);
                 }
             }
+            textSaldo.Text = LecturaCifra(saldo);
         }
         private async void TotalizarEgresos()
         {
@@ -155,26 +157,20 @@ namespace UI
                 tabEgresos.TabPages.RemoveAt(2);
             }
         }
-        private void CalcularComprobante()
+        private async void CalcularComprobante()
         {
-            ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
-            respuesta = egresoService.ConsultarTodos();
-            egresos = respuesta.Egresos.ToList();
-            if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+            try
             {
-                List<int> comprobantes = new List<int>();
+                var db = FirebaseService.Database;
+                var comprobantes = new List<int>();
                 string numeroComprobanteFinal = "";
-
-                for (int i = 0; i < respuesta.Egresos.Count; i++)
+                Query egressQuery = db.Collection("EgressData");
+                QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap.Documents)
                 {
-                    // Obtener el número del comprobante del egreso actual
-                    int numeroComprobanteActual = int.Parse(respuesta.Egresos[i].CodigoComprobante);
-
-                    // Agregarlo a la lista de comprobantes
-                    comprobantes.Add(numeroComprobanteActual);
+                    EgressData egressData = docsnap.ConvertTo<EgressData>();
+                    comprobantes.Add(int.Parse(egressData.CodigoComprobante));
                 }
-
-                // Verificar si hay elementos en la lista de comprobantes
                 if (comprobantes.Count > 0)
                 {
                     // Obtener el número mayor de la lista
@@ -186,11 +182,43 @@ namespace UI
                     textNumeroComprobante.Text = numeroComprobanteFinal;
                 }
             }
-            else
+            catch(Exception ex)
             {
-                var totalFolio = 1;
-                comprobante = totalFolio.ToString("0000");
-                textNumeroComprobante.Text = comprobante;
+                ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+                respuesta = egresoService.ConsultarTodos();
+                egresos = respuesta.Egresos.ToList();
+                if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+                {
+                    List<int> comprobantes = new List<int>();
+                    string numeroComprobanteFinal = "";
+
+                    for (int i = 0; i < respuesta.Egresos.Count; i++)
+                    {
+                        // Obtener el número del comprobante del egreso actual
+                        int numeroComprobanteActual = int.Parse(respuesta.Egresos[i].CodigoComprobante);
+
+                        // Agregarlo a la lista de comprobantes
+                        comprobantes.Add(numeroComprobanteActual);
+                    }
+
+                    // Verificar si hay elementos en la lista de comprobantes
+                    if (comprobantes.Count > 0)
+                    {
+                        // Obtener el número mayor de la lista
+                        int numeroMayor = comprobantes.Max();
+                        numeroMayor = numeroMayor + 1;
+                        // Asignar el número mayor a la variable final
+                        // Supongamos que tienes una variable final llamada 'numeroComprobanteFinal'
+                        numeroComprobanteFinal = numeroMayor.ToString("0000");
+                        textNumeroComprobante.Text = numeroComprobanteFinal;
+                    }
+                }
+                else
+                {
+                    var totalFolio = 1;
+                    comprobante = totalFolio.ToString("0000");
+                    textNumeroComprobante.Text = comprobante;
+                }
             }
         }
         private async void ConsultarEgresos()
@@ -238,41 +266,106 @@ namespace UI
                 }
             }
         }
-        void FiltroPorId(string id)
+        static string FormatearFecha(string fechaOriginal)
         {
-            BusquedaEgresoRespuesta respuesta = new BusquedaEgresoRespuesta();
-            respuesta = egresoService.BuscarPorIdentificacion(id);
-            var registro = respuesta.Egreso;
-            if (registro != null)
+            string fechaFormateada = "";
+            if (fechaOriginal.Contains(" p. m."))
             {
-                encontrado = true;
-                var egresos = new List<Egreso> { registro };
-                textNumeroComprobante.Text = egresos[0].CodigoComprobante;
-                dateTimeEgreso.Value = egresos[0].FechaDeEgreso;
-                comboComite.Text = egresos[0].Comite;
-                comboConcepto.Text = egresos[0].Concepto;
-                textDineroIngreso.Text = egresos[0].Valor.ToString();
-                textDetalle.Text = egresos[0].Detalle;
-            }
-        }
-        void FiltroPorComite(string comite)
-        {
-            ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
-            respuesta = egresoService.FiltrarEgresosPorComite(comite);
-            if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
-            {
-                dataGridEgresos.DataSource = null;
-                egresos = respuesta.Egresos.ToList();
-                if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
-                {
-                    dataGridEgresos.DataSource = respuesta.Egresos;
-                    Borrar.Visible = true;
-                }
+                fechaFormateada = fechaOriginal.Replace(" p. m.", "");
+                fechaFormateada = fechaFormateada + " PM";
             }
             else
             {
-                dataGridEgresos.DataSource = null;
-                egresos = respuesta.Egresos.ToList();
+                if (fechaOriginal.Contains(" a. m."))
+                {
+                    fechaFormateada = fechaOriginal.Replace(" a. m.", "");
+                    fechaFormateada = fechaFormateada + " AM";
+                }
+                else
+                {
+                    fechaFormateada = fechaOriginal;
+                }
+            }
+            return fechaFormateada;
+        }
+        private async void FiltroPorId(string id)
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                Query egressQuery = db.Collection("EgressData");
+                QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap.Documents)
+                {
+                    EgressData egressData = docsnap.ConvertTo<EgressData>();
+                    if (egressData.CodigoComprobante == id)
+                    {
+                        encontrado = true;
+                        textNumeroComprobante.Text = egressData.CodigoComprobante;
+                        dateTimeEgreso.Value = DateTime.Parse(FormatearFecha(egressData.FechaDeEgreso));
+                        comboComite.Text = egressData.Comite;
+                        comboConcepto.Text = egressData.Concepto;
+                        textDineroIngreso.Text = egressData.Valor.ToString();
+                        textDetalle.Text = egressData.Detalle;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                BusquedaEgresoRespuesta respuesta = new BusquedaEgresoRespuesta();
+                respuesta = egresoService.BuscarPorIdentificacion(id);
+                var registro = respuesta.Egreso;
+                if (registro != null)
+                {
+                    encontrado = true;
+                    var egresos = new List<Egreso> { registro };
+                    textNumeroComprobante.Text = egresos[0].CodigoComprobante;
+                    dateTimeEgreso.Value = egresos[0].FechaDeEgreso;
+                    comboComite.Text = egresos[0].Comite;
+                    comboConcepto.Text = egresos[0].Concepto;
+                    textDineroIngreso.Text = egresos[0].Valor.ToString();
+                    textDetalle.Text = egresos[0].Detalle;
+                }
+            }
+        }
+        private async void FiltroPorComite(string comite)
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var ingresosComite = new List<IngressData>();
+                Query ingressQuery = db.Collection("IngressData");
+                QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap.Documents)
+                {
+                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
+                    if (ingressData.Comite == comite)
+                    {
+                        ingresosComite.Add(ingressData);
+                    }
+                }
+                dataGridEgresos.DataSource = ingresosComite;
+                Borrar.Visible = true;
+            }
+            catch(Exception ex)
+            {
+                ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+                respuesta = egresoService.FiltrarEgresosPorComite(comite);
+                if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+                {
+                    dataGridEgresos.DataSource = null;
+                    egresos = respuesta.Egresos.ToList();
+                    if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+                    {
+                        dataGridEgresos.DataSource = respuesta.Egresos;
+                        Borrar.Visible = true;
+                    }
+                }
+                else
+                {
+                    dataGridEgresos.DataSource = null;
+                    egresos = respuesta.Egresos.ToList();
+                }
             }
         }
         private async void FiltrarEgresosPorComite(string comite)
@@ -339,32 +432,58 @@ namespace UI
                 }
             }
         }
-        void FiltrarPorConcepto(string concepto)
+        private async void FiltrarPorConcepto(string concepto)
         {
-            ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
-            respuesta = egresoService.FiltrarEgresosPorConcepto(concepto);
-            if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+            int sumTotal = 0;
+            try
             {
-                var conceptos = new List<Egreso>();
-                var sumTotal = 0;
-                dataGridDetalle.DataSource = null;
-                egresos = respuesta.Egresos.ToList();
-                for (int i = 0; i < egresos.Count; i++)
+                var db = FirebaseService.Database;
+                var egresos = new List<EgressData>();
+                Query egressQuery = db.Collection("EgressData");
+                QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap.Documents)
                 {
-                    if (egresos[i].Comite == comite)
+                    EgressData egressData = docsnap.ConvertTo<EgressData>();
+                    if (egressData.Comite == comite)
                     {
-                        conceptos.Add(egresos[i]);
-                        sumTotal = sumTotal + egresos[i].Valor;
+                        if (egressData.Concepto == concepto)
+                        {
+                            egresos.Add(egressData);
+                            sumTotal = sumTotal + egressData.Valor;
+                        }
                     }
                 }
                 textValorConcepto.Text = sumTotal.ToString();
-                dataGridDetalle.DataSource = conceptos;
+                dataGridDetalle.DataSource = egresos;
                 Borrar.Visible = true;
             }
-            else
+            catch(Exception ex)
             {
-                textValorConcepto.Text = "0";
-                dataGridDetalle.DataSource = null;
+                ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+                respuesta = egresoService.FiltrarEgresosPorConcepto(concepto);
+                if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+                {
+                    var conceptos = new List<Egreso>();
+                    sumTotal = 0;
+                    dataGridDetalle.DataSource = null;
+                    egresos = respuesta.Egresos.ToList();
+                    for (int i = 0; i < egresos.Count; i++)
+                    {
+                        if (egresos[i].Comite == comite)
+                        {
+                            conceptos.Add(egresos[i]);
+                            sumTotal = sumTotal + egresos[i].Valor;
+                        }
+                    }
+                    textValorConcepto.Text = sumTotal.ToString();
+                    dataGridDetalle.DataSource = conceptos;
+                    Borrar.Visible = true;
+                }
+                else
+                {
+                    textValorConcepto.Text = "0";
+                    dataGridDetalle.DataSource = null;
+                }
             }
         }
         private void dataGridEgresos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -581,6 +700,7 @@ namespace UI
                 // Guardamos localmente
                 MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarEgresos();
+                CalculoDeSaldo();
                 Limpiar();
                 tabEgresos.SelectedIndex = 0;
             }
@@ -642,6 +762,7 @@ namespace UI
                 docRef.SetAsync(ingress);
                 MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 ConsultarEgresos();
+                CalculoDeSaldo();
                 Limpiar();
                 tabEgresos.SelectedIndex = 0;
             }

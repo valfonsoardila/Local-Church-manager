@@ -151,7 +151,7 @@ namespace BLL
                 if (ingreso != null)
                 {
                     repositorio.Modificar(ingreso);
-                    return ($"El registro de {ingresoNuevo.CodigoComprobante} se ha modificado satisfactoriamente.");
+                    return ($"El registro de {ingreso.CodigoComprobante} se ha modificado satisfactoriamente.");
                 }
                 else
                 {

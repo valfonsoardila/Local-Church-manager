@@ -128,7 +128,7 @@ namespace UI
         }
         public string TextoPlaceHolderLeave(string textPlaceHolder, string nombreDelComponente)
         {
-            string textChanged = "";
+            string textChanged = textPlaceHolder;
             if (textPlaceHolder == "")
             {
                 if (nombreDelComponente.StartsWith("text"))

@@ -78,7 +78,7 @@ namespace DAL
             List<Miembro> miembros = new List<Miembro>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Folio, ImagenPerfil, IdContacto, Nombre, Apellido, TipoDoc, NumeroDoc, FechaDeNacimiento, Edad, Genero, Direccion, Telefono, ParentezcoPadre, ParentezcoMadre," +
+                command.CommandText = "Select Folio, ImagenPerfil, IdContacto, Nombre, Apellido, TipoDoc, NumeroDoc, FechaDeNacimiento, Edad, Genero, Oficio, Direccion, Telefono, ParentezcoPadre, ParentezcoMadre," +
                     "EstadoCivil, NumeroHijos, NombreConyugue, Bautizado, FechaDeBautizmo, LugarBautizmo, PastorOficiante, Sellado, SelladoRecuerdo, TiempoConversion, TiempoPromesa, IglesiaProcedente, " +
                     "PastorAsistente, CargosDesempeñados, Acto, FechaCorreccion, TiempoCorreccion, Membresia, LugarTraslado, Observaciones from MIEMBRO";
                 var dataReader = command.ExecuteReader();

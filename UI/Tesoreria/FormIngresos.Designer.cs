@@ -225,7 +225,9 @@
             "Aporte de liquidacion",
             "Ofrenda",
             "Voto",
+            "Ofrenda zona",
             "Actividades",
+            "Saldo del año anterior",
             "Otro"});
             this.comboConcepto.Location = new System.Drawing.Point(115, 110);
             this.comboConcepto.Name = "comboConcepto";
@@ -502,11 +504,11 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Yellow;
-            this.label16.Location = new System.Drawing.Point(332, 17);
+            this.label16.Location = new System.Drawing.Point(337, 18);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(90, 24);
+            this.label16.Size = new System.Drawing.Size(69, 24);
             this.label16.TabIndex = 19;
-            this.label16.Text = "Saldo $";
+            this.label16.Text = "Saldo";
             // 
             // textSaldo
             // 
@@ -515,9 +517,9 @@
             this.textSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textSaldo.ForeColor = System.Drawing.Color.Yellow;
-            this.textSaldo.Location = new System.Drawing.Point(426, 16);
+            this.textSaldo.Location = new System.Drawing.Point(409, 13);
             this.textSaldo.Name = "textSaldo";
-            this.textSaldo.Size = new System.Drawing.Size(117, 35);
+            this.textSaldo.Size = new System.Drawing.Size(139, 35);
             this.textSaldo.TabIndex = 18;
             this.textSaldo.Text = "0";
             // 
@@ -1235,9 +1237,12 @@
             this.comboConceptoDetalle.FormattingEnabled = true;
             this.comboConceptoDetalle.Items.AddRange(new object[] {
             "Ninguno",
+            "Aporte de liquidacion",
             "Ofrenda",
             "Voto",
+            "Ofrenda zona",
             "Actividades",
+            "Saldo del año anterior",
             "Otro"});
             this.comboConceptoDetalle.Location = new System.Drawing.Point(274, 3);
             this.comboConceptoDetalle.Name = "comboConceptoDetalle";

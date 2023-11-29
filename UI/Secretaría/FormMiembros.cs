@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using UI.Properties;
 using BLL;
 using Entity;
+using Cloud;
+using Google.Cloud.Firestore;
 
 namespace UI
 {
@@ -65,45 +67,87 @@ namespace UI
 
             return new Bitmap(originalImage, new Size(newWidth, newHeight));
         }
-        private void ConsultarYLlenarGridDeMiembros()
+        private async void ConsultarYLlenarGridDeMiembros()
         {
-            ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
-            string tipo = comboGenero.Text;
-            if (tipo == "Genero" || tipo == "Todos")
+            try
             {
-                textTotal.Enabled = true;
-                textTotalHombres.Enabled = true;
-                textTotalMujeres.Enabled = true;
-                dataGridMiembros.DataSource = null;
-                respuesta = miembroService.ConsultarTodos();
-                miembros = respuesta.Miembros.ToList();
-                if (respuesta.Miembros.Count != 0 && respuesta.Miembros != null)
+                bool isNotEmpty = false;
+                var db = FirebaseService.Database;
+                var miembros = new List<MemberData>();
+                var hombres = new List<MemberData>();
+                var mujeres = new List<MemberData>();
+                Query membersQuery = db.Collection("MemberData");
+                QuerySnapshot snap = await membersQuery.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap.Documents)
                 {
-                    dataGridMiembros.DataSource = respuesta.Miembros;
-                    Borrar.Visible = true;
-                    textTotal.Text = miembroService.Totalizar().Cuenta.ToString();
-                    textTotalHombres.Text = miembroService.TotalizarTipo("Masculino").Cuenta.ToString();
-                    textTotalMujeres.Text = miembroService.TotalizarTipo("Femenino").Cuenta.ToString();
-                    foreach (DataGridViewRow row in dataGridMiembros.Rows)
+                    MemberData membersData = docsnap.ConvertTo<MemberData>();
+                    miembros.Add(membersData);
+                    isNotEmpty = true;
+                    if (membersData.Genero == "Masculino")
                     {
-                        DataGridViewImageCell cell = row.Cells["ImagenPerfil"] as DataGridViewImageCell;
-                        if (cell != null)
+                        hombres.Add(membersData);
+                    }
+                    else
+                    {
+                        if (membersData.Genero == "Femenino")
                         {
-                            byte[] imageBytes = cell.Value as byte[];
-                            if (imageBytes != null)
+                            mujeres.Add(membersData);
+                        }
+                    }
+                }
+                if (isNotEmpty)
+                {
+                    textTotalHombres.Text = hombres.Count.ToString();
+                    textTotalMujeres.Text = mujeres.Count.ToString();
+                    dataGridMiembros.DataSource = null;
+                    dataGridMiembros.DataSource = miembros;
+                }
+                else
+                {
+                    dataGridMiembros.DataSource = null;
+                    textTotal.Text = "0";
+                }
+            }
+            catch(Exception ex)
+            {
+                ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
+                string tipo = comboGenero.Text;
+                if (tipo == "Genero" || tipo == "Todos")
+                {
+                    textTotal.Enabled = true;
+                    textTotalHombres.Enabled = true;
+                    textTotalMujeres.Enabled = true;
+                    dataGridMiembros.DataSource = null;
+                    respuesta = miembroService.ConsultarTodos();
+                    miembros = respuesta.Miembros.ToList();
+                    if (respuesta.Miembros.Count != 0 && respuesta.Miembros != null)
+                    {
+                        dataGridMiembros.DataSource = respuesta.Miembros;
+                        Borrar.Visible = true;
+                        textTotal.Text = miembroService.Totalizar().Cuenta.ToString();
+                        textTotalHombres.Text = miembroService.TotalizarTipo("Masculino").Cuenta.ToString();
+                        textTotalMujeres.Text = miembroService.TotalizarTipo("Femenino").Cuenta.ToString();
+                        foreach (DataGridViewRow row in dataGridMiembros.Rows)
+                        {
+                            DataGridViewImageCell cell = row.Cells["ImagenPerfil"] as DataGridViewImageCell;
+                            if (cell != null)
                             {
-                                // Convierte los bytes en una imagen
-                                Image originalImage;
-                                using (MemoryStream ms = new MemoryStream(imageBytes))
+                                byte[] imageBytes = cell.Value as byte[];
+                                if (imageBytes != null)
                                 {
-                                    originalImage = Image.FromStream(ms);
+                                    // Convierte los bytes en una imagen
+                                    Image originalImage;
+                                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                                    {
+                                        originalImage = Image.FromStream(ms);
+                                    }
+
+                                    // Redimensiona la imagen para que quepa en la celda
+                                    Image resizedImage = ResizeImageToFitCell(cell, originalImage);
+
+                                    // Asigna la imagen redimensionada a la celda
+                                    cell.Value = resizedImage;
                                 }
-
-                                // Redimensiona la imagen para que quepa en la celda
-                                Image resizedImage = ResizeImageToFitCell(cell, originalImage);
-
-                                // Asigna la imagen redimensionada a la celda
-                                cell.Value = resizedImage;
                             }
                         }
                     }
@@ -186,11 +230,29 @@ namespace UI
             var nombreCompleto = textNombre.Text;
             // Dividir el nombre completo en palabras usando espacio como separador
             string[] palabras = nombreCompleto.Split(' ');
-            if (palabras.Length >= 4)
+
+            if (palabras.Length >= 2)
             {
-                // Los dos primeros elementos son los nombres, los dos últimos son los apellidos
-                nombres = palabras[0] + " " + palabras[1];
-                apellidos = palabras[2] + " " + palabras[3];
+                // Al menos hay dos palabras (nombre y apellido)
+                nombres = palabras[0];
+
+                if (palabras.Length == 2)
+                {
+                    // Caso 1: Exactamente dos palabras, asignar la segunda al apellido
+                    apellidos = palabras[1];
+                }
+                else if (palabras.Length == 3)
+                {
+                    // Caso 2: Tres palabras, asignar la segunda al nombre y la tercera al apellido
+                    nombres = palabras[0];
+                    apellidos = palabras[1] + " " + palabras[2];
+                }
+                else if (palabras.Length >= 4)
+                {
+                    // Caso 3: Cuatro o más palabras, asignar las dos primeras al nombre y las dos últimas al apellido
+                    nombres = palabras[0] + " " + palabras[1];
+                    apellidos = palabras[palabras.Length - 2] + " " + palabras[palabras.Length - 1];
+                }
 
                 // Ahora tienes los nombres y apellidos en las variables 'nombres' y 'apellidos'
                 // Puedes usar estas variables como desees
@@ -199,7 +261,6 @@ namespace UI
             {
                 string mensaje = "Nombre mal digitado, por favor digite su nombre completo";
                 MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
             }
         }
         private void GenerarIdContacto()
