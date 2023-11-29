@@ -62,40 +62,43 @@ namespace UI
         }
         private async void CalculoDeSaldo()
         {
-            sumIngreso = 0;
-            var db = FirebaseService.Database;
-            var ingresos = new List<IngressData>();
-            Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
-            QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-            foreach (DocumentSnapshot docsnap in snap.Documents)
+            try
             {
-                IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                sumIngreso = sumIngreso + ingressData.Valor;
-                if (sumEgreso > 0)
-                {
-                    saldo = sumIngreso - sumEgreso;
-                }
+                sumIngreso = 0;
+                var db = FirebaseService.Database;
+                var ingresosQuery = db.Collection("IngressData");
+
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await ingresosQuery.GetSnapshotAsync();
+                sumIngreso = snapshot.Documents.Sum(doc => doc.ConvertTo<IngressData>().Valor);
+
+                // Calcular el saldo después de procesar todos los documentos
+                saldo = sumIngreso - sumEgreso;
+
+                textSaldo.Text = LecturaCifra(saldo);
             }
-            textSaldo.Text = LecturaCifra(saldo);
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al calcular el saldo: {ex.Message}");
+                // Manejar la excepción según tus necesidades
+            }
         }
         private async void TotalizarEgresos()
         {
-            sumEgreso = 0;
             try
             {
+                sumEgreso = 0;
                 var db = FirebaseService.Database;
-                var egresos = new List<EgressData>();
-                Query egressQuery = db.Collection("EgressData");
-                QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
-                {
-                    EgressData egressData = docsnap.ConvertTo<EgressData>();
-                    sumEgreso = sumEgreso + egressData.Valor;
-                    if (sumEgreso > 0)
-                    {
-                        textTotalEgresos.Text = LecturaCifra(sumEgreso);
-                    }
-                }
+                var egresosQuery = db.Collection("EgressData");
+
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await egresosQuery.GetSnapshotAsync();
+                sumEgreso = snapshot.Documents.Sum(doc => doc.ConvertTo<EgressData>().Valor);
+
+                // Actualizar el texto después de procesar todos los documentos
+                textTotalEgresos.Text = LecturaCifra(sumEgreso);
+
+                // Calcular el saldo después de totalizar los ingresos
                 CalculoDeSaldo();
             }
             catch (Exception ex)
@@ -124,16 +127,11 @@ namespace UI
                 {
                     try
                     {
-                        var db = FirebaseService.Database;
                         var egresos = new List<EgressData>();
-                        Query egressQuery = db.Collection("EgressData");
-                        QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
-                        foreach (DocumentSnapshot docsnap in snap.Documents)
-                        {
-                            EgressData egressData = docsnap.ConvertTo<EgressData>();
-                            egresos.Add(egressData);
-                            textTotalNube.Text = egresos.Count.ToString();
-                        }
+                        var db = FirebaseService.Database;
+                        var egresosQuery = db.Collection("EgressData");
+                        var snapshot = await egresosQuery.GetSnapshotAsync();
+                        textTotalNube.Text = snapshot.Documents.Count().ToString();
                         textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
                     }
                     catch(Exception ex)
@@ -162,27 +160,25 @@ namespace UI
             try
             {
                 var db = FirebaseService.Database;
-                var comprobantes = new List<int>();
                 string numeroComprobanteFinal = "";
-                Query egressQuery = db.Collection("EgressData");
-                QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
+
+                // Obtener el máximo número de comprobante directamente desde Firestore
+                var egressQuery = db.Collection("EgressData").OrderByDescending("CodigoComprobante").Limit(1);
+                var snapshot = await egressQuery.GetSnapshotAsync();
+
+                if (snapshot.Documents.Count > 0)
                 {
-                    EgressData egressData = docsnap.ConvertTo<EgressData>();
-                    comprobantes.Add(int.Parse(egressData.CodigoComprobante));
-                }
-                if (comprobantes.Count > 0)
-                {
-                    // Obtener el número mayor de la lista
-                    int numeroMayor = comprobantes.Max();
-                    numeroMayor = numeroMayor + 1;
-                    // Asignar el número mayor a la variable final
-                    // Supongamos que tienes una variable final llamada 'numeroComprobanteFinal'
+                    var egressData = snapshot.Documents[0].ConvertTo<IngressData>();
+                    int numeroMayor = int.Parse(egressData.CodigoComprobante) + 1;
                     numeroComprobanteFinal = numeroMayor.ToString("0000");
-                    textNumeroComprobante.Text = numeroComprobanteFinal;
                 }
+                else
+                {
+                    numeroComprobanteFinal = "0001";
+                }
+                textNumeroComprobante.Text = numeroComprobanteFinal;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
                 respuesta = egresoService.ConsultarTodos();
@@ -227,21 +223,13 @@ namespace UI
             TotalizarRegistros();
             try
             {
-                bool isNotEmpty = false;
                 var db = FirebaseService.Database;
+                var egresosQuery = db.Collection("EgressData");
                 var egresos = new List<EgressData>();
-                Query egressQuery = db.Collection("EgressData");
-                QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
-                {
-                    EgressData egressData = docsnap.ConvertTo<EgressData>();
-                    egresos.Add(egressData);
-                    if (egresos.Count > 0)
-                    {
-                        isNotEmpty = true;
-                    }
-                }
-                if (isNotEmpty)
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await egresosQuery.GetSnapshotAsync();
+                egresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
+                if (egresos.Count > 0)
                 {
                     dataGridEgresos.DataSource = null;
                     dataGridEgresos.DataSource = egresos;
@@ -293,21 +281,23 @@ namespace UI
             try
             {
                 var db = FirebaseService.Database;
-                Query egressQuery = db.Collection("EgressData");
-                QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
+                var egresosQuery = db.Collection("EgressData");
+                var egresos = new List<EgressData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await egresosQuery.GetSnapshotAsync();
+                egresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var egresosFiltrados = egresos.Where(egreso =>egreso.CodigoComprobante == id).ToList();
+                if (egresosFiltrados.Any())
                 {
-                    EgressData egressData = docsnap.ConvertTo<EgressData>();
-                    if (egressData.CodigoComprobante == id)
-                    {
-                        encontrado = true;
-                        textNumeroComprobante.Text = egressData.CodigoComprobante;
-                        dateTimeEgreso.Value = DateTime.Parse(FormatearFecha(egressData.FechaDeEgreso));
-                        comboComite.Text = egressData.Comite;
-                        comboConcepto.Text = egressData.Concepto;
-                        textDineroIngreso.Text = egressData.Valor.ToString();
-                        textDetalle.Text = egressData.Detalle;
-                    }
+                    var egresoFiltrado = egresosFiltrados.First(); // Obtener el primer elemento de la lista
+                    //encontrado = true;
+                    textNumeroComprobante.Text = egresoFiltrado.CodigoComprobante;
+                    dateTimeEgreso.Value = DateTime.Parse(FormatearFecha(egresoFiltrado.FechaDeEgreso));
+                    comboComite.Text = egresoFiltrado.Comite;
+                    comboConcepto.Text = egresoFiltrado.Concepto;
+                    textDineroIngreso.Text = egresoFiltrado.Valor.ToString();
+                    textDetalle.Text = egresoFiltrado.Detalle;
                 }
             }
             catch(Exception ex)
@@ -333,18 +323,14 @@ namespace UI
             try
             {
                 var db = FirebaseService.Database;
-                var ingresosComite = new List<IngressData>();
-                Query ingressQuery = db.Collection("IngressData");
-                QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
-                {
-                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                    if (ingressData.Comite == comite)
-                    {
-                        ingresosComite.Add(ingressData);
-                    }
-                }
-                dataGridEgresos.DataSource = ingresosComite;
+                var egresosQuery = db.Collection("EgressData");
+                var egresos = new List<EgressData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await egresosQuery.GetSnapshotAsync();
+                egresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var egresosComite = egresos.Where(egreso => egreso.Comite == comite).ToList();
+                dataGridEgresos.DataSource = egresosComite;
                 Borrar.Visible = true;
             }
             catch(Exception ex)
@@ -371,42 +357,20 @@ namespace UI
         private async void FiltrarEgresosPorComite(string comite)
         {
             int sumTotal = 0;
-            bool isNotEmpty = false;
             try
             {
                 var db = FirebaseService.Database;
-                var egresos = new List<EgressData>();
-                Query egressQuery = db.Collection("EgressData");
+                var egressQuery = db.Collection("EgressData").WhereEqualTo("Comite", comite);
                 QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
-                {
-                    EgressData egressData = docsnap.ConvertTo<EgressData>();
-                    egresos.Add(egressData);
-                    if (egresos.Count > 0)
-                    {
-                        isNotEmpty = true;
-                    }
-                }
-                if (isNotEmpty)
-                {
-                    var egressFilterData = new List<EgressData>();
-                    for (int i = 0; i < egresos.Count; i++)
-                    {
-                        if (egresos[i].Comite == comite)
-                        {
-                            egressFilterData.Add(egresos[i]);
-                            sumTotal = sumTotal + egresos[i].Valor;
-                        }
-                    }
-                    textTotalComite.Text = egressFilterData.Count.ToString();
-                    textValorConcepto.Text = sumTotal.ToString();
-                    dataGridDetalle.DataSource = null;
-                    dataGridDetalle.DataSource = egressFilterData;
-                }
-                else
-                {
-                    dataGridDetalle.DataSource = null;
-                }
+
+                var egressFilterData = snap.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
+                sumTotal = egressFilterData.Sum(egreso => egreso.Valor);
+
+                textTotalComite.Text = egressFilterData.Count.ToString();
+                textValorConcepto.Text = LecturaCifra(sumTotal);
+
+                dataGridDetalle.DataSource = null;
+                dataGridDetalle.DataSource = egressFilterData;
             }
             catch(Exception ex)
             {
@@ -438,22 +402,13 @@ namespace UI
             try
             {
                 var db = FirebaseService.Database;
-                var egresos = new List<EgressData>();
-                Query egressQuery = db.Collection("EgressData");
+                var egressQuery = db.Collection("EgressData").WhereEqualTo("Comite", comite).WhereEqualTo("Concepto", concepto);
                 QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
-                {
-                    EgressData egressData = docsnap.ConvertTo<EgressData>();
-                    if (egressData.Comite == comite)
-                    {
-                        if (egressData.Concepto == concepto)
-                        {
-                            egresos.Add(egressData);
-                            sumTotal = sumTotal + egressData.Valor;
-                        }
-                    }
-                }
-                textValorConcepto.Text = sumTotal.ToString();
+
+                var egresos = snap.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
+                sumTotal = egresos.Sum(egreso => egreso.Valor);
+
+                textValorConcepto.Text = LecturaCifra(sumTotal);
                 dataGridDetalle.DataSource = egresos;
                 Borrar.Visible = true;
             }

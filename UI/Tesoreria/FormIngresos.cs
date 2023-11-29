@@ -68,43 +68,46 @@ namespace UI
         }
         private async void CalculoDeSaldo()
         {
-            sumEgreso = 0;
-            var db = FirebaseService.Database;
-            var egresos = new List<EgressData>();
-            Google.Cloud.Firestore.Query egressQuery = db.Collection("EgressData");
-            QuerySnapshot snap = await egressQuery.GetSnapshotAsync();
-            foreach (DocumentSnapshot docsnap in snap.Documents)
+            try
             {
-                EgressData egressData = docsnap.ConvertTo<EgressData>();
-                sumEgreso = sumEgreso + egressData.Valor;
-                if (sumEgreso > 0)
-                {
-                    saldo = sumIngreso - sumEgreso;
-                }
+                sumEgreso = 0;
+                var db = FirebaseService.Database;
+                var egresosQuery = db.Collection("EgressData");
+
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await egresosQuery.GetSnapshotAsync();
+                sumEgreso = snapshot.Documents.Sum(doc => doc.ConvertTo<EgressData>().Valor);
+
+                // Calcular el saldo después de procesar todos los documentos
+                saldo = sumIngreso - sumEgreso;
+
+                textSaldo.Text = LecturaCifra(saldo);
             }
-            textSaldo.Text = LecturaCifra(saldo);
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al calcular el saldo: {ex.Message}");
+                // Manejar la excepción según tus necesidades
+            }
         }
         private async void TotalizarIngresos()
         {
-            sumIngreso = 0;
             try
             {
+                sumIngreso = 0;
                 var db = FirebaseService.Database;
-                var ingresos = new List<IngressData>();
-                Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
-                QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
-                {
-                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                    sumIngreso = sumIngreso + ingressData.Valor;
-                    if (sumIngreso > 0)
-                    {
-                        textTotalIngresos.Text = LecturaCifra(sumIngreso);
-                    }
-                }
+                var ingresosQuery = db.Collection("IngressData");
+
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await ingresosQuery.GetSnapshotAsync();
+                sumIngreso = snapshot.Documents.Sum(doc => doc.ConvertTo<IngressData>().Valor);
+
+                // Actualizar el texto después de procesar todos los documentos
+                textTotalIngresos.Text = LecturaCifra(sumIngreso);
+
+                // Calcular el saldo después de totalizar los ingresos
                 CalculoDeSaldo();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
                 respuesta = ingresoService.ConsultarTodos();
@@ -130,16 +133,11 @@ namespace UI
                 {
                     try
                     {
-                        var db = FirebaseService.Database;
                         var ingresos = new List<IngressData>();
-                        Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
-                        QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-                        foreach (DocumentSnapshot docsnap in snap.Documents)
-                        {
-                            IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                            ingresos.Add(ingressData);
-                            textTotalNube.Text = ingresos.Count.ToString();
-                        }
+                        var db = FirebaseService.Database;
+                        var ingresosQuery = db.Collection("IngressData");
+                        var snapshot = await ingresosQuery.GetSnapshotAsync();
+                        textTotalNube.Text=snapshot.Documents.Count().ToString();
                         textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
                     }
                     catch (Exception ex)
@@ -168,27 +166,26 @@ namespace UI
             try
             {
                 var db = FirebaseService.Database;
-                var comprobantes = new List<int>();
                 string numeroComprobanteFinal = "";
-                Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
-                QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
+
+                // Obtener el máximo número de comprobante directamente desde Firestore
+                var ingressQuery = db.Collection("IngressData").OrderByDescending("CodigoComprobante").Limit(1);
+                var snapshot = await ingressQuery.GetSnapshotAsync();
+
+                if (snapshot.Documents.Count > 0)
                 {
-                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                    comprobantes.Add(int.Parse(ingressData.CodigoComprobante));
-                }
-                if (comprobantes.Count > 0)
-                {
-                    // Obtener el número mayor de la lista
-                    int numeroMayor = comprobantes.Max();
-                    numeroMayor = numeroMayor + 1;
-                    // Asignar el número mayor a la variable final
-                    // Supongamos que tienes una variable final llamada 'numeroComprobanteFinal'
+                    var ingressData = snapshot.Documents[0].ConvertTo<IngressData>();
+                    int numeroMayor = int.Parse(ingressData.CodigoComprobante) + 1;
                     numeroComprobanteFinal = numeroMayor.ToString("0000");
-                    textNumeroComprobante.Text = numeroComprobanteFinal;
                 }
+                else
+                {
+                    numeroComprobanteFinal = "0001";
+                }
+
+                textNumeroComprobante.Text = numeroComprobanteFinal;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
                 respuesta = ingresoService.ConsultarTodos();
@@ -232,21 +229,13 @@ namespace UI
             TotalizarRegistros();
             try
             {
-                bool isNotEmpty = false;
                 var db = FirebaseService.Database;
+                var ingresosQuery = db.Collection("IngressData");
                 var ingresos = new List<IngressData>();
-                Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
-                QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-                foreach(DocumentSnapshot docsnap in snap.Documents)
-                {
-                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                    ingresos.Add(ingressData);
-                    if (ingresos.Count > 0)
-                    {
-                        isNotEmpty = true;
-                    }
-                }
-                if (isNotEmpty)
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await ingresosQuery.GetSnapshotAsync();
+                ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                if (ingresos.Count > 0)
                 {
                     dataGridIngresos.DataSource = null;
                     dataGridIngresos.DataSource = ingresos;
@@ -298,24 +287,26 @@ namespace UI
             try
             {
                 var db = FirebaseService.Database;
-                Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
-                QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
+                var ingresosQuery = db.Collection("IngressData");
+                var ingresos = new List<IngressData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await ingresosQuery.GetSnapshotAsync();
+                ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var ingresosFiltrados = ingresos.Where(ingreso => ingreso.CodigoComprobante == id).ToList();
+                if (ingresosFiltrados.Any())
                 {
-                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                    if (ingressData.CodigoComprobante == id)
-                    {
-                        encontrado = true;
-                        textNumeroComprobante.Text = ingressData.CodigoComprobante;
-                        dateFechaIngreso.Value = DateTime.Parse(FormatearFecha(ingressData.FechaDeIngreso));
-                        comboComite.Text = ingressData.Comite;
-                        comboConcepto.Text = ingressData.Concepto;
-                        textDineroIngreso.Text = ingressData.Valor.ToString();
-                        textDetalle.Text = ingressData.Detalle;
-                    }
+                    var ingresoFiltrado = ingresosFiltrados.First(); // Obtener el primer elemento de la lista
+                    //encontrado = true;
+                    textNumeroComprobante.Text = ingresoFiltrado.CodigoComprobante;
+                    dateFechaIngreso.Value = DateTime.Parse(FormatearFecha(ingresoFiltrado.FechaDeIngreso));
+                    comboComite.Text = ingresoFiltrado.Comite;
+                    comboConcepto.Text = ingresoFiltrado.Concepto;
+                    textDineroIngreso.Text = ingresoFiltrado.Valor.ToString();
+                    textDetalle.Text = ingresoFiltrado.Detalle;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 BusquedaIngresoRespuesta respuesta = new BusquedaIngresoRespuesta();
                 respuesta = ingresoService.BuscarPorIdentificacion(id);
@@ -338,17 +329,13 @@ namespace UI
             try
             {
                 var db = FirebaseService.Database;
-                var ingresosComite = new List<IngressData>();
-                Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
-                QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
-                {
-                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                    if (ingressData.Comite == comite)
-                    {
-                        ingresosComite.Add(ingressData);
-                    }
-                }
+                var ingresosQuery = db.Collection("IngressData");
+                var ingresos = new List<IngressData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await ingresosQuery.GetSnapshotAsync();
+                ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var ingresosComite = ingresos.Where(ingreso => ingreso.Comite == comite).ToList();
                 dataGridIngresos.DataSource = ingresosComite;
                 Borrar.Visible = true;
             }
@@ -376,42 +363,20 @@ namespace UI
         private async void FiltrarIngresosPorComite(string comite)
         {
             int sumTotal = 0;
-            bool isNotEmpty = false;
             try
             {
                 var db = FirebaseService.Database;
-                var ingresos = new List<IngressData>();
-                Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
+                var ingressQuery = db.Collection("IngressData").WhereEqualTo("Comite", comite);
                 QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
-                {
-                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                    ingresos.Add(ingressData);
-                    if (ingresos.Count > 0)
-                    {
-                        isNotEmpty = true;
-                    }
-                }
-                if (isNotEmpty)
-                {
-                    var ingressFilterData = new List<IngressData>();
-                    for (int i = 0; i < ingresos.Count; i++)
-                    {
-                        if (ingresos[i].Comite == comite)
-                        {
-                            ingressFilterData.Add(ingresos[i]);
-                            sumTotal = sumTotal + ingresos[i].Valor;
-                        }
-                    }
-                    textTotalComite.Text = ingressFilterData.Count.ToString();
-                    textValorConcepto.Text = LecturaCifra(sumTotal);
-                    dataGridDetalle.DataSource = null;
-                    dataGridDetalle.DataSource = ingressFilterData;
-                }
-                else
-                {
-                    dataGridDetalle.DataSource = null;
-                }
+
+                var ingressFilterData = snap.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                sumTotal = ingressFilterData.Sum(ingreso => ingreso.Valor);
+
+                textTotalComite.Text = ingressFilterData.Count.ToString();
+                textValorConcepto.Text = LecturaCifra(sumTotal);
+
+                dataGridDetalle.DataSource = null;
+                dataGridDetalle.DataSource = ingressFilterData;
             }
             catch (Exception ex)
             {
@@ -439,21 +404,12 @@ namespace UI
             try
             {
                 var db = FirebaseService.Database;
-                var ingresos = new List<IngressData>();
-                Google.Cloud.Firestore.Query ingressQuery = db.Collection("IngressData");
+                var ingressQuery = db.Collection("IngressData").WhereEqualTo("Comite", comite).WhereEqualTo("Concepto", concepto);
                 QuerySnapshot snap = await ingressQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
-                {
-                    IngressData ingressData = docsnap.ConvertTo<IngressData>();
-                    if (ingressData.Comite == comite)
-                    {
-                        if (ingressData.Concepto == concepto)
-                        {
-                            ingresos.Add(ingressData);
-                            sumTotal = sumTotal + ingressData.Valor;
-                        }
-                    }
-                }
+
+                var ingresos = snap.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                sumTotal = ingresos.Sum(ingreso => ingreso.Valor);
+
                 textValorConcepto.Text = LecturaCifra(sumTotal);
                 dataGridDetalle.DataSource = ingresos;
                 Borrar.Visible = true;

@@ -1,7 +1,4 @@
-﻿using FirebaseAdmin;
-using Newtonsoft.Json;
-using Google.Apis.Auth.OAuth2;
-using Google.Cloud.Firestore;
+﻿using Google.Cloud.Firestore;
 using System;
 using System.IO;
 
@@ -19,7 +16,6 @@ namespace UI
 
         static string filepath = "";
         public static FirestoreDb Database { get; private set; }
-
         public static void SetEnvironmentVariable()
         {
             filepath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(Path.GetRandomFileName())) + ".json";
