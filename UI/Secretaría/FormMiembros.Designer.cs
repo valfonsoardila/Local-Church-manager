@@ -38,7 +38,7 @@ namespace UI
             this.textObservaciones = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
-            this.textLugarTraslado = new System.Windows.Forms.TextBox();
+            this.textLugarDeTraslado = new System.Windows.Forms.TextBox();
             this.comboMembresia = new System.Windows.Forms.ComboBox();
             this.label35 = new System.Windows.Forms.Label();
             this.groupEstadoServicio = new System.Windows.Forms.GroupBox();
@@ -106,7 +106,7 @@ namespace UI
             this.picturePerfil = new System.Windows.Forms.PictureBox();
             this.comboTipoDocumento = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textNumeroDeId = new System.Windows.Forms.TextBox();
+            this.textNumeroDeDocumento = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dateFechaDeNacimiento = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -262,7 +262,7 @@ namespace UI
             this.groupEstadoFeligresia.Controls.Add(this.textObservaciones);
             this.groupEstadoFeligresia.Controls.Add(this.label37);
             this.groupEstadoFeligresia.Controls.Add(this.label36);
-            this.groupEstadoFeligresia.Controls.Add(this.textLugarTraslado);
+            this.groupEstadoFeligresia.Controls.Add(this.textLugarDeTraslado);
             this.groupEstadoFeligresia.Controls.Add(this.comboMembresia);
             this.groupEstadoFeligresia.Controls.Add(this.label35);
             this.groupEstadoFeligresia.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -283,7 +283,7 @@ namespace UI
             this.textObservaciones.Name = "textObservaciones";
             this.textObservaciones.Size = new System.Drawing.Size(692, 78);
             this.textObservaciones.TabIndex = 89;
-            this.textObservaciones.Text = "Escriba aqui el lugar de traslado ";
+            this.textObservaciones.Text = "Observaciones";
             this.textObservaciones.Enter += new System.EventHandler(this.textObservaciones_Enter);
             this.textObservaciones.Leave += new System.EventHandler(this.textObservaciones_Leave);
             // 
@@ -307,18 +307,18 @@ namespace UI
             this.label36.TabIndex = 87;
             this.label36.Text = "Lugar:";
             // 
-            // textLugarTraslado
+            // textLugarDeTraslado
             // 
-            this.textLugarTraslado.Enabled = false;
-            this.textLugarTraslado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textLugarTraslado.Location = new System.Drawing.Point(296, 20);
-            this.textLugarTraslado.Multiline = true;
-            this.textLugarTraslado.Name = "textLugarTraslado";
-            this.textLugarTraslado.Size = new System.Drawing.Size(405, 30);
-            this.textLugarTraslado.TabIndex = 87;
-            this.textLugarTraslado.Text = "Escriba aqui el lugar de traslado ";
-            this.textLugarTraslado.Enter += new System.EventHandler(this.textLugarTraslado_Enter);
-            this.textLugarTraslado.Leave += new System.EventHandler(this.textLugarTraslado_Leave);
+            this.textLugarDeTraslado.Enabled = false;
+            this.textLugarDeTraslado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textLugarDeTraslado.Location = new System.Drawing.Point(296, 20);
+            this.textLugarDeTraslado.Multiline = true;
+            this.textLugarDeTraslado.Name = "textLugarDeTraslado";
+            this.textLugarDeTraslado.Size = new System.Drawing.Size(405, 30);
+            this.textLugarDeTraslado.TabIndex = 87;
+            this.textLugarDeTraslado.Text = "Lugar de traslado";
+            this.textLugarDeTraslado.Enter += new System.EventHandler(this.textLugarTraslado_Enter);
+            this.textLugarDeTraslado.Leave += new System.EventHandler(this.textLugarTraslado_Leave);
             // 
             // comboMembresia
             // 
@@ -378,7 +378,7 @@ namespace UI
             this.textMotivo.Name = "textMotivo";
             this.textMotivo.Size = new System.Drawing.Size(405, 30);
             this.textMotivo.TabIndex = 86;
-            this.textMotivo.Text = "Escriba aqui el motivo ";
+            this.textMotivo.Text = "Motivo ";
             this.textMotivo.Enter += new System.EventHandler(this.textMotivo_Enter);
             this.textMotivo.Leave += new System.EventHandler(this.textMotivo_Leave);
             // 
@@ -422,6 +422,7 @@ namespace UI
             this.dateFechaDeCorreccion.Name = "dateFechaDeCorreccion";
             this.dateFechaDeCorreccion.Size = new System.Drawing.Size(246, 22);
             this.dateFechaDeCorreccion.TabIndex = 81;
+            this.dateFechaDeCorreccion.ValueChanged += new System.EventHandler(this.dateFechaDeCorreccion_ValueChanged);
             // 
             // label32
             // 
@@ -488,7 +489,7 @@ namespace UI
             this.textCargosDesempeñados.Name = "textCargosDesempeñados";
             this.textCargosDesempeñados.Size = new System.Drawing.Size(405, 59);
             this.textCargosDesempeñados.TabIndex = 85;
-            this.textCargosDesempeñados.Text = "Escriba aqui los cargos";
+            this.textCargosDesempeñados.Text = "Cargos desempeñados";
             this.textCargosDesempeñados.Enter += new System.EventHandler(this.textCargosDesempeñados_Enter);
             this.textCargosDesempeñados.Leave += new System.EventHandler(this.textCargosDesempeñados_Leave);
             // 
@@ -556,7 +557,7 @@ namespace UI
             this.textIglesiaProcedente.Name = "textIglesiaProcedente";
             this.textIglesiaProcedente.Size = new System.Drawing.Size(192, 26);
             this.textIglesiaProcedente.TabIndex = 28;
-            this.textIglesiaProcedente.Text = "Iglesia del que procede";
+            this.textIglesiaProcedente.Text = "Iglesia procedente";
             this.textIglesiaProcedente.Enter += new System.EventHandler(this.textIglesiaProcedente_Enter);
             this.textIglesiaProcedente.Leave += new System.EventHandler(this.textIglesiaProcedente_Leave);
             // 
@@ -679,6 +680,7 @@ namespace UI
             this.dateFechaEspirituSanto.Name = "dateFechaEspirituSanto";
             this.dateFechaEspirituSanto.Size = new System.Drawing.Size(216, 22);
             this.dateFechaEspirituSanto.TabIndex = 77;
+            this.dateFechaEspirituSanto.ValueChanged += new System.EventHandler(this.dateFechaEspirituSanto_ValueChanged);
             // 
             // label18
             // 
@@ -807,6 +809,7 @@ namespace UI
             this.dateFechaDeBautismo.Name = "dateFechaDeBautismo";
             this.dateFechaDeBautismo.Size = new System.Drawing.Size(238, 22);
             this.dateFechaDeBautismo.TabIndex = 49;
+            this.dateFechaDeBautismo.ValueChanged += new System.EventHandler(this.dateFechaDeBautismo_ValueChanged);
             // 
             // textLugarBautizmo
             // 
@@ -1064,7 +1067,7 @@ namespace UI
             this.panel9.Controls.Add(this.picturePerfil);
             this.panel9.Controls.Add(this.comboTipoDocumento);
             this.panel9.Controls.Add(this.label7);
-            this.panel9.Controls.Add(this.textNumeroDeId);
+            this.panel9.Controls.Add(this.textNumeroDeDocumento);
             this.panel9.Controls.Add(this.label6);
             this.panel9.Controls.Add(this.dateFechaDeNacimiento);
             this.panel9.Controls.Add(this.label5);
@@ -1301,17 +1304,17 @@ namespace UI
             this.label7.TabIndex = 30;
             this.label7.Text = "Tipo de documento:";
             // 
-            // textNumeroDeId
+            // textNumeroDeDocumento
             // 
-            this.textNumeroDeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textNumeroDeId.Location = new System.Drawing.Point(363, 37);
-            this.textNumeroDeId.Multiline = true;
-            this.textNumeroDeId.Name = "textNumeroDeId";
-            this.textNumeroDeId.Size = new System.Drawing.Size(158, 26);
-            this.textNumeroDeId.TabIndex = 29;
-            this.textNumeroDeId.Text = "Numero de documento";
-            this.textNumeroDeId.Enter += new System.EventHandler(this.textNumeroDeId_Enter);
-            this.textNumeroDeId.Leave += new System.EventHandler(this.textNumeroDeId_Leave);
+            this.textNumeroDeDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNumeroDeDocumento.Location = new System.Drawing.Point(363, 37);
+            this.textNumeroDeDocumento.Multiline = true;
+            this.textNumeroDeDocumento.Name = "textNumeroDeDocumento";
+            this.textNumeroDeDocumento.Size = new System.Drawing.Size(158, 26);
+            this.textNumeroDeDocumento.TabIndex = 29;
+            this.textNumeroDeDocumento.Text = "Numero de documento";
+            this.textNumeroDeDocumento.Enter += new System.EventHandler(this.textNumeroDeId_Enter);
+            this.textNumeroDeDocumento.Leave += new System.EventHandler(this.textNumeroDeId_Leave);
             // 
             // label6
             // 
@@ -2054,7 +2057,7 @@ namespace UI
         private System.Windows.Forms.PictureBox picturePerfil;
         private System.Windows.Forms.ComboBox comboTipoDocumento;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textNumeroDeId;
+        private System.Windows.Forms.TextBox textNumeroDeDocumento;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateFechaDeNacimiento;
         private System.Windows.Forms.Label label5;
@@ -2111,7 +2114,7 @@ namespace UI
         private System.Windows.Forms.ComboBox comboMembresia;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textLugarTraslado;
+        private System.Windows.Forms.TextBox textLugarDeTraslado;
         private System.Windows.Forms.TextBox textObservaciones;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox textNumeroDeHijos;

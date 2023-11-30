@@ -182,7 +182,6 @@ namespace UI
                 {
                     numeroComprobanteFinal = "0001";
                 }
-
                 textNumeroComprobante.Text = numeroComprobanteFinal;
             }
             catch (Exception ex)

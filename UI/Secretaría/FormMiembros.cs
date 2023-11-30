@@ -14,6 +14,8 @@ using BLL;
 using Entity;
 using Cloud;
 using Google.Cloud.Firestore;
+using Microsoft.Win32;
+using System.Globalization;
 
 namespace UI
 {
@@ -71,36 +73,20 @@ namespace UI
         {
             try
             {
-                bool isNotEmpty = false;
                 var db = FirebaseService.Database;
                 var miembros = new List<MemberData>();
-                var hombres = new List<MemberData>();
-                var mujeres = new List<MemberData>();
-                Query membersQuery = db.Collection("MemberData");
+                Query membersQuery = db.Collection("MembersData");
                 QuerySnapshot snap = await membersQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
-                {
-                    MemberData membersData = docsnap.ConvertTo<MemberData>();
-                    miembros.Add(membersData);
-                    isNotEmpty = true;
-                    if (membersData.Genero == "Masculino")
-                    {
-                        hombres.Add(membersData);
-                    }
-                    else
-                    {
-                        if (membersData.Genero == "Femenino")
-                        {
-                            mujeres.Add(membersData);
-                        }
-                    }
-                }
-                if (isNotEmpty)
+
+                var hombres = snap.Documents.Where(docsnap => docsnap.ConvertTo<MemberData>().Genero == "Masculino").Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+                var mujeres = snap.Documents.Where(docsnap => docsnap.ConvertTo<MemberData>().Genero == "Femenino").Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+
+                if (snap.Documents.Count > 0)
                 {
                     textTotalHombres.Text = hombres.Count.ToString();
                     textTotalMujeres.Text = mujeres.Count.ToString();
                     dataGridMiembros.DataSource = null;
-                    dataGridMiembros.DataSource = miembros;
+                    dataGridMiembros.DataSource = snap.Documents.Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
                 }
                 else
                 {
@@ -158,7 +144,7 @@ namespace UI
         {
             textNombre.Text = "Nombre";
             comboTipoDocumento.Text = "CC";
-            textNumeroDeId.Text = "# de documento";
+            textNumeroDeDocumento.Text = "# de documento";
             dateFechaDeNacimiento.Value = DateTime.Now;
             textDireccion.Text = "Direccion";
             textTelefono.Text = "Telefono";
@@ -194,7 +180,7 @@ namespace UI
             dateFechaDeCorreccion.Value = DateTime.Now;
             textTiempoCorreccion.Text = "0";
             comboMembresia.Text = "Membresía";
-            textLugarTraslado.Text = "Lugar de traslado";
+            textLugarDeTraslado.Text = "Lugar de traslado";
             textObservaciones.Text = "Observaciones";
         }
         private void btnAtras_Click(object sender, EventArgs e)
@@ -206,23 +192,47 @@ namespace UI
         {
             tabMiembros.SelectedIndex = 1;
         }
-        private void CalcularFolio()
+        private async void CalcularFolio()
         {
-            ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
-            respuesta = miembroService.ConsultarTodos();
-            miembros = respuesta.Miembros.ToList();
-            if (respuesta.Miembros.Count != 0 && respuesta.Miembros != null)
+            try
             {
-                textTotal.Text = miembroService.Totalizar().Cuenta.ToString();
-                var totalFolio = Convert.ToInt32(textTotal.Text);
-                folio = (totalFolio + 1).ToString("0000");
-                labelNumeroFolio.Text = folio;
+                var db = FirebaseService.Database;
+                string numeroFolio = "";
+
+                // Obtener el máximo número de comprobante directamente desde Firestore
+                var memberQuery = db.Collection("MembersData").OrderByDescending("Folio").Limit(1);
+                var snapshot = await memberQuery.GetSnapshotAsync();
+
+                if (snapshot.Documents.Count > 0)
+                {
+                    var memberData = snapshot.Documents[0].ConvertTo<MemberData>();
+                    int numeroMayor = int.Parse(memberData.Folio) + 1;
+                    numeroFolio = numeroMayor.ToString("0000");
+                }
+                else
+                {
+                    numeroFolio = "0001";
+                    labelNumeroFolio.Text = numeroFolio;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                var totalFolio = 1;
-                folio = totalFolio.ToString("0000");
-                labelNumeroFolio.Text = folio;
+                ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
+                respuesta = miembroService.ConsultarTodos();
+                miembros = respuesta.Miembros.ToList();
+                if (respuesta.Miembros.Count != 0 && respuesta.Miembros != null)
+                {
+                    textTotal.Text = miembroService.Totalizar().Cuenta.ToString();
+                    var totalFolio = Convert.ToInt32(textTotal.Text);
+                    folio = (totalFolio + 1).ToString("0000");
+                    labelNumeroFolio.Text = folio;
+                }
+                else
+                {
+                    var totalFolio = 1;
+                    folio = totalFolio.ToString("0000");
+                    labelNumeroFolio.Text = folio;
+                }
             }
         }
         private void ExtraerNombreYApellido()
@@ -269,57 +279,119 @@ namespace UI
             contacto.GenerarId();
             idContacto = contacto.IdContacto;
         }
-        void FiltroPorIdentificacion(string filtro)
+        private async void FiltroPorIdentificacion(string filtro)
         {
-            BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
-            respuesta = miembroService.BuscarPorIdentificacion(filtro);
-            var registro = respuesta.Miembro;
-            if (registro != null)
+            try
             {
-                encontrado = true;
-                idContacto = registro.IdContacto;
-                labelNumeroFolio.Text = registro.Folio;
-                textNombre.Text = registro.Nombre + " " + registro.Apellido;
-                comboTipoDocumento.Text = registro.TipoDoc;
-                textNumeroDeId.Text = registro.NumeroDoc;
-                dateFechaDeNacimiento.Value = registro.FechaNacimiento;
-                miembro.Oficio = comboOficio.Text;
-                comboGenero.Text = registro.Genero;
-                textDireccion.Text = registro.Direccion;
-                textTelefono.Text =registro.Telefono;
-                imagenPerfil = registro.ImagenPerfil;
-                using (MemoryStream ss = new MemoryStream(registro.ImagenPerfil))
+                var db = FirebaseService.Database;
+                var membersQuery = db.Collection("MembersData");
+                var members = new List<MemberData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await membersQuery.GetSnapshotAsync();
+                members = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var membersFiltrados = members.Where(ingreso => ingreso.Folio == filtro).ToList();
+                if (membersFiltrados.Any())
                 {
-                    // Carga la imagen desde el MemoryStream
-                    Image imagen = Image.FromStream(ss);
-                    // Asigna la imagen al control PictureBox
-                    picturePerfil.Image = imagen;
-                    imagenPicture = ss.ToArray();
+                    var ingresoFiltrado = membersFiltrados.First(); // Obtener el primer elemento de la lista
+                    encontrado = true;
+                    idContacto = ingresoFiltrado.IdContacto;
+                    labelNumeroFolio.Text = ingresoFiltrado.Folio;
+                    textNombre.Text = ingresoFiltrado.Nombre + " " + ingresoFiltrado.Apellido;
+                    comboTipoDocumento.Text = ingresoFiltrado.TipoDoc;
+                    textNumeroDeDocumento.Text = ingresoFiltrado.NumeroDoc;
+                    string formatoFecha = "d/M/yyyy h:mm:ss:tt";
+                    dateFechaDeNacimiento.Value = DateTime.ParseExact(ingresoFiltrado.FechaNacimiento, formatoFecha, CultureInfo.InvariantCulture);
+                    comboOficio.Text= ingresoFiltrado.Oficio;
+                    comboGeneroRegistrar.Text = ingresoFiltrado.Genero;
+                    textDireccion.Text = ingresoFiltrado.Direccion;
+                    textTelefono.Text = ingresoFiltrado.Telefono;
+                    imagenPerfil = ingresoFiltrado.ImagenPerfil;
+                    using (MemoryStream ss = new MemoryStream(ingresoFiltrado.ImagenPerfil))
+                    {
+                        // Carga la imagen desde el MemoryStream
+                        Image imagen = Image.FromStream(ss);
+                        // Asigna la imagen al control PictureBox
+                        picturePerfil.Image = imagen;
+                        imagenPicture = ss.ToArray();
+                    }
+                    textNombreDelPadre.Text = ingresoFiltrado.ParentezcoPadre;
+                    textNombreDeLaMadre.Text = ingresoFiltrado.ParentezcoMadre;
+                    comboEstadoCivil.Text = ingresoFiltrado.EstadoCivil;
+                    textNumeroDeHijos.Text = ingresoFiltrado.NumeroHijos.ToString(); // Agregar número de hijos
+                    textNombreDelConyugue.Text = ingresoFiltrado.NombreConyugue; // Agregar nombre del cónyuge
+                    comboBautizado.Text = ingresoFiltrado.Bautizado; // Agregar campo de bautizado
+                    dateFechaDeBautismo.Value = DateTime.ParseExact(ingresoFiltrado.FechaDeBautizmo, formatoFecha, CultureInfo.InvariantCulture);
+                    textLugarBautizmo.Text = ingresoFiltrado.LugarBautizmo; // Agregar lugar de bautismo
+                    comboPastorOficiante.Text = ingresoFiltrado.PastorOficiante; // Agregar pastor oficiante en el bautismo
+                    comboSellado.Text = ingresoFiltrado.Sellado; // Agregar campo de sellado
+                    comboRecuerda.Text = ingresoFiltrado.SelladoRecuerdo; // Agregar sellado recuerdo
+                    dateFechaEspirituSanto.Value = DateTime.ParseExact(ingresoFiltrado.FechaPromesa, formatoFecha, CultureInfo.InvariantCulture); // Agregar fecha de promesa
+                    textTiempoDeConversion.Text = ingresoFiltrado.TiempoConversion.ToString(); // Agregar tiempo de conversión
+                    textTiempoPromesa.Text = ingresoFiltrado.TiempoPromesa.ToString(); // Agregar tiempo de promesa
+                    textIglesiaProcedente.Text = ingresoFiltrado.IglesiaProcedente; // Agregar iglesia de procedencia
+                    comboPastorAsistente.Text = ingresoFiltrado.PastorAsistente; // Agregar pastor asistente
+                    textCargosDesempeñados.Text = ingresoFiltrado.CargosDesempenados; // Agregar cargos desempeñados
+                    comboActoParaServir.Text = ingresoFiltrado.Acto; // Agregar acto
+                    dateFechaDeCorreccion.Value = DateTime.ParseExact(ingresoFiltrado.FechaCorreccion, formatoFecha, CultureInfo.InvariantCulture); // Agregar fecha de corrección
+                    textTiempoCorreccion.Text = ingresoFiltrado.TiempoCorreccion.ToString(); // Agregar tiempo de corrección
+                    comboMembresia.Text = ingresoFiltrado.Membresia; // Agregar membresía
+                    textLugarDeTraslado.Text = ingresoFiltrado.LugarTraslado; // Agregar lugar de traslado
+                    textObservaciones.Text = ingresoFiltrado.Observaciones; // Agregar observaciones
+                    tabMiembros.SelectedIndex = 1;
                 }
-                textNombreDelPadre.Text = registro.ParentezcoPadre;
-                textNombreDeLaMadre.Text = registro.ParentezcoMadre;
-                comboEstadoCivil.Text = registro.EstadoCivil;
-                textNumeroDeHijos.Text= registro.NumeroHijos.ToString(); // Agregar número de hijos
-                textNombreDelConyugue.Text = registro.NombreConyugue; // Agregar nombre del cónyuge
-                comboBautizado.Text = registro.Bautizado; // Agregar campo de bautizado
-                dateFechaDeBautismo.Value = registro.FechaDeBautizmo;
-                textLugarBautizmo.Text = registro.LugarBautizmo; // Agregar lugar de bautismo
-                comboPastorOficiante.Text = registro.PastorOficiante; // Agregar pastor oficiante en el bautismo
-                comboSellado.Text= registro.Sellado; // Agregar campo de sellado
-                comboRecuerda.Text = registro.SelladoRecuerdo; // Agregar sellado recuerdo
-                dateFechaEspirituSanto.Value = registro.FechaPromesa; // Agregar fecha de promesa
-                textTiempoDeConversion.Text=registro.TiempoConversion.ToString(); // Agregar tiempo de conversión
-                textTiempoPromesa.Text = registro.TiempoPromesa.ToString(); // Agregar tiempo de promesa
-                textIglesiaProcedente.Text= registro.IglesiaProcedente; // Agregar iglesia de procedencia
-                comboPastorAsistente.Text=registro.PastorAsistente; // Agregar pastor asistente
-                textCargosDesempeñados.Text = registro.CargosDesempenados; // Agregar cargos desempeñados
-                comboActoParaServir.Text = registro.Acto; // Agregar acto
-                dateFechaDeCorreccion.Value = registro.FechaCorreccion; // Agregar fecha de corrección
-                textTiempoCorreccion.Text = registro.TiempoCorreccion.ToString(); // Agregar tiempo de corrección
-                comboMembresia.Text = registro.Membresia; // Agregar membresía
-                textLugarTraslado.Text = registro.LugarTraslado; // Agregar lugar de traslado
-                textObservaciones.Text = registro.Observaciones; // Agregar observaciones
-
+            }
+            catch(Exception ex)
+            {
+                BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
+                respuesta = miembroService.BuscarPorIdentificacion(filtro);
+                var registro = respuesta.Miembro;
+                if (registro != null)
+                {
+                    encontrado = true;
+                    idContacto = registro.IdContacto;
+                    labelNumeroFolio.Text = registro.Folio;
+                    textNombre.Text = registro.Nombre + " " + registro.Apellido;
+                    comboTipoDocumento.Text = registro.TipoDoc;
+                    textNumeroDeDocumento.Text = registro.NumeroDoc;
+                    dateFechaDeNacimiento.Value = registro.FechaNacimiento;
+                    miembro.Oficio = comboOficio.Text;
+                    comboGenero.Text = registro.Genero;
+                    textDireccion.Text = registro.Direccion;
+                    textTelefono.Text = registro.Telefono;
+                    imagenPerfil = registro.ImagenPerfil;
+                    using (MemoryStream ss = new MemoryStream(registro.ImagenPerfil))
+                    {
+                        // Carga la imagen desde el MemoryStream
+                        Image imagen = Image.FromStream(ss);
+                        // Asigna la imagen al control PictureBox
+                        picturePerfil.Image = imagen;
+                        imagenPicture = ss.ToArray();
+                    }
+                    textNombreDelPadre.Text = registro.ParentezcoPadre;
+                    textNombreDeLaMadre.Text = registro.ParentezcoMadre;
+                    comboEstadoCivil.Text = registro.EstadoCivil;
+                    textNumeroDeHijos.Text = registro.NumeroHijos.ToString(); // Agregar número de hijos
+                    textNombreDelConyugue.Text = registro.NombreConyugue; // Agregar nombre del cónyuge
+                    comboBautizado.Text = registro.Bautizado; // Agregar campo de bautizado
+                    dateFechaDeBautismo.Value = registro.FechaDeBautizmo;
+                    textLugarBautizmo.Text = registro.LugarBautizmo; // Agregar lugar de bautismo
+                    comboPastorOficiante.Text = registro.PastorOficiante; // Agregar pastor oficiante en el bautismo
+                    comboSellado.Text = registro.Sellado; // Agregar campo de sellado
+                    comboRecuerda.Text = registro.SelladoRecuerdo; // Agregar sellado recuerdo
+                    dateFechaEspirituSanto.Value = registro.FechaPromesa; // Agregar fecha de promesa
+                    textTiempoDeConversion.Text = registro.TiempoConversion.ToString(); // Agregar tiempo de conversión
+                    textTiempoPromesa.Text = registro.TiempoPromesa.ToString(); // Agregar tiempo de promesa
+                    textIglesiaProcedente.Text = registro.IglesiaProcedente; // Agregar iglesia de procedencia
+                    comboPastorAsistente.Text = registro.PastorAsistente; // Agregar pastor asistente
+                    textCargosDesempeñados.Text = registro.CargosDesempenados; // Agregar cargos desempeñados
+                    comboActoParaServir.Text = registro.Acto; // Agregar acto
+                    dateFechaDeCorreccion.Value = registro.FechaCorreccion; // Agregar fecha de corrección
+                    textTiempoCorreccion.Text = registro.TiempoCorreccion.ToString(); // Agregar tiempo de corrección
+                    comboMembresia.Text = registro.Membresia; // Agregar membresía
+                    textLugarDeTraslado.Text = registro.LugarTraslado; // Agregar lugar de traslado
+                    textObservaciones.Text = registro.Observaciones; // Agregar observaciones
+                }
             }
         }
         void FiltroPorApellido(string filtro)
@@ -361,7 +433,7 @@ namespace UI
             miembro.Nombre = nombres;
             miembro.Apellido = apellidos;
             miembro.TipoDoc = comboTipoDocumento.Text;
-            miembro.NumeroDoc = textNumeroDeId.Text;
+            miembro.NumeroDoc = textNumeroDeDocumento.Text;
             miembro.FechaNacimiento = dateFechaDeNacimiento.Value;
             miembro.Genero = comboGeneroRegistrar.Text;
             miembro.Oficio=comboOficio.Text;
@@ -413,7 +485,7 @@ namespace UI
             miembro.FechaCorreccion = dateFechaDeCorreccion.Value; // Agregar fecha de corrección
             miembro.TiempoCorreccion = Convert.ToInt32(textTiempoCorreccion.Text); // Agregar tiempo de corrección
             miembro.Membresia = comboMembresia.Text; // Agregar membresía
-            miembro.LugarTraslado = textLugarTraslado.Text; // Agregar lugar de traslado
+            miembro.LugarTraslado = textLugarDeTraslado.Text; // Agregar lugar de traslado
             miembro.Observaciones = textObservaciones.Text; // Agregar observaciones
 
             return miembro;
@@ -458,7 +530,6 @@ namespace UI
                 }
             }
         }
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
             ExtraerNombreYApellido();
@@ -495,10 +566,9 @@ namespace UI
                 }
             }
         }
-
         private void btnCargarFoto_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ventanaCargar = new OpenFileDialog();
+            System.Windows.Forms.OpenFileDialog ventanaCargar = new System.Windows.Forms.OpenFileDialog();
             DialogResult dr = ventanaCargar.ShowDialog();
             if (dr == DialogResult.OK)
             {
@@ -528,20 +598,6 @@ namespace UI
             textTiempoDeConversion.Text = miembro.TiempoConversion.ToString();
 
         }
-        private void dateFechaDeBautismo_ValueChanged(object sender, EventArgs e)
-        {
-            CalculosPorFecha();
-        }
-
-        private void dateFechaMembresia_ValueChanged(object sender, EventArgs e)
-        {
-            CalculosPorFecha();
-        }
-        private void dateFechaDisciplina_ValueChanged(object sender, EventArgs e)
-        {
-            CalculosPorFecha();
-        }
-
         private void textTelefono_TextChanged(object sender, EventArgs e)
         {
             if (textTelefono.Text != "")
@@ -584,10 +640,6 @@ namespace UI
                     {
                         id = Convert.ToString(dataGridMiembros.CurrentRow.Cells["Folio"].Value.ToString());
                         FiltroPorIdentificacion(id);
-                        if (encontrado == true)
-                        {
-                            tabMiembros.SelectedIndex = 1;
-                        }
                     }
                 }
             }
@@ -747,7 +799,8 @@ namespace UI
         private void textNombre_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNombre.Text;
-            textNombre.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textNombre.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNombre_Leave(object sender, EventArgs e)
@@ -759,21 +812,23 @@ namespace UI
 
         private void textNumeroDeId_Enter(object sender, EventArgs e)
         {
-            string placeHolder = textNombre.Text;
-            textNumeroDeId.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string placeHolder = textNumeroDeDocumento.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textNumeroDeDocumento.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNumeroDeId_Leave(object sender, EventArgs e)
         {
-            string placeHolder = textNumeroDeId.Text;
+            string placeHolder = textNumeroDeDocumento.Text;
             string nombreDelComponente = ((Control)sender).Name;
-            textNumeroDeId.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+            textNumeroDeDocumento.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void comboTipoDocumento_Enter(object sender, EventArgs e)
         {
             string placeHolder = comboTipoDocumento.Text;
-            comboTipoDocumento.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            comboTipoDocumento.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void comboTipoDocumento_Leave(object sender, EventArgs e)
@@ -786,7 +841,8 @@ namespace UI
         private void comboGeneroRegistrar_Enter(object sender, EventArgs e)
         {
             string placeHolder = comboGeneroRegistrar.Text;
-            comboGeneroRegistrar.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            comboGeneroRegistrar.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void comboGeneroRegistrar_Leave(object sender, EventArgs e)
@@ -799,7 +855,8 @@ namespace UI
         private void comboOficio_Enter(object sender, EventArgs e)
         {
             string placeHolder = comboOficio.Text;
-            comboOficio.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            comboOficio.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void comboOficio_Leave(object sender, EventArgs e)
@@ -812,7 +869,8 @@ namespace UI
         private void textDireccion_Enter(object sender, EventArgs e)
         {
             string placeHolder = textDireccion.Text;
-            textDireccion.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textDireccion.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textDireccion_Leave(object sender, EventArgs e)
@@ -825,7 +883,8 @@ namespace UI
         private void textTelefono_Enter(object sender, EventArgs e)
         {
             string placeHolder = textTelefono.Text;
-            textTelefono.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textTelefono.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textTelefono_Leave(object sender, EventArgs e)
@@ -838,7 +897,8 @@ namespace UI
         private void textNombreDelPadre_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNombreDelPadre.Text;
-            textNombreDelPadre.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textNombreDelPadre.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNombreDelPadre_Leave(object sender, EventArgs e)
@@ -851,7 +911,8 @@ namespace UI
         private void textNombreDeLaMadre_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNombreDeLaMadre.Text;
-            textNombreDeLaMadre.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textNombreDeLaMadre.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNombreDeLaMadre_Leave(object sender, EventArgs e)
@@ -863,7 +924,8 @@ namespace UI
         private void textNumeroDeHijos_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNumeroDeHijos.Text;
-            textNumeroDeHijos.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textNumeroDeHijos.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNumeroDeHijos_Leave(object sender, EventArgs e)
@@ -876,7 +938,8 @@ namespace UI
         private void textNombreDelConyugue_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNombreDelConyugue.Text;
-            textNombreDelConyugue.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textNombreDelConyugue.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNombreDelConyugue_Leave(object sender, EventArgs e)
@@ -889,7 +952,8 @@ namespace UI
         private void textLugarBautizmo_Enter(object sender, EventArgs e)
         {
             string placeHolder = textLugarBautizmo.Text;
-            textLugarBautizmo.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textLugarBautizmo.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textLugarBautizmo_Leave(object sender, EventArgs e)
@@ -902,7 +966,8 @@ namespace UI
         private void textIglesiaProcedente_Enter(object sender, EventArgs e)
         {
             string placeHolder = textIglesiaProcedente.Text;
-            textIglesiaProcedente.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textIglesiaProcedente.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textIglesiaProcedente_Leave(object sender, EventArgs e)
@@ -915,7 +980,8 @@ namespace UI
         private void textCargosDesempeñados_Enter(object sender, EventArgs e)
         {
             string placeHolder = textCargosDesempeñados.Text;
-            textCargosDesempeñados.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textCargosDesempeñados.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textCargosDesempeñados_Leave(object sender, EventArgs e)
@@ -928,7 +994,8 @@ namespace UI
         private void textMotivo_Enter(object sender, EventArgs e)
         {
             string placeHolder = textMotivo.Text;
-            textMotivo.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textMotivo.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textMotivo_Leave(object sender, EventArgs e)
@@ -940,21 +1007,23 @@ namespace UI
 
         private void textLugarTraslado_Enter(object sender, EventArgs e)
         {
-            string placeHolder = textLugarTraslado.Text;
-            textLugarTraslado.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string placeHolder = textLugarDeTraslado.Text;
+            string nombreDelComponente = ((Control)sender).Name;
+            textLugarDeTraslado.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textLugarTraslado_Leave(object sender, EventArgs e)
         {
-            string placeHolder = textLugarTraslado.Text;
+            string placeHolder = textLugarDeTraslado.Text;
             string nombreDelComponente = ((Control)sender).Name;
-            textLugarTraslado.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+            textLugarDeTraslado.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textObservaciones_Enter(object sender, EventArgs e)
         {
             string placeHolder = textObservaciones.Text;
-            textObservaciones.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            textObservaciones.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textObservaciones_Leave(object sender, EventArgs e)
@@ -967,7 +1036,8 @@ namespace UI
         private void comboEstadoCivil_Enter(object sender, EventArgs e)
         {
             string placeHolder = comboEstadoCivil.Text;
-            comboEstadoCivil.Text = validaciones.TextoPlaceHolderEnter(placeHolder);
+            string nombreDelComponente = ((Control)sender).Name;
+            comboEstadoCivil.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void comboEstadoCivil_Leave(object sender, EventArgs e)
@@ -1017,8 +1087,23 @@ namespace UI
         {
             string item = comboMembresia.Text;
             string nombreDelComponente = ((Control)sender).Name;
-            textLugarTraslado.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+            textLugarDeTraslado.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
             textObservaciones.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
+        }
+
+        private void dateFechaDeBautismo_ValueChanged(object sender, EventArgs e)
+        {
+            CalculosPorFecha();
+        }
+
+        private void dateFechaEspirituSanto_ValueChanged(object sender, EventArgs e)
+        {
+            CalculosPorFecha();
+        }
+
+        private void dateFechaDeCorreccion_ValueChanged(object sender, EventArgs e)
+        {
+            CalculosPorFecha();
         }
     }
 }

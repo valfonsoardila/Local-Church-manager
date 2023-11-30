@@ -16,6 +16,8 @@ using System.Threading;
 using Cloud;
 using FirebaseAdmin.Messaging;
 using Google.Cloud.Firestore;
+using DocumentFormat.OpenXml.Office2010.Excel;
+using Color = System.Drawing.Color;
 
 namespace UI
 {
@@ -220,30 +222,26 @@ namespace UI
             //Consulta en la nube
             try
             {
-                string idUser = "";
                 var db = FirebaseService.Database;
+                var usersQuery = db.Collection("UserData");
                 var users = new List<UserData>();
-                Google.Cloud.Firestore.Query userQuery = db.Collection("UserData");
-                QuerySnapshot snap = await userQuery.GetSnapshotAsync();
-                foreach (DocumentSnapshot docsnap in snap.Documents)
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await usersQuery.GetSnapshotAsync();
+                users = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<UserData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var usarioFiltrado = users.Where(user => user.UserName == nombreDeUsuario).ToList();
+                if (usarioFiltrado.Count > 0)
                 {
-                    UserData userData = docsnap.ConvertTo<UserData>();
-                    if(userData.UserName == nombreDeUsuario)
+                    if (FirebaseSecurity.Decrypt(usarioFiltrado[0].Password) == contraseña)
                     {
-                        idUser = userData.ID;
-                        if (FirebaseSecurity.Decrypt(userData.Password)== contraseña)
-                        {
-                            UsuarioValido = true;
-                        }
+                        UsuarioValido = true;
+
+                        FormMenu mainMenu = new FormMenu();
+                        mainMenu.idUsuario = usarioFiltrado[0].ID;
+                        mainMenu.ValidarUsuario();
+                        mainMenu.Show();
+                        this.Hide();
                     }
-                }
-                if (UsuarioValido == true)
-                {
-                    FormMenu mainMenu = new FormMenu();
-                    mainMenu.idUsuario = idUser;
-                    mainMenu.ValidarUsuario();
-                    mainMenu.Show();
-                    this.Hide();
                 }
                 else
                 {

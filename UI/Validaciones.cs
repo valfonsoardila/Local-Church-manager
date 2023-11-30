@@ -117,12 +117,52 @@ namespace UI
             }
             return estado;
         }
-        public string TextoPlaceHolderEnter(string textPlaceHolder)
+        public string TextoPlaceHolderEnter(string textPlaceHolder, string nombreDelComponente)
         {
-            string textChanged="";
+            string textChanged = "";
             if (textPlaceHolder != "")
             {
-                textChanged = "";
+                if (nombreDelComponente.StartsWith("text"))
+                {
+                    // Elimina "text" del inicio para obtener el nombre deseado
+                    nombreDelComponente = nombreDelComponente.Substring(4);
+                    string[] palabras = Regex.Split(nombreDelComponente, @"(?<!^)(?=[A-Z])");
+                    for (int i = 0; i < palabras.Length; i++)
+                    {
+                        if (i == 0)
+                        {
+                            palabras[i] = palabras[i].Substring(0, 1).ToUpper() + palabras[i].Substring(1).ToLower();
+                        }
+                        else
+                        {
+                            palabras[i] = palabras[i].ToLower();
+                        }
+                    }
+                    // Unir las palabras nuevamente
+                    textChanged = string.Join(" ", palabras);
+                    if (textPlaceHolder != textChanged)
+                    {
+                        textChanged = textPlaceHolder;
+                    }
+                    else
+                    {
+                        textChanged = "";
+                    }
+                }
+                else
+                {
+                    if (nombreDelComponente.StartsWith("combo"))
+                    {
+                        // Elimina "text" del inicio para obtener el nombre deseado
+                        nombreDelComponente = nombreDelComponente.Substring(5);
+                        // Unir las palabras nuevamente
+                        textChanged = string.Join(" ", nombreDelComponente);
+                        if (textPlaceHolder != textChanged)
+                        {
+                            textChanged = textPlaceHolder;
+                        }
+                    }
+                }
             }
             return textChanged;
         }

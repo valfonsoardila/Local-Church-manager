@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -388,9 +388,9 @@
     <EmbeddedResource Include="Tesoreria\FormIngresos.resx">
       <DependentUpon>FormIngresos.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Firebase\Credentials.json">
+    <Content Include="Firebase\Credentials.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="Doc%27s\Secretaria\ReporteMiembros.docx" />
     <None Include="Doc%27s\Secretaria\ReporteMiembros.pdf" />
     <None Include="Doc%27s\Tesoreria\InformeIndividualTesoreria.docx" />
