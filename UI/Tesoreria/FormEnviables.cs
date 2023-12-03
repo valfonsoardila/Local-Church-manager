@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BLL;
+using DocumentFormat.OpenXml.Office2010.Excel;
+using Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,13 +9,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace UI
 {
     public partial class FormEnviables : Form
     {
+        Enviable enviable;
+        EnviableService ingresoService;
+        List<Enviable> enviables;
         string originalText;
+        string id;
+        string comite;
+        bool encontrado = false;
+        bool detallo = false;
         public FormEnviables()
         {
             InitializeComponent();
@@ -101,6 +113,31 @@ namespace UI
             if (textDineroIngreso.Text != "" && textDineroIngreso.Text != "$ 000.00")
             {
                 textDineroIngreso.Text = "$ " + textDineroIngreso.Text;
+            }
+        }
+
+        private void dataGridEnviables_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridEnviables.DataSource != null)
+            {
+                if (dataGridEnviables.Columns[e.ColumnIndex].Name == "Borrar")
+                {
+                    id = Convert.ToString(dataGridEnviables.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
+                    EliminarIngreso(id);
+                    ConsultarIngresos();
+                }
+                else
+                {
+                    if (dataGridEnviables.Columns[e.ColumnIndex].Name == "Editar")
+                    {
+                        id = Convert.ToString(dataGridEnviables.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
+                        FiltroPorId(id);
+                        if (encontrado == true)
+                        {
+                            tabEnviables.SelectedIndex = 1;
+                        }
+                    }
+                }
             }
         }
     }

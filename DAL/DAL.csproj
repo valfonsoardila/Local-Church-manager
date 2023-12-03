@@ -48,9 +48,11 @@
     <Compile Include="ContactoRepository.cs" />
     <Compile Include="DirectivaRepository.cs" />
     <Compile Include="EgresoRepository.cs" />
+    <Compile Include="EnviablesRepository.cs" />
     <Compile Include="IglesiaRepository.cs" />
     <Compile Include="EmailRepository.cs" />
     <Compile Include="IngresoRepository.cs" />
+    <Compile Include="LiquidacionesRepository.cs" />
     <Compile Include="MiembroRepository.cs" />
     <Compile Include="ReunionRepository.cs" />
     <Compile Include="ServidorRepository.cs" />

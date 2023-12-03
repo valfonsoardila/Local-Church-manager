@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -391,10 +391,16 @@
     <Content Include="Firebase\Credentials.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Doc%27s\Secretaria\ReporteMiembros.docx" />
+    <Content Include="Doc%27s\Secretaria\ReporteMiembros.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Doc%27s\Secretaria\ReporteMiembros.pdf" />
-    <None Include="Doc%27s\Tesoreria\InformeIndividualTesoreria.docx" />
-    <None Include="Doc%27s\Tesoreria\InformeTesoreriaGeneral.docx" />
+    <Content Include="Doc%27s\Tesoreria\InformeIndividualTesoreria.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Doc%27s\Tesoreria\InformeTesoreriaGeneral.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -218,11 +218,23 @@ namespace UI
             labelHeaderRuta.Text = "Inicio";
             AbrirFormulario<InicioResumen>();
         }
+        private void CerrarFormulariosCiclo()
+        {
+            foreach (Form form in panelContenedorInterno.Controls.OfType<Form>().ToList())
+            {
+                if (!(form is InicioResumen))
+                {
+                    form.Close();
+                }
+            }
+        }
         //funcion Abrir Formularios
         private void AbrirFormulario<MiForm>() where MiForm : Form, new()
         {
-            Form formulario;
-            formulario = panelContenedorInterno.Controls.OfType<MiForm>().FirstOrDefault();
+            CerrarFormulariosCiclo();
+
+            Form formulario = panelContenedorInterno.Controls.OfType<MiForm>().FirstOrDefault();
+
             if (formulario == null)
             {
                 formulario = new MiForm();
@@ -283,14 +295,6 @@ namespace UI
                 case 10:
                     CerrarFormulario<FormAjustes>();
                     break;
-            }
-        }
-        //Cerrar los formularios abiertos
-        private void CerrarFormulariosCiclo()
-        {
-            for (int i = 1; i <= cantidadFormularios; i++)
-            {
-                CerrarFormularioSwicth(i);
             }
         }
         private void btnDirectorio_Click(object sender, EventArgs e)

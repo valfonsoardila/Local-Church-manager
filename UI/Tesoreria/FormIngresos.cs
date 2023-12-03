@@ -70,17 +70,16 @@ namespace UI
         {
             try
             {
-                sumEgreso = 0;
                 var db = FirebaseService.Database;
+                var ingresosQuery = db.Collection("IngressData");
                 var egresosQuery = db.Collection("EgressData");
-
                 // Realizar la suma directamente en la consulta Firestore
-                var snapshot = await egresosQuery.GetSnapshotAsync();
-                sumEgreso = snapshot.Documents.Sum(doc => doc.ConvertTo<EgressData>().Valor);
-
+                var snapshotIngress = await ingresosQuery.GetSnapshotAsync();
+                var snapshotEgress = await egresosQuery.GetSnapshotAsync();
+                sumIngreso = snapshotIngress.Documents.Sum(doc => doc.ConvertTo<IngressData>().Valor);
+                sumEgreso = snapshotEgress.Documents.Sum(doc => doc.ConvertTo<EgressData>().Valor);
                 // Calcular el saldo después de procesar todos los documentos
                 saldo = sumIngreso - sumEgreso;
-
                 textSaldo.Text = LecturaCifra(saldo);
             }
             catch (Exception ex)
@@ -303,6 +302,7 @@ namespace UI
                     comboConcepto.Text = ingresoFiltrado.Concepto;
                     textDineroIngreso.Text = ingresoFiltrado.Valor.ToString();
                     textDetalle.Text = ingresoFiltrado.Detalle;
+                    tabLibroIngresos.SelectedIndex = 1;
                 }
             }
             catch (Exception ex)
@@ -502,7 +502,6 @@ namespace UI
                 }
             }
         }
-
         private void textSerachLibreta_Enter(object sender, EventArgs e)
         {
             if(textSerachLibreta.Text== "Buscar por detalle")
@@ -510,7 +509,6 @@ namespace UI
                 textSerachLibreta.Text = "";
             }
         }
-
         private void textSerachLibreta_Leave(object sender, EventArgs e)
         {
             if (textSerachLibreta.Text == "")
@@ -518,7 +516,6 @@ namespace UI
                 textSerachLibreta.Text = "Buscar por detalle";
             }
         }
-
         private void textDineroIngreo_Enter(object sender, EventArgs e)
         {
             originalText = textDineroIngreso.Text;
@@ -536,7 +533,6 @@ namespace UI
                 }
             }
         }
-
         private void textDineroIngreo_Leave(object sender, EventArgs e)
         {
             if (textDineroIngreso.Text == "")
@@ -552,7 +548,6 @@ namespace UI
                 }
             }
         }
-
         private void comboComite_Enter(object sender, EventArgs e)
         {
             if (comboComite.Text == "Comite")
@@ -560,7 +555,6 @@ namespace UI
                 comboComite.Text = "";
             }
         }
-
         private void comboComite_Leave(object sender, EventArgs e)
         {
             if (comboComite.Text == "")
@@ -568,7 +562,6 @@ namespace UI
                 comboComite.Text = "Comite";
             }
         }
-
         private void comboConcepto_Enter(object sender, EventArgs e)
         {
             if (comboConcepto.Text == "Concepto")
@@ -576,7 +569,6 @@ namespace UI
                 comboConcepto.Text = "";
             }
         }
-
         private void comboConcepto_Leave(object sender, EventArgs e)
         {
             if (comboConcepto.Text == "")
@@ -584,7 +576,6 @@ namespace UI
                 comboConcepto.Text = "Concepto";
             }
         }
-
         private void textDetalle_Enter(object sender, EventArgs e)
         {
             if (textDetalle.Text == "Detalle")
@@ -592,7 +583,6 @@ namespace UI
                 textDetalle.Text = "";
             }
         }
-
         private void textDetalle_Leave(object sender, EventArgs e)
         {
             if (textDetalle.Text == "")
@@ -600,7 +590,6 @@ namespace UI
                 textDetalle.Text = "Detalle";
             }
         }
-
         private void textDineroIngreso_Validated(object sender, EventArgs e)
         {
             if (textDineroIngreso.Text != "" && textDineroIngreso.Text != "$ 000.00")
@@ -609,7 +598,6 @@ namespace UI
                 textDineroIngreso.Text = LecturaCifra(sumIngreso);
             }
         }
-
         private void btSearchLibreta_Click(object sender, EventArgs e)
         {
             if (textSerachLibreta.Visible == false)
@@ -619,7 +607,6 @@ namespace UI
                 btnCloseSearchLibreta.Visible = true;
             }
         }
-
         private void btnCloseSearchLibreta_Click(object sender, EventArgs e)
         {
             if (textSerachLibreta.Visible == true)
@@ -667,7 +654,6 @@ namespace UI
                 var ingress = ingressMaps.IngressMap(ingreso);
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("IngressData").Document(ingress.CodigoComprobante.ToString());
                 docRef.SetAsync(ingress);
-                // Guardamos localmente
                 MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarIngresos();
                 CalculoDeSaldo();

@@ -683,7 +683,6 @@ namespace UI
                 dataGridMiembros.DataSource = null;
             }
         }
-
         private void comboGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
             var filtro = comboGenero.Text;
@@ -696,7 +695,6 @@ namespace UI
                 ConsultarYLlenarGridDeMiembros();
             }
         }
-
         private void FiltroPorFamilia(string apellidos)
         {
             ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
@@ -707,14 +705,12 @@ namespace UI
                 dataGridMiembros.DataSource = respuesta.Miembros;
             }
         }
-
         private void btSearchLibreta_Click(object sender, EventArgs e)
         {
             btSearchLibreta.Visible = false;
             btnCloseSearchLibreta.Visible = true;
             textSearch.Visible = true;
         }
-
         private void btnCloseSearchLibreta_Click(object sender, EventArgs e)
         {
             btSearchLibreta.Visible = true;
@@ -725,7 +721,6 @@ namespace UI
                 textSearch.Text = "Buscar";
             }
         }
-
         private void textSearch_TextChanged(object sender, EventArgs e)
         {
             var filtro = textSearch.Text;
@@ -770,7 +765,6 @@ namespace UI
                 ConsultarYLlenarGridDeMiembros();
             }
         }
-
         private void textSearch_Enter(object sender, EventArgs e)
         {
             if (textSearch.Text == "Buscar")
@@ -778,7 +772,6 @@ namespace UI
                 textSearch.Text = "";
             }
         }
-
         private void textSearch_Leave(object sender, EventArgs e)
         {
             if (textSearch.Text == "")
@@ -786,7 +779,6 @@ namespace UI
                 textSearch.Text = "Buscar";
             }
         }
-
         private void btnImprimirLista_Click(object sender, EventArgs e)
         {
             string nombreArchivo = "ReporteMiembros.docx"; // Reemplaza con el nombre real del archivo

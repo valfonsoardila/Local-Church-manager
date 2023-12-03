@@ -64,17 +64,16 @@ namespace UI
         {
             try
             {
-                sumIngreso = 0;
                 var db = FirebaseService.Database;
                 var ingresosQuery = db.Collection("IngressData");
-
+                var egresosQuery = db.Collection("EgressData");
                 // Realizar la suma directamente en la consulta Firestore
-                var snapshot = await ingresosQuery.GetSnapshotAsync();
-                sumIngreso = snapshot.Documents.Sum(doc => doc.ConvertTo<IngressData>().Valor);
-
+                var snapshotIngress = await ingresosQuery.GetSnapshotAsync();
+                var snapshotEgress = await egresosQuery.GetSnapshotAsync();
+                sumIngreso = snapshotIngress.Documents.Sum(doc => doc.ConvertTo<IngressData>().Valor);
+                sumEgreso = snapshotEgress.Documents.Sum(doc => doc.ConvertTo<EgressData>().Valor);
                 // Calcular el saldo después de procesar todos los documentos
                 saldo = sumIngreso - sumEgreso;
-
                 textSaldo.Text = LecturaCifra(saldo);
             }
             catch (Exception ex)
