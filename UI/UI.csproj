@@ -223,11 +223,18 @@
     <Compile Include="Base de Datos\FormBaseDeDatos.Designer.cs">
       <DependentUpon>FormBaseDeDatos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Firebase\EgressMap.cs" />
+    <Compile Include="Firebase\EgressMaps.cs" />
     <Compile Include="Firebase\FirebaseSecurity.cs" />
     <Compile Include="Firebase\FirebaseService.cs" />
     <Compile Include="Firebase\IngressMaps.cs" />
     <Compile Include="Firebase\MemberMaps.cs" />
+    <Compile Include="Firebase\ShippableMaps.cs" />
+    <Compile Include="Tesoreria\FormPresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tesoreria\FormPresupuesto.Designer.cs">
+      <DependentUpon>FormPresupuesto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tesoreria\FormEnviables.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -394,6 +401,9 @@
     <Content Include="Doc%27s\Secretaria\ReporteMiembros.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Tesoreria\FormPresupuesto.resx">
+      <DependentUpon>FormPresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Doc%27s\Secretaria\ReporteMiembros.pdf" />
     <Content Include="Doc%27s\Tesoreria\InformeIndividualTesoreria.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

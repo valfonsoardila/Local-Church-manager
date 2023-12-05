@@ -482,6 +482,12 @@ namespace UI
             panelSidebarClose.Visible = false;
         }
 
+        private void btnPrsupuestos_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormPresupuesto>();
+        }
+
         private void btnIngresos_Click(object sender, EventArgs e)
         {
             CerrarFormulariosCiclo();

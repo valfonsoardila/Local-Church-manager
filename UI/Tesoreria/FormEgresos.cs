@@ -23,7 +23,7 @@ namespace UI
         Egreso egreso;
         EgresoService egresoService;
         List<Egreso> egresos;
-        EgressMap egressMaps;
+        EgressMaps egressMaps;
         TabPage tabPage;
         string originalText;
         string comprobante = "";
@@ -37,7 +37,7 @@ namespace UI
         public FormEgresos()
         {
             egresoService = new EgresoService(ConfigConnection.ConnectionString);
-            egressMaps = new EgressMap();
+            egressMaps = new EgressMaps();
             InitializeComponent();
             ConsultarEgresos();
             CalcularComprobante();
@@ -648,7 +648,7 @@ namespace UI
                 var msg = egresoService.Guardar(egreso);
                 //Guardamos en la nube
                 var db = FirebaseService.Database;
-                var egress = egressMaps.EgressMaps(egreso);
+                var egress = egressMaps.EgressMap(egreso);
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("EgressData").Document(egress.CodigoComprobante);
                 docRef.SetAsync(egress);
                 // Guardamos localmente
@@ -711,7 +711,7 @@ namespace UI
                 string mensaje = egresoService.Modificar(nuevoEgreso);
                 //Guardamos en la nube
                 var db = FirebaseService.Database;
-                var ingress = egressMaps.EgressMaps(nuevoEgreso);
+                var ingress = egressMaps.EgressMap(nuevoEgreso);
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("EgressData").Document(ingress.CodigoComprobante.ToString());
                 docRef.SetAsync(ingress);
                 MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);

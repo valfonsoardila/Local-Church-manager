@@ -77,6 +77,7 @@ namespace UI
             this.labelTheme = new System.Windows.Forms.Label();
             this.btnModeLight = new FontAwesome.Sharp.IconPictureBox();
             this.btnModeDark = new FontAwesome.Sharp.IconPictureBox();
+            this.btnPrsupuestos = new FontAwesome.Sharp.IconButton();
             this.panelHeaderbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnWindowMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnWindowRestore)).BeginInit();
@@ -203,7 +204,7 @@ namespace UI
             // panelSelectionSalir
             // 
             this.panelSelectionSalir.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelSelectionSalir.Location = new System.Drawing.Point(0, 580);
+            this.panelSelectionSalir.Location = new System.Drawing.Point(0, 616);
             this.panelSelectionSalir.Name = "panelSelectionSalir";
             this.panelSelectionSalir.Size = new System.Drawing.Size(6, 37);
             this.panelSelectionSalir.TabIndex = 16;
@@ -223,7 +224,7 @@ namespace UI
             this.btnCerrarSesion.IconColor = System.Drawing.Color.White;
             this.btnCerrarSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCerrarSesion.IconSize = 22;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 580);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 617);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Rotation = 180D;
             this.btnCerrarSesion.Size = new System.Drawing.Size(169, 37);
@@ -236,7 +237,7 @@ namespace UI
             // panelSelectionBD
             // 
             this.panelSelectionBD.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelSelectionBD.Location = new System.Drawing.Point(0, 505);
+            this.panelSelectionBD.Location = new System.Drawing.Point(0, 543);
             this.panelSelectionBD.Name = "panelSelectionBD";
             this.panelSelectionBD.Size = new System.Drawing.Size(6, 37);
             this.panelSelectionBD.TabIndex = 11;
@@ -245,7 +246,7 @@ namespace UI
             // panelSelectionAjustes
             // 
             this.panelSelectionAjustes.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelSelectionAjustes.Location = new System.Drawing.Point(0, 543);
+            this.panelSelectionAjustes.Location = new System.Drawing.Point(0, 579);
             this.panelSelectionAjustes.Name = "panelSelectionAjustes";
             this.panelSelectionAjustes.Size = new System.Drawing.Size(6, 37);
             this.panelSelectionAjustes.TabIndex = 10;
@@ -265,7 +266,7 @@ namespace UI
             this.btnAjustes.IconColor = System.Drawing.Color.White;
             this.btnAjustes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAjustes.IconSize = 22;
-            this.btnAjustes.Location = new System.Drawing.Point(0, 543);
+            this.btnAjustes.Location = new System.Drawing.Point(0, 580);
             this.btnAjustes.Name = "btnAjustes";
             this.btnAjustes.Size = new System.Drawing.Size(169, 37);
             this.btnAjustes.TabIndex = 14;
@@ -289,10 +290,10 @@ namespace UI
             this.btnGestionBD.IconColor = System.Drawing.Color.White;
             this.btnGestionBD.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGestionBD.IconSize = 22;
-            this.btnGestionBD.Location = new System.Drawing.Point(0, 506);
+            this.btnGestionBD.Location = new System.Drawing.Point(0, 543);
             this.btnGestionBD.Name = "btnGestionBD";
             this.btnGestionBD.Size = new System.Drawing.Size(169, 37);
-            this.btnGestionBD.TabIndex = 13;
+            this.btnGestionBD.TabIndex = 16;
             this.btnGestionBD.Text = "   Gestion de BD";
             this.btnGestionBD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGestionBD.UseVisualStyleBackColor = false;
@@ -324,10 +325,11 @@ namespace UI
             this.subMenuTesoreria.Controls.Add(this.btnLiquidaciones);
             this.subMenuTesoreria.Controls.Add(this.btnEgresos);
             this.subMenuTesoreria.Controls.Add(this.btnIngresos);
+            this.subMenuTesoreria.Controls.Add(this.btnPrsupuestos);
             this.subMenuTesoreria.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuTesoreria.Location = new System.Drawing.Point(0, 353);
             this.subMenuTesoreria.Name = "subMenuTesoreria";
-            this.subMenuTesoreria.Size = new System.Drawing.Size(169, 153);
+            this.subMenuTesoreria.Size = new System.Drawing.Size(169, 190);
             this.subMenuTesoreria.TabIndex = 10;
             // 
             // btnEnviables
@@ -344,10 +346,10 @@ namespace UI
             this.btnEnviables.IconColor = System.Drawing.Color.White;
             this.btnEnviables.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEnviables.IconSize = 10;
-            this.btnEnviables.Location = new System.Drawing.Point(0, 115);
+            this.btnEnviables.Location = new System.Drawing.Point(0, 154);
             this.btnEnviables.Name = "btnEnviables";
             this.btnEnviables.Size = new System.Drawing.Size(169, 39);
-            this.btnEnviables.TabIndex = 14;
+            this.btnEnviables.TabIndex = 15;
             this.btnEnviables.Text = "Enviables";
             this.btnEnviables.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEnviables.UseVisualStyleBackColor = false;
@@ -367,10 +369,10 @@ namespace UI
             this.btnLiquidaciones.IconColor = System.Drawing.Color.White;
             this.btnLiquidaciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLiquidaciones.IconSize = 10;
-            this.btnLiquidaciones.Location = new System.Drawing.Point(0, 76);
+            this.btnLiquidaciones.Location = new System.Drawing.Point(0, 115);
             this.btnLiquidaciones.Name = "btnLiquidaciones";
             this.btnLiquidaciones.Size = new System.Drawing.Size(169, 39);
-            this.btnLiquidaciones.TabIndex = 13;
+            this.btnLiquidaciones.TabIndex = 14;
             this.btnLiquidaciones.Text = "Liquidaciones";
             this.btnLiquidaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLiquidaciones.UseVisualStyleBackColor = false;
@@ -390,10 +392,10 @@ namespace UI
             this.btnEgresos.IconColor = System.Drawing.Color.White;
             this.btnEgresos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEgresos.IconSize = 10;
-            this.btnEgresos.Location = new System.Drawing.Point(0, 37);
+            this.btnEgresos.Location = new System.Drawing.Point(0, 76);
             this.btnEgresos.Name = "btnEgresos";
             this.btnEgresos.Size = new System.Drawing.Size(169, 39);
-            this.btnEgresos.TabIndex = 12;
+            this.btnEgresos.TabIndex = 13;
             this.btnEgresos.Text = "Egresos";
             this.btnEgresos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEgresos.UseVisualStyleBackColor = false;
@@ -413,10 +415,10 @@ namespace UI
             this.btnIngresos.IconColor = System.Drawing.Color.White;
             this.btnIngresos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnIngresos.IconSize = 10;
-            this.btnIngresos.Location = new System.Drawing.Point(0, 0);
+            this.btnIngresos.Location = new System.Drawing.Point(0, 39);
             this.btnIngresos.Name = "btnIngresos";
             this.btnIngresos.Size = new System.Drawing.Size(169, 37);
-            this.btnIngresos.TabIndex = 11;
+            this.btnIngresos.TabIndex = 12;
             this.btnIngresos.Text = "Ingresos";
             this.btnIngresos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnIngresos.UseVisualStyleBackColor = false;
@@ -856,6 +858,29 @@ namespace UI
             this.btnModeDark.TabIndex = 7;
             this.btnModeDark.TabStop = false;
             // 
+            // btnPrsupuestos
+            // 
+            this.btnPrsupuestos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnPrsupuestos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPrsupuestos.FlatAppearance.BorderSize = 0;
+            this.btnPrsupuestos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnPrsupuestos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.btnPrsupuestos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrsupuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrsupuestos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPrsupuestos.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
+            this.btnPrsupuestos.IconColor = System.Drawing.Color.White;
+            this.btnPrsupuestos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPrsupuestos.IconSize = 10;
+            this.btnPrsupuestos.Location = new System.Drawing.Point(0, 0);
+            this.btnPrsupuestos.Name = "btnPrsupuestos";
+            this.btnPrsupuestos.Size = new System.Drawing.Size(169, 39);
+            this.btnPrsupuestos.TabIndex = 11;
+            this.btnPrsupuestos.Text = "Presupuestos";
+            this.btnPrsupuestos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrsupuestos.UseVisualStyleBackColor = false;
+            this.btnPrsupuestos.Click += new System.EventHandler(this.btnPrsupuestos_Click);
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -946,6 +971,7 @@ namespace UI
         private FontAwesome.Sharp.IconButton btnLiquidaciones;
         private System.Windows.Forms.Panel panelSelectionSalir;
         private FontAwesome.Sharp.IconButton btnCerrarSesion;
+        private FontAwesome.Sharp.IconButton btnPrsupuestos;
     }
 }
 

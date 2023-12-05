@@ -36,7 +36,7 @@
             this.comboComite = new System.Windows.Forms.ComboBox();
             this.textDineroIngreso = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateFechaEnviable = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnModificar = new FontAwesome.Sharp.IconButton();
@@ -47,6 +47,8 @@
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textTotalEnvios = new System.Windows.Forms.TextBox();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -63,13 +65,13 @@
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.textValorFecha = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textTotalNube = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textTotal = new System.Windows.Forms.TextBox();
-            this.comboOficioLibreta = new System.Windows.Forms.ComboBox();
+            this.textTotalLocal = new System.Windows.Forms.TextBox();
+            this.comboFecha = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
-            this.textSerachLibreta = new System.Windows.Forms.TextBox();
-            this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
@@ -89,8 +91,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEnviables)).BeginInit();
             this.panelContenedorDeDirectorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).BeginInit();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -114,7 +114,7 @@
             this.panel4.Controls.Add(this.comboComite);
             this.panel4.Controls.Add(this.textDineroIngreso);
             this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.dateTimePicker1);
+            this.panel4.Controls.Add(this.dateFechaEnviable);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.tableLayoutPanel1);
             this.panel4.Controls.Add(this.textDetalle);
@@ -277,12 +277,12 @@
             this.label13.TabIndex = 30;
             this.label13.Text = "Valor:";
             // 
-            // dateTimePicker1
+            // dateFechaEnviable
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(115, 47);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 18;
+            this.dateFechaEnviable.Location = new System.Drawing.Point(115, 47);
+            this.dateFechaEnviable.Name = "dateFechaEnviable";
+            this.dateFechaEnviable.Size = new System.Drawing.Size(200, 20);
+            this.dateFechaEnviable.TabIndex = 18;
             // 
             // label5
             // 
@@ -325,6 +325,7 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnRegistrar
             // 
@@ -343,6 +344,7 @@
             this.btnRegistrar.Text = "Guardar";
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // textDetalle
             // 
@@ -406,6 +408,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.textTotalEnvios);
             this.panel1.Controls.Add(this.btnAtras);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -414,6 +418,31 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 59);
             this.panel1.TabIndex = 4;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label11.Location = new System.Drawing.Point(442, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(182, 24);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Total de envios:";
+            // 
+            // textTotalEnvios
+            // 
+            this.textTotalEnvios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textTotalEnvios.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textTotalEnvios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTotalEnvios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalEnvios.ForeColor = System.Drawing.SystemColors.Info;
+            this.textTotalEnvios.Location = new System.Drawing.Point(624, 16);
+            this.textTotalEnvios.Name = "textTotalEnvios";
+            this.textTotalEnvios.Size = new System.Drawing.Size(139, 28);
+            this.textTotalEnvios.TabIndex = 14;
+            this.textTotalEnvios.Text = "0";
             // 
             // btnAtras
             // 
@@ -491,11 +520,11 @@
             this.tableLayoutPanel2.Controls.Add(this.btnImprimir, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnGestionarEnviables, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 12);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(786, 44);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(786, 56);
             this.tableLayoutPanel2.TabIndex = 17;
             // 
             // btnImprimir
@@ -608,13 +637,13 @@
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.Controls.Add(this.textValorFecha);
+            this.panelContenedorDeDirectorio.Controls.Add(this.label15);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalNube);
             this.panelContenedorDeDirectorio.Controls.Add(this.label9);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboOficioLibreta);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalLocal);
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboFecha);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
-            this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
-            this.panelContenedorDeDirectorio.Controls.Add(this.btnCloseSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.label1);
             this.panelContenedorDeDirectorio.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContenedorDeDirectorio.Location = new System.Drawing.Point(0, 0);
@@ -622,29 +651,58 @@
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(724, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
             // 
+            // textValorFecha
+            // 
+            this.textValorFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textValorFecha.Location = new System.Drawing.Point(570, 3);
+            this.textValorFecha.Name = "textValorFecha";
+            this.textValorFecha.Size = new System.Drawing.Size(148, 26);
+            this.textValorFecha.TabIndex = 26;
+            this.textValorFecha.Text = "0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.Location = new System.Drawing.Point(219, 8);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 16);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "Total en Nube";
+            // 
+            // textTotalNube
+            // 
+            this.textTotalNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalNube.Location = new System.Drawing.Point(320, 5);
+            this.textTotalNube.Name = "textTotalNube";
+            this.textTotalNube.Size = new System.Drawing.Size(46, 22);
+            this.textTotalNube.TabIndex = 24;
+            this.textTotalNube.Text = "0";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(115, 8);
+            this.label9.Location = new System.Drawing.Point(91, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 16);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Total";
+            this.label9.Size = new System.Drawing.Size(80, 16);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Total Local";
             // 
-            // textTotal
+            // textTotalLocal
             // 
-            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotal.Location = new System.Drawing.Point(161, 5);
-            this.textTotal.Name = "textTotal";
-            this.textTotal.Size = new System.Drawing.Size(46, 22);
-            this.textTotal.TabIndex = 11;
-            this.textTotal.Text = "0";
+            this.textTotalLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalLocal.Location = new System.Drawing.Point(172, 5);
+            this.textTotalLocal.Name = "textTotalLocal";
+            this.textTotalLocal.Size = new System.Drawing.Size(46, 22);
+            this.textTotalLocal.TabIndex = 22;
+            this.textTotalLocal.Text = "0";
             // 
-            // comboOficioLibreta
+            // comboFecha
             // 
-            this.comboOficioLibreta.AutoCompleteCustomSource.AddRange(new string[] {
+            this.comboFecha.AutoCompleteCustomSource.AddRange(new string[] {
             "Ingeniero(a) de sistemas",
             "Ingeniero(a) de electronica",
             "Ingeniero(a) Industrial",
@@ -680,11 +738,11 @@
             "Modista",
             "Electronico",
             "Tecnico"});
-            this.comboOficioLibreta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboOficioLibreta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboOficioLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboOficioLibreta.FormattingEnabled = true;
-            this.comboOficioLibreta.Items.AddRange(new object[] {
+            this.comboFecha.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboFecha.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFecha.FormattingEnabled = true;
+            this.comboFecha.Items.AddRange(new object[] {
             "Todos",
             "Enero",
             "Febrero",
@@ -698,11 +756,12 @@
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.comboOficioLibreta.Location = new System.Drawing.Point(374, 4);
-            this.comboOficioLibreta.Name = "comboOficioLibreta";
-            this.comboOficioLibreta.Size = new System.Drawing.Size(121, 24);
-            this.comboOficioLibreta.TabIndex = 10;
-            this.comboOficioLibreta.Text = "Mes";
+            this.comboFecha.Location = new System.Drawing.Point(443, 4);
+            this.comboFecha.Name = "comboFecha";
+            this.comboFecha.Size = new System.Drawing.Size(121, 24);
+            this.comboFecha.TabIndex = 10;
+            this.comboFecha.Text = "Mes";
+            this.comboFecha.SelectedIndexChanged += new System.EventHandler(this.comboFecha_SelectedIndexChanged);
             // 
             // iconPictureBox3
             // 
@@ -717,51 +776,6 @@
             this.iconPictureBox3.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox3.TabIndex = 9;
             this.iconPictureBox3.TabStop = false;
-            // 
-            // btSearchLibreta
-            // 
-            this.btSearchLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSearchLibreta.BackColor = System.Drawing.Color.Transparent;
-            this.btSearchLibreta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btSearchLibreta.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            this.btSearchLibreta.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btSearchLibreta.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btSearchLibreta.IconSize = 28;
-            this.btSearchLibreta.Location = new System.Drawing.Point(684, 3);
-            this.btSearchLibreta.Name = "btSearchLibreta";
-            this.btSearchLibreta.Size = new System.Drawing.Size(28, 28);
-            this.btSearchLibreta.TabIndex = 7;
-            this.btSearchLibreta.TabStop = false;
-            this.btSearchLibreta.Click += new System.EventHandler(this.btSearchLibreta_Click);
-            // 
-            // textSerachLibreta
-            // 
-            this.textSerachLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textSerachLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSerachLibreta.Location = new System.Drawing.Point(501, 1);
-            this.textSerachLibreta.Multiline = true;
-            this.textSerachLibreta.Name = "textSerachLibreta";
-            this.textSerachLibreta.Size = new System.Drawing.Size(180, 30);
-            this.textSerachLibreta.TabIndex = 6;
-            this.textSerachLibreta.Text = "Buscar por fecha";
-            this.textSerachLibreta.Visible = false;
-            // 
-            // btnCloseSearchLibreta
-            // 
-            this.btnCloseSearchLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseSearchLibreta.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseSearchLibreta.ForeColor = System.Drawing.Color.Red;
-            this.btnCloseSearchLibreta.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.btnCloseSearchLibreta.IconColor = System.Drawing.Color.Red;
-            this.btnCloseSearchLibreta.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCloseSearchLibreta.IconSize = 28;
-            this.btnCloseSearchLibreta.Location = new System.Drawing.Point(683, 2);
-            this.btnCloseSearchLibreta.Name = "btnCloseSearchLibreta";
-            this.btnCloseSearchLibreta.Size = new System.Drawing.Size(28, 28);
-            this.btnCloseSearchLibreta.TabIndex = 5;
-            this.btnCloseSearchLibreta.TabStop = false;
-            this.btnCloseSearchLibreta.Visible = false;
-            this.btnCloseSearchLibreta.Click += new System.EventHandler(this.btnCloseSearchLibreta_Click);
             // 
             // label1
             // 
@@ -805,8 +819,6 @@
             this.panelContenedorDeDirectorio.ResumeLayout(false);
             this.panelContenedorDeDirectorio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -830,16 +842,11 @@
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textTotal;
-        private System.Windows.Forms.ComboBox comboOficioLibreta;
+        private System.Windows.Forms.ComboBox comboFecha;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
-        private System.Windows.Forms.TextBox textSerachLibreta;
-        private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateFechaEnviable;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private FontAwesome.Sharp.IconButton btnModificar;
@@ -855,5 +862,12 @@
         private System.Windows.Forms.ComboBox comboComite;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textTotalNube;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textTotalLocal;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textTotalEnvios;
+        private System.Windows.Forms.TextBox textValorFecha;
     }
 }

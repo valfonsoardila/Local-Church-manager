@@ -127,14 +127,18 @@ Valor int not null,
 Detalle varchar(250) not null,
 );
 create table ENVIABLE(
-CodigoComprobante nvarchar(10) primary key not null,
-FechaDeEgreso datetime not null,
+Id nvarchar(10) primary key not null,
+FechaDeEnvio datetime not null,
 Comite varchar(70) not null,
 Concepto varchar(150) not null,
 Valor int not null,
 Detalle varchar(250) not null,
 );
 create table LIQUIDACION(
-CodigoComprobante nvarchar(10) primary key not null,
+Id nvarchar(10) primary key not null,
+FechaDeEnvio datetime not null,
 Comite varchar(70) not null,
+Concepto varchar(150) not null,
+Valor int not null,
+Detalle varchar(250) not null,
 );

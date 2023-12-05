@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace UI
 {
-    public class EgressMap
+    public class EgressMaps
     {
         EgressData egressData;
-        public EgressData EgressMaps(Egreso egreso)
+        public EgressData EgressMap(Egreso egreso)
         {
             if (CheckIfUserAlreadyExist(egreso.CodigoComprobante.ToString()))
             {
