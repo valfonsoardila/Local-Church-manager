@@ -229,6 +229,7 @@
     <Compile Include="Firebase\IngressMaps.cs" />
     <Compile Include="Firebase\MemberMaps.cs" />
     <Compile Include="Firebase\ShippableMaps.cs" />
+    <Compile Include="Firebase\SettlementMaps.cs" />
     <Compile Include="Tesoreria\FormPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>

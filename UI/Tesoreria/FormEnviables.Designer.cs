@@ -73,6 +73,7 @@
             this.comboFecha = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboFiltroComite = new System.Windows.Forms.ComboBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -637,6 +638,7 @@
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboFiltroComite);
             this.panelContenedorDeDirectorio.Controls.Add(this.textValorFecha);
             this.panelContenedorDeDirectorio.Controls.Add(this.label15);
             this.panelContenedorDeDirectorio.Controls.Add(this.textTotalNube);
@@ -673,7 +675,7 @@
             // 
             // textTotalNube
             // 
-            this.textTotalNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTotalNube.Location = new System.Drawing.Point(320, 5);
             this.textTotalNube.Name = "textTotalNube";
             this.textTotalNube.Size = new System.Drawing.Size(46, 22);
@@ -693,7 +695,7 @@
             // 
             // textTotalLocal
             // 
-            this.textTotalLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTotalLocal.Location = new System.Drawing.Point(172, 5);
             this.textTotalLocal.Name = "textTotalLocal";
             this.textTotalLocal.Size = new System.Drawing.Size(46, 22);
@@ -756,9 +758,9 @@
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.comboFecha.Location = new System.Drawing.Point(443, 4);
+            this.comboFecha.Location = new System.Drawing.Point(474, 4);
             this.comboFecha.Name = "comboFecha";
-            this.comboFecha.Size = new System.Drawing.Size(121, 24);
+            this.comboFecha.Size = new System.Drawing.Size(90, 24);
             this.comboFecha.TabIndex = 10;
             this.comboFecha.Text = "Mes";
             this.comboFecha.SelectedIndexChanged += new System.EventHandler(this.comboFecha_SelectedIndexChanged);
@@ -787,6 +789,61 @@
             this.label1.Size = new System.Drawing.Size(43, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Lista";
+            // 
+            // comboFiltroComite
+            // 
+            this.comboFiltroComite.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboFiltroComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboFiltroComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboFiltroComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltroComite.FormattingEnabled = true;
+            this.comboFiltroComite.Items.AddRange(new object[] {
+            "Comite",
+            "Damas dorcas",
+            "Jovenes",
+            "Junta local",
+            "Obra social"});
+            this.comboFiltroComite.Location = new System.Drawing.Point(371, 4);
+            this.comboFiltroComite.Name = "comboFiltroComite";
+            this.comboFiltroComite.Size = new System.Drawing.Size(99, 24);
+            this.comboFiltroComite.TabIndex = 33;
+            this.comboFiltroComite.Text = "Comite";
+            this.comboFiltroComite.SelectedIndexChanged += new System.EventHandler(this.comboFiltroComite_SelectedIndexChanged);
             // 
             // FormEnviables
             // 
@@ -869,5 +926,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textTotalEnvios;
         private System.Windows.Forms.TextBox textValorFecha;
+        private System.Windows.Forms.ComboBox comboFiltroComite;
     }
 }

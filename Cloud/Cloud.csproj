@@ -143,6 +143,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FirebaseData\UserData.cs" />
     <Compile Include="FirebaseData\ShippableData.cs" />
+    <Compile Include="FirebaseData\SettlementData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

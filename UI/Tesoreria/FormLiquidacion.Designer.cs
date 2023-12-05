@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
+            this.textDineroIngreso = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dateFechaLiquidacion = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -66,7 +67,10 @@
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textDineroIngreso = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textSaldo = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textTotalIngresos = new System.Windows.Forms.TextBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -116,6 +120,19 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(670, 349);
             this.panel4.TabIndex = 0;
+            // 
+            // textDineroIngreso
+            // 
+            this.textDineroIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textDineroIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textDineroIngreso.Location = new System.Drawing.Point(115, 77);
+            this.textDineroIngreso.Name = "textDineroIngreso";
+            this.textDineroIngreso.Size = new System.Drawing.Size(181, 26);
+            this.textDineroIngreso.TabIndex = 29;
+            this.textDineroIngreso.Text = "$ 000.00";
+            this.textDineroIngreso.Enter += new System.EventHandler(this.textDineroIngreso_Enter);
+            this.textDineroIngreso.Leave += new System.EventHandler(this.textDineroIngreso_Leave);
+            this.textDineroIngreso.Validated += new System.EventHandler(this.textDineroIngreso_Validated);
             // 
             // label13
             // 
@@ -256,6 +273,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.textSaldo);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.textTotalIngresos);
             this.panel1.Controls.Add(this.btnAtras);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -625,18 +646,55 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Registros";
             // 
-            // textDineroIngreso
+            // label16
             // 
-            this.textDineroIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textDineroIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDineroIngreso.Location = new System.Drawing.Point(115, 77);
-            this.textDineroIngreso.Name = "textDineroIngreso";
-            this.textDineroIngreso.Size = new System.Drawing.Size(181, 26);
-            this.textDineroIngreso.TabIndex = 29;
-            this.textDineroIngreso.Text = "$ 000.00";
-            this.textDineroIngreso.Enter += new System.EventHandler(this.textDineroIngreso_Enter);
-            this.textDineroIngreso.Leave += new System.EventHandler(this.textDineroIngreso_Leave);
-            this.textDineroIngreso.Validated += new System.EventHandler(this.textDineroIngreso_Validated);
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Yellow;
+            this.label16.Location = new System.Drawing.Point(255, 19);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(69, 24);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "Saldo";
+            // 
+            // textSaldo
+            // 
+            this.textSaldo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textSaldo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textSaldo.ForeColor = System.Drawing.Color.Yellow;
+            this.textSaldo.Location = new System.Drawing.Point(327, 14);
+            this.textSaldo.Name = "textSaldo";
+            this.textSaldo.Size = new System.Drawing.Size(139, 35);
+            this.textSaldo.TabIndex = 22;
+            this.textSaldo.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label11.Location = new System.Drawing.Point(467, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(162, 24);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Total Ingresos";
+            // 
+            // textTotalIngresos
+            // 
+            this.textTotalIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textTotalIngresos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textTotalIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTotalIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalIngresos.ForeColor = System.Drawing.SystemColors.Info;
+            this.textTotalIngresos.Location = new System.Drawing.Point(649, 17);
+            this.textTotalIngresos.Name = "textTotalIngresos";
+            this.textTotalIngresos.Size = new System.Drawing.Size(139, 28);
+            this.textTotalIngresos.TabIndex = 20;
+            this.textTotalIngresos.Text = "0";
             // 
             // FormLiquidacion
             // 
@@ -715,5 +773,9 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textDineroIngreso;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textSaldo;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textTotalIngresos;
     }
 }

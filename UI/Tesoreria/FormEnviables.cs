@@ -447,6 +447,45 @@ namespace UI
                 }
             }
         }
+        private async void FiltroPorComite(string filtro)
+        {
+            int sumTotal = 0;
+            try
+            {
+                var db = FirebaseService.Database;
+                var shippableQuery = db.Collection("ShippableData");
+                var shippables = new List<ShippableData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await shippableQuery.GetSnapshotAsync();
+                shippables = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<ShippableData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var shippablesComite = shippables.Where(enviable => enviable.Comite==filtro).ToList();
+                sumTotal = shippablesComite.Sum(enviable => enviable.Valor);
+                textValorFecha.Text = LecturaCifra(sumTotal);
+                dataGridEnviables.DataSource = shippablesComite;
+                Borrar.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                ConsultaEnviableRespuesta respuesta = new ConsultaEnviableRespuesta();
+                respuesta = enviableService.FiltrarEnviablesPorFecha(filtro);
+                if (respuesta.Enviables.Count != 0 && respuesta.Enviables != null)
+                {
+                    dataGridEnviables.DataSource = null;
+                    enviables = respuesta.Enviables.ToList();
+                    if (respuesta.Enviables.Count != 0 && respuesta.Enviables != null)
+                    {
+                        dataGridEnviables.DataSource = respuesta.Enviables;
+                        Borrar.Visible = true;
+                    }
+                }
+                else
+                {
+                    dataGridEnviables.DataSource = null;
+                    enviables = respuesta.Enviables.ToList();
+                }
+            }
+        }
 
         private void comboFecha_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -458,6 +497,19 @@ namespace UI
             else
             {
                 FiltroPorFecha(filtro);
+            }
+        }
+
+        private void comboFiltroComite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtro = comboFecha.Text;
+            if (filtro == "Todos" || filtro == "Comite")
+            {
+                ConsultarEnvios();
+            }
+            else
+            {
+                FiltroPorComite(filtro);
             }
         }
     }

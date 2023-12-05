@@ -141,4 +141,5 @@ Comite varchar(70) not null,
 Concepto varchar(150) not null,
 Valor int not null,
 Detalle varchar(250) not null,
+Estado varchar(22) not null
 );
