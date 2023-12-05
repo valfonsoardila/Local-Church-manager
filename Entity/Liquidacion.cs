@@ -14,6 +14,7 @@ namespace Entity
         public string Concepto { get; set; }
         public int Valor { get; set; }
         public string Detalle { get; set; }
+        public string Estado { get; set; }
 
         public void GenerarCodigoLiquidacion()
         {

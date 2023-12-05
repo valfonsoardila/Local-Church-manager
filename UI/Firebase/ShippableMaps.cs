@@ -10,7 +10,7 @@ namespace UI
 {
     public class ShippableMaps
     {
-        ShippableData ingressData;
+        ShippableData shippableData;
         //Map to save in firestore
         public ShippableData ShippableMap(Enviable enviable)
         {
@@ -51,6 +51,5 @@ namespace UI
             }
             return false;
         }
-
     }
 }

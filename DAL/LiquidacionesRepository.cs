@@ -27,6 +27,7 @@ namespace DAL
                 command.Parameters.AddWithValue("@Concepto", liquidacion.Concepto);
                 command.Parameters.AddWithValue("@Valor", liquidacion.Valor);
                 command.Parameters.AddWithValue("@Detalle", liquidacion.Detalle);
+                command.Parameters.AddWithValue("@Estado", liquidacion.Estado);
                 var filas = command.ExecuteNonQuery();
             }
         }
@@ -103,7 +104,7 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update LIQUIDACION set FechaDeLiquidacion=@FechaDeLiquidacion, Comite=@Comite, Concepto=@Concepto, Valor=@Valor, Detalle=@Detalle
+                command.CommandText = @"update LIQUIDACION set FechaDeLiquidacion=@FechaDeLiquidacion, Comite=@Comite, Concepto=@Concepto, Valor=@Valor, Detalle=@Detalle, Estado=@Estado
                                         where Id=@Id";
                 command.Parameters.AddWithValue("@Id", liquidacion.Id);
                 command.Parameters.AddWithValue("@FechaDeLiquidacion", liquidacion.FechaDeLiquidacion);
@@ -111,6 +112,7 @@ namespace DAL
                 command.Parameters.AddWithValue("@Concepto", liquidacion.Concepto);
                 command.Parameters.AddWithValue("@Valor", liquidacion.Valor);
                 command.Parameters.AddWithValue("@Detalle", liquidacion.Detalle);
+                command.Parameters.AddWithValue("@Estado", liquidacion.Estado);
                 var filas = command.ExecuteNonQuery();
             }
         }
@@ -119,7 +121,7 @@ namespace DAL
             List<Liquidacion> enviables = new List<Liquidacion>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id, FechaDeLiquidacion, Comite, Concepto, Valor, Detalle from LIQUIDACION";
+                command.CommandText = "Select Id, FechaDeLiquidacion, Comite, Concepto, Valor, Detalle, Estado from LIQUIDACION";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -151,6 +153,7 @@ namespace DAL
             liquidacion.Concepto = (string)dataReader["Concepto"];
             liquidacion.Valor = (int)dataReader["Valor"];
             liquidacion.Detalle = (string)dataReader["Detalle"];
+            liquidacion.Estado = (string)dataReader["Estado"];
             return liquidacion;
         }
         public int Totalizar()

@@ -43,6 +43,10 @@
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textSaldo = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textTotalIngresos = new System.Windows.Forms.TextBox();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -67,10 +71,6 @@
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textSaldo = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textTotalIngresos = new System.Windows.Forms.TextBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -285,6 +285,56 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 59);
             this.panel1.TabIndex = 3;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Yellow;
+            this.label16.Location = new System.Drawing.Point(253, 19);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(69, 24);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "Saldo";
+            // 
+            // textSaldo
+            // 
+            this.textSaldo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textSaldo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textSaldo.ForeColor = System.Drawing.Color.Yellow;
+            this.textSaldo.Location = new System.Drawing.Point(323, 14);
+            this.textSaldo.Name = "textSaldo";
+            this.textSaldo.Size = new System.Drawing.Size(139, 35);
+            this.textSaldo.TabIndex = 22;
+            this.textSaldo.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label11.Location = new System.Drawing.Point(465, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(192, 24);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Total Liquidacion";
+            // 
+            // textTotalIngresos
+            // 
+            this.textTotalIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textTotalIngresos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textTotalIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTotalIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalIngresos.ForeColor = System.Drawing.SystemColors.Info;
+            this.textTotalIngresos.Location = new System.Drawing.Point(658, 16);
+            this.textTotalIngresos.Name = "textTotalIngresos";
+            this.textTotalIngresos.Size = new System.Drawing.Size(139, 28);
+            this.textTotalIngresos.TabIndex = 20;
+            this.textTotalIngresos.Text = "0";
             // 
             // btnAtras
             // 
@@ -645,56 +695,6 @@
             this.label1.Size = new System.Drawing.Size(76, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registros";
-            // 
-            // label16
-            // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Yellow;
-            this.label16.Location = new System.Drawing.Point(255, 19);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(69, 24);
-            this.label16.TabIndex = 23;
-            this.label16.Text = "Saldo";
-            // 
-            // textSaldo
-            // 
-            this.textSaldo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textSaldo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSaldo.ForeColor = System.Drawing.Color.Yellow;
-            this.textSaldo.Location = new System.Drawing.Point(327, 14);
-            this.textSaldo.Name = "textSaldo";
-            this.textSaldo.Size = new System.Drawing.Size(139, 35);
-            this.textSaldo.TabIndex = 22;
-            this.textSaldo.Text = "0";
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(467, 18);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(162, 24);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Total Ingresos";
-            // 
-            // textTotalIngresos
-            // 
-            this.textTotalIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textTotalIngresos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textTotalIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textTotalIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalIngresos.ForeColor = System.Drawing.SystemColors.Info;
-            this.textTotalIngresos.Location = new System.Drawing.Point(649, 17);
-            this.textTotalIngresos.Name = "textTotalIngresos";
-            this.textTotalIngresos.Size = new System.Drawing.Size(139, 28);
-            this.textTotalIngresos.TabIndex = 20;
-            this.textTotalIngresos.Text = "0";
             // 
             // FormLiquidacion
             // 
