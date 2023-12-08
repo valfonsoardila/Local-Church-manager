@@ -19,7 +19,7 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into LIQUIDACION (Id, FechaDeLiquidacion, Valor, Detalle) 
+                command.CommandText = @"Insert Into LIQUIDACION (Id, FechaDeLiquidacion, Valor, Detalle, Estado) 
                                         values (@Id, @FechaDeLiquidacion, @Valor, @Detalle, @Estado)";
                 command.Parameters.AddWithValue("@Id", liquidacion.Id);
                 command.Parameters.AddWithValue("@FechaDeLiquidacion", liquidacion.FechaDeLiquidacion);
