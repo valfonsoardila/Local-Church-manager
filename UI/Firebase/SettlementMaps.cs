@@ -19,8 +19,6 @@ namespace UI
                 {
                     Id = liquidacion.Id,
                     FechaDeLiquidacion = liquidacion.FechaDeLiquidacion.ToString(),
-                    Comite = liquidacion.Comite,
-                    Concepto = liquidacion.Concepto,
                     Valor = liquidacion.Valor,
                     Detalle = liquidacion.Detalle,
                     Estado=liquidacion.Estado
@@ -32,8 +30,6 @@ namespace UI
                 {
                     Id = liquidacion.Id,
                     FechaDeLiquidacion = liquidacion.FechaDeLiquidacion.ToString(),
-                    Comite = liquidacion.Comite,
-                    Concepto = liquidacion.Concepto,
                     Valor = liquidacion.Valor,
                     Detalle = liquidacion.Detalle,
                 };

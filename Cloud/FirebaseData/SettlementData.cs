@@ -15,10 +15,6 @@ namespace Cloud
         [FirestoreProperty]
         public string FechaDeLiquidacion { get; set; }
         [FirestoreProperty]
-        public string Comite { get; set; }
-        [FirestoreProperty]
-        public string Concepto { get; set; }
-        [FirestoreProperty]
         public int Valor { get; set; }
         [FirestoreProperty]
         public string Detalle { get; set; }
