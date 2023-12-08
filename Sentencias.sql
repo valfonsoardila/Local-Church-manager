@@ -127,7 +127,7 @@ Valor int not null,
 Detalle varchar(250) not null,
 );
 create table ENVIABLE(
-Id nvarchar(10) primary key not null,
+Id nvarchar(15) primary key not null,
 FechaDeEnvio datetime not null,
 Comite varchar(70) not null,
 Concepto varchar(150) not null,
@@ -135,7 +135,7 @@ Valor int not null,
 Detalle varchar(250) not null,
 );
 create table LIQUIDACION(
-Id nvarchar(10) primary key not null,
+Id nvarchar(15) primary key not null,
 FechaDeLiquidacion datetime not null,
 Valor int not null,
 Detalle varchar(250) not null,

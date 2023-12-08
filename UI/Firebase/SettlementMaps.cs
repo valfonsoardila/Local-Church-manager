@@ -32,6 +32,7 @@ namespace UI
                     FechaDeLiquidacion = liquidacion.FechaDeLiquidacion.ToString(),
                     Valor = liquidacion.Valor,
                     Detalle = liquidacion.Detalle,
+                    Estado= liquidacion.Estado
                 };
             }
         }
