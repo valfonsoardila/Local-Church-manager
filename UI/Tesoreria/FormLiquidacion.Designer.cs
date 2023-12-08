@@ -46,7 +46,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.textSaldo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textTotalIngresos = new System.Windows.Forms.TextBox();
+            this.textTotalLiquidacion = new System.Windows.Forms.TextBox();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -58,14 +58,17 @@
             this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridContactos = new System.Windows.Forms.DataGridView();
+            this.dataGridLiquidacion = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Egresar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textTotalNube = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textTotal = new System.Windows.Forms.TextBox();
-            this.comboOficioLibreta = new System.Windows.Forms.ComboBox();
+            this.textTotalLocal = new System.Windows.Forms.TextBox();
+            this.comboFecha = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
@@ -86,7 +89,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridContactos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridLiquidacion)).BeginInit();
             this.panelContenedorDeDirectorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
@@ -192,6 +195,7 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnRegistrar
             // 
@@ -210,6 +214,7 @@
             this.btnRegistrar.Text = "Guardar";
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // textDetalle
             // 
@@ -276,7 +281,7 @@
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.textSaldo);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.textTotalIngresos);
+            this.panel1.Controls.Add(this.textTotalLiquidacion);
             this.panel1.Controls.Add(this.btnAtras);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -323,18 +328,18 @@
             this.label11.TabIndex = 21;
             this.label11.Text = "Total Liquidacion";
             // 
-            // textTotalIngresos
+            // textTotalLiquidacion
             // 
-            this.textTotalIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textTotalIngresos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textTotalIngresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textTotalIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalIngresos.ForeColor = System.Drawing.SystemColors.Info;
-            this.textTotalIngresos.Location = new System.Drawing.Point(658, 16);
-            this.textTotalIngresos.Name = "textTotalIngresos";
-            this.textTotalIngresos.Size = new System.Drawing.Size(139, 28);
-            this.textTotalIngresos.TabIndex = 20;
-            this.textTotalIngresos.Text = "0";
+            this.textTotalLiquidacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textTotalLiquidacion.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textTotalLiquidacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTotalLiquidacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalLiquidacion.ForeColor = System.Drawing.SystemColors.Info;
+            this.textTotalLiquidacion.Location = new System.Drawing.Point(658, 16);
+            this.textTotalLiquidacion.Name = "textTotalLiquidacion";
+            this.textTotalLiquidacion.Size = new System.Drawing.Size(139, 28);
+            this.textTotalLiquidacion.TabIndex = 20;
+            this.textTotalLiquidacion.Text = "0";
             // 
             // btnAtras
             // 
@@ -468,37 +473,39 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.dataGridContactos);
+            this.panel3.Controls.Add(this.dataGridLiquidacion);
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(27, 8);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(724, 374);
             this.panel3.TabIndex = 0;
             // 
-            // dataGridContactos
+            // dataGridLiquidacion
             // 
-            this.dataGridContactos.AllowUserToAddRows = false;
-            this.dataGridContactos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridContactos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridContactos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            this.dataGridContactos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridContactos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridLiquidacion.AllowUserToAddRows = false;
+            this.dataGridLiquidacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridLiquidacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridLiquidacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dataGridLiquidacion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridLiquidacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridLiquidacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
             this.Editar,
-            this.Borrar});
-            this.dataGridContactos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridContactos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridContactos.Location = new System.Drawing.Point(0, 32);
-            this.dataGridContactos.Name = "dataGridContactos";
-            this.dataGridContactos.ReadOnly = true;
-            this.dataGridContactos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridContactos.RowHeadersVisible = false;
-            this.dataGridContactos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridContactos.RowTemplate.DividerHeight = 2;
-            this.dataGridContactos.RowTemplate.Height = 30;
-            this.dataGridContactos.Size = new System.Drawing.Size(724, 342);
-            this.dataGridContactos.TabIndex = 1;
+            this.Borrar,
+            this.Egresar});
+            this.dataGridLiquidacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridLiquidacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridLiquidacion.Location = new System.Drawing.Point(0, 32);
+            this.dataGridLiquidacion.Name = "dataGridLiquidacion";
+            this.dataGridLiquidacion.ReadOnly = true;
+            this.dataGridLiquidacion.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridLiquidacion.RowHeadersVisible = false;
+            this.dataGridLiquidacion.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridLiquidacion.RowTemplate.DividerHeight = 2;
+            this.dataGridLiquidacion.RowTemplate.Height = 30;
+            this.dataGridLiquidacion.Size = new System.Drawing.Size(724, 342);
+            this.dataGridLiquidacion.TabIndex = 1;
+            this.dataGridLiquidacion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridLiquidacion_CellClick);
             // 
             // Seleccionar
             // 
@@ -525,12 +532,23 @@
             this.Borrar.ReadOnly = true;
             this.Borrar.Width = 41;
             // 
+            // Egresar
+            // 
+            this.Egresar.HeaderText = "Egresar";
+            this.Egresar.Image = global::UI.Properties.Resources.Egresos2;
+            this.Egresar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Egresar.Name = "Egresar";
+            this.Egresar.ReadOnly = true;
+            this.Egresar.Width = 49;
+            // 
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.Controls.Add(this.label15);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalNube);
             this.panelContenedorDeDirectorio.Controls.Add(this.label9);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboOficioLibreta);
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalLocal);
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboFecha);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
             this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
@@ -542,29 +560,49 @@
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(724, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.Location = new System.Drawing.Point(250, 8);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 16);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Total en Nube";
+            // 
+            // textTotalNube
+            // 
+            this.textTotalNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalNube.Location = new System.Drawing.Point(351, 5);
+            this.textTotalNube.Name = "textTotalNube";
+            this.textTotalNube.Size = new System.Drawing.Size(46, 22);
+            this.textTotalNube.TabIndex = 28;
+            this.textTotalNube.Text = "0";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(115, 8);
+            this.label9.Location = new System.Drawing.Point(122, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 16);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Total";
+            this.label9.Size = new System.Drawing.Size(80, 16);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Total Local";
             // 
-            // textTotal
+            // textTotalLocal
             // 
-            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotal.Location = new System.Drawing.Point(161, 5);
-            this.textTotal.Name = "textTotal";
-            this.textTotal.Size = new System.Drawing.Size(46, 22);
-            this.textTotal.TabIndex = 11;
-            this.textTotal.Text = "0";
+            this.textTotalLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalLocal.Location = new System.Drawing.Point(203, 5);
+            this.textTotalLocal.Name = "textTotalLocal";
+            this.textTotalLocal.Size = new System.Drawing.Size(46, 22);
+            this.textTotalLocal.TabIndex = 26;
+            this.textTotalLocal.Text = "0";
             // 
-            // comboOficioLibreta
+            // comboFecha
             // 
-            this.comboOficioLibreta.AutoCompleteCustomSource.AddRange(new string[] {
+            this.comboFecha.AutoCompleteCustomSource.AddRange(new string[] {
             "Ingeniero(a) de sistemas",
             "Ingeniero(a) de electronica",
             "Ingeniero(a) Industrial",
@@ -600,11 +638,11 @@
             "Modista",
             "Electronico",
             "Tecnico"});
-            this.comboOficioLibreta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboOficioLibreta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboOficioLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboOficioLibreta.FormattingEnabled = true;
-            this.comboOficioLibreta.Items.AddRange(new object[] {
+            this.comboFecha.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboFecha.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFecha.FormattingEnabled = true;
+            this.comboFecha.Items.AddRange(new object[] {
             "Todos",
             "Enero",
             "Febrero",
@@ -618,11 +656,12 @@
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.comboOficioLibreta.Location = new System.Drawing.Point(374, 4);
-            this.comboOficioLibreta.Name = "comboOficioLibreta";
-            this.comboOficioLibreta.Size = new System.Drawing.Size(121, 24);
-            this.comboOficioLibreta.TabIndex = 10;
-            this.comboOficioLibreta.Text = "Mes";
+            this.comboFecha.Location = new System.Drawing.Point(402, 4);
+            this.comboFecha.Name = "comboFecha";
+            this.comboFecha.Size = new System.Drawing.Size(93, 24);
+            this.comboFecha.TabIndex = 10;
+            this.comboFecha.Text = "Mes";
+            this.comboFecha.SelectedIndexChanged += new System.EventHandler(this.comboFecha_SelectedIndexChanged);
             // 
             // iconPictureBox3
             // 
@@ -723,7 +762,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridContactos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridLiquidacion)).EndInit();
             this.panelContenedorDeDirectorio.ResumeLayout(false);
             this.panelContenedorDeDirectorio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
@@ -742,19 +781,11 @@
         private System.Windows.Forms.TabControl tabLiquidaciones;
         private System.Windows.Forms.TabPage tabListaLiquidaciones;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private FontAwesome.Sharp.IconButton btnImprimir;
-        private FontAwesome.Sharp.IconButton btnGestionarDirectivas;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridContactos;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
-        private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private System.Windows.Forms.DataGridView dataGridLiquidacion;
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textTotal;
-        private System.Windows.Forms.ComboBox comboOficioLibreta;
+        private System.Windows.Forms.ComboBox comboFecha;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
         private System.Windows.Forms.TextBox textSerachLibreta;
@@ -776,6 +807,17 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textSaldo;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textTotalIngresos;
+        private System.Windows.Forms.TextBox textTotalLiquidacion;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private FontAwesome.Sharp.IconButton btnImprimir;
+        private FontAwesome.Sharp.IconButton btnGestionarDirectivas;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private System.Windows.Forms.DataGridViewImageColumn Egresar;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textTotalNube;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textTotalLocal;
     }
 }

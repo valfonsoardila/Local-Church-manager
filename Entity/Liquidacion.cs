@@ -10,8 +10,6 @@ namespace Entity
     {
         public string Id { get; set; }
         public DateTime FechaDeLiquidacion { get; set; }
-        public string Comite { get; set; }
-        public string Concepto { get; set; }
         public int Valor { get; set; }
         public string Detalle { get; set; }
         public string Estado { get; set; }

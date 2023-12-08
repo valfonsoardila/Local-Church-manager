@@ -120,7 +120,6 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-
         public BusquedaEnviableRespuesta BuscarPorIdentificacion(string comprobante)
         {
             BusquedaEnviableRespuesta respuesta = new BusquedaEnviableRespuesta();

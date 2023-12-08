@@ -19,12 +19,10 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into LIQUIDACION (Id, FechaDeLiquidacion, Comite, Concepto, Valor, Detalle) 
-                                        values (@Id, @FechaDeLiquidacion, @Comite, @Concepto, @Valor, @Detalle)";
+                command.CommandText = @"Insert Into LIQUIDACION (Id, FechaDeLiquidacion, Valor, Detalle) 
+                                        values (@Id, @FechaDeLiquidacion, @Valor, @Detalle, @Estado)";
                 command.Parameters.AddWithValue("@Id", liquidacion.Id);
                 command.Parameters.AddWithValue("@FechaDeLiquidacion", liquidacion.FechaDeLiquidacion);
-                command.Parameters.AddWithValue("@Comite", liquidacion.Comite);
-                command.Parameters.AddWithValue("@Concepto", liquidacion.Concepto);
                 command.Parameters.AddWithValue("@Valor", liquidacion.Valor);
                 command.Parameters.AddWithValue("@Detalle", liquidacion.Detalle);
                 command.Parameters.AddWithValue("@Estado", liquidacion.Estado);
@@ -38,44 +36,6 @@ namespace DAL
             {
                 command.CommandText = "select * from LIQUIDACION where FechaDeLiquidacion=@FechaDeLiquidacion";
                 command.Parameters.AddWithValue("@FechaDeLiquidacion", fecha);
-                var dataReader = command.ExecuteReader();
-                if (dataReader.HasRows)
-                {
-                    while (dataReader.Read())
-                    {
-                        Liquidacion liquidacion = DataReaderMapToUsuario(dataReader);
-                        enviables.Add(liquidacion);
-                    }
-                }
-            }
-            return enviables;
-        }
-        public List<Liquidacion> BuscarPorComite(string comite)
-        {
-            List<Liquidacion> enviables = new List<Liquidacion>();
-            using (var command = _connection.CreateCommand())
-            {
-                command.CommandText = "select * from LIQUIDACION where Comite=@Comite";
-                command.Parameters.AddWithValue("@Comite", comite);
-                var dataReader = command.ExecuteReader();
-                if (dataReader.HasRows)
-                {
-                    while (dataReader.Read())
-                    {
-                        Liquidacion liquidacion = DataReaderMapToUsuario(dataReader);
-                        enviables.Add(liquidacion);
-                    }
-                }
-            }
-            return enviables;
-        }
-        public List<Liquidacion> BuscarPorConcepto(string concepto)
-        {
-            List<Liquidacion> enviables = new List<Liquidacion>();
-            using (var command = _connection.CreateCommand())
-            {
-                command.CommandText = "select * from LIQUIDACION where Concepto=@Concepto";
-                command.Parameters.AddWithValue("@Concepto", concepto);
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -104,12 +64,10 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update LIQUIDACION set FechaDeLiquidacion=@FechaDeLiquidacion, Comite=@Comite, Concepto=@Concepto, Valor=@Valor, Detalle=@Detalle, Estado=@Estado
+                command.CommandText = @"update LIQUIDACION set FechaDeLiquidacion=@FechaDeLiquidacion, Valor=@Valor, Detalle=@Detalle, Estado=@Estado
                                         where Id=@Id";
                 command.Parameters.AddWithValue("@Id", liquidacion.Id);
                 command.Parameters.AddWithValue("@FechaDeLiquidacion", liquidacion.FechaDeLiquidacion);
-                command.Parameters.AddWithValue("@Comite", liquidacion.Comite);
-                command.Parameters.AddWithValue("@Concepto", liquidacion.Concepto);
                 command.Parameters.AddWithValue("@Valor", liquidacion.Valor);
                 command.Parameters.AddWithValue("@Detalle", liquidacion.Detalle);
                 command.Parameters.AddWithValue("@Estado", liquidacion.Estado);
@@ -121,7 +79,7 @@ namespace DAL
             List<Liquidacion> enviables = new List<Liquidacion>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id, FechaDeLiquidacion, Comite, Concepto, Valor, Detalle, Estado from LIQUIDACION";
+                command.CommandText = "Select Id, FechaDeLiquidacion, Valor, Detalle, Estado from LIQUIDACION";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -149,8 +107,6 @@ namespace DAL
             Liquidacion liquidacion = new Liquidacion();
             liquidacion.Id = (string)dataReader["Id"];
             liquidacion.FechaDeLiquidacion = (DateTime)dataReader["FechaDeLiquidacion"];
-            liquidacion.Comite = (string)dataReader["Comite"];
-            liquidacion.Concepto = (string)dataReader["Concepto"];
             liquidacion.Valor = (int)dataReader["Valor"];
             liquidacion.Detalle = (string)dataReader["Detalle"];
             liquidacion.Estado = (string)dataReader["Estado"];

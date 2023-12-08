@@ -223,10 +223,9 @@ namespace UI
         {
             try
             {
-                var ingresos = new List<IngressData>();
                 var db = FirebaseService.Database;
-                var ingresosQuery = db.Collection("ShippableData");
-                var snapshot = await ingresosQuery.GetSnapshotAsync();
+                var enviablesQuery = db.Collection("ShippableData");
+                var snapshot = await enviablesQuery.GetSnapshotAsync();
                 textTotalNube.Text = snapshot.Documents.Count().ToString();
                 textTotalLocal.Text = enviableService.Totalizar().Cuenta.ToString();
             }
@@ -270,7 +269,7 @@ namespace UI
                     dataGridEnviables.DataSource = null;
                     dataGridEnviables.DataSource = enviables;
                     textValorFecha.Text = "0";
-                    comboFecha.Text = "Todos";
+                    comboFecha.Text = "Mes";
                     textTotalEnvios.Text = sumTotal.ToString();
                 }
                 else
@@ -278,7 +277,7 @@ namespace UI
                     dataGridEnviables.DataSource = null;
                     textTotalLocal.Text = "0";
                     textValorFecha.Text = "0";
-                    comboFecha.Text = "Todos";
+                    comboFecha.Text = "Mes";
                 }
             }
             catch (Exception e)

@@ -42,10 +42,10 @@ namespace BLL
             {
 
                 conexion.Open();
-                respuesta.Enviables = repositorio.ConsultarTodos();
+                respuesta.Liquidaciones = repositorio.ConsultarTodos();
                 conexion.Close();
                 respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Enviables.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
+                respuesta.Mensaje = (respuesta.Liquidaciones.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
                 return respuesta;
             }
             catch (Exception e)
@@ -57,16 +57,16 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-        public ConsultaLiquidacionRespuesta FiltrarIngresosPorComite(string comite)
+        public ConsultaLiquidacionRespuesta FiltrarLiquidacionPorFecha(string fecha)
         {
             ConsultaLiquidacionRespuesta respuesta = new ConsultaLiquidacionRespuesta();
             try
             {
                 conexion.Open();
-                respuesta.Enviables = repositorio.BuscarPorComite(comite);
+                respuesta.Liquidaciones = repositorio.BuscarPorFecha(fecha);
                 conexion.Close();
                 respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Enviables.Count > 0) ? "Se filtraron los Datos concordantes" : "No hay datos para consultar";
+                respuesta.Mensaje = (respuesta.Liquidaciones.Count > 0) ? "Se filtraron los Datos concordantes" : "No hay datos para consultar";
                 return respuesta;
             }
             catch (Exception e)
@@ -78,27 +78,7 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-        public ConsultaLiquidacionRespuesta FiltrarIngresosPorConcepto(string concepto)
-        {
-            ConsultaLiquidacionRespuesta respuesta = new ConsultaLiquidacionRespuesta();
-            try
-            {
-                conexion.Open();
-                respuesta.Enviables = repositorio.BuscarPorConcepto(concepto);
-                conexion.Close();
-                respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Enviables.Count > 0) ? "Se filtraron los Datos concordantes" : "No hay datos para consultar";
-                return respuesta;
-            }
-            catch (Exception e)
-            {
-                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
-                respuesta.Error = true;
-                return respuesta;
-            }
-            finally { conexion.Close(); }
 
-        }
         public BusquedaLiquidacionRespuesta BuscarPorIdentificacion(string comprobante)
         {
             BusquedaLiquidacionRespuesta respuesta = new BusquedaLiquidacionRespuesta();
@@ -192,7 +172,7 @@ namespace BLL
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Liquidacion> Enviables { get; set; }
+        public IList<Liquidacion> Liquidaciones { get; set; }
     }
     public class BusquedaLiquidacionRespuesta
     {
