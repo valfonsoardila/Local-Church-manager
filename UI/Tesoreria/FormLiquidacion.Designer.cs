@@ -64,15 +64,14 @@
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Egresar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.textValorTotalMes = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.textTotalNube = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textTotalLocal = new System.Windows.Forms.TextBox();
             this.comboFecha = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
-            this.textSerachLibreta = new System.Windows.Forms.TextBox();
-            this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
@@ -92,8 +91,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridLiquidacion)).BeginInit();
             this.panelContenedorDeDirectorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).BeginInit();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -441,6 +438,7 @@
             this.btnImprimir.Text = "Imprimir Lista";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnGestionarDirectivas
             // 
@@ -544,21 +542,40 @@
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.Controls.Add(this.textValorTotalMes);
+            this.panelContenedorDeDirectorio.Controls.Add(this.label12);
             this.panelContenedorDeDirectorio.Controls.Add(this.label15);
             this.panelContenedorDeDirectorio.Controls.Add(this.textTotalNube);
             this.panelContenedorDeDirectorio.Controls.Add(this.label9);
             this.panelContenedorDeDirectorio.Controls.Add(this.textTotalLocal);
             this.panelContenedorDeDirectorio.Controls.Add(this.comboFecha);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
-            this.panelContenedorDeDirectorio.Controls.Add(this.btSearchLibreta);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textSerachLibreta);
-            this.panelContenedorDeDirectorio.Controls.Add(this.btnCloseSearchLibreta);
             this.panelContenedorDeDirectorio.Controls.Add(this.label1);
             this.panelContenedorDeDirectorio.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContenedorDeDirectorio.Location = new System.Drawing.Point(0, 0);
             this.panelContenedorDeDirectorio.Name = "panelContenedorDeDirectorio";
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(724, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
+            // 
+            // textValorTotalMes
+            // 
+            this.textValorTotalMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textValorTotalMes.Location = new System.Drawing.Point(568, 2);
+            this.textValorTotalMes.Name = "textValorTotalMes";
+            this.textValorTotalMes.Size = new System.Drawing.Size(142, 26);
+            this.textValorTotalMes.TabIndex = 31;
+            this.textValorTotalMes.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label12.Location = new System.Drawing.Point(507, 6);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(61, 16);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Total $";
             // 
             // label15
             // 
@@ -677,53 +694,6 @@
             this.iconPictureBox3.TabIndex = 9;
             this.iconPictureBox3.TabStop = false;
             // 
-            // btSearchLibreta
-            // 
-            this.btSearchLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSearchLibreta.BackColor = System.Drawing.Color.Transparent;
-            this.btSearchLibreta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btSearchLibreta.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            this.btSearchLibreta.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btSearchLibreta.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btSearchLibreta.IconSize = 28;
-            this.btSearchLibreta.Location = new System.Drawing.Point(684, 3);
-            this.btSearchLibreta.Name = "btSearchLibreta";
-            this.btSearchLibreta.Size = new System.Drawing.Size(28, 28);
-            this.btSearchLibreta.TabIndex = 7;
-            this.btSearchLibreta.TabStop = false;
-            this.btSearchLibreta.Click += new System.EventHandler(this.btSearchLibreta_Click);
-            // 
-            // textSerachLibreta
-            // 
-            this.textSerachLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textSerachLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSerachLibreta.Location = new System.Drawing.Point(501, 1);
-            this.textSerachLibreta.Multiline = true;
-            this.textSerachLibreta.Name = "textSerachLibreta";
-            this.textSerachLibreta.Size = new System.Drawing.Size(180, 30);
-            this.textSerachLibreta.TabIndex = 6;
-            this.textSerachLibreta.Text = "Buscar por fecha";
-            this.textSerachLibreta.Visible = false;
-            this.textSerachLibreta.Enter += new System.EventHandler(this.textSerachLibreta_Enter);
-            this.textSerachLibreta.Leave += new System.EventHandler(this.textSerachLibreta_Leave);
-            // 
-            // btnCloseSearchLibreta
-            // 
-            this.btnCloseSearchLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseSearchLibreta.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseSearchLibreta.ForeColor = System.Drawing.Color.Red;
-            this.btnCloseSearchLibreta.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.btnCloseSearchLibreta.IconColor = System.Drawing.Color.Red;
-            this.btnCloseSearchLibreta.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCloseSearchLibreta.IconSize = 28;
-            this.btnCloseSearchLibreta.Location = new System.Drawing.Point(683, 2);
-            this.btnCloseSearchLibreta.Name = "btnCloseSearchLibreta";
-            this.btnCloseSearchLibreta.Size = new System.Drawing.Size(28, 28);
-            this.btnCloseSearchLibreta.TabIndex = 5;
-            this.btnCloseSearchLibreta.TabStop = false;
-            this.btnCloseSearchLibreta.Visible = false;
-            this.btnCloseSearchLibreta.Click += new System.EventHandler(this.btnCloseSearchLibreta_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -766,8 +736,6 @@
             this.panelContenedorDeDirectorio.ResumeLayout(false);
             this.panelContenedorDeDirectorio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -787,9 +755,6 @@
         private System.Windows.Forms.Panel panelContenedorDeDirectorio;
         private System.Windows.Forms.ComboBox comboFecha;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private FontAwesome.Sharp.IconPictureBox btSearchLibreta;
-        private System.Windows.Forms.TextBox textSerachLibreta;
-        private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label13;
@@ -819,5 +784,7 @@
         private System.Windows.Forms.TextBox textTotalNube;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textTotalLocal;
+        private System.Windows.Forms.TextBox textValorTotalMes;
+        private System.Windows.Forms.Label label12;
     }
 }

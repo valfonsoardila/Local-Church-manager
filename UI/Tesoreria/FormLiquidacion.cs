@@ -93,8 +93,8 @@ namespace UI
                     dataGridLiquidacion.DataSource = null;
                     dataGridLiquidacion.DataSource = enviables;
                     comboFecha.Text = "Mes";
-                    textTotalLiquidacion.Text = sumTotal.ToString();
-                    textSaldo.Text = sumEgreso.ToString();
+                    textTotalLiquidacion.Text = LecturaCifra(sumTotal);
+                    textSaldo.Text = LecturaCifra(sumEgreso);
                 }
                 else
                 {
@@ -126,40 +126,6 @@ namespace UI
         private void btnGestionarDirectivas_Click(object sender, EventArgs e)
         {
             tabLiquidaciones.SelectedIndex = 1;
-        }
-
-        private void btSearchLibreta_Click(object sender, EventArgs e)
-        {
-            btSearchLibreta.Visible = false;
-            btnCloseSearchLibreta.Visible = true;
-            textSerachLibreta.Visible = true;
-        }
-
-        private void btnCloseSearchLibreta_Click(object sender, EventArgs e)
-        {
-            btSearchLibreta.Visible = true;
-            btnCloseSearchLibreta.Visible = false;
-            textSerachLibreta.Visible = false;
-            if (textSerachLibreta.Text == "")
-            {
-                textSerachLibreta.Text = "Buscar por fecha";
-            }
-        }
-
-        private void textSerachLibreta_Enter(object sender, EventArgs e)
-        {
-            if (textSerachLibreta.Text == "Buscar por fecha")
-            {
-                textSerachLibreta.Text = "";
-            }
-        }
-
-        private void textSerachLibreta_Leave(object sender, EventArgs e)
-        {
-            if (textSerachLibreta.Text == "")
-            {
-                textSerachLibreta.Text = "Buscar por fecha";
-            }
         }
 
         private void textDetalle_Enter(object sender, EventArgs e)
@@ -320,6 +286,15 @@ namespace UI
             egreso.Valor = cantidadEntera;
             egreso.Detalle = detalle;
             return egreso;
+        }
+        private string LecturaCifra(int totalDeIngresos)
+        {
+            // Convierte el total de ingresos a una cadena con separadores de miles
+            string cifraFormateada = totalDeIngresos.ToString("N0");
+
+            // Muestra la cifra formateada en el TextBox o donde desees
+            string valorFormateado = $"${cifraFormateada}";
+            return valorFormateado;
         }
         static string FormatearFecha(string fechaOriginal)
         {
@@ -524,6 +499,7 @@ namespace UI
                    liquidacion.FechaDeLiquidacion.Contains("/" + mes + "/")
                 ).ToList();
                 sumTotal = settlementsFecha.Sum(liquidacion => liquidacion.Valor);
+                textValorTotalMes.Text = LecturaCifra(sumTotal);
                 dataGridLiquidacion.DataSource = settlementsFecha;
                 Borrar.Visible = true;
             }
@@ -560,6 +536,11 @@ namespace UI
             {
                 FiltroPorFecha(filtro);
             }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
