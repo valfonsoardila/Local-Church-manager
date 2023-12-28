@@ -1097,5 +1097,15 @@ namespace UI
         {
             CalculosPorFecha();
         }
+
+        private void comboEstadoServicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboEstadoBautizmo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
