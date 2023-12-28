@@ -9,7 +9,7 @@ namespace Entity
     public class Miembro
     {
         public Miembro(
-                string folio,
+            string folio,
             byte[] imagenPerfil,
             string idContacto,
             string nombre,

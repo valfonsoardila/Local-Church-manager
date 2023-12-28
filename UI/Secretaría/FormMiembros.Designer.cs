@@ -129,10 +129,12 @@ namespace UI
             this.tabMiembros = new System.Windows.Forms.TabControl();
             this.tabLista = new System.Windows.Forms.TabPage();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnImprimirLista = new FontAwesome.Sharp.IconButton();
             this.btnGestionarMiembros = new FontAwesome.Sharp.IconButton();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnImprimirLista = new FontAwesome.Sharp.IconButton();
             this.dataGridMiembros = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
@@ -141,7 +143,7 @@ namespace UI
             this.label39 = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
-            this.textTotalMujeres2 = new System.Windows.Forms.TextBox();
+            this.textTotalMujeres = new System.Windows.Forms.TextBox();
             this.textTotalHombres = new System.Windows.Forms.TextBox();
             this.textTotal = new System.Windows.Forms.TextBox();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
@@ -153,13 +155,9 @@ namespace UI
             this.btSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.tabSimpatizantes = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.panel21 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -180,10 +178,10 @@ namespace UI
             this.iconPictureBox8 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox9 = new FontAwesome.Sharp.IconPictureBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -211,6 +209,7 @@ namespace UI
             this.tabMiembros.SuspendLayout();
             this.tabLista.SuspendLayout();
             this.panel15.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMiembros)).BeginInit();
@@ -221,11 +220,8 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.tabSimpatizantes.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -236,7 +232,9 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox9)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -289,6 +287,7 @@ namespace UI
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(833, 614);
             this.panel12.TabIndex = 46;
+            this.panel12.UseWaitCursor = true;
             // 
             // panel18
             // 
@@ -301,6 +300,7 @@ namespace UI
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(833, 464);
             this.panel18.TabIndex = 50;
+            this.panel18.UseWaitCursor = true;
             // 
             // groupEstadoFeligresia
             // 
@@ -318,6 +318,7 @@ namespace UI
             this.groupEstadoFeligresia.TabIndex = 32;
             this.groupEstadoFeligresia.TabStop = false;
             this.groupEstadoFeligresia.Text = "Estado de membresia";
+            this.groupEstadoFeligresia.UseWaitCursor = true;
             // 
             // textObservaciones
             // 
@@ -329,6 +330,7 @@ namespace UI
             this.textObservaciones.Size = new System.Drawing.Size(692, 78);
             this.textObservaciones.TabIndex = 89;
             this.textObservaciones.Text = "Observaciones";
+            this.textObservaciones.UseWaitCursor = true;
             this.textObservaciones.Enter += new System.EventHandler(this.textObservaciones_Enter);
             this.textObservaciones.Leave += new System.EventHandler(this.textObservaciones_Leave);
             // 
@@ -341,6 +343,7 @@ namespace UI
             this.label37.Size = new System.Drawing.Size(116, 16);
             this.label37.TabIndex = 88;
             this.label37.Text = "Observaciones:";
+            this.label37.UseWaitCursor = true;
             // 
             // label36
             // 
@@ -351,6 +354,7 @@ namespace UI
             this.label36.Size = new System.Drawing.Size(50, 16);
             this.label36.TabIndex = 87;
             this.label36.Text = "Lugar:";
+            this.label36.UseWaitCursor = true;
             // 
             // textLugarDeTraslado
             // 
@@ -362,6 +366,7 @@ namespace UI
             this.textLugarDeTraslado.Size = new System.Drawing.Size(405, 30);
             this.textLugarDeTraslado.TabIndex = 87;
             this.textLugarDeTraslado.Text = "Lugar de traslado";
+            this.textLugarDeTraslado.UseWaitCursor = true;
             this.textLugarDeTraslado.Enter += new System.EventHandler(this.textLugarTraslado_Enter);
             this.textLugarDeTraslado.Leave += new System.EventHandler(this.textLugarTraslado_Leave);
             // 
@@ -383,6 +388,7 @@ namespace UI
             this.comboMembresia.Size = new System.Drawing.Size(124, 24);
             this.comboMembresia.TabIndex = 87;
             this.comboMembresia.Text = "Congregado";
+            this.comboMembresia.UseWaitCursor = true;
             this.comboMembresia.SelectedIndexChanged += new System.EventHandler(this.comboMembresia_SelectedIndexChanged);
             // 
             // label35
@@ -394,6 +400,7 @@ namespace UI
             this.label35.Size = new System.Drawing.Size(100, 16);
             this.label35.TabIndex = 76;
             this.label35.Text = "¿Membresia?";
+            this.label35.UseWaitCursor = true;
             // 
             // groupEstadoServicio
             // 
@@ -413,6 +420,7 @@ namespace UI
             this.groupEstadoServicio.TabIndex = 31;
             this.groupEstadoServicio.TabStop = false;
             this.groupEstadoServicio.Text = "Estado servicio";
+            this.groupEstadoServicio.UseWaitCursor = true;
             // 
             // textMotivo
             // 
@@ -424,6 +432,7 @@ namespace UI
             this.textMotivo.Size = new System.Drawing.Size(405, 30);
             this.textMotivo.TabIndex = 86;
             this.textMotivo.Text = "Motivo ";
+            this.textMotivo.UseWaitCursor = true;
             this.textMotivo.Enter += new System.EventHandler(this.textMotivo_Enter);
             this.textMotivo.Leave += new System.EventHandler(this.textMotivo_Leave);
             // 
@@ -436,6 +445,7 @@ namespace UI
             this.label34.Size = new System.Drawing.Size(57, 16);
             this.label34.TabIndex = 84;
             this.label34.Text = "Motivo:";
+            this.label34.UseWaitCursor = true;
             // 
             // textTiempoCorreccion
             // 
@@ -448,6 +458,7 @@ namespace UI
             this.textTiempoCorreccion.Size = new System.Drawing.Size(30, 17);
             this.textTiempoCorreccion.TabIndex = 83;
             this.textTiempoCorreccion.Text = "0";
+            this.textTiempoCorreccion.UseWaitCursor = true;
             // 
             // label33
             // 
@@ -458,6 +469,7 @@ namespace UI
             this.label33.Size = new System.Drawing.Size(64, 16);
             this.label33.TabIndex = 82;
             this.label33.Text = "Tiempo:";
+            this.label33.UseWaitCursor = true;
             // 
             // dateFechaDeCorreccion
             // 
@@ -467,6 +479,7 @@ namespace UI
             this.dateFechaDeCorreccion.Name = "dateFechaDeCorreccion";
             this.dateFechaDeCorreccion.Size = new System.Drawing.Size(246, 22);
             this.dateFechaDeCorreccion.TabIndex = 81;
+            this.dateFechaDeCorreccion.UseWaitCursor = true;
             this.dateFechaDeCorreccion.ValueChanged += new System.EventHandler(this.dateFechaDeCorreccion_ValueChanged);
             // 
             // label32
@@ -478,6 +491,7 @@ namespace UI
             this.label32.Size = new System.Drawing.Size(153, 16);
             this.label32.TabIndex = 80;
             this.label32.Text = "Fecha de correccion:";
+            this.label32.UseWaitCursor = true;
             // 
             // comboActoParaServir
             // 
@@ -497,6 +511,7 @@ namespace UI
             this.comboActoParaServir.Size = new System.Drawing.Size(93, 24);
             this.comboActoParaServir.TabIndex = 76;
             this.comboActoParaServir.Text = "Si";
+            this.comboActoParaServir.UseWaitCursor = true;
             this.comboActoParaServir.SelectedIndexChanged += new System.EventHandler(this.comboActoParaServir_SelectedIndexChanged);
             // 
             // label31
@@ -508,6 +523,7 @@ namespace UI
             this.label31.Size = new System.Drawing.Size(133, 16);
             this.label31.TabIndex = 75;
             this.label31.Text = "¿Acto para servir?";
+            this.label31.UseWaitCursor = true;
             // 
             // groupProcedencia
             // 
@@ -525,6 +541,7 @@ namespace UI
             this.groupProcedencia.TabIndex = 30;
             this.groupProcedencia.TabStop = false;
             this.groupProcedencia.Text = "Procedencia";
+            this.groupProcedencia.UseWaitCursor = true;
             // 
             // textCargosDesempeñados
             // 
@@ -535,6 +552,7 @@ namespace UI
             this.textCargosDesempeñados.Size = new System.Drawing.Size(405, 59);
             this.textCargosDesempeñados.TabIndex = 85;
             this.textCargosDesempeñados.Text = "Cargos desempeñados";
+            this.textCargosDesempeñados.UseWaitCursor = true;
             this.textCargosDesempeñados.Enter += new System.EventHandler(this.textCargosDesempeñados_Enter);
             this.textCargosDesempeñados.Leave += new System.EventHandler(this.textCargosDesempeñados_Leave);
             // 
@@ -547,6 +565,7 @@ namespace UI
             this.label25.Size = new System.Drawing.Size(173, 16);
             this.label25.TabIndex = 84;
             this.label25.Text = "Cargos desempeñados:";
+            this.label25.UseWaitCursor = true;
             // 
             // comboPastorAsistente
             // 
@@ -583,6 +602,7 @@ namespace UI
             this.comboPastorAsistente.Size = new System.Drawing.Size(122, 24);
             this.comboPastorAsistente.TabIndex = 83;
             this.comboPastorAsistente.Text = "Emiro Diaz";
+            this.comboPastorAsistente.UseWaitCursor = true;
             // 
             // label23
             // 
@@ -593,6 +613,7 @@ namespace UI
             this.label23.Size = new System.Drawing.Size(123, 16);
             this.label23.TabIndex = 82;
             this.label23.Text = "Pastor asistente:";
+            this.label23.UseWaitCursor = true;
             // 
             // textIglesiaProcedente
             // 
@@ -603,6 +624,7 @@ namespace UI
             this.textIglesiaProcedente.Size = new System.Drawing.Size(192, 26);
             this.textIglesiaProcedente.TabIndex = 28;
             this.textIglesiaProcedente.Text = "Iglesia procedente";
+            this.textIglesiaProcedente.UseWaitCursor = true;
             this.textIglesiaProcedente.Enter += new System.EventHandler(this.textIglesiaProcedente_Enter);
             this.textIglesiaProcedente.Leave += new System.EventHandler(this.textIglesiaProcedente_Leave);
             // 
@@ -615,6 +637,7 @@ namespace UI
             this.label20.Size = new System.Drawing.Size(141, 16);
             this.label20.TabIndex = 81;
             this.label20.Text = "Iglesia procedente:";
+            this.label20.UseWaitCursor = true;
             // 
             // groupBautismo
             // 
@@ -643,6 +666,7 @@ namespace UI
             this.groupBautismo.TabIndex = 29;
             this.groupBautismo.TabStop = false;
             this.groupBautismo.Text = "Bautismo y promesa";
+            this.groupBautismo.UseWaitCursor = true;
             // 
             // textTiempoPromesa
             // 
@@ -655,6 +679,7 @@ namespace UI
             this.textTiempoPromesa.Size = new System.Drawing.Size(30, 17);
             this.textTiempoPromesa.TabIndex = 82;
             this.textTiempoPromesa.Text = "0";
+            this.textTiempoPromesa.UseWaitCursor = true;
             // 
             // label24
             // 
@@ -665,6 +690,7 @@ namespace UI
             this.label24.Size = new System.Drawing.Size(175, 16);
             this.label24.TabIndex = 81;
             this.label24.Text = "Tiempo con la promesa:";
+            this.label24.UseWaitCursor = true;
             // 
             // comboRecuerda
             // 
@@ -685,6 +711,7 @@ namespace UI
             this.comboRecuerda.Size = new System.Drawing.Size(101, 24);
             this.comboRecuerda.TabIndex = 80;
             this.comboRecuerda.Text = "No recuerda";
+            this.comboRecuerda.UseWaitCursor = true;
             this.comboRecuerda.SelectedIndexChanged += new System.EventHandler(this.comboRecuerda_SelectedIndexChanged);
             // 
             // label19
@@ -696,6 +723,7 @@ namespace UI
             this.label19.Size = new System.Drawing.Size(54, 16);
             this.label19.TabIndex = 79;
             this.label19.Text = "Fecha:";
+            this.label19.UseWaitCursor = true;
             // 
             // comboSellado
             // 
@@ -715,6 +743,7 @@ namespace UI
             this.comboSellado.Size = new System.Drawing.Size(67, 24);
             this.comboSellado.TabIndex = 78;
             this.comboSellado.Text = "No";
+            this.comboSellado.UseWaitCursor = true;
             this.comboSellado.SelectedIndexChanged += new System.EventHandler(this.comboSellado_SelectedIndexChanged);
             // 
             // dateFechaEspirituSanto
@@ -725,6 +754,7 @@ namespace UI
             this.dateFechaEspirituSanto.Name = "dateFechaEspirituSanto";
             this.dateFechaEspirituSanto.Size = new System.Drawing.Size(216, 22);
             this.dateFechaEspirituSanto.TabIndex = 77;
+            this.dateFechaEspirituSanto.UseWaitCursor = true;
             this.dateFechaEspirituSanto.ValueChanged += new System.EventHandler(this.dateFechaEspirituSanto_ValueChanged);
             // 
             // label18
@@ -736,6 +766,7 @@ namespace UI
             this.label18.Size = new System.Drawing.Size(77, 16);
             this.label18.TabIndex = 76;
             this.label18.Text = "¿Sellado?";
+            this.label18.UseWaitCursor = true;
             // 
             // comboBautizado
             // 
@@ -755,6 +786,7 @@ namespace UI
             this.comboBautizado.Size = new System.Drawing.Size(93, 24);
             this.comboBautizado.TabIndex = 75;
             this.comboBautizado.Text = "No";
+            this.comboBautizado.UseWaitCursor = true;
             this.comboBautizado.SelectedIndexChanged += new System.EventHandler(this.comboBautizado_SelectedIndexChanged);
             // 
             // label15
@@ -766,6 +798,7 @@ namespace UI
             this.label15.Size = new System.Drawing.Size(92, 16);
             this.label15.TabIndex = 74;
             this.label15.Text = "¿Bautizado?";
+            this.label15.UseWaitCursor = true;
             // 
             // comboPastorOficiante
             // 
@@ -803,6 +836,7 @@ namespace UI
             this.comboPastorOficiante.Size = new System.Drawing.Size(104, 24);
             this.comboPastorOficiante.TabIndex = 73;
             this.comboPastorOficiante.Text = "Emiro Diaz";
+            this.comboPastorOficiante.UseWaitCursor = true;
             // 
             // label17
             // 
@@ -813,6 +847,7 @@ namespace UI
             this.label17.Size = new System.Drawing.Size(119, 16);
             this.label17.TabIndex = 72;
             this.label17.Text = "Pastor oficiante:";
+            this.label17.UseWaitCursor = true;
             // 
             // textTiempoDeConversion
             // 
@@ -825,6 +860,7 @@ namespace UI
             this.textTiempoDeConversion.Size = new System.Drawing.Size(30, 17);
             this.textTiempoDeConversion.TabIndex = 51;
             this.textTiempoDeConversion.Text = "0";
+            this.textTiempoDeConversion.UseWaitCursor = true;
             // 
             // label12
             // 
@@ -835,6 +871,7 @@ namespace UI
             this.label12.Size = new System.Drawing.Size(89, 16);
             this.label12.TabIndex = 50;
             this.label12.Text = "Conversion:";
+            this.label12.UseWaitCursor = true;
             // 
             // label14
             // 
@@ -845,6 +882,7 @@ namespace UI
             this.label14.Size = new System.Drawing.Size(143, 16);
             this.label14.TabIndex = 47;
             this.label14.Text = "Fecha de bautismo:";
+            this.label14.UseWaitCursor = true;
             // 
             // dateFechaDeBautismo
             // 
@@ -854,6 +892,7 @@ namespace UI
             this.dateFechaDeBautismo.Name = "dateFechaDeBautismo";
             this.dateFechaDeBautismo.Size = new System.Drawing.Size(238, 22);
             this.dateFechaDeBautismo.TabIndex = 49;
+            this.dateFechaDeBautismo.UseWaitCursor = true;
             this.dateFechaDeBautismo.ValueChanged += new System.EventHandler(this.dateFechaDeBautismo_ValueChanged);
             // 
             // textLugarBautizmo
@@ -866,6 +905,7 @@ namespace UI
             this.textLugarBautizmo.Size = new System.Drawing.Size(121, 26);
             this.textLugarBautizmo.TabIndex = 48;
             this.textLugarBautizmo.Text = "Lugar de bautizmo";
+            this.textLugarBautizmo.UseWaitCursor = true;
             this.textLugarBautizmo.Enter += new System.EventHandler(this.textLugarBautizmo_Enter);
             this.textLugarBautizmo.Leave += new System.EventHandler(this.textLugarBautizmo_Leave);
             // 
@@ -878,6 +918,7 @@ namespace UI
             this.label16.Size = new System.Drawing.Size(50, 16);
             this.label16.TabIndex = 54;
             this.label16.Text = "Lugar:";
+            this.label16.UseWaitCursor = true;
             // 
             // panel19
             // 
@@ -889,6 +930,7 @@ namespace UI
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(833, 30);
             this.panel19.TabIndex = 48;
+            this.panel19.UseWaitCursor = true;
             // 
             // label11
             // 
@@ -900,6 +942,7 @@ namespace UI
             this.label11.Size = new System.Drawing.Size(148, 16);
             this.label11.TabIndex = 1;
             this.label11.Text = "Datos de feligresía";
+            this.label11.UseWaitCursor = true;
             // 
             // panel17
             // 
@@ -914,6 +957,7 @@ namespace UI
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(833, 90);
             this.panel17.TabIndex = 1;
+            this.panel17.UseWaitCursor = true;
             // 
             // textNumeroDeHijos
             // 
@@ -925,6 +969,7 @@ namespace UI
             this.textNumeroDeHijos.Size = new System.Drawing.Size(168, 26);
             this.textNumeroDeHijos.TabIndex = 88;
             this.textNumeroDeHijos.Text = "Numero de hijos";
+            this.textNumeroDeHijos.UseWaitCursor = true;
             this.textNumeroDeHijos.Enter += new System.EventHandler(this.textNumeroDeHijos_Enter);
             this.textNumeroDeHijos.Leave += new System.EventHandler(this.textNumeroDeHijos_Leave);
             // 
@@ -937,6 +982,7 @@ namespace UI
             this.label38.Size = new System.Drawing.Size(124, 16);
             this.label38.TabIndex = 87;
             this.label38.Text = "Numero de hijos:";
+            this.label38.UseWaitCursor = true;
             // 
             // textNombreDelConyugue
             // 
@@ -948,6 +994,7 @@ namespace UI
             this.textNombreDelConyugue.Size = new System.Drawing.Size(336, 26);
             this.textNombreDelConyugue.TabIndex = 86;
             this.textNombreDelConyugue.Text = "Nombre del conyugue";
+            this.textNombreDelConyugue.UseWaitCursor = true;
             this.textNombreDelConyugue.Enter += new System.EventHandler(this.textNombreDelConyugue_Enter);
             this.textNombreDelConyugue.Leave += new System.EventHandler(this.textNombreDelConyugue_Leave);
             // 
@@ -960,6 +1007,7 @@ namespace UI
             this.label30.Size = new System.Drawing.Size(163, 16);
             this.label30.TabIndex = 85;
             this.label30.Text = "Nombre del conyugue:";
+            this.label30.UseWaitCursor = true;
             // 
             // comboEstadoCivil
             // 
@@ -986,6 +1034,7 @@ namespace UI
             this.comboEstadoCivil.Size = new System.Drawing.Size(112, 24);
             this.comboEstadoCivil.TabIndex = 84;
             this.comboEstadoCivil.Text = "Sin especificar";
+            this.comboEstadoCivil.UseWaitCursor = true;
             this.comboEstadoCivil.SelectedIndexChanged += new System.EventHandler(this.comboEstadoCivil_SelectedIndexChanged);
             this.comboEstadoCivil.Enter += new System.EventHandler(this.comboEstadoCivil_Enter);
             this.comboEstadoCivil.Leave += new System.EventHandler(this.comboEstadoCivil_Leave);
@@ -999,6 +1048,7 @@ namespace UI
             this.label29.Size = new System.Drawing.Size(92, 16);
             this.label29.TabIndex = 83;
             this.label29.Text = "Estado civil:";
+            this.label29.UseWaitCursor = true;
             // 
             // panel16
             // 
@@ -1009,6 +1059,7 @@ namespace UI
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(833, 30);
             this.panel16.TabIndex = 0;
+            this.panel16.UseWaitCursor = true;
             // 
             // label26
             // 
@@ -1020,6 +1071,7 @@ namespace UI
             this.label26.Size = new System.Drawing.Size(251, 16);
             this.label26.TabIndex = 2;
             this.label26.Text = "Lazos sentimentales y familiares";
+            this.label26.UseWaitCursor = true;
             // 
             // panel11
             // 
@@ -1032,6 +1084,7 @@ namespace UI
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(833, 70);
             this.panel11.TabIndex = 45;
+            this.panel11.UseWaitCursor = true;
             // 
             // textNombreDeLaMadre
             // 
@@ -1042,6 +1095,7 @@ namespace UI
             this.textNombreDeLaMadre.Size = new System.Drawing.Size(336, 26);
             this.textNombreDeLaMadre.TabIndex = 27;
             this.textNombreDeLaMadre.Text = "Nombre de la madre";
+            this.textNombreDeLaMadre.UseWaitCursor = true;
             this.textNombreDeLaMadre.Enter += new System.EventHandler(this.textNombreDeLaMadre_Enter);
             this.textNombreDeLaMadre.Leave += new System.EventHandler(this.textNombreDeLaMadre_Leave);
             // 
@@ -1054,6 +1108,7 @@ namespace UI
             this.label10.Size = new System.Drawing.Size(153, 16);
             this.label10.TabIndex = 26;
             this.label10.Text = "Nombre de la madre:";
+            this.label10.UseWaitCursor = true;
             // 
             // textNombreDelPadre
             // 
@@ -1064,6 +1119,7 @@ namespace UI
             this.textNombreDelPadre.Size = new System.Drawing.Size(336, 26);
             this.textNombreDelPadre.TabIndex = 25;
             this.textNombreDelPadre.Text = "Nombre del padre";
+            this.textNombreDelPadre.UseWaitCursor = true;
             this.textNombreDelPadre.Enter += new System.EventHandler(this.textNombreDelPadre_Enter);
             this.textNombreDelPadre.Leave += new System.EventHandler(this.textNombreDelPadre_Leave);
             // 
@@ -1076,6 +1132,7 @@ namespace UI
             this.label13.Size = new System.Drawing.Size(138, 16);
             this.label13.TabIndex = 24;
             this.label13.Text = "Nombre del Padre:";
+            this.label13.UseWaitCursor = true;
             // 
             // panel10
             // 
@@ -1086,6 +1143,7 @@ namespace UI
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(833, 30);
             this.panel10.TabIndex = 44;
+            this.panel10.UseWaitCursor = true;
             // 
             // label9
             // 
@@ -1097,6 +1155,7 @@ namespace UI
             this.label9.Size = new System.Drawing.Size(91, 16);
             this.label9.TabIndex = 1;
             this.label9.Text = "Parentezco";
+            this.label9.UseWaitCursor = true;
             // 
             // panel9
             // 
@@ -1134,6 +1193,7 @@ namespace UI
             this.label28.Size = new System.Drawing.Size(51, 16);
             this.label28.TabIndex = 41;
             this.label28.Text = "Oficio:";
+            this.label28.UseWaitCursor = true;
             // 
             // comboOficio
             // 
@@ -1219,6 +1279,7 @@ namespace UI
             this.comboOficio.Size = new System.Drawing.Size(121, 24);
             this.comboOficio.TabIndex = 40;
             this.comboOficio.Text = "Oficio";
+            this.comboOficio.UseWaitCursor = true;
             this.comboOficio.Enter += new System.EventHandler(this.comboOficio_Enter);
             this.comboOficio.Leave += new System.EventHandler(this.comboOficio_Leave);
             // 
@@ -1251,6 +1312,7 @@ namespace UI
             this.labelGenero.Size = new System.Drawing.Size(62, 16);
             this.labelGenero.TabIndex = 38;
             this.labelGenero.Text = "Genero:";
+            this.labelGenero.UseWaitCursor = true;
             // 
             // textTelefono
             // 
@@ -1261,6 +1323,7 @@ namespace UI
             this.textTelefono.Size = new System.Drawing.Size(126, 26);
             this.textTelefono.TabIndex = 37;
             this.textTelefono.Text = "Telefono";
+            this.textTelefono.UseWaitCursor = true;
             this.textTelefono.TextChanged += new System.EventHandler(this.textTelefono_TextChanged);
             this.textTelefono.Enter += new System.EventHandler(this.textTelefono_Enter);
             this.textTelefono.Leave += new System.EventHandler(this.textTelefono_Leave);
@@ -1274,6 +1337,7 @@ namespace UI
             this.label22.Size = new System.Drawing.Size(73, 16);
             this.label22.TabIndex = 36;
             this.label22.Text = "Telefono:";
+            this.label22.UseWaitCursor = true;
             // 
             // textDireccion
             // 
@@ -1284,6 +1348,7 @@ namespace UI
             this.textDireccion.Size = new System.Drawing.Size(143, 26);
             this.textDireccion.TabIndex = 35;
             this.textDireccion.Text = "Direccion";
+            this.textDireccion.UseWaitCursor = true;
             this.textDireccion.Enter += new System.EventHandler(this.textDireccion_Enter);
             this.textDireccion.Leave += new System.EventHandler(this.textDireccion_Leave);
             // 
@@ -1296,6 +1361,7 @@ namespace UI
             this.label21.Size = new System.Drawing.Size(77, 16);
             this.label21.TabIndex = 34;
             this.label21.Text = "Direccion:";
+            this.label21.UseWaitCursor = true;
             // 
             // btnCargarFoto
             // 
@@ -1308,6 +1374,7 @@ namespace UI
             this.btnCargarFoto.TabIndex = 33;
             this.btnCargarFoto.Text = "Cargar Foto";
             this.btnCargarFoto.UseVisualStyleBackColor = true;
+            this.btnCargarFoto.UseWaitCursor = true;
             this.btnCargarFoto.Click += new System.EventHandler(this.btnCargarFoto_Click);
             // 
             // picturePerfil
@@ -1319,6 +1386,7 @@ namespace UI
             this.picturePerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picturePerfil.TabIndex = 32;
             this.picturePerfil.TabStop = false;
+            this.picturePerfil.UseWaitCursor = true;
             // 
             // comboTipoDocumento
             // 
@@ -1351,6 +1419,7 @@ namespace UI
             this.label7.Size = new System.Drawing.Size(145, 16);
             this.label7.TabIndex = 30;
             this.label7.Text = "Tipo de documento:";
+            this.label7.UseWaitCursor = true;
             // 
             // textNumeroDeDocumento
             // 
@@ -1361,6 +1430,7 @@ namespace UI
             this.textNumeroDeDocumento.Size = new System.Drawing.Size(158, 26);
             this.textNumeroDeDocumento.TabIndex = 29;
             this.textNumeroDeDocumento.Text = "Numero de documento";
+            this.textNumeroDeDocumento.UseWaitCursor = true;
             this.textNumeroDeDocumento.Enter += new System.EventHandler(this.textNumeroDeId_Enter);
             this.textNumeroDeDocumento.Leave += new System.EventHandler(this.textNumeroDeId_Leave);
             // 
@@ -1373,6 +1443,7 @@ namespace UI
             this.label6.Size = new System.Drawing.Size(117, 16);
             this.label6.TabIndex = 28;
             this.label6.Text = "Numero de doc:";
+            this.label6.UseWaitCursor = true;
             // 
             // dateFechaDeNacimiento
             // 
@@ -1380,6 +1451,7 @@ namespace UI
             this.dateFechaDeNacimiento.Name = "dateFechaDeNacimiento";
             this.dateFechaDeNacimiento.Size = new System.Drawing.Size(208, 21);
             this.dateFechaDeNacimiento.TabIndex = 27;
+            this.dateFechaDeNacimiento.UseWaitCursor = true;
             // 
             // label5
             // 
@@ -1390,6 +1462,7 @@ namespace UI
             this.label5.Size = new System.Drawing.Size(155, 16);
             this.label5.TabIndex = 26;
             this.label5.Text = "Fecha de nacimiento:";
+            this.label5.UseWaitCursor = true;
             // 
             // textNombre
             // 
@@ -1400,6 +1473,7 @@ namespace UI
             this.textNombre.Size = new System.Drawing.Size(336, 26);
             this.textNombre.TabIndex = 25;
             this.textNombre.Text = "Nombre";
+            this.textNombre.UseWaitCursor = true;
             this.textNombre.Enter += new System.EventHandler(this.textNombre_Enter);
             this.textNombre.Leave += new System.EventHandler(this.textNombre_Leave);
             // 
@@ -1412,6 +1486,7 @@ namespace UI
             this.label4.Size = new System.Drawing.Size(154, 16);
             this.label4.TabIndex = 24;
             this.label4.Text = "Nombres del inscrito:";
+            this.label4.UseWaitCursor = true;
             // 
             // panel13
             // 
@@ -1422,6 +1497,7 @@ namespace UI
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(833, 30);
             this.panel13.TabIndex = 42;
+            this.panel13.UseWaitCursor = true;
             // 
             // label8
             // 
@@ -1433,6 +1509,7 @@ namespace UI
             this.label8.Size = new System.Drawing.Size(136, 16);
             this.label8.TabIndex = 1;
             this.label8.Text = "Datos Personales";
+            this.label8.UseWaitCursor = true;
             // 
             // panel7
             // 
@@ -1531,6 +1608,7 @@ namespace UI
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(850, 26);
             this.panel6.TabIndex = 14;
+            this.panel6.UseWaitCursor = true;
             // 
             // labelNumeroFolio
             // 
@@ -1542,6 +1620,7 @@ namespace UI
             this.labelNumeroFolio.Size = new System.Drawing.Size(81, 16);
             this.labelNumeroFolio.TabIndex = 1;
             this.labelNumeroFolio.Text = "*                 ";
+            this.labelNumeroFolio.UseWaitCursor = true;
             // 
             // labelFolio
             // 
@@ -1553,6 +1632,7 @@ namespace UI
             this.labelFolio.Size = new System.Drawing.Size(62, 16);
             this.labelFolio.TabIndex = 0;
             this.labelFolio.Text = "FOLIO #";
+            this.labelFolio.UseWaitCursor = true;
             // 
             // panel5
             // 
@@ -1564,6 +1644,7 @@ namespace UI
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(850, 32);
             this.panel5.TabIndex = 1;
+            this.panel5.UseWaitCursor = true;
             // 
             // iconPictureBox4
             // 
@@ -1578,6 +1659,7 @@ namespace UI
             this.iconPictureBox4.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox4.TabIndex = 9;
             this.iconPictureBox4.TabStop = false;
+            this.iconPictureBox4.UseWaitCursor = true;
             // 
             // label3
             // 
@@ -1589,6 +1671,7 @@ namespace UI
             this.label3.Size = new System.Drawing.Size(183, 16);
             this.label3.TabIndex = 0;
             this.label3.Text = "Agregar nuevo miembro";
+            this.label3.UseWaitCursor = true;
             // 
             // panel2
             // 
@@ -1636,6 +1719,62 @@ namespace UI
             this.panel15.TabIndex = 17;
             this.panel15.UseWaitCursor = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 354F));
+            this.tableLayoutPanel1.Controls.Add(this.iconButton1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnImprimirLista, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnGestionarMiembros, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(844, 49);
+            this.tableLayoutPanel1.TabIndex = 16;
+            this.tableLayoutPanel1.UseWaitCursor = true;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.Location = new System.Drawing.Point(308, 3);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(178, 43);
+            this.iconButton1.TabIndex = 45;
+            this.iconButton1.Text = "Ver simpatizantes";
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.UseWaitCursor = true;
+            // 
+            // btnImprimirLista
+            // 
+            this.btnImprimirLista.BackColor = System.Drawing.Color.Orange;
+            this.btnImprimirLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirLista.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimirLista.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimirLista.IconColor = System.Drawing.Color.Black;
+            this.btnImprimirLista.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimirLista.IconSize = 30;
+            this.btnImprimirLista.Location = new System.Drawing.Point(492, 3);
+            this.btnImprimirLista.Name = "btnImprimirLista";
+            this.btnImprimirLista.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimirLista.Size = new System.Drawing.Size(182, 40);
+            this.btnImprimirLista.TabIndex = 44;
+            this.btnImprimirLista.Text = "Imprimir Lista";
+            this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimirLista.UseVisualStyleBackColor = false;
+            this.btnImprimirLista.UseWaitCursor = true;
+            // 
             // btnGestionarMiembros
             // 
             this.btnGestionarMiembros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1678,25 +1817,6 @@ namespace UI
             this.panel3.Size = new System.Drawing.Size(781, 393);
             this.panel3.TabIndex = 1;
             this.panel3.UseWaitCursor = true;
-            // 
-            // btnImprimirLista
-            // 
-            this.btnImprimirLista.BackColor = System.Drawing.Color.Orange;
-            this.btnImprimirLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirLista.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnImprimirLista.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnImprimirLista.IconColor = System.Drawing.Color.Black;
-            this.btnImprimirLista.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnImprimirLista.IconSize = 30;
-            this.btnImprimirLista.Location = new System.Drawing.Point(493, 3);
-            this.btnImprimirLista.Name = "btnImprimirLista";
-            this.btnImprimirLista.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimirLista.Size = new System.Drawing.Size(182, 40);
-            this.btnImprimirLista.TabIndex = 44;
-            this.btnImprimirLista.Text = "Imprimir Lista";
-            this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimirLista.UseVisualStyleBackColor = false;
-            this.btnImprimirLista.UseWaitCursor = true;
             // 
             // dataGridMiembros
             // 
@@ -1747,7 +1867,7 @@ namespace UI
             this.panel20.Controls.Add(this.label39);
             this.panel20.Controls.Add(this.iconPictureBox1);
             this.panel20.Controls.Add(this.iconPictureBox6);
-            this.panel20.Controls.Add(this.textTotalMujeres2);
+            this.panel20.Controls.Add(this.textTotalMujeres);
             this.panel20.Controls.Add(this.textTotalHombres);
             this.panel20.Controls.Add(this.textTotal);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1767,6 +1887,7 @@ namespace UI
             this.label39.Size = new System.Drawing.Size(41, 16);
             this.label39.TabIndex = 23;
             this.label39.Text = "Total";
+            this.label39.UseWaitCursor = true;
             // 
             // iconPictureBox1
             // 
@@ -1781,6 +1902,7 @@ namespace UI
             this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox1.TabIndex = 22;
             this.iconPictureBox1.TabStop = false;
+            this.iconPictureBox1.UseWaitCursor = true;
             // 
             // iconPictureBox6
             // 
@@ -1795,15 +1917,17 @@ namespace UI
             this.iconPictureBox6.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox6.TabIndex = 21;
             this.iconPictureBox6.TabStop = false;
+            this.iconPictureBox6.UseWaitCursor = true;
             // 
-            // textTotalMujeres2
+            // textTotalMujeres
             // 
-            this.textTotalMujeres2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalMujeres2.Location = new System.Drawing.Point(720, 5);
-            this.textTotalMujeres2.Name = "textTotalMujeres2";
-            this.textTotalMujeres2.Size = new System.Drawing.Size(46, 22);
-            this.textTotalMujeres2.TabIndex = 20;
-            this.textTotalMujeres2.Text = "0";
+            this.textTotalMujeres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalMujeres.Location = new System.Drawing.Point(720, 5);
+            this.textTotalMujeres.Name = "textTotalMujeres";
+            this.textTotalMujeres.Size = new System.Drawing.Size(46, 22);
+            this.textTotalMujeres.TabIndex = 20;
+            this.textTotalMujeres.Text = "0";
+            this.textTotalMujeres.UseWaitCursor = true;
             // 
             // textTotalHombres
             // 
@@ -1813,6 +1937,7 @@ namespace UI
             this.textTotalHombres.Size = new System.Drawing.Size(46, 22);
             this.textTotalHombres.TabIndex = 19;
             this.textTotalHombres.Text = "0";
+            this.textTotalHombres.UseWaitCursor = true;
             // 
             // textTotal
             // 
@@ -1822,6 +1947,7 @@ namespace UI
             this.textTotal.Size = new System.Drawing.Size(46, 22);
             this.textTotal.TabIndex = 18;
             this.textTotal.Text = "0";
+            this.textTotal.UseWaitCursor = true;
             // 
             // panelContenedorDeDirectorio
             // 
@@ -1859,6 +1985,7 @@ namespace UI
             this.comboEstadoBautizmo.Size = new System.Drawing.Size(136, 24);
             this.comboEstadoBautizmo.TabIndex = 26;
             this.comboEstadoBautizmo.Text = "Lugar de bautizmo";
+            this.comboEstadoBautizmo.UseWaitCursor = true;
             this.comboEstadoBautizmo.SelectedIndexChanged += new System.EventHandler(this.comboEstadoBautizmo_SelectedIndexChanged);
             // 
             // comboEstadoServicio
@@ -1879,6 +2006,7 @@ namespace UI
             this.comboEstadoServicio.Size = new System.Drawing.Size(89, 24);
             this.comboEstadoServicio.TabIndex = 25;
             this.comboEstadoServicio.Text = "Servicio";
+            this.comboEstadoServicio.UseWaitCursor = true;
             this.comboEstadoServicio.SelectedIndexChanged += new System.EventHandler(this.comboEstadoServicio_SelectedIndexChanged);
             // 
             // textSearch
@@ -1910,6 +2038,7 @@ namespace UI
             this.iconPictureBox3.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox3.TabIndex = 9;
             this.iconPictureBox3.TabStop = false;
+            this.iconPictureBox3.UseWaitCursor = true;
             // 
             // comboGenero
             // 
@@ -1930,6 +2059,7 @@ namespace UI
             this.comboGenero.Size = new System.Drawing.Size(89, 24);
             this.comboGenero.TabIndex = 8;
             this.comboGenero.Text = "Genero";
+            this.comboGenero.UseWaitCursor = true;
             this.comboGenero.SelectedIndexChanged += new System.EventHandler(this.comboGenero_SelectedIndexChanged);
             // 
             // btSearchLibreta
@@ -1977,91 +2107,7 @@ namespace UI
             this.label1.Size = new System.Drawing.Size(76, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Miembros";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::UI.Properties.Resources.membresia;
-            this.pictureBox1.Location = new System.Drawing.Point(46, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 33);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(92, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Gestion Miembros";
-            // 
-            // btnAtras
-            // 
-            this.btnAtras.BackColor = System.Drawing.Color.Transparent;
-            this.btnAtras.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
-            this.btnAtras.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAtras.IconSize = 28;
-            this.btnAtras.Location = new System.Drawing.Point(12, 18);
-            this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(28, 28);
-            this.btnAtras.TabIndex = 8;
-            this.btnAtras.TabStop = false;
-            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Controls.Add(this.btnAtras);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(858, 59);
-            this.panel1.TabIndex = 2;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 353F));
-            this.tableLayoutPanel1.Controls.Add(this.iconButton1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnImprimirLista, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnGestionarMiembros, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(844, 49);
-            this.tableLayoutPanel1.TabIndex = 16;
-            this.tableLayoutPanel1.UseWaitCursor = true;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(308, 3);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(179, 43);
-            this.iconButton1.TabIndex = 45;
-            this.iconButton1.Text = "Ver simpatizantes";
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.UseWaitCursor = true;
+            this.label1.UseWaitCursor = true;
             // 
             // tabSimpatizantes
             // 
@@ -2075,6 +2121,42 @@ namespace UI
             this.tabSimpatizantes.Text = "Simpatizantes";
             this.tabSimpatizantes.UseVisualStyleBackColor = true;
             this.tabSimpatizantes.UseWaitCursor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 354F));
+            this.tableLayoutPanel3.Controls.Add(this.iconButton3, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 405);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(844, 49);
+            this.tableLayoutPanel3.TabIndex = 17;
+            this.tableLayoutPanel3.UseWaitCursor = true;
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.BackColor = System.Drawing.Color.Orange;
+            this.iconButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.iconButton3.IconColor = System.Drawing.Color.Black;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.IconSize = 30;
+            this.iconButton3.Location = new System.Drawing.Point(308, 3);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton3.Size = new System.Drawing.Size(178, 40);
+            this.iconButton3.TabIndex = 44;
+            this.iconButton3.Text = "Imprimir Lista";
+            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton3.UseVisualStyleBackColor = false;
+            this.iconButton3.UseWaitCursor = true;
             // 
             // panel21
             // 
@@ -2169,6 +2251,7 @@ namespace UI
             this.label27.Size = new System.Drawing.Size(41, 16);
             this.label27.TabIndex = 23;
             this.label27.Text = "Total";
+            this.label27.UseWaitCursor = true;
             // 
             // iconPictureBox2
             // 
@@ -2183,6 +2266,7 @@ namespace UI
             this.iconPictureBox2.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox2.TabIndex = 22;
             this.iconPictureBox2.TabStop = false;
+            this.iconPictureBox2.UseWaitCursor = true;
             // 
             // iconPictureBox5
             // 
@@ -2197,6 +2281,7 @@ namespace UI
             this.iconPictureBox5.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox5.TabIndex = 21;
             this.iconPictureBox5.TabStop = false;
+            this.iconPictureBox5.UseWaitCursor = true;
             // 
             // textBox1
             // 
@@ -2206,6 +2291,7 @@ namespace UI
             this.textBox1.Size = new System.Drawing.Size(46, 22);
             this.textBox1.TabIndex = 20;
             this.textBox1.Text = "0";
+            this.textBox1.UseWaitCursor = true;
             // 
             // textBox2
             // 
@@ -2215,6 +2301,7 @@ namespace UI
             this.textBox2.Size = new System.Drawing.Size(46, 22);
             this.textBox2.TabIndex = 19;
             this.textBox2.Text = "0";
+            this.textBox2.UseWaitCursor = true;
             // 
             // textBox3
             // 
@@ -2224,6 +2311,7 @@ namespace UI
             this.textBox3.Size = new System.Drawing.Size(46, 22);
             this.textBox3.TabIndex = 18;
             this.textBox3.Text = "0";
+            this.textBox3.UseWaitCursor = true;
             // 
             // panel24
             // 
@@ -2239,6 +2327,7 @@ namespace UI
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(781, 32);
             this.panel24.TabIndex = 0;
+            this.panel24.UseWaitCursor = true;
             // 
             // textBox4
             // 
@@ -2250,6 +2339,7 @@ namespace UI
             this.textBox4.Size = new System.Drawing.Size(153, 29);
             this.textBox4.TabIndex = 24;
             this.textBox4.Text = "Buscar";
+            this.textBox4.UseWaitCursor = true;
             this.textBox4.Visible = false;
             // 
             // iconPictureBox7
@@ -2265,6 +2355,7 @@ namespace UI
             this.iconPictureBox7.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox7.TabIndex = 9;
             this.iconPictureBox7.TabStop = false;
+            this.iconPictureBox7.UseWaitCursor = true;
             // 
             // comboBox3
             // 
@@ -2285,6 +2376,7 @@ namespace UI
             this.comboBox3.Size = new System.Drawing.Size(89, 24);
             this.comboBox3.TabIndex = 8;
             this.comboBox3.Text = "Genero";
+            this.comboBox3.UseWaitCursor = true;
             // 
             // iconPictureBox8
             // 
@@ -2300,6 +2392,7 @@ namespace UI
             this.iconPictureBox8.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox8.TabIndex = 7;
             this.iconPictureBox8.TabStop = false;
+            this.iconPictureBox8.UseWaitCursor = true;
             // 
             // iconPictureBox9
             // 
@@ -2315,6 +2408,7 @@ namespace UI
             this.iconPictureBox9.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox9.TabIndex = 5;
             this.iconPictureBox9.TabStop = false;
+            this.iconPictureBox9.UseWaitCursor = true;
             this.iconPictureBox9.Visible = false;
             // 
             // label40
@@ -2327,80 +2421,55 @@ namespace UI
             this.label40.Size = new System.Drawing.Size(112, 16);
             this.label40.TabIndex = 0;
             this.label40.Text = "Simpatizantes";
+            this.label40.UseWaitCursor = true;
             // 
-            // tableLayoutPanel3
+            // pictureBox1
             // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 353F));
-            this.tableLayoutPanel3.Controls.Add(this.iconButton2, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.iconButton3, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.iconButton4, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 405);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(844, 49);
-            this.tableLayoutPanel3.TabIndex = 17;
-            this.tableLayoutPanel3.UseWaitCursor = true;
+            this.pictureBox1.Image = global::UI.Properties.Resources.membresia;
+            this.pictureBox1.Location = new System.Drawing.Point(46, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(40, 33);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
-            // iconButton2
+            // label2
             // 
-            this.iconButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton2.IconColor = System.Drawing.Color.Black;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.Location = new System.Drawing.Point(308, 3);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(179, 43);
-            this.iconButton2.TabIndex = 45;
-            this.iconButton2.Text = "Ver simpatizantes";
-            this.iconButton2.UseVisualStyleBackColor = false;
-            this.iconButton2.UseWaitCursor = true;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(92, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(199, 24);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Gestion Miembros";
             // 
-            // iconButton3
+            // btnAtras
             // 
-            this.iconButton3.BackColor = System.Drawing.Color.Orange;
-            this.iconButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.iconButton3.IconColor = System.Drawing.Color.Black;
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.IconSize = 30;
-            this.iconButton3.Location = new System.Drawing.Point(493, 3);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton3.Size = new System.Drawing.Size(182, 40);
-            this.iconButton3.TabIndex = 44;
-            this.iconButton3.Text = "Imprimir Lista";
-            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton3.UseVisualStyleBackColor = false;
-            this.iconButton3.UseWaitCursor = true;
+            this.btnAtras.BackColor = System.Drawing.Color.Transparent;
+            this.btnAtras.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
+            this.btnAtras.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAtras.IconSize = 28;
+            this.btnAtras.Location = new System.Drawing.Point(12, 18);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(28, 28);
+            this.btnAtras.TabIndex = 8;
+            this.btnAtras.TabStop = false;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // iconButton4
+            // panel1
             // 
-            this.iconButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.iconButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.iconButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton4.IconColor = System.Drawing.Color.Black;
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton4.Location = new System.Drawing.Point(167, 3);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(135, 40);
-            this.iconButton4.TabIndex = 1;
-            this.iconButton4.Text = "Gestionar miembros";
-            this.iconButton4.UseVisualStyleBackColor = false;
-            this.iconButton4.UseWaitCursor = true;
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.btnAtras);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(858, 59);
+            this.panel1.TabIndex = 2;
             // 
             // FormMiembros
             // 
@@ -2451,6 +2520,7 @@ namespace UI
             this.tabMiembros.ResumeLayout(false);
             this.tabLista.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMiembros)).EndInit();
@@ -2463,12 +2533,8 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.tabSimpatizantes.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.panel21.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -2481,7 +2547,10 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox9)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2604,7 +2673,7 @@ namespace UI
         private System.Windows.Forms.Label label39;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox6;
-        private System.Windows.Forms.TextBox textTotalMujeres2;
+        private System.Windows.Forms.TextBox textTotalMujeres;
         private System.Windows.Forms.TextBox textTotalHombres;
         private System.Windows.Forms.TextBox textTotal;
         private System.Windows.Forms.DataGridView dataGridMiembros;
@@ -2638,8 +2707,6 @@ namespace UI
         private FontAwesome.Sharp.IconPictureBox iconPictureBox9;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton4;
     }
 }

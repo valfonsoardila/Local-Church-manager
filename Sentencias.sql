@@ -89,6 +89,20 @@ Membresia varchar(12) not null,
 LugarTraslado varchar(50) not null,
 Observaciones varchar(400) not null
 );
+create table SIMPATIZANTE(
+NumeroDoc varchar(12) primary key not null,
+ImagenPerfil image,
+IdContacto nvarchar(15) not null,
+Nombre varchar(40) not null,
+Apellido varchar(40) not null,
+TipoDoc varchar(3) not null,
+FechaDeNacimiento datetime not null,
+Edad int not null,
+Genero varchar(10) not null,
+Oficio varchar(70) not null,
+Direccion nvarchar(70) not null,
+Telefono varchar(12) not null,
+);
 create table DIRECTIVA(
 IdDirectiva nvarchar(15) primary key not null,
 Nombre varchar(70) not null,

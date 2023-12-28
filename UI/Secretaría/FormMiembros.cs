@@ -24,9 +24,11 @@ namespace UI
         public readonly Validaciones validaciones;
         RutasTxtService rutasTxtService = new RutasTxtService();
         MiembroService miembroService;
+        SimpatizanteService simpatizanteService;
         MemberMaps memberMaps;
         List<Miembro> miembros;
         Miembro miembro;
+        Simpatizante simpatizante;
         ContactoService contactoService;
         List<Contacto> contactos;
         Contacto contacto;
@@ -43,6 +45,7 @@ namespace UI
         bool encontradoApellido = false;
         public FormMiembros()
         {
+            simpatizanteService = new SimpatizanteService(ConfigConnection.ConnectionString);
             contactoService = new ContactoService(ConfigConnection.ConnectionString);
             miembroService = new MiembroService(ConfigConnection.ConnectionString);
             memberMaps = new MemberMaps();
@@ -490,12 +493,53 @@ namespace UI
 
             return miembro;
         }
+        private Simpatizante MapearDatosSimpatizante()
+        {
+            simpatizante = new Simpatizante();
+            simpatizante.IdContacto = idContacto;
+            simpatizante.Nombre = nombres;
+            simpatizante.Apellido = apellidos;
+            simpatizante.TipoDoc = comboTipoDocumento.Text;
+            simpatizante.NumeroDoc = textNumeroDeDocumento.Text;
+            simpatizante.FechaNacimiento = dateFechaDeNacimiento.Value;
+            simpatizante.Genero = comboGeneroRegistrar.Text;
+            simpatizante.Oficio = comboOficio.Text;
+            simpatizante.Direccion = textDireccion.Text;
+            simpatizante.Telefono = textTelefono.Text;
+            // Mapeo de la imagen del perfil
+            if (imagenPerfil != null)
+            {
+                if (imagenPicture.Length != imagenPerfil.Length)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        picturePerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        simpatizante.ImagenPerfil = ms.ToArray();
+                    }
+                }
+                else
+                {
+                    simpatizante.ImagenPerfil = imagenPicture;
+                }
+            }
+            else
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    picturePerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    simpatizante.ImagenPerfil = ms.ToArray();
+                }
+            }
+            return simpatizante;
+        }
+
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             ExtraerNombreYApellido();
             GenerarIdContacto();
             Contacto contacto = MapearDatosContacto();
             Miembro nuevoMiembro = MapearDatosMiembro();
+            Simpatizante nuevoSimpatizante = MapearDatosSimpatizante();
             FiltroPorNombre(nombres);
             FiltroPorApellido(apellidos);
             try
@@ -503,17 +547,31 @@ namespace UI
                 if (encontradoNombre != true && encontradoApellido != true)
                 {
                     contactoService.Guardar(contacto);
-                    string mensaje = miembroService.Guardar(nuevoMiembro);
                     //Guardamos en la nube
                     var db = FirebaseService.Database;
                     var member = memberMaps.MemberMap(nuevoMiembro);
-                    Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(member.Folio.ToString());
-                    docRef.SetAsync(member);
-                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    ConsultarYLlenarGridDeMiembros();
-                    LimpiarCampos();
-                    CalcularFolio();
-                    tabMiembros.SelectedIndex = 0;
+                    if (member.Bautizado=="Si")
+                    {
+                        string mensaje = miembroService.Guardar(nuevoMiembro);
+                        Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(member.Folio.ToString());
+                        docRef.SetAsync(member);
+                        MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        ConsultarYLlenarGridDeMiembros();
+                        LimpiarCampos();
+                        CalcularFolio();
+                        tabMiembros.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        string mensaje = simpatizanteService.Guardar(nuevoSimpatizante);
+                        Google.Cloud.Firestore.DocumentReference docRef = db.Collection("SympathizerData").Document(member.Folio.ToString());
+                        docRef.SetAsync(member);
+                        MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        ConsultarYLlenarGridDeMiembros();
+                        LimpiarCampos();
+                        CalcularFolio();
+                        tabMiembros.SelectedIndex = 0;
+                    }
                 }
             }
             catch(Exception ex)
