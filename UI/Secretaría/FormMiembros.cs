@@ -16,16 +16,21 @@ using Cloud;
 using Google.Cloud.Firestore;
 using Microsoft.Win32;
 using System.Globalization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace UI
 {
     public partial class FormMiembros : Form
     {
+        TabPage tabPage;
         public readonly Validaciones validaciones;
         RutasTxtService rutasTxtService = new RutasTxtService();
         MiembroService miembroService;
         SimpatizanteService simpatizanteService;
         MemberMaps memberMaps;
+        SympathizerMaps sympathizerMaps;
+        ContactMaps contactMaps;
         List<Miembro> miembros;
         Miembro miembro;
         Simpatizante simpatizante;
@@ -43,6 +48,7 @@ namespace UI
         bool encontrado = false;
         bool encontradoNombre = false;
         bool encontradoApellido = false;
+        string generoDelTipo="";
         public FormMiembros()
         {
             simpatizanteService = new SimpatizanteService(ConfigConnection.ConnectionString);
@@ -78,7 +84,7 @@ namespace UI
             {
                 var db = FirebaseService.Database;
                 var miembros = new List<MemberData>();
-                Query membersQuery = db.Collection("MembersData");
+                Google.Cloud.Firestore.Query membersQuery = db.Collection("MembersData").WhereEqualTo("Bautizado", "Si");
                 QuerySnapshot snap = await membersQuery.GetSnapshotAsync();
 
                 var hombres = snap.Documents.Where(docsnap => docsnap.ConvertTo<MemberData>().Genero == "Masculino").Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
@@ -97,7 +103,7 @@ namespace UI
                     textTotal.Text = "0";
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
                 string tipo = comboGenero.Text;
@@ -546,14 +552,22 @@ namespace UI
             {
                 if (encontradoNombre != true && encontradoApellido != true)
                 {
+                    // Guardamos en contactos la informacion
                     contactoService.Guardar(contacto);
+                    //Guardamos en la nube
+                    var db = FirebaseService.Database;
+                    Google.Cloud.Firestore.DocumentReference docRef;
                     if (comboBautizado.Text=="Si")
                     {
-                        //Guardamos en la nube
-                        var db = FirebaseService.Database;
-                        var member = memberMaps.MemberMap(nuevoMiembro);
+                        // Guardamos local
                         string mensaje = miembroService.Guardar(nuevoMiembro);
-                        Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(member.Folio.ToString());
+                        // Guardamos el contacto
+                        var contact = contactMaps.ContactMap(contacto);
+                        docRef = db.Collection("ContactsData").Document(contact.IdContacto.ToString());
+                        docRef.SetAsync(contact);
+                        //Guardamos el miembro
+                        var member = memberMaps.MemberMap(nuevoMiembro);
+                        docRef = db.Collection("MembersData").Document(member.Folio.ToString());
                         docRef.SetAsync(member);
                         MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                         ConsultarYLlenarGridDeMiembros();
@@ -563,11 +577,15 @@ namespace UI
                     }
                     else
                     {
-                        //Guardamos en la nube
-                        var db = FirebaseService.Database;
-                        var member = memberMaps.MemberMap(nuevoMiembro);
+                        // Guardamos local
                         string mensaje = simpatizanteService.Guardar(nuevoSimpatizante);
-                        Google.Cloud.Firestore.DocumentReference docRef = db.Collection("SympathizerData").Document(member.Folio.ToString());
+                        // Guardamos el contacto
+                        var contact = contactMaps.ContactMap(contacto);
+                        docRef = db.Collection("ContactsData").Document(contact.IdContacto.ToString());
+                        docRef.SetAsync(contact);
+                        //Guardamos el simpatizante
+                        var member = memberMaps.MemberMap(nuevoMiembro);
+                        docRef = db.Collection("SympathizerData").Document(member.Folio.ToString());
                         docRef.SetAsync(member);
                         MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                         ConsultarYLlenarGridDeMiembros();
@@ -657,7 +675,6 @@ namespace UI
             miembro.FechaDeBautizmo = dateFechaDeBautismo.Value;
             miembro.CalcularTiempoDeConversion();
             textTiempoDeConversion.Text = miembro.TiempoConversion.ToString();
-
         }
         private void textTelefono_TextChanged(object sender, EventArgs e)
         {
@@ -705,17 +722,146 @@ namespace UI
                 }
             }
         }
-        void FiltroPorgenero(string filtro)
+        private async void FiltroPorGenero(string filtro)
         {
-            BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
-            respuesta = miembroService.BuscarPorGenero(filtro);
-            var registro = respuesta.Miembro;
-            if (registro != null)
+            if (generoDelTipo=="Miembro")
             {
-                //dataGridMiembros.DataSource = null;
-                var miembros = new List<Miembro> { registro };
-                dataGridMiembros.DataSource = miembros;
-                foreach (DataGridViewRow row in dataGridMiembros.Rows)
+                try
+                {
+                    var db = FirebaseService.Database;
+                    var miembrosQuery = db.Collection("MembersData");
+                    var miembros = new List<MemberData>();
+                    // Realizar la suma directamente en la consulta Firestore
+                    var snapshot = await miembrosQuery.GetSnapshotAsync();
+                    miembros = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+                    // Filtrar elementos según el campo Valor y la variable id
+                    var membersGenero = miembros.Where(miembro => miembro.Genero == filtro).ToList();
+                    dataGridMiembros.DataSource = membersGenero;
+                    Borrar.Visible = true;
+                }
+                catch
+                {
+                    BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
+                    respuesta = miembroService.BuscarPorGenero(filtro);
+                    var registro = respuesta.Miembro;
+                    if (registro != null)
+                    {
+                        //dataGridMiembros.DataSource = null;
+                        var miembros = new List<Miembro> { registro };
+                        dataGridMiembros.DataSource = miembros;
+                        foreach (DataGridViewRow row in dataGridMiembros.Rows)
+                        {
+                            DataGridViewImageCell cell = row.Cells["ImagenPerfil"] as DataGridViewImageCell;
+                            if (cell != null)
+                            {
+                                byte[] imageBytes = cell.Value as byte[];
+                                if (imageBytes != null)
+                                {
+                                    // Convierte los bytes en una imagen
+                                    Image originalImage;
+                                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                                    {
+                                        originalImage = Image.FromStream(ms);
+                                    }
+
+                                    // Redimensiona la imagen para que quepa en la celda
+                                    Image resizedImage = ResizeImageToFitCell(cell, originalImage);
+
+                                    // Asigna la imagen redimensionada a la celda
+                                    cell.Value = resizedImage;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        dataGridMiembros.DataSource = null;
+                    }
+                }
+
+            }
+            else
+            {
+                try
+                {
+                    var db = FirebaseService.Database;
+                    var simpatizanteQuery = db.Collection("SympathizerData");
+                    var simpatizantes = new List<SympathizerData>();
+                    // Realizar la suma directamente en la consulta Firestore
+                    var snapshot = await simpatizanteQuery.GetSnapshotAsync();
+                    simpatizantes = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<SympathizerData>()).ToList();
+                    // Filtrar elementos según el campo Valor y la variable id
+                    var simpatizantesGenero = miembros.Where(simpatizante => simpatizante.Genero == filtro).ToList();
+                    dataGridMiembros.DataSource = simpatizantesGenero;
+                    Borrar.Visible = true;
+                }
+                catch
+                {
+                    BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
+                    respuesta = miembroService.BuscarPorGenero(filtro);
+                    var registro = respuesta.Miembro;
+                    if (registro != null)
+                    {
+                        //dataGridMiembros.DataSource = null;
+                        var miembros = new List<Miembro> { registro };
+                        dataGridMiembros.DataSource = miembros;
+                        foreach (DataGridViewRow row in dataGridMiembros.Rows)
+                        {
+                            DataGridViewImageCell cell = row.Cells["ImagenPerfil"] as DataGridViewImageCell;
+                            if (cell != null)
+                            {
+                                byte[] imageBytes = cell.Value as byte[];
+                                if (imageBytes != null)
+                                {
+                                    // Convierte los bytes en una imagen
+                                    Image originalImage;
+                                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                                    {
+                                        originalImage = Image.FromStream(ms);
+                                    }
+
+                                    // Redimensiona la imagen para que quepa en la celda
+                                    Image resizedImage = ResizeImageToFitCell(cell, originalImage);
+
+                                    // Asigna la imagen redimensionada a la celda
+                                    cell.Value = resizedImage;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        dataGridMiembros.DataSource = null;
+                    }
+                }
+            }
+        }
+        private async void FiltroPorServicio(string filtro)
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var miembrosQuery = db.Collection("MembersData");
+                var miembros = new List<MemberData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await miembrosQuery.GetSnapshotAsync();
+                miembros = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var membersGenero = miembros.Where(miembro => miembro.Acto == filtro).ToList();
+                dataGridMiembros.DataSource = membersGenero;
+                Borrar.Visible = true;
+            }
+            catch
+            {
+                BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
+                respuesta = miembroService.BuscarPorGenero(filtro);
+                var registro = respuesta.Miembro;
+                if (registro != null)
+                {
+                    //dataGridMiembros.DataSource = null;
+                    var miembros = new List<Miembro> { registro };
+                    dataGridMiembros.DataSource = miembros;
+                    foreach (DataGridViewRow row in dataGridMiembros.Rows)
                     {
                         DataGridViewImageCell cell = row.Cells["ImagenPerfil"] as DataGridViewImageCell;
                         if (cell != null)
@@ -738,18 +884,78 @@ namespace UI
                             }
                         }
                     }
+                }
+                else
+                {
+                    dataGridMiembros.DataSource = null;
+                }
             }
-            else
+        }
+        private async void FiltroPorLugarBautizmo(string filtro)
+        {
+            try
             {
-                dataGridMiembros.DataSource = null;
+                var db = FirebaseService.Database;
+                var miembrosQuery = db.Collection("MembersData");
+                var miembros = new List<MemberData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await miembrosQuery.GetSnapshotAsync();
+                miembros = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var membersGenero = new List<MemberData>();
+                membersGenero = (filtro == "Gerizim")
+                    ? miembros.Where(miembro => miembro.LugarBautizmo == filtro).ToList()
+                    : miembros.Where(miembro => miembro.LugarBautizmo != filtro).ToList();
+                dataGridMiembros.DataSource = membersGenero;
+                Borrar.Visible = true;
+            }
+            catch
+            {
+                BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
+                respuesta = miembroService.BuscarPorGenero(filtro);
+                var registro = respuesta.Miembro;
+                if (registro != null)
+                {
+                    //dataGridMiembros.DataSource = null;
+                    var miembros = new List<Miembro> { registro };
+                    dataGridMiembros.DataSource = miembros;
+                    foreach (DataGridViewRow row in dataGridMiembros.Rows)
+                    {
+                        DataGridViewImageCell cell = row.Cells["ImagenPerfil"] as DataGridViewImageCell;
+                        if (cell != null)
+                        {
+                            byte[] imageBytes = cell.Value as byte[];
+                            if (imageBytes != null)
+                            {
+                                // Convierte los bytes en una imagen
+                                Image originalImage;
+                                using (MemoryStream ms = new MemoryStream(imageBytes))
+                                {
+                                    originalImage = Image.FromStream(ms);
+                                }
+
+                                // Redimensiona la imagen para que quepa en la celda
+                                Image resizedImage = ResizeImageToFitCell(cell, originalImage);
+
+                                // Asigna la imagen redimensionada a la celda
+                                cell.Value = resizedImage;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    dataGridMiembros.DataSource = null;
+                }
             }
         }
         private void comboGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
             var filtro = comboGenero.Text;
+            generoDelTipo = "Miembro";
             if (comboGenero.Text != "" && comboGenero.Text != "Todos")
             {
-                FiltroPorgenero(filtro);
+                FiltroPorGenero(filtro);
             }
             else
             {
@@ -852,265 +1058,265 @@ namespace UI
         private void textNombre_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNombre.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNombre.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNombre_Leave(object sender, EventArgs e)
         {
             string placeHolder = textNombre.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNombre.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textNumeroDeId_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNumeroDeDocumento.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNumeroDeDocumento.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNumeroDeId_Leave(object sender, EventArgs e)
         {
             string placeHolder = textNumeroDeDocumento.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNumeroDeDocumento.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void comboTipoDocumento_Enter(object sender, EventArgs e)
         {
             string placeHolder = comboTipoDocumento.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             comboTipoDocumento.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void comboTipoDocumento_Leave(object sender, EventArgs e)
         {
             string placeHolder = comboTipoDocumento.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             comboTipoDocumento.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void comboGeneroRegistrar_Enter(object sender, EventArgs e)
         {
             string placeHolder = comboGeneroRegistrar.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             comboGeneroRegistrar.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void comboGeneroRegistrar_Leave(object sender, EventArgs e)
         {
             string placeHolder = comboGeneroRegistrar.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             comboGeneroRegistrar.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void comboOficio_Enter(object sender, EventArgs e)
         {
             string placeHolder = comboOficio.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             comboOficio.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void comboOficio_Leave(object sender, EventArgs e)
         {
             string placeHolder = comboOficio.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             comboOficio.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textDireccion_Enter(object sender, EventArgs e)
         {
             string placeHolder = textDireccion.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textDireccion.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textDireccion_Leave(object sender, EventArgs e)
         {
             string placeHolder = textDireccion.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textDireccion.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textTelefono_Enter(object sender, EventArgs e)
         {
             string placeHolder = textTelefono.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textTelefono.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textTelefono_Leave(object sender, EventArgs e)
         {
             string placeHolder = textTelefono.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textTelefono.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textNombreDelPadre_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNombreDelPadre.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNombreDelPadre.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNombreDelPadre_Leave(object sender, EventArgs e)
         {
             string placeHolder = textNombreDelPadre.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNombreDelPadre.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textNombreDeLaMadre_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNombreDeLaMadre.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNombreDeLaMadre.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNombreDeLaMadre_Leave(object sender, EventArgs e)
         {
             string placeHolder = textNombreDeLaMadre.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNombreDeLaMadre.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
         private void textNumeroDeHijos_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNumeroDeHijos.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNumeroDeHijos.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNumeroDeHijos_Leave(object sender, EventArgs e)
         {
             string placeHolder = textNumeroDeHijos.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNumeroDeHijos.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textNombreDelConyugue_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNombreDelConyugue.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNombreDelConyugue.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textNombreDelConyugue_Leave(object sender, EventArgs e)
         {
             string placeHolder = textNombreDelConyugue.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNombreDelConyugue.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textLugarBautizmo_Enter(object sender, EventArgs e)
         {
             string placeHolder = textLugarBautizmo.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textLugarBautizmo.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textLugarBautizmo_Leave(object sender, EventArgs e)
         {
             string placeHolder = textLugarBautizmo.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textLugarBautizmo.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textIglesiaProcedente_Enter(object sender, EventArgs e)
         {
             string placeHolder = textIglesiaProcedente.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textIglesiaProcedente.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textIglesiaProcedente_Leave(object sender, EventArgs e)
         {
             string placeHolder = textIglesiaProcedente.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textIglesiaProcedente.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textCargosDesempeñados_Enter(object sender, EventArgs e)
         {
             string placeHolder = textCargosDesempeñados.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textCargosDesempeñados.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textCargosDesempeñados_Leave(object sender, EventArgs e)
         {
             string placeHolder = textCargosDesempeñados.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textCargosDesempeñados.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textMotivo_Enter(object sender, EventArgs e)
         {
             string placeHolder = textMotivo.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textMotivo.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textMotivo_Leave(object sender, EventArgs e)
         {
             string placeHolder = textMotivo.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textMotivo.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textLugarTraslado_Enter(object sender, EventArgs e)
         {
             string placeHolder = textLugarDeTraslado.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textLugarDeTraslado.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textLugarTraslado_Leave(object sender, EventArgs e)
         {
             string placeHolder = textLugarDeTraslado.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textLugarDeTraslado.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textObservaciones_Enter(object sender, EventArgs e)
         {
             string placeHolder = textObservaciones.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textObservaciones.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textObservaciones_Leave(object sender, EventArgs e)
         {
             string placeHolder = textObservaciones.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textObservaciones.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void comboEstadoCivil_Enter(object sender, EventArgs e)
         {
             string placeHolder = comboEstadoCivil.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             comboEstadoCivil.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void comboEstadoCivil_Leave(object sender, EventArgs e)
         {
             string placeHolder = comboEstadoCivil.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             comboEstadoCivil.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void comboEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = comboEstadoCivil.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textNumeroDeHijos.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
             textNombreDelConyugue.Enabled= validaciones.ComboResponse(item, nombreDelComponente);
         }
         private void comboBautizado_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = comboBautizado.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             dateFechaDeBautismo.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
             textLugarBautizmo.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
             comboPastorOficiante.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
@@ -1118,20 +1324,20 @@ namespace UI
         private void comboSellado_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = comboSellado.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             comboRecuerda.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
         }
         private void comboRecuerda_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = comboRecuerda.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             dateFechaEspirituSanto.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
         }
 
         private void comboActoParaServir_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = comboActoParaServir.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             dateFechaDeCorreccion.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
             textMotivo.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
         }
@@ -1139,7 +1345,7 @@ namespace UI
         private void comboMembresia_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = comboMembresia.Text;
-            string nombreDelComponente = ((Control)sender).Name;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textLugarDeTraslado.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
             textObservaciones.Enabled = validaciones.ComboResponse(item, nombreDelComponente);
         }
@@ -1161,12 +1367,69 @@ namespace UI
 
         private void comboEstadoServicio_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            var filtro = comboEstadoServicio.Text;
+            if (comboEstadoServicio.Text != "" && comboEstadoServicio.Text != "Todos")
+            {
+                FiltroPorServicio(filtro);
+            }
+            else
+            {
+                ConsultarYLlenarGridDeMiembros();
+            }
         }
 
         private void comboEstadoBautizmo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var filtro = comboLugarBautizmo.Text;
+            if (comboLugarBautizmo.Text != "" && comboLugarBautizmo.Text != "Todos")
+            {
+                FiltroPorLugarBautizmo(filtro);
+            }
+            else
+            {
+                ConsultarYLlenarGridDeMiembros();
+            }
+        }
 
+        private void FormMiembros_Load(object sender, EventArgs e)
+        {
+            if (tabMiembros.TabCount > 0)
+            {
+                tabPage = tabMiembros.TabPages["tabSimpatizantes"];
+                tabMiembros.TabPages.RemoveAt(2);
+            }
+        }
+
+        private void btnVerListaSimpatizantes_Click(object sender, EventArgs e)
+        {
+            tabMiembros.TabPages.Add(tabPage);
+            tabMiembros.SelectedIndex = 2;
+        }
+
+        private void tabMiembros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabMiembros.TabCount > 2)
+            {
+                if (tabMiembros.SelectedIndex != 2)
+                {
+                    tabPage = tabMiembros.TabPages["tabSimpatizantes"];
+                    tabMiembros.TabPages.RemoveAt(2);
+                }
+            }
+        }
+
+        private void comboGenero2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var filtro = comboGenero2.Text;
+            generoDelTipo = "Simpatizante";
+            if (comboGenero2.Text != "" && comboGenero2.Text != "Todos")
+            {
+                FiltroPorGenero(filtro);
+            }
+            else
+            {
+                ConsultarYLlenarGridDeMiembros();
+            }
         }
     }
 }

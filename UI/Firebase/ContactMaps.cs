@@ -13,7 +13,7 @@ namespace UI
         ContactData contactData;
         public ContactData ContactMap(Contacto contacto)
         {
-            if (CheckIfUserAlreadyExist(contacto.IdContacto))
+            if (CheckIfContactAlreadyExist(contacto.IdContacto))
             {
                 return new ContactData()
                 {
