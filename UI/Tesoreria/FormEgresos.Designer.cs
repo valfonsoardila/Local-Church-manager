@@ -1095,6 +1095,7 @@
             this.btnImprimirDetalle.Text = "Imprimir Detalle";
             this.btnImprimirDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimirDetalle.UseVisualStyleBackColor = false;
+            this.btnImprimirDetalle.Click += new System.EventHandler(this.btnImprimirDetalle_Click_1);
             // 
             // panel12
             // 
@@ -1252,6 +1253,19 @@
             "Predicador invitado",
             "Cantante invitado",
             "Actividad",
+            "Servicios publicos",
+            "Santa cena",
+            "Ayuda social",
+            "Aporte al distrito",
+            "EPS del Pastor",
+            "Aportes a comite",
+            "Asamblea de pastores",
+            "Insumos de tesoreria",
+            "Insumos de secretaria ",
+            "Imprevisto",
+            "Proyecto de inversion NAL",
+            "Refrigerios",
+            "Superávit",
             "Otro"});
             this.comboConceptoDetalle.Location = new System.Drawing.Point(245, 3);
             this.comboConceptoDetalle.Name = "comboConceptoDetalle";

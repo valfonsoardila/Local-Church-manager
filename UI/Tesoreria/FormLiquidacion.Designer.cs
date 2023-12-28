@@ -560,9 +560,9 @@
             // textValorTotalMes
             // 
             this.textValorTotalMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textValorTotalMes.Location = new System.Drawing.Point(568, 2);
+            this.textValorTotalMes.Location = new System.Drawing.Point(591, 3);
             this.textValorTotalMes.Name = "textValorTotalMes";
-            this.textValorTotalMes.Size = new System.Drawing.Size(142, 26);
+            this.textValorTotalMes.Size = new System.Drawing.Size(130, 26);
             this.textValorTotalMes.TabIndex = 31;
             this.textValorTotalMes.Text = "0";
             // 
@@ -571,18 +571,18 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label12.Location = new System.Drawing.Point(507, 6);
+            this.label12.Location = new System.Drawing.Point(484, 8);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(61, 16);
+            this.label12.Size = new System.Drawing.Size(110, 16);
             this.label12.TabIndex = 30;
-            this.label12.Text = "Total $";
+            this.label12.Text = "Total x mes $";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label15.Location = new System.Drawing.Point(250, 8);
+            this.label15.Location = new System.Drawing.Point(242, 8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(100, 16);
             this.label15.TabIndex = 29;
@@ -591,7 +591,7 @@
             // textTotalNube
             // 
             this.textTotalNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalNube.Location = new System.Drawing.Point(351, 5);
+            this.textTotalNube.Location = new System.Drawing.Point(344, 5);
             this.textTotalNube.Name = "textTotalNube";
             this.textTotalNube.Size = new System.Drawing.Size(46, 22);
             this.textTotalNube.TabIndex = 28;
@@ -602,7 +602,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(122, 9);
+            this.label9.Location = new System.Drawing.Point(118, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 16);
             this.label9.TabIndex = 27;
@@ -611,7 +611,7 @@
             // textTotalLocal
             // 
             this.textTotalLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalLocal.Location = new System.Drawing.Point(203, 5);
+            this.textTotalLocal.Location = new System.Drawing.Point(197, 5);
             this.textTotalLocal.Name = "textTotalLocal";
             this.textTotalLocal.Size = new System.Drawing.Size(46, 22);
             this.textTotalLocal.TabIndex = 26;
@@ -673,7 +673,7 @@
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.comboFecha.Location = new System.Drawing.Point(402, 4);
+            this.comboFecha.Location = new System.Drawing.Point(392, 4);
             this.comboFecha.Name = "comboFecha";
             this.comboFecha.Size = new System.Drawing.Size(93, 24);
             this.comboFecha.TabIndex = 10;

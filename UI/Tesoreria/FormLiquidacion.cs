@@ -19,9 +19,6 @@ namespace UI
 {
     public partial class FormLiquidacion : Form
     {
-        Egreso egreso;
-        EgresoService egresoService;
-        EgressMaps egressMaps;
         LiquidacionService liquidacionService;
         SettlementMaps settlementMaps;
         List<Liquidacion> liquidaciones;
@@ -35,8 +32,6 @@ namespace UI
         {
             liquidacionService = new LiquidacionService(ConfigConnection.ConnectionString);
             settlementMaps = new SettlementMaps();
-            egresoService = new EgresoService(ConfigConnection.ConnectionString);
-            egressMaps = new EgressMaps();
             InitializeComponent();
             ConsultarLiquidaciones();
         }
@@ -79,22 +74,21 @@ namespace UI
             try
             {
                 var db = FirebaseService.Database;
-                var egresosQuery = db.Collection("EgressData");
                 var shippableQuery = db.Collection("SettlementData");
-                var enviables = new List<SettlementData>();
+                var liquidaciones = new List<SettlementData>();
                 // Realizar la suma directamente en la consulta Firestore
                 var snapshot = await shippableQuery.GetSnapshotAsync();
-                var snapshotEgress = await egresosQuery.GetSnapshotAsync();
-                enviables = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<SettlementData>()).ToList();
+                liquidaciones = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<SettlementData>()).ToList();
                 sumTotal = snapshot.Documents.Sum(doc => doc.ConvertTo<SettlementData>().Valor);
-                sumEgreso = snapshotEgress.Documents.Sum(doc => doc.ConvertTo<EgressData>().Valor);
-                if (enviables.Count > 0)
+                var liquidacioensEgresadas = liquidaciones.Where(liquidacion => liquidacion.Estado == "Egresado").ToList();
+                sumEgreso = liquidacioensEgresadas.Sum(doc => doc.Valor);
+                if (liquidaciones.Count > 0)
                 {
                     dataGridLiquidacion.DataSource = null;
-                    dataGridLiquidacion.DataSource = enviables;
+                    dataGridLiquidacion.DataSource = liquidaciones;
                     comboFecha.Text = "Mes";
                     textTotalLiquidacion.Text = LecturaCifra(sumTotal);
-                    textSaldo.Text = LecturaCifra(sumEgreso);
+                    textSaldo.Text = LecturaCifra(sumTotal-sumEgreso);
                 }
                 else
                 {
@@ -226,10 +220,9 @@ namespace UI
                 var db = FirebaseService.Database;
                 var liquidaciones = new List<SettlementData>();
                 //defino las colecciones que interactuaran
-                var egresosQuery = db.Collection("EgressData");
                 var settlementsQuery = db.Collection("SettlementData");
                 //Hago las respectivas consultas
-                var snapshotEgress = await egresosQuery.GetSnapshotAsync();
+                //var snapshotEgress = await egresosQuery.GetSnapshotAsync();
                 var snapshotSettlements = await settlementsQuery.GetSnapshotAsync();
                 //Obtengo todas las liquidaciones y las guardo en la lista de datos
                 liquidaciones = snapshotSettlements.Documents.Select(docsnap => docsnap.ConvertTo<SettlementData>()).ToList();
@@ -241,29 +234,9 @@ namespace UI
                     Google.Cloud.Firestore.DocumentReference docRefSettlement = db.Collection("SettlementData").Document(liquidacionFiltrada.Id);
                     liquidacionFiltrada.Estado = "Egresado";
                     await docRefSettlement.SetAsync(liquidacionFiltrada);
-                    // Se registra el egreso
-                    string formatoFecha = "d/M/yyyy h:mm:ss:tt";
-                    //codigo
-                    string primeraLetra = liquidacionFiltrada.Id.Substring(1, 1);
-                    string segundaLetra = liquidacionFiltrada.Id.Substring(3, 1);
-                    string primerNumero = liquidacionFiltrada.Id.Substring(5, 1);
-                    string segundoNumero = liquidacionFiltrada.Id.Substring(8, 1);
-                    string tercerNumero = liquidacionFiltrada.Id.Substring(9, 1);
-                    Egreso egreso = MapearEgreso(
-                        primeraLetra + segundaLetra + primerNumero + segundoNumero + tercerNumero, 
-                        DateTime.ParseExact(liquidacionFiltrada.FechaDeLiquidacion, formatoFecha, CultureInfo.InvariantCulture), 
-                        "Junta Local", 
-                        "Liquidacion", 
-                        liquidacionFiltrada.Valor.ToString(), 
-                        liquidacionFiltrada.Detalle
-                    );
-                    var msg = egresoService.Guardar(egreso);
-                    var egress = egressMaps.EgressMap(egreso);
-                    Google.Cloud.Firestore.DocumentReference docRefEgress = db.Collection("EgressData").Document(liquidacionFiltrada.Id);
-                    await docRefEgress.SetAsync(egress);
-                    MessageBox.Show(msg, "Mensaje de egreso", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    // MessageBox.Show(msg, "Mensaje de egreso", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     // Suma el valor de la liquidacion al egreso
-                    sumEgreso = snapshotEgress.Documents.Sum(doc => doc.ConvertTo<EgressData>().Valor);
+                    sumEgreso = sumEgreso + liquidacionFiltrada.Valor;
                     textSaldo.Text = sumEgreso.ToString();
                 }
             }
@@ -271,21 +244,6 @@ namespace UI
             {
 
             }
-        }
-        private Egreso MapearEgreso(string code, DateTime date, string comite, string concept, string valor, string detalle)
-        {
-            egreso = new Egreso();
-            egreso.CodigoComprobante = code;
-            egreso.FechaDeEgreso = date;
-            egreso.Comite = comite;
-            egreso.Concepto = concept;
-            string cantidadConSigno = valor; // Esto contiene "$ 30000"
-            string cantidadSinSigno = cantidadConSigno.Replace("$", "").Trim(); // Esto quita el signo "$"
-            string cantidadSinPuntos = cantidadSinSigno.Replace(".", "").Trim();
-            int cantidadEntera = int.Parse(cantidadSinPuntos); // Convierte el valor a un entero
-            egreso.Valor = cantidadEntera;
-            egreso.Detalle = detalle;
-            return egreso;
         }
         private string LecturaCifra(int totalDeIngresos)
         {
@@ -356,7 +314,6 @@ namespace UI
                 }
             }
         }
-
         private void EliminarLiquidacion(string id)
         {
             try
@@ -399,13 +356,13 @@ namespace UI
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             //Obtenemos los datos del usuario y construimos el dato de la nube
-            Liquidacion liquidacion = MapearLiquidacion("Pendiente por egreso");
+            Liquidacion liquidacion = MapearLiquidacion("Ingresado");
             try
             {
                 var msg = liquidacionService.Guardar(liquidacion);
                 //Guardamos en la nube
                 var db = FirebaseService.Database;
-                var shippable = settlementMaps.ShippableMap(liquidacion);
+                var shippable = settlementMaps.SettlementMap(liquidacion);
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("SettlementData").Document(shippable.Id);
                 docRef.SetAsync(shippable);
                 MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -427,7 +384,6 @@ namespace UI
                 }
             }
         }
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Liquidacion liquidacion = MapearLiquidacion("Pendiente por egreso");
@@ -436,7 +392,7 @@ namespace UI
                 var msg = liquidacionService.Modificar(liquidacion);
                 //Guardamos en la nube
                 var db = FirebaseService.Database;
-                var shippable = settlementMaps.ShippableMap(liquidacion);
+                var shippable = settlementMaps.SettlementMap(liquidacion);
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("SettlementData").Document(shippable.Id);
                 docRef.SetAsync(shippable);
                 MessageBox.Show(msg, "Modificacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -481,7 +437,6 @@ namespace UI
             }
             return mesEncontrado;
         }
-
         private async void FiltroPorFecha(string filtro)
         {
             int sumTotal = 0;

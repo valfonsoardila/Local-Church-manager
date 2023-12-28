@@ -223,6 +223,8 @@
     <Compile Include="Base de Datos\FormBaseDeDatos.Designer.cs">
       <DependentUpon>FormBaseDeDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Firebase\DirectivesMaps.cs" />
+    <Compile Include="Firebase\ContactMaps.cs" />
     <Compile Include="Firebase\EgressMaps.cs" />
     <Compile Include="Firebase\FirebaseSecurity.cs" />
     <Compile Include="Firebase\FirebaseService.cs" />
@@ -230,6 +232,8 @@
     <Compile Include="Firebase\MemberMaps.cs" />
     <Compile Include="Firebase\ShippableMaps.cs" />
     <Compile Include="Firebase\SettlementMaps.cs" />
+    <Compile Include="Firebase\MeetingsMaps.cs" />
+    <Compile Include="Firebase\NoteMaps.cs" />
     <Compile Include="Tesoreria\FormPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -137,9 +137,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FirebaseData\DirectivesData.cs" />
+    <Compile Include="FirebaseData\ContactData.cs" />
     <Compile Include="FirebaseData\EgressData.cs" />
     <Compile Include="FirebaseData\IngressData.cs" />
     <Compile Include="FirebaseData\MemberData.cs" />
+    <Compile Include="FirebaseData\NotesData.cs" />
+    <Compile Include="FirebaseData\MeetingsData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FirebaseData\UserData.cs" />
     <Compile Include="FirebaseData\ShippableData.cs" />

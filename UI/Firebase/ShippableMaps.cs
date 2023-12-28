@@ -14,7 +14,7 @@ namespace UI
         //Map to save in firestore
         public ShippableData ShippableMap(Enviable enviable)
         {
-            if (CheckIfUserAlreadyExist(enviable.Id.ToString()))
+            if (CheckIfShippableAlreadyExist(enviable.Id.ToString()))
             {
                 return new ShippableData()
                 {
@@ -39,7 +39,7 @@ namespace UI
                 };
             }
         }
-        private bool CheckIfUserAlreadyExist(string comprobante)
+        private bool CheckIfShippableAlreadyExist(string comprobante)
         {
             //Consulta en la nube
             var db = FirebaseService.Database;

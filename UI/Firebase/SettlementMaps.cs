@@ -11,9 +11,9 @@ namespace UI
     public class SettlementMaps
     {
         SettlementData settlementData;
-        public SettlementData ShippableMap(Liquidacion liquidacion)
+        public SettlementData SettlementMap(Liquidacion liquidacion)
         {
-            if (CheckIfUserAlreadyExist(liquidacion.Id.ToString()))
+            if (CheckIfSettlementAlreadyExist(liquidacion.Id.ToString()))
             {
                 return new SettlementData()
                 {
@@ -36,7 +36,7 @@ namespace UI
                 };
             }
         }
-        private bool CheckIfUserAlreadyExist(string comprobante)
+        private bool CheckIfSettlementAlreadyExist(string comprobante)
         {
             //Consulta en la nube
             var db = FirebaseService.Database;
