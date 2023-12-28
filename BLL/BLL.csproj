@@ -57,6 +57,7 @@
     <Compile Include="MiembroService.cs" />
     <Compile Include="ReunionService.cs" />
     <Compile Include="ServidorService.cs" />
+    <Compile Include="SimpatizanteService.cs" />
     <Compile Include="UsuarioService.cs" />
     <Compile Include="IdUsuarioTxtConsultaResponse.cs" />
     <Compile Include="IdUsuarioTxtService.cs" />

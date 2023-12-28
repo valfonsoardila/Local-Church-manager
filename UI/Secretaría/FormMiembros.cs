@@ -547,11 +547,11 @@ namespace UI
                 if (encontradoNombre != true && encontradoApellido != true)
                 {
                     contactoService.Guardar(contacto);
-                    //Guardamos en la nube
-                    var db = FirebaseService.Database;
-                    var member = memberMaps.MemberMap(nuevoMiembro);
-                    if (member.Bautizado=="Si")
+                    if (comboBautizado.Text=="Si")
                     {
+                        //Guardamos en la nube
+                        var db = FirebaseService.Database;
+                        var member = memberMaps.MemberMap(nuevoMiembro);
                         string mensaje = miembroService.Guardar(nuevoMiembro);
                         Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(member.Folio.ToString());
                         docRef.SetAsync(member);
@@ -563,6 +563,9 @@ namespace UI
                     }
                     else
                     {
+                        //Guardamos en la nube
+                        var db = FirebaseService.Database;
+                        var member = memberMaps.MemberMap(nuevoMiembro);
                         string mensaje = simpatizanteService.Guardar(nuevoSimpatizante);
                         Google.Cloud.Firestore.DocumentReference docRef = db.Collection("SympathizerData").Document(member.Folio.ToString());
                         docRef.SetAsync(member);

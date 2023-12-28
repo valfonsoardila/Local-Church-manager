@@ -234,6 +234,7 @@
     <Compile Include="Firebase\SettlementMaps.cs" />
     <Compile Include="Firebase\MeetingsMaps.cs" />
     <Compile Include="Firebase\NoteMaps.cs" />
+    <Compile Include="Firebase\SympathizerMaps.cs" />
     <Compile Include="Tesoreria\FormPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>

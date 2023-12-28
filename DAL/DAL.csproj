@@ -56,6 +56,7 @@
     <Compile Include="MiembroRepository.cs" />
     <Compile Include="ReunionRepository.cs" />
     <Compile Include="ServidorRepository.cs" />
+    <Compile Include="SimpatizanteRepository.cs" />
     <Compile Include="UsuarioRepository.cs" />
     <Compile Include="IdEmpleadoTxtRepository.cs" />
     <Compile Include="LicenciaRepository.cs" />

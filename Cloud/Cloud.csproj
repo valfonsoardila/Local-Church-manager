@@ -148,6 +148,7 @@
     <Compile Include="FirebaseData\UserData.cs" />
     <Compile Include="FirebaseData\ShippableData.cs" />
     <Compile Include="FirebaseData\SettlementData.cs" />
+    <Compile Include="SympathizerData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
