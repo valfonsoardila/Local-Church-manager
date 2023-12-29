@@ -55,6 +55,7 @@
     <Compile Include="IngresoService.cs" />
     <Compile Include="LiquidacionService.cs" />
     <Compile Include="MiembroService.cs" />
+    <Compile Include="PresupuestoService.cs" />
     <Compile Include="ReunionService.cs" />
     <Compile Include="ServidorService.cs" />
     <Compile Include="SimpatizanteService.cs" />
