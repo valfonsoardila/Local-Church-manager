@@ -78,6 +78,28 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
+        public ConsultaPresupuestoRespuesta FiltrarEgresosPorComite(string comite)
+        {
+            ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
+            try
+            {
+                conexion.Open();
+                respuesta.Presupuestos = repositorio.FiltrarPresupuestosPorComite(comite);
+                conexion.Close();
+                respuesta.Error = false;
+                respuesta.Mensaje = (respuesta.Presupuestos.Count > 0) ? "Se filtraron los Datos concordantes" : "No hay datos para consultar";
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+
+        }
+
         public string Eliminar(int id)
         {
             try

@@ -50,14 +50,14 @@ namespace DAL
                 {
                     while (dataReader.Read())
                     {
-                        Presupuesto presupuesto = DataReaderMapToEgreso(dataReader);
+                        Presupuesto presupuesto = DataReaderMapToPresupuesto(dataReader);
                         presupuestos.Add(presupuesto);
                     }
                 }
             }
             return presupuestos;
         }
-        public List<Presupuesto> FiltrarIngresosPorComite(string comite)
+        public List<Presupuesto> FiltrarPresupuestosPorComite(string comite)
         {
             List<Presupuesto> presupuestos = new List<Presupuesto>();
             using (var command = _connection.CreateCommand())
@@ -69,7 +69,7 @@ namespace DAL
                 {
                     while (dataReader.Read())
                     {
-                        Presupuesto presupuesto = DataReaderMapToEgreso(dataReader);
+                        Presupuesto presupuesto = DataReaderMapToPresupuesto(dataReader);
                         presupuestos.Add(presupuesto);
                     }
                 }
@@ -88,7 +88,7 @@ namespace DAL
         //        {
         //            while (dataReader.Read())
         //            {
-        //                Presupuesto presupuesto = DataReaderMapToEgreso(dataReader);
+        //                Presupuesto presupuesto = DataReaderMapToPresupuesto(dataReader);
         //                presupuestos.Add(presupuesto);
         //            }
         //        }
@@ -104,7 +104,7 @@ namespace DAL
                 command.Parameters.AddWithValue("@Id", id);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
-                return DataReaderMapToEgreso(dataReader);
+                return DataReaderMapToPresupuesto(dataReader);
             }
         }
         public void Modificar(Presupuesto presupuesto)
@@ -121,7 +121,7 @@ namespace DAL
                 var filas = command.ExecuteNonQuery();
             }
         }
-        private Presupuesto DataReaderMapToEgreso(SqlDataReader dataReader)
+        private Presupuesto DataReaderMapToPresupuesto(SqlDataReader dataReader)
         {
             if (!dataReader.HasRows) return null;
             Presupuesto presupuesto = new Presupuesto();

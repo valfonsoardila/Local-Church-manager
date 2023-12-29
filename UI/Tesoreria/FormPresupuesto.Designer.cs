@@ -30,17 +30,17 @@
         {
             System.Windows.Forms.TabPage tabRegistrar;
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textPresupuesto = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textVotos = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textOfrendas = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboComite = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textDineroIngreso = new System.Windows.Forms.TextBox();
+            this.textActividades = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.dateTimeEgreso = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeFechaPresupuesto = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnModificar = new FontAwesome.Sharp.IconButton();
@@ -53,7 +53,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnImprimir = new FontAwesome.Sharp.IconButton();
-            this.btnGestionarEgresos = new FontAwesome.Sharp.IconButton();
+            this.btnGestionarPresupuesto = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -61,6 +61,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridPresupuestos = new System.Windows.Forms.DataGridView();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -87,10 +91,8 @@
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textTotal = new System.Windows.Forms.TextBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -136,17 +138,17 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.textBox3);
+            this.panel4.Controls.Add(this.textPresupuesto);
             this.panel4.Controls.Add(this.label10);
-            this.panel4.Controls.Add(this.textBox2);
+            this.panel4.Controls.Add(this.textVotos);
             this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.textOfrendas);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.comboComite);
             this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.textDineroIngreso);
+            this.panel4.Controls.Add(this.textActividades);
             this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.dateTimeEgreso);
+            this.panel4.Controls.Add(this.dateTimeFechaPresupuesto);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.tableLayoutPanel1);
             this.panel4.Controls.Add(this.panel5);
@@ -155,15 +157,15 @@
             this.panel4.Size = new System.Drawing.Size(780, 364);
             this.panel4.TabIndex = 0;
             // 
-            // textBox3
+            // textPresupuesto
             // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(138, 200);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(181, 26);
-            this.textBox3.TabIndex = 36;
-            this.textBox3.Text = "$ 000.00";
+            this.textPresupuesto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPresupuesto.Location = new System.Drawing.Point(138, 200);
+            this.textPresupuesto.Name = "textPresupuesto";
+            this.textPresupuesto.Size = new System.Drawing.Size(181, 26);
+            this.textPresupuesto.TabIndex = 36;
+            this.textPresupuesto.Text = "$ 000.00";
             // 
             // label10
             // 
@@ -175,15 +177,15 @@
             this.label10.TabIndex = 35;
             this.label10.Text = "Presupuesto:";
             // 
-            // textBox2
+            // textVotos
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(138, 168);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(181, 26);
-            this.textBox2.TabIndex = 34;
-            this.textBox2.Text = "$ 000.00";
+            this.textVotos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textVotos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textVotos.Location = new System.Drawing.Point(138, 168);
+            this.textVotos.Name = "textVotos";
+            this.textVotos.Size = new System.Drawing.Size(181, 26);
+            this.textVotos.TabIndex = 34;
+            this.textVotos.Text = "$ 000.00";
             // 
             // label6
             // 
@@ -195,15 +197,15 @@
             this.label6.TabIndex = 33;
             this.label6.Text = "Votos:";
             // 
-            // textBox1
+            // textOfrendas
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(139, 104);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 26);
-            this.textBox1.TabIndex = 32;
-            this.textBox1.Text = "$ 000.00";
+            this.textOfrendas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textOfrendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textOfrendas.Location = new System.Drawing.Point(139, 104);
+            this.textOfrendas.Name = "textOfrendas";
+            this.textOfrendas.Size = new System.Drawing.Size(181, 26);
+            this.textOfrendas.TabIndex = 32;
+            this.textOfrendas.Text = "$ 000.00";
             // 
             // label4
             // 
@@ -299,15 +301,15 @@
             this.label7.TabIndex = 29;
             this.label7.Text = "Comite:";
             // 
-            // textDineroIngreso
+            // textActividades
             // 
-            this.textDineroIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textDineroIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDineroIngreso.Location = new System.Drawing.Point(138, 136);
-            this.textDineroIngreso.Name = "textDineroIngreso";
-            this.textDineroIngreso.Size = new System.Drawing.Size(181, 26);
-            this.textDineroIngreso.TabIndex = 28;
-            this.textDineroIngreso.Text = "$ 000.00";
+            this.textActividades.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textActividades.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textActividades.Location = new System.Drawing.Point(138, 136);
+            this.textActividades.Name = "textActividades";
+            this.textActividades.Size = new System.Drawing.Size(181, 26);
+            this.textActividades.TabIndex = 28;
+            this.textActividades.Text = "$ 000.00";
             // 
             // label13
             // 
@@ -319,12 +321,12 @@
             this.label13.TabIndex = 26;
             this.label13.Text = "Actividades:";
             // 
-            // dateTimeEgreso
+            // dateTimeFechaPresupuesto
             // 
-            this.dateTimeEgreso.Location = new System.Drawing.Point(127, 47);
-            this.dateTimeEgreso.Name = "dateTimeEgreso";
-            this.dateTimeEgreso.Size = new System.Drawing.Size(215, 20);
-            this.dateTimeEgreso.TabIndex = 18;
+            this.dateTimeFechaPresupuesto.Location = new System.Drawing.Point(127, 47);
+            this.dateTimeFechaPresupuesto.Name = "dateTimeFechaPresupuesto";
+            this.dateTimeFechaPresupuesto.Size = new System.Drawing.Size(215, 20);
+            this.dateTimeFechaPresupuesto.TabIndex = 18;
             // 
             // label5
             // 
@@ -461,7 +463,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.btnImprimir, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnGestionarEgresos, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnGestionarPresupuesto, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 12);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -488,21 +490,22 @@
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = false;
             // 
-            // btnGestionarEgresos
+            // btnGestionarPresupuesto
             // 
-            this.btnGestionarEgresos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGestionarEgresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.btnGestionarEgresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionarEgresos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnGestionarEgresos.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnGestionarEgresos.IconColor = System.Drawing.Color.Black;
-            this.btnGestionarEgresos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarEgresos.Location = new System.Drawing.Point(271, 3);
-            this.btnGestionarEgresos.Name = "btnGestionarEgresos";
-            this.btnGestionarEgresos.Size = new System.Drawing.Size(158, 35);
-            this.btnGestionarEgresos.TabIndex = 1;
-            this.btnGestionarEgresos.Text = "Gestionar presupuestos";
-            this.btnGestionarEgresos.UseVisualStyleBackColor = false;
+            this.btnGestionarPresupuesto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGestionarPresupuesto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnGestionarPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionarPresupuesto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGestionarPresupuesto.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnGestionarPresupuesto.IconColor = System.Drawing.Color.Black;
+            this.btnGestionarPresupuesto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGestionarPresupuesto.Location = new System.Drawing.Point(271, 3);
+            this.btnGestionarPresupuesto.Name = "btnGestionarPresupuesto";
+            this.btnGestionarPresupuesto.Size = new System.Drawing.Size(158, 35);
+            this.btnGestionarPresupuesto.TabIndex = 1;
+            this.btnGestionarPresupuesto.Text = "Gestionar presupuestos";
+            this.btnGestionarPresupuesto.UseVisualStyleBackColor = false;
+            this.btnGestionarPresupuesto.Click += new System.EventHandler(this.btnGestionarPresupuesto_Click);
             // 
             // panel6
             // 
@@ -602,9 +605,45 @@
             this.dataGridPresupuestos.TabIndex = 1;
             this.dataGridPresupuestos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPresupuestos_CellClick);
             // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Width = 69;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 40;
+            // 
+            // Detallar
+            // 
+            this.Detallar.HeaderText = "Detallar";
+            this.Detallar.Image = global::UI.Properties.Resources.porcentajes;
+            this.Detallar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Detallar.Name = "Detallar";
+            this.Detallar.ReadOnly = true;
+            this.Detallar.Width = 49;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Width = 41;
+            // 
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Teal;
+            this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
+            this.panelContenedorDeDirectorio.Controls.Add(this.label12);
             this.panelContenedorDeDirectorio.Controls.Add(this.comboBox2);
             this.panelContenedorDeDirectorio.Controls.Add(this.comboBox1);
             this.panelContenedorDeDirectorio.Controls.Add(this.label15);
@@ -730,7 +769,7 @@
             "2048",
             "2049",
             "2050"});
-            this.comboBox1.Location = new System.Drawing.Point(240, 5);
+            this.comboBox1.Location = new System.Drawing.Point(329, 5);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(87, 24);
             this.comboBox1.TabIndex = 11;
@@ -741,7 +780,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label15.Location = new System.Drawing.Point(192, 8);
+            this.label15.Location = new System.Drawing.Point(281, 8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(42, 16);
             this.label15.TabIndex = 10;
@@ -1012,39 +1051,25 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // Seleccionar
+            // label12
             // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 69;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label12.Location = new System.Drawing.Point(155, 8);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 16);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Total:";
             // 
-            // Editar
+            // textTotal
             // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::UI.Properties.Resources.edit_user;
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Width = 40;
-            // 
-            // Detallar
-            // 
-            this.Detallar.HeaderText = "Detallar";
-            this.Detallar.Image = global::UI.Properties.Resources.porcentajes;
-            this.Detallar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Detallar.Name = "Detallar";
-            this.Detallar.ReadOnly = true;
-            this.Detallar.Width = 49;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Image = global::UI.Properties.Resources.borrar;
-            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 41;
+            this.textTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotal.Location = new System.Drawing.Point(207, 6);
+            this.textTotal.Name = "textTotal";
+            this.textTotal.Size = new System.Drawing.Size(67, 22);
+            this.textTotal.TabIndex = 2;
+            this.textTotal.Text = "0";
             // 
             // FormPresupuesto
             // 
@@ -1101,14 +1126,14 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private FontAwesome.Sharp.IconButton btnImprimir;
-        private FontAwesome.Sharp.IconButton btnGestionarEgresos;
+        private FontAwesome.Sharp.IconButton btnGestionarPresupuesto;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox comboComite;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textDineroIngreso;
+        private System.Windows.Forms.TextBox textActividades;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateTimeEgreso;
+        private System.Windows.Forms.DateTimePicker dateTimeFechaPresupuesto;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private FontAwesome.Sharp.IconButton btnModificar;
@@ -1148,15 +1173,17 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textPresupuesto;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textVotos;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textOfrendas;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Detallar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private System.Windows.Forms.TextBox textTotal;
+        private System.Windows.Forms.Label label12;
     }
 }

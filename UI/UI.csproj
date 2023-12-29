@@ -204,6 +204,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base de Datos\Backup%27s.cs" />
+    <Compile Include="Firebase\BudgetMaps.cs" />
     <Compile Include="ConfigConection.cs" />
     <Compile Include="Ajustes\FormAjustarServidor.cs">
       <SubType>Form</SubType>
