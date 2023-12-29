@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Cloud;
 using Entity;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace UI
         DirectivaService directivaService;
         List<Directiva> directivas;
         Directiva directiva;
+        DirectivesMaps directivesMaps;
         string id = "";
         bool encontrado = false;
         public FormDirectivas()
@@ -33,25 +35,48 @@ namespace UI
             ConsultarYLlenarGridDeDirectivas();
             labelVigencia.Text = DateTime.Now.Year.ToString();
         }
-        private void ConsultarYLlenarGridDeDirectivas()
+        private async void ConsultarYLlenarGridDeDirectivas()
         {
-            ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
-            string tipo = comboDirectiva.Text;
-            if (tipo == "Directiva" || tipo == "Todos")
+            try
             {
-                textTotal.Enabled = true;
-                textTotalHombres.Enabled = true;
-                textTotalMujeres.Enabled = true;
-                dataGridDirectiva.DataSource = null;
-                respuesta = directivaService.ConsultarTodos();
-                directivas = respuesta.Directivas.ToList();
-                if (respuesta.Directivas.Count != 0 && respuesta.Directivas != null)
+                var db = FirebaseService.Database;
+                var directivesQuery = db.Collection("DirectivesData");
+                var directives = new List<DirectivesData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await directivesQuery.GetSnapshotAsync();
+                directives = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<DirectivesData>()).ToList();
+                if (directives.Count > 0)
                 {
-                    dataGridDirectiva.DataSource = respuesta.Directivas;
-                    Borrar.Visible = true;
-                    textTotal.Text = directivaService.Totalizar().Cuenta.ToString();
-                    textTotalHombres.Text = directivaService.TotalizarTipo("Hombre").Cuenta.ToString();
-                    textTotalMujeres.Text = directivaService.TotalizarTipo("Mujer").Cuenta.ToString();
+                    dataGridDirectiva.DataSource = null;
+                    dataGridDirectiva.DataSource = directives;
+                    textTotal.Text = directives.Count.ToString();
+                }
+                else
+                {
+                    dataGridDirectiva.DataSource = null;
+                    textTotal.Text = "0";
+                }
+            }
+            catch(Exception ex)
+            {
+                ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
+                string tipo = comboDirectiva.Text;
+                if (tipo == "Directiva" || tipo == "Todos")
+                {
+                    textTotal.Enabled = true;
+                    textTotalHombres.Enabled = true;
+                    textTotalMujeres.Enabled = true;
+                    dataGridDirectiva.DataSource = null;
+                    respuesta = directivaService.ConsultarTodos();
+                    directivas = respuesta.Directivas.ToList();
+                    if (respuesta.Directivas.Count != 0 && respuesta.Directivas != null)
+                    {
+                        dataGridDirectiva.DataSource = respuesta.Directivas;
+                        Borrar.Visible = true;
+                        textTotal.Text = directivaService.Totalizar().Cuenta.ToString();
+                        textTotalHombres.Text = directivaService.TotalizarTipo("Hombre").Cuenta.ToString();
+                        textTotalMujeres.Text = directivaService.TotalizarTipo("Mujer").Cuenta.ToString();
+                    }
                 }
             }
         }
@@ -89,11 +114,28 @@ namespace UI
             if(textNombre.Text!="Nombre" && textObservacion.Text != "Observacion" && textNombre.Text != "" && textObservacion.Text != "")
             {
                 Directiva directiva = MapearDatosDirectiva();
-                string mensaje = directivaService.Guardar(directiva);
-                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                ConsultarYLlenarGridDeDirectivas();
-                LimpiarCampos();
-                tabDirectivas.SelectedIndex = 0;
+                try
+                {
+                    //Guardamos la notas
+                    var db = FirebaseService.Database;
+                    Google.Cloud.Firestore.DocumentReference docRef;
+                    var directivaNueva = directivesMaps.DirectivesMap(directiva);
+                    docRef = db.Collection("DirectivesData").Document(directivaNueva.IdDirectiva.ToString());
+                    docRef.SetAsync(directivaNueva);
+                    string mensaje = directivaService.Guardar(directiva);
+                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeDirectivas();
+                    LimpiarCampos();
+                    tabDirectivas.SelectedIndex = 0;
+                }
+                catch(Exception ex)
+                {
+                    string mensaje = directivaService.Guardar(directiva);
+                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeDirectivas();
+                    LimpiarCampos();
+                    tabDirectivas.SelectedIndex = 0;
+                }
             }
             else
             {
@@ -103,20 +145,50 @@ namespace UI
         }
         private void EliminarServidor(string id)
         {
-            string mensaje = directivaService.Eliminar(id);
-            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                string mensaje = directivaService.Eliminar(id);
+                //Elimina primero de firebase o la nube
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("DirectivesData").Document(id);
+                docRef.DeleteAsync();
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeDirectivas();
+            }
+            catch(Exception ex)
+            {
+                string mensaje = directivaService.Eliminar(id);
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
             if (textNombre.Text != "Nombre" && textObservacion.Text != "Observacion" && textNombre.Text != "" && textObservacion.Text != "")
             { 
                 Directiva directiva = MapearDatosDirectiva();
-                string mensaje = directivaService.Modificar(directiva);
-                MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                comboDirectiva.Text = "Directiva";
-                ConsultarYLlenarGridDeDirectivas();
-                LimpiarCampos();
-                tabDirectivas.SelectedIndex = 0;
+                try
+                {
+                    //Guardamos la notas
+                    var db = FirebaseService.Database;
+                    Google.Cloud.Firestore.DocumentReference docRef;
+                    var directivaNueva = directivesMaps.DirectivesMap(directiva);
+                    docRef = db.Collection("DirectivesData").Document(directivaNueva.IdDirectiva.ToString());
+                    docRef.SetAsync(directivaNueva);
+                    string mensaje = directivaService.Modificar(directiva);
+                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeDirectivas();
+                    LimpiarCampos();
+                    tabDirectivas.SelectedIndex = 0;
+                }
+                catch(Exception ex)
+                {
+                    string mensaje = directivaService.Modificar(directiva);
+                    MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    comboDirectiva.Text = "Directiva";
+                    ConsultarYLlenarGridDeDirectivas();
+                    LimpiarCampos();
+                    tabDirectivas.SelectedIndex = 0;
+                }
             }
             else
             {

@@ -17,6 +17,7 @@ using WhatsAppApi;
 using System.Windows.Controls;
 using System.Net.Http.Headers;
 using System.Net.Http;
+using Cloud;
 
 namespace UI
 {
@@ -26,6 +27,7 @@ namespace UI
         ContactoService contactoService;
         List<Contacto> contactos;
         Contacto contacto;
+        ContactMaps contactMaps;
         string id = "";
         bool encontrado = false;
         public FormDirectorio()
@@ -38,20 +40,44 @@ namespace UI
         {
             ConsultarYLlenarGridDeContactos();
         }
-        private void ConsultarYLlenarGridDeContactos()
+        private async void ConsultarYLlenarGridDeContactos()
         {
-            ConsultaContactoRespuesta respuesta = new ConsultaContactoRespuesta();
-            string tipo = comboOficioLibreta.Text;
-            if (tipo == "Oficio" || tipo == "Todos")
+            try
             {
-                textTotal.Enabled = true;
-                dataGridContactos.DataSource = null;
-                respuesta = contactoService.ConsultarTodos();
-                contactos = respuesta.Contactos.ToList();
-                if (respuesta.Contactos.Count != 0 && respuesta.Contactos != null) {
-                    dataGridContactos.DataSource = respuesta.Contactos;
-                    Borrar.Visible = true;
-                    textTotal.Text = contactoService.Totalizar().Cuenta.ToString();
+                var db = FirebaseService.Database;
+                var contactQuery = db.Collection("ContactsData");
+                var contacts = new List<ContactData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await contactQuery.GetSnapshotAsync();
+                contacts = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<ContactData>()).ToList();
+                if (contacts.Count > 0)
+                {
+                    dataGridContactos.DataSource = null;
+                    dataGridContactos.DataSource = contacts;
+                    textTotal.Text = contacts.Count.ToString();
+                }
+                else
+                {
+                    dataGridContactos.DataSource = null;
+                    textTotal.Text = "0";
+                }
+            }
+            catch(Exception ex)
+            {
+                ConsultaContactoRespuesta respuesta = new ConsultaContactoRespuesta();
+                string tipo = comboOficioLibreta.Text;
+                if (tipo == "Oficio" || tipo == "Todos")
+                {
+                    textTotal.Enabled = true;
+                    dataGridContactos.DataSource = null;
+                    respuesta = contactoService.ConsultarTodos();
+                    contactos = respuesta.Contactos.ToList();
+                    if (respuesta.Contactos.Count != 0 && respuesta.Contactos != null)
+                    {
+                        dataGridContactos.DataSource = respuesta.Contactos;
+                        Borrar.Visible = true;
+                        textTotal.Text = contactoService.Totalizar().Cuenta.ToString();
+                    }
                 }
             }
         }
@@ -103,20 +129,36 @@ namespace UI
                 encontrado = true;
             } 
         }
-        void FiltroPorOficio(string filtro)
+        private async void FiltroPorOficio(string filtro)
         {
-            BusquedaContactoRespuesta respuesta = new BusquedaContactoRespuesta();
-            respuesta = contactoService.BuscarPorOficio(filtro);
-            var registro = respuesta.Contacto;
-            if (registro != null)
+            try
             {
-                dataGridContactos.DataSource = null;
-                var contactos = new List<Contacto> { registro };
-                dataGridContactos.DataSource = contactos;
+                var db = FirebaseService.Database;
+                var contactsQuery = db.Collection("ContactsData");
+                var contactos = new List<ContactData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await contactsQuery.GetSnapshotAsync();
+                contactos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<ContactData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var contactosOficio = contactos.Where(contacto => contacto.Oficio == filtro).ToList();
+                dataGridContactos.DataSource = contactosOficio;
+                Borrar.Visible = true;
             }
-            else
+            catch(Exception ex)
             {
-                dataGridContactos.DataSource = null;
+                BusquedaContactoRespuesta respuesta = new BusquedaContactoRespuesta();
+                respuesta = contactoService.BuscarPorOficio(filtro);
+                var registro = respuesta.Contacto;
+                if (registro != null)
+                {
+                    dataGridContactos.DataSource = null;
+                    var contactos = new List<Contacto> { registro };
+                    dataGridContactos.DataSource = contactos;
+                }
+                else
+                {
+                    dataGridContactos.DataSource = null;
+                }
             }
         }
 
@@ -245,21 +287,55 @@ namespace UI
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             Contacto contacto = MapearDatosContacto();
-            string mensaje = contactoService.Guardar(contacto);
-            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            ConsultarYLlenarGridDeContactos();
-            LimpiarCampos();
-            tabDirectorio.SelectedIndex = 0;
+            try
+            {
+                //Guardamos la notas
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef;
+                var contactoNueva = contactMaps.ContactMap(contacto);
+                docRef = db.Collection("NotesData").Document(contactoNueva.IdContacto.ToString());
+                docRef.SetAsync(contactoNueva);
+                string mensaje = contactoService.Guardar(contacto);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeContactos();
+                LimpiarCampos();
+                tabDirectorio.SelectedIndex = 0;
+            }
+            catch(Exception ex)
+            {
+                string mensaje = contactoService.Guardar(contacto);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeContactos();
+                LimpiarCampos();
+                tabDirectorio.SelectedIndex = 0;
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Contacto nuevoContacto = MapearDatosContacto();
-            string mensaje = contactoService.Modificar(nuevoContacto);
-            MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            ConsultarYLlenarGridDeContactos();
-            LimpiarCampos();
-            tabDirectorio.SelectedIndex = 0;
+            Contacto contacto = MapearDatosContacto();
+            try
+            {
+                //Guardamos el contacto
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef;
+                var contactoNuevo = contactMaps.ContactMap(contacto);
+                docRef = db.Collection("NotesData").Document(contactoNuevo.IdContacto.ToString());
+                docRef.SetAsync(contactoNuevo);
+                string mensaje = contactoService.Guardar(contacto);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeContactos();
+                LimpiarCampos();
+                tabDirectorio.SelectedIndex = 0;
+            }
+            catch(Exception ex)
+            {
+                string mensaje = contactoService.Modificar(contacto);
+                MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeContactos();
+                LimpiarCampos();
+                tabDirectorio.SelectedIndex = 0;
+            }
         }
 
         private void textCelular_TextChanged(object sender, EventArgs e)
@@ -324,8 +400,21 @@ namespace UI
         }
         void EliminarContacto(string id)
         {
-            string mensaje = contactoService.Eliminar(id);
-            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                string mensaje = contactoService.Eliminar(id);
+                //Elimina primero de firebase o la nube
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("ContactsData").Document(id);
+                docRef.DeleteAsync();
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeContactos();
+            }
+            catch(Exception ex)
+            {
+                string mensaje = contactoService.Eliminar(id);
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void comboOficioLibreta_SelectedIndexChanged(object sender, EventArgs e)

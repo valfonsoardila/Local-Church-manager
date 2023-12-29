@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entity;
+using FirebaseAdmin.Messaging;
+using Cloud;
 
 namespace UI
 {
@@ -18,6 +20,7 @@ namespace UI
         ApunteService apunteService;
         List<Apunte> apuntes;
         Apunte apunte;
+        NoteMaps noteMaps;
         string id = "";
         bool encontrado = false;
         public FormApuntes()
@@ -28,20 +31,43 @@ namespace UI
         }
         private void Inicializar()
         {
-            ConsultarYLlenarGridDeApuntees();
+            ConsultarYLlenarGridDeApuntes();
         }
-        private void ConsultarYLlenarGridDeApuntees()
+        private async void ConsultarYLlenarGridDeApuntes()
         {
-            ConsultaApunteRespuesta respuesta = new ConsultaApunteRespuesta();
-            textTotal.Enabled = true;
-            dataGridApunte.DataSource = null;
-            respuesta = apunteService.ConsultarTodos();
-            apuntes = respuesta.Apuntes.ToList();
-            if (respuesta.Apuntes.Count != 0 && respuesta.Apuntes != null)
+            try
             {
-                dataGridApunte.DataSource = respuesta.Apuntes;
-                Borrar.Visible = true;
-                textTotal.Text = apunteService.Totalizar().Cuenta.ToString();
+                var db = FirebaseService.Database;
+                var notesQuery = db.Collection("NotesData");
+                var apuntes = new List<NotesData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await notesQuery.GetSnapshotAsync();
+                apuntes = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<NotesData>()).ToList();
+                if (apuntes.Count > 0)
+                {
+                    dataGridApunte.DataSource = null;
+                    dataGridApunte.DataSource = apuntes;
+                    textTotal.Text = apuntes.Count.ToString();
+                }
+                else
+                {
+                    dataGridApunte.DataSource = null;
+                    textTotal.Text = "0";
+                }
+            }
+            catch(Exception ex)
+            {
+                ConsultaApunteRespuesta respuesta = new ConsultaApunteRespuesta();
+                textTotal.Enabled = true;
+                dataGridApunte.DataSource = null;
+                respuesta = apunteService.ConsultarTodos();
+                apuntes = respuesta.Apuntes.ToList();
+                if (respuesta.Apuntes.Count != 0 && respuesta.Apuntes != null)
+                {
+                    dataGridApunte.DataSource = respuesta.Apuntes;
+                    Borrar.Visible = true;
+                    textTotal.Text = apunteService.Totalizar().Cuenta.ToString();
+                }
             }
         }
         private void btnAtras_Click(object sender, EventArgs e)
@@ -182,7 +208,7 @@ namespace UI
             }
             else
             {
-                ConsultarYLlenarGridDeApuntees();
+                ConsultarYLlenarGridDeApuntes();
             }
         }
         private void LimpiarCampos()
@@ -201,21 +227,55 @@ namespace UI
         private void btnRegistrar_Click_1(object sender, EventArgs e)
         {
             Apunte apunte = MapearApunte();
-            string mensaje = apunteService.Guardar(apunte);
-            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            ConsultarYLlenarGridDeApuntees();
-            LimpiarCampos();
-            tabApuntes.SelectedIndex = 0;
+            try
+            {
+                //Guardamos la notas
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef;
+                var notaNueva = noteMaps.NoteMap(apunte);
+                docRef = db.Collection("NotesData").Document(notaNueva.IdNota.ToString());
+                docRef.SetAsync(notaNueva);
+                string mensaje = apunteService.Guardar(apunte);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeApuntes();
+                LimpiarCampos();
+                tabApuntes.SelectedIndex = 0;
+            }
+            catch(Exception ex)
+            {
+                string mensaje = apunteService.Guardar(apunte);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeApuntes();
+                LimpiarCampos();
+                tabApuntes.SelectedIndex = 0;
+            }
         }
 
         private void btnModificar_Click_1(object sender, EventArgs e)
         {
             Apunte nuevoApunte = MapearApunte();
-            string mensaje = apunteService.Modificar(nuevoApunte);
-            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            ConsultarYLlenarGridDeApuntees();
-            LimpiarCampos();
-            tabApuntes.SelectedIndex = 0;
+            try
+            {
+                //Guardamos la nota
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef;
+                var notaNueva = noteMaps.NoteMap(apunte);
+                docRef = db.Collection("NotesData").Document(notaNueva.IdNota.ToString());
+                docRef.SetAsync(notaNueva);
+                string mensaje = apunteService.Guardar(apunte);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeApuntes();
+                LimpiarCampos();
+                tabApuntes.SelectedIndex = 0;
+            }
+            catch(Exception ex)
+            {
+                string mensaje = apunteService.Modificar(nuevoApunte);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeApuntes();
+                LimpiarCampos();
+                tabApuntes.SelectedIndex = 0;
+            }
         }
         private void FiltroPorId(string id)
         {
@@ -232,8 +292,21 @@ namespace UI
         }
         private void EliminarApunte(string id)
         {
-            string mensaje = apunteService.Eliminar(id);
-            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                string mensaje = apunteService.Eliminar(id);
+                //Elimina primero de firebase o la nube
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(id);
+                docRef.DeleteAsync();
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeApuntes();
+            }
+            catch (Exception ex)
+            {
+                string mensaje = apunteService.Eliminar(id);
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         private void dataGridApunte_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -243,7 +316,7 @@ namespace UI
                 {
                     id = Convert.ToString(dataGridApunte.CurrentRow.Cells["IdNota"].Value.ToString());
                     EliminarApunte(id);
-                    ConsultarYLlenarGridDeApuntees();
+                    ConsultarYLlenarGridDeApuntes();
                 }
                 else
                 {

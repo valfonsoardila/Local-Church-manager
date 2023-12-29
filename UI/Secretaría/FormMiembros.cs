@@ -739,7 +739,7 @@ namespace UI
                     dataGridMiembros.DataSource = membersGenero;
                     Borrar.Visible = true;
                 }
-                catch
+                catch(Exception ex)
                 {
                     BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
                     respuesta = miembroService.BuscarPorGenero(filtro);
@@ -795,7 +795,7 @@ namespace UI
                     dataGridMiembros.DataSource = simpatizantesGenero;
                     Borrar.Visible = true;
                 }
-                catch
+                catch(Exception ex)
                 {
                     BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
                     respuesta = miembroService.BuscarPorGenero(filtro);
@@ -851,7 +851,7 @@ namespace UI
                 dataGridMiembros.DataSource = membersGenero;
                 Borrar.Visible = true;
             }
-            catch
+            catch(Exception ex)
             {
                 BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
                 respuesta = miembroService.BuscarPorGenero(filtro);
@@ -909,7 +909,7 @@ namespace UI
                 dataGridMiembros.DataSource = membersGenero;
                 Borrar.Visible = true;
             }
-            catch
+            catch(Exception ex)
             {
                 BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
                 respuesta = miembroService.BuscarPorGenero(filtro);

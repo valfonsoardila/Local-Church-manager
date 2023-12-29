@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Cloud;
 using Entity;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace UI
         ReunionService reunionService;
         List<Reunion> reuniones;
         Reunion reunion;
+        MeetingsMaps meetingsMaps;
         bool encontrado = false;
         string id = "";
         string reunionId = "";
@@ -52,18 +54,41 @@ namespace UI
                 labelNumeroActa.Text = reunionId;
             }
         }
-        private void ConsultarYLlenarGridDeReuniones()
+        private async void ConsultarYLlenarGridDeReuniones()
         {
-            ConsultaReunionRespuesta respuesta = new ConsultaReunionRespuesta();
-            textTotal.Enabled = true;
-            dataGridReunion.DataSource = null;
-            respuesta = reunionService.ConsultarTodos();
-            reuniones = respuesta.Reuniones.ToList();
-            if (respuesta.Reuniones.Count != 0 && respuesta.Reuniones != null)
+            try
             {
-                dataGridReunion.DataSource = respuesta.Reuniones;
-                Borrar.Visible = true;
-                textTotal.Text = reunionService.Totalizar().Cuenta.ToString();
+                var db = FirebaseService.Database;
+                var meetQuery = db.Collection("MeetingsData");
+                var meets = new List<MeetingsData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await meetQuery.GetSnapshotAsync();
+                meets = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<MeetingsData>()).ToList();
+                if (meets.Count > 0)
+                {
+                    dataGridReunion.DataSource = null;
+                    dataGridReunion.DataSource = meets;
+                    textTotal.Text = meets.Count.ToString();
+                }
+                else
+                {
+                    dataGridReunion.DataSource = null;
+                    textTotal.Text = "0";
+                }
+            }
+            catch(Exception ex)
+            {
+                ConsultaReunionRespuesta respuesta = new ConsultaReunionRespuesta();
+                textTotal.Enabled = true;
+                dataGridReunion.DataSource = null;
+                respuesta = reunionService.ConsultarTodos();
+                reuniones = respuesta.Reuniones.ToList();
+                if (respuesta.Reuniones.Count != 0 && respuesta.Reuniones != null)
+                {
+                    dataGridReunion.DataSource = respuesta.Reuniones;
+                    Borrar.Visible = true;
+                    textTotal.Text = reunionService.Totalizar().Cuenta.ToString();
+                }
             }
         }
 
@@ -168,22 +193,56 @@ namespace UI
             if(textLugarReunion.Text!="" && textOrdenDja.Text != "" && textActa.Text!="")
             {
                 Reunion reunion = MapearDatosReunion();
-                string mensaje = reunionService.Guardar(reunion);
-                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                ConsultarYLlenarGridDeReuniones();
-                Limpiar();
-                tabReuniones.SelectedIndex = 0;
+                try
+                {
+                    //Guardamos la notas
+                    var db = FirebaseService.Database;
+                    Google.Cloud.Firestore.DocumentReference docRef;
+                    var reunionNueva = meetingsMaps.MeetMap(reunion);
+                    docRef = db.Collection("MeetingsData").Document(reunionNueva.NumeroActa.ToString());
+                    docRef.SetAsync(reunionNueva);
+                    string mensaje = reunionService.Guardar(reunion);
+                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeReuniones();
+                    Limpiar();
+                    tabReuniones.SelectedIndex = 0;
+                }
+                catch(Exception ex)
+                {
+                    string mensaje = reunionService.Guardar(reunion);
+                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeReuniones();
+                    Limpiar();
+                    tabReuniones.SelectedIndex = 0;
+                }
             }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Reunion nuevaReunion = MapearDatosReunion();
-            string mensaje = reunionService.Modificar(nuevaReunion);
-            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            ConsultarYLlenarGridDeReuniones();
-            Limpiar();
-            tabReuniones.SelectedIndex = 0;
+            try
+            {
+                //Guardamos la notas
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef;
+                var reunionNueva = meetingsMaps.MeetMap(reunion);
+                docRef = db.Collection("MeetingsData").Document(reunionNueva.NumeroActa.ToString());
+                docRef.SetAsync(reunionNueva);
+                string mensaje = reunionService.Guardar(reunion);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeReuniones();
+                Limpiar();
+                tabReuniones.SelectedIndex = 0;
+            }
+            catch(Exception ex)
+            {
+                string mensaje = reunionService.Modificar(nuevaReunion);
+                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeReuniones();
+                Limpiar();
+                tabReuniones.SelectedIndex = 0;
+            }
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -222,9 +281,22 @@ namespace UI
         }
         private void EliminarPorId(string id)
         {
-            string mensaje = reunionService.Eliminar(id);
-            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            textTotal.Text = "0";
+            try
+            {
+                string mensaje = reunionService.Eliminar(id);
+                //Elimina primero de firebase o la nube
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MeetingsData").Document(id);
+                docRef.DeleteAsync();
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeReuniones();
+            }
+            catch(Exception ex)
+            {
+                string mensaje = reunionService.Eliminar(id);
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textTotal.Text = "0";
+            }
         }
         private void dataGridReunion_CellClick(object sender, DataGridViewCellEventArgs e)
         {
