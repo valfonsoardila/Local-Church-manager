@@ -342,6 +342,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Firebase\UserMaps.cs" />
     <Compile Include="Validaciones.cs" />
+    <None Include="Resources\porcentajes.png" />
+    <None Include="Resources\Presupuesto.png" />
     <EmbeddedResource Include="Ajustes\FormAjustarServidor.resx">
       <DependentUpon>FormAjustarServidor.cs</DependentUpon>
     </EmbeddedResource>

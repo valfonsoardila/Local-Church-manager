@@ -52,6 +52,7 @@
     <Compile Include="Enviable.cs" />
     <Compile Include="Ingreso.cs" />
     <Compile Include="Liquidacion.cs" />
+    <Compile Include="Presupuesto.cs" />
     <Compile Include="Reunion.cs" />
     <Compile Include="Servidor.cs" />
     <Compile Include="Iglesia.cs" />
