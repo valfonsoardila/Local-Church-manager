@@ -18,11 +18,14 @@ namespace UI
                 return new BudgetData()
                 {
                     Id = presupuesto.Id.ToString().Trim(),
-                    FechaPresupuesto = presupuesto.FechaPresupuesto.ToString(),
+                    AñoPresupuesto = presupuesto.AñoPresupuesto.ToString(),
+                    InicioIntervalo=presupuesto.InicioIntervalo,
+                    FinIntervalo=presupuesto.FinIntervalo,
                     Comite = presupuesto.Comite,
                     Ofrenda=presupuesto.Ofrenda,
                     Actividad=presupuesto.Actividad,
                     Voto=presupuesto.Voto,
+                    TotalEgresos=presupuesto.TotalEgresos,
                     TotalPresupuesto=presupuesto.TotalPresupuesto
                 };
             }
@@ -31,11 +34,14 @@ namespace UI
                 return new BudgetData()
                 {
                     Id = presupuesto.Id.ToString().Trim(),
-                    FechaPresupuesto = presupuesto.FechaPresupuesto.ToString(),
+                    AñoPresupuesto = presupuesto.AñoPresupuesto.ToString(),
+                    InicioIntervalo = presupuesto.InicioIntervalo,
+                    FinIntervalo = presupuesto.FinIntervalo,
                     Comite = presupuesto.Comite,
                     Ofrenda = presupuesto.Ofrenda,
                     Actividad = presupuesto.Actividad,
                     Voto = presupuesto.Voto,
+                    TotalEgresos = presupuesto.TotalEgresos,
                     TotalPresupuesto = presupuesto.TotalPresupuesto
                 };
             }

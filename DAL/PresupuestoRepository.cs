@@ -19,13 +19,16 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into PRESUPUESTO(Id, FechaPresupuesto, Comite, Ofrenda, Actividad, Voto, TotalPresupuesto) Values (@Id, @FechaPresupuesto, @Comite, @Ofrenda, @Actividad, @Voto, @TotalPresupuesto)";
+                command.CommandText = "Insert Into PRESUPUESTO(Id, FechaPresupuesto, InicioIntervalo, FinIntervalo, Comite, Ofrenda, Actividad, Voto, TotalPresupuesto) Values (@Id, @FechaPresupuesto, @Comite, @Ofrenda, @Actividad, @Voto, @TotalPresupuesto)";
                 command.Parameters.AddWithValue("@Id", presupuesto.Id);
-                command.Parameters.AddWithValue("@FechaPresupuesto", presupuesto.FechaPresupuesto);
+                command.Parameters.AddWithValue("@AnoPresupuesto", presupuesto.AñoPresupuesto);
+                command.Parameters.AddWithValue("@InicioIntervalo", presupuesto.InicioIntervalo);
+                command.Parameters.AddWithValue("@FinIntervalo", presupuesto.FinIntervalo);
                 command.Parameters.AddWithValue("@Comite", presupuesto.Comite);
                 command.Parameters.AddWithValue("@Ofrenda", presupuesto.Ofrenda);
                 command.Parameters.AddWithValue("@Actividad", presupuesto.Actividad);
                 command.Parameters.AddWithValue("@Voto", presupuesto.Voto);
+                command.Parameters.AddWithValue("@TotalEgresos", presupuesto.TotalEgresos);
                 command.Parameters.AddWithValue("@TotalPresupuesto", presupuesto.TotalPresupuesto);
                 command.ExecuteNonQuery();
             }
@@ -44,7 +47,7 @@ namespace DAL
             List<Presupuesto> presupuestos = new List<Presupuesto>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id, FechaPresupuesto, Comite, Ofrenda, Actividad, Voto, TotalPresupuesto from PRESUPUESTO";
+                command.CommandText = "Select Id, AnoPresupuesto, InicioIntervalo, FinIntervaloComite, Ofrenda, Actividad, Voto, TotalEgresos, TotalPresupuesto from PRESUPUESTO";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -111,12 +114,15 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update PRESUPUESTO set FechaPresupuesto=@FechaPresupuesto, Comite=@Comite, Ofrenda=@Ofrenda, Actividad=@Actividad, Voto=@Voto, TotalPresupuesto=@TotalPresupuesto
+                command.CommandText = @"update PRESUPUESTO set AnoPresupuesto=@AnoPresupuesto, Comite=@Comite, Ofrenda=@Ofrenda, Actividad=@Actividad, Voto=@Voto, TotalPresupuesto=@TotalPresupuesto
                                         where Id=@Id";
-                command.Parameters.AddWithValue("@FechaPresupuesto", presupuesto.FechaPresupuesto);
+                command.Parameters.AddWithValue("@AnoPresupuesto", presupuesto.AñoPresupuesto);
+                command.Parameters.AddWithValue("@InicioIntervalo", presupuesto.InicioIntervalo);
+                command.Parameters.AddWithValue("@FinIntervalo", presupuesto.FinIntervalo);
                 command.Parameters.AddWithValue("@Comite", presupuesto.Comite);
                 command.Parameters.AddWithValue("@Actividad", presupuesto.Actividad);
                 command.Parameters.AddWithValue("@Voto", presupuesto.Voto);
+                command.Parameters.AddWithValue("@TotalEgresos", presupuesto.TotalEgresos);
                 command.Parameters.AddWithValue("@TotalPresupuesto", presupuesto.TotalPresupuesto);
                 var filas = command.ExecuteNonQuery();
             }
@@ -126,11 +132,14 @@ namespace DAL
             if (!dataReader.HasRows) return null;
             Presupuesto presupuesto = new Presupuesto();
             presupuesto.Id = (int)dataReader["Id"];
-            presupuesto.FechaPresupuesto = (DateTime)dataReader["FechaPresupuesto"];
+            presupuesto.AñoPresupuesto = (string)dataReader["AnoPresupuesto"];
+            presupuesto.InicioIntervalo = (string)dataReader["InicioIntervalo"];
+            presupuesto.FinIntervalo = (string)dataReader["FinIntervalo"];
             presupuesto.Comite = (string)dataReader["Comite"];
             presupuesto.Ofrenda = (int)dataReader["Ofrenda"];
             presupuesto.Actividad = (int)dataReader["Actividad"];
             presupuesto.Voto = (int)dataReader["Voto"];
+            presupuesto.TotalEgresos = (int)dataReader["TotalEgresos"];
             presupuesto.TotalPresupuesto = (int)dataReader["TotalPresupuesto"];
             return presupuesto;
         }

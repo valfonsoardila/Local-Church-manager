@@ -13,7 +13,11 @@ namespace Cloud
         [FirestoreProperty]
         public string Id { get; set; }
         [FirestoreProperty]
-        public string FechaPresupuesto { get; set; }
+        public string AñoPresupuesto { get; set; }
+        [FirestoreProperty]
+        public string InicioIntervalo { get; set; }
+        [FirestoreProperty]
+        public string FinIntervalo { get; set; }
         [FirestoreProperty]
         public string Comite { get; set; }
         [FirestoreProperty]
@@ -22,6 +26,8 @@ namespace Cloud
         public int Actividad { get; set; }
         [FirestoreProperty]
         public int Voto { get; set; }
+        [FirestoreProperty]
+        public int TotalEgresos { get; set; }
         [FirestoreProperty]
         public int TotalPresupuesto { get; set; }
     }

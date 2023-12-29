@@ -10,21 +10,27 @@ namespace Entity
     {
         public Presupuesto(
             int id, 
-            DateTime fechaPresupuesto, 
+            string añoPresupuesto, 
+            string inicioIntervalo,
+            string finIntervalo,
             string comite, 
             int ofrenda, 
             int actividad,
             int voto,
+            int totalEgresos,
             int totalPresupuesto
         )
         {
             Id=id;
-            FechaPresupuesto=fechaPresupuesto;
+            AñoPresupuesto = añoPresupuesto;
+            InicioIntervalo=inicioIntervalo;
+            FinIntervalo=finIntervalo;
             Comite=comite;
             Ofrenda=ofrenda;
             Actividad=actividad;
             Voto=voto;
-            TotalPresupuesto=totalPresupuesto;
+            TotalEgresos=totalEgresos;
+            TotalPresupuesto =totalPresupuesto;
         }
         public Presupuesto()
         {
@@ -32,11 +38,14 @@ namespace Entity
         }
 
         public int Id;
-        public DateTime FechaPresupuesto { get; set; }
+        public string AñoPresupuesto { get; set; }
+        public string InicioIntervalo { get; set; }
+        public string FinIntervalo { get; set; }
         public string Comite { get; set; }
         public int Ofrenda { get; set; }
         public int Actividad { get; set; }
         public int Voto { get; set; }
+        public int TotalEgresos { get; set; }
         public int TotalPresupuesto { get; set; }
     }
 }

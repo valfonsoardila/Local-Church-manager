@@ -157,10 +157,13 @@ Estado varchar(22) not null
 );
 create table PRESUPUESTO(
 Id nvarchar(15) primary key not null,
-FechaPresupuesto datetime not null,
+AnoPresupuesto datetime not null,
+InicioIntervalo varchar(15) not null,
+FinIntervalo varchar(15) not null,
 Comite varchar(30) not null,
 Ofrenda int not null,
 Actividad int not null,
 Voto int not null,
+TotalEgresos int not null,
 TotalPresupuesto int not null
 );
