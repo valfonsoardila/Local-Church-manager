@@ -22,12 +22,15 @@ namespace UI
         TabPage tabPage;
         Presupuesto presupuesto;
         List<Presupuesto> presupuestos;
+        BudgetData budgetData;
         int id = 0;
         string comite = "";
         bool detallo = false;
         bool encontrado = false;
         public FormPresupuesto()
         {
+            presupuestoService = new PresupuestoService(ConfigConnection.ConnectionString);
+            budgetData = new BudgetData();
             InitializeComponent();
             ConsultarPresupuesto();
         }
@@ -35,6 +38,15 @@ namespace UI
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private string LecturaCifra(int totalDeIngresos)
+        {
+            // Convierte el total de ingresos a una cadena con separadores de miles
+            string cifraFormateada = totalDeIngresos.ToString("N0");
+
+            // Muestra la cifra formateada en el TextBox o donde desees
+            string valorFormateado = $"${cifraFormateada}";
+            return valorFormateado;
         }
         private async void ConsultarPresupuesto()
         {
