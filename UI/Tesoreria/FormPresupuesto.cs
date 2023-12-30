@@ -1,17 +1,21 @@
 ﻿using BLL;
 using Cloud;
+using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace UI
@@ -25,17 +29,23 @@ namespace UI
         List<Presupuesto> presupuestos;
         BudgetData budgetData;
         BudgetMaps budgetMaps;
+        List<BudgetData> presupuestosComite;
+        List<BudgetData> presupuestosGeneral;
         int id = 0;
         int sumPresupuestos = 0;
         string comite = "";
         bool detallo = false;
         bool encontrado = false;
+        bool nuevoConcepto = false;
         public FormPresupuesto()
         {
+            validaciones = new Validaciones();
             presupuestoService = new PresupuestoService(ConfigConnection.ConnectionString);
             budgetData = new BudgetData();
             InitializeComponent();
             ConsultarPresupuesto();
+            ObtenerDatosGenerales();
+            ObtenerDatosIndividuales();
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -57,10 +67,10 @@ namespace UI
             {
                 var db = FirebaseService.Database;
                 var presupuestosQuery = db.Collection("BudgetData");
-                var presupuestos = new List<BudgetData>();
+                presupuestosGeneral = new List<BudgetData>();
                 // Realizar la suma directamente en la consulta Firestore
                 var snapshot = await presupuestosQuery.GetSnapshotAsync();
-                presupuestos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetData>()).ToList();
+                presupuestosGeneral = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetData>()).ToList();
                 if (presupuestos.Count > 0)
                 {
                     dataGridPresupuestos.DataSource = null;
@@ -124,7 +134,7 @@ namespace UI
                 var snapshot = await presupuestosQuery.GetSnapshotAsync();
                 presupuestos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetData>()).ToList();
                 // Filtrar elementos según el campo Valor y la variable id
-                var presupuestosComite = presupuestos.Where(presupuesto => presupuesto.Comite == comite).ToList();
+                presupuestosComite = presupuestos.Where(presupuesto => presupuesto.Comite == comite).ToList();
                 dataGridPresupuestos.DataSource = presupuestosComite;
                 Borrar.Visible = true;
             }
@@ -146,41 +156,6 @@ namespace UI
                 {
                     dataGridPresupuestos.DataSource = null;
                     presupuestos = respuesta.Presupuestos.ToList();
-                }
-            }
-        }
-        private void dataGridPresupuestos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridPresupuestos.DataSource != null)
-            {
-                if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Borrar")
-                {
-                    id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
-                    EliminarPresupuesto(id);
-                    ConsultarPresupuesto();
-                }
-                else
-                {
-                    if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Detallar")
-                    {
-                        comite = Convert.ToString(dataGridPresupuestos.CurrentRow.Cells["Comite"].Value.ToString());
-                        FiltrarPresupuestosPorComite(comite);
-                        tabPresupuestos.TabPages.Add(tabPage);
-                        tabPresupuestos.SelectedIndex = 2;
-                        detallo = true;
-                    }
-                    else
-                    {
-                        if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Editar")
-                        {
-                            id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
-                            FiltroPorId(id);
-                            if (encontrado == true)
-                            {
-                                tabPresupuestos.SelectedIndex = 1;
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -254,21 +229,6 @@ namespace UI
             }
             return fechaFormateada;
         }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimeFechaPresupuesto_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboComite_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private async void CalculoDeSaldo()
         {
             try
@@ -294,9 +254,16 @@ namespace UI
             textOfrendas.Text = "$ 000.00";
             textActividades.Text = "$ 000.00";
             textVotos.Text = "$ 000.00";
-            textOtroConcepto.Text = "Nuevo concepto";
+            textNuevoConcepto.Text = "Nuevo concepto";
             textOtroValor.Text = "$ 000.00";
             textPresupuesto.Text = "$ 000.00";
+        }
+        private void ValidarNuevoConcepto()
+        {
+            if(textNuevoConcepto.Text!="" && textNuevoConcepto.Text=="Nuevo concepto")
+            {
+                nuevoConcepto = true;
+            }
         }
         private Presupuesto MapearPresupuesto()
         {
@@ -308,6 +275,8 @@ namespace UI
             presupuesto.Ofrenda = int.Parse(textOfrendas.Text);
             presupuesto.Actividad = int.Parse(textActividades.Text);
             presupuesto.Voto = int.Parse(textVotos.Text);
+            presupuesto.OtroConcepto = nuevoConcepto ? textNuevoConcepto.Text : "Ninguno";
+            presupuesto.ValorOtroConcepto = nuevoConcepto ? int.Parse(textOtroValor.Text) : 0;
             presupuesto.TotalEgresos = int.Parse(textEgresos.Text);
             presupuesto.TotalPresupuesto = int.Parse(textPresupuesto.Text);
             return presupuesto;
@@ -315,6 +284,7 @@ namespace UI
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             //Obtenemos los datos del usuario y construimos el dato de la nube
+            ValidarNuevoConcepto();
             Presupuesto presupuesto = MapearPresupuesto();
             try
             {
@@ -446,21 +416,21 @@ namespace UI
 
         private void textOtroConcepto_Enter(object sender, EventArgs e)
         {
-            string placeHolder = textOtroConcepto.Text;
+            string placeHolder = textNuevoConcepto.Text;
             string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
-            textOtroConcepto.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
+            textNuevoConcepto.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
         }
 
         private void textOtroConcepto_Leave(object sender, EventArgs e)
         {
-            string placeHolder = textOtroConcepto.Text;
+            string placeHolder = textNuevoConcepto.Text;
             string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
-            textOtroConcepto.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+            textNuevoConcepto.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
 
         private void textOfrendas_Enter(object sender, EventArgs e)
         {
-            if (textOfrendas.Text == "$ 000.00")
+            if (textOfrendas.Text != "")
             {
                 textOfrendas.Text = "";
             }
@@ -476,7 +446,7 @@ namespace UI
 
         private void textActividades_Enter(object sender, EventArgs e)
         {
-            if (textActividades.Text == "$ 000.00")
+            if (textActividades.Text != "")
             {
                 textActividades.Text = "";
             }
@@ -492,7 +462,7 @@ namespace UI
 
         private void textVotos_Enter(object sender, EventArgs e)
         {
-            if (textVotos.Text == "$ 000.00")
+            if (textVotos.Text != "")
             {
                 textVotos.Text = "";
             }
@@ -508,7 +478,7 @@ namespace UI
 
         private void textOtroValor_Enter(object sender, EventArgs e)
         {
-            if (textOtroValor.Text == "$ 000.00")
+            if (textOtroValor.Text != "")
             {
                 textOtroValor.Text = "";
             }
@@ -524,7 +494,7 @@ namespace UI
 
         private void textPresupuesto_Enter(object sender, EventArgs e)
         {
-            if (textPresupuesto.Text == "$ 000.00")
+            if (textPresupuesto.Text != "")
             {
                 textPresupuesto.Text = "";
             }
@@ -540,7 +510,7 @@ namespace UI
 
         private void textEgresos_Enter(object sender, EventArgs e)
         {
-            if (textEgresos.Text == "$ 000.00")
+            if (textEgresos.Text != "")
             {
                 textEgresos.Text = "";
             }
@@ -551,6 +521,101 @@ namespace UI
             if (textEgresos.Text == "")
             {
                 textEgresos.Text = "$ 000.00";
+            }
+        }
+
+        private void dataGridPresupuestos_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridPresupuestos.DataSource != null)
+            {
+                if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Borrar")
+                {
+                    id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
+                    EliminarPresupuesto(id);
+                    ConsultarPresupuesto();
+                }
+                else
+                {
+                    if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Detallar")
+                    {
+                        comite = Convert.ToString(dataGridPresupuestos.CurrentRow.Cells["Comite"].Value.ToString());
+                        FiltrarPresupuestosPorComite(comite);
+                        tabPresupuestos.TabPages.Add(tabPage);
+                        tabPresupuestos.SelectedIndex = 2;
+                        detallo = true;
+                    }
+                    else
+                    {
+                        if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Editar")
+                        {
+                            id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["Id"].Value.ToString());
+                            FiltroPorId(id);
+                            if (encontrado == true)
+                            {
+                                tabPresupuestos.SelectedIndex = 1;
+                            }
+                        }
+                        else
+                        {
+                            if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Seleccionar")
+                            {
+                                // Verificar si el clic se realizó en la columna de CheckBoxColumn
+                                if (e.ColumnIndex == dataGridPresupuestos.Columns["Seleccionar"].Index && e.RowIndex != -1)
+                                {
+                                    // Obtener la celda de CheckBox clicada
+                                    DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)dataGridPresupuestos.Rows[e.RowIndex].Cells["Seleccionar"];
+                                    // Cambiar el estado del CheckBox
+                                    checkBoxCell.Value = !Convert.ToBoolean(checkBoxCell.Value);
+                                    // Consulta
+                                    comite = Convert.ToString(dataGridPresupuestos.CurrentRow.Cells["Comite"].Value.ToString());
+                                    FiltrarPresupuestosPorComite(comite);
+                                    ObtenerDatosIndividuales();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void ObtenerDatosIndividuales()
+        {
+            //Este se representará con los datos individuales de cada comite que son ofrendas, actividades, votos y otro.
+            if (presupuestosComite != null && presupuestosComite.Any())
+            {
+                // Asegúrate de tener los nombres correctos de las propiedades según la estructura de tu clase BudgetData
+                int ofrenda = presupuestosComite.Sum(p => p.Ofrenda);
+                int actividad = presupuestosComite.Sum(p => p.Actividad);
+                int voto = presupuestosComite.Sum(p => p.Voto);
+                int otroConcepto = presupuestosComite.Sum(p => p.ValorOtroConcepto);
+
+                // Calcula los porcentajes
+                double porcentajeOfrenda = (double)ofrenda / presupuestosComite[0].TotalPresupuesto * 100;
+                double porcentajeActividad = (double)actividad / presupuestosComite[0].TotalPresupuesto * 100;
+                double porcentajeVoto = (double)voto / presupuestosComite[0].TotalPresupuesto * 100;
+                double porcentajeOtroConcepto = (double)otroConcepto / presupuestosComite[0].TotalPresupuesto * 100;
+                
+                //limpia los puntos anteriores
+                chartIndividual.Series[0].Points.Clear();
+
+                // Agrega los nuevos puntos al gráfico
+                chartIndividual.Series[0].Points.AddXY("Ofrenda", porcentajeOfrenda);
+                chartIndividual.Series[0].Points.AddXY("Actividad", porcentajeActividad);
+                chartIndividual.Series[0].Points.AddXY("Voto", porcentajeVoto);
+                chartIndividual.Series[0].Points.AddXY("Otro Concepto", porcentajeOtroConcepto);
+
+                // Configura el gráfico
+                chartIndividual.Series[0].ChartType = SeriesChartType.Doughnut;
+                chartIndividual.Series[0].IsValueShownAsLabel = true;
+                chartIndividual.Series[0].LabelFormat = "P"; // Muestra los porcentajes
+                chartIndividual.Titles.Clear();
+                chartIndividual.Titles.Add("Distribución de Gastos");
+            }
+        }
+        private void ObtenerDatosGenerales()
+        {
+            if (presupuestosGeneral != null && presupuestosGeneral.Any())
+            {
+
             }
         }
     }

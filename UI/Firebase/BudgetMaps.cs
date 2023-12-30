@@ -19,13 +19,15 @@ namespace UI
                 {
                     Id = presupuesto.Id.ToString().Trim(),
                     AñoPresupuesto = presupuesto.AñoPresupuesto.ToString(),
-                    InicioIntervalo=presupuesto.InicioIntervalo,
-                    FinIntervalo=presupuesto.FinIntervalo,
+                    InicioIntervalo = presupuesto.InicioIntervalo,
+                    FinIntervalo = presupuesto.FinIntervalo,
                     Comite = presupuesto.Comite,
-                    Ofrenda=presupuesto.Ofrenda,
-                    Actividad=presupuesto.Actividad,
-                    Voto=presupuesto.Voto,
-                    TotalEgresos=presupuesto.TotalEgresos,
+                    Ofrenda = presupuesto.Ofrenda,
+                    Actividad = presupuesto.Actividad,
+                    Voto = presupuesto.Voto,
+                    OtroConcepto = presupuesto.OtroConcepto,
+                    ValorOtroConcepto = presupuesto.ValorOtroConcepto,
+                    TotalEgresos =presupuesto.TotalEgresos,
                     TotalPresupuesto=presupuesto.TotalPresupuesto
                 };
             }
@@ -41,6 +43,8 @@ namespace UI
                     Ofrenda = presupuesto.Ofrenda,
                     Actividad = presupuesto.Actividad,
                     Voto = presupuesto.Voto,
+                    OtroConcepto = presupuesto.OtroConcepto,
+                    ValorOtroConcepto = presupuesto.ValorOtroConcepto,
                     TotalEgresos = presupuesto.TotalEgresos,
                     TotalPresupuesto = presupuesto.TotalPresupuesto
                 };

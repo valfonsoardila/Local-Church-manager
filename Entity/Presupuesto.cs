@@ -45,7 +45,16 @@ namespace Entity
         public int Ofrenda { get; set; }
         public int Actividad { get; set; }
         public int Voto { get; set; }
+        public string OtroConcepto { get; set; }
+        public int ValorOtroConcepto { get; set; }
         public int TotalEgresos { get; set; }
         public int TotalPresupuesto { get; set; }
+        public void GenerarCodigoPresupuesto()
+        {
+            int b;
+            Random aleatorio = new Random();
+            b = aleatorio.Next(100000, 200000);
+            Id = b;
+        }
     }
 }

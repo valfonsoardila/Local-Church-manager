@@ -27,6 +27,10 @@ namespace Cloud
         [FirestoreProperty]
         public int Voto { get; set; }
         [FirestoreProperty]
+        public string OtroConcepto { get; set; }
+        [FirestoreProperty]
+        public int ValorOtroConcepto { get; set; }
+        [FirestoreProperty]
         public int TotalEgresos { get; set; }
         [FirestoreProperty]
         public int TotalPresupuesto { get; set; }

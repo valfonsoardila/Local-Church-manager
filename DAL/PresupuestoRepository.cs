@@ -28,6 +28,8 @@ namespace DAL
                 command.Parameters.AddWithValue("@Ofrenda", presupuesto.Ofrenda);
                 command.Parameters.AddWithValue("@Actividad", presupuesto.Actividad);
                 command.Parameters.AddWithValue("@Voto", presupuesto.Voto);
+                command.Parameters.AddWithValue("@OtroConcepto", presupuesto.OtroConcepto);
+                command.Parameters.AddWithValue("@ValorOtroConcepto", presupuesto.ValorOtroConcepto);
                 command.Parameters.AddWithValue("@TotalEgresos", presupuesto.TotalEgresos);
                 command.Parameters.AddWithValue("@TotalPresupuesto", presupuesto.TotalPresupuesto);
                 command.ExecuteNonQuery();
@@ -47,7 +49,7 @@ namespace DAL
             List<Presupuesto> presupuestos = new List<Presupuesto>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id, AnoPresupuesto, InicioIntervalo, FinIntervaloComite, Ofrenda, Actividad, Voto, TotalEgresos, TotalPresupuesto from PRESUPUESTO";
+                command.CommandText = "Select Id, AnoPresupuesto, InicioIntervalo, FinIntervalo, Comite, Ofrenda, Actividad, Voto, OtroConcepto, ValorOtroConcepto, TotalEgresos, TotalPresupuesto from PRESUPUESTO";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -122,6 +124,8 @@ namespace DAL
                 command.Parameters.AddWithValue("@Comite", presupuesto.Comite);
                 command.Parameters.AddWithValue("@Actividad", presupuesto.Actividad);
                 command.Parameters.AddWithValue("@Voto", presupuesto.Voto);
+                command.Parameters.AddWithValue("@OtroConcepto", presupuesto.OtroConcepto);
+                command.Parameters.AddWithValue("@ValorOtroConcepto", presupuesto.ValorOtroConcepto);
                 command.Parameters.AddWithValue("@TotalEgresos", presupuesto.TotalEgresos);
                 command.Parameters.AddWithValue("@TotalPresupuesto", presupuesto.TotalPresupuesto);
                 var filas = command.ExecuteNonQuery();
@@ -139,6 +143,8 @@ namespace DAL
             presupuesto.Ofrenda = (int)dataReader["Ofrenda"];
             presupuesto.Actividad = (int)dataReader["Actividad"];
             presupuesto.Voto = (int)dataReader["Voto"];
+            presupuesto.OtroConcepto = (string)dataReader["OtroConcepto"];
+            presupuesto.ValorOtroConcepto = (int)dataReader["ValorOtroConcepto"];
             presupuesto.TotalEgresos = (int)dataReader["TotalEgresos"];
             presupuesto.TotalPresupuesto = (int)dataReader["TotalPresupuesto"];
             return presupuesto;
