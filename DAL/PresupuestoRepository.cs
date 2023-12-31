@@ -19,7 +19,7 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into PRESUPUESTO(Id, FechaPresupuesto, InicioIntervalo, FinIntervalo, Comite, Ofrenda, Actividad, Voto, TotalPresupuesto) Values (@Id, @FechaPresupuesto, @Comite, @Ofrenda, @Actividad, @Voto, @TotalPresupuesto)";
+                command.CommandText = "Insert Into PRESUPUESTO(Id, AnoPresupuesto, InicioIntervalo, FinIntervalo, Comite, Ofrenda, Actividad, Voto, OtroConcepto, ValorOtroConcepto, TotalEgresos, TotalPresupuesto) Values (@Id, @AnoPresupuesto, @InicioIntervalo, @FinIntervalo, @Comite, @Ofrenda, @Actividad, @Voto, @OtroConcepto, @ValorOtroConcepto, @TotalEgresos, @TotalPresupuesto)";
                 command.Parameters.AddWithValue("@Id", presupuesto.Id);
                 command.Parameters.AddWithValue("@AnoPresupuesto", presupuesto.AñoPresupuesto);
                 command.Parameters.AddWithValue("@InicioIntervalo", presupuesto.InicioIntervalo);
@@ -116,7 +116,7 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update PRESUPUESTO set AnoPresupuesto=@AnoPresupuesto, Comite=@Comite, Ofrenda=@Ofrenda, Actividad=@Actividad, Voto=@Voto, TotalPresupuesto=@TotalPresupuesto
+                command.CommandText = @"update PRESUPUESTO set AnoPresupuesto=@AnoPresupuesto, Comite=@Comite, Ofrenda=@Ofrenda, Actividad=@Actividad, Voto=@Voto, OtroConcepto=@OtroConcepto, ValorOtroConcepto=@ValorOtroConcepto, TotalEgresos=@TotalEgresos, TotalPresupuesto=@TotalPresupuesto
                                         where Id=@Id";
                 command.Parameters.AddWithValue("@AnoPresupuesto", presupuesto.AñoPresupuesto);
                 command.Parameters.AddWithValue("@InicioIntervalo", presupuesto.InicioIntervalo);

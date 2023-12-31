@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.TabPage tabRegistrar;
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -70,6 +70,37 @@
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPresupuestos = new System.Windows.Forms.TabControl();
+            this.tabListaEgresos = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.dataGridPresupuestos = new System.Windows.Forms.DataGridView();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.textTotal = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboFiltroComite = new System.Windows.Forms.ComboBox();
+            this.comboFiltroAño = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.chartGeneral = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.chartIndividual = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnImprimir = new FontAwesome.Sharp.IconButton();
+            this.btnGestionarPresupuesto = new FontAwesome.Sharp.IconButton();
             this.tabDetalle = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -90,37 +121,6 @@
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnGestionarPresupuesto = new FontAwesome.Sharp.IconButton();
-            this.btnImprimir = new FontAwesome.Sharp.IconButton();
-            this.tabListaEgresos = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.dataGridPresupuestos = new System.Windows.Forms.DataGridView();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
-            this.textTotal = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.comboFiltroComite = new System.Windows.Forms.ComboBox();
-            this.comboFiltroAño = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.chartIndividual = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.chartGeneral = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -133,6 +133,22 @@
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
             this.tabPresupuestos.SuspendLayout();
+            this.tabListaEgresos.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPresupuestos)).BeginInit();
+            this.panelContenedorDeDirectorio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
+            this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGeneral)).BeginInit();
+            this.panel20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartIndividual)).BeginInit();
+            this.panel19.SuspendLayout();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox6)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.tabDetalle.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -143,22 +159,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tabListaEgresos.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPresupuestos)).BeginInit();
-            this.panelContenedorDeDirectorio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
-            this.panel13.SuspendLayout();
-            this.panel18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox6)).BeginInit();
-            this.panel19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartIndividual)).BeginInit();
-            this.panel20.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartGeneral)).BeginInit();
             this.SuspendLayout();
             // 
             // tabRegistrar
@@ -731,295 +731,6 @@
             this.tabPresupuestos.Size = new System.Drawing.Size(879, 476);
             this.tabPresupuestos.TabIndex = 7;
             // 
-            // tabDetalle
-            // 
-            this.tabDetalle.Controls.Add(this.panel8);
-            this.tabDetalle.Location = new System.Drawing.Point(4, 22);
-            this.tabDetalle.Name = "tabDetalle";
-            this.tabDetalle.Size = new System.Drawing.Size(871, 450);
-            this.tabDetalle.TabIndex = 2;
-            this.tabDetalle.Text = "Porcentajes";
-            this.tabDetalle.UseVisualStyleBackColor = true;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.panel2);
-            this.panel8.Controls.Add(this.panel9);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(871, 450);
-            this.panel8.TabIndex = 5;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnImprimirDetalle);
-            this.panel2.Controls.Add(this.panel12);
-            this.panel2.Controls.Add(this.panel11);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 408);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(871, 42);
-            this.panel2.TabIndex = 2;
-            // 
-            // btnImprimirDetalle
-            // 
-            this.btnImprimirDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimirDetalle.BackColor = System.Drawing.Color.Orange;
-            this.btnImprimirDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirDetalle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnImprimirDetalle.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnImprimirDetalle.IconColor = System.Drawing.Color.Black;
-            this.btnImprimirDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnImprimirDetalle.IconSize = 30;
-            this.btnImprimirDetalle.Location = new System.Drawing.Point(352, 2);
-            this.btnImprimirDetalle.Name = "btnImprimirDetalle";
-            this.btnImprimirDetalle.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimirDetalle.Size = new System.Drawing.Size(183, 37);
-            this.btnImprimirDetalle.TabIndex = 16;
-            this.btnImprimirDetalle.Text = "Imprimir Detalle";
-            this.btnImprimirDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimirDetalle.UseVisualStyleBackColor = false;
-            // 
-            // panel12
-            // 
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel12.Location = new System.Drawing.Point(541, 0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(330, 42);
-            this.panel12.TabIndex = 1;
-            // 
-            // panel11
-            // 
-            this.panel11.Location = new System.Drawing.Point(0, 0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(346, 42);
-            this.panel11.TabIndex = 0;
-            // 
-            // panel9
-            // 
-            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel9.Controls.Add(this.dataGridDetalle);
-            this.panel9.Controls.Add(this.panel10);
-            this.panel9.Location = new System.Drawing.Point(27, 8);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(809, 380);
-            this.panel9.TabIndex = 0;
-            // 
-            // dataGridDetalle
-            // 
-            this.dataGridDetalle.AllowUserToAddRows = false;
-            this.dataGridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridDetalle.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            this.dataGridDetalle.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn1,
-            this.Editar2,
-            this.Borrar2});
-            this.dataGridDetalle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridDetalle.Location = new System.Drawing.Point(0, 32);
-            this.dataGridDetalle.Name = "dataGridDetalle";
-            this.dataGridDetalle.ReadOnly = true;
-            this.dataGridDetalle.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridDetalle.RowHeadersVisible = false;
-            this.dataGridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridDetalle.RowTemplate.DividerHeight = 2;
-            this.dataGridDetalle.RowTemplate.Height = 30;
-            this.dataGridDetalle.Size = new System.Drawing.Size(809, 348);
-            this.dataGridDetalle.TabIndex = 1;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Seleccionar";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Width = 69;
-            // 
-            // Editar2
-            // 
-            this.Editar2.HeaderText = "Editar";
-            this.Editar2.Image = global::UI.Properties.Resources.edit_user;
-            this.Editar2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar2.Name = "Editar2";
-            this.Editar2.ReadOnly = true;
-            this.Editar2.Width = 40;
-            // 
-            // Borrar2
-            // 
-            this.Borrar2.HeaderText = "Borrar";
-            this.Borrar2.Image = global::UI.Properties.Resources.borrar;
-            this.Borrar2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Borrar2.Name = "Borrar2";
-            this.Borrar2.ReadOnly = true;
-            this.Borrar2.Width = 41;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.Black;
-            this.panel10.Controls.Add(this.iconPictureBox1);
-            this.panel10.Controls.Add(this.label8);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(809, 32);
-            this.panel10.TabIndex = 0;
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Percentage;
-            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 28;
-            this.iconPictureBox1.Location = new System.Drawing.Point(5, 3);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);
-            this.iconPictureBox1.TabIndex = 9;
-            this.iconPictureBox1.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(36, 8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(96, 16);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Porcentajes";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.textTotalPresupuestos);
-            this.panel1.Controls.Add(this.btnAtras);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(879, 59);
-            this.panel1.TabIndex = 6;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(464, 18);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(219, 24);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Total Presupuestos:";
-            // 
-            // textTotalPresupuestos
-            // 
-            this.textTotalPresupuestos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textTotalPresupuestos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textTotalPresupuestos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textTotalPresupuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalPresupuestos.ForeColor = System.Drawing.SystemColors.Info;
-            this.textTotalPresupuestos.Location = new System.Drawing.Point(690, 16);
-            this.textTotalPresupuestos.Name = "textTotalPresupuestos";
-            this.textTotalPresupuestos.Size = new System.Drawing.Size(177, 28);
-            this.textTotalPresupuestos.TabIndex = 14;
-            this.textTotalPresupuestos.Text = "0";
-            // 
-            // btnAtras
-            // 
-            this.btnAtras.BackColor = System.Drawing.Color.Transparent;
-            this.btnAtras.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
-            this.btnAtras.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAtras.IconSize = 28;
-            this.btnAtras.Location = new System.Drawing.Point(12, 18);
-            this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(28, 28);
-            this.btnAtras.TabIndex = 8;
-            this.btnAtras.TabStop = false;
-            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(96, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Presupuestos";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::UI.Properties.Resources.Presupuesto;
-            this.pictureBox1.Location = new System.Drawing.Point(45, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.btnImprimir, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnGestionarPresupuesto, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 391);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(865, 56);
-            this.tableLayoutPanel2.TabIndex = 18;
-            // 
-            // btnGestionarPresupuesto
-            // 
-            this.btnGestionarPresupuesto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGestionarPresupuesto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.btnGestionarPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionarPresupuesto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnGestionarPresupuesto.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnGestionarPresupuesto.IconColor = System.Drawing.Color.Black;
-            this.btnGestionarPresupuesto.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarPresupuesto.Location = new System.Drawing.Point(271, 3);
-            this.btnGestionarPresupuesto.Name = "btnGestionarPresupuesto";
-            this.btnGestionarPresupuesto.Size = new System.Drawing.Size(158, 35);
-            this.btnGestionarPresupuesto.TabIndex = 1;
-            this.btnGestionarPresupuesto.Text = "Gestionar presupuestos";
-            this.btnGestionarPresupuesto.UseVisualStyleBackColor = false;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.BackColor = System.Drawing.Color.Orange;
-            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnImprimir.IconColor = System.Drawing.Color.Black;
-            this.btnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnImprimir.IconSize = 30;
-            this.btnImprimir.Location = new System.Drawing.Point(435, 3);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimir.Size = new System.Drawing.Size(142, 35);
-            this.btnImprimir.TabIndex = 15;
-            this.btnImprimir.Text = "Imprimir Lista";
-            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            // 
             // tabListaEgresos
             // 
             this.tabListaEgresos.Controls.Add(this.panel3);
@@ -1343,6 +1054,85 @@
             this.panel13.Size = new System.Drawing.Size(313, 382);
             this.panel13.TabIndex = 2;
             // 
+            // chartGeneral
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartGeneral.ChartAreas.Add(chartArea1);
+            this.chartGeneral.Dock = System.Windows.Forms.DockStyle.Top;
+            legend1.Name = "Legend1";
+            this.chartGeneral.Legends.Add(legend1);
+            this.chartGeneral.Location = new System.Drawing.Point(0, 280);
+            this.chartGeneral.Name = "chartGeneral";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 6;
+            this.chartGeneral.Series.Add(series1);
+            this.chartGeneral.Size = new System.Drawing.Size(296, 194);
+            this.chartGeneral.TabIndex = 8;
+            this.chartGeneral.Text = "chart2";
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.Color.Salmon;
+            this.panel20.Controls.Add(this.label21);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel20.Location = new System.Drawing.Point(0, 252);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(296, 28);
+            this.panel20.TabIndex = 7;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(70, 6);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(160, 16);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Presupuesto general";
+            // 
+            // chartIndividual
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartIndividual.ChartAreas.Add(chartArea2);
+            this.chartIndividual.Dock = System.Windows.Forms.DockStyle.Top;
+            legend2.Name = "Legend1";
+            this.chartIndividual.Legends.Add(legend2);
+            this.chartIndividual.Location = new System.Drawing.Point(0, 58);
+            this.chartIndividual.Name = "chartIndividual";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartIndividual.Series.Add(series2);
+            this.chartIndividual.Size = new System.Drawing.Size(296, 194);
+            this.chartIndividual.TabIndex = 6;
+            this.chartIndividual.Text = "chart1";
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.panel19.Controls.Add(this.label20);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel19.Location = new System.Drawing.Point(0, 32);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(296, 26);
+            this.panel19.TabIndex = 4;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(64, 5);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(175, 16);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Presupuesto individual";
+            // 
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.Gray;
@@ -1379,82 +1169,294 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Graficas";
             // 
-            // panel19
+            // tableLayoutPanel2
             // 
-            this.panel19.Controls.Add(this.label20);
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel19.Location = new System.Drawing.Point(0, 32);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(296, 26);
-            this.panel19.TabIndex = 4;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.btnImprimir, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnGestionarPresupuesto, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 391);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(865, 56);
+            this.tableLayoutPanel2.TabIndex = 18;
             // 
-            // chartIndividual
+            // btnImprimir
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartIndividual.ChartAreas.Add(chartArea2);
-            this.chartIndividual.Dock = System.Windows.Forms.DockStyle.Top;
-            legend2.Name = "Legend1";
-            this.chartIndividual.Legends.Add(legend2);
-            this.chartIndividual.Location = new System.Drawing.Point(0, 58);
-            this.chartIndividual.Name = "chartIndividual";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartIndividual.Series.Add(series2);
-            this.chartIndividual.Size = new System.Drawing.Size(296, 194);
-            this.chartIndividual.TabIndex = 6;
-            this.chartIndividual.Text = "chart1";
+            this.btnImprimir.BackColor = System.Drawing.Color.Orange;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimir.IconColor = System.Drawing.Color.Black;
+            this.btnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimir.IconSize = 30;
+            this.btnImprimir.Location = new System.Drawing.Point(435, 3);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimir.Size = new System.Drawing.Size(142, 35);
+            this.btnImprimir.TabIndex = 15;
+            this.btnImprimir.Text = "Imprimir Lista";
+            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimir.UseVisualStyleBackColor = false;
             // 
-            // panel20
+            // btnGestionarPresupuesto
             // 
-            this.panel20.Controls.Add(this.label21);
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel20.Location = new System.Drawing.Point(0, 252);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(296, 28);
-            this.panel20.TabIndex = 7;
+            this.btnGestionarPresupuesto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGestionarPresupuesto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnGestionarPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionarPresupuesto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGestionarPresupuesto.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnGestionarPresupuesto.IconColor = System.Drawing.Color.Black;
+            this.btnGestionarPresupuesto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGestionarPresupuesto.Location = new System.Drawing.Point(271, 3);
+            this.btnGestionarPresupuesto.Name = "btnGestionarPresupuesto";
+            this.btnGestionarPresupuesto.Size = new System.Drawing.Size(158, 35);
+            this.btnGestionarPresupuesto.TabIndex = 1;
+            this.btnGestionarPresupuesto.Text = "Gestionar presupuestos";
+            this.btnGestionarPresupuesto.UseVisualStyleBackColor = false;
             // 
-            // chartGeneral
+            // tabDetalle
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartGeneral.ChartAreas.Add(chartArea1);
-            this.chartGeneral.Dock = System.Windows.Forms.DockStyle.Top;
-            legend1.Name = "Legend1";
-            this.chartGeneral.Legends.Add(legend1);
-            this.chartGeneral.Location = new System.Drawing.Point(0, 280);
-            this.chartGeneral.Name = "chartGeneral";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 6;
-            this.chartGeneral.Series.Add(series1);
-            this.chartGeneral.Size = new System.Drawing.Size(296, 194);
-            this.chartGeneral.TabIndex = 8;
-            this.chartGeneral.Text = "chart2";
+            this.tabDetalle.Controls.Add(this.panel8);
+            this.tabDetalle.Location = new System.Drawing.Point(4, 22);
+            this.tabDetalle.Name = "tabDetalle";
+            this.tabDetalle.Size = new System.Drawing.Size(871, 450);
+            this.tabDetalle.TabIndex = 2;
+            this.tabDetalle.Text = "Porcentajes";
+            this.tabDetalle.UseVisualStyleBackColor = true;
             // 
-            // label20
+            // panel8
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(64, 5);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(175, 16);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "Presupuesto individual";
+            this.panel8.Controls.Add(this.panel2);
+            this.panel8.Controls.Add(this.panel9);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(871, 450);
+            this.panel8.TabIndex = 5;
             // 
-            // label21
+            // panel2
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(70, 6);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(160, 16);
-            this.label21.TabIndex = 2;
-            this.label21.Text = "Presupuesto general";
+            this.panel2.Controls.Add(this.btnImprimirDetalle);
+            this.panel2.Controls.Add(this.panel12);
+            this.panel2.Controls.Add(this.panel11);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 408);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(871, 42);
+            this.panel2.TabIndex = 2;
+            // 
+            // btnImprimirDetalle
+            // 
+            this.btnImprimirDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirDetalle.BackColor = System.Drawing.Color.Orange;
+            this.btnImprimirDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirDetalle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimirDetalle.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimirDetalle.IconColor = System.Drawing.Color.Black;
+            this.btnImprimirDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimirDetalle.IconSize = 30;
+            this.btnImprimirDetalle.Location = new System.Drawing.Point(352, 2);
+            this.btnImprimirDetalle.Name = "btnImprimirDetalle";
+            this.btnImprimirDetalle.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimirDetalle.Size = new System.Drawing.Size(183, 37);
+            this.btnImprimirDetalle.TabIndex = 16;
+            this.btnImprimirDetalle.Text = "Imprimir Detalle";
+            this.btnImprimirDetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimirDetalle.UseVisualStyleBackColor = false;
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel12.Location = new System.Drawing.Point(541, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(330, 42);
+            this.panel12.TabIndex = 1;
+            // 
+            // panel11
+            // 
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(346, 42);
+            this.panel11.TabIndex = 0;
+            // 
+            // panel9
+            // 
+            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel9.Controls.Add(this.dataGridDetalle);
+            this.panel9.Controls.Add(this.panel10);
+            this.panel9.Location = new System.Drawing.Point(27, 8);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(809, 380);
+            this.panel9.TabIndex = 0;
+            // 
+            // dataGridDetalle
+            // 
+            this.dataGridDetalle.AllowUserToAddRows = false;
+            this.dataGridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridDetalle.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dataGridDetalle.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn1,
+            this.Editar2,
+            this.Borrar2});
+            this.dataGridDetalle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridDetalle.Location = new System.Drawing.Point(0, 32);
+            this.dataGridDetalle.Name = "dataGridDetalle";
+            this.dataGridDetalle.ReadOnly = true;
+            this.dataGridDetalle.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridDetalle.RowHeadersVisible = false;
+            this.dataGridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridDetalle.RowTemplate.DividerHeight = 2;
+            this.dataGridDetalle.RowTemplate.Height = 30;
+            this.dataGridDetalle.Size = new System.Drawing.Size(809, 348);
+            this.dataGridDetalle.TabIndex = 1;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Seleccionar";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 69;
+            // 
+            // Editar2
+            // 
+            this.Editar2.HeaderText = "Editar";
+            this.Editar2.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar2.Name = "Editar2";
+            this.Editar2.ReadOnly = true;
+            this.Editar2.Width = 40;
+            // 
+            // Borrar2
+            // 
+            this.Borrar2.HeaderText = "Borrar";
+            this.Borrar2.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar2.Name = "Borrar2";
+            this.Borrar2.ReadOnly = true;
+            this.Borrar2.Width = 41;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.Black;
+            this.panel10.Controls.Add(this.iconPictureBox1);
+            this.panel10.Controls.Add(this.label8);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(809, 32);
+            this.panel10.TabIndex = 0;
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Percentage;
+            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 28;
+            this.iconPictureBox1.Location = new System.Drawing.Point(5, 3);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox1.TabIndex = 9;
+            this.iconPictureBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label8.Location = new System.Drawing.Point(36, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 16);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Porcentajes";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.textTotalPresupuestos);
+            this.panel1.Controls.Add(this.btnAtras);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(879, 59);
+            this.panel1.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label11.Location = new System.Drawing.Point(464, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(219, 24);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Total Presupuestos:";
+            // 
+            // textTotalPresupuestos
+            // 
+            this.textTotalPresupuestos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textTotalPresupuestos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textTotalPresupuestos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTotalPresupuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalPresupuestos.ForeColor = System.Drawing.SystemColors.Info;
+            this.textTotalPresupuestos.Location = new System.Drawing.Point(690, 16);
+            this.textTotalPresupuestos.Name = "textTotalPresupuestos";
+            this.textTotalPresupuestos.Size = new System.Drawing.Size(177, 28);
+            this.textTotalPresupuestos.TabIndex = 14;
+            this.textTotalPresupuestos.Text = "0";
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.BackColor = System.Drawing.Color.Transparent;
+            this.btnAtras.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
+            this.btnAtras.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAtras.IconSize = 28;
+            this.btnAtras.Location = new System.Drawing.Point(12, 18);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(28, 28);
+            this.btnAtras.TabIndex = 8;
+            this.btnAtras.TabStop = false;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(96, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(148, 24);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Presupuestos";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::UI.Properties.Resources.Presupuesto;
+            this.pictureBox1.Location = new System.Drawing.Point(45, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
             // FormPresupuesto
             // 
@@ -1483,6 +1485,26 @@
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
             this.tabPresupuestos.ResumeLayout(false);
+            this.tabListaEgresos.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPresupuestos)).EndInit();
+            this.panelContenedorDeDirectorio.ResumeLayout(false);
+            this.panelContenedorDeDirectorio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
+            this.panel13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartGeneral)).EndInit();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartIndividual)).EndInit();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox6)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.tabDetalle.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -1495,26 +1517,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tabListaEgresos.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPresupuestos)).EndInit();
-            this.panelContenedorDeDirectorio.ResumeLayout(false);
-            this.panelContenedorDeDirectorio.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
-            this.panel13.ResumeLayout(false);
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox6)).EndInit();
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartIndividual)).EndInit();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartGeneral)).EndInit();
             this.ResumeLayout(false);
 
         }

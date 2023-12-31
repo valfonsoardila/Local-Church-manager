@@ -265,6 +265,13 @@ namespace UI
                 nuevoConcepto = true;
             }
         }
+        private int ObtenerCantidadEntera(string cantidad)
+        {
+            string cantidadSinSigno = cantidad.Replace("$", "").Trim(); // Esto quita el signo "$"
+            string cantidadSinPuntos = cantidadSinSigno.Replace(".", "").Trim();
+            int cantidadEntera = int.Parse(cantidadSinPuntos);
+            return cantidadEntera;
+        }
         private Presupuesto MapearPresupuesto()
         {
             presupuesto = new Presupuesto();
@@ -272,13 +279,13 @@ namespace UI
             presupuesto.InicioIntervalo = comboInicioIntervalo.Text;
             presupuesto.FinIntervalo = comboFinIntervalo.Text;
             presupuesto.Comite = comboComite.Text;
-            presupuesto.Ofrenda = int.Parse(textOfrendas.Text);
-            presupuesto.Actividad = int.Parse(textActividades.Text);
-            presupuesto.Voto = int.Parse(textVotos.Text);
-            presupuesto.OtroConcepto = nuevoConcepto ? textNuevoConcepto.Text : "Ninguno";
-            presupuesto.ValorOtroConcepto = nuevoConcepto ? int.Parse(textOtroValor.Text) : 0;
-            presupuesto.TotalEgresos = int.Parse(textEgresos.Text);
-            presupuesto.TotalPresupuesto = int.Parse(textPresupuesto.Text);
+            presupuesto.Ofrenda = ObtenerCantidadEntera(textOfrendas.Text);
+            presupuesto.Actividad = ObtenerCantidadEntera(textActividades.Text);
+            presupuesto.Voto = ObtenerCantidadEntera(textVotos.Text);
+            presupuesto.OtroConcepto = nuevoConcepto ? "Ninguno" : textNuevoConcepto.Text;
+            presupuesto.ValorOtroConcepto = nuevoConcepto ? 0:ObtenerCantidadEntera(textOtroValor.Text);
+            presupuesto.TotalEgresos = ObtenerCantidadEntera(textEgresos.Text);
+            presupuesto.TotalPresupuesto = ObtenerCantidadEntera(textPresupuesto.Text);
             return presupuesto;
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -288,13 +295,13 @@ namespace UI
             Presupuesto presupuesto = MapearPresupuesto();
             try
             {
-                var msg = presupuestoService.Guardar(presupuesto);
                 //Guardamos en la nube
                 var db = FirebaseService.Database;
                 var budgetNuevo = budgetMaps.BudgetMap(presupuesto);
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetData").Document(budgetNuevo.Id);
                 docRef.SetAsync(budgetNuevo);
                 // Guardamos localmente
+                var msg = presupuestoService.Guardar(presupuesto);
                 MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarPresupuesto();
                 CalculoDeSaldo();
@@ -310,7 +317,7 @@ namespace UI
                     var msg = presupuestoService.Guardar(presupuesto);
                     MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ConsultarPresupuesto();
-                    Limpiar();
+                    //Limpiar();
                     tabPresupuestos.SelectedIndex = 0;
                 }
             }

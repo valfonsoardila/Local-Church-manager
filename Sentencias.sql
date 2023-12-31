@@ -164,6 +164,8 @@ Comite varchar(30) not null,
 Ofrenda int not null,
 Actividad int not null,
 Voto int not null,
+OtroConcepto varchar(30) not null,
+ValorOtroConcepto int not null,
 TotalEgresos int not null,
 TotalPresupuesto int not null
 );
