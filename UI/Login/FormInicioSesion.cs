@@ -29,7 +29,8 @@ namespace UI
         bool estadoCliente;
         string nombreDeUsuario;
         string contraseña;
-        string Id_Usuario;
+        string id_Usuario;
+        string rol;
         bool UsuarioValido=false;
         object sender;
         EventArgs e;
@@ -162,7 +163,8 @@ namespace UI
             {
                 var usuario = new List<Usuario> { respuesta.Usuario };
                 contraseña = respuesta.Usuario.Contraseña;
-                Id_Usuario = respuesta.Usuario.Identificacion;
+                id_Usuario = respuesta.Usuario.Identificacion;
+                rol= respuesta.Usuario.Rol;
                 linkLabelRestaurarContraseña.ForeColor = Color.FromArgb(0, 0, 255);
                 linkLabelRegistrarUsuario.ForeColor = Color.FromArgb(0, 0, 255);
                 ValidarContraseña();
@@ -238,6 +240,7 @@ namespace UI
 
                         FormMenu mainMenu = new FormMenu();
                         mainMenu.idUsuario = usarioFiltrado[0].ID;
+                        mainMenu.rol = usarioFiltrado[0].Rol;
                         mainMenu.ValidarUsuario();
                         mainMenu.Show();
                         this.Hide();
@@ -263,7 +266,8 @@ namespace UI
                     if (UsuarioValido == true)
                     {
                         FormMenu mainMenu = new FormMenu();
-                        mainMenu.idUsuario = Id_Usuario;
+                        mainMenu.idUsuario = id_Usuario;
+                        mainMenu.rol = rol;
                         mainMenu.ValidarUsuario();
                         mainMenu.Show();
                         this.Hide();

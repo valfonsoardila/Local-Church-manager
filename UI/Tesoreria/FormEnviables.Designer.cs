@@ -56,7 +56,6 @@
             this.tabListaEnviables = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnImprimir = new FontAwesome.Sharp.IconButton();
             this.btnGestionarEnviables = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -65,6 +64,7 @@
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.comboFiltroComite = new System.Windows.Forms.ComboBox();
             this.textValorFecha = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textTotalNube = new System.Windows.Forms.TextBox();
@@ -73,7 +73,7 @@
             this.comboFecha = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboFiltroComite = new System.Windows.Forms.ComboBox();
+            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -518,7 +518,7 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.btnImprimir, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnGenerarInforme, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnGestionarEnviables, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
@@ -527,24 +527,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(786, 56);
             this.tableLayoutPanel2.TabIndex = 17;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.BackColor = System.Drawing.Color.Orange;
-            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnImprimir.IconColor = System.Drawing.Color.Black;
-            this.btnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnImprimir.IconSize = 30;
-            this.btnImprimir.Location = new System.Drawing.Point(396, 3);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimir.Size = new System.Drawing.Size(142, 35);
-            this.btnImprimir.TabIndex = 15;
-            this.btnImprimir.Text = "Imprimir Lista";
-            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimir.UseVisualStyleBackColor = false;
             // 
             // btnGestionarEnviables
             // 
@@ -652,6 +634,61 @@
             this.panelContenedorDeDirectorio.Name = "panelContenedorDeDirectorio";
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(724, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
+            // 
+            // comboFiltroComite
+            // 
+            this.comboFiltroComite.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboFiltroComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboFiltroComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboFiltroComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltroComite.FormattingEnabled = true;
+            this.comboFiltroComite.Items.AddRange(new object[] {
+            "Comite",
+            "Damas dorcas",
+            "Jovenes",
+            "Junta local",
+            "Obra social"});
+            this.comboFiltroComite.Location = new System.Drawing.Point(371, 4);
+            this.comboFiltroComite.Name = "comboFiltroComite";
+            this.comboFiltroComite.Size = new System.Drawing.Size(99, 24);
+            this.comboFiltroComite.TabIndex = 33;
+            this.comboFiltroComite.Text = "Comite";
+            this.comboFiltroComite.SelectedIndexChanged += new System.EventHandler(this.comboFiltroComite_SelectedIndexChanged);
             // 
             // textValorFecha
             // 
@@ -790,60 +827,24 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Lista";
             // 
-            // comboFiltroComite
+            // btnGenerarInforme
             // 
-            this.comboFiltroComite.AutoCompleteCustomSource.AddRange(new string[] {
-            "Ingeniero(a) de sistemas",
-            "Ingeniero(a) de electronica",
-            "Ingeniero(a) Industrial",
-            "Enfermero(a)",
-            "Electricista",
-            "Albañil",
-            "Abogado",
-            "Acesor comercial",
-            "Estudiante",
-            "Medico(a)",
-            "Farmaceutico(a)",
-            "Odontologo(a)",
-            "Fontaneros(a)",
-            "Docente",
-            "Contadores",
-            "Psicologos",
-            "Chef",
-            "Repostero(a)",
-            "Vigilante",
-            "Escolta",
-            "Ebanista",
-            "Peluquero",
-            "Domiciliario",
-            "Soldador",
-            "Diseñador Grafico",
-            "Maestro de obra",
-            "Mecanico",
-            "Chofer",
-            "Impulsador",
-            "Optometra",
-            "Naturista",
-            "Vendedor",
-            "Modista",
-            "Electronico",
-            "Tecnico"});
-            this.comboFiltroComite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboFiltroComite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboFiltroComite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboFiltroComite.FormattingEnabled = true;
-            this.comboFiltroComite.Items.AddRange(new object[] {
-            "Comite",
-            "Damas dorcas",
-            "Jovenes",
-            "Junta local",
-            "Obra social"});
-            this.comboFiltroComite.Location = new System.Drawing.Point(371, 4);
-            this.comboFiltroComite.Name = "comboFiltroComite";
-            this.comboFiltroComite.Size = new System.Drawing.Size(99, 24);
-            this.comboFiltroComite.TabIndex = 33;
-            this.comboFiltroComite.Text = "Comite";
-            this.comboFiltroComite.SelectedIndexChanged += new System.EventHandler(this.comboFiltroComite_SelectedIndexChanged);
+            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
+            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
+            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
+            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGenerarInforme.IconSize = 30;
+            this.btnGenerarInforme.Location = new System.Drawing.Point(396, 3);
+            this.btnGenerarInforme.Name = "btnGenerarInforme";
+            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
+            this.btnGenerarInforme.TabIndex = 16;
+            this.btnGenerarInforme.Text = "Generar informe";
+            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarInforme.UseVisualStyleBackColor = false;
+            this.btnGenerarInforme.Click += new System.EventHandler(this.btnGenerarInforme_Click);
             // 
             // FormEnviables
             // 
@@ -890,7 +891,6 @@
         private System.Windows.Forms.TabPage tabListaEnviables;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private FontAwesome.Sharp.IconButton btnImprimir;
         private FontAwesome.Sharp.IconButton btnGestionarEnviables;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
@@ -927,5 +927,6 @@
         private System.Windows.Forms.TextBox textTotalEnvios;
         private System.Windows.Forms.TextBox textValorFecha;
         private System.Windows.Forms.ComboBox comboFiltroComite;
+        private FontAwesome.Sharp.IconButton btnGenerarInforme;
     }
 }

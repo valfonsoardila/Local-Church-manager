@@ -33,6 +33,7 @@ namespace UI
         List<BudgetData> presupuestosGeneral;
         int id = 0;
         int sumPresupuestos = 0;
+        int ultimoId;
         string comite = "";
         bool detallo = false;
         bool encontrado = false;
@@ -42,7 +43,9 @@ namespace UI
             validaciones = new Validaciones();
             presupuestoService = new PresupuestoService(ConfigConnection.ConnectionString);
             budgetData = new BudgetData();
+            budgetMaps = new BudgetMaps();
             InitializeComponent();
+            ObtenerUltimoPresupuesto();
             ConsultarPresupuesto();
             ObtenerDatosGenerales();
             ObtenerDatosIndividuales();
@@ -51,6 +54,31 @@ namespace UI
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private async void ObtenerUltimoPresupuesto()
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var presupuestosQuery = db.Collection("BudgetData").OrderByDescending("id").Limit(1);
+
+                var snapshot = await presupuestosQuery.GetSnapshotAsync();
+
+                if (snapshot.Documents.Count > 0)
+                {
+                    var ultimoRegistro = snapshot.Documents.First();
+                    ultimoId = ultimoRegistro.GetValue<int>("id");
+                }
+            }catch(Exception ex)
+            {
+                ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
+                respuesta = presupuestoService.ConsultarTodos();
+                if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
+                {
+                    var ultimopresupuesto = respuesta.Presupuestos.Last();
+                    ultimoId = ultimopresupuesto.Id;
+                }
+            }
         }
         private string LecturaCifra(int totalDeIngresos)
         {
@@ -88,9 +116,9 @@ namespace UI
                 respuesta = presupuestoService.ConsultarTodos();
                 if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
                 {
-                    dataGridDetalle.DataSource = null;
+                    dataGridPresupuestos.DataSource = null;
                     presupuestos = respuesta.Presupuestos.ToList();
-                    dataGridDetalle.DataSource = respuesta.Presupuestos;
+                    dataGridPresupuestos.DataSource = presupuestos;
                     Borrar.Visible = true;
                     textTotal.Text = presupuestoService.Totalizar().Cuenta.ToString();
                 }
@@ -275,6 +303,7 @@ namespace UI
         private Presupuesto MapearPresupuesto()
         {
             presupuesto = new Presupuesto();
+            presupuesto.Id = ultimoId != 0 ? ultimoId : 0;
             presupuesto.AñoPresupuesto = comboAño.Text;
             presupuesto.InicioIntervalo = comboInicioIntervalo.Text;
             presupuesto.FinIntervalo = comboFinIntervalo.Text;
@@ -393,14 +422,14 @@ namespace UI
             }
         }
 
-        private void textPresupuesto_Validated(object sender, EventArgs e)
-        {
-            if (textPresupuesto.Text != "" && textPresupuesto.Text != "$ 000.00")
-            {
-                int sumPresupuesto = int.Parse(textPresupuesto.Text);
-                textPresupuesto.Text = LecturaCifra(sumPresupuesto);
-            }
-        }
+        //private void textPresupuesto_Validated(object sender, EventArgs e)
+        //{
+        //    if (textPresupuesto.Text != "" && textPresupuesto.Text != "$ 000.00")
+        //    {
+        //        int sumPresupuesto = int.Parse(textPresupuesto.Text);
+        //        textPresupuesto.Text = LecturaCifra(sumPresupuesto);
+        //    }
+        //}
 
         private void textEgresos_Validated(object sender, EventArgs e)
         {
@@ -505,6 +534,7 @@ namespace UI
             {
                 textPresupuesto.Text = "";
             }
+            TotalizarConceptos();
         }
 
         private void textPresupuesto_Leave(object sender, EventArgs e)
@@ -530,7 +560,15 @@ namespace UI
                 textEgresos.Text = "$ 000.00";
             }
         }
-
+        private void TotalizarConceptos()
+        {
+            int ofrendas = ObtenerCantidadEntera(textOfrendas.Text);
+            int actividades = ObtenerCantidadEntera(textActividades.Text);
+            int votos = ObtenerCantidadEntera(textVotos.Text);
+            int otro = ObtenerCantidadEntera(textOtroValor.Text);
+            int totalConceptos = ofrendas + actividades + votos + otro;
+            textPresupuesto.Text = LecturaCifra(totalConceptos);
+        }
         private void dataGridPresupuestos_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridPresupuestos.DataSource != null)
@@ -624,6 +662,12 @@ namespace UI
             {
 
             }
+        }
+
+        private void btnGenerarInforme_Click(object sender, EventArgs e)
+        {
+            FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
+            formGenerarDocumento.Show();
         }
     }
 }

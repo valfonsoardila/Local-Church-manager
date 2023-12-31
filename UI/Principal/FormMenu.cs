@@ -34,6 +34,7 @@ namespace UI
         {
             empleadoService = new UsuarioService(ConfigConnection.ConnectionString);
             InitializeComponent();
+            ValidarUsuario();
             customizeDesign();
             EliminarIdSesionDeUsuario();
             this.Text = string.Empty;
@@ -48,51 +49,54 @@ namespace UI
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         public void ValidarUsuario()
         {
-            BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
-            respuesta = empleadoService.BuscarPorIdentificacion(idUsuario);
-            if (respuesta.Usuario != null)
+            if (idUsuario != null)
             {
-                var rolConsultado = respuesta.Usuario.Rol;
-                if (rol == "Programador" || rolConsultado == "Programador")
+                BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
+                respuesta = empleadoService.BuscarPorIdentificacion(idUsuario);
+                if (respuesta.Usuario != null)
                 {
-                    btnGestionSecretaria.Enabled = true;
-                    btnGestionSecretaria.Visible = true;
-                    btnGestionTesoreria.Enabled = true;
-                    btnGestionTesoreria.Visible = true;
-                    btnGestionBD.Visible = true;
-                    btnAjustes.Enabled = true;
-                }
-                else
-                {
-                    if (rol == "Secretario(a)" || rolConsultado == "Secretario(a)")
+                    var rolConsultado = respuesta.Usuario.Rol;
+                    if (rol == "Programador" || rolConsultado == "Programador")
                     {
-                        btnGestionSecretaria.Visible = true;
                         btnGestionSecretaria.Enabled = true;
-                        btnGestionTesoreria.Enabled = false;
-                        btnGestionTesoreria.Visible = false;
-                        btnGestionBD.Visible = false;
-                        btnAjustes.Enabled = false;
+                        btnGestionSecretaria.Visible = true;
+                        btnGestionTesoreria.Enabled = true;
+                        btnGestionTesoreria.Visible = true;
+                        btnGestionBD.Visible = true;
+                        btnAjustes.Enabled = true;
                     }
                     else
                     {
-                        if (rol == "Tesorero(a)" || rolConsultado == "Tesorero(a)")
+                        if (rol == "Secretario(a)" || rolConsultado == "Secretario(a)")
                         {
-                            btnGestionTesoreria.Visible = true;
-                            btnGestionTesoreria.Enabled = true;
-                            btnGestionSecretaria.Enabled = false;
-                            btnGestionSecretaria.Visible = false;
+                            btnGestionSecretaria.Visible = true;
+                            btnGestionSecretaria.Enabled = true;
+                            btnGestionTesoreria.Enabled = false;
+                            btnGestionTesoreria.Visible = false;
                             btnGestionBD.Visible = false;
                             btnAjustes.Enabled = false;
                         }
+                        else
+                        {
+                            if (rol == "Tesorero(a)" || rolConsultado == "Tesorero(a)")
+                            {
+                                btnGestionTesoreria.Visible = true;
+                                btnGestionTesoreria.Enabled = true;
+                                btnGestionSecretaria.Enabled = false;
+                                btnGestionSecretaria.Visible = false;
+                                btnGestionBD.Visible = false;
+                                btnAjustes.Enabled = false;
+                            }
+                        }
                     }
                 }
+                GuardarIdUsuarioSesion(idUsuario, rol);
             }
-            GuardarIdUsuarioSesion(idUsuario);
         }
 
-        public void GuardarIdUsuarioSesion(string idUsuario)
+        public void GuardarIdUsuarioSesion(string idUsuario, string rol)
         {
-            IdUsuarioTxt idUsuarioTxt = new IdUsuarioTxt(idUsuario);
+            IdUsuarioTxt idUsuarioTxt = new IdUsuarioTxt(idUsuario, rol);
             string mensaje = idUsuarioTxtService.Guardar(idUsuarioTxt);
             if (idUsuarioTxt.Identificacion == "1003377848")
             {

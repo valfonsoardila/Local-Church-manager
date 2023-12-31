@@ -61,7 +61,6 @@ namespace UI
             this.tabDirectivas = new System.Windows.Forms.TabControl();
             this.tabLibro = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnImprimir = new FontAwesome.Sharp.IconButton();
             this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridDirectiva = new System.Windows.Forms.DataGridView();
@@ -81,6 +80,7 @@ namespace UI
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
             tabNuevoIntegrante = new System.Windows.Forms.TabPage();
             tabNuevoIntegrante.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -117,9 +117,9 @@ namespace UI
             tabNuevoIntegrante.Controls.Add(this.panel4);
             tabNuevoIntegrante.Controls.Add(this.panel2);
             tabNuevoIntegrante.Controls.Add(this.panel5);
-            tabNuevoIntegrante.Location = new System.Drawing.Point(4, 22);
+            tabNuevoIntegrante.Location = new System.Drawing.Point(4, 24);
             tabNuevoIntegrante.Name = "tabNuevoIntegrante";
-            tabNuevoIntegrante.Size = new System.Drawing.Size(836, 459);
+            tabNuevoIntegrante.Size = new System.Drawing.Size(836, 457);
             tabNuevoIntegrante.TabIndex = 1;
             tabNuevoIntegrante.Text = "Nuevo integrante";
             tabNuevoIntegrante.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@ namespace UI
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 400);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(836, 59);
+            this.panel9.Size = new System.Drawing.Size(836, 57);
             this.panel9.TabIndex = 8;
             // 
             // tableLayoutPanel2
@@ -147,7 +147,7 @@ namespace UI
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(836, 59);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(836, 57);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // iconButton1
@@ -572,7 +572,7 @@ namespace UI
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.btnImprimir, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnGenerarInforme, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGestionarDirectivas, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 410);
@@ -581,24 +581,6 @@ namespace UI
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(830, 44);
             this.tableLayoutPanel1.TabIndex = 16;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.BackColor = System.Drawing.Color.Orange;
-            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnImprimir.IconColor = System.Drawing.Color.Black;
-            this.btnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnImprimir.IconSize = 30;
-            this.btnImprimir.Location = new System.Drawing.Point(418, 3);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimir.Size = new System.Drawing.Size(142, 35);
-            this.btnImprimir.TabIndex = 15;
-            this.btnImprimir.Text = "Imprimir Lista";
-            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimir.UseVisualStyleBackColor = false;
             // 
             // btnGestionarDirectivas
             // 
@@ -892,6 +874,24 @@ namespace UI
             this.label1.TabIndex = 0;
             this.label1.Text = "Directivas";
             // 
+            // btnGenerarInforme
+            // 
+            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
+            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
+            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
+            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGenerarInforme.IconSize = 30;
+            this.btnGenerarInforme.Location = new System.Drawing.Point(418, 3);
+            this.btnGenerarInforme.Name = "btnGenerarInforme";
+            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
+            this.btnGenerarInforme.TabIndex = 16;
+            this.btnGenerarInforme.Text = "Generar informe";
+            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarInforme.UseVisualStyleBackColor = false;
+            // 
             // FormDirectivas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -977,7 +977,6 @@ namespace UI
         private System.Windows.Forms.TextBox textObservacion;
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnRegistrar;
-        private FontAwesome.Sharp.IconButton btnImprimir;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.ComboBox comboDirectiva;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -991,5 +990,6 @@ namespace UI
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private FontAwesome.Sharp.IconButton btnGenerarInforme;
     }
 }

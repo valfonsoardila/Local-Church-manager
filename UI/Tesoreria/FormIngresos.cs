@@ -811,5 +811,11 @@ namespace UI
                 MessageBox.Show($"Error al editar el documento: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnGenerarInforme_Click(object sender, EventArgs e)
+        {
+            FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
+            formGenerarDocumento.Show();
+        }
     }
 }

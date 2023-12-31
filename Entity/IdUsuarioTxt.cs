@@ -8,14 +8,16 @@ namespace Entity
 {
     public class IdUsuarioTxt
     {
-        public IdUsuarioTxt(string identificacion)
+        public IdUsuarioTxt(string identificacion, string rol)
         {
             Identificacion = identificacion;
+            Rol = rol;
         }
         public IdUsuarioTxt()
         {
 
         }
         public string Identificacion { get; set; }
+        public string Rol { get; set; }
     }
 }

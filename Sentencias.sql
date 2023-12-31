@@ -156,8 +156,8 @@ Detalle varchar(250) not null,
 Estado varchar(22) not null
 );
 create table PRESUPUESTO(
-Id nvarchar(15) primary key not null,
-AnoPresupuesto datetime not null,
+Id int primary key not null,
+AnoPresupuesto varchar(6) not null,
 InicioIntervalo varchar(15) not null,
 FinIntervalo varchar(15) not null,
 Comite varchar(30) not null,

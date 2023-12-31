@@ -59,7 +59,6 @@ namespace UI
             this.tabReuniones = new System.Windows.Forms.TabControl();
             this.tabLista = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnImprimirLista = new FontAwesome.Sharp.IconButton();
             this.btnGestionarReuniones = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridReunion = new System.Windows.Forms.DataGridView();
@@ -74,6 +73,7 @@ namespace UI
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.labelListaDeReuniones = new System.Windows.Forms.Label();
+            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -101,9 +101,9 @@ namespace UI
             // tabRegistrar
             // 
             tabRegistrar.Controls.Add(this.panel4);
-            tabRegistrar.Location = new System.Drawing.Point(4, 22);
+            tabRegistrar.Location = new System.Drawing.Point(4, 24);
             tabRegistrar.Name = "tabRegistrar";
-            tabRegistrar.Size = new System.Drawing.Size(803, 466);
+            tabRegistrar.Size = new System.Drawing.Size(803, 464);
             tabRegistrar.TabIndex = 1;
             tabRegistrar.Text = "Registrar nueva reunion";
             tabRegistrar.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@ namespace UI
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(803, 466);
+            this.panel4.Size = new System.Drawing.Size(803, 464);
             this.panel4.TabIndex = 0;
             // 
             // panel8
@@ -134,7 +134,7 @@ namespace UI
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 58);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(803, 363);
+            this.panel8.Size = new System.Drawing.Size(803, 361);
             this.panel8.TabIndex = 18;
             // 
             // label6
@@ -228,7 +228,7 @@ namespace UI
             // 
             this.panel7.Controls.Add(this.tableLayoutPanel2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 421);
+            this.panel7.Location = new System.Drawing.Point(0, 419);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(803, 45);
             this.panel7.TabIndex = 17;
@@ -462,7 +462,7 @@ namespace UI
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.btnImprimirLista, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnGenerarInforme, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGestionarReuniones, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 410);
@@ -471,25 +471,6 @@ namespace UI
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(797, 51);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // btnImprimirLista
-            // 
-            this.btnImprimirLista.BackColor = System.Drawing.Color.Orange;
-            this.btnImprimirLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirLista.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnImprimirLista.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnImprimirLista.IconColor = System.Drawing.Color.Black;
-            this.btnImprimirLista.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnImprimirLista.IconSize = 30;
-            this.btnImprimirLista.Location = new System.Drawing.Point(401, 3);
-            this.btnImprimirLista.Name = "btnImprimirLista";
-            this.btnImprimirLista.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimirLista.Size = new System.Drawing.Size(124, 35);
-            this.btnImprimirLista.TabIndex = 17;
-            this.btnImprimirLista.Text = "Imprimir Lista";
-            this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimirLista.UseVisualStyleBackColor = false;
-            this.btnImprimirLista.Click += new System.EventHandler(this.btnImprimirLista_Click);
             // 
             // btnGestionarReuniones
             // 
@@ -671,6 +652,24 @@ namespace UI
             this.labelListaDeReuniones.TabIndex = 0;
             this.labelListaDeReuniones.Text = "Lista de reuniones";
             // 
+            // btnGenerarInforme
+            // 
+            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
+            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
+            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
+            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGenerarInforme.IconSize = 30;
+            this.btnGenerarInforme.Location = new System.Drawing.Point(401, 3);
+            this.btnGenerarInforme.Name = "btnGenerarInforme";
+            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
+            this.btnGenerarInforme.TabIndex = 17;
+            this.btnGenerarInforme.Text = "Generar informe";
+            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarInforme.UseVisualStyleBackColor = false;
+            // 
             // FormReuniones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -745,7 +744,6 @@ namespace UI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textOrdenDja;
-        private FontAwesome.Sharp.IconButton btnImprimirLista;
         private FontAwesome.Sharp.IconButton btnGestionarReuniones;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -757,5 +755,6 @@ namespace UI
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private FontAwesome.Sharp.IconButton btnGenerarInforme;
     }
 }

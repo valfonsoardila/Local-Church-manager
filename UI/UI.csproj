@@ -237,6 +237,12 @@
     <Compile Include="Firebase\MeetingsMaps.cs" />
     <Compile Include="Firebase\NoteMaps.cs" />
     <Compile Include="Firebase\SympathizerMaps.cs" />
+    <Compile Include="Doc%27s\FormGenerarDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doc%27s\FormGenerarDocumento.Designer.cs">
+      <DependentUpon>FormGenerarDocumento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tesoreria\FormPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,6 +350,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Firebase\UserMaps.cs" />
     <Compile Include="Validaciones.cs" />
+    <None Include="Resources\doc_ico.png" />
     <None Include="Resources\porcentajes.png" />
     <None Include="Resources\Presupuesto.png" />
     <EmbeddedResource Include="Ajustes\FormAjustarServidor.resx">
@@ -354,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Base de Datos\FormBaseDeDatos.resx">
       <DependentUpon>FormBaseDeDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doc%27s\FormGenerarDocumento.resx">
+      <DependentUpon>FormGenerarDocumento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tesoreria\FormEnviables.resx">
       <DependentUpon>FormEnviables.cs</DependentUpon>
