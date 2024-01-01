@@ -852,7 +852,7 @@ namespace UI
                     formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
                 }
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
