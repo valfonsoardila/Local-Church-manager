@@ -28,6 +28,7 @@ namespace UI
         string rutaReporteBautizados;
         public string idUsuario;
         public string rol;
+        public bool disponibilidadNube = false;
         private readonly EventArgs e;
         private readonly object sender;
         public FormMenu()
@@ -35,6 +36,7 @@ namespace UI
             empleadoService = new UsuarioService(ConfigConnection.ConnectionString);
             InitializeComponent();
             ValidarUsuario();
+            ValidarDisponibilidadNube();
             customizeDesign();
             EliminarIdSesionDeUsuario();
             this.Text = string.Empty;
@@ -47,6 +49,18 @@ namespace UI
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        public void ValidarDisponibilidadNube()
+        {
+            if (disponibilidadNube == false) { 
+                labelEstadoNube.Text = "Nube no disponible";
+                labelEstadoNube.ForeColor = Color.Red;
+                iconNube.IconColor = Color.Red;
+            } else { 
+                labelEstadoNube.Text = "Nube habilitada";
+                labelEstadoNube.ForeColor = Color.Green;
+                iconNube.IconColor = Color.Green;
+            }
+        }
         public void ValidarUsuario()
         {
             if (idUsuario != null)

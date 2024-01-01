@@ -71,6 +71,8 @@ namespace UI
                 }
             }catch(Exception ex)
             {
+                FormMenu formMenu = new FormMenu(); 
+                formMenu.disponibilidadNube = true;
                 ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
                 respuesta = presupuestoService.ConsultarTodos();
                 if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
@@ -112,6 +114,8 @@ namespace UI
             }
             catch(Exception ex)
             {
+                FormMenu formMenu = new FormMenu();
+                formMenu.disponibilidadNube = true;
                 ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
                 respuesta = presupuestoService.ConsultarTodos();
                 if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
@@ -143,6 +147,7 @@ namespace UI
                 await docRef.DeleteAsync();
                 string mensaje = presupuestoService.Eliminar(id);
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridPresupuestos.DataSource = null;
                 ConsultarPresupuesto();
             }
             catch (Exception e)
@@ -575,7 +580,7 @@ namespace UI
             {
                 if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Borrar")
                 {
-                    id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
+                    id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["Id"].Value.ToString());
                     EliminarPresupuesto(id);
                     ConsultarPresupuesto();
                 }

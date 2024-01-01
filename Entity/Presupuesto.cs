@@ -37,7 +37,7 @@ namespace Entity
 
         }
 
-        public int Id;
+        public int Id { get; set; }
         public string AñoPresupuesto { get; set; }
         public string InicioIntervalo { get; set; }
         public string FinIntervalo { get; set; }

@@ -259,18 +259,22 @@ namespace UI
             catch (Exception ex)
             {
                 int count = ex.Message.Length;
-                if (count > 0)
+                if (ex.Message.Contains("ResourceExhausted"))
                 {
-                    BuscarPorNombreDeUsuario();
-                    //verifica de forma local
-                    if (UsuarioValido == true)
+                    if (count > 0)
                     {
-                        FormMenu mainMenu = new FormMenu();
-                        mainMenu.idUsuario = id_Usuario;
-                        mainMenu.rol = rol;
-                        mainMenu.ValidarUsuario();
-                        mainMenu.Show();
-                        this.Hide();
+                        BuscarPorNombreDeUsuario();
+                        //verifica de forma local
+                        if (UsuarioValido == true)
+                        {
+                            FormMenu mainMenu = new FormMenu();
+                            mainMenu.idUsuario = id_Usuario;
+                            mainMenu.rol = rol;
+                            mainMenu.disponibilidadNube = false;
+                            mainMenu.ValidarUsuario();
+                            mainMenu.Show();
+                            this.Hide();
+                        }
                     }
                 }
             }

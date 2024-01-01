@@ -49,6 +49,7 @@ namespace UI
             this.btnLiquidaciones = new FontAwesome.Sharp.IconButton();
             this.btnEgresos = new FontAwesome.Sharp.IconButton();
             this.btnIngresos = new FontAwesome.Sharp.IconButton();
+            this.btnPrsupuestos = new FontAwesome.Sharp.IconButton();
             this.btnGestionTesoreria = new FontAwesome.Sharp.IconButton();
             this.subMenuSecretaria = new System.Windows.Forms.Panel();
             this.btnApuntes = new FontAwesome.Sharp.IconButton();
@@ -67,17 +68,17 @@ namespace UI
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.panelContenedorInterno = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.iconNube = new FontAwesome.Sharp.IconPictureBox();
+            this.labelEstadoNube = new System.Windows.Forms.Label();
             this.textTiempoLicencia = new System.Windows.Forms.TextBox();
             this.labelTiempoLicencia = new System.Windows.Forms.Label();
             this.btnVerLicencia = new FontAwesome.Sharp.IconButton();
-            this.labelAvsio = new System.Windows.Forms.Label();
             this.labelHeaderRuta = new System.Windows.Forms.Label();
             this.iconThemeSun = new FontAwesome.Sharp.IconPictureBox();
             this.iconThemeMoon = new FontAwesome.Sharp.IconPictureBox();
             this.labelTheme = new System.Windows.Forms.Label();
             this.btnModeLight = new FontAwesome.Sharp.IconPictureBox();
             this.btnModeDark = new FontAwesome.Sharp.IconPictureBox();
-            this.btnPrsupuestos = new FontAwesome.Sharp.IconButton();
             this.panelHeaderbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnWindowMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnWindowRestore)).BeginInit();
@@ -93,6 +94,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSidebar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.panelHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconNube)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconThemeSun)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconThemeMoon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnModeLight)).BeginInit();
@@ -424,6 +426,29 @@ namespace UI
             this.btnIngresos.UseVisualStyleBackColor = false;
             this.btnIngresos.Click += new System.EventHandler(this.btnIngresos_Click);
             // 
+            // btnPrsupuestos
+            // 
+            this.btnPrsupuestos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnPrsupuestos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPrsupuestos.FlatAppearance.BorderSize = 0;
+            this.btnPrsupuestos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnPrsupuestos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.btnPrsupuestos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrsupuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrsupuestos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPrsupuestos.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
+            this.btnPrsupuestos.IconColor = System.Drawing.Color.White;
+            this.btnPrsupuestos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPrsupuestos.IconSize = 10;
+            this.btnPrsupuestos.Location = new System.Drawing.Point(0, 0);
+            this.btnPrsupuestos.Name = "btnPrsupuestos";
+            this.btnPrsupuestos.Size = new System.Drawing.Size(169, 39);
+            this.btnPrsupuestos.TabIndex = 11;
+            this.btnPrsupuestos.Text = "Presupuestos";
+            this.btnPrsupuestos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrsupuestos.UseVisualStyleBackColor = false;
+            this.btnPrsupuestos.Click += new System.EventHandler(this.btnPrsupuestos_Click);
+            // 
             // btnGestionTesoreria
             // 
             this.btnGestionTesoreria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
@@ -712,10 +737,11 @@ namespace UI
             // 
             // panelHeader
             // 
+            this.panelHeader.Controls.Add(this.iconNube);
+            this.panelHeader.Controls.Add(this.labelEstadoNube);
             this.panelHeader.Controls.Add(this.textTiempoLicencia);
             this.panelHeader.Controls.Add(this.labelTiempoLicencia);
             this.panelHeader.Controls.Add(this.btnVerLicencia);
-            this.panelHeader.Controls.Add(this.labelAvsio);
             this.panelHeader.Controls.Add(this.labelHeaderRuta);
             this.panelHeader.Controls.Add(this.iconThemeSun);
             this.panelHeader.Controls.Add(this.iconThemeMoon);
@@ -729,10 +755,38 @@ namespace UI
             this.panelHeader.TabIndex = 5;
             this.panelHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHeader_MouseDown);
             // 
+            // iconNube
+            // 
+            this.iconNube.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconNube.BackColor = System.Drawing.SystemColors.Control;
+            this.iconNube.ForeColor = System.Drawing.Color.Green;
+            this.iconNube.IconChar = FontAwesome.Sharp.IconChar.Skyatlas;
+            this.iconNube.IconColor = System.Drawing.Color.Green;
+            this.iconNube.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconNube.IconSize = 24;
+            this.iconNube.Location = new System.Drawing.Point(713, 0);
+            this.iconNube.Name = "iconNube";
+            this.iconNube.Size = new System.Drawing.Size(24, 25);
+            this.iconNube.TabIndex = 56;
+            this.iconNube.TabStop = false;
+            // 
+            // labelEstadoNube
+            // 
+            this.labelEstadoNube.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelEstadoNube.AutoSize = true;
+            this.labelEstadoNube.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.labelEstadoNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEstadoNube.ForeColor = System.Drawing.Color.Green;
+            this.labelEstadoNube.Location = new System.Drawing.Point(740, 3);
+            this.labelEstadoNube.Name = "labelEstadoNube";
+            this.labelEstadoNube.Size = new System.Drawing.Size(134, 20);
+            this.labelEstadoNube.TabIndex = 55;
+            this.labelEstadoNube.Text = "Nube habilitada";
+            // 
             // textTiempoLicencia
             // 
             this.textTiempoLicencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textTiempoLicencia.Location = new System.Drawing.Point(845, 3);
+            this.textTiempoLicencia.Location = new System.Drawing.Point(663, 3);
             this.textTiempoLicencia.Name = "textTiempoLicencia";
             this.textTiempoLicencia.Size = new System.Drawing.Size(35, 20);
             this.textTiempoLicencia.TabIndex = 54;
@@ -743,7 +797,7 @@ namespace UI
             this.labelTiempoLicencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTiempoLicencia.AutoSize = true;
             this.labelTiempoLicencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTiempoLicencia.Location = new System.Drawing.Point(698, 4);
+            this.labelTiempoLicencia.Location = new System.Drawing.Point(516, 4);
             this.labelTiempoLicencia.Name = "labelTiempoLicencia";
             this.labelTiempoLicencia.Size = new System.Drawing.Size(115, 16);
             this.labelTiempoLicencia.TabIndex = 13;
@@ -757,23 +811,12 @@ namespace UI
             this.btnVerLicencia.IconColor = System.Drawing.Color.DarkGoldenrod;
             this.btnVerLicencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnVerLicencia.IconSize = 20;
-            this.btnVerLicencia.Location = new System.Drawing.Point(813, -1);
+            this.btnVerLicencia.Location = new System.Drawing.Point(631, -1);
             this.btnVerLicencia.Name = "btnVerLicencia";
             this.btnVerLicencia.Size = new System.Drawing.Size(32, 26);
             this.btnVerLicencia.TabIndex = 12;
             this.btnVerLicencia.UseVisualStyleBackColor = true;
             this.btnVerLicencia.Visible = false;
-            // 
-            // labelAvsio
-            // 
-            this.labelAvsio.AutoSize = true;
-            this.labelAvsio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAvsio.Location = new System.Drawing.Point(318, 6);
-            this.labelAvsio.Name = "labelAvsio";
-            this.labelAvsio.Size = new System.Drawing.Size(91, 13);
-            this.labelAvsio.TabIndex = 11;
-            this.labelAvsio.Text = "!!!Advertencia:";
-            this.labelAvsio.Visible = false;
             // 
             // labelHeaderRuta
             // 
@@ -858,29 +901,6 @@ namespace UI
             this.btnModeDark.TabIndex = 7;
             this.btnModeDark.TabStop = false;
             // 
-            // btnPrsupuestos
-            // 
-            this.btnPrsupuestos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.btnPrsupuestos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPrsupuestos.FlatAppearance.BorderSize = 0;
-            this.btnPrsupuestos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.btnPrsupuestos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.btnPrsupuestos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrsupuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrsupuestos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPrsupuestos.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
-            this.btnPrsupuestos.IconColor = System.Drawing.Color.White;
-            this.btnPrsupuestos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnPrsupuestos.IconSize = 10;
-            this.btnPrsupuestos.Location = new System.Drawing.Point(0, 0);
-            this.btnPrsupuestos.Name = "btnPrsupuestos";
-            this.btnPrsupuestos.Size = new System.Drawing.Size(169, 39);
-            this.btnPrsupuestos.TabIndex = 11;
-            this.btnPrsupuestos.Text = "Presupuestos";
-            this.btnPrsupuestos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPrsupuestos.UseVisualStyleBackColor = false;
-            this.btnPrsupuestos.Click += new System.EventHandler(this.btnPrsupuestos_Click);
-            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -914,6 +934,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconNube)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconThemeSun)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconThemeMoon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnModeLight)).EndInit();
@@ -959,7 +980,6 @@ namespace UI
         private System.Windows.Forms.TextBox textTiempoLicencia;
         private System.Windows.Forms.Label labelTiempoLicencia;
         private FontAwesome.Sharp.IconButton btnVerLicencia;
-        private System.Windows.Forms.Label labelAvsio;
         private System.Windows.Forms.Label labelHeaderRuta;
         private FontAwesome.Sharp.IconPictureBox iconThemeSun;
         private FontAwesome.Sharp.IconPictureBox iconThemeMoon;
@@ -972,6 +992,8 @@ namespace UI
         private System.Windows.Forms.Panel panelSelectionSalir;
         private FontAwesome.Sharp.IconButton btnCerrarSesion;
         private FontAwesome.Sharp.IconButton btnPrsupuestos;
+        private System.Windows.Forms.Label labelEstadoNube;
+        private FontAwesome.Sharp.IconPictureBox iconNube;
     }
 }
 
