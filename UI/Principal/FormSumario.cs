@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -10,7 +11,10 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using BLL;
+using Cloud;
+using DocumentFormat.OpenXml.Office2013.WebExtension;
 using Entity;
+using Google.Cloud.Firestore;
 
 namespace UI
 {
@@ -71,74 +75,218 @@ namespace UI
         {
 
         }
-        void ConsultarApuntes()
+        private async void ConsultarApuntes()
         {
-            ConsultaApunteRespuesta respuesta = new ConsultaApunteRespuesta();
-            respuesta = apunteService.ConsultarTodos();
-            apuntes = respuesta.Apuntes.ToList();
-            if (respuesta.Apuntes.Count != 0 && respuesta.Apuntes != null)
+            try
             {
-                labelApuntes.Text = contactoService.Totalizar().Cuenta.ToString();
+                var db = FirebaseService.Database;
+                var notesQuery = db.Collection("NotesData");
+                var apuntes = new List<NotesData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await notesQuery.GetSnapshotAsync();
+                apuntes = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<NotesData>()).ToList();
+                labelApuntes.Text = apuntes.Count.ToString();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
-            else
+            catch(Exception ex)
             {
-                labelApuntes.Text = "0";
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaApunteRespuesta respuesta = new ConsultaApunteRespuesta();
+                respuesta = apunteService.ConsultarTodos();
+                apuntes = respuesta.Apuntes.ToList();
+                if (respuesta.Apuntes.Count != 0 && respuesta.Apuntes != null)
+                {
+                    labelApuntes.Text = contactoService.Totalizar().Cuenta.ToString();
+                }
+                else
+                {
+                    labelApuntes.Text = "0";
+                }
             }
         }
-        void ConsultarReuniones()
+        private async void ConsultarReuniones()
         {
-            ConsultaReunionRespuesta respuesta = new ConsultaReunionRespuesta();
-            respuesta = reunionService.ConsultarTodos();
-            reuniones = respuesta.Reuniones.ToList();
-            if (respuesta.Reuniones.Count != 0 && respuesta.Reuniones != null)
+            try
             {
-                labelReuniones.Text = contactoService.Totalizar().Cuenta.ToString();
+                var db = FirebaseService.Database;
+                var meetQuery = db.Collection("MeetingsData");
+                var meets = new List<MeetingsData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await meetQuery.GetSnapshotAsync();
+                meets = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<MeetingsData>()).ToList();
+                labelReuniones.Text = meets.Count.ToString();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
-            else
+            catch(Exception ex)
             {
-                labelReuniones.Text = "0";
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaReunionRespuesta respuesta = new ConsultaReunionRespuesta();
+                respuesta = reunionService.ConsultarTodos();
+                reuniones = respuesta.Reuniones.ToList();
+                if (respuesta.Reuniones.Count != 0 && respuesta.Reuniones != null)
+                {
+                    labelReuniones.Text = contactoService.Totalizar().Cuenta.ToString();
+                }
+                else
+                {
+                    labelReuniones.Text = "0";
+                }
             }
         }
-        void ConsultarDirectivas()
+        private async void ConsultarDirectivas()
         {
-            ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
-            respuesta = directivaService.ConsultarTodos();
-            directivas = respuesta.Directivas.ToList();
-            if (respuesta.Directivas.Count != 0 && respuesta.Directivas != null)
+            try
             {
-                labelDirectivas.Text = contactoService.Totalizar().Cuenta.ToString();
+                var db = FirebaseService.Database;
+                var directivesQuery = db.Collection("DirectivesData");
+                var directives = new List<DirectivesData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await directivesQuery.GetSnapshotAsync();
+                directives = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<DirectivesData>()).ToList();
+                labelDirectivas.Text = directives.Count.ToString();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
-            else
+            catch(Exception ex)
             {
-                labelDirectivas.Text = "0";
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
+                respuesta = directivaService.ConsultarTodos();
+                directivas = respuesta.Directivas.ToList();
+                if (respuesta.Directivas.Count != 0 && respuesta.Directivas != null)
+                {
+                    labelDirectivas.Text = contactoService.Totalizar().Cuenta.ToString();
+                }
+                else
+                {
+                    labelDirectivas.Text = "0";
+                }
             }
         }
-        void ConsultarContactos()
+        private async void ConsultarContactos()
         {
-            ConsultaContactoRespuesta respuesta = new ConsultaContactoRespuesta();
-            respuesta = contactoService.ConsultarTodos();
-            contactos = respuesta.Contactos.ToList();
-            if (respuesta.Contactos.Count != 0 && respuesta.Contactos != null)
+            try
             {
-                labelDirectorio.Text = contactoService.Totalizar().Cuenta.ToString();
+                var db = FirebaseService.Database;
+                var contactQuery = db.Collection("ContactsData");
+                var contacts = new List<ContactData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await contactQuery.GetSnapshotAsync();
+                contacts = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<ContactData>()).ToList();
+                labelDirectorio.Text = contacts.Count.ToString();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
-            else
+            catch(Exception ex)
             {
-                labelDirectorio.Text = "0";
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaContactoRespuesta respuesta = new ConsultaContactoRespuesta();
+                respuesta = contactoService.ConsultarTodos();
+                contactos = respuesta.Contactos.ToList();
+                if (respuesta.Contactos.Count != 0 && respuesta.Contactos != null)
+                {
+                    labelDirectorio.Text = contactoService.Totalizar().Cuenta.ToString();
+                }
+                else
+                {
+                    labelDirectorio.Text = "0";
+                }
             }
         }
-        private void ConsultarMiembros()
+        private async void ConsultarMiembros()
         {
-            ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
-            respuesta = miembroService.ConsultarTodos();
-            miembros = respuesta.Miembros.ToList();
-            if (respuesta.Miembros.Count != 0 && respuesta.Miembros != null)
+            try
             {
-                labelMiembros.Text=miembroService.Totalizar().Cuenta.ToString();
+                var db = FirebaseService.Database;
+                var members = new List<MemberData>();
+                Google.Cloud.Firestore.Query membersQuery = db.Collection("MembersData").WhereEqualTo("Bautizado", "Si");
+                QuerySnapshot snap = await membersQuery.GetSnapshotAsync();
+                members = snap.Documents.Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+                labelMiembros.Text = members.Count.ToString();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
-            else
+            catch(Exception ex)
             {
-                labelMiembros.Text = "0";
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
+                respuesta = miembroService.ConsultarTodos();
+                miembros = respuesta.Miembros.ToList();
+                if (respuesta.Miembros.Count != 0 && respuesta.Miembros != null)
+                {
+                    labelMiembros.Text = miembroService.Totalizar().Cuenta.ToString();
+                }
+                else
+                {
+                    labelMiembros.Text = "0";
+                }
             }
         }
 
