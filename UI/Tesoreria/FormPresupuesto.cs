@@ -69,10 +69,25 @@ namespace UI
                     var ultimoRegistro = snapshot.Documents.First();
                     ultimoId = ultimoRegistro.GetValue<int>("id");
                 }
-            }catch(Exception ex)
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch(Exception ex)
             {
-                FormMenu formMenu = new FormMenu(true); 
-                formMenu.disponibilidadNube = true;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
                 respuesta = presupuestoService.ConsultarTodos();
                 if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
@@ -111,11 +126,25 @@ namespace UI
                     dataGridPresupuestos.DataSource = null;
                     textTotal.Text = "0";
                 }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch(Exception ex)
             {
-                FormMenu formMenu = new FormMenu(false);
-                formMenu.disponibilidadNube = false;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
                 respuesta = presupuestoService.ConsultarTodos();
                 if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
@@ -149,11 +178,25 @@ namespace UI
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridPresupuestos.DataSource = null;
                 ConsultarPresupuesto();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                FormMenu formMenu = new FormMenu(false);
-                formMenu.disponibilidadNube = false;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 string mensaje = presupuestoService.Eliminar(id);
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarPresupuesto();
@@ -172,11 +215,25 @@ namespace UI
                 presupuestosComite = presupuestos.Where(presupuesto => presupuesto.Comite == comite).ToList();
                 dataGridPresupuestos.DataSource = presupuestosComite;
                 Borrar.Visible = true;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch (Exception ex)
             {
-                FormMenu formMenu = new FormMenu(false);
-                formMenu.disponibilidadNube = false;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
                 respuesta = presupuestoService.FiltrarEgresosPorComite(comite);
                 if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
@@ -224,11 +281,25 @@ namespace UI
                     textActividades.Text = presupuestoFiltrado.Actividad.ToString();
                     textVotos.Text = presupuestoFiltrado.Voto.ToString();
                 }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch (Exception ex)
             {
-                FormMenu formMenu = new FormMenu(false);
-                formMenu.disponibilidadNube = false;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 BusquedaPresupuestoRespuesta respuesta = new BusquedaPresupuestoRespuesta();
                 respuesta = presupuestoService.BuscarPorIdentificacion(id);
                 var registro = respuesta.Presupuesto;
@@ -278,11 +349,25 @@ namespace UI
                 var snapshotPresupuesto = await presupuestosQuery.GetSnapshotAsync();
                 sumPresupuestos = snapshotPresupuesto.Documents.Sum(doc => doc.ConvertTo<BudgetData>().TotalPresupuesto);
                 textTotalPresupuestos.Text = LecturaCifra(sumPresupuestos);
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch (Exception ex)
             {
-                FormMenu formMenu = new FormMenu(false);
-                formMenu.disponibilidadNube = false;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 Console.WriteLine($"Error al calcular el saldo: {ex.Message}");
                 // Manejar la excepción según tus necesidades
             }
@@ -349,11 +434,25 @@ namespace UI
                 CalculoDeSaldo();
                 Limpiar();
                 tabPresupuestos.SelectedIndex = 0;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch (Exception ex)
             {
-                FormMenu formMenu = new FormMenu(false);
-                formMenu.disponibilidadNube = false;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 int count = ex.Message.Length;
                 if (count > 0)
                 {
@@ -385,11 +484,25 @@ namespace UI
                 CalculoDeSaldo();
                 Limpiar();
                 tabPresupuestos.SelectedIndex = 0;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch (Exception ex)
             {
-                FormMenu formMenu = new FormMenu(false);
-                formMenu.disponibilidadNube = false;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 int count = ex.Message.Length;
                 if (count > 0)
                 {
