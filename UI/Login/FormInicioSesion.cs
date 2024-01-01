@@ -18,6 +18,7 @@ using FirebaseAdmin.Messaging;
 using Google.Cloud.Firestore;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using Color = System.Drawing.Color;
+using static Google.Cloud.Firestore.V1.StructuredAggregationQuery.Types.Aggregation.Types;
 
 namespace UI
 {
@@ -238,12 +239,21 @@ namespace UI
                     {
                         UsuarioValido = true;
 
-                        FormMenu mainMenu = new FormMenu();
+                        FormMenu mainMenu = new FormMenu(true);
                         mainMenu.idUsuario = usarioFiltrado[0].ID;
                         mainMenu.rol = usarioFiltrado[0].Rol;
+                        mainMenu.disponibilidadNube = true;
                         mainMenu.ValidarUsuario();
                         mainMenu.Show();
                         this.Hide();
+                        // Obtener referencia al formulario principal
+                        FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                        // Verificar si el formulario principal está abierto
+                        if (formPrincipal != null)
+                        {
+                            // Lanzar el evento para notificar al formulario principal sobre la excepción
+                            formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                        }
                     }
                 }
                 else
@@ -258,23 +268,24 @@ namespace UI
             }
             catch (Exception ex)
             {
-                int count = ex.Message.Length;
-                if (ex.Message.Contains("ResourceExhausted"))
+                BuscarPorNombreDeUsuario();
+                //verifica de forma local
+                if (UsuarioValido == true)
                 {
-                    if (count > 0)
+                    FormMenu mainMenu = new FormMenu(true);
+                    mainMenu.idUsuario = id_Usuario;
+                    mainMenu.rol = rol;
+                    mainMenu.disponibilidadNube = true;
+                    mainMenu.ValidarUsuario();
+                    mainMenu.Show();
+                    this.Hide();
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
                     {
-                        BuscarPorNombreDeUsuario();
-                        //verifica de forma local
-                        if (UsuarioValido == true)
-                        {
-                            FormMenu mainMenu = new FormMenu();
-                            mainMenu.idUsuario = id_Usuario;
-                            mainMenu.rol = rol;
-                            mainMenu.disponibilidadNube = false;
-                            mainMenu.ValidarUsuario();
-                            mainMenu.Show();
-                            this.Hide();
-                        }
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
                     }
                 }
             }

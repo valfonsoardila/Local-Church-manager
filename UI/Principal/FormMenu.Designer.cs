@@ -764,7 +764,7 @@ namespace UI
             this.iconNube.IconColor = System.Drawing.Color.Green;
             this.iconNube.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconNube.IconSize = 24;
-            this.iconNube.Location = new System.Drawing.Point(713, 0);
+            this.iconNube.Location = new System.Drawing.Point(708, 0);
             this.iconNube.Name = "iconNube";
             this.iconNube.Size = new System.Drawing.Size(24, 25);
             this.iconNube.TabIndex = 56;
@@ -777,7 +777,7 @@ namespace UI
             this.labelEstadoNube.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.labelEstadoNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelEstadoNube.ForeColor = System.Drawing.Color.Green;
-            this.labelEstadoNube.Location = new System.Drawing.Point(740, 3);
+            this.labelEstadoNube.Location = new System.Drawing.Point(735, 3);
             this.labelEstadoNube.Name = "labelEstadoNube";
             this.labelEstadoNube.Size = new System.Drawing.Size(134, 20);
             this.labelEstadoNube.TabIndex = 55;

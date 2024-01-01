@@ -28,15 +28,16 @@ namespace UI
         string rutaReporteBautizados;
         public string idUsuario;
         public string rol;
-        public bool disponibilidadNube = false;
+        public bool disponibilidadNube;
         private readonly EventArgs e;
         private readonly object sender;
-        public FormMenu()
+        public FormMenu(bool disponibilidad)
         {
             empleadoService = new UsuarioService(ConfigConnection.ConnectionString);
             InitializeComponent();
             ValidarUsuario();
-            ValidarDisponibilidadNube();
+            //ValidarDisponibilidadNube();
+            disponibilidadNube = disponibilidad;
             customizeDesign();
             EliminarIdSesionDeUsuario();
             this.Text = string.Empty;
@@ -49,18 +50,55 @@ namespace UI
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        public void ValidarDisponibilidadNube()
+        
+
+
+        // Delegado para manejar eventos de cambios de conexión
+        public delegate void SuccesfulOperacionHandler(object sender, SuccesfullEventArgs e);
+        // Evento que se activa cuando todo esta bien para guardar en la nube
+        public event SuccesfulOperacionHandler OperacionesExitosas;
+
+        // Delegado para manejar eventos de excepción
+        public delegate void ExcepcionEventHandler(object sender, ExcepcionEventArgs e);
+        // Evento que se activa cuando ocurre una excepción
+        public event ExcepcionEventHandler ExcepcionOcurrida;
+        // Método para invocar el evento desde el formulario principal
+
+        public virtual void OnExcepcionOcurrida(ExcepcionEventArgs e)
         {
-            if (disponibilidadNube == false) { 
-                labelEstadoNube.Text = "Nube no disponible";
+            ExcepcionOcurrida?.Invoke(this, e);
+            ValidarExcepcionesNube(e);
+        }
+        public virtual void OnSuccesfulOperations(SuccesfullEventArgs e)
+        {
+            OperacionesExitosas?.Invoke(this, e);
+            ValidarDisponibilidadNube(e);
+        }
+        public void ValidarExcepcionesNube(ExcepcionEventArgs e)
+        {
+            if (e.Mensaje.Contains("Unavailable"))
+            {
+                labelEstadoNube.Text = "Sin conexión";
                 labelEstadoNube.ForeColor = Color.Red;
                 iconNube.IconColor = Color.Red;
-            } else { 
+            }
+            else
+            {
+                
+            }
+        }
+        public void ValidarDisponibilidadNube(SuccesfullEventArgs e)
+        {
+            if (e.Mensaje.Contains("Succesfull"))
+            {
                 labelEstadoNube.Text = "Nube habilitada";
                 labelEstadoNube.ForeColor = Color.Green;
                 iconNube.IconColor = Color.Green;
             }
         }
+
+
+
         public void ValidarUsuario()
         {
             if (idUsuario != null)
@@ -555,5 +593,25 @@ namespace UI
             login.Show();
             this.Hide();
         }
+    }
+}
+// Clase para almacenar información sobre la excepción
+public class ExcepcionEventArgs : EventArgs
+{
+    public string Mensaje { get; private set; }
+
+    public ExcepcionEventArgs(string mensaje)
+    {
+        Mensaje = mensaje;
+    }
+}
+
+public class SuccesfullEventArgs : EventArgs
+{
+    public string Mensaje { get; private set; }
+
+    public SuccesfullEventArgs(string mensaje)
+    {
+        Mensaje = mensaje;
     }
 }

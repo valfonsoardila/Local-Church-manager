@@ -71,7 +71,7 @@ namespace UI
                 }
             }catch(Exception ex)
             {
-                FormMenu formMenu = new FormMenu(); 
+                FormMenu formMenu = new FormMenu(true); 
                 formMenu.disponibilidadNube = true;
                 ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
                 respuesta = presupuestoService.ConsultarTodos();
@@ -101,10 +101,10 @@ namespace UI
                 // Realizar la suma directamente en la consulta Firestore
                 var snapshot = await presupuestosQuery.GetSnapshotAsync();
                 presupuestosGeneral = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetData>()).ToList();
-                if (presupuestos.Count > 0)
+                if (presupuestosGeneral.Count > 0)
                 {
                     dataGridPresupuestos.DataSource = null;
-                    dataGridPresupuestos.DataSource = presupuestos;
+                    dataGridPresupuestos.DataSource = presupuestosGeneral;
                 }
                 else
                 {
@@ -114,8 +114,8 @@ namespace UI
             }
             catch(Exception ex)
             {
-                FormMenu formMenu = new FormMenu();
-                formMenu.disponibilidadNube = true;
+                FormMenu formMenu = new FormMenu(false);
+                formMenu.disponibilidadNube = false;
                 ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
                 respuesta = presupuestoService.ConsultarTodos();
                 if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
@@ -152,6 +152,8 @@ namespace UI
             }
             catch (Exception e)
             {
+                FormMenu formMenu = new FormMenu(false);
+                formMenu.disponibilidadNube = false;
                 string mensaje = presupuestoService.Eliminar(id);
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarPresupuesto();
@@ -173,6 +175,8 @@ namespace UI
             }
             catch (Exception ex)
             {
+                FormMenu formMenu = new FormMenu(false);
+                formMenu.disponibilidadNube = false;
                 ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
                 respuesta = presupuestoService.FiltrarEgresosPorComite(comite);
                 if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
@@ -223,6 +227,8 @@ namespace UI
             }
             catch (Exception ex)
             {
+                FormMenu formMenu = new FormMenu(false);
+                formMenu.disponibilidadNube = false;
                 BusquedaPresupuestoRespuesta respuesta = new BusquedaPresupuestoRespuesta();
                 respuesta = presupuestoService.BuscarPorIdentificacion(id);
                 var registro = respuesta.Presupuesto;
@@ -275,6 +281,8 @@ namespace UI
             }
             catch (Exception ex)
             {
+                FormMenu formMenu = new FormMenu(false);
+                formMenu.disponibilidadNube = false;
                 Console.WriteLine($"Error al calcular el saldo: {ex.Message}");
                 // Manejar la excepción según tus necesidades
             }
@@ -344,6 +352,8 @@ namespace UI
             }
             catch (Exception ex)
             {
+                FormMenu formMenu = new FormMenu(false);
+                formMenu.disponibilidadNube = false;
                 int count = ex.Message.Length;
                 if (count > 0)
                 {
@@ -378,6 +388,8 @@ namespace UI
             }
             catch (Exception ex)
             {
+                FormMenu formMenu = new FormMenu(false);
+                formMenu.disponibilidadNube = false;
                 int count = ex.Message.Length;
                 if (count > 0)
                 {

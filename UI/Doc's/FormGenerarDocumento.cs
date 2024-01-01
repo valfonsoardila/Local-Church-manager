@@ -22,7 +22,7 @@ namespace UI
 
         private void ObtenerRol()
         {
-            FormMenu formPrincipal = new FormMenu();
+            FormMenu formPrincipal = new FormMenu(true);
             rolLogueado=formPrincipal.rol;
         }
         //Drag Form

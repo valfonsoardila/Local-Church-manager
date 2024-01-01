@@ -56,9 +56,25 @@ namespace UI
                     dataGridDirectiva.DataSource = null;
                     textTotal.Text = "0";
                 }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch(Exception ex)
             {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
                 string tipo = comboDirectiva.Text;
                 if (tipo == "Directiva" || tipo == "Todos")
@@ -127,9 +143,25 @@ namespace UI
                     ConsultarYLlenarGridDeDirectivas();
                     LimpiarCampos();
                     tabDirectivas.SelectedIndex = 0;
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
+                    {
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                    }
                 }
                 catch(Exception ex)
                 {
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
+                    {
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                    }
                     string mensaje = directivaService.Guardar(directiva);
                     MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     ConsultarYLlenarGridDeDirectivas();
@@ -154,9 +186,25 @@ namespace UI
                 docRef.DeleteAsync();
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarYLlenarGridDeDirectivas();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch(Exception ex)
             {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 string mensaje = directivaService.Eliminar(id);
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -179,9 +227,25 @@ namespace UI
                     ConsultarYLlenarGridDeDirectivas();
                     LimpiarCampos();
                     tabDirectivas.SelectedIndex = 0;
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
+                    {
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                    }
                 }
                 catch(Exception ex)
                 {
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
+                    {
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                    }
                     string mensaje = directivaService.Modificar(directiva);
                     MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     comboDirectiva.Text = "Directiva";

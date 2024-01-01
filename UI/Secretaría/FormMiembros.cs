@@ -102,9 +102,25 @@ namespace UI
                     dataGridMiembros.DataSource = null;
                     textTotal.Text = "0";
                 }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch (Exception ex)
             {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
                 string tipo = comboGenero.Text;
                 if (tipo == "Genero" || tipo == "Todos")
@@ -223,9 +239,25 @@ namespace UI
                     numeroFolio = "0001";
                     labelNumeroFolio.Text = numeroFolio;
                 }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch(Exception ex)
             {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 ConsultaMiembroRespuesta respuesta = new ConsultaMiembroRespuesta();
                 respuesta = miembroService.ConsultarTodos();
                 miembros = respuesta.Miembros.ToList();
@@ -349,9 +381,25 @@ namespace UI
                     textObservaciones.Text = ingresoFiltrado.Observaciones; // Agregar observaciones
                     tabMiembros.SelectedIndex = 1;
                 }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch(Exception ex)
             {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
                 respuesta = miembroService.BuscarPorIdentificacion(filtro);
                 var registro = respuesta.Miembro;
@@ -594,9 +642,25 @@ namespace UI
                         tabMiembros.SelectedIndex = 0;
                     }
                 }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch(Exception ex)
             {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 if (encontradoNombre != true && encontradoApellido != true)
                 {
                     contactoService.Guardar(contacto);
@@ -634,6 +698,14 @@ namespace UI
             }
             catch(Exception ex)
             {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 if (encontradoNombre == true && encontradoApellido == true)
                 {
                     string mensaje = miembroService.Modificar(miembro);
@@ -694,9 +766,25 @@ namespace UI
                 string mensaje = miembroService.Eliminar(id);
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarYLlenarGridDeMiembros();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch(Exception ex)
             {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 string mensaje = miembroService.Eliminar(id);
                 contactoService.Eliminar(idContacto);
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -738,9 +826,25 @@ namespace UI
                     var membersGenero = miembros.Where(miembro => miembro.Genero == filtro).ToList();
                     dataGridMiembros.DataSource = membersGenero;
                     Borrar.Visible = true;
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
+                    {
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                    }
                 }
                 catch(Exception ex)
                 {
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
+                    {
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                    }
                     BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
                     respuesta = miembroService.BuscarPorGenero(filtro);
                     var registro = respuesta.Miembro;
@@ -794,9 +898,25 @@ namespace UI
                     var simpatizantesGenero = miembros.Where(simpatizante => simpatizante.Genero == filtro).ToList();
                     dataGridMiembros.DataSource = simpatizantesGenero;
                     Borrar.Visible = true;
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
+                    {
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                    }
                 }
                 catch(Exception ex)
                 {
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
+                    {
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                    }
                     BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
                     respuesta = miembroService.BuscarPorGenero(filtro);
                     var registro = respuesta.Miembro;
@@ -850,9 +970,25 @@ namespace UI
                 var membersGenero = miembros.Where(miembro => miembro.Acto == filtro).ToList();
                 dataGridMiembros.DataSource = membersGenero;
                 Borrar.Visible = true;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch(Exception ex)
             {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
                 respuesta = miembroService.BuscarPorGenero(filtro);
                 var registro = respuesta.Miembro;
@@ -908,9 +1044,25 @@ namespace UI
                     : miembros.Where(miembro => miembro.LugarBautizmo != filtro).ToList();
                 dataGridMiembros.DataSource = membersGenero;
                 Borrar.Visible = true;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
             catch(Exception ex)
             {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
                 BusquedaMiembroRespuesta respuesta = new BusquedaMiembroRespuesta();
                 respuesta = miembroService.BuscarPorGenero(filtro);
                 var registro = respuesta.Miembro;
