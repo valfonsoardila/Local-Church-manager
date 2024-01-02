@@ -31,13 +31,12 @@ namespace UI
         public bool disponibilidadNube;
         private readonly EventArgs e;
         private readonly object sender;
-        public FormMenu(bool disponibilidad)
+        public FormMenu()
         {
             empleadoService = new UsuarioService(ConfigConnection.ConnectionString);
             InitializeComponent();
             ValidarUsuario();
             //ValidarDisponibilidadNube();
-            disponibilidadNube = disponibilidad;
             customizeDesign();
             EliminarIdSesionDeUsuario();
             this.Text = string.Empty;

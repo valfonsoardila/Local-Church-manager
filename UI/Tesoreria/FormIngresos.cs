@@ -150,54 +150,54 @@ namespace UI
                 }
             }
         }
-        private async void TotalizarRegistros()
-        {
-            ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
-            respuesta = ingresoService.ConsultarTodos();
-            if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
-            {
-                dataGridIngresos.DataSource = null;
-                ingresos = respuesta.Ingresos.ToList();
-                if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
-                {
-                    try
-                    {
-                        var ingresos = new List<IngressData>();
-                        var db = FirebaseService.Database;
-                        var ingresosQuery = db.Collection("IngressData");
-                        var snapshot = await ingresosQuery.GetSnapshotAsync();
-                        textTotalNube.Text=snapshot.Documents.Count().ToString();
-                        textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
-                        // Obtener referencia al formulario principal
-                        FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                        // Verificar si el formulario principal está abierto
-                        if (formPrincipal != null)
-                        {
-                            // Lanzar el evento para notificar al formulario principal sobre la excepción
-                            formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        // Obtener referencia al formulario principal
-                        FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                        // Verificar si el formulario principal está abierto
-                        if (formPrincipal != null)
-                        {
-                            // Lanzar el evento para notificar al formulario principal sobre la excepción
-                            formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
-                        }
-                        textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
-                        textTotalNube.Text = "0";
-                    }
-                }
-                else
-                {
-                    textTotalLocal.Text = "0";
-                    textTotalNube.Text = "0";
-                }
-            }
-        }
+        //private async void TotalizarRegistros()
+        //{
+        //    ConsultaIngresoRespuesta respuesta = new ConsultaIngresoRespuesta();
+        //    respuesta = ingresoService.ConsultarTodos();
+        //    if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
+        //    {
+        //        dataGridIngresos.DataSource = null;
+        //        ingresos = respuesta.Ingresos.ToList();
+        //        if (respuesta.Ingresos.Count != 0 && respuesta.Ingresos != null)
+        //        {
+        //            try
+        //            {
+        //                var ingresos = new List<IngressData>();
+        //                var db = FirebaseService.Database;
+        //                var ingresosQuery = db.Collection("IngressData");
+        //                var snapshot = await ingresosQuery.GetSnapshotAsync();
+        //                textTotalNube.Text=snapshot.Documents.Count().ToString();
+        //                textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
+        //                // Obtener referencia al formulario principal
+        //                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+        //                // Verificar si el formulario principal está abierto
+        //                if (formPrincipal != null)
+        //                {
+        //                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+        //                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                // Obtener referencia al formulario principal
+        //                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+        //                // Verificar si el formulario principal está abierto
+        //                if (formPrincipal != null)
+        //                {
+        //                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+        //                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+        //                }
+        //                textTotalLocal.Text = ingresoService.Totalizar().Cuenta.ToString();
+        //                textTotalNube.Text = "0";
+        //            }
+        //        }
+        //        else
+        //        {
+        //            textTotalLocal.Text = "0";
+        //            textTotalNube.Text = "0";
+        //        }
+        //    }
+        //}
         private void FormIngresos_Load(object sender, EventArgs e)
         {
             if (tabLibroIngresos.TabCount > 0)
@@ -286,7 +286,7 @@ namespace UI
         private async void ConsultarIngresos()
         {
             TotalizarIngresos();
-            TotalizarRegistros();
+            //TotalizarRegistros();
             try
             {
                 var db = FirebaseService.Database;
@@ -299,6 +299,7 @@ namespace UI
                 {
                     dataGridIngresos.DataSource = null;
                     dataGridIngresos.DataSource = ingresos;
+                    textTotalNube.Text = ingresos.Count.ToString();
                 }
                 else
                 {

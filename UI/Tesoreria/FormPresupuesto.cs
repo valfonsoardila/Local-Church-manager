@@ -34,6 +34,10 @@ namespace UI
         int id = 0;
         int sumPresupuestos = 0;
         int ultimoId;
+        int ofrendasIngresos;
+        int votosIngresos;
+        int activIdadesIngresos;
+        int otrosIngresos;
         string comite = "";
         bool detallo = false;
         bool encontrado = false;
@@ -47,8 +51,6 @@ namespace UI
             InitializeComponent();
             ObtenerUltimoPresupuesto();
             ConsultarPresupuesto();
-            ObtenerDatosGenerales();
-            ObtenerDatosIndividuales();
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -120,6 +122,9 @@ namespace UI
                 {
                     dataGridPresupuestos.DataSource = null;
                     dataGridPresupuestos.DataSource = presupuestosGeneral;
+                    textTotal.Text = presupuestosGeneral.Count.ToString();
+                    textTotalPresupuestos.Text = snapshot.Documents.Sum(doc => doc.ConvertTo<BudgetData>().TotalPresupuesto).ToString();
+                    ObtenerDatosGenerales();
                 }
                 else
                 {
@@ -154,6 +159,7 @@ namespace UI
                     dataGridPresupuestos.DataSource = presupuestos;
                     Borrar.Visible = true;
                     textTotal.Text = presupuestoService.Totalizar().Cuenta.ToString();
+                    ObtenerDatosGenerales();
                 }
             }
         }
@@ -178,6 +184,8 @@ namespace UI
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridPresupuestos.DataSource = null;
                 ConsultarPresupuesto();
+                ObtenerDatosGenerales();
+                ObtenerDatosIndividuales();
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto
@@ -202,7 +210,8 @@ namespace UI
                 ConsultarPresupuesto();
             }
         }
-        private async void FiltrarPresupuestosPorComite(string comite){
+        private async void FiltrarPresupuestosPorComite(string comite)
+        {
             try
             {
                 var db = FirebaseService.Database;
@@ -213,6 +222,7 @@ namespace UI
                 presupuestos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetData>()).ToList();
                 // Filtrar elementos según el campo Valor y la variable id
                 presupuestosComite = presupuestos.Where(presupuesto => presupuesto.Comite == comite).ToList();
+                ObtenerIngresosYEgresos();
                 dataGridPresupuestos.DataSource = presupuestosComite;
                 Borrar.Visible = true;
                 // Obtener referencia al formulario principal
@@ -744,7 +754,6 @@ namespace UI
                                     // Consulta
                                     comite = Convert.ToString(dataGridPresupuestos.CurrentRow.Cells["Comite"].Value.ToString());
                                     FiltrarPresupuestosPorComite(comite);
-                                    ObtenerDatosIndividuales();
                                 }
                             }
                         }
@@ -752,38 +761,93 @@ namespace UI
                 }
             }
         }
+        private async void ObtenerIngresosYEgresos()
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var ingresosQuery = db.Collection("IngressData").WhereEqualTo("Comite", comite);
+                var ingresos = new List<IngressData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await ingresosQuery.GetSnapshotAsync();
+                ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                // Filtrar ingresos por concepto y contar la cantidad de cada uno
+                ofrendasIngresos = ingresos.Where(i => i.Concepto == "Ofrenda").Sum(p => p.Valor);
+                votosIngresos = ingresos.Where(i => i.Concepto == "Voto").Sum(p => p.Valor);
+                activIdadesIngresos = ingresos.Where(i => i.Concepto == "Actividades").Sum(p => p.Valor);
+                otrosIngresos = ingresos.Where(i => i.Concepto == "Otros").Sum(p => p.Valor);
+                ObtenerDatosIndividuales();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
         private void ObtenerDatosIndividuales()
         {
             //Este se representará con los datos individuales de cada comite que son ofrendas, actividades, votos y otro.
             if (presupuestosComite != null && presupuestosComite.Any())
             {
-                // Asegúrate de tener los nombres correctos de las propiedades según la estructura de tu clase BudgetData
+                // Presupuestos 100% por conceptos
                 int ofrenda = presupuestosComite.Sum(p => p.Ofrenda);
                 int actividad = presupuestosComite.Sum(p => p.Actividad);
                 int voto = presupuestosComite.Sum(p => p.Voto);
                 int otroConcepto = presupuestosComite.Sum(p => p.ValorOtroConcepto);
 
-                // Calcula los porcentajes
-                double porcentajeOfrenda = (double)ofrenda / presupuestosComite[0].TotalPresupuesto * 100;
-                double porcentajeActividad = (double)actividad / presupuestosComite[0].TotalPresupuesto * 100;
-                double porcentajeVoto = (double)voto / presupuestosComite[0].TotalPresupuesto * 100;
-                double porcentajeOtroConcepto = (double)otroConcepto / presupuestosComite[0].TotalPresupuesto * 100;
-                
+                // Calcula los porcentajes con respecto a los ingresos
+                double porcentajeOfrenda = ofrendasIngresos * 100 / ofrenda;
+                double porcentajeActividad = activIdadesIngresos * 100 / actividad;
+                double porcentajeVoto = votosIngresos * 100 / voto;
+                double porcentajeOtroConcepto = otrosIngresos != 0 ? otrosIngresos * 100 / otroConcepto : 0;
+
+                //Calcula los nuevos porcentajes con respecto al presupuesto
+                var OfrendaRebasada="";
+                var ActividadRebasada = "";
+                var VotoRebasado = "";
+                var OtroConceptoRebosado = "";
+                if (porcentajeOfrenda > 100) { 
+                    OfrendaRebasada = "rebasada en un " + (porcentajeOfrenda - 100).ToString()+"%";
+                    porcentajeOfrenda = (ofrenda * 100) / presupuestosComite[0].TotalPresupuesto;
+                    if (porcentajeActividad > 100)
+                    {
+                        ActividadRebasada = "rebasada en un " + (porcentajeActividad - 100).ToString() + "%";
+                        porcentajeActividad = (actividad * 100) / presupuestosComite[0].TotalPresupuesto;
+                        if (porcentajeVoto > 100)
+                        {
+                            VotoRebasado = "rebasado en un " + (porcentajeVoto - 100).ToString() + "%";
+                            porcentajeVoto = (voto * 100) / presupuestosComite[0].TotalPresupuesto;
+                        }
+                    }
+                }
+                if (porcentajeOtroConcepto > 100)
+                {
+                    OtroConceptoRebosado = "rebasado en un" + (porcentajeOtroConcepto - 100).ToString() + "%";
+                    porcentajeOtroConcepto = (otroConcepto * 100) / presupuestosComite[0].TotalPresupuesto;
+                }
+
                 //limpia los puntos anteriores
                 chartIndividual.Series[0].Points.Clear();
 
                 // Agrega los nuevos puntos al gráfico
-                chartIndividual.Series[0].Points.AddXY("Ofrenda", porcentajeOfrenda);
-                chartIndividual.Series[0].Points.AddXY("Actividad", porcentajeActividad);
-                chartIndividual.Series[0].Points.AddXY("Voto", porcentajeVoto);
-                chartIndividual.Series[0].Points.AddXY("Otro Concepto", porcentajeOtroConcepto);
+                chartIndividual.Series[0].Points.AddXY("Ofrenda "+ OfrendaRebasada, porcentajeOfrenda);
+                chartIndividual.Series[0].Points.AddXY("Actividad "+ ActividadRebasada, porcentajeActividad);
+                chartIndividual.Series[0].Points.AddXY("Voto "+ VotoRebasado, porcentajeVoto);
+                chartIndividual.Series[0].Points.AddXY("Otro Concepto " + OtroConceptoRebosado, porcentajeOtroConcepto);
 
                 // Configura el gráfico
                 chartIndividual.Series[0].ChartType = SeriesChartType.Doughnut;
                 chartIndividual.Series[0].IsValueShownAsLabel = true;
-                chartIndividual.Series[0].LabelFormat = "P"; // Muestra los porcentajes
+                chartIndividual.Series[0].LabelFormat = "#,##0.00";
                 chartIndividual.Titles.Clear();
-                chartIndividual.Titles.Add("Distribución de Gastos");
+                chartIndividual.Titles.Add("Distribución de ingresos para "+comite);
             }
         }
         private void ObtenerDatosGenerales()

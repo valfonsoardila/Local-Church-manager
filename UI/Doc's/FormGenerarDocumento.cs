@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +16,8 @@ namespace UI
     public partial class FormGenerarDocumento : Form
     {
         public string rolLogueado = "";
+        IdUsuarioTxt usuarioTxt;
+        List<IdUsuarioTxt> idUsuarioTxts;
         public FormGenerarDocumento()
         {
             InitializeComponent();
@@ -22,8 +26,10 @@ namespace UI
 
         private void ObtenerRol()
         {
-            FormMenu formPrincipal = new FormMenu(true);
-            rolLogueado=formPrincipal.rol;
+            IdUsuarioTxtService idUsuarioTxtService = new IdUsuarioTxtService();
+            var idUsuarioTxts = idUsuarioTxtService.Consultar();
+            rolLogueado = idUsuarioTxts.IdEmpleadoTxts[0].Rol;
+            textRol.Text = rolLogueado;
         }
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]

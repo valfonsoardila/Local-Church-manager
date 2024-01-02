@@ -30,9 +30,9 @@
         {
             this.panelHeaderGenerarInforme = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textRol = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textTotalEgresos = new System.Windows.Forms.TextBox();
+            this.textTotalPag = new System.Windows.Forms.TextBox();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -52,9 +52,9 @@
             // 
             this.panelHeaderGenerarInforme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
             this.panelHeaderGenerarInforme.Controls.Add(this.label1);
-            this.panelHeaderGenerarInforme.Controls.Add(this.textBox1);
+            this.panelHeaderGenerarInforme.Controls.Add(this.textRol);
             this.panelHeaderGenerarInforme.Controls.Add(this.label16);
-            this.panelHeaderGenerarInforme.Controls.Add(this.textTotalEgresos);
+            this.panelHeaderGenerarInforme.Controls.Add(this.textTotalPag);
             this.panelHeaderGenerarInforme.Controls.Add(this.btnAtras);
             this.panelHeaderGenerarInforme.Controls.Add(this.label2);
             this.panelHeaderGenerarInforme.Controls.Add(this.pictureBox1);
@@ -77,18 +77,18 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "#Pag:";
             // 
-            // textBox1
+            // textRol
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Location = new System.Drawing.Point(363, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(124, 28);
-            this.textBox1.TabIndex = 18;
-            this.textBox1.Text = "Secretario";
+            this.textRol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textRol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.textRol.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textRol.ForeColor = System.Drawing.SystemColors.Info;
+            this.textRol.Location = new System.Drawing.Point(363, 16);
+            this.textRol.Name = "textRol";
+            this.textRol.Size = new System.Drawing.Size(124, 28);
+            this.textRol.TabIndex = 18;
+            this.textRol.Text = "Secretario";
             // 
             // label16
             // 
@@ -102,18 +102,18 @@
             this.label16.TabIndex = 17;
             this.label16.Text = "Rol:";
             // 
-            // textTotalEgresos
+            // textTotalPag
             // 
-            this.textTotalEgresos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textTotalEgresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.textTotalEgresos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textTotalEgresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalEgresos.ForeColor = System.Drawing.SystemColors.Info;
-            this.textTotalEgresos.Location = new System.Drawing.Point(573, 16);
-            this.textTotalEgresos.Name = "textTotalEgresos";
-            this.textTotalEgresos.Size = new System.Drawing.Size(75, 28);
-            this.textTotalEgresos.TabIndex = 14;
-            this.textTotalEgresos.Text = "0";
+            this.textTotalPag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textTotalPag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.textTotalPag.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textTotalPag.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalPag.ForeColor = System.Drawing.SystemColors.Info;
+            this.textTotalPag.Location = new System.Drawing.Point(573, 16);
+            this.textTotalPag.Name = "textTotalPag";
+            this.textTotalPag.Size = new System.Drawing.Size(75, 28);
+            this.textTotalPag.TabIndex = 14;
+            this.textTotalPag.Text = "0";
             // 
             // btnAtras
             // 
@@ -275,9 +275,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panelHeaderGenerarInforme;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textRol;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textTotalEgresos;
+        private System.Windows.Forms.TextBox textTotalPag;
         private FontAwesome.Sharp.IconPictureBox btnAtras;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;

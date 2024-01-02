@@ -146,54 +146,54 @@ namespace UI
                 }
             }
         }
-        private async void TotalizarRegistros()
-        {
-            ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
-            respuesta = egresoService.ConsultarTodos();
-            if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
-            {
-                dataGridEgresos.DataSource = null;
-                egresos = respuesta.Egresos.ToList();
-                if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
-                {
-                    try
-                    {
-                        var egresos = new List<EgressData>();
-                        var db = FirebaseService.Database;
-                        var egresosQuery = db.Collection("EgressData");
-                        var snapshot = await egresosQuery.GetSnapshotAsync();
-                        textTotalNube.Text = snapshot.Documents.Count().ToString();
-                        textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
-                        // Obtener referencia al formulario principal
-                        FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                        // Verificar si el formulario principal está abierto
-                        if (formPrincipal != null)
-                        {
-                            // Lanzar el evento para notificar al formulario principal sobre la excepción
-                            formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
-                        }
-                    }
-                    catch(Exception ex)
-                    {
-                        // Obtener referencia al formulario principal
-                        FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                        // Verificar si el formulario principal está abierto
-                        if (formPrincipal != null)
-                        {
-                            // Lanzar el evento para notificar al formulario principal sobre la excepción
-                            formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
-                        }
-                        textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
-                        textTotalNube.Text = "0";
-                    }
-                }
-                else
-                {
-                    textTotalLocal.Text = "0";
-                    textTotalNube.Text = "0";
-                }
-            }
-        }
+        //private async void TotalizarRegistros()
+        //{
+        //    ConsultaEgresoRespuesta respuesta = new ConsultaEgresoRespuesta();
+        //    respuesta = egresoService.ConsultarTodos();
+        //    if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+        //    {
+        //        dataGridEgresos.DataSource = null;
+        //        egresos = respuesta.Egresos.ToList();
+        //        if (respuesta.Egresos.Count != 0 && respuesta.Egresos != null)
+        //        {
+        //            try
+        //            {
+        //                var egresos = new List<EgressData>();
+        //                var db = FirebaseService.Database;
+        //                var egresosQuery = db.Collection("EgressData");
+        //                var snapshot = await egresosQuery.GetSnapshotAsync();
+        //                textTotalNube.Text = snapshot.Documents.Count().ToString();
+        //                textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
+        //                // Obtener referencia al formulario principal
+        //                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+        //                // Verificar si el formulario principal está abierto
+        //                if (formPrincipal != null)
+        //                {
+        //                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+        //                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+        //                }
+        //            }
+        //            catch(Exception ex)
+        //            {
+        //                // Obtener referencia al formulario principal
+        //                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+        //                // Verificar si el formulario principal está abierto
+        //                if (formPrincipal != null)
+        //                {
+        //                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+        //                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+        //                }
+        //                textTotalLocal.Text = egresoService.Totalizar().Cuenta.ToString();
+        //                textTotalNube.Text = "0";
+        //            }
+        //        }
+        //        else
+        //        {
+        //            textTotalLocal.Text = "0";
+        //            textTotalNube.Text = "0";
+        //        }
+        //    }
+        //}
         private void FormEgresos_Load(object sender, EventArgs e)
         {
             if (tabEgresos.TabCount > 0)
@@ -283,7 +283,7 @@ namespace UI
         private async void ConsultarEgresos()
         {
             TotalizarEgresos();
-            TotalizarRegistros();
+            //TotalizarRegistros();
             try
             {
                 var db = FirebaseService.Database;
@@ -296,6 +296,7 @@ namespace UI
                 {
                     dataGridEgresos.DataSource = null;
                     dataGridEgresos.DataSource = egresos;
+                    textTotalNube.Text = egresos.Count.ToString();
                 }
                 else
                 {

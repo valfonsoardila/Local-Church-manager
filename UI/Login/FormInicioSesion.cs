@@ -239,7 +239,7 @@ namespace UI
                     {
                         UsuarioValido = true;
 
-                        FormMenu mainMenu = new FormMenu(true);
+                        FormMenu mainMenu = new FormMenu();
                         mainMenu.idUsuario = usarioFiltrado[0].ID;
                         mainMenu.rol = usarioFiltrado[0].Rol;
                         mainMenu.disponibilidadNube = true;
@@ -272,7 +272,7 @@ namespace UI
                 //verifica de forma local
                 if (UsuarioValido == true)
                 {
-                    FormMenu mainMenu = new FormMenu(true);
+                    FormMenu mainMenu = new FormMenu();
                     mainMenu.idUsuario = id_Usuario;
                     mainMenu.rol = rol;
                     mainMenu.disponibilidadNube = true;
