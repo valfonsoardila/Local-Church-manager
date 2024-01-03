@@ -213,18 +213,65 @@ namespace UI
         }
         private void AgregarAGridRubros()
         {
-            //dataGridRubros.DataSource = null;
             List<double> porcentajes = CalcularPorcentajeRubros();
             double porcentajeOfrenda = porcentajes[0];
             double porcentajeActividad = porcentajes[1];
             double porcentajeVoto = porcentajes[2];
             double porcentajeOtroConcepto = porcentajes[3];
+            double porcentajeOfrendaRestante = porcentajes[4];
+            double porcentajeActividadesRestante = porcentajes[5];
+            double porcentajeVotosRestante = porcentajes[6];
+            double porcentajeOtrosRestante = porcentajes[7];
+            
             // Agregar filas al DataGridView con los valores necesarios
             dataGridRubros.Rows.Clear();
-            dataGridRubros.Rows.Add("1", "Ofrenda", LecturaCifra(ofrendasIngresos), porcentajeOfrenda.ToString() + "%");
-            dataGridRubros.Rows.Add("2", "Voto", LecturaCifra(votosIngresos), porcentajeActividad.ToString() + "%");
-            dataGridRubros.Rows.Add("3", "Actividades", LecturaCifra(activIdadesIngresos), porcentajeVoto.ToString() + "%");
-            dataGridRubros.Rows.Add("4", "Otros", LecturaCifra(otrosIngresos), porcentajeOtroConcepto.ToString() + "%");
+            dataGridRubros.Rows.Add("1", "Ofrenda", LecturaCifra(ofrendasIngresos), porcentajeOfrenda.ToString() + "%", porcentajeOfrendaRestante.ToString()+"%");
+            dataGridRubros.Rows.Add("2", "Voto", LecturaCifra(votosIngresos), porcentajeActividad.ToString() + "%", porcentajeActividadesRestante.ToString()+"%");
+            dataGridRubros.Rows.Add("3", "Actividades", LecturaCifra(activIdadesIngresos), porcentajeVoto.ToString() + "%", porcentajeVotosRestante.ToString()+"%");
+            dataGridRubros.Rows.Add("4", "Otros", LecturaCifra(otrosIngresos), porcentajeOtroConcepto.ToString() + "%", porcentajeOtrosRestante.ToString()+"%");
+
+            //Agregar a las graficas
+            //limpia los puntos anteriores
+            chartOfrendas.Series[0].Points.Clear();
+            chartActividades.Series[0].Points.Clear();
+            chartVotos.Series[0].Points.Clear();
+            chartOtroConcepto.Series[0].Points.Clear();
+
+            // Agrega los nuevos puntos al gráfico
+            chartOfrendas.Series[0].Points.AddXY("Porcentaje de Ofrendas ingresadas ", porcentajeOfrenda);
+            chartOfrendas.Series[0].Points.AddXY("Porcentaje de Ofrenda restante", porcentajeOfrendaRestante);
+            chartActividades.Series[0].Points.AddXY("Porcentaje de Actividades ingresadas ", porcentajeActividad);
+            chartActividades.Series[0].Points.AddXY("Porcentaje de Actividades restante", porcentajeActividadesRestante);
+            chartVotos.Series[0].Points.AddXY("Porcentaje de Votos ingresados ", porcentajeVoto);
+            chartVotos.Series[0].Points.AddXY("Porcentaje de Votos restante", porcentajeVotosRestante);
+            chartOtroConcepto.Series[0].Points.AddXY("Porcentaje de Otros conceptos ingresados ",porcentajeOtroConcepto);
+            chartOtroConcepto.Series[0].Points.AddXY("Porcentaje de Otro conceptos restante", porcentajeOtrosRestante);
+
+            // Configura el gráfico para ofrendas
+            chartOfrendas.Series[0].ChartType = SeriesChartType.Doughnut;
+            chartOfrendas.Series[0].IsValueShownAsLabel = true;
+            chartOfrendas.Series[0].LabelFormat = "#,##";
+            chartOfrendas.Titles.Clear();
+            chartOfrendas.Titles.Add("Porcentaje de ofrendas para " + comite);
+            // Configura el gráfico para actividades
+            chartActividades.Series[0].ChartType = SeriesChartType.Doughnut;
+            chartActividades.Series[0].IsValueShownAsLabel = true;
+            chartActividades.Series[0].LabelFormat = "#,##";
+            chartActividades.Titles.Clear();
+            chartActividades.Titles.Add("Porcentaje de actividades para " + comite);
+            // Configura el gráfico para actividades
+            chartVotos.Series[0].ChartType = SeriesChartType.Doughnut;
+            chartVotos.Series[0].IsValueShownAsLabel = true;
+            chartVotos.Series[0].LabelFormat = "#,##";
+            chartVotos.Titles.Clear();
+            chartVotos.Titles.Add("Porcentaje de votos para " + comite);
+            // Configura el gráfico para Otros conceptos
+            chartOtroConcepto.Series[0].ChartType = SeriesChartType.Doughnut;
+            chartOtroConcepto.Series[0].IsValueShownAsLabel = true;
+            chartOtroConcepto.Series[0].LabelFormat = "#,##";
+            chartOtroConcepto.Titles.Clear();
+            chartOtroConcepto.Titles.Add("Porcentaje de Otros conceptos para " + comite);
+
             tabPresupuestos.TabPages.Add(tabPage);
             tabPresupuestos.SelectedIndex = 2;
             detallo = true;
@@ -247,7 +294,16 @@ namespace UI
             double diferenciaVoto = 100 - porcentajeVoto;
             double diferenciaOtroConcepto = 100 - porcentajeOtroConcepto;
 
-            return new List<double> { porcentajeOfrenda, porcentajeActividad, porcentajeVoto, porcentajeOtroConcepto };
+            return new List<double> { 
+                porcentajeOfrenda, 
+                porcentajeActividad, 
+                porcentajeVoto, 
+                porcentajeOtroConcepto,
+                diferenciaOfrenda,
+                diferenciaActividad,
+                diferenciaVoto,
+                diferenciaOtroConcepto
+            };
         }
         private async void FiltrarPresupuestosPorComite(string comite)
         {
