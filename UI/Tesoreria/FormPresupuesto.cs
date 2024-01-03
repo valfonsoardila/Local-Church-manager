@@ -39,6 +39,7 @@ namespace UI
         int activIdadesIngresos;
         int otrosIngresos;
         int sumEgresos;
+        int sumIgresos;
         string comite = "";
         bool detallo = false;
         bool encontrado = false;
@@ -51,7 +52,9 @@ namespace UI
             budgetMaps = new BudgetMaps();
             InitializeComponent();
             ObtenerUltimoPresupuesto();
+            ObtenerIngresosYEgresos();
             ConsultarPresupuesto();
+            ObtenerDatosGenerales();
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -124,6 +127,7 @@ namespace UI
                     dataGridPresupuestos.DataSource = null;
                     dataGridPresupuestos.DataSource = presupuestosGeneral;
                     textTotal.Text = presupuestosGeneral.Count.ToString();
+                    sumPresupuestos= snapshot.Documents.Sum(doc => doc.ConvertTo<BudgetData>().TotalPresupuesto);
                     textTotalPresupuestos.Text = snapshot.Documents.Sum(doc => doc.ConvertTo<BudgetData>().TotalPresupuesto).ToString();
                     ObtenerDatosGenerales();
                 }
@@ -381,12 +385,17 @@ namespace UI
                 {
                     var presupuestoFiltrado = presupuestosFiltrados.First(); // Obtener el primer elemento de la lista
                     //encontrado = true;
+                    comboAño.Text = presupuestoFiltrado.AñoPresupuesto;
                     comboInicioIntervalo.Text = presupuestoFiltrado.InicioIntervalo;
                     comboFinIntervalo.Text = presupuestoFiltrado.FinIntervalo;
                     comboComite.Text = presupuestoFiltrado.Comite;
-                    textOfrendas.Text = presupuestoFiltrado.Ofrenda.ToString();
-                    textActividades.Text = presupuestoFiltrado.Actividad.ToString();
-                    textVotos.Text = presupuestoFiltrado.Voto.ToString();
+                    textOfrendas.Text = LecturaCifra(presupuestoFiltrado.Ofrenda);
+                    textActividades.Text = LecturaCifra(presupuestoFiltrado.Actividad);
+                    textVotos.Text = LecturaCifra(presupuestoFiltrado.Voto);
+                    textPresupuesto.Text= LecturaCifra(presupuestoFiltrado.TotalPresupuesto);
+                    textEgresos.Text= LecturaCifra(presupuestoFiltrado.TotalEgresos);
+                    encontrado = true;
+                    tabPresupuestos.SelectedIndex = 1;
                 }
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
@@ -421,6 +430,7 @@ namespace UI
                     textActividades.Text = presupuestos[0].Actividad.ToString();
                     textVotos.Text = presupuestos[0].Voto.ToString();
                     textPresupuesto.Text = presupuestos[0].TotalPresupuesto.ToString();
+                    textEgresos.Text= presupuestos[0].TotalEgresos.ToString();
                 }
             }
         }
@@ -481,6 +491,7 @@ namespace UI
         }
         private void Limpiar()
         {
+            comboAño.Text = DateTime.Now.Year.ToString();
             comboInicioIntervalo.Text = "Enero";
             comboFinIntervalo.Text = "Enero";
             comboComite.Text = "Comite";
@@ -521,106 +532,6 @@ namespace UI
             presupuesto.TotalEgresos = ObtenerCantidadEntera(textEgresos.Text);
             presupuesto.TotalPresupuesto = ObtenerCantidadEntera(textPresupuesto.Text);
             return presupuesto;
-        }
-        private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-            //Obtenemos los datos del usuario y construimos el dato de la nube
-            ValidarNuevoConcepto();
-            Presupuesto presupuesto = MapearPresupuesto();
-            try
-            {
-                //Guardamos en la nube
-                var db = FirebaseService.Database;
-                var budgetNuevo = budgetMaps.BudgetMap(presupuesto);
-                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetData").Document(budgetNuevo.Id);
-                docRef.SetAsync(budgetNuevo);
-                // Guardamos localmente
-                var msg = presupuestoService.Guardar(presupuesto);
-                MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ConsultarPresupuesto();
-                CalculoDeSaldo();
-                Limpiar();
-                tabPresupuestos.SelectedIndex = 0;
-                // Obtener referencia al formulario principal
-                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                // Verificar si el formulario principal está abierto
-                if (formPrincipal != null)
-                {
-                    // Lanzar el evento para notificar al formulario principal sobre la excepción
-                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
-                }
-            }
-            catch (Exception ex)
-            {
-                // Obtener referencia al formulario principal
-                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                // Verificar si el formulario principal está abierto
-                if (formPrincipal != null)
-                {
-                    // Lanzar el evento para notificar al formulario principal sobre la excepción
-                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
-                }
-                int count = ex.Message.Length;
-                if (count > 0)
-                {
-                    // Guardamos localmente
-                    var msg = presupuestoService.Guardar(presupuesto);
-                    MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ConsultarPresupuesto();
-                    //Limpiar();
-                    tabPresupuestos.SelectedIndex = 0;
-                }
-            }
-        }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            //Obtenemos los datos del usuario y construimos el dato de la nube
-            Presupuesto presupuesto = MapearPresupuesto();
-            try
-            {
-                var msg = presupuestoService.Guardar(presupuesto);
-                //Guardamos en la nube
-                var db = FirebaseService.Database;
-                var budgetNuevo = budgetMaps.BudgetMap(presupuesto);
-                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetData").Document(budgetNuevo.Id);
-                docRef.SetAsync(budgetNuevo);
-                // Guardamos localmente
-                MessageBox.Show(msg, "Modificado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ConsultarPresupuesto();
-                CalculoDeSaldo();
-                Limpiar();
-                tabPresupuestos.SelectedIndex = 0;
-                // Obtener referencia al formulario principal
-                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                // Verificar si el formulario principal está abierto
-                if (formPrincipal != null)
-                {
-                    // Lanzar el evento para notificar al formulario principal sobre la excepción
-                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
-                }
-            }
-            catch (Exception ex)
-            {
-                // Obtener referencia al formulario principal
-                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                // Verificar si el formulario principal está abierto
-                if (formPrincipal != null)
-                {
-                    // Lanzar el evento para notificar al formulario principal sobre la excepción
-                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
-                }
-                int count = ex.Message.Length;
-                if (count > 0)
-                {
-                    // Guardamos localmente
-                    var msg = presupuestoService.Guardar(presupuesto);
-                    MessageBox.Show(msg, "Modificado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ConsultarPresupuesto();
-                    Limpiar();
-                    tabPresupuestos.SelectedIndex = 0;
-                }
-            }
         }
 
         private void textOfrendas_Validated(object sender, EventArgs e)
@@ -807,6 +718,7 @@ namespace UI
                 var snapshot = await ingresosQuery.GetSnapshotAsync();
                 ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
                 // Filtrar ingresos por concepto y contar la cantidad de cada uno
+                sumIgresos = ingresos.Sum(p=>p.Valor);
                 ofrendasIngresos = ingresos.Where(i => i.Concepto == "Ofrenda").Sum(p => p.Valor);
                 votosIngresos = ingresos.Where(i => i.Concepto == "Voto").Sum(p => p.Valor);
                 activIdadesIngresos = ingresos.Where(i => i.Concepto == "Actividades").Sum(p => p.Valor);
@@ -887,7 +799,7 @@ namespace UI
 
                 }
 
-                //limpia los puntos anteriores
+                // Limpia los puntos anteriores
                 chartIngresoIndividual.Series[0].Points.Clear();
                 chartEgresoIndividual.Series[0].Points.Clear();
 
@@ -918,7 +830,23 @@ namespace UI
         {
             if (presupuestosGeneral != null && presupuestosGeneral.Any())
             {
-
+                double porcentajeActual = sumIgresos * 100/ sumPresupuestos;
+                double porcentajeRestante = 100 - porcentajeActual;
+                string porcentajeRebasado="";
+                if (porcentajeActual > 100)
+                {
+                    porcentajeRebasado = "rebasado en un " + (porcentajeActual - 100).ToString() + "%";
+                    porcentajeActual = 100;
+                }
+                chartGeneral.Series[0].Points.Clear();
+                chartGeneral.Series[0].Points.AddXY("Presupuesto acomulado" + porcentajeRebasado, porcentajeActual);
+                chartGeneral.Series[0].Points.AddXY("Presupuesto restante", porcentajeRestante);
+                // Configura el gráfico presupuesto
+                chartGeneral.Series[0].ChartType = SeriesChartType.Doughnut;
+                chartGeneral.Series[0].IsValueShownAsLabel = true;
+                chartGeneral.Series[0].LabelFormat = "#,##";
+                chartGeneral.Titles.Clear();
+                chartGeneral.Titles.Add("Progreso de presupuestos generales");
             }
         }
 
@@ -929,6 +857,7 @@ namespace UI
                 tabPage = tabPresupuestos.TabPages["tabPorcentajes"];
                 tabPresupuestos.TabPages.RemoveAt(2);
                 detallo = false;
+                Limpiar();
             }
         }
 
@@ -955,10 +884,6 @@ namespace UI
                         {
                             id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["Id"].Value.ToString());
                             FiltroPorId(id);
-                            if (encontrado == true)
-                            {
-                                tabPresupuestos.SelectedIndex = 1;
-                            }
                         }
                         else
                         {
@@ -1114,6 +1039,107 @@ namespace UI
             {
                 comboFiltroComite.Text = "Todos";
                 FiltroPorAño(filtro);
+            }
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            //Obtenemos los datos del usuario y construimos el dato de la nube
+            ValidarNuevoConcepto();
+            Presupuesto presupuesto = MapearPresupuesto();
+            try
+            {
+                //Guardamos en la nube
+                var db = FirebaseService.Database;
+                var budgetNuevo = budgetMaps.BudgetMap(presupuesto);
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetData").Document(budgetNuevo.Id);
+                docRef.SetAsync(budgetNuevo);
+                // Guardamos localmente
+                var msg = presupuestoService.Guardar(presupuesto);
+                MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarPresupuesto();
+                CalculoDeSaldo();
+                Limpiar();
+                tabPresupuestos.SelectedIndex = 0;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                int count = ex.Message.Length;
+                if (count > 0)
+                {
+                    // Guardamos localmente
+                    var msg = presupuestoService.Guardar(presupuesto);
+                    MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConsultarPresupuesto();
+                    //Limpiar();
+                    tabPresupuestos.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            //Obtenemos los datos del usuario y construimos el dato de la nube
+            Presupuesto presupuesto = MapearPresupuesto();
+            try
+            {
+                var msg = presupuestoService.Guardar(presupuesto);
+                //Guardamos en la nube
+                var db = FirebaseService.Database;
+                var budgetNuevo = budgetMaps.BudgetMap(presupuesto);
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetData").Document(budgetNuevo.Id);
+                docRef.SetAsync(budgetNuevo);
+                // Guardamos localmente
+                MessageBox.Show(msg, "Modificado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarPresupuesto();
+                CalculoDeSaldo();
+                Limpiar();
+                tabPresupuestos.SelectedIndex = 0;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                int count = ex.Message.Length;
+                if (count > 0)
+                {
+                    // Guardamos localmente
+                    var msg = presupuestoService.Guardar(presupuesto);
+                    MessageBox.Show(msg, "Modificado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConsultarPresupuesto();
+                    Limpiar();
+                    tabPresupuestos.SelectedIndex = 0;
+                }
             }
         }
     }

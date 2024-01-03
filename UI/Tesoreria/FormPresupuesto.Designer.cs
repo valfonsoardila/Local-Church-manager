@@ -653,7 +653,7 @@
             this.chartGeneral.Location = new System.Drawing.Point(0, 502);
             this.chartGeneral.Name = "chartGeneral";
             series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series8.Legend = "Legend1";
             series8.Name = "Series1";
             series8.YValuesPerPoint = 6;
@@ -1291,6 +1291,7 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnRegistrar
             // 
@@ -1309,6 +1310,7 @@
             this.btnRegistrar.Text = "Guardar";
             this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // panel5
             // 
@@ -1564,7 +1566,7 @@
             // 
             // panel11
             // 
-            this.panel11.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.panel11.BackColor = System.Drawing.Color.Violet;
             this.panel11.Controls.Add(this.iconPictureBox9);
             this.panel11.Controls.Add(this.label27);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1618,7 +1620,7 @@
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.panel10.BackColor = System.Drawing.Color.SlateBlue;
             this.panel10.Controls.Add(this.iconPictureBox8);
             this.panel10.Controls.Add(this.label26);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1672,7 +1674,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.panel9.BackColor = System.Drawing.Color.SteelBlue;
             this.panel9.Controls.Add(this.iconPictureBox7);
             this.panel9.Controls.Add(this.label25);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
