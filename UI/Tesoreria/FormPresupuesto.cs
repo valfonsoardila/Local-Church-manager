@@ -172,6 +172,8 @@ namespace UI
                 tabPage = tabPresupuestos.TabPages["tabPorcentajes"];
                 tabPresupuestos.TabPages.RemoveAt(2);
             }
+            comboFiltroAño.Text = DateTime.Now.Year.ToString();
+            comboAño.Text = DateTime.Now.Year.ToString();
         }
         private async void EliminarPresupuesto(int id)
         {
@@ -340,7 +342,7 @@ namespace UI
                     formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
                 }
                 ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
-                respuesta = presupuestoService.FiltrarEgresosPorComite(comite);
+                respuesta = presupuestoService.FiltrarPresupuestosPorComite(comite);
                 if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
                 {
                     dataGridPresupuestos.DataSource = null;
@@ -675,16 +677,6 @@ namespace UI
             }
         }
 
-        private void comboFiltroAño_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboFiltroComite_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void textOtroConcepto_Enter(object sender, EventArgs e)
         {
             string placeHolder = textNuevoConcepto.Text;
@@ -911,13 +903,13 @@ namespace UI
                 // Configura el gráfico ingresos
                 chartIngresoIndividual.Series[0].ChartType = SeriesChartType.Doughnut;
                 chartIngresoIndividual.Series[0].IsValueShownAsLabel = true;
-                chartIngresoIndividual.Series[0].LabelFormat = "#,##0.00";
+                chartIngresoIndividual.Series[0].LabelFormat = "#,##";
                 chartIngresoIndividual.Titles.Clear();
                 chartIngresoIndividual.Titles.Add("Distribución de ingresos para " + comite);
                 // Configura el gráfico egresos
                 chartEgresoIndividual.Series[0].ChartType = SeriesChartType.Doughnut;
                 chartEgresoIndividual.Series[0].IsValueShownAsLabel = true;
-                chartEgresoIndividual.Series[0].LabelFormat = "#,##0.00";
+                chartEgresoIndividual.Series[0].LabelFormat = "#,##";
                 chartEgresoIndividual.Titles.Clear();
                 chartEgresoIndividual.Titles.Add("Distribución de egresos para " + comite);
             }
@@ -994,6 +986,135 @@ namespace UI
         {
             FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
             formGenerarDocumento.Show();
+        }
+        private async void FiltroPorAño(string filtro)
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var presupuestosQuery = db.Collection("BudgetData");
+                presupuestosGeneral = new List<BudgetData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await presupuestosQuery.GetSnapshotAsync();
+                presupuestosGeneral = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetData>()).ToList();
+                var presupuestosFiltrados = presupuestosGeneral.Where(presupuesto => presupuesto.AñoPresupuesto == filtro).ToList();
+                dataGridPresupuestos.DataSource = presupuestosFiltrados;
+                Borrar.Visible = true;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch(Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
+                respuesta = presupuestoService.FiltrarPresupuestosPorAño(filtro);
+                if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
+                {
+                    dataGridPresupuestos.DataSource = null;
+                    presupuestos = respuesta.Presupuestos.ToList();
+                    if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
+                    {
+                        dataGridPresupuestos.DataSource = respuesta.Presupuestos;
+                        Borrar.Visible = true;
+                    }
+                }
+                else
+                {
+                    dataGridPresupuestos.DataSource = null;
+                    presupuestos = respuesta.Presupuestos.ToList();
+                }
+            }
+        }
+        private async void FiltroPorComite(string filtro)
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var presupuestosQuery = db.Collection("BudgetData");
+                presupuestosGeneral = new List<BudgetData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await presupuestosQuery.GetSnapshotAsync();
+                presupuestosGeneral = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetData>()).ToList();
+                var presupuestosFiltrados= presupuestosGeneral.Where(presupuesto => presupuesto.Comite == filtro).ToList();
+                dataGridPresupuestos.DataSource = presupuestosFiltrados;
+                Borrar.Visible = true;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch(Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
+                respuesta = presupuestoService.FiltrarPresupuestosPorComite(filtro);
+                if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
+                {
+                    dataGridPresupuestos.DataSource = null;
+                    presupuestos = respuesta.Presupuestos.ToList();
+                    if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
+                    {
+                        dataGridPresupuestos.DataSource = respuesta.Presupuestos;
+                        Borrar.Visible = true;
+                    }
+                }
+                else
+                {
+                    dataGridPresupuestos.DataSource = null;
+                    presupuestos = respuesta.Presupuestos.ToList();
+                }
+            }
+        }
+        private void comboFiltroComite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtro = comboFiltroComite.Text;
+            if (filtro == "Todos")
+            {
+                ConsultarPresupuesto();
+            }
+            else
+            {
+                comboFiltroAño.Text = DateTime.Now.Year.ToString();
+                FiltroPorComite(filtro);
+            }
+        }
+
+        private void comboFiltroAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtro = comboFiltroAño.Text;
+            if (filtro == "Todos")
+            {
+                ConsultarPresupuesto();
+            }
+            else
+            {
+                comboFiltroComite.Text = "Todos";
+                FiltroPorAño(filtro);
+            }
         }
     }
 }

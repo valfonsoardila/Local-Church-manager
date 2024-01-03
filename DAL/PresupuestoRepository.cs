@@ -81,6 +81,26 @@ namespace DAL
             }
             return presupuestos;
         }
+        public List<Presupuesto> FiltrarPresupuestosPorAño(string año)
+        {
+            List<Presupuesto> presupuestos = new List<Presupuesto>();
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from PRESUPUESTO where AnoPresupuesto=@AnoPresupuesto";
+                command.Parameters.AddWithValue("@AnoPresupuesto", año);
+                var dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        Presupuesto presupuesto = DataReaderMapToPresupuesto(dataReader);
+                        presupuestos.Add(presupuesto);
+                    }
+                }
+            }
+            return presupuestos;
+        }
+
         //public List<Presupuesto> FiltrarEgresosPorConcepto(string concepto)
         //{
         //    List<Presupuesto> presupuestos = new List<Presupuesto>();
