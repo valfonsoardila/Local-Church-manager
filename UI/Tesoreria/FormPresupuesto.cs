@@ -534,42 +534,6 @@ namespace UI
             return presupuesto;
         }
 
-        private void textOfrendas_Validated(object sender, EventArgs e)
-        {
-            if (textOfrendas.Text != "" && textOfrendas.Text != "$ 000.00")
-            {
-                int sumOfrendas = int.Parse(textOfrendas.Text);
-                textOfrendas.Text = LecturaCifra(sumOfrendas);
-            }
-        }
-
-        private void textActividades_Validated(object sender, EventArgs e)
-        {
-            if (textActividades.Text != "" && textActividades.Text != "$ 000.00")
-            {
-                int sumActividades = int.Parse(textActividades.Text);
-                textActividades.Text = LecturaCifra(sumActividades);
-            }
-        }
-
-        private void textVotos_Validated(object sender, EventArgs e)
-        {
-            if (textVotos.Text != "" && textVotos.Text != "$ 000.00")
-            {
-                int sumVotos = int.Parse(textVotos.Text);
-                textVotos.Text = LecturaCifra(sumVotos);
-            }
-        }
-
-        private void textOtroValor_Validated(object sender, EventArgs e)
-        {
-            if (textOtroValor.Text != "" && textOtroValor.Text != "$ 000.00")
-            {
-                int sumOtroValor = int.Parse(textOtroValor.Text);
-                textOtroValor.Text = LecturaCifra(sumOtroValor);
-            }
-        }
-
         //private void textPresupuesto_Validated(object sender, EventArgs e)
         //{
         //    if (textPresupuesto.Text != "" && textPresupuesto.Text != "$ 000.00")
@@ -579,125 +543,6 @@ namespace UI
         //    }
         //}
 
-        private void textEgresos_Validated(object sender, EventArgs e)
-        {
-            if (textEgresos.Text != "" && textEgresos.Text != "$ 000.00")
-            {
-                int sumEgreso = int.Parse(textEgresos.Text);
-                textEgresos.Text = LecturaCifra(sumEgreso);
-            }
-        }
-
-        private void textOtroConcepto_Enter(object sender, EventArgs e)
-        {
-            string placeHolder = textNuevoConcepto.Text;
-            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
-            textNuevoConcepto.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
-        }
-
-        private void textOtroConcepto_Leave(object sender, EventArgs e)
-        {
-            string placeHolder = textNuevoConcepto.Text;
-            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
-            textNuevoConcepto.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
-        }
-
-        private void textOfrendas_Enter(object sender, EventArgs e)
-        {
-            if (textOfrendas.Text != "")
-            {
-                textOfrendas.Text = "";
-            }
-        }
-
-        private void textOfrendas_Leave(object sender, EventArgs e)
-        {
-            if (textOfrendas.Text == "")
-            {
-                textOfrendas.Text = "$ 000.00";
-            }
-        }
-
-        private void textActividades_Enter(object sender, EventArgs e)
-        {
-            if (textActividades.Text != "")
-            {
-                textActividades.Text = "";
-            }
-        }
-
-        private void textActividades_Leave(object sender, EventArgs e)
-        {
-            if (textActividades.Text == "")
-            {
-                textActividades.Text = "$ 000.00";
-            }
-        }
-
-        private void textVotos_Enter(object sender, EventArgs e)
-        {
-            if (textVotos.Text != "")
-            {
-                textVotos.Text = "";
-            }
-        }
-
-        private void textVotos_Leave(object sender, EventArgs e)
-        {
-            if (textVotos.Text == "")
-            {
-                textVotos.Text = "$ 000.00";
-            }
-        }
-
-        private void textOtroValor_Enter(object sender, EventArgs e)
-        {
-            if (textOtroValor.Text != "")
-            {
-                textOtroValor.Text = "";
-            }
-        }
-
-        private void textOtroValor_Leave(object sender, EventArgs e)
-        {
-            if (textOtroValor.Text == "")
-            {
-                textOtroValor.Text = "$ 000.00";
-            }
-        }
-
-        private void textPresupuesto_Enter(object sender, EventArgs e)
-        {
-            if (textPresupuesto.Text != "")
-            {
-                textPresupuesto.Text = "";
-            }
-            TotalizarConceptos();
-        }
-
-        private void textPresupuesto_Leave(object sender, EventArgs e)
-        {
-            if (textPresupuesto.Text == "")
-            {
-                textPresupuesto.Text = "$ 000.00";
-            }
-        }
-
-        private void textEgresos_Enter(object sender, EventArgs e)
-        {
-            if (textEgresos.Text != "")
-            {
-                textEgresos.Text = "";
-            }
-        }
-
-        private void textEgresos_Leave(object sender, EventArgs e)
-        {
-            if (textEgresos.Text == "")
-            {
-                textEgresos.Text = "$ 000.00";
-            }
-        }
         private void TotalizarConceptos()
         {
             int ofrendas = ObtenerCantidadEntera(textOfrendas.Text);
@@ -1141,6 +986,157 @@ namespace UI
                     tabPresupuestos.SelectedIndex = 0;
                 }
             }
+        }
+
+        private void textOfrendas_Enter(object sender, EventArgs e)
+        {
+            if (textOfrendas.Text != "")
+            {
+                textOfrendas.Text = "";
+            }
+        }
+        private void textOfrendas_Leave(object sender, EventArgs e)
+        {
+            if (textOfrendas.Text == "")
+            {
+                textOfrendas.Text = "$ 000.00";
+            }
+        }
+        private void textOfrendas_Validated(object sender, EventArgs e)
+        {
+            if (textOfrendas.Text != "" && textOfrendas.Text != "$ 000.00")
+            {
+                int sumOfrendas = int.Parse(textOfrendas.Text);
+                textOfrendas.Text = LecturaCifra(sumOfrendas);
+            }
+        }
+
+        private void textActividades_Validated(object sender, EventArgs e)
+        {
+            if (textActividades.Text != "" && textActividades.Text != "$ 000.00")
+            {
+                int sumActividades = int.Parse(textActividades.Text);
+                textActividades.Text = LecturaCifra(sumActividades);
+            }
+        }
+
+        private void textActividades_Enter(object sender, EventArgs e)
+        {
+            if (textActividades.Text != "")
+            {
+                textActividades.Text = "";
+            }
+        }
+
+        private void textActividades_Leave(object sender, EventArgs e)
+        {
+            if (textActividades.Text == "")
+            {
+                textActividades.Text = "$ 000.00";
+            }
+        }
+
+        private void textVotos_Validated(object sender, EventArgs e)
+        {
+            if (textVotos.Text != "" && textVotos.Text != "$ 000.00")
+            {
+                int sumVotos = int.Parse(textVotos.Text);
+                textVotos.Text = LecturaCifra(sumVotos);
+            }
+        }
+
+        private void textOtroValor_Validated(object sender, EventArgs e)
+        {
+            if (textOtroValor.Text != "" && textOtroValor.Text != "$ 000.00")
+            {
+                int sumOtroValor = int.Parse(textOtroValor.Text);
+                textOtroValor.Text = LecturaCifra(sumOtroValor);
+            }
+        }
+
+        private void textNuevoConcepto_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textNuevoConcepto.Text;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
+            textNuevoConcepto.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
+        }
+
+        private void textNuevoConcepto_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textNuevoConcepto.Text;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
+            textNuevoConcepto.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+
+        private void textVotos_Enter(object sender, EventArgs e)
+        {
+            if (textVotos.Text != "")
+            {
+                textVotos.Text = "";
+            }
+        }
+
+        private void textVotos_Leave(object sender, EventArgs e)
+        {
+            if (textVotos.Text == "")
+            {
+                textVotos.Text = "$ 000.00";
+            }
+        }
+
+        private void textOtroValor_Enter(object sender, EventArgs e)
+        {
+            if (textOtroValor.Text != "")
+            {
+                textOtroValor.Text = "";
+            }
+        }
+
+        private void textOtroValor_Leave(object sender, EventArgs e)
+        {
+            if (textOtroValor.Text == "")
+            {
+                textOtroValor.Text = "$ 000.00";
+            }
+        }
+
+        private void textPresupuesto_Enter(object sender, EventArgs e)
+        {
+            if (textPresupuesto.Text != "")
+            {
+                textPresupuesto.Text = "";
+            }
+            TotalizarConceptos();
+        }
+
+        private void textPresupuesto_Leave(object sender, EventArgs e)
+        {
+            if (textPresupuesto.Text == "")
+            {
+                textPresupuesto.Text = "$ 000.00";
+            }
+        }
+
+        private void textEgresos_Enter(object sender, EventArgs e)
+        {
+            if (textEgresos.Text != "")
+            {
+                textEgresos.Text = "";
+            }
+        }
+
+        private void textEgresos_Leave(object sender, EventArgs e)
+        {
+            if (textEgresos.Text == "")
+            {
+                textEgresos.Text = "$ 000.00";
+            }
+        }
+
+        private void btnInformePorcentaje_Click(object sender, EventArgs e)
+        {
+            FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
+            formGenerarDocumento.Show();
         }
     }
 }

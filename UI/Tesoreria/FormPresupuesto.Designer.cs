@@ -157,7 +157,7 @@
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label24 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnInformePorcentaje = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -992,6 +992,9 @@
             this.textOtroValor.Size = new System.Drawing.Size(181, 26);
             this.textOtroValor.TabIndex = 66;
             this.textOtroValor.Text = "$ 000.00";
+            this.textOtroValor.Enter += new System.EventHandler(this.textOtroValor_Enter);
+            this.textOtroValor.Leave += new System.EventHandler(this.textOtroValor_Leave);
+            this.textOtroValor.Validated += new System.EventHandler(this.textOtroValor_Validated);
             // 
             // textNuevoConcepto
             // 
@@ -1002,6 +1005,8 @@
             this.textNuevoConcepto.Size = new System.Drawing.Size(104, 26);
             this.textNuevoConcepto.TabIndex = 65;
             this.textNuevoConcepto.Text = "Nuevo concepto";
+            this.textNuevoConcepto.Enter += new System.EventHandler(this.textNuevoConcepto_Enter);
+            this.textNuevoConcepto.Leave += new System.EventHandler(this.textNuevoConcepto_Leave);
             // 
             // label14
             // 
@@ -1022,6 +1027,8 @@
             this.textPresupuesto.Size = new System.Drawing.Size(181, 26);
             this.textPresupuesto.TabIndex = 62;
             this.textPresupuesto.Text = "$ 000.00";
+            this.textPresupuesto.Enter += new System.EventHandler(this.textPresupuesto_Enter);
+            this.textPresupuesto.Leave += new System.EventHandler(this.textPresupuesto_Leave);
             // 
             // label10
             // 
@@ -1042,6 +1049,9 @@
             this.textVotos.Size = new System.Drawing.Size(181, 26);
             this.textVotos.TabIndex = 60;
             this.textVotos.Text = "$ 000.00";
+            this.textVotos.Enter += new System.EventHandler(this.textVotos_Enter);
+            this.textVotos.Leave += new System.EventHandler(this.textVotos_Leave);
+            this.textVotos.Validated += new System.EventHandler(this.textVotos_Validated);
             // 
             // label6
             // 
@@ -1062,6 +1072,9 @@
             this.textOfrendas.Size = new System.Drawing.Size(181, 26);
             this.textOfrendas.TabIndex = 58;
             this.textOfrendas.Text = "$ 000.00";
+            this.textOfrendas.Enter += new System.EventHandler(this.textOfrendas_Enter);
+            this.textOfrendas.Leave += new System.EventHandler(this.textOfrendas_Leave);
+            this.textOfrendas.Validated += new System.EventHandler(this.textOfrendas_Validated);
             // 
             // label4
             // 
@@ -1166,6 +1179,9 @@
             this.textActividades.Size = new System.Drawing.Size(181, 26);
             this.textActividades.TabIndex = 54;
             this.textActividades.Text = "$ 000.00";
+            this.textActividades.Enter += new System.EventHandler(this.textActividades_Enter);
+            this.textActividades.Leave += new System.EventHandler(this.textActividades_Leave);
+            this.textActividades.Validated += new System.EventHandler(this.textActividades_Validated);
             // 
             // label13
             // 
@@ -1228,6 +1244,8 @@
             this.textEgresos.Size = new System.Drawing.Size(181, 26);
             this.textEgresos.TabIndex = 64;
             this.textEgresos.Text = "$ 000.00";
+            this.textEgresos.Enter += new System.EventHandler(this.textEgresos_Enter);
+            this.textEgresos.Leave += new System.EventHandler(this.textEgresos_Leave);
             // 
             // label18
             // 
@@ -1768,7 +1786,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.50505F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.49495F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 376F));
-            this.tableLayoutPanel5.Controls.Add(this.iconButton1, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnInformePorcentaje, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 394);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -1777,23 +1795,24 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(871, 56);
             this.tableLayoutPanel5.TabIndex = 22;
             // 
-            // iconButton1
+            // btnInformePorcentaje
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.Orange;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(352, 3);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton1.Size = new System.Drawing.Size(140, 35);
-            this.iconButton1.TabIndex = 16;
-            this.iconButton1.Text = "Generar informe";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.btnInformePorcentaje.BackColor = System.Drawing.Color.Orange;
+            this.btnInformePorcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInformePorcentaje.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnInformePorcentaje.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
+            this.btnInformePorcentaje.IconColor = System.Drawing.Color.Black;
+            this.btnInformePorcentaje.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnInformePorcentaje.IconSize = 30;
+            this.btnInformePorcentaje.Location = new System.Drawing.Point(352, 3);
+            this.btnInformePorcentaje.Name = "btnInformePorcentaje";
+            this.btnInformePorcentaje.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnInformePorcentaje.Size = new System.Drawing.Size(140, 35);
+            this.btnInformePorcentaje.TabIndex = 16;
+            this.btnInformePorcentaje.Text = "Generar informe";
+            this.btnInformePorcentaje.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInformePorcentaje.UseVisualStyleBackColor = false;
+            this.btnInformePorcentaje.Click += new System.EventHandler(this.btnInformePorcentaje_Click);
             // 
             // panel2
             // 
@@ -2003,7 +2022,7 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnInformePorcentaje;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Panel panelRubros;
         private System.Windows.Forms.Panel panel8;
