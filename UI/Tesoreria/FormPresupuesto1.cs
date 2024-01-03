@@ -1,22 +1,12 @@
 ﻿using BLL;
 using Cloud;
-using DocumentFormat.OpenXml.Bibliography;
-using DocumentFormat.OpenXml.Office2010.Excel;
-using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Entity;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace UI
 {
@@ -169,7 +159,7 @@ namespace UI
         {
             if (tabPresupuestos.TabCount > 0)
             {
-                tabPage = tabPresupuestos.TabPages["tabPorcentajes"];
+                tabPage = tabPresupuestos.TabPages["tabDetalle"];
                 tabPresupuestos.TabPages.RemoveAt(2);
             }
         }
@@ -213,18 +203,18 @@ namespace UI
         }
         private void AgregarAGridRubros()
         {
-            //dataGridRubros.DataSource = null;
+            dataGridRubros.DataSource = null;
             List<double> porcentajes = CalcularPorcentajeRubros();
             double porcentajeOfrenda = porcentajes[0];
             double porcentajeActividad = porcentajes[1];
             double porcentajeVoto = porcentajes[2];
             double porcentajeOtroConcepto = porcentajes[3];
             // Agregar filas al DataGridView con los valores necesarios
-            dataGridRubros.Rows.Clear();
-            dataGridRubros.Rows.Add("1", "Ofrenda", LecturaCifra(ofrendasIngresos), porcentajeOfrenda.ToString() + "%");
-            dataGridRubros.Rows.Add("2", "Voto", LecturaCifra(votosIngresos), porcentajeActividad.ToString() + "%");
-            dataGridRubros.Rows.Add("3", "Actividades", LecturaCifra(activIdadesIngresos), porcentajeVoto.ToString() + "%");
-            dataGridRubros.Rows.Add("4", "Otros", LecturaCifra(otrosIngresos), porcentajeOtroConcepto.ToString() + "%");
+            dataGridRubros.Rows.Add("1", "Ofrenda", ofrendasIngresos.ToString(), porcentajeOfrenda.ToString() + "%");
+            dataGridRubros.Rows.Add("2", "Voto", votosIngresos.ToString(), porcentajeActividad.ToString() + "%");
+            dataGridRubros.Rows.Add("3", "Actividades", activIdadesIngresos.ToString(), porcentajeVoto.ToString() + "%");
+            dataGridRubros.Rows.Add("4", "Otros", otrosIngresos.ToString(), porcentajeOtroConcepto.ToString() + "%");
+            tabPage = new TabPage();
             tabPresupuestos.TabPages.Add(tabPage);
             tabPresupuestos.SelectedIndex = 2;
             detallo = true;
@@ -748,6 +738,55 @@ namespace UI
             int totalConceptos = ofrendas + actividades + votos + otro;
             textPresupuesto.Text = LecturaCifra(totalConceptos);
         }
+        private void dataGridPresupuestos_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridPresupuestos.DataSource != null)
+            {
+                if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Borrar")
+                {
+                    id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["Id"].Value.ToString());
+                    EliminarPresupuesto(id);
+                    ConsultarPresupuesto();
+                }
+                else
+                {
+                    if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Detallar")
+                    {
+                        comite = Convert.ToString(dataGridPresupuestos.CurrentRow.Cells["Comite"].Value.ToString());
+                        FiltrarPresupuestosPorComite(comite);
+                    }
+                    else
+                    {
+                        if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Editar")
+                        {
+                            id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["Id"].Value.ToString());
+                            FiltroPorId(id);
+                            if (encontrado == true)
+                            {
+                                tabPresupuestos.SelectedIndex = 1;
+                            }
+                        }
+                        else
+                        {
+                            if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Seleccionar")
+                            {
+                                // Verificar si el clic se realizó en la columna de CheckBoxColumn
+                                if (e.ColumnIndex == dataGridPresupuestos.Columns["Seleccionar"].Index && e.RowIndex != -1)
+                                {
+                                    // Obtener la celda de CheckBox clicada
+                                    DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)dataGridPresupuestos.Rows[e.RowIndex].Cells["Seleccionar"];
+                                    // Cambiar el estado del CheckBox
+                                    checkBoxCell.Value = !Convert.ToBoolean(checkBoxCell.Value);
+                                    // Consulta
+                                    comite = Convert.ToString(dataGridPresupuestos.CurrentRow.Cells["Comite"].Value.ToString());
+                                    FiltrarPresupuestosPorComite(comite);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         private async void ObtenerIngresosYEgresos()
         {
             try
@@ -874,70 +913,20 @@ namespace UI
             }
         }
 
-        private void tabPresupuestos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabPresupuestos.SelectedIndex != 2 && detallo != false)
-            {
-                tabPage = tabPresupuestos.TabPages["tabPorcentajes"];
-                tabPresupuestos.TabPages.RemoveAt(2);
-                detallo = false;
-            }
-        }
-
-        private void dataGridPresupuestos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridPresupuestos.DataSource != null)
-            {
-                if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Borrar")
-                {
-                    id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["Id"].Value.ToString());
-                    EliminarPresupuesto(id);
-                    ConsultarPresupuesto();
-                }
-                else
-                {
-                    if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Detallar")
-                    {
-                        comite = Convert.ToString(dataGridPresupuestos.CurrentRow.Cells["Comite"].Value.ToString());
-                        FiltrarPresupuestosPorComite(comite);
-                    }
-                    else
-                    {
-                        if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Editar")
-                        {
-                            id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["Id"].Value.ToString());
-                            FiltroPorId(id);
-                            if (encontrado == true)
-                            {
-                                tabPresupuestos.SelectedIndex = 1;
-                            }
-                        }
-                        else
-                        {
-                            if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Seleccionar")
-                            {
-                                // Verificar si el clic se realizó en la columna de CheckBoxColumn
-                                if (e.ColumnIndex == dataGridPresupuestos.Columns["Seleccionar"].Index && e.RowIndex != -1)
-                                {
-                                    // Obtener la celda de CheckBox clicada
-                                    DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)dataGridPresupuestos.Rows[e.RowIndex].Cells["Seleccionar"];
-                                    // Cambiar el estado del CheckBox
-                                    checkBoxCell.Value = !Convert.ToBoolean(checkBoxCell.Value);
-                                    // Consulta
-                                    comite = Convert.ToString(dataGridPresupuestos.CurrentRow.Cells["Comite"].Value.ToString());
-                                    FiltrarPresupuestosPorComite(comite);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         private void btnGenerarInforme_Click(object sender, EventArgs e)
         {
             FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
             formGenerarDocumento.Show();
+        }
+
+        private void tabPresupuestos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabPresupuestos.SelectedIndex != 2 && detallo != false)
+            {
+                tabPage = tabPresupuestos.TabPages["tabDetalle"];
+                tabPresupuestos.TabPages.RemoveAt(2);
+                detallo = false;
+            }
         }
     }
 }
