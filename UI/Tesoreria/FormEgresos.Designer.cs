@@ -59,6 +59,7 @@
             this.tabListaEgresos = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
             this.btnGestionarEgresos = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -68,7 +69,6 @@
             this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboFiltroComite = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textTotalNube = new System.Windows.Forms.TextBox();
@@ -102,7 +102,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
+            this.comboFiltroAño = new System.Windows.Forms.ComboBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -654,6 +654,25 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(865, 44);
             this.tableLayoutPanel2.TabIndex = 17;
             // 
+            // btnGenerarInforme
+            // 
+            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
+            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
+            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
+            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGenerarInforme.IconSize = 30;
+            this.btnGenerarInforme.Location = new System.Drawing.Point(435, 3);
+            this.btnGenerarInforme.Name = "btnGenerarInforme";
+            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
+            this.btnGenerarInforme.TabIndex = 16;
+            this.btnGenerarInforme.Text = "Generar informe";
+            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarInforme.UseVisualStyleBackColor = false;
+            this.btnGenerarInforme.Click += new System.EventHandler(this.btnGenerarInforme_Click);
+            // 
             // btnGestionarEgresos
             // 
             this.btnGestionarEgresos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -756,7 +775,7 @@
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Maroon;
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboBox1);
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboFiltroAño);
             this.panelContenedorDeDirectorio.Controls.Add(this.comboFiltroComite);
             this.panelContenedorDeDirectorio.Controls.Add(this.label15);
             this.panelContenedorDeDirectorio.Controls.Add(this.textTotalNube);
@@ -772,72 +791,6 @@
             this.panelContenedorDeDirectorio.Name = "panelContenedorDeDirectorio";
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(803, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "Ingeniero(a) de sistemas",
-            "Ingeniero(a) de electronica",
-            "Ingeniero(a) Industrial",
-            "Enfermero(a)",
-            "Electricista",
-            "Albañil",
-            "Abogado",
-            "Acesor comercial",
-            "Estudiante",
-            "Medico(a)",
-            "Farmaceutico(a)",
-            "Odontologo(a)",
-            "Fontaneros(a)",
-            "Docente",
-            "Contadores",
-            "Psicologos",
-            "Chef",
-            "Repostero(a)",
-            "Vigilante",
-            "Escolta",
-            "Ebanista",
-            "Peluquero",
-            "Domiciliario",
-            "Soldador",
-            "Diseñador Grafico",
-            "Maestro de obra",
-            "Mecanico",
-            "Chofer",
-            "Impulsador",
-            "Optometra",
-            "Naturista",
-            "Vendedor",
-            "Modista",
-            "Electronico",
-            "Tecnico"});
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Año",
-            "2023",
-            "2024",
-            "2025",
-            "2026",
-            "2027",
-            "2028",
-            "2029",
-            "2030",
-            "2031",
-            "2032",
-            "2033",
-            "2034",
-            "2035",
-            "2036",
-            "2037",
-            "2040"});
-            this.comboBox1.Location = new System.Drawing.Point(500, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(68, 24);
-            this.comboBox1.TabIndex = 27;
-            this.comboBox1.Text = "Año";
             // 
             // comboFiltroComite
             // 
@@ -907,7 +860,7 @@
             "Comité de familia",
             "Donacion",
             "Aporte de liquidacion"});
-            this.comboFiltroComite.Location = new System.Drawing.Point(373, 4);
+            this.comboFiltroComite.Location = new System.Drawing.Point(368, 4);
             this.comboFiltroComite.Name = "comboFiltroComite";
             this.comboFiltroComite.Size = new System.Drawing.Size(121, 24);
             this.comboFiltroComite.TabIndex = 26;
@@ -919,7 +872,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label15.Location = new System.Drawing.Point(220, 8);
+            this.label15.Location = new System.Drawing.Point(215, 8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(100, 16);
             this.label15.TabIndex = 25;
@@ -928,7 +881,7 @@
             // textTotalNube
             // 
             this.textTotalNube.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalNube.Location = new System.Drawing.Point(321, 5);
+            this.textTotalNube.Location = new System.Drawing.Point(316, 5);
             this.textTotalNube.Name = "textTotalNube";
             this.textTotalNube.Size = new System.Drawing.Size(46, 22);
             this.textTotalNube.TabIndex = 24;
@@ -939,7 +892,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(92, 9);
+            this.label9.Location = new System.Drawing.Point(87, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 16);
             this.label9.TabIndex = 23;
@@ -948,7 +901,7 @@
             // textTotalLocal
             // 
             this.textTotalLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalLocal.Location = new System.Drawing.Point(173, 5);
+            this.textTotalLocal.Location = new System.Drawing.Point(168, 5);
             this.textTotalLocal.Name = "textTotalLocal";
             this.textTotalLocal.Size = new System.Drawing.Size(46, 22);
             this.textTotalLocal.TabIndex = 22;
@@ -988,10 +941,10 @@
             // 
             this.textSerachLibreta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textSerachLibreta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSerachLibreta.Location = new System.Drawing.Point(580, 1);
+            this.textSerachLibreta.Location = new System.Drawing.Point(586, 1);
             this.textSerachLibreta.Multiline = true;
             this.textSerachLibreta.Name = "textSerachLibreta";
-            this.textSerachLibreta.Size = new System.Drawing.Size(180, 30);
+            this.textSerachLibreta.Size = new System.Drawing.Size(174, 30);
             this.textSerachLibreta.TabIndex = 6;
             this.textSerachLibreta.Text = "Buscar por fecha";
             this.textSerachLibreta.Visible = false;
@@ -1375,24 +1328,51 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Libro";
             // 
-            // btnGenerarInforme
+            // comboFiltroAño
             // 
-            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
-            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
-            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
-            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGenerarInforme.IconSize = 30;
-            this.btnGenerarInforme.Location = new System.Drawing.Point(435, 3);
-            this.btnGenerarInforme.Name = "btnGenerarInforme";
-            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
-            this.btnGenerarInforme.TabIndex = 16;
-            this.btnGenerarInforme.Text = "Generar informe";
-            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGenerarInforme.UseVisualStyleBackColor = false;
-            this.btnGenerarInforme.Click += new System.EventHandler(this.btnGenerarInforme_Click);
+            this.comboFiltroAño.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboFiltroAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltroAño.FormattingEnabled = true;
+            this.comboFiltroAño.Items.AddRange(new object[] {
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030",
+            "2031",
+            "2032",
+            "2033",
+            "2034",
+            "2035",
+            "2036",
+            "2037",
+            "2038",
+            "2039",
+            "2040",
+            "2041",
+            "2042",
+            "2043",
+            "2044",
+            "2045",
+            "2046",
+            "2047",
+            "2048",
+            "2049",
+            "2050"});
+            this.comboFiltroAño.Location = new System.Drawing.Point(494, 4);
+            this.comboFiltroAño.Name = "comboFiltroAño";
+            this.comboFiltroAño.Size = new System.Drawing.Size(87, 24);
+            this.comboFiltroAño.TabIndex = 27;
+            this.comboFiltroAño.Text = "2020";
+            this.comboFiltroAño.SelectedIndexChanged += new System.EventHandler(this.comboFiltroAño_SelectedIndexChanged);
             // 
             // FormEgresos
             // 
@@ -1514,9 +1494,9 @@
         private FontAwesome.Sharp.IconButton btnImprimirDetalle;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textSaldo;
         private FontAwesome.Sharp.IconButton btnGenerarInforme;
+        private System.Windows.Forms.ComboBox comboFiltroAño;
     }
 }

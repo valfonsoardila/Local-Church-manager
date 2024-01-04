@@ -108,6 +108,8 @@ namespace Cloud
 
         [FirestoreProperty]
         public int TiempoCorreccion { get; set; }
+        [FirestoreProperty]
+        public string Motivo { get; set; }
 
         [FirestoreProperty]
         public string Membresia { get; set; }

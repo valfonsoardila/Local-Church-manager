@@ -25,6 +25,7 @@ namespace UI
         Ingreso ingreso;
         IngresoService ingresoService;
         List<Ingreso> ingresos;
+        List<IngressData> ingress;
         Egreso egreso;
         EgresoService egresoService;
         List<Egreso> egresos;
@@ -205,6 +206,7 @@ namespace UI
                 tabPage = tabLibroIngresos.TabPages["tabDetalle"];
                 tabLibroIngresos.TabPages.RemoveAt(2);
             }
+            comboFiltroAño.Text = DateTime.Now.Year.ToString();
         }
         private async void CalcularComprobante()
         {
@@ -1018,11 +1020,66 @@ namespace UI
                 MessageBox.Show($"Error al editar el documento: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private async void FiltroPorAño(string filtro)
+        {
+            try
+            {
+                var ingresosPorAño = new List<IngressData>();
+                var db = FirebaseService.Database;
+                var ingresosQuery = db.Collection("IngressData");
+                ingress = new List<IngressData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await ingresosQuery.GetSnapshotAsync();
+                ingress = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                for(int i = 0; i < ingress.Count; i++)
+                {
+                    if (ingress[i].FechaDeIngreso.Contains(filtro))
+                    {
+                        ingresosPorAño.Add(ingress[i]);
+                    }
+                }
+                dataGridIngresos.DataSource = ingresosPorAño;
+                Borrar.Visible = true;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+            }
+        }
 
         private void btnGenerarInforme_Click(object sender, EventArgs e)
         {
             FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
             formGenerarDocumento.Show();
+        }
+
+        private void comboFiltroAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtro = comboFiltroAño.Text;
+            if (filtro == "Todos")
+            {
+                ConsultarIngresos();
+            }
+            else
+            {
+                comboFiltroComite.Text = "Todos";
+                FiltroPorAño(filtro);
+            }
         }
     }
 }

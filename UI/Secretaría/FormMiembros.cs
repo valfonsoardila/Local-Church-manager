@@ -54,6 +54,7 @@ namespace UI
             simpatizanteService = new SimpatizanteService(ConfigConnection.ConnectionString);
             contactoService = new ContactoService(ConfigConnection.ConnectionString);
             miembroService = new MiembroService(ConfigConnection.ConnectionString);
+            contactMaps = new ContactMaps();
             memberMaps = new MemberMaps();
             InitializeComponent();
             Inicializar();
@@ -541,9 +542,10 @@ namespace UI
             miembro.Acto = comboActoParaServir.Text; // Agregar acto
             miembro.FechaCorreccion = dateFechaDeCorreccion.Value; // Agregar fecha de corrección
             miembro.TiempoCorreccion = Convert.ToInt32(textTiempoCorreccion.Text); // Agregar tiempo de corrección
+            miembro.Motivo = textMotivo.Text=="Motivo" || textMotivo.Text == "" ? "Ninguno" : textMotivo.Text;
             miembro.Membresia = comboMembresia.Text; // Agregar membresía
-            miembro.LugarTraslado = textLugarDeTraslado.Text; // Agregar lugar de traslado
-            miembro.Observaciones = textObservaciones.Text; // Agregar observaciones
+            miembro.LugarTraslado = textLugarDeTraslado.Text=="Lugar de traslado" || textLugarDeTraslado.Text == "" ? "Ninguno" : textLugarDeTraslado.Text; // Agregar lugar de traslado
+            miembro.Observaciones = textObservaciones.Text=="Observaciones" || textObservaciones.Text == "" ?"Ninguna" : textObservaciones.Text; // Agregar observaciones
 
             return miembro;
         }
@@ -598,49 +600,46 @@ namespace UI
             FiltroPorApellido(apellidos);
             try
             {
-                if (encontradoNombre != true && encontradoApellido != true)
+                // Guardamos en contactos la informacion
+                //contactoService.Guardar(contacto);
+                //Guardamos en la nube
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef;
+                if (comboBautizado.Text == "Si" || comboBautizado.Text == "si")
                 {
-                    // Guardamos en contactos la informacion
-                    contactoService.Guardar(contacto);
-                    //Guardamos en la nube
-                    var db = FirebaseService.Database;
-                    Google.Cloud.Firestore.DocumentReference docRef;
-                    if (comboBautizado.Text=="Si")
-                    {
-                        // Guardamos local
-                        string mensaje = miembroService.Guardar(nuevoMiembro);
-                        // Guardamos el contacto
-                        var contact = contactMaps.ContactMap(contacto);
-                        docRef = db.Collection("ContactsData").Document(contact.IdContacto.ToString());
-                        docRef.SetAsync(contact);
-                        //Guardamos el miembro
-                        var member = memberMaps.MemberMap(nuevoMiembro);
-                        docRef = db.Collection("MembersData").Document(member.Folio.ToString());
-                        docRef.SetAsync(member);
-                        MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                        ConsultarYLlenarGridDeMiembros();
-                        LimpiarCampos();
-                        CalcularFolio();
-                        tabMiembros.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        // Guardamos local
-                        string mensaje = simpatizanteService.Guardar(nuevoSimpatizante);
-                        // Guardamos el contacto
-                        var contact = contactMaps.ContactMap(contacto);
-                        docRef = db.Collection("ContactsData").Document(contact.IdContacto.ToString());
-                        docRef.SetAsync(contact);
-                        //Guardamos el simpatizante
-                        var member = memberMaps.MemberMap(nuevoMiembro);
-                        docRef = db.Collection("SympathizerData").Document(member.Folio.ToString());
-                        docRef.SetAsync(member);
-                        MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                        ConsultarYLlenarGridDeMiembros();
-                        LimpiarCampos();
-                        CalcularFolio();
-                        tabMiembros.SelectedIndex = 0;
-                    }
+                    // Guardamos local
+                    string mensaje = miembroService.Guardar(nuevoMiembro);
+                    // Guardamos el contacto
+                    var contact = contactMaps.ContactMap(contacto);
+                    docRef = db.Collection("ContactsData").Document(contact.IdContacto.ToString());
+                    docRef.SetAsync(contact);
+                    //Guardamos el miembro
+                    var member = memberMaps.MemberMap(nuevoMiembro);
+                    docRef = db.Collection("MembersData").Document(member.Folio.ToString());
+                    docRef.SetAsync(member);
+                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeMiembros();
+                    LimpiarCampos();
+                    CalcularFolio();
+                    tabMiembros.SelectedIndex = 0;
+                }
+                else
+                {
+                    // Guardamos local
+                    string mensaje = simpatizanteService.Guardar(nuevoSimpatizante);
+                    // Guardamos el contacto
+                    var contact = contactMaps.ContactMap(contacto);
+                    docRef = db.Collection("ContactsData").Document(contact.IdContacto.ToString());
+                    docRef.SetAsync(contact);
+                    //Guardamos el simpatizante
+                    var member = memberMaps.MemberMap(nuevoMiembro);
+                    docRef = db.Collection("SympathizerData").Document(member.Folio.ToString());
+                    docRef.SetAsync(member);
+                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeMiembros();
+                    LimpiarCampos();
+                    CalcularFolio();
+                    tabMiembros.SelectedIndex = 0;
                 }
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
@@ -682,19 +681,16 @@ namespace UI
             FiltroPorApellido(apellidos);
             try
             {
-                if (encontradoNombre == true && encontradoApellido == true)
-                {
-                    contactoService.Modificar(contacto);
-                    string mensaje = miembroService.Modificar(miembro);
-                    var db = FirebaseService.Database;
-                    var member = memberMaps.MemberMap(miembro);
-                    Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(member.Folio.ToString());
-                    docRef.SetAsync(member);
-                    MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    ConsultarYLlenarGridDeMiembros();
-                    LimpiarCampos();
-                    tabMiembros.SelectedIndex = 0;
-                }
+                //contactoService.Modificar(contacto);
+                string mensaje = miembroService.Modificar(miembro);
+                var db = FirebaseService.Database;
+                var member = memberMaps.MemberMap(miembro);
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(member.Folio.ToString());
+                docRef.SetAsync(member);
+                MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                ConsultarYLlenarGridDeMiembros();
+                LimpiarCampos();
+                tabMiembros.SelectedIndex = 0;
             }
             catch(Exception ex)
             {
@@ -788,26 +784,6 @@ namespace UI
                 string mensaje = miembroService.Eliminar(id);
                 contactoService.Eliminar(idContacto);
                 MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private void dataGridMiembros_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridMiembros.DataSource != null)
-            {
-                if (dataGridMiembros.Columns[e.ColumnIndex].Name == "Borrar")
-                {
-                    id = Convert.ToString(dataGridMiembros.CurrentRow.Cells["Folio"].Value.ToString());
-                    EliminarMiembro(id);
-                    ConsultarYLlenarGridDeMiembros();
-                }
-                else
-                {
-                    if (dataGridMiembros.Columns[e.ColumnIndex].Name == "Editar")
-                    {
-                        id = Convert.ToString(dataGridMiembros.CurrentRow.Cells["Folio"].Value.ToString());
-                        FiltroPorIdentificacion(id);
-                    }
-                }
             }
         }
         private async void FiltroPorGenero(string filtro)
@@ -1581,6 +1557,27 @@ namespace UI
             else
             {
                 ConsultarYLlenarGridDeMiembros();
+            }
+        }
+
+        private void dataGridMiembros_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridMiembros.DataSource != null)
+            {
+                if (dataGridMiembros.Columns[e.ColumnIndex].Name == "Borrar")
+                {
+                    id = Convert.ToString(dataGridMiembros.CurrentRow.Cells["Folio"].Value.ToString());
+                    EliminarMiembro(id);
+                    ConsultarYLlenarGridDeMiembros();
+                }
+                else
+                {
+                    if (dataGridMiembros.Columns[e.ColumnIndex].Name == "Editar")
+                    {
+                        id = Convert.ToString(dataGridMiembros.CurrentRow.Cells["Folio"].Value.ToString());
+                        FiltroPorIdentificacion(id);
+                    }
+                }
             }
         }
     }

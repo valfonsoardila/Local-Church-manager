@@ -51,6 +51,7 @@ namespace UI
                     Acto = miembro.Acto,
                     FechaCorreccion = miembro.FechaCorreccion.ToString(),
                     TiempoCorreccion = miembro.TiempoCorreccion,
+                    Motivo=miembro.Motivo,
                     Membresia = miembro.Membresia,
                     LugarTraslado = miembro.LugarTraslado,
                     Observaciones = miembro.Observaciones
@@ -95,6 +96,7 @@ namespace UI
                     Acto = miembro.Acto,
                     FechaCorreccion = miembro.FechaCorreccion.ToString(),
                     TiempoCorreccion = miembro.TiempoCorreccion,
+                    Motivo = miembro.Motivo,
                     Membresia = miembro.Membresia,
                     LugarTraslado = miembro.LugarTraslado,
                     Observaciones = miembro.Observaciones

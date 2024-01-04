@@ -23,9 +23,9 @@ namespace DAL
                 command.CommandText = "Insert Into MIEMBRO (Folio, ImagenPerfil, IdContacto, Nombre, Apellido, TipoDoc, NumeroDoc, FechaDeNacimiento, Edad, Genero, Oficio, Direccion, Telefono, " +
                     "ParentezcoPadre, ParentezcoMadre, EstadoCivil, NumeroHijos, NombreConyugue, Bautizado, " +
                     "FechaDeBautizmo, LugarBautizmo, PastorOficiante, Sellado, SelladoRecuerdo, TiempoConversion, " +
-                    "TiempoPromesa, IglesiaProcedente, PastorAsistente, CargosDesempeñados, Acto, FechaCorreccion, TiempoCorreccion, Membresia, LugarTraslado, Observaciones) Values (@Folio, @ImagenPerfil, @IdContacto, @Nombre, @Apellido, @TipoDoc, @NumeroDoc, @FechaDeNacimiento, @Edad, @Genero, @Oficio, @Direccion, @Telefono, @ParentezcoPadre, @ParentezcoMadre, @EstadoCivil, " +
+                    "TiempoPromesa, IglesiaProcedente, PastorAsistente, CargosDesempeñados, Acto, FechaCorreccion, TiempoCorreccion, Motivo, Membresia, LugarTraslado, Observaciones) Values (@Folio, @ImagenPerfil, @IdContacto, @Nombre, @Apellido, @TipoDoc, @NumeroDoc, @FechaDeNacimiento, @Edad, @Genero, @Oficio, @Direccion, @Telefono, @ParentezcoPadre, @ParentezcoMadre, @EstadoCivil, " +
                     "@NumeroHijos, @NombreConyugue, @Bautizado, @FechaDeBautizmo, @LugarBautizmo, @PastorOficiante, " +
-                    "@Sellado, @SelladoRecuerdo, @TiempoConversion, @TiempoPromesa, @IglesiaProcedente, @PastorAsistente, @CargosDesempeñados, @Acto, @FechaCorreccion, @TiempoCorreccion, @Membresia, @LugarTraslado, @Observaciones)";
+                    "@Sellado, @SelladoRecuerdo, @TiempoConversion, @TiempoPromesa, @IglesiaProcedente, @PastorAsistente, @CargosDesempeñados, @Acto, @FechaCorreccion, @TiempoCorreccion, @Motivo, @Membresia, @LugarTraslado, @Observaciones)";
                 command.Parameters.AddWithValue("@Folio", miembro.Folio);
                 command.Parameters.AddWithValue("@IdContacto", miembro.IdContacto);
                 command.Parameters.AddWithValue("@ImagenPerfil", miembro.ImagenPerfil);
@@ -58,6 +58,7 @@ namespace DAL
                 command.Parameters.AddWithValue("@Acto", miembro.Acto);
                 command.Parameters.AddWithValue("@FechaCorreccion", miembro.FechaCorreccion);
                 command.Parameters.AddWithValue("@TiempoCorreccion", miembro.TiempoCorreccion);
+                command.Parameters.AddWithValue("@Motivo", miembro.Motivo);
                 command.Parameters.AddWithValue("@Membresia", miembro.Membresia);
                 command.Parameters.AddWithValue("@LugarTraslado", miembro.LugarTraslado);
                 command.Parameters.AddWithValue("@Observaciones", miembro.Observaciones);
@@ -80,7 +81,7 @@ namespace DAL
             {
                 command.CommandText = "Select Folio, ImagenPerfil, IdContacto, Nombre, Apellido, TipoDoc, NumeroDoc, FechaDeNacimiento, Edad, Genero, Oficio, Direccion, Telefono, ParentezcoPadre, ParentezcoMadre," +
                     "EstadoCivil, NumeroHijos, NombreConyugue, Bautizado, FechaDeBautizmo, LugarBautizmo, PastorOficiante, Sellado, SelladoRecuerdo, TiempoConversion, TiempoPromesa, IglesiaProcedente, " +
-                    "PastorAsistente, CargosDesempeñados, Acto, FechaCorreccion, TiempoCorreccion, Membresia, LugarTraslado, Observaciones from MIEMBRO";
+                    "PastorAsistente, CargosDesempeñados, Acto, FechaCorreccion, TiempoCorreccion, Motivo, Membresia, LugarTraslado, Observaciones from MIEMBRO";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -143,7 +144,7 @@ namespace DAL
                 command.CommandText = @"update MIEMBRO set Folio=@Folio, ImagenPerfil=@ImagenPerfil, IdContacto=@IdContacto, Nombre=@Nombre, Apellido=@Apellido, TipoDoc=@TipoDoc, NumeroDoc=@NumeroDoc, FechaDeNacimiento=@FechaDeNacimiento, Edad=@Edad, Genero=@Genero, Oficio=@Oficio, Direccion=@Direccion, Telefono=@Telefono, ParentezcoPadre=@ParentezcoPadre, ParentezcoMadre=@ParentezcoMadre, 
                     FechaBautizo=@FechaBautizo, TiempoDeConversion=@TiempoDeConversion, FechaRecepcionEspirituSanto=@FechaRecepcionEspirituSanto, LugarRecepcionespirituSanto=@LugarRecepcionespirituSanto, PastorOficiante=@PastorOficiante, FechaMembresiaIglesiaProcedente=@FechaMembresiaIglesiaProcedente, TiempoDeMembresiaIglesiaProcedente=@TiempoDeMembresiaIglesiaProcedente, 
                     EstadoCivil=@EstadoCivil, NumeroHijos=@NumeroHijos, NombreConyugue=@NombreConyugue, Bautizado=@Bautizado, FechaDeBautizmo=@FechaDeBautizmo, PastorOficiante=@PastorOficiante, Sellado=@Sellado, SelladoRecuerdo=@SelladoRecuerdo, TiempoConversion=@TiempoConversion, TiempoPromesa=@TiempoPromesa, IglesiaProcedente=@IglesiaProcedente, PastorAsistente=@PastorAsistente, CargosDesempeñados=@CargosDesempeñados, 
-                    Acto=@Acto, FechaCorreccion=@FechaCorreccion, TiempoCorreccion=@TiempoCorreccion, Membresia=@Membresia, LugarTraslado=@LugarTraslado, Observaciones=@Observaciones
+                    Acto=@Acto, FechaCorreccion=@FechaCorreccion, TiempoCorreccion=@TiempoCorreccion, Motivo=@Motivo, Membresia=@Membresia, LugarTraslado=@LugarTraslado, Observaciones=@Observaciones
                     where Folio=@Folio";
                 command.Parameters.AddWithValue("@Folio", miembroNuevo.Folio);
                 command.Parameters.AddWithValue("@IdContacto", miembroNuevo.IdContacto);
@@ -177,6 +178,7 @@ namespace DAL
                 command.Parameters.AddWithValue("@Acto", miembroNuevo.Acto);
                 command.Parameters.AddWithValue("@FechaCorreccion", miembroNuevo.FechaCorreccion);
                 command.Parameters.AddWithValue("@TiempoCorreccion", miembroNuevo.TiempoCorreccion);
+                command.Parameters.AddWithValue("@Motivo", miembroNuevo.Motivo);
                 command.Parameters.AddWithValue("@Membresia", miembroNuevo.Membresia);
                 command.Parameters.AddWithValue("@LugarTraslado", miembroNuevo.LugarTraslado);
                 command.Parameters.AddWithValue("@Observaciones", miembroNuevo.Observaciones);
@@ -220,6 +222,7 @@ namespace DAL
             miembro.Acto = (string)dataReader["Acto"];
             miembro.FechaCorreccion = (DateTime)dataReader["FechaCorreccion"];
             miembro.TiempoCorreccion = (int)dataReader["TiempoCorreccion"];
+            miembro.Motivo = (string)dataReader["Motivo"];
             miembro.Membresia = (string)dataReader["Membresia"];
             miembro.LugarTraslado = (string)dataReader["LugarTraslado"];
             miembro.Observaciones = (string)dataReader["Observaciones"];

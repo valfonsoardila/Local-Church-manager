@@ -69,7 +69,6 @@
             this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textTotalNube = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -102,6 +101,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.comboFiltroAño = new System.Windows.Forms.ComboBox();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -754,7 +754,7 @@
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.DarkGreen;
-            this.panelContenedorDeDirectorio.Controls.Add(this.comboBox1);
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboFiltroAño);
             this.panelContenedorDeDirectorio.Controls.Add(this.label15);
             this.panelContenedorDeDirectorio.Controls.Add(this.textTotalNube);
             this.panelContenedorDeDirectorio.Controls.Add(this.label9);
@@ -770,72 +770,6 @@
             this.panelContenedorDeDirectorio.Name = "panelContenedorDeDirectorio";
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(804, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "Ingeniero(a) de sistemas",
-            "Ingeniero(a) de electronica",
-            "Ingeniero(a) Industrial",
-            "Enfermero(a)",
-            "Electricista",
-            "Albañil",
-            "Abogado",
-            "Acesor comercial",
-            "Estudiante",
-            "Medico(a)",
-            "Farmaceutico(a)",
-            "Odontologo(a)",
-            "Fontaneros(a)",
-            "Docente",
-            "Contadores",
-            "Psicologos",
-            "Chef",
-            "Repostero(a)",
-            "Vigilante",
-            "Escolta",
-            "Ebanista",
-            "Peluquero",
-            "Domiciliario",
-            "Soldador",
-            "Diseñador Grafico",
-            "Maestro de obra",
-            "Mecanico",
-            "Chofer",
-            "Impulsador",
-            "Optometra",
-            "Naturista",
-            "Vendedor",
-            "Modista",
-            "Electronico",
-            "Tecnico"});
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Año",
-            "2023",
-            "2024",
-            "2025",
-            "2026",
-            "2027",
-            "2028",
-            "2029",
-            "2030",
-            "2031",
-            "2032",
-            "2033",
-            "2034",
-            "2035",
-            "2036",
-            "2037",
-            "2040"});
-            this.comboBox1.Location = new System.Drawing.Point(501, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(68, 24);
-            this.comboBox1.TabIndex = 28;
-            this.comboBox1.Text = "Año";
             // 
             // label15
             // 
@@ -1340,6 +1274,52 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Detalle";
             // 
+            // comboFiltroAño
+            // 
+            this.comboFiltroAño.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboFiltroAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltroAño.FormattingEnabled = true;
+            this.comboFiltroAño.Items.AddRange(new object[] {
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030",
+            "2031",
+            "2032",
+            "2033",
+            "2034",
+            "2035",
+            "2036",
+            "2037",
+            "2038",
+            "2039",
+            "2040",
+            "2041",
+            "2042",
+            "2043",
+            "2044",
+            "2045",
+            "2046",
+            "2047",
+            "2048",
+            "2049",
+            "2050"});
+            this.comboFiltroAño.Location = new System.Drawing.Point(496, 4);
+            this.comboFiltroAño.Name = "comboFiltroAño";
+            this.comboFiltroAño.Size = new System.Drawing.Size(77, 24);
+            this.comboFiltroAño.TabIndex = 22;
+            this.comboFiltroAño.Text = "2020";
+            this.comboFiltroAño.SelectedIndexChanged += new System.EventHandler(this.comboFiltroAño_SelectedIndexChanged);
+            // 
             // FormIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1460,8 +1440,8 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel11;
         private FontAwesome.Sharp.IconButton btnImprimirDetalle;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textSaldo;
+        private System.Windows.Forms.ComboBox comboFiltroAño;
     }
 }

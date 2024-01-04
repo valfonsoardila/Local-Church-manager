@@ -132,6 +132,7 @@ namespace UI
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnVerListaSimpatizantes = new FontAwesome.Sharp.IconButton();
             this.btnGestionarMiembros = new FontAwesome.Sharp.IconButton();
+            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridMiembros = new System.Windows.Forms.DataGridView();
@@ -181,7 +182,6 @@ namespace UI
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -860,7 +860,7 @@ namespace UI
             this.textLugarBautizmo.Name = "textLugarBautizmo";
             this.textLugarBautizmo.Size = new System.Drawing.Size(121, 26);
             this.textLugarBautizmo.TabIndex = 48;
-            this.textLugarBautizmo.Text = "Lugar de bautizmo";
+            this.textLugarBautizmo.Text = "Lugar bautizmo";
             this.textLugarBautizmo.Enter += new System.EventHandler(this.textLugarBautizmo_Enter);
             this.textLugarBautizmo.Leave += new System.EventHandler(this.textLugarBautizmo_Leave);
             // 
@@ -1625,7 +1625,7 @@ namespace UI
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 355F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 356F));
             this.tableLayoutPanel1.Controls.Add(this.btnVerListaSimpatizantes, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGestionarMiembros, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGenerarInforme, 2, 0);
@@ -1650,7 +1650,7 @@ namespace UI
             this.btnVerListaSimpatizantes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnVerListaSimpatizantes.Location = new System.Drawing.Point(307, 3);
             this.btnVerListaSimpatizantes.Name = "btnVerListaSimpatizantes";
-            this.btnVerListaSimpatizantes.Size = new System.Drawing.Size(178, 43);
+            this.btnVerListaSimpatizantes.Size = new System.Drawing.Size(177, 43);
             this.btnVerListaSimpatizantes.TabIndex = 45;
             this.btnVerListaSimpatizantes.Text = "Ver simpatizantes";
             this.btnVerListaSimpatizantes.UseVisualStyleBackColor = false;
@@ -1673,6 +1673,24 @@ namespace UI
             this.btnGestionarMiembros.Text = "Gestionar miembros";
             this.btnGestionarMiembros.UseVisualStyleBackColor = false;
             this.btnGestionarMiembros.Click += new System.EventHandler(this.btnGestionarMiembros_Click);
+            // 
+            // btnGenerarInforme
+            // 
+            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
+            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
+            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
+            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGenerarInforme.IconSize = 30;
+            this.btnGenerarInforme.Location = new System.Drawing.Point(490, 3);
+            this.btnGenerarInforme.Name = "btnGenerarInforme";
+            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
+            this.btnGenerarInforme.TabIndex = 46;
+            this.btnGenerarInforme.Text = "Generar informe";
+            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarInforme.UseVisualStyleBackColor = false;
             // 
             // panel14
             // 
@@ -1712,6 +1730,7 @@ namespace UI
             this.dataGridMiembros.RowTemplate.Height = 30;
             this.dataGridMiembros.Size = new System.Drawing.Size(781, 329);
             this.dataGridMiembros.TabIndex = 43;
+            this.dataGridMiembros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMiembros_CellClick);
             // 
             // Seleccionar
             // 
@@ -1996,7 +2015,7 @@ namespace UI
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 355F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 356F));
             this.tableLayoutPanel3.Controls.Add(this.iconButton3, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 405);
@@ -2019,7 +2038,7 @@ namespace UI
             this.iconButton3.Location = new System.Drawing.Point(307, 3);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton3.Size = new System.Drawing.Size(178, 40);
+            this.iconButton3.Size = new System.Drawing.Size(177, 40);
             this.iconButton3.TabIndex = 44;
             this.iconButton3.Text = "Imprimir Lista";
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -2328,24 +2347,6 @@ namespace UI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(858, 59);
             this.panel1.TabIndex = 2;
-            // 
-            // btnGenerarInforme
-            // 
-            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
-            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
-            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
-            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGenerarInforme.IconSize = 30;
-            this.btnGenerarInforme.Location = new System.Drawing.Point(491, 3);
-            this.btnGenerarInforme.Name = "btnGenerarInforme";
-            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
-            this.btnGenerarInforme.TabIndex = 46;
-            this.btnGenerarInforme.Text = "Generar informe";
-            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGenerarInforme.UseVisualStyleBackColor = false;
             // 
             // FormMiembros
             // 

@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 //se importa la libreria para arrastrar formulario
 using System.Runtime.InteropServices;
 using System.Threading;
+using Cloud;
 
 namespace UI
 {
@@ -98,45 +99,104 @@ namespace UI
 
 
 
-        public void ValidarUsuario()
+        public async void ValidarUsuario()
         {
             if (idUsuario != null)
             {
-                BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
-                respuesta = empleadoService.BuscarPorIdentificacion(idUsuario);
-                if (respuesta.Usuario != null)
+                try
                 {
-                    var rolConsultado = respuesta.Usuario.Rol;
-                    if (rol == "Programador" || rolConsultado == "Programador")
+                    var db = FirebaseService.Database;
+                    var usersQuery = db.Collection("UserData");
+                    var users = new List<UserData>();
+                    // Realizar la suma directamente en la consulta Firestore
+                    var snapshot = await usersQuery.GetSnapshotAsync();
+                    users = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<UserData>()).ToList();
+                    // Filtrar elementos según el campo Valor y la variable id
+                    var usersPorId = users.Where(egreso => egreso.ID == idUsuario).ToList();
+                    if (usersPorId[0] != null)
                     {
-                        btnGestionSecretaria.Enabled = true;
-                        btnGestionSecretaria.Visible = true;
-                        btnGestionTesoreria.Enabled = true;
-                        btnGestionTesoreria.Visible = true;
-                        btnGestionBD.Visible = true;
-                        btnAjustes.Enabled = true;
-                    }
-                    else
-                    {
-                        if (rol == "Secretario(a)" || rolConsultado == "Secretario(a)")
+                        var rolConsultado = usersPorId[0].Rol;
+                        if (rol == "Programador" || rolConsultado == "Programador")
                         {
-                            btnGestionSecretaria.Visible = true;
                             btnGestionSecretaria.Enabled = true;
-                            btnGestionTesoreria.Enabled = false;
-                            btnGestionTesoreria.Visible = false;
-                            btnGestionBD.Visible = false;
-                            btnAjustes.Enabled = false;
+                            btnGestionSecretaria.Visible = true;
+                            btnGestionTesoreria.Enabled = true;
+                            btnGestionTesoreria.Visible = true;
+                            btnGestionBD.Visible = true;
+                            btnAjustes.Enabled = true;
                         }
                         else
                         {
-                            if (rol == "Tesorero(a)" || rolConsultado == "Tesorero(a)")
+                            if (rol == "Secretario(a)" || rolConsultado == "Secretario(a)")
                             {
-                                btnGestionTesoreria.Visible = true;
-                                btnGestionTesoreria.Enabled = true;
-                                btnGestionSecretaria.Enabled = false;
-                                btnGestionSecretaria.Visible = false;
+                                btnGestionSecretaria.Visible = true;
+                                btnGestionSecretaria.Enabled = true;
+                                btnGestionTesoreria.Enabled = false;
+                                btnGestionTesoreria.Visible = false;
                                 btnGestionBD.Visible = false;
                                 btnAjustes.Enabled = false;
+                            }
+                            else
+                            {
+                                if (rol == "Tesorero(a)" || rolConsultado == "Tesorero(a)")
+                                {
+                                    btnGestionTesoreria.Visible = true;
+                                    btnGestionTesoreria.Enabled = true;
+                                    btnGestionSecretaria.Enabled = false;
+                                    btnGestionSecretaria.Visible = false;
+                                    btnGestionBD.Visible = false;
+                                    btnAjustes.Enabled = false;
+                                }
+                            }
+                        }
+                    }
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
+                    {
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                    }
+                }
+                catch(Exception ex)
+                {
+                    BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
+                    respuesta = empleadoService.BuscarPorIdentificacion(idUsuario);
+                    if (respuesta.Usuario != null)
+                    {
+                        var rolConsultado = respuesta.Usuario.Rol;
+                        if (rol == "Programador" || rolConsultado == "Programador")
+                        {
+                            btnGestionSecretaria.Enabled = true;
+                            btnGestionSecretaria.Visible = true;
+                            btnGestionTesoreria.Enabled = true;
+                            btnGestionTesoreria.Visible = true;
+                            btnGestionBD.Visible = true;
+                            btnAjustes.Enabled = true;
+                        }
+                        else
+                        {
+                            if (rol == "Secretario(a)" || rolConsultado == "Secretario(a)")
+                            {
+                                btnGestionSecretaria.Visible = true;
+                                btnGestionSecretaria.Enabled = true;
+                                btnGestionTesoreria.Enabled = false;
+                                btnGestionTesoreria.Visible = false;
+                                btnGestionBD.Visible = false;
+                                btnAjustes.Enabled = false;
+                            }
+                            else
+                            {
+                                if (rol == "Tesorero(a)" || rolConsultado == "Tesorero(a)")
+                                {
+                                    btnGestionTesoreria.Visible = true;
+                                    btnGestionTesoreria.Enabled = true;
+                                    btnGestionSecretaria.Enabled = false;
+                                    btnGestionSecretaria.Visible = false;
+                                    btnGestionBD.Visible = false;
+                                    btnAjustes.Enabled = false;
+                                }
                             }
                         }
                     }

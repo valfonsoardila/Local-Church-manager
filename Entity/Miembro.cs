@@ -40,6 +40,7 @@ namespace Entity
             string acto,
             DateTime fechaCorreccion,
             int tiempoCorreccion,
+            string motivo,
             string membresia,
             string iglesiaProcedente,
             string pastorAsistente,
@@ -77,6 +78,7 @@ namespace Entity
             Acto = acto;
             FechaCorreccion = fechaCorreccion;
             TiempoCorreccion = tiempoCorreccion;
+            Motivo = motivo;
             Membresia = membresia;
             IglesiaProcedente = iglesiaProcedente;
             PastorAsistente = pastorAsistente;
@@ -119,6 +121,7 @@ namespace Entity
         public string Acto { get; set; }
         public DateTime FechaCorreccion { get; set; }
         public int TiempoCorreccion { get; set; }
+        public string Motivo { get; set; }
         public string Membresia { get; set; }
         public string LugarTraslado { get; set; }
         public string Observaciones { get; set; }
