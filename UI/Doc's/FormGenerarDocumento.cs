@@ -54,7 +54,60 @@ namespace UI
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        private void FormGenerarDocumento_Load(object sender, EventArgs e)
+        {
+            checkedListInforme.Items.Clear();
+            if (textRol.Text == "Programador")
+            {
+                checkedListInforme.Items.AddRange(new string[]
+                {
+                    "Generar Informe General",
+                    "Generar Informe Individual",
+                    "Generar Informe Presupuestal",
+                    "Generar Informe de miembros",
+                    "Generar Acta de reunion",
+                    "Generar Lista de Directivas",
+                    "Generar Apunte",
+                    "Generar Lista de Apuntes"
+                });
+            }
+            else
+            {
+                if(textRol.Text== "Secretario(a)")
+                {
+                    checkedListInforme.Items.AddRange(new string[]
+                    {
+                        "Generar Informe de miembros",
+                        "Generar Acta de reunion",
+                        "Generar Lista de Directivas",
+                        "Generar Apunte",
+                        "Generar Lista de Apuntes"
+                    });
+                }
+                else
+                {
+                    if (textRol.Text == "Tesorero(a)")
+                    {
+                        checkedListInforme.Items.AddRange(new string[]
+                        {
+                            "Generar Informe General",
+                            "Generar Informe Individual",
+                            "Generar Informe Presupuestal",
+                        });
+                    }
+                }
+            }
+        }
         private void btnAbrirInforme_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnEliminarInforme_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnImprimirInforme_Click(object sender, EventArgs e)
         {
 
         }

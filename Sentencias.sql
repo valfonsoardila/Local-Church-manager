@@ -85,6 +85,7 @@ CargosDesempeñados varchar(400) not null,
 Acto varchar(12) not null,
 FechaCorreccion datetime not null,
 TiempoCorreccion int not null,
+Motivo varchar(700) not null,
 Membresia varchar(12) not null,
 LugarTraslado varchar(50) not null,
 Observaciones varchar(400) not null

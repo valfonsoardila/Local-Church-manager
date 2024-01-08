@@ -59,6 +59,7 @@ namespace UI
             this.tabReuniones = new System.Windows.Forms.TabControl();
             this.tabLista = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
             this.btnGestionarReuniones = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridReunion = new System.Windows.Forms.DataGridView();
@@ -73,7 +74,6 @@ namespace UI
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.labelListaDeReuniones = new System.Windows.Forms.Label();
-            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -472,6 +472,25 @@ namespace UI
             this.tableLayoutPanel1.Size = new System.Drawing.Size(797, 51);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
+            // btnGenerarInforme
+            // 
+            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
+            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
+            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
+            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGenerarInforme.IconSize = 30;
+            this.btnGenerarInforme.Location = new System.Drawing.Point(401, 3);
+            this.btnGenerarInforme.Name = "btnGenerarInforme";
+            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
+            this.btnGenerarInforme.TabIndex = 17;
+            this.btnGenerarInforme.Text = "Generar informe";
+            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarInforme.UseVisualStyleBackColor = false;
+            this.btnGenerarInforme.Click += new System.EventHandler(this.btnGenerarInforme_Click);
+            // 
             // btnGestionarReuniones
             // 
             this.btnGestionarReuniones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -651,24 +670,6 @@ namespace UI
             this.labelListaDeReuniones.Size = new System.Drawing.Size(145, 16);
             this.labelListaDeReuniones.TabIndex = 0;
             this.labelListaDeReuniones.Text = "Lista de reuniones";
-            // 
-            // btnGenerarInforme
-            // 
-            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
-            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
-            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
-            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGenerarInforme.IconSize = 30;
-            this.btnGenerarInforme.Location = new System.Drawing.Point(401, 3);
-            this.btnGenerarInforme.Name = "btnGenerarInforme";
-            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
-            this.btnGenerarInforme.TabIndex = 17;
-            this.btnGenerarInforme.Text = "Generar informe";
-            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGenerarInforme.UseVisualStyleBackColor = false;
             // 
             // FormReuniones
             // 

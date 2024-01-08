@@ -52,9 +52,8 @@ namespace UI
             budgetMaps = new BudgetMaps();
             InitializeComponent();
             ObtenerUltimoPresupuesto();
-            ObtenerIngresosYEgresos();
             ConsultarPresupuesto();
-            ObtenerDatosGenerales();
+            ObtenerIngresosYEgresos();
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -129,7 +128,6 @@ namespace UI
                     textTotal.Text = presupuestosGeneral.Count.ToString();
                     sumPresupuestos= snapshot.Documents.Sum(doc => doc.ConvertTo<BudgetData>().TotalPresupuesto);
                     textTotalPresupuestos.Text = snapshot.Documents.Sum(doc => doc.ConvertTo<BudgetData>().TotalPresupuesto).ToString();
-                    ObtenerDatosGenerales();
                 }
                 else
                 {
@@ -164,7 +162,6 @@ namespace UI
                     dataGridPresupuestos.DataSource = presupuestos;
                     Borrar.Visible = true;
                     textTotal.Text = presupuestoService.Totalizar().Cuenta.ToString();
-                    ObtenerDatosGenerales();
                 }
             }
         }
@@ -187,8 +184,8 @@ namespace UI
                 var db = FirebaseService.Database;
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetData").Document(id.ToString());
                 await docRef.DeleteAsync();
-                string mensaje = presupuestoService.Eliminar(id);
-                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //string mensaje = presupuestoService.Eliminar(id);
+                MessageBox.Show("El registro "+id+" se ha eliminado satisfactoriamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridPresupuestos.DataSource = null;
                 ConsultarPresupuesto();
                 ObtenerDatosGenerales();
@@ -295,10 +292,16 @@ namespace UI
             double porcentajeVoto = votosIngresos * 100 / voto;
             double porcentajeOtroConcepto = otroConcepto != 0 ? otrosIngresos * 100 / otroConcepto : 0;
 
-            double diferenciaOfrenda = 100 - porcentajeOfrenda;
-            double diferenciaActividad = 100 - porcentajeActividad;
-            double diferenciaVoto = 100 - porcentajeVoto;
-            double diferenciaOtroConcepto = 100 - porcentajeOtroConcepto;
+            double diferenciaOfrenda = porcentajeOfrenda > 100 ? Math.Abs(100 - porcentajeOfrenda) : 100 - porcentajeOfrenda;
+            double diferenciaActividad = porcentajeActividad > 100 ? Math.Abs(100 - porcentajeActividad) : 100 - porcentajeActividad;
+            double diferenciaVoto = porcentajeVoto > 100 ? Math.Abs(100 - porcentajeVoto) : 100 - porcentajeVoto;
+            double diferenciaOtroConcepto = porcentajeOtroConcepto > 100 ? Math.Abs(100 - porcentajeOtroConcepto) : 100 - porcentajeOtroConcepto;
+
+            //Verifico si se supera el 100% en cada rubro
+            porcentajeOfrenda = porcentajeOfrenda > 100 ? 100 : porcentajeOfrenda;
+            porcentajeActividad = porcentajeActividad > 100 ? 100 : porcentajeActividad;
+            porcentajeVoto = porcentajeVoto > 100 ? 100 : porcentajeVoto;
+            porcentajeOtroConcepto = porcentajeOtroConcepto > 100 ? 100 : porcentajeOtroConcepto;
 
             return new List<double> { 
                 porcentajeOfrenda, 
@@ -554,40 +557,44 @@ namespace UI
         }
         private async void ObtenerIngresosYEgresos()
         {
-            try
+            if (comite != "Comite" && comite!="")
             {
-                var db = FirebaseService.Database;
-                var ingresosQuery = db.Collection("IngressData").WhereEqualTo("Comite", comite);
-                var ingresos = new List<IngressData>();
-                // Realizar la suma directamente en la consulta Firestore
-                var snapshot = await ingresosQuery.GetSnapshotAsync();
-                ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
-                // Filtrar ingresos por concepto y contar la cantidad de cada uno
-                sumIgresos = ingresos.Sum(p=>p.Valor);
-                ofrendasIngresos = ingresos.Where(i => i.Concepto == "Ofrenda").Sum(p => p.Valor);
-                votosIngresos = ingresos.Where(i => i.Concepto == "Voto").Sum(p => p.Valor);
-                activIdadesIngresos = ingresos.Where(i => i.Concepto == "Actividades").Sum(p => p.Valor);
-                otrosIngresos = ingresos.Where(i => i.Concepto == "Otros").Sum(p => p.Valor);
-                var egresosQuery = db.Collection("EgressData").WhereEqualTo("Comite", comite);
-                var egresos = new List<EgressData>();
-                // Realizar la suma directamente en la consulta Firestore
-                snapshot = await egresosQuery.GetSnapshotAsync();
-                egresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
-                sumEgresos = egresos.Sum(p => p.Valor);
-                ObtenerDatosIndividuales();
-                AgregarAGridRubros();
-                // Obtener referencia al formulario principal
-                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                // Verificar si el formulario principal está abierto
-                if (formPrincipal != null)
+                try
                 {
-                    // Lanzar el evento para notificar al formulario principal sobre la excepción
-                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                    var db = FirebaseService.Database;
+                    var ingresosQuery = db.Collection("IngressData").WhereEqualTo("Comite", comite);
+                    var ingresos = new List<IngressData>();
+                    // Realizar la suma directamente en la consulta Firestore
+                    var snapshot = await ingresosQuery.GetSnapshotAsync();
+                    ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                    // Filtrar ingresos por concepto y contar la cantidad de cada uno
+                    sumIgresos = ingresos.Sum(p => p.Valor);
+                    ofrendasIngresos = ingresos.Where(i => i.Concepto == "Ofrenda").Sum(p => p.Valor);
+                    votosIngresos = ingresos.Where(i => i.Concepto == "Voto").Sum(p => p.Valor);
+                    activIdadesIngresos = ingresos.Where(i => i.Concepto == "Actividades").Sum(p => p.Valor);
+                    otrosIngresos = ingresos.Where(i => i.Concepto == "Otros").Sum(p => p.Valor);
+                    var egresosQuery = db.Collection("EgressData").WhereEqualTo("Comite", comite);
+                    var egresos = new List<EgressData>();
+                    // Realizar la suma directamente en la consulta Firestore
+                    snapshot = await egresosQuery.GetSnapshotAsync();
+                    egresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
+                    sumEgresos = egresos.Sum(p => p.Valor);
+                    ObtenerDatosGenerales();
+                    ObtenerDatosIndividuales();
+                    AgregarAGridRubros();
+                    // Obtener referencia al formulario principal
+                    FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                    // Verificar si el formulario principal está abierto
+                    if (formPrincipal != null)
+                    {
+                        // Lanzar el evento para notificar al formulario principal sobre la excepción
+                        formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
+                catch (Exception ex)
+                {
 
+                }
             }
         }
         private void ObtenerDatosIndividuales()
@@ -620,17 +627,17 @@ namespace UI
                 if (porcentajeOfrenda > 100)
                 {
                     OfrendaRebasada = "rebasada en un " + (porcentajeOfrenda - 100).ToString() + "%";
-                    porcentajeOfrenda = (ofrenda * 100) / presupuestosComite[0].TotalPresupuesto;
-                    if (porcentajeActividad > 100)
-                    {
-                        ActividadRebasada = "rebasada en un " + (porcentajeActividad - 100).ToString() + "%";
-                        porcentajeActividad = (actividad * 100) / presupuestosComite[0].TotalPresupuesto;
-                        if (porcentajeVoto > 100)
-                        {
-                            VotoRebasado = "rebasado en un " + (porcentajeVoto - 100).ToString() + "%";
-                            porcentajeVoto = (voto * 100) / presupuestosComite[0].TotalPresupuesto;
-                        }
-                    }
+                    porcentajeOfrenda = 100;
+                }
+                if (porcentajeActividad > 100)
+                {
+                    ActividadRebasada = "rebasada en un " + (porcentajeActividad - 100).ToString() + "%";
+                    porcentajeActividad = (actividad * 100) / presupuestosComite[0].TotalPresupuesto;
+                }
+                if (porcentajeVoto > 100)
+                {
+                    VotoRebasado = "rebasado en un " + (porcentajeVoto - 100).ToString() + "%";
+                    porcentajeVoto = (voto * 100) / presupuestosComite[0].TotalPresupuesto;
                 }
                 if (porcentajeOtroConcepto > 100)
                 {
@@ -728,6 +735,8 @@ namespace UI
                         if (dataGridPresupuestos.Columns[e.ColumnIndex].Name == "Editar")
                         {
                             id = Convert.ToInt32(dataGridPresupuestos.CurrentRow.Cells["Id"].Value.ToString());
+                            btnRegistrar.Enabled = false;
+                            btnModificar.Enabled = true;
                             FiltroPorId(id);
                         }
                         else
@@ -956,6 +965,7 @@ namespace UI
                 CalculoDeSaldo();
                 Limpiar();
                 tabPresupuestos.SelectedIndex = 0;
+                btnRegistrar.Enabled = true;
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto

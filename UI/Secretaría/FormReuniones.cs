@@ -426,5 +426,10 @@ namespace UI
                 ConsultarYLlenarGridDeReuniones();
             }
         }
+
+        private void btnGenerarInforme_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

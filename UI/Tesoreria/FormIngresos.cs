@@ -294,14 +294,22 @@ namespace UI
                 var db = FirebaseService.Database;
                 var ingresosQuery = db.Collection("IngressData");
                 var ingresos = new List<IngressData>();
+                var ingresosPorAñoActual = new List<IngressData>();
                 // Realizar la suma directamente en la consulta Firestore
                 var snapshot = await ingresosQuery.GetSnapshotAsync();
                 ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
                 if (ingresos.Count > 0)
                 {
+                    for (int i = 0; i < ingresos.Count; i++)
+                    {
+                        if (ingresos[i].FechaDeIngreso.Contains(DateTime.Now.Year.ToString()))
+                        {
+                            ingresosPorAñoActual.Add(ingresos[i]);
+                        }
+                    }
                     dataGridIngresos.DataSource = null;
-                    dataGridIngresos.DataSource = ingresos;
-                    textTotalNube.Text = ingresos.Count.ToString();
+                    dataGridIngresos.DataSource = ingresosPorAñoActual;
+                    textTotalNube.Text = ingresosPorAñoActual.Count.ToString();
                 }
                 else
                 {
@@ -843,8 +851,8 @@ namespace UI
                 var db = FirebaseService.Database;
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("IngressData").Document(codigo);
                 docRef.DeleteAsync();
-                string mensaje = ingresoService.Eliminar(codigo);
-                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //string mensaje = ingresoService.Eliminar(codigo);
+                MessageBox.Show("Se ha eliminado satisfactoriamente el registro", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarIngresos();
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
@@ -886,13 +894,13 @@ namespace UI
             try
             {
                 nuevoIngreso.CodigoComprobante = id;
-                string mensaje = ingresoService.Modificar(nuevoIngreso);
+                //string mensaje = ingresoService.Modificar(nuevoIngreso);
                 //Guardamos en la nube
                 var db = FirebaseService.Database;
                 var ingress = ingressMaps.IngressMap(nuevoIngreso);
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("IngressData").Document(ingress.CodigoComprobante.ToString());
                 docRef.SetAsync(ingress);
-                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                MessageBox.Show("Se ha modificado satisfactoriamente el registro", "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 ConsultarIngresos();
                 CalculoDeSaldo();
                 Limpiar();
@@ -1039,6 +1047,7 @@ namespace UI
                     }
                 }
                 dataGridIngresos.DataSource = ingresosPorAño;
+                textTotalNube.Text = ingresosPorAño.Count.ToString();
                 Borrar.Visible = true;
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();

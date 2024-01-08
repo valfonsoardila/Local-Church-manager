@@ -53,7 +53,6 @@ namespace UI
                 };
             }
         }
-
         private bool CheckIfSympathizerAlreadyExist(string folio)
         {
             //Consulta en la nube

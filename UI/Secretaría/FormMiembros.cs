@@ -32,8 +32,11 @@ namespace UI
         SympathizerMaps sympathizerMaps;
         ContactMaps contactMaps;
         List<Miembro> miembros;
+        List<MemberData> memberData;
+        List<SympathizerData> sympathizerData;
         Miembro miembro;
         Simpatizante simpatizante;
+        List<Simpatizante> simpatizantes;
         ContactoService contactoService;
         List<Contacto> contactos;
         Contacto contacto;
@@ -64,6 +67,7 @@ namespace UI
         {
             CalcularFolio();
             ConsultarYLlenarGridDeMiembros();
+            ConsultarYLlenarGridDeSimpatizante();
         }
         private Image ResizeImageToFitCell(DataGridViewImageCell cell, Image originalImage)
         {
@@ -79,15 +83,103 @@ namespace UI
 
             return new Bitmap(originalImage, new Size(newWidth, newHeight));
         }
+        private async void ConsultarYLlenarGridDeSimpatizante()
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var registros = new List<SympathizerData>();
+                Google.Cloud.Firestore.Query membersQuery = db.Collection("SympathizerData").WhereEqualTo("Bautizado", "Si");
+                QuerySnapshot snap = await membersQuery.GetSnapshotAsync();
+                sympathizerData = snap.Documents.Select(docsnap => docsnap.ConvertTo<SympathizerData>()).ToList();
+                var hombres = snap.Documents.Where(docsnap => docsnap.ConvertTo<SympathizerData>().Genero == "Masculino").Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+                var mujeres = snap.Documents.Where(docsnap => docsnap.ConvertTo<SympathizerData>().Genero == "Femenino").Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+
+                if (snap.Documents.Count > 0)
+                {
+                    textTotalHombres2.Text = hombres.Count.ToString();
+                    textTotalMujeres2.Text = mujeres.Count.ToString();
+                    dataGridSimpatizantes.DataSource = null;
+                    dataGridSimpatizantes.DataSource = memberData;
+                }
+                else
+                {
+                    dataGridSimpatizantes.DataSource = null;
+                    textTotal2.Text = "0";
+                }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaSimpatizanteRespuesta respuesta = new ConsultaSimpatizanteRespuesta();
+                string tipo = comboGenero.Text;
+                if (tipo == "Genero" || tipo == "Todos")
+                {
+                    textTotal2.Enabled = true;
+                    textTotalHombres2.Enabled = true;
+                    textTotalMujeres2.Enabled = true;
+                    dataGridSimpatizantes.DataSource = null;
+                    respuesta = simpatizanteService.ConsultarTodos();
+                    simpatizantes = respuesta.Simpatizantes.ToList();
+                    if (respuesta.Simpatizantes.Count != 0 && respuesta.Simpatizantes != null)
+                    {
+                        dataGridSimpatizantes.DataSource = respuesta.Simpatizantes;
+                        Borrar.Visible = true;
+                        textTotal2.Text = miembroService.Totalizar().Cuenta.ToString();
+                        textTotalHombres2.Text = miembroService.TotalizarTipo("Masculino").Cuenta.ToString();
+                        textTotalMujeres2.Text = miembroService.TotalizarTipo("Femenino").Cuenta.ToString();
+                        foreach (DataGridViewRow row in dataGridMiembros.Rows)
+                        {
+                            DataGridViewImageCell cell = row.Cells["ImagenPerfil"] as DataGridViewImageCell;
+                            if (cell != null)
+                            {
+                                byte[] imageBytes = cell.Value as byte[];
+                                if (imageBytes != null)
+                                {
+                                    // Convierte los bytes en una imagen
+                                    Image originalImage;
+                                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                                    {
+                                        originalImage = Image.FromStream(ms);
+                                    }
+
+                                    // Redimensiona la imagen para que quepa en la celda
+                                    Image resizedImage = ResizeImageToFitCell(cell, originalImage);
+
+                                    // Asigna la imagen redimensionada a la celda
+                                    cell.Value = resizedImage;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         private async void ConsultarYLlenarGridDeMiembros()
         {
             try
             {
                 var db = FirebaseService.Database;
-                var miembros = new List<MemberData>();
+                var registros = new List<MemberData>();
                 Google.Cloud.Firestore.Query membersQuery = db.Collection("MembersData").WhereEqualTo("Bautizado", "Si");
                 QuerySnapshot snap = await membersQuery.GetSnapshotAsync();
-
+                registros = snap.Documents.Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+                memberData = registros.Where(registro => registro.Bautizado == "Si").ToList();
                 var hombres = snap.Documents.Where(docsnap => docsnap.ConvertTo<MemberData>().Genero == "Masculino").Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
                 var mujeres = snap.Documents.Where(docsnap => docsnap.ConvertTo<MemberData>().Genero == "Femenino").Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
 
@@ -96,7 +188,7 @@ namespace UI
                     textTotalHombres.Text = hombres.Count.ToString();
                     textTotalMujeres.Text = mujeres.Count.ToString();
                     dataGridMiembros.DataSource = null;
-                    dataGridMiembros.DataSource = snap.Documents.Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
+                    dataGridMiembros.DataSource = memberData;
                 }
                 else
                 {
@@ -619,6 +711,7 @@ namespace UI
                     docRef.SetAsync(member);
                     MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     ConsultarYLlenarGridDeMiembros();
+                    ConsultarYLlenarGridDeSimpatizante();
                     LimpiarCampos();
                     CalcularFolio();
                     tabMiembros.SelectedIndex = 0;
@@ -637,6 +730,7 @@ namespace UI
                     docRef.SetAsync(member);
                     MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     ConsultarYLlenarGridDeMiembros();
+                    ConsultarYLlenarGridDeSimpatizante();
                     LimpiarCampos();
                     CalcularFolio();
                     tabMiembros.SelectedIndex = 0;
@@ -666,6 +760,7 @@ namespace UI
                     string mensaje = miembroService.Guardar(miembro);
                     MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     ConsultarYLlenarGridDeMiembros();
+                    ConsultarYLlenarGridDeSimpatizante();
                     LimpiarCampos();
                     CalcularFolio();
                     tabMiembros.SelectedIndex = 0;
@@ -681,16 +776,30 @@ namespace UI
             FiltroPorApellido(apellidos);
             try
             {
-                //contactoService.Modificar(contacto);
-                string mensaje = miembroService.Modificar(miembro);
-                var db = FirebaseService.Database;
-                var member = memberMaps.MemberMap(miembro);
-                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(member.Folio.ToString());
-                docRef.SetAsync(member);
-                MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                ConsultarYLlenarGridDeMiembros();
-                LimpiarCampos();
-                tabMiembros.SelectedIndex = 0;
+                if (comboBautizado.Text == "Si" || comboBautizado.Text == "si")
+                {
+                    //contactoService.Modificar(contacto);
+                    var db = FirebaseService.Database;
+                    var member = memberMaps.MemberMap(miembro);
+                    Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(member.Folio.ToString());
+                    docRef.SetAsync(member);
+                    MessageBox.Show("¿Seguro que desea modificar los datos para este miembro?", "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeMiembros();
+                    LimpiarCampos();
+                    tabMiembros.SelectedIndex = 0;
+                }
+                else
+                {
+                    //contactoService.Modificar(contacto);
+                    var db = FirebaseService.Database;
+                    var sympathizer = sympathizerMaps.SympathizerMap(simpatizante);
+                    Google.Cloud.Firestore.DocumentReference docRef = db.Collection("SympathizerData").Document(sympathizer.NumeroDoc.ToString());
+                    docRef.SetAsync(sympathizer);
+                    MessageBox.Show("¿Seguro que desea modificar los datos para este simpatizante?", "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    ConsultarYLlenarGridDeSimpatizante();
+                    LimpiarCampos();
+                    tabMiembros.SelectedIndex = 2;
+                }
             }
             catch(Exception ex)
             {
@@ -704,12 +813,24 @@ namespace UI
                 }
                 if (encontradoNombre == true && encontradoApellido == true)
                 {
-                    string mensaje = miembroService.Modificar(miembro);
-                    contactoService.Modificar(contacto);
-                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    ConsultarYLlenarGridDeMiembros();
-                    LimpiarCampos();
-                    tabMiembros.SelectedIndex = 0;
+                    if (comboBautizado.Text == "Si" || comboBautizado.Text == "si")
+                    {
+                        string mensaje = miembroService.Modificar(miembro);
+                        contactoService.Modificar(contacto);
+                        MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        ConsultarYLlenarGridDeMiembros();
+                        LimpiarCampos();
+                        tabMiembros.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        string mensaje = simpatizanteService.Modificar(simpatizante);
+                        contactoService.Modificar(contacto);
+                        MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        ConsultarYLlenarGridDeSimpatizante();
+                        LimpiarCampos();
+                        tabMiembros.SelectedIndex = 2;
+                    }
                 }
             }
         }
@@ -759,8 +880,7 @@ namespace UI
                 var db = FirebaseService.Database;
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("MembersData").Document(id);
                 docRef.DeleteAsync();
-                string mensaje = miembroService.Eliminar(id);
-                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("¿Desea elminar este registro?", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarYLlenarGridDeMiembros();
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();

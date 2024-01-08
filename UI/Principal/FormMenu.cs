@@ -84,7 +84,12 @@ namespace UI
             }
             else
             {
-                
+                if (e.Mensaje.Contains("ResourceExhausted"))
+                {
+                    labelEstadoNube.Text = "Nube saturada";
+                    labelEstadoNube.ForeColor = Color.Red;
+                    iconNube.IconColor = Color.Red;
+                }
             }
         }
         public void ValidarDisponibilidadNube(SuccesfullEventArgs e)

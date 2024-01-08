@@ -1625,7 +1625,7 @@ namespace UI
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 356F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 347F));
             this.tableLayoutPanel1.Controls.Add(this.btnVerListaSimpatizantes, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGestionarMiembros, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGenerarInforme, 2, 0);
@@ -1648,9 +1648,9 @@ namespace UI
             this.btnVerListaSimpatizantes.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnVerListaSimpatizantes.IconColor = System.Drawing.Color.Black;
             this.btnVerListaSimpatizantes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnVerListaSimpatizantes.Location = new System.Drawing.Point(307, 3);
+            this.btnVerListaSimpatizantes.Location = new System.Drawing.Point(312, 3);
             this.btnVerListaSimpatizantes.Name = "btnVerListaSimpatizantes";
-            this.btnVerListaSimpatizantes.Size = new System.Drawing.Size(177, 43);
+            this.btnVerListaSimpatizantes.Size = new System.Drawing.Size(181, 43);
             this.btnVerListaSimpatizantes.TabIndex = 45;
             this.btnVerListaSimpatizantes.Text = "Ver simpatizantes";
             this.btnVerListaSimpatizantes.UseVisualStyleBackColor = false;
@@ -1666,7 +1666,7 @@ namespace UI
             this.btnGestionarMiembros.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnGestionarMiembros.IconColor = System.Drawing.Color.Black;
             this.btnGestionarMiembros.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarMiembros.Location = new System.Drawing.Point(166, 3);
+            this.btnGestionarMiembros.Location = new System.Drawing.Point(171, 3);
             this.btnGestionarMiembros.Name = "btnGestionarMiembros";
             this.btnGestionarMiembros.Size = new System.Drawing.Size(135, 40);
             this.btnGestionarMiembros.TabIndex = 1;
@@ -1683,7 +1683,7 @@ namespace UI
             this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
             this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGenerarInforme.IconSize = 30;
-            this.btnGenerarInforme.Location = new System.Drawing.Point(490, 3);
+            this.btnGenerarInforme.Location = new System.Drawing.Point(499, 3);
             this.btnGenerarInforme.Name = "btnGenerarInforme";
             this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
@@ -2015,7 +2015,7 @@ namespace UI
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 356F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 357F));
             this.tableLayoutPanel3.Controls.Add(this.iconButton3, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 405);
@@ -2035,7 +2035,7 @@ namespace UI
             this.iconButton3.IconColor = System.Drawing.Color.Black;
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 30;
-            this.iconButton3.Location = new System.Drawing.Point(307, 3);
+            this.iconButton3.Location = new System.Drawing.Point(306, 3);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.iconButton3.Size = new System.Drawing.Size(177, 40);

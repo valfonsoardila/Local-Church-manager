@@ -14,6 +14,19 @@ namespace UI
         {
 
         }
+
+        public void GenerarInformeGeneralTesoreria()
+        {
+
+        }
+        public void GenerarInformeIndividualTesoreria()
+        {
+
+        }
+        public void GenerarInformePresupuestal()
+        {
+
+        }
         public void EditarDocumentoMiembros(string rutaDelArchivo)
         {
             // Abre el documento Word

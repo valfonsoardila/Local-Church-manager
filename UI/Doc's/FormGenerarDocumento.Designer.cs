@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panelHeaderGenerarInforme = new System.Windows.Forms.Panel();
+            this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textRol = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.textTotalPag = new System.Windows.Forms.TextBox();
-            this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkedListInforme = new System.Windows.Forms.CheckedListBox();
@@ -51,11 +51,11 @@
             // panelHeaderGenerarInforme
             // 
             this.panelHeaderGenerarInforme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.panelHeaderGenerarInforme.Controls.Add(this.btnAtras);
             this.panelHeaderGenerarInforme.Controls.Add(this.label1);
             this.panelHeaderGenerarInforme.Controls.Add(this.textRol);
             this.panelHeaderGenerarInforme.Controls.Add(this.label16);
             this.panelHeaderGenerarInforme.Controls.Add(this.textTotalPag);
-            this.panelHeaderGenerarInforme.Controls.Add(this.btnAtras);
             this.panelHeaderGenerarInforme.Controls.Add(this.label2);
             this.panelHeaderGenerarInforme.Controls.Add(this.pictureBox1);
             this.panelHeaderGenerarInforme.Dock = System.Windows.Forms.DockStyle.Top;
@@ -65,13 +65,28 @@
             this.panelHeaderGenerarInforme.TabIndex = 5;
             this.panelHeaderGenerarInforme.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHeaderGenerarInforme_MouseDown);
             // 
+            // btnAtras
+            // 
+            this.btnAtras.BackColor = System.Drawing.Color.Transparent;
+            this.btnAtras.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.TimesSquare;
+            this.btnAtras.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAtras.IconSize = 28;
+            this.btnAtras.Location = new System.Drawing.Point(632, 0);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(28, 28);
+            this.btnAtras.TabIndex = 8;
+            this.btnAtras.TabStop = false;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
+            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(493, 18);
+            this.label1.Location = new System.Drawing.Point(491, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 24);
             this.label1.TabIndex = 19;
@@ -109,33 +124,18 @@
             this.textTotalPag.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textTotalPag.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTotalPag.ForeColor = System.Drawing.SystemColors.Info;
-            this.textTotalPag.Location = new System.Drawing.Point(573, 16);
+            this.textTotalPag.Location = new System.Drawing.Point(564, 16);
             this.textTotalPag.Name = "textTotalPag";
             this.textTotalPag.Size = new System.Drawing.Size(75, 28);
             this.textTotalPag.TabIndex = 14;
             this.textTotalPag.Text = "0";
-            // 
-            // btnAtras
-            // 
-            this.btnAtras.BackColor = System.Drawing.Color.Transparent;
-            this.btnAtras.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleLeft;
-            this.btnAtras.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAtras.IconSize = 28;
-            this.btnAtras.Location = new System.Drawing.Point(12, 18);
-            this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(28, 28);
-            this.btnAtras.TabIndex = 8;
-            this.btnAtras.TabStop = false;
-            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(96, 18);
+            this.label2.Location = new System.Drawing.Point(61, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(216, 24);
             this.label2.TabIndex = 1;
@@ -144,7 +144,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::UI.Properties.Resources.doc_ico;
-            this.pictureBox1.Location = new System.Drawing.Point(45, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -156,11 +156,14 @@
             this.checkedListInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkedListInforme.FormattingEnabled = true;
             this.checkedListInforme.Items.AddRange(new object[] {
-            "Generar informe individual",
-            "Generar informe general "});
-            this.checkedListInforme.Location = new System.Drawing.Point(197, 116);
+            "Generar Informe General ",
+            "Generar Informe Individual",
+            "Generar Informe Presupuestal"});
+            this.checkedListInforme.Location = new System.Drawing.Point(175, 116);
             this.checkedListInforme.Name = "checkedListInforme";
-            this.checkedListInforme.Size = new System.Drawing.Size(248, 52);
+            this.checkedListInforme.ScrollAlwaysVisible = true;
+            this.checkedListInforme.Size = new System.Drawing.Size(307, 52);
+            this.checkedListInforme.Sorted = true;
             this.checkedListInforme.TabIndex = 6;
             // 
             // label3
@@ -229,6 +232,7 @@
             this.btnImprimirInforme.Text = "Imprimir informe";
             this.btnImprimirInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimirInforme.UseVisualStyleBackColor = false;
+            this.btnImprimirInforme.Click += new System.EventHandler(this.btnImprimirInforme_Click);
             // 
             // btnEliminarInforme
             // 
@@ -248,6 +252,7 @@
             this.btnEliminarInforme.Text = "Eliminar informe";
             this.btnEliminarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminarInforme.UseVisualStyleBackColor = false;
+            this.btnEliminarInforme.Click += new System.EventHandler(this.btnEliminarInforme_Click);
             // 
             // FormGenerarDocumento
             // 
@@ -261,6 +266,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormGenerarDocumento";
             this.Text = "FormGenerarDocumento";
+            this.Load += new System.EventHandler(this.FormGenerarDocumento_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormGenerarDocumento_MouseDown);
             this.panelHeaderGenerarInforme.ResumeLayout(false);
             this.panelHeaderGenerarInforme.PerformLayout();

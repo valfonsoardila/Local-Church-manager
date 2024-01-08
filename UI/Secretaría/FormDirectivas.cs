@@ -481,5 +481,10 @@ namespace UI
                 ConsultarYLlenarGridDeDirectivas();
             }
         }
+
+        private void btnGenerarInforme_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
