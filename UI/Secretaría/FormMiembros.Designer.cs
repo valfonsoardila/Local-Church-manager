@@ -120,8 +120,6 @@ namespace UI
             this.btnModificar = new FontAwesome.Sharp.IconButton();
             this.btnRegistrar = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.labelNumeroFolio = new System.Windows.Forms.Label();
-            this.labelFolio = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -182,6 +180,8 @@ namespace UI
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textNumeroFolio = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -202,7 +202,6 @@ namespace UI
             this.panel13.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
             this.panel2.SuspendLayout();
@@ -268,9 +267,9 @@ namespace UI
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Controls.Add(this.panel13);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 58);
+            this.panel8.Location = new System.Drawing.Point(0, 32);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(850, 354);
+            this.panel8.Size = new System.Drawing.Size(850, 380);
             this.panel8.TabIndex = 18;
             // 
             // panel12
@@ -1408,6 +1407,8 @@ namespace UI
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel13.Controls.Add(this.label41);
+            this.panel13.Controls.Add(this.textNumeroFolio);
             this.panel13.Controls.Add(this.label8);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 0);
@@ -1511,35 +1512,10 @@ namespace UI
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.labelNumeroFolio);
-            this.panel6.Controls.Add(this.labelFolio);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 32);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(850, 26);
             this.panel6.TabIndex = 14;
-            // 
-            // labelNumeroFolio
-            // 
-            this.labelNumeroFolio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelNumeroFolio.AutoSize = true;
-            this.labelNumeroFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumeroFolio.Location = new System.Drawing.Point(743, 5);
-            this.labelNumeroFolio.Name = "labelNumeroFolio";
-            this.labelNumeroFolio.Size = new System.Drawing.Size(81, 16);
-            this.labelNumeroFolio.TabIndex = 1;
-            this.labelNumeroFolio.Text = "*                 ";
-            // 
-            // labelFolio
-            // 
-            this.labelFolio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelFolio.AutoSize = true;
-            this.labelFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFolio.Location = new System.Drawing.Point(675, 5);
-            this.labelFolio.Name = "labelFolio";
-            this.labelFolio.Size = new System.Drawing.Size(62, 16);
-            this.labelFolio.TabIndex = 0;
-            this.labelFolio.Text = "FOLIO #";
             // 
             // panel5
             // 
@@ -1625,7 +1601,7 @@ namespace UI
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 347F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 348F));
             this.tableLayoutPanel1.Controls.Add(this.btnVerListaSimpatizantes, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGestionarMiembros, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGenerarInforme, 2, 0);
@@ -1650,7 +1626,7 @@ namespace UI
             this.btnVerListaSimpatizantes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnVerListaSimpatizantes.Location = new System.Drawing.Point(312, 3);
             this.btnVerListaSimpatizantes.Name = "btnVerListaSimpatizantes";
-            this.btnVerListaSimpatizantes.Size = new System.Drawing.Size(181, 43);
+            this.btnVerListaSimpatizantes.Size = new System.Drawing.Size(180, 43);
             this.btnVerListaSimpatizantes.TabIndex = 45;
             this.btnVerListaSimpatizantes.Text = "Ver simpatizantes";
             this.btnVerListaSimpatizantes.UseVisualStyleBackColor = false;
@@ -1683,7 +1659,7 @@ namespace UI
             this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
             this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGenerarInforme.IconSize = 30;
-            this.btnGenerarInforme.Location = new System.Drawing.Point(499, 3);
+            this.btnGenerarInforme.Location = new System.Drawing.Point(498, 3);
             this.btnGenerarInforme.Name = "btnGenerarInforme";
             this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
@@ -2015,7 +1991,7 @@ namespace UI
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 357F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 358F));
             this.tableLayoutPanel3.Controls.Add(this.iconButton3, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 405);
@@ -2035,7 +2011,7 @@ namespace UI
             this.iconButton3.IconColor = System.Drawing.Color.Black;
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 30;
-            this.iconButton3.Location = new System.Drawing.Point(306, 3);
+            this.iconButton3.Location = new System.Drawing.Point(305, 3);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.iconButton3.Size = new System.Drawing.Size(177, 40);
@@ -2348,6 +2324,27 @@ namespace UI
             this.panel1.Size = new System.Drawing.Size(858, 59);
             this.panel1.TabIndex = 2;
             // 
+            // textNumeroFolio
+            // 
+            this.textNumeroFolio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textNumeroFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNumeroFolio.Location = new System.Drawing.Point(739, 1);
+            this.textNumeroFolio.Multiline = true;
+            this.textNumeroFolio.Name = "textNumeroFolio";
+            this.textNumeroFolio.Size = new System.Drawing.Size(87, 26);
+            this.textNumeroFolio.TabIndex = 42;
+            this.textNumeroFolio.Text = "*";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(611, 7);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(126, 16);
+            this.label41.TabIndex = 43;
+            this.label41.Text = "Numero de Folio:";
+            // 
             // FormMiembros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2389,8 +2386,6 @@ namespace UI
             this.panel13.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
@@ -2443,7 +2438,6 @@ namespace UI
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label labelFolio;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
@@ -2454,7 +2448,6 @@ namespace UI
         private FontAwesome.Sharp.IconButton btnImprimir;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label labelNumeroFolio;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.TextBox textNombreDeLaMadre;
@@ -2586,5 +2579,7 @@ namespace UI
         private FontAwesome.Sharp.IconPictureBox btnCloseSearchLibreta;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton btnGenerarInforme;
+        private System.Windows.Forms.TextBox textNumeroFolio;
+        private System.Windows.Forms.Label label41;
     }
 }

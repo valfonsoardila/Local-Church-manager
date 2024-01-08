@@ -94,11 +94,11 @@ namespace UI
                 sympathizerData = snap.Documents.Select(docsnap => docsnap.ConvertTo<SympathizerData>()).ToList();
                 var hombres = snap.Documents.Where(docsnap => docsnap.ConvertTo<SympathizerData>().Genero == "Masculino").Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
                 var mujeres = snap.Documents.Where(docsnap => docsnap.ConvertTo<SympathizerData>().Genero == "Femenino").Select(docsnap => docsnap.ConvertTo<MemberData>()).ToList();
-
                 if (snap.Documents.Count > 0)
                 {
                     textTotalHombres2.Text = hombres.Count.ToString();
                     textTotalMujeres2.Text = mujeres.Count.ToString();
+                    textTotal2.Text = sympathizerData.Count.ToString();
                     dataGridSimpatizantes.DataSource = null;
                     dataGridSimpatizantes.DataSource = memberData;
                 }
@@ -187,6 +187,7 @@ namespace UI
                 {
                     textTotalHombres.Text = hombres.Count.ToString();
                     textTotalMujeres.Text = mujeres.Count.ToString();
+                    textTotal.Text = registros.Count.ToString();
                     dataGridMiembros.DataSource = null;
                     dataGridMiembros.DataSource = memberData;
                 }
@@ -262,7 +263,7 @@ namespace UI
         {
             textNombre.Text = "Nombre";
             comboTipoDocumento.Text = "CC";
-            textNumeroDeDocumento.Text = "# de documento";
+            textNumeroDeDocumento.Text = "Numero de documento";
             dateFechaDeNacimiento.Value = DateTime.Now;
             textDireccion.Text = "Direccion";
             textTelefono.Text = "Telefono";
@@ -275,23 +276,23 @@ namespace UI
             dateFechaDeBautismo.Value = DateTime.Now;
             textTiempoDeConversion.Text = "0";
             dateFechaEspirituSanto.Value = DateTime.Now;
-            textLugarBautizmo.Text = "Lugar de recepción";
+            textLugarBautizmo.Text = "Lugar bautizmo";
             comboPastorOficiante.Text = "Emiro Diaz";
 
             // Campos adicionales
             comboOficio.Text = "Oficio";
             comboEstadoCivil.Text = "Estado Civil";
             textNumeroDeHijos.Text = "0";
-            textNombreDelConyugue.Text = "Nombre del cónyuge";
+            textNombreDelConyugue.Text = "Nombre del conyuge";
             comboBautizado.Text = "Sí";
-            textLugarBautizmo.Text = "Lugar de bautismo";
+            textLugarBautizmo.Text = "Lugar bautismo";
             comboPastorOficiante.Text = "Nombre del pastor";
             comboSellado.Text = "Sí";
             comboRecuerda.Text = "Recuerdo";
             dateFechaEspirituSanto.Value = DateTime.Now;
             textTiempoDeConversion.Text = "0";
             textTiempoPromesa.Text = "0";
-            textIglesiaProcedente.Text = "Iglesia de procedencia";
+            textIglesiaProcedente.Text = "Iglesia procedente";
             comboPastorAsistente.Text = "Nombre del pastor asistente";
             textCargosDesempeñados.Text = "Cargos desempeñados";
             comboActoParaServir.Text = "Acto para servir";
@@ -318,19 +319,20 @@ namespace UI
                 string numeroFolio = "";
 
                 // Obtener el máximo número de comprobante directamente desde Firestore
-                var memberQuery = db.Collection("MembersData").OrderByDescending("Folio").Limit(1);
+                var memberQuery = db.Collection("MembersData").OrderByDescending("Folio");
                 var snapshot = await memberQuery.GetSnapshotAsync();
 
                 if (snapshot.Documents.Count > 0)
                 {
-                    var memberData = snapshot.Documents[0].ConvertTo<MemberData>();
-                    int numeroMayor = int.Parse(memberData.Folio) + 1;
+                    var folioCurrent = snapshot.Documents.Count;
+                    int numeroMayor = folioCurrent + 1;
                     numeroFolio = numeroMayor.ToString("0000");
+                    textNumeroFolio.Text = numeroFolio;
                 }
                 else
                 {
                     numeroFolio = "0001";
-                    labelNumeroFolio.Text = numeroFolio;
+                    textNumeroFolio.Text = numeroFolio;
                 }
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
@@ -359,13 +361,13 @@ namespace UI
                     textTotal.Text = miembroService.Totalizar().Cuenta.ToString();
                     var totalFolio = Convert.ToInt32(textTotal.Text);
                     folio = (totalFolio + 1).ToString("0000");
-                    labelNumeroFolio.Text = folio;
+                    textNumeroFolio.Text = folio;
                 }
                 else
                 {
                     var totalFolio = 1;
                     folio = totalFolio.ToString("0000");
-                    labelNumeroFolio.Text = folio;
+                    textNumeroFolio.Text = folio;
                 }
             }
         }
@@ -413,6 +415,28 @@ namespace UI
             contacto.GenerarId();
             idContacto = contacto.IdContacto;
         }
+        static string FormatearFecha(string fechaOriginal)
+        {
+            string fechaFormateada = "";
+            if (fechaOriginal.Contains(" p. m."))
+            {
+                fechaFormateada = fechaOriginal.Replace(" p. m.", "");
+                fechaFormateada = fechaFormateada + " PM";
+            }
+            else
+            {
+                if (fechaOriginal.Contains(" a. m."))
+                {
+                    fechaFormateada = fechaOriginal.Replace(" a. m.", "");
+                    fechaFormateada = fechaFormateada + " AM";
+                }
+                else
+                {
+                    fechaFormateada = fechaOriginal; 
+                }
+            }
+            return fechaFormateada;
+        }
         private async void FiltroPorIdentificacion(string filtro)
         {
             try
@@ -430,12 +454,18 @@ namespace UI
                     var ingresoFiltrado = membersFiltrados.First(); // Obtener el primer elemento de la lista
                     encontrado = true;
                     idContacto = ingresoFiltrado.IdContacto;
-                    labelNumeroFolio.Text = ingresoFiltrado.Folio;
+                    textNumeroFolio.Text = ingresoFiltrado.Folio;
                     textNombre.Text = ingresoFiltrado.Nombre + " " + ingresoFiltrado.Apellido;
                     comboTipoDocumento.Text = ingresoFiltrado.TipoDoc;
                     textNumeroDeDocumento.Text = ingresoFiltrado.NumeroDoc;
                     string formatoFecha = "d/M/yyyy h:mm:ss:tt";
-                    dateFechaDeNacimiento.Value = DateTime.ParseExact(ingresoFiltrado.FechaNacimiento, formatoFecha, CultureInfo.InvariantCulture);
+                    DateTime fechaConvertida;
+                    string fechaNacimiento = FormatearFecha(ingresoFiltrado.FechaNacimiento);
+                    if (DateTime.TryParseExact(fechaNacimiento, formatoFecha, CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaConvertida))
+                    {
+                        // La conversión fue exitosa, puedes usar fechaConvertida
+                        dateFechaDeNacimiento.Value = fechaConvertida;
+                    }
                     comboOficio.Text= ingresoFiltrado.Oficio;
                     comboGeneroRegistrar.Text = ingresoFiltrado.Genero;
                     textDireccion.Text = ingresoFiltrado.Direccion;
@@ -454,20 +484,36 @@ namespace UI
                     comboEstadoCivil.Text = ingresoFiltrado.EstadoCivil;
                     textNumeroDeHijos.Text = ingresoFiltrado.NumeroHijos.ToString(); // Agregar número de hijos
                     textNombreDelConyugue.Text = ingresoFiltrado.NombreConyugue; // Agregar nombre del cónyuge
-                    comboBautizado.Text = ingresoFiltrado.Bautizado; // Agregar campo de bautizado
-                    dateFechaDeBautismo.Value = DateTime.ParseExact(ingresoFiltrado.FechaDeBautizmo, formatoFecha, CultureInfo.InvariantCulture);
+                    comboBautizado.Text = ingresoFiltrado.Bautizado; // Agregar campo de bautizado 
+                    string fechaBautismo = FormatearFecha(ingresoFiltrado.FechaDeBautizmo);
+                    if (DateTime.TryParseExact(fechaBautismo, formatoFecha, CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaConvertida))
+                    {
+                        // La conversión fue exitosa, puedes usar fechaConvertida
+                        dateFechaDeBautismo.Value = fechaConvertida;
+                    }
                     textLugarBautizmo.Text = ingresoFiltrado.LugarBautizmo; // Agregar lugar de bautismo
                     comboPastorOficiante.Text = ingresoFiltrado.PastorOficiante; // Agregar pastor oficiante en el bautismo
                     comboSellado.Text = ingresoFiltrado.Sellado; // Agregar campo de sellado
                     comboRecuerda.Text = ingresoFiltrado.SelladoRecuerdo; // Agregar sellado recuerdo
-                    dateFechaEspirituSanto.Value = DateTime.ParseExact(ingresoFiltrado.FechaPromesa, formatoFecha, CultureInfo.InvariantCulture); // Agregar fecha de promesa
+                    string fechaPromesa = FormatearFecha(ingresoFiltrado.FechaPromesa);
+                    if (DateTime.TryParseExact(fechaPromesa, formatoFecha, CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaConvertida))
+                    {
+                        // La conversión fue exitosa, puedes usar fechaConvertida
+                        dateFechaEspirituSanto.Value = fechaConvertida;
+                    }
                     textTiempoDeConversion.Text = ingresoFiltrado.TiempoConversion.ToString(); // Agregar tiempo de conversión
                     textTiempoPromesa.Text = ingresoFiltrado.TiempoPromesa.ToString(); // Agregar tiempo de promesa
                     textIglesiaProcedente.Text = ingresoFiltrado.IglesiaProcedente; // Agregar iglesia de procedencia
                     comboPastorAsistente.Text = ingresoFiltrado.PastorAsistente; // Agregar pastor asistente
                     textCargosDesempeñados.Text = ingresoFiltrado.CargosDesempenados; // Agregar cargos desempeñados
                     comboActoParaServir.Text = ingresoFiltrado.Acto; // Agregar acto
-                    dateFechaDeCorreccion.Value = DateTime.ParseExact(ingresoFiltrado.FechaCorreccion, formatoFecha, CultureInfo.InvariantCulture); // Agregar fecha de corrección
+                    dateFechaDeCorreccion.Value = DateTime.Parse(FormatearFecha(ingresoFiltrado.FechaCorreccion)); // Agregar fecha de corrección
+                    string fechaCorreccion = FormatearFecha(ingresoFiltrado.FechaCorreccion);
+                    if (DateTime.TryParseExact(fechaCorreccion, formatoFecha, CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaConvertida))
+                    {
+                        // La conversión fue exitosa, puedes usar fechaConvertida
+                        dateFechaEspirituSanto.Value = fechaConvertida;
+                    }
                     textTiempoCorreccion.Text = ingresoFiltrado.TiempoCorreccion.ToString(); // Agregar tiempo de corrección
                     comboMembresia.Text = ingresoFiltrado.Membresia; // Agregar membresía
                     textLugarDeTraslado.Text = ingresoFiltrado.LugarTraslado; // Agregar lugar de traslado
@@ -500,7 +546,7 @@ namespace UI
                 {
                     encontrado = true;
                     idContacto = registro.IdContacto;
-                    labelNumeroFolio.Text = registro.Folio;
+                    textNumeroFolio.Text = registro.Folio;
                     textNombre.Text = registro.Nombre + " " + registro.Apellido;
                     comboTipoDocumento.Text = registro.TipoDoc;
                     textNumeroDeDocumento.Text = registro.NumeroDoc;
@@ -579,12 +625,13 @@ namespace UI
         {
             miembro = new Miembro();
             miembro.IdContacto = idContacto;
-            miembro.Folio = labelNumeroFolio.Text;
+            miembro.Folio = textNumeroFolio.Text;
             miembro.Nombre = nombres;
             miembro.Apellido = apellidos;
             miembro.TipoDoc = comboTipoDocumento.Text;
             miembro.NumeroDoc = textNumeroDeDocumento.Text;
             miembro.FechaNacimiento = dateFechaDeNacimiento.Value;
+            miembro.CalcularEdad();
             miembro.Genero = comboGeneroRegistrar.Text;
             miembro.Oficio=comboOficio.Text;
             miembro.Direccion = textDireccion.Text;
@@ -650,6 +697,7 @@ namespace UI
             simpatizante.TipoDoc = comboTipoDocumento.Text;
             simpatizante.NumeroDoc = textNumeroDeDocumento.Text;
             simpatizante.FechaNacimiento = dateFechaDeNacimiento.Value;
+            simpatizante.CalcularEdad();
             simpatizante.Genero = comboGeneroRegistrar.Text;
             simpatizante.Oficio = comboOficio.Text;
             simpatizante.Direccion = textDireccion.Text;
@@ -700,7 +748,7 @@ namespace UI
                 if (comboBautizado.Text == "Si" || comboBautizado.Text == "si")
                 {
                     // Guardamos local
-                    string mensaje = miembroService.Guardar(nuevoMiembro);
+                    //string mensaje = miembroService.Guardar(nuevoMiembro);
                     // Guardamos el contacto
                     var contact = contactMaps.ContactMap(contacto);
                     docRef = db.Collection("ContactsData").Document(contact.IdContacto.ToString());
@@ -709,7 +757,7 @@ namespace UI
                     var member = memberMaps.MemberMap(nuevoMiembro);
                     docRef = db.Collection("MembersData").Document(member.Folio.ToString());
                     docRef.SetAsync(member);
-                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    MessageBox.Show("Se ha registrado el nuevo miembro correctamente", "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     ConsultarYLlenarGridDeMiembros();
                     ConsultarYLlenarGridDeSimpatizante();
                     LimpiarCampos();
@@ -719,16 +767,16 @@ namespace UI
                 else
                 {
                     // Guardamos local
-                    string mensaje = simpatizanteService.Guardar(nuevoSimpatizante);
+                    //string mensaje = simpatizanteService.Guardar(nuevoSimpatizante);
                     // Guardamos el contacto
                     var contact = contactMaps.ContactMap(contacto);
                     docRef = db.Collection("ContactsData").Document(contact.IdContacto.ToString());
                     docRef.SetAsync(contact);
                     //Guardamos el simpatizante
-                    var member = memberMaps.MemberMap(nuevoMiembro);
-                    docRef = db.Collection("SympathizerData").Document(member.Folio.ToString());
-                    docRef.SetAsync(member);
-                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    var simpatizante = sympathizerMaps.SympathizerMap(nuevoSimpatizante);
+                    docRef = db.Collection("SympathizerData").Document(simpatizante.NumeroDoc.ToString());
+                    docRef.SetAsync(simpatizante);
+                    MessageBox.Show("Se ha registrado el nuevo miembro correctamente", "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     ConsultarYLlenarGridDeMiembros();
                     ConsultarYLlenarGridDeSimpatizante();
                     LimpiarCampos();
