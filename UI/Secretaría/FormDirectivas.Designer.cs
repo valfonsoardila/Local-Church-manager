@@ -69,10 +69,6 @@ namespace UI
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
-            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
-            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
-            this.textTotalMujeres = new System.Windows.Forms.TextBox();
-            this.textTotalHombres = new System.Windows.Forms.TextBox();
             this.textTotal = new System.Windows.Forms.TextBox();
             this.comboDirectiva = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
@@ -81,6 +77,7 @@ namespace UI
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboAño = new System.Windows.Forms.ComboBox();
+            this.comboFiltroAño = new System.Windows.Forms.ComboBox();
             tabNuevoIntegrante = new System.Windows.Forms.TabPage();
             tabNuevoIntegrante.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -101,8 +98,6 @@ namespace UI
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDirectiva)).BeginInit();
             this.panelContenedorDeDirectorio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).BeginInit();
@@ -664,11 +659,8 @@ namespace UI
             // panelContenedorDeDirectorio
             // 
             this.panelContenedorDeDirectorio.BackColor = System.Drawing.Color.Black;
+            this.panelContenedorDeDirectorio.Controls.Add(this.comboFiltroAño);
             this.panelContenedorDeDirectorio.Controls.Add(this.label27);
-            this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox5);
-            this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox2);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalMujeres);
-            this.panelContenedorDeDirectorio.Controls.Add(this.textTotalHombres);
             this.panelContenedorDeDirectorio.Controls.Add(this.textTotal);
             this.panelContenedorDeDirectorio.Controls.Add(this.comboDirectiva);
             this.panelContenedorDeDirectorio.Controls.Add(this.iconPictureBox3);
@@ -692,52 +684,6 @@ namespace UI
             this.label27.Size = new System.Drawing.Size(41, 16);
             this.label27.TabIndex = 29;
             this.label27.Text = "Total";
-            // 
-            // iconPictureBox5
-            // 
-            this.iconPictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.PersonDress;
-            this.iconPictureBox5.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox5.IconSize = 28;
-            this.iconPictureBox5.Location = new System.Drawing.Point(336, 4);
-            this.iconPictureBox5.Name = "iconPictureBox5";
-            this.iconPictureBox5.Size = new System.Drawing.Size(28, 28);
-            this.iconPictureBox5.TabIndex = 28;
-            this.iconPictureBox5.TabStop = false;
-            // 
-            // iconPictureBox2
-            // 
-            this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Person;
-            this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.IconSize = 28;
-            this.iconPictureBox2.Location = new System.Drawing.Point(257, 4);
-            this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(28, 28);
-            this.iconPictureBox2.TabIndex = 27;
-            this.iconPictureBox2.TabStop = false;
-            // 
-            // textTotalMujeres
-            // 
-            this.textTotalMujeres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalMujeres.Location = new System.Drawing.Point(362, 6);
-            this.textTotalMujeres.Name = "textTotalMujeres";
-            this.textTotalMujeres.Size = new System.Drawing.Size(46, 22);
-            this.textTotalMujeres.TabIndex = 26;
-            this.textTotalMujeres.Text = "0";
-            // 
-            // textTotalHombres
-            // 
-            this.textTotalHombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalHombres.Location = new System.Drawing.Point(288, 6);
-            this.textTotalHombres.Name = "textTotalHombres";
-            this.textTotalHombres.Size = new System.Drawing.Size(46, 22);
-            this.textTotalHombres.TabIndex = 25;
-            this.textTotalHombres.Text = "0";
             // 
             // textTotal
             // 
@@ -927,6 +873,52 @@ namespace UI
             this.comboAño.TabIndex = 28;
             this.comboAño.Text = "2020";
             // 
+            // comboFiltroAño
+            // 
+            this.comboFiltroAño.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboFiltroAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltroAño.FormattingEnabled = true;
+            this.comboFiltroAño.Items.AddRange(new object[] {
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030",
+            "2031",
+            "2032",
+            "2033",
+            "2034",
+            "2035",
+            "2036",
+            "2037",
+            "2038",
+            "2039",
+            "2040",
+            "2041",
+            "2042",
+            "2043",
+            "2044",
+            "2045",
+            "2046",
+            "2047",
+            "2048",
+            "2049",
+            "2050"});
+            this.comboFiltroAño.Location = new System.Drawing.Point(332, 4);
+            this.comboFiltroAño.Name = "comboFiltroAño";
+            this.comboFiltroAño.Size = new System.Drawing.Size(77, 24);
+            this.comboFiltroAño.TabIndex = 30;
+            this.comboFiltroAño.Text = "2020";
+            this.comboFiltroAño.SelectedIndexChanged += new System.EventHandler(this.comboFiltroAño_SelectedIndexChanged);
+            // 
             // FormDirectivas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -965,8 +957,6 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDirectiva)).EndInit();
             this.panelContenedorDeDirectorio.ResumeLayout(false);
             this.panelContenedorDeDirectorio.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearchLibreta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSearchLibreta)).EndInit();
@@ -1017,15 +1007,12 @@ namespace UI
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label27;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
-        private System.Windows.Forms.TextBox textTotalMujeres;
-        private System.Windows.Forms.TextBox textTotalHombres;
         private System.Windows.Forms.TextBox textTotal;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private FontAwesome.Sharp.IconButton btnGenerarInforme;
         private System.Windows.Forms.ComboBox comboAño;
+        private System.Windows.Forms.ComboBox comboFiltroAño;
     }
 }

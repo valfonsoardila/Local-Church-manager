@@ -159,6 +159,7 @@ namespace UI
                 // Filtrar elementos según el campo Valor y la variable id
                 var contactosOficio = contactos.Where(contacto => contacto.Oficio == filtro).ToList();
                 dataGridContactos.DataSource = contactosOficio;
+                textTotal.Text = contactosOficio.Count.ToString();
                 Borrar.Visible = true;
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();

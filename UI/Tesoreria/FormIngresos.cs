@@ -1086,7 +1086,7 @@ namespace UI
         private void comboFiltroAño_SelectedIndexChanged(object sender, EventArgs e)
         {
             string filtro = comboFiltroAño.Text;
-            if (filtro == "Todos")
+            if (filtro == "Todos" || filtro == "")
             {
                 ConsultarIngresos();
             }

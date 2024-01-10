@@ -22,6 +22,7 @@ namespace UI
         List<Directiva> directivas;
         Directiva directiva;
         DirectivesMaps directivesMaps;
+        List<DirectivesData> directives;
         string id = "";
         bool encontrado = false;
         public FormDirectivas()
@@ -80,8 +81,6 @@ namespace UI
                 if (tipo == "Directiva" || tipo == "Todos")
                 {
                     textTotal.Enabled = true;
-                    textTotalHombres.Enabled = true;
-                    textTotalMujeres.Enabled = true;
                     dataGridDirectiva.DataSource = null;
                     respuesta = directivaService.ConsultarTodos();
                     directivas = respuesta.Directivas.ToList();
@@ -90,8 +89,6 @@ namespace UI
                         dataGridDirectiva.DataSource = respuesta.Directivas;
                         Borrar.Visible = true;
                         textTotal.Text = directivaService.Totalizar().Cuenta.ToString();
-                        textTotalHombres.Text = directivaService.TotalizarTipo("Hombre").Cuenta.ToString();
-                        textTotalMujeres.Text = directivaService.TotalizarTipo("Mujer").Cuenta.ToString();
                     }
                 }
             }
@@ -125,6 +122,49 @@ namespace UI
             directiva.Observacion = textObservacion.Text;
             return directiva;
         }
+        private async void FiltroPorAño(string filtro)
+        {
+            try
+            {
+                var directivasPorAño = new List<DirectivesData>();
+                var db = FirebaseService.Database;
+                var ingresosQuery = db.Collection("DirectivesData");
+                directives = new List<DirectivesData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await ingresosQuery.GetSnapshotAsync();
+                directives = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<DirectivesData>()).ToList();
+                for (int i = 0; i < directives.Count; i++)
+                {
+                    if (directives[i].Vigencia.Contains(filtro))
+                    {
+                        directivasPorAño.Add(directives[i]);
+                    }
+                }
+                dataGridDirectiva.DataSource = directivasPorAño;
+                textTotal.Text = directivasPorAño.Count.ToString();
+                Borrar.Visible = true;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+            }
+        }
+
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             if(textNombre.Text!="Nombre" && textObservacion.Text != "Observacion" && textNombre.Text != "" && textObservacion.Text != "")
@@ -505,6 +545,20 @@ namespace UI
         private void FormDirectivas_Load(object sender, EventArgs e)
         {
             comboAño.Text = DateTime.Now.Year.ToString();
+        }
+
+        private void comboFiltroAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtro = comboFiltroAño.Text;
+            if (filtro == "Todos" || filtro == "")
+            {
+                ConsultarYLlenarGridDeDirectivas();
+            }
+            else
+            {
+                comboFiltroComite.Text = "Comite";
+                FiltroPorAño(filtro);
+            }
         }
     }
 }
