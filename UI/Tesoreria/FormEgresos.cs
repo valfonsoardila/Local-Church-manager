@@ -113,7 +113,7 @@ namespace UI
 
                 // Actualizar el texto después de procesar todos los documentos
                 textTotalEgresos.Text = LecturaCifra(sumEgreso);
-                saldo = sumIngreso - sumEgreso;
+                saldo = sumEgreso > 0 ? sumIngreso - sumEgreso : 0;
                 textSaldo.Text = LecturaCifra(saldo);
                 // Calcular el saldo después de totalizar los ingresos
                 if(textSaldo.Text!="" && textSaldo.Text != "0")
@@ -942,12 +942,13 @@ namespace UI
         private void comboFiltroComite_SelectedIndexChanged(object sender, EventArgs e)
         {
             string filtro = comboFiltroComite.Text;
-            if (filtro == "Todos")
+            if (filtro == "Todos" || filtro == "")
             {
                 ConsultarEgresos();
             }
             else
             {
+                comboFiltroAño.Text = "2020";
                 FiltroPorComite(filtro);
             }
         }
@@ -1033,7 +1034,7 @@ namespace UI
             }
             else
             {
-                comboFiltroComite.Text = "2020";
+                comboFiltroComite.Text = "Comite";
                 FiltroPorAño(filtro);
             }
         }

@@ -131,6 +131,11 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panelRubros = new System.Windows.Forms.Panel();
             this.dataGridRubros = new System.Windows.Forms.DataGridView();
+            this.IdRubro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rubro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorRubro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Restante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel8 = new System.Windows.Forms.Panel();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -156,11 +161,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.IdRubro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rubro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorRubro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Restante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -645,6 +645,8 @@
             // 
             // chartGeneral
             // 
+            this.chartGeneral.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipY;
+            this.chartGeneral.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
             chartArea1.Name = "ChartArea1";
             this.chartGeneral.ChartAreas.Add(chartArea1);
             this.chartGeneral.Dock = System.Windows.Forms.DockStyle.Top;
@@ -652,8 +654,10 @@
             this.chartGeneral.Legends.Add(legend1);
             this.chartGeneral.Location = new System.Drawing.Point(0, 502);
             this.chartGeneral.Name = "chartGeneral";
+            this.chartGeneral.RightToLeft = System.Windows.Forms.RightToLeft.No;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             series1.YValuesPerPoint = 6;
@@ -1482,6 +1486,36 @@
             this.dataGridRubros.Size = new System.Drawing.Size(429, 324);
             this.dataGridRubros.TabIndex = 5;
             // 
+            // IdRubro
+            // 
+            this.IdRubro.HeaderText = "IdRubro";
+            this.IdRubro.Name = "IdRubro";
+            this.IdRubro.ReadOnly = true;
+            // 
+            // Rubro
+            // 
+            this.Rubro.HeaderText = "Rubro";
+            this.Rubro.Name = "Rubro";
+            this.Rubro.ReadOnly = true;
+            // 
+            // ValorRubro
+            // 
+            this.ValorRubro.HeaderText = "ValorRubro";
+            this.ValorRubro.Name = "ValorRubro";
+            this.ValorRubro.ReadOnly = true;
+            // 
+            // Porcentaje
+            // 
+            this.Porcentaje.HeaderText = "Porcentaje";
+            this.Porcentaje.Name = "Porcentaje";
+            this.Porcentaje.ReadOnly = true;
+            // 
+            // Restante
+            // 
+            this.Restante.HeaderText = "Restante";
+            this.Restante.Name = "Restante";
+            this.Restante.ReadOnly = true;
+            // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.MediumAquamarine;
@@ -1820,36 +1854,6 @@
             this.label8.Size = new System.Drawing.Size(182, 16);
             this.label8.TabIndex = 0;
             this.label8.Text = "Porcentajes por comite";
-            // 
-            // IdRubro
-            // 
-            this.IdRubro.HeaderText = "IdRubro";
-            this.IdRubro.Name = "IdRubro";
-            this.IdRubro.ReadOnly = true;
-            // 
-            // Rubro
-            // 
-            this.Rubro.HeaderText = "Rubro";
-            this.Rubro.Name = "Rubro";
-            this.Rubro.ReadOnly = true;
-            // 
-            // ValorRubro
-            // 
-            this.ValorRubro.HeaderText = "ValorRubro";
-            this.ValorRubro.Name = "ValorRubro";
-            this.ValorRubro.ReadOnly = true;
-            // 
-            // Porcentaje
-            // 
-            this.Porcentaje.HeaderText = "Porcentaje";
-            this.Porcentaje.Name = "Porcentaje";
-            this.Porcentaje.ReadOnly = true;
-            // 
-            // Restante
-            // 
-            this.Restante.HeaderText = "Restante";
-            this.Restante.Name = "Restante";
-            this.Restante.ReadOnly = true;
             // 
             // FormPresupuesto
             // 

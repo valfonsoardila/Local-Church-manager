@@ -683,7 +683,7 @@ namespace UI
             if (presupuestosGeneral != null && presupuestosGeneral.Any())
             {
                 double porcentajeActual = sumIgresos * 100/ sumPresupuestos;
-                double porcentajeRestante = 100 - porcentajeActual;
+                double porcentajeRestante = Math.Abs(100 - porcentajeActual);
                 string porcentajeRebasado="";
                 if (porcentajeActual > 100)
                 {

@@ -90,6 +90,15 @@ namespace UI
                     labelEstadoNube.ForeColor = Color.Red;
                     iconNube.IconColor = Color.Red;
                 }
+                else
+                {
+                    if (e.Mensaje.Contains("Unauthenticated"))
+                    {
+                        labelEstadoNube.Text = "Error temporal en nube";
+                        labelEstadoNube.ForeColor = Color.Red;
+                        iconNube.IconColor = Color.Red;
+                    }
+                }
             }
         }
         public void ValidarDisponibilidadNube(SuccesfullEventArgs e)

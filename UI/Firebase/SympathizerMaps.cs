@@ -53,11 +53,11 @@ namespace UI
                 };
             }
         }
-        private bool CheckIfSympathizerAlreadyExist(string folio)
+        private bool CheckIfSympathizerAlreadyExist(string numeroDoc)
         {
             //Consulta en la nube
             var db = FirebaseService.Database;
-            Google.Cloud.Firestore.DocumentReference docRef = db.Collection("SympathizerData").Document(folio);
+            Google.Cloud.Firestore.DocumentReference docRef = db.Collection("SympathizerData").Document(numeroDoc);
             SympathizerData data = docRef.GetSnapshotAsync().Result.ConvertTo<SympathizerData>();
             if (data != null)
             {

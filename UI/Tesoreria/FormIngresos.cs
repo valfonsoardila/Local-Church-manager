@@ -80,8 +80,6 @@ namespace UI
                 sumIngreso = snapshotIngress.Documents.Sum(doc => doc.ConvertTo<IngressData>().Valor);
                 sumEgreso = snapshotEgress.Documents.Sum(doc => doc.ConvertTo<EgressData>().Valor);
                 // Calcular el saldo después de procesar todos los documentos
-                saldo = sumIngreso - sumEgreso;
-                textSaldo.Text = LecturaCifra(saldo);
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto
@@ -103,7 +101,7 @@ namespace UI
                 }
             }
         }
-        private async void TotalizarIngresos()
+        private async void TotalizarIngresos(string filtro)
         {
             try
             {
@@ -113,13 +111,20 @@ namespace UI
 
                 // Realizar la suma directamente en la consulta Firestore
                 var snapshot = await ingresosQuery.GetSnapshotAsync();
-                sumIngreso = snapshot.Documents.Sum(doc => doc.ConvertTo<IngressData>().Valor);
+                var ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                var registrosFiltrados = ingresos.Where(registro => registro.FechaDeIngreso.Contains(filtro)).ToList();
+                sumIngreso = registrosFiltrados.Sum(doc => doc.Valor);
 
                 // Actualizar el texto después de procesar todos los documentos
                 textTotalIngresos.Text = LecturaCifra(sumIngreso);
+                saldo = sumIngreso > 0 ? sumIngreso - sumEgreso : 0;
+                textSaldo.Text = LecturaCifra(saldo);
 
-                // Calcular el saldo después de totalizar los ingresos
-                CalculoDeSaldo();
+                if (textSaldo.Text != "" && textSaldo.Text != "0")
+                {
+                    CalculoDeSaldo();
+                }
+
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto
@@ -287,7 +292,6 @@ namespace UI
         }
         private async void ConsultarIngresos()
         {
-            TotalizarIngresos();
             //TotalizarRegistros();
             try
             {
@@ -941,6 +945,7 @@ namespace UI
             }
             else
             {
+                comboFiltroAño.Text = "2020";
                 FiltroPorComite(filtro);
             }
         }
@@ -1047,6 +1052,7 @@ namespace UI
                     }
                 }
                 dataGridIngresos.DataSource = ingresosPorAño;
+                TotalizarIngresos(filtro);
                 textTotalNube.Text = ingresosPorAño.Count.ToString();
                 Borrar.Visible = true;
                 // Obtener referencia al formulario principal
@@ -1086,7 +1092,7 @@ namespace UI
             }
             else
             {
-                comboFiltroComite.Text = "Todos";
+                comboFiltroComite.Text = "Comite";
                 FiltroPorAño(filtro);
             }
         }

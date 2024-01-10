@@ -759,7 +759,6 @@ namespace UI
                     docRef.SetAsync(member);
                     MessageBox.Show("Se ha registrado el nuevo miembro correctamente", "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     ConsultarYLlenarGridDeMiembros();
-                    ConsultarYLlenarGridDeSimpatizante();
                     LimpiarCampos();
                     CalcularFolio();
                     tabMiembros.SelectedIndex = 0;
@@ -774,10 +773,9 @@ namespace UI
                     docRef.SetAsync(contact);
                     //Guardamos el simpatizante
                     var simpatizante = sympathizerMaps.SympathizerMap(nuevoSimpatizante);
-                    docRef = db.Collection("SympathizerData").Document(simpatizante.NumeroDoc.ToString());
+                    docRef = db.Collection("SympathizerData").Document(simpatizante.NumeroDoc);
                     docRef.SetAsync(simpatizante);
                     MessageBox.Show("Se ha registrado el nuevo miembro correctamente", "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    ConsultarYLlenarGridDeMiembros();
                     ConsultarYLlenarGridDeSimpatizante();
                     LimpiarCampos();
                     CalcularFolio();
@@ -1744,6 +1742,7 @@ namespace UI
                     {
                         id = Convert.ToString(dataGridMiembros.CurrentRow.Cells["Folio"].Value.ToString());
                         FiltroPorIdentificacion(id);
+                        tabMiembros.SelectedIndex = 1;
                     }
                 }
             }
