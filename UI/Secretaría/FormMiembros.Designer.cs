@@ -136,9 +136,6 @@ namespace UI
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridMiembros = new System.Windows.Forms.DataGridView();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel20 = new System.Windows.Forms.Panel();
             this.label39 = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
@@ -182,6 +179,10 @@ namespace UI
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Imprimir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -1622,7 +1623,7 @@ namespace UI
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 349F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutPanel1.Controls.Add(this.btnVerListaSimpatizantes, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGestionarMiembros, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGenerarInforme, 2, 0);
@@ -1645,7 +1646,7 @@ namespace UI
             this.btnVerListaSimpatizantes.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnVerListaSimpatizantes.IconColor = System.Drawing.Color.Black;
             this.btnVerListaSimpatizantes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnVerListaSimpatizantes.Location = new System.Drawing.Point(311, 3);
+            this.btnVerListaSimpatizantes.Location = new System.Drawing.Point(310, 3);
             this.btnVerListaSimpatizantes.Name = "btnVerListaSimpatizantes";
             this.btnVerListaSimpatizantes.Size = new System.Drawing.Size(180, 43);
             this.btnVerListaSimpatizantes.TabIndex = 45;
@@ -1663,7 +1664,7 @@ namespace UI
             this.btnGestionarMiembros.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnGestionarMiembros.IconColor = System.Drawing.Color.Black;
             this.btnGestionarMiembros.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarMiembros.Location = new System.Drawing.Point(170, 3);
+            this.btnGestionarMiembros.Location = new System.Drawing.Point(169, 3);
             this.btnGestionarMiembros.Name = "btnGestionarMiembros";
             this.btnGestionarMiembros.Size = new System.Drawing.Size(135, 40);
             this.btnGestionarMiembros.TabIndex = 1;
@@ -1680,7 +1681,7 @@ namespace UI
             this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
             this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGenerarInforme.IconSize = 30;
-            this.btnGenerarInforme.Location = new System.Drawing.Point(497, 3);
+            this.btnGenerarInforme.Location = new System.Drawing.Point(496, 3);
             this.btnGenerarInforme.Name = "btnGenerarInforme";
             this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
@@ -1718,6 +1719,7 @@ namespace UI
             this.dataGridMiembros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMiembros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
+            this.Imprimir,
             this.Editar,
             this.Borrar});
             this.dataGridMiembros.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1729,31 +1731,6 @@ namespace UI
             this.dataGridMiembros.Size = new System.Drawing.Size(781, 329);
             this.dataGridMiembros.TabIndex = 43;
             this.dataGridMiembros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMiembros_CellClick);
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 70;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::UI.Properties.Resources.edit_user;
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Width = 50;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Image = global::UI.Properties.Resources.borrar;
-            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 60;
             // 
             // panel20
             // 
@@ -2013,7 +1990,7 @@ namespace UI
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 359F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 360F));
             this.tableLayoutPanel3.Controls.Add(this.iconButton3, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 405);
@@ -2033,7 +2010,7 @@ namespace UI
             this.iconButton3.IconColor = System.Drawing.Color.Black;
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 30;
-            this.iconButton3.Location = new System.Drawing.Point(305, 3);
+            this.iconButton3.Location = new System.Drawing.Point(304, 3);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.iconButton3.Size = new System.Drawing.Size(176, 40);
@@ -2346,6 +2323,40 @@ namespace UI
             this.panel1.Size = new System.Drawing.Size(858, 59);
             this.panel1.TabIndex = 2;
             // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Width = 70;
+            // 
+            // Imprimir
+            // 
+            this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
+            this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Imprimir.Name = "Imprimir";
+            this.Imprimir.ReadOnly = true;
+            this.Imprimir.Width = 70;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 50;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Width = 60;
+            // 
             // FormMiembros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2560,9 +2571,6 @@ namespace UI
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridMiembros;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
-        private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Label label39;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
@@ -2582,5 +2590,9 @@ namespace UI
         private FontAwesome.Sharp.IconButton btnGenerarInforme;
         private System.Windows.Forms.TextBox textNumeroFolio;
         private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewImageColumn Imprimir;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
     }
 }

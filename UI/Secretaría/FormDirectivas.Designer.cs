@@ -47,6 +47,7 @@ namespace UI
             this.panel4 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboAño = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboFiltroComite = new System.Windows.Forms.ComboBox();
@@ -64,10 +65,8 @@ namespace UI
             this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridDirectiva = new System.Windows.Forms.DataGridView();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
+            this.comboFiltroAño = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.textTotal = new System.Windows.Forms.TextBox();
             this.comboDirectiva = new System.Windows.Forms.ComboBox();
@@ -76,8 +75,10 @@ namespace UI
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboAño = new System.Windows.Forms.ComboBox();
-            this.comboFiltroAño = new System.Windows.Forms.ComboBox();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Imprimir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             tabNuevoIntegrante = new System.Windows.Forms.TabPage();
             tabNuevoIntegrante.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -363,6 +364,51 @@ namespace UI
             this.panel2.Size = new System.Drawing.Size(836, 36);
             this.panel2.TabIndex = 3;
             // 
+            // comboAño
+            // 
+            this.comboAño.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboAño.FormattingEnabled = true;
+            this.comboAño.Items.AddRange(new object[] {
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030",
+            "2031",
+            "2032",
+            "2033",
+            "2034",
+            "2035",
+            "2036",
+            "2037",
+            "2038",
+            "2039",
+            "2040",
+            "2041",
+            "2042",
+            "2043",
+            "2044",
+            "2045",
+            "2046",
+            "2047",
+            "2048",
+            "2049",
+            "2050"});
+            this.comboAño.Location = new System.Drawing.Point(148, 6);
+            this.comboAño.Name = "comboAño";
+            this.comboAño.Size = new System.Drawing.Size(87, 24);
+            this.comboAño.TabIndex = 28;
+            this.comboAño.Text = "2020";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -620,6 +666,7 @@ namespace UI
             this.dataGridDirectiva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDirectiva.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
+            this.Imprimir,
             this.Editar,
             this.Borrar});
             this.dataGridDirectiva.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -630,31 +677,6 @@ namespace UI
             this.dataGridDirectiva.Size = new System.Drawing.Size(759, 358);
             this.dataGridDirectiva.TabIndex = 1;
             this.dataGridDirectiva.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDirectiva_CellClick);
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 70;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::UI.Properties.Resources.edit_user;
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Width = 50;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Image = global::UI.Properties.Resources.borrar;
-            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 60;
             // 
             // panelContenedorDeDirectorio
             // 
@@ -673,6 +695,52 @@ namespace UI
             this.panelContenedorDeDirectorio.Name = "panelContenedorDeDirectorio";
             this.panelContenedorDeDirectorio.Size = new System.Drawing.Size(759, 32);
             this.panelContenedorDeDirectorio.TabIndex = 0;
+            // 
+            // comboFiltroAño
+            // 
+            this.comboFiltroAño.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboFiltroAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltroAño.FormattingEnabled = true;
+            this.comboFiltroAño.Items.AddRange(new object[] {
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030",
+            "2031",
+            "2032",
+            "2033",
+            "2034",
+            "2035",
+            "2036",
+            "2037",
+            "2038",
+            "2039",
+            "2040",
+            "2041",
+            "2042",
+            "2043",
+            "2044",
+            "2045",
+            "2046",
+            "2047",
+            "2048",
+            "2049",
+            "2050"});
+            this.comboFiltroAño.Location = new System.Drawing.Point(332, 4);
+            this.comboFiltroAño.Name = "comboFiltroAño";
+            this.comboFiltroAño.Size = new System.Drawing.Size(77, 24);
+            this.comboFiltroAño.TabIndex = 30;
+            this.comboFiltroAño.Text = "2020";
+            this.comboFiltroAño.SelectedIndexChanged += new System.EventHandler(this.comboFiltroAño_SelectedIndexChanged);
             // 
             // label27
             // 
@@ -828,96 +896,39 @@ namespace UI
             this.label1.TabIndex = 0;
             this.label1.Text = "Directivas";
             // 
-            // comboAño
+            // Seleccionar
             // 
-            this.comboAño.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboAño.FormattingEnabled = true;
-            this.comboAño.Items.AddRange(new object[] {
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-            "2024",
-            "2025",
-            "2026",
-            "2027",
-            "2028",
-            "2029",
-            "2030",
-            "2031",
-            "2032",
-            "2033",
-            "2034",
-            "2035",
-            "2036",
-            "2037",
-            "2038",
-            "2039",
-            "2040",
-            "2041",
-            "2042",
-            "2043",
-            "2044",
-            "2045",
-            "2046",
-            "2047",
-            "2048",
-            "2049",
-            "2050"});
-            this.comboAño.Location = new System.Drawing.Point(148, 6);
-            this.comboAño.Name = "comboAño";
-            this.comboAño.Size = new System.Drawing.Size(87, 24);
-            this.comboAño.TabIndex = 28;
-            this.comboAño.Text = "2020";
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Width = 70;
             // 
-            // comboFiltroAño
+            // Imprimir
             // 
-            this.comboFiltroAño.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboFiltroAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboFiltroAño.FormattingEnabled = true;
-            this.comboFiltroAño.Items.AddRange(new object[] {
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-            "2024",
-            "2025",
-            "2026",
-            "2027",
-            "2028",
-            "2029",
-            "2030",
-            "2031",
-            "2032",
-            "2033",
-            "2034",
-            "2035",
-            "2036",
-            "2037",
-            "2038",
-            "2039",
-            "2040",
-            "2041",
-            "2042",
-            "2043",
-            "2044",
-            "2045",
-            "2046",
-            "2047",
-            "2048",
-            "2049",
-            "2050"});
-            this.comboFiltroAño.Location = new System.Drawing.Point(332, 4);
-            this.comboFiltroAño.Name = "comboFiltroAño";
-            this.comboFiltroAño.Size = new System.Drawing.Size(77, 24);
-            this.comboFiltroAño.TabIndex = 30;
-            this.comboFiltroAño.Text = "2020";
-            this.comboFiltroAño.SelectedIndexChanged += new System.EventHandler(this.comboFiltroAño_SelectedIndexChanged);
+            this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
+            this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Imprimir.Name = "Imprimir";
+            this.Imprimir.ReadOnly = true;
+            this.Imprimir.Width = 70;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 50;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Width = 60;
             // 
             // FormDirectivas
             // 
@@ -1008,11 +1019,12 @@ namespace UI
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox textTotal;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
-        private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private FontAwesome.Sharp.IconButton btnGenerarInforme;
         private System.Windows.Forms.ComboBox comboAño;
         private System.Windows.Forms.ComboBox comboFiltroAño;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewImageColumn Imprimir;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
     }
 }
