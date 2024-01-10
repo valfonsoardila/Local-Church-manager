@@ -33,7 +33,7 @@ namespace UI
         private void Inicializar()
         {
             ConsultarYLlenarGridDeDirectivas();
-            labelVigencia.Text = DateTime.Now.Year.ToString();
+            comboAño.Text = DateTime.Now.Year.ToString();
         }
         private async void ConsultarYLlenarGridDeDirectivas()
         {
@@ -108,7 +108,7 @@ namespace UI
         }
         private void LimpiarCampos()
         {
-            labelVigencia.Text = DateTime.Now.Year.ToString();
+            comboAño.Text = DateTime.Now.Year.ToString();
             comboFiltroComite.Text = "Labores";
             textNombre.Text = "Nombre";
             comboCargo.Text = "Presidente";
@@ -118,7 +118,7 @@ namespace UI
         {
             directiva = new Directiva();
             directiva.IdDirectiva = id;
-            directiva.Vigencia = labelVigencia.Text;
+            directiva.Vigencia = comboAño.Text;
             directiva.Comite = comboFiltroComite.Text;
             directiva.Nombre = textNombre.Text;
             directiva.Cargo = comboCargo.Text;
@@ -138,8 +138,8 @@ namespace UI
                     var directivaNueva = directivesMaps.DirectivesMap(directiva);
                     docRef = db.Collection("DirectivesData").Document(directivaNueva.IdDirectiva.ToString());
                     docRef.SetAsync(directivaNueva);
-                    string mensaje = directivaService.Guardar(directiva);
-                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    //string mensaje = directivaService.Guardar(directiva);
+                    MessageBox.Show("Se ha registrado el nuevo cargo correctamente", "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     ConsultarYLlenarGridDeDirectivas();
                     LimpiarCampos();
                     tabDirectivas.SelectedIndex = 0;
@@ -179,12 +179,12 @@ namespace UI
         {
             try
             {
-                string mensaje = directivaService.Eliminar(id);
+                //string mensaje = directivaService.Eliminar(id);
                 //Elimina primero de firebase o la nube
                 var db = FirebaseService.Database;
                 Google.Cloud.Firestore.DocumentReference docRef = db.Collection("DirectivesData").Document(id);
                 docRef.DeleteAsync();
-                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se ha eliminado el registrado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarYLlenarGridDeDirectivas();
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
@@ -222,8 +222,8 @@ namespace UI
                     var directivaNueva = directivesMaps.DirectivesMap(directiva);
                     docRef = db.Collection("DirectivesData").Document(directivaNueva.IdDirectiva.ToString());
                     docRef.SetAsync(directivaNueva);
-                    string mensaje = directivaService.Modificar(directiva);
-                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    //string mensaje = directivaService.Modificar(directiva);
+                    MessageBox.Show("Se ha modificado este registro correctamente", "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     ConsultarYLlenarGridDeDirectivas();
                     LimpiarCampos();
                     tabDirectivas.SelectedIndex = 0;
@@ -328,18 +328,24 @@ namespace UI
         }
         private void FiltroPorId(string id)
         {
-            BusquedaDirectivaRespuesta respuesta = new BusquedaDirectivaRespuesta();
-            respuesta = directivaService.BuscarPorIdentificacion(id);
-            var registro = respuesta.Directiva;
-            if (registro != null)
+            try
             {
-                encontrado = true;
-                var directivas = new List<Directiva> { registro };
-                textNombre.Text = directivas[0].Nombre;
-                labelVigencia.Text = directivas[0].Vigencia;
-                comboDirectiva.Text = directivas[0].Comite;
-                comboCargo.Text = directivas[0].Cargo;
-                textObservacion.Text = directivas[0].Observacion;
+
+            }catch(Exception ex)
+            {
+                BusquedaDirectivaRespuesta respuesta = new BusquedaDirectivaRespuesta();
+                respuesta = directivaService.BuscarPorIdentificacion(id);
+                var registro = respuesta.Directiva;
+                if (registro != null)
+                {
+                    encontrado = true;
+                    var directivas = new List<Directiva> { registro };
+                    textNombre.Text = directivas[0].Nombre;
+                    comboAño.Text = directivas[0].Vigencia;
+                    comboDirectiva.Text = directivas[0].Comite;
+                    comboCargo.Text = directivas[0].Cargo;
+                    textObservacion.Text = directivas[0].Observacion;
+                }
             }
         }
 
@@ -369,14 +375,20 @@ namespace UI
         }
         void FiltroPorNombre(string filtro)
         {
-            ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
-            respuesta = directivaService.BuscarPorNombre(filtro);
-            var registro = respuesta.Directivas;
-            if (registro != null)
+            try
             {
-                dataGridDirectiva.DataSource = null;
-                dataGridDirectiva.DataSource = registro;
-                encontrado = true;
+
+            }catch(Exception ex)
+            {
+                ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
+                respuesta = directivaService.BuscarPorNombre(filtro);
+                var registro = respuesta.Directivas;
+                if (registro != null)
+                {
+                    dataGridDirectiva.DataSource = null;
+                    dataGridDirectiva.DataSource = registro;
+                    encontrado = true;
+                }
             }
         }
         private void textSerachLibreta_TextChanged(object sender, EventArgs e)
@@ -423,58 +435,60 @@ namespace UI
                 ConsultarYLlenarGridDeDirectivas();
             }
         }
-        private void FiltroPorDirectiva(string filtro)
+        private async void FiltroPorDirectiva(string filtro)
         {
-            ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
-            respuesta = directivaService.BuscarPorDirectiva(filtro);
-            var registro = respuesta.Directivas;
-            if (registro != null)
+            try
             {
-                dataGridDirectiva.DataSource = null;
-                dataGridDirectiva.DataSource = registro;
-                encontrado = true;
+                var db = FirebaseService.Database;
+                var directivasQuery = db.Collection("DirectivesData");
+                var directivas = new List<DirectivesData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await directivasQuery.GetSnapshotAsync();
+                directivas = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<DirectivesData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var directivasComite = directivas.Where(miembro => miembro.Comite == filtro).ToList();
+                dataGridDirectiva.DataSource = directivasComite;
+                Borrar.Visible = true;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
             }
-            else
+            catch(Exception ex)
             {
-                dataGridDirectiva.DataSource = null;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaDirectivaRespuesta respuesta = new ConsultaDirectivaRespuesta();
+                respuesta = directivaService.BuscarPorDirectiva(filtro);
+                var registro = respuesta.Directivas;
+                if (registro != null)
+                {
+                    dataGridDirectiva.DataSource = null;
+                    dataGridDirectiva.DataSource = registro;
+                    encontrado = true;
+                }
+                else
+                {
+                    dataGridDirectiva.DataSource = null;
+                }
             }
         }
         private void comboDirectiva_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboDirectiva.Text != "" && comboDirectiva.Text != "Todos" && comboDirectiva.Text != "Directiva")
+            var filtro = comboDirectiva.Text;
+            if (comboDirectiva.Text != "" && comboDirectiva.Text != "Todos")
             {
-                if (textSerachLibreta.Text != "" && textSerachLibreta.Text != "Buscar por nombre")
-                {
-                    dataGridDirectiva.CurrentCell = null;
-                    foreach (DataGridViewRow fila in dataGridDirectiva.Rows)
-                    {
-                        fila.Visible = false;
-                    };
-                    foreach (DataGridViewRow fila in dataGridDirectiva.Rows)
-                    {
-                        int i = 0;
-                        foreach (DataGridViewCell celda in fila.Cells)
-                        {
-                            if (i == 6)
-                            {
-                                if ((celda.Value.ToString().ToUpper()).IndexOf(comboDirectiva.Text.ToUpper()) == 0)
-                                {
-                                    fila.Visible = true;
-                                    break;
-                                }
-                                else
-                                {
-                                    if ((celda.Value.ToString() == (comboDirectiva.Text.ToUpper())))
-                                    {
-                                        fila.Visible = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            i = i + 1;
-                        }
-                    }
-                }
+                FiltroPorDirectiva(filtro);
             }
             else
             {
@@ -484,7 +498,13 @@ namespace UI
 
         private void btnGenerarInforme_Click(object sender, EventArgs e)
         {
+            FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
+            formGenerarDocumento.Show();
+        }
 
+        private void FormDirectivas_Load(object sender, EventArgs e)
+        {
+            comboAño.Text = DateTime.Now.Year.ToString();
         }
     }
 }

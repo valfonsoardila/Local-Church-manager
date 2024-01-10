@@ -1340,14 +1340,6 @@ namespace UI
                 textSearch.Text = "Buscar";
             }
         }
-        private void btnImprimirLista_Click(object sender, EventArgs e)
-        {
-            string nombreArchivo = "ReporteMiembros.docx"; // Reemplaza con el nombre real del archivo
-            string rutaDelArchivo = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UI\\Doc's", nombreArchivo);
-            // Llama al método EditarDocumento
-            Imprimir imprimir = new Imprimir();
-            imprimir.EditarDocumentoMiembros(rutaDelArchivo);
-        }
         //Validaciones de campos
         private void textNombre_Enter(object sender, EventArgs e)
         {

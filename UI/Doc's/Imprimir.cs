@@ -14,34 +14,5 @@ namespace UI
         {
 
         }
-
-        public void GenerarInformeGeneralTesoreria()
-        {
-
-        }
-        public void GenerarInformeIndividualTesoreria()
-        {
-
-        }
-        public void GenerarInformePresupuestal()
-        {
-
-        }
-        public void EditarDocumentoMiembros(string rutaDelArchivo)
-        {
-            // Abre el documento Word
-            using (DocX doc = DocX.Load(rutaDelArchivo))
-            {
-                // Accede al contenido del documento
-                Paragraph paragraph = doc.InsertParagraph();
-
-                // Edita o agrega texto al documento
-                paragraph.Append("Este es un nuevo párrafo en el documento.");
-
-                // Guarda los cambios en el documento
-                doc.Save();
-                ImprimirDoc();
-            }
-        }
     }
 }

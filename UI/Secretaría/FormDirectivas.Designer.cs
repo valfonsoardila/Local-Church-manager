@@ -47,7 +47,6 @@ namespace UI
             this.panel4 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.labelVigencia = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboFiltroComite = new System.Windows.Forms.ComboBox();
@@ -81,6 +80,7 @@ namespace UI
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboAño = new System.Windows.Forms.ComboBox();
             tabNuevoIntegrante = new System.Windows.Forms.TabPage();
             tabNuevoIntegrante.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -358,7 +358,7 @@ namespace UI
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.labelVigencia);
+            this.panel2.Controls.Add(this.comboAño);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.comboFiltroComite);
@@ -367,17 +367,6 @@ namespace UI
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(836, 36);
             this.panel2.TabIndex = 3;
-            // 
-            // labelVigencia
-            // 
-            this.labelVigencia.AutoSize = true;
-            this.labelVigencia.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVigencia.ForeColor = System.Drawing.Color.Teal;
-            this.labelVigencia.Location = new System.Drawing.Point(148, 10);
-            this.labelVigencia.Name = "labelVigencia";
-            this.labelVigencia.Size = new System.Drawing.Size(17, 16);
-            this.labelVigencia.TabIndex = 12;
-            this.labelVigencia.Text = "*";
             // 
             // label9
             // 
@@ -893,6 +882,51 @@ namespace UI
             this.label1.TabIndex = 0;
             this.label1.Text = "Directivas";
             // 
+            // comboAño
+            // 
+            this.comboAño.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboAño.FormattingEnabled = true;
+            this.comboAño.Items.AddRange(new object[] {
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030",
+            "2031",
+            "2032",
+            "2033",
+            "2034",
+            "2035",
+            "2036",
+            "2037",
+            "2038",
+            "2039",
+            "2040",
+            "2041",
+            "2042",
+            "2043",
+            "2044",
+            "2045",
+            "2046",
+            "2047",
+            "2048",
+            "2049",
+            "2050"});
+            this.comboAño.Location = new System.Drawing.Point(148, 6);
+            this.comboAño.Name = "comboAño";
+            this.comboAño.Size = new System.Drawing.Size(87, 24);
+            this.comboAño.TabIndex = 28;
+            this.comboAño.Text = "2020";
+            // 
             // FormDirectivas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -903,6 +937,7 @@ namespace UI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormDirectivas";
             this.Text = "FormDirectivas";
+            this.Load += new System.EventHandler(this.FormDirectivas_Load);
             tabNuevoIntegrante.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -972,7 +1007,6 @@ namespace UI
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label labelVigencia;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.TextBox textObservacion;
@@ -992,5 +1026,6 @@ namespace UI
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private FontAwesome.Sharp.IconButton btnGenerarInforme;
+        private System.Windows.Forms.ComboBox comboAño;
     }
 }
