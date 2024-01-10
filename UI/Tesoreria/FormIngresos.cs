@@ -625,10 +625,8 @@ namespace UI
                         {
                             id = Convert.ToString(dataGridIngresos.CurrentRow.Cells["CodigoComprobante"].Value.ToString());
                             FiltroPorId(id);
-                            if (encontrado == true)
-                            {
-                                tabLibroIngresos.SelectedIndex = 1;
-                            }
+                            tabLibroIngresos.SelectedIndex = 1;
+                            btnRegistrar.Enabled = false;
                         }
                     }
                 }
@@ -909,6 +907,7 @@ namespace UI
                 CalculoDeSaldo();
                 Limpiar();
                 tabLibroIngresos.SelectedIndex = 0;
+                btnRegistrar.Enabled = true;
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto

@@ -266,6 +266,7 @@ namespace UI
                 ConsultarYLlenarGridDeReuniones();
                 Limpiar();
                 tabReuniones.SelectedIndex = 0;
+                btnRegistrar.Enabled = true;
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto
@@ -378,10 +379,8 @@ namespace UI
                     {
                         id = Convert.ToString(dataGridReunion.CurrentRow.Cells["NumeroActa"].Value.ToString());
                         FiltroPorId(id);
-                        if (encontrado == true)
-                        {
-                            tabReuniones.SelectedIndex = 1;
-                        }
+                        tabReuniones.SelectedIndex = 1;
+                        btnRegistrar.Enabled = false;
                     }
                 }
             }

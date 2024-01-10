@@ -377,6 +377,7 @@ namespace UI
                 ConsultarYLlenarGridDeContactos();
                 LimpiarCampos();
                 tabDirectorio.SelectedIndex = 0;
+                btnRegistrar.Enabled = true;
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto
@@ -562,10 +563,8 @@ namespace UI
                         {
                             id = Convert.ToString(dataGridContactos.CurrentRow.Cells["IdContacto"].Value.ToString());
                             FiltroPorId(id);
-                            if (encontrado == true)
-                            {
-                                tabDirectorio.SelectedIndex = 1;
-                            }
+                            tabDirectorio.SelectedIndex = 1;
+                            btnRegistrar.Enabled = false;
                         }
                     }
                 }

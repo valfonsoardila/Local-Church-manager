@@ -228,10 +228,8 @@ namespace UI
                     {
                         id = Convert.ToString(dataGridLiquidacion.CurrentRow.Cells["Id"].Value.ToString());
                         FiltroPorId(id);
-                        if (encontrado == true)
-                        {
-                            tabLiquidaciones.SelectedIndex = 1;
-                        }
+                        tabLiquidaciones.SelectedIndex = 1;
+                        btnRegistrar.Enabled = false;
                     }
                     else
                     {
@@ -494,6 +492,7 @@ namespace UI
                 ConsultarLiquidaciones();
                 Limpiar();
                 tabLiquidaciones.SelectedIndex = 0;
+                btnRegistrar.Enabled = true;
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto

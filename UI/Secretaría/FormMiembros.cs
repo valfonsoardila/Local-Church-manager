@@ -833,6 +833,7 @@ namespace UI
                     ConsultarYLlenarGridDeMiembros();
                     LimpiarCampos();
                     tabMiembros.SelectedIndex = 0;
+                    btnRegistrar.Enabled = true;
                 }
                 else
                 {
@@ -1735,6 +1736,7 @@ namespace UI
                         id = Convert.ToString(dataGridMiembros.CurrentRow.Cells["Folio"].Value.ToString());
                         FiltroPorIdentificacion(id);
                         tabMiembros.SelectedIndex = 1;
+                        btnRegistrar.Enabled = false;
                     }
                 }
             }

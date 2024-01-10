@@ -267,6 +267,7 @@ namespace UI
                     ConsultarYLlenarGridDeDirectivas();
                     LimpiarCampos();
                     tabDirectivas.SelectedIndex = 0;
+                    btnRegistrar.Enabled = true;
                     // Obtener referencia al formulario principal
                     FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                     // Verificar si el formulario principal está abierto
@@ -405,10 +406,8 @@ namespace UI
                     {
                         id = Convert.ToString(dataGridDirectiva.CurrentRow.Cells["IdDirectiva"].Value.ToString());
                         FiltroPorId(id);
-                        if (encontrado == true)
-                        {
-                            tabDirectivas.SelectedIndex = 1;
-                        }
+                        tabDirectivas.SelectedIndex = 1;
+                        btnRegistrar.Enabled = false;
                     }
                 }
             }

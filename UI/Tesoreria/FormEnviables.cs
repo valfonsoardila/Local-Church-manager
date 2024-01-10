@@ -128,10 +128,8 @@ namespace UI
                     {
                         id = Convert.ToString(dataGridEnviables.CurrentRow.Cells["Id"].Value.ToString());
                         FiltroPorId(id);
-                        if (encontrado == true)
-                        {
-                            tabEnviables.SelectedIndex = 1;
-                        }
+                        tabEnviables.SelectedIndex = 1;
+                        btnRegistrar.Enabled = false;
                     }
                 }
             }
@@ -446,6 +444,7 @@ namespace UI
                 ConsultarEnvios();
                 Limpiar();
                 tabEnviables.SelectedIndex = 0;
+                btnRegistrar.Enabled = true;
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto
