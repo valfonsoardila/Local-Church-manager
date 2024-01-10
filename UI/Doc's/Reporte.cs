@@ -56,7 +56,7 @@ namespace UI
         {
 
         }
-        public void GenerarListaPorGeneroSecretaria()
+        public void GenerarListaPorGeneroSecretaria(string genero)
         {
 
         }

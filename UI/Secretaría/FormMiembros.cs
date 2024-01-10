@@ -1739,5 +1739,11 @@ namespace UI
                 }
             }
         }
+
+        private void btnGenerarInforme_Click(object sender, EventArgs e)
+        {
+            FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
+            formGenerarDocumento.Show();
+        }
     }
 }

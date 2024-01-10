@@ -36,16 +36,23 @@
             this.textTotalPag = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.checkedListInforme = new System.Windows.Forms.CheckedListBox();
+            this.checkedListReportes = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAbrirInforme = new FontAwesome.Sharp.IconButton();
             this.btnImprimirInforme = new FontAwesome.Sharp.IconButton();
             this.btnEliminarInforme = new FontAwesome.Sharp.IconButton();
+            this.panelContenedorReportes = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBuscar = new System.Windows.Forms.TextBox();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.panelHeaderGenerarInforme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.panelContenedorReportes.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeaderGenerarInforme
@@ -151,27 +158,29 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // checkedListInforme
+            // checkedListReportes
             // 
-            this.checkedListInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListInforme.FormattingEnabled = true;
-            this.checkedListInforme.Items.AddRange(new object[] {
+            this.checkedListReportes.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.checkedListReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedListReportes.FormattingEnabled = true;
+            this.checkedListReportes.Items.AddRange(new object[] {
             "Generar Informe General ",
             "Generar Informe Individual",
             "Generar Informe Presupuestal"});
-            this.checkedListInforme.Location = new System.Drawing.Point(175, 116);
-            this.checkedListInforme.Name = "checkedListInforme";
-            this.checkedListInforme.ScrollAlwaysVisible = true;
-            this.checkedListInforme.Size = new System.Drawing.Size(307, 52);
-            this.checkedListInforme.Sorted = true;
-            this.checkedListInforme.TabIndex = 6;
+            this.checkedListReportes.Location = new System.Drawing.Point(0, 35);
+            this.checkedListReportes.Name = "checkedListReportes";
+            this.checkedListReportes.ScrollAlwaysVisible = true;
+            this.checkedListReportes.Size = new System.Drawing.Size(341, 52);
+            this.checkedListReportes.Sorted = true;
+            this.checkedListReportes.TabIndex = 6;
+            this.checkedListReportes.SelectedIndexChanged += new System.EventHandler(this.checkedListReportes_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(203, 78);
+            this.label3.Location = new System.Drawing.Point(200, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(242, 24);
             this.label3.TabIndex = 20;
@@ -254,14 +263,62 @@
             this.btnEliminarInforme.UseVisualStyleBackColor = false;
             this.btnEliminarInforme.Click += new System.EventHandler(this.btnEliminarInforme_Click);
             // 
+            // panelContenedorReportes
+            // 
+            this.panelContenedorReportes.Controls.Add(this.panel2);
+            this.panelContenedorReportes.Controls.Add(this.checkedListReportes);
+            this.panelContenedorReportes.Location = new System.Drawing.Point(161, 91);
+            this.panelContenedorReportes.Name = "panelContenedorReportes";
+            this.panelContenedorReportes.Size = new System.Drawing.Size(341, 87);
+            this.panelContenedorReportes.TabIndex = 22;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.iconPictureBox1);
+            this.panel2.Controls.Add(this.textBuscar);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(341, 35);
+            this.panel2.TabIndex = 8;
+            // 
+            // textBuscar
+            // 
+            this.textBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBuscar.Location = new System.Drawing.Point(86, 2);
+            this.textBuscar.Multiline = true;
+            this.textBuscar.Name = "textBuscar";
+            this.textBuscar.Size = new System.Drawing.Size(159, 29);
+            this.textBuscar.TabIndex = 0;
+            this.textBuscar.Text = "Buscar";
+            this.textBuscar.TextChanged += new System.EventHandler(this.textBuscar_TextChanged);
+            this.textBuscar.Enter += new System.EventHandler(this.textBuscar_Enter);
+            this.textBuscar.Leave += new System.EventHandler(this.textBuscar_Leave);
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Searchengin;
+            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 30;
+            this.iconPictureBox1.Location = new System.Drawing.Point(3, 4);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox1.TabIndex = 9;
+            this.iconPictureBox1.TabStop = false;
+            // 
             // FormGenerarDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 228);
+            this.Controls.Add(this.panelContenedorReportes);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.checkedListInforme);
             this.Controls.Add(this.panelHeaderGenerarInforme);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormGenerarDocumento";
@@ -273,6 +330,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.panelContenedorReportes.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,11 +349,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckedListBox checkedListInforme;
+        private System.Windows.Forms.CheckedListBox checkedListReportes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private FontAwesome.Sharp.IconButton btnEliminarInforme;
         private FontAwesome.Sharp.IconButton btnAbrirInforme;
         private FontAwesome.Sharp.IconButton btnImprimirInforme;
+        private System.Windows.Forms.Panel panelContenedorReportes;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox textBuscar;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
     }
 }

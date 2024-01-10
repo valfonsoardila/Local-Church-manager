@@ -113,6 +113,8 @@ namespace UI
             this.textNombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.label41 = new System.Windows.Forms.Label();
+            this.textNumeroFolio = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -180,8 +182,6 @@ namespace UI
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textNumeroFolio = new System.Windows.Forms.TextBox();
-            this.label41 = new System.Windows.Forms.Label();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -1416,6 +1416,27 @@ namespace UI
             this.panel13.Size = new System.Drawing.Size(833, 30);
             this.panel13.TabIndex = 42;
             // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(611, 7);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(126, 16);
+            this.label41.TabIndex = 43;
+            this.label41.Text = "Numero de Folio:";
+            // 
+            // textNumeroFolio
+            // 
+            this.textNumeroFolio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textNumeroFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNumeroFolio.Location = new System.Drawing.Point(739, 1);
+            this.textNumeroFolio.Multiline = true;
+            this.textNumeroFolio.Name = "textNumeroFolio";
+            this.textNumeroFolio.Size = new System.Drawing.Size(87, 26);
+            this.textNumeroFolio.TabIndex = 42;
+            this.textNumeroFolio.Text = "*";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -1601,7 +1622,7 @@ namespace UI
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 348F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 349F));
             this.tableLayoutPanel1.Controls.Add(this.btnVerListaSimpatizantes, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGestionarMiembros, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGenerarInforme, 2, 0);
@@ -1624,7 +1645,7 @@ namespace UI
             this.btnVerListaSimpatizantes.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnVerListaSimpatizantes.IconColor = System.Drawing.Color.Black;
             this.btnVerListaSimpatizantes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnVerListaSimpatizantes.Location = new System.Drawing.Point(312, 3);
+            this.btnVerListaSimpatizantes.Location = new System.Drawing.Point(311, 3);
             this.btnVerListaSimpatizantes.Name = "btnVerListaSimpatizantes";
             this.btnVerListaSimpatizantes.Size = new System.Drawing.Size(180, 43);
             this.btnVerListaSimpatizantes.TabIndex = 45;
@@ -1642,7 +1663,7 @@ namespace UI
             this.btnGestionarMiembros.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnGestionarMiembros.IconColor = System.Drawing.Color.Black;
             this.btnGestionarMiembros.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarMiembros.Location = new System.Drawing.Point(171, 3);
+            this.btnGestionarMiembros.Location = new System.Drawing.Point(170, 3);
             this.btnGestionarMiembros.Name = "btnGestionarMiembros";
             this.btnGestionarMiembros.Size = new System.Drawing.Size(135, 40);
             this.btnGestionarMiembros.TabIndex = 1;
@@ -1659,7 +1680,7 @@ namespace UI
             this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
             this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGenerarInforme.IconSize = 30;
-            this.btnGenerarInforme.Location = new System.Drawing.Point(498, 3);
+            this.btnGenerarInforme.Location = new System.Drawing.Point(497, 3);
             this.btnGenerarInforme.Name = "btnGenerarInforme";
             this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
@@ -1667,6 +1688,7 @@ namespace UI
             this.btnGenerarInforme.Text = "Generar informe";
             this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerarInforme.UseVisualStyleBackColor = false;
+            this.btnGenerarInforme.Click += new System.EventHandler(this.btnGenerarInforme_Click);
             // 
             // panel14
             // 
@@ -1991,7 +2013,7 @@ namespace UI
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 358F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 359F));
             this.tableLayoutPanel3.Controls.Add(this.iconButton3, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 405);
@@ -2014,7 +2036,7 @@ namespace UI
             this.iconButton3.Location = new System.Drawing.Point(305, 3);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton3.Size = new System.Drawing.Size(177, 40);
+            this.iconButton3.Size = new System.Drawing.Size(176, 40);
             this.iconButton3.TabIndex = 44;
             this.iconButton3.Text = "Imprimir Lista";
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -2323,27 +2345,6 @@ namespace UI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(858, 59);
             this.panel1.TabIndex = 2;
-            // 
-            // textNumeroFolio
-            // 
-            this.textNumeroFolio.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textNumeroFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textNumeroFolio.Location = new System.Drawing.Point(739, 1);
-            this.textNumeroFolio.Multiline = true;
-            this.textNumeroFolio.Name = "textNumeroFolio";
-            this.textNumeroFolio.Size = new System.Drawing.Size(87, 26);
-            this.textNumeroFolio.TabIndex = 42;
-            this.textNumeroFolio.Text = "*";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(611, 7);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(126, 16);
-            this.label41.TabIndex = 43;
-            this.label41.Text = "Numero de Folio:";
             // 
             // FormMiembros
             // 

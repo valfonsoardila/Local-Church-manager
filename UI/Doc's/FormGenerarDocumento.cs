@@ -16,10 +16,16 @@ namespace UI
     public partial class FormGenerarDocumento : Form
     {
         public string rolLogueado = "";
+        Validaciones validaciones;
         IdUsuarioTxt usuarioTxt;
         List<IdUsuarioTxt> idUsuarioTxts;
+        Reporte reporte;
+        string opcionSeleccionada = "";
+        string genero = "";
         public FormGenerarDocumento()
         {
+            validaciones = new Validaciones();
+            reporte = new Reporte();
             InitializeComponent();
             ObtenerRol();
         }
@@ -56,44 +62,138 @@ namespace UI
 
         private void FormGenerarDocumento_Load(object sender, EventArgs e)
         {
-            checkedListInforme.Items.Clear();
+            checkedListReportes.Items.Clear();
             if (textRol.Text == "Programador")
             {
-                checkedListInforme.Items.AddRange(new string[]
+                checkedListReportes.Items.AddRange(new string[]
                 {
+                    "Generar Informe de miembros",
+                    "Generar actas de reunion",
+                    "Generar Lista de directivas",
+                    "Generar Lista de niños",
+                    "Generar Lista de recientregados",
+                    "Generar Lista de familias",
+                    "Generar Lista de bautizados",
+                    "Generar Lista de caballeros",
+                    "Generar Lista de damas dorcas",
                     "Generar Informe General",
                     "Generar Informe Individual",
-                    "Generar Informe Presupuestal",
-                    "Generar Informe de miembros",
-                    "Generar Acta de reunion",
-                    "Generar Lista de Directivas",
-                    "Generar Apunte",
-                    "Generar Lista de Apuntes"
+                    "Generar Informe Presupuestal"
                 });
             }
             else
             {
                 if(textRol.Text== "Secretario(a)")
                 {
-                    checkedListInforme.Items.AddRange(new string[]
+                    checkedListReportes.Items.AddRange(new string[]
                     {
                         "Generar Informe de miembros",
-                        "Generar Acta de reunion",
-                        "Generar Lista de Directivas",
-                        "Generar Apunte",
-                        "Generar Lista de Apuntes"
+                        "Generar actas de reunion",
+                        "Generar Lista de directivas",
+                        "Generar Lista de niños",
+                        "Generar Lista de recientregados",
+                        "Generar Lista de familias",
+                        "Generar Lista de bautizados",
+                        "Generar Lista de caballeros",
+                        "Generar Lista de damas dorcas",
                     });
                 }
                 else
                 {
                     if (textRol.Text == "Tesorero(a)")
                     {
-                        checkedListInforme.Items.AddRange(new string[]
+                        checkedListReportes.Items.AddRange(new string[]
                         {
                             "Generar Informe General",
                             "Generar Informe Individual",
                             "Generar Informe Presupuestal",
                         });
+                    }
+                }
+            }
+        }
+        private void ValidarSeleccion()
+        {
+            if(opcionSeleccionada== "Generar Informe de miembros")
+            {
+                reporte.GenerarLibroDeMiembrosSecretaria();
+            }
+            else
+            {
+                if (opcionSeleccionada == "Generar actas de reunion")
+                {
+                    reporte.GenerarActasDeReunionesSecretaria();
+                }
+                else
+                {
+                    if (opcionSeleccionada == "Generar Lista de directivas")
+                    {
+                        reporte.GenerarListaServidoresActualesSecretaria();
+                    }
+                    else
+                    {
+                        if (opcionSeleccionada == "Generar Lista de niños")
+                        {
+                            reporte.GenerarListaDeNiñosSecretaria();
+                        }
+                        else
+                        {
+                            if(opcionSeleccionada=="Generar Lista de recientregados")
+                            {
+                                reporte.GenerarListasRecientregadosSecretaria();
+                            }
+                            else
+                            {
+                                if (opcionSeleccionada == "Generar Lista de familias")
+                                {
+                                    reporte.GenerarListaFamiliasSecretaria();
+                                }
+                                else
+                                {
+                                    if (opcionSeleccionada == "Generar Lista de bautizados")
+                                    {
+                                        reporte.GenerarListaDeBautizadosSecretaria();
+                                    }
+                                    else
+                                    {
+                                        if (opcionSeleccionada == "Generar Lista de caballeros")
+                                        {
+                                            genero = "Masculino";
+                                            reporte.GenerarListaPorGeneroSecretaria(genero);
+                                        }
+                                        else
+                                        {
+                                            if (opcionSeleccionada == "Generar Lista de damas dorcas")
+                                            {
+                                                genero = "Femenino";
+                                                reporte.GenerarListaPorGeneroSecretaria(genero);
+                                            }
+                                            else
+                                            {
+                                                if (opcionSeleccionada == "Generar Informe General")
+                                                {
+                                                    reporte.GenerarInformeGeneralTesoreria();
+                                                }
+                                                else
+                                                {
+                                                    if (opcionSeleccionada == "Generar Informe Individual")
+                                                    {
+                                                        reporte.GenerarInformeIndividualTesoreria();
+                                                    }
+                                                    else
+                                                    {
+                                                        if(opcionSeleccionada== "Generar Informe Presupuestal")
+                                                        {
+                                                            reporte.GenerarInformePresupuestalTesoreria();
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -110,6 +210,155 @@ namespace UI
         private void btnImprimirInforme_Click(object sender, EventArgs e)
         {
 
+        }
+        private void textBuscar_Enter(object sender, EventArgs e)
+        {
+            string placeHolder = textBuscar.Text;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
+            textBuscar.Text = validaciones.TextoPlaceHolderEnter(placeHolder, nombreDelComponente);
+        }
+
+        private void textBuscar_Leave(object sender, EventArgs e)
+        {
+            string placeHolder = textBuscar.Text;
+            string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
+            textBuscar.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
+        }
+        private void checkedListReportes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            // Desmarcar todas las selecciones anteriores
+            for (int i = 0; i < checkedListReportes.Items.Count; i++)
+            {
+                checkedListReportes.SetItemChecked(i, false);
+            }
+
+            // Obtener el valor del elemento seleccionado
+            string elementoSeleccionado = null;
+
+            foreach (object itemChecked in checkedListReportes.CheckedItems)
+            {
+                elementoSeleccionado = itemChecked.ToString();
+                break; // Solo necesitas el primer elemento seleccionado
+            }
+
+            opcionSeleccionada = elementoSeleccionado;
+            ValidarSeleccion();
+        }
+
+        private void textBuscar_TextChanged(object sender, EventArgs e)
+        {
+            if(textBuscar.Text!="Buscar" && textBuscar.Text != "")
+            {
+                FiltrarListaReportes(textBuscar.Text);
+            }
+        }
+        private void FiltrarListaReportes(string filtro)
+        {
+            checkedListReportes.Items.Clear();
+
+            if (string.IsNullOrEmpty(filtro) || filtro.ToLower() == "buscar")
+            {
+                // Restaurar la lista completa si el filtro está vacío o es "Buscar"
+                if (textRol.Text == "Programador")
+                {
+                    checkedListReportes.Items.AddRange(new string[]
+                    {
+                "Generar Informe de miembros",
+                "Generar actas de reunion",
+                "Generar Lista de directivas",
+                "Generar Lista de niños",
+                "Generar Lista de recientregados",
+                "Generar Lista de familias",
+                "Generar Lista de bautizados",
+                "Generar Lista de caballeros",
+                "Generar Lista de damas dorcas",
+                "Generar Informe General",
+                "Generar Informe Individual",
+                "Generar Informe Presupuestal"
+                    });
+                }
+                else if (textRol.Text == "Secretario(a)")
+                {
+                    checkedListReportes.Items.AddRange(new string[]
+                    {
+                "Generar Informe de miembros",
+                "Generar actas de reunion",
+                "Generar Lista de directivas",
+                "Generar Lista de niños",
+                "Generar Lista de recientregados",
+                "Generar Lista de familias",
+                "Generar Lista de bautizados",
+                "Generar Lista de caballeros",
+                "Generar Lista de damas dorcas",
+                    });
+                }
+                else if (textRol.Text == "Tesorero(a)")
+                {
+                    checkedListReportes.Items.AddRange(new string[]
+                    {
+                "Generar Informe General",
+                "Generar Informe Individual",
+                "Generar Informe Presupuestal",
+                    });
+                }
+            }
+            else
+            {
+                // Filtrar la lista según el texto ingresado
+                var itemsFiltrados = ObtenerItemsFiltrados(filtro);
+                checkedListReportes.Items.AddRange(itemsFiltrados.ToArray());
+            }
+        }
+
+        private List<string> ObtenerItemsFiltrados(string filtro)
+        {
+            var itemsFiltrados = new List<string>();
+
+            if (textRol.Text == "Programador")
+            {
+                itemsFiltrados.AddRange(new string[]
+                {
+            "Generar Informe de miembros",
+            "Generar actas de reunion",
+            "Generar Lista de directivas",
+            "Generar Lista de niños",
+            "Generar Lista de recientregados",
+            "Generar Lista de familias",
+            "Generar Lista de bautizados",
+            "Generar Lista de caballeros",
+            "Generar Lista de damas dorcas",
+            "Generar Informe General",
+            "Generar Informe Individual",
+            "Generar Informe Presupuestal"
+                }.Where(item => item.ToLower().Contains(filtro.ToLower())));
+            }
+            else if (textRol.Text == "Secretario(a)")
+            {
+                itemsFiltrados.AddRange(new string[]
+                {
+            "Generar Informe de miembros",
+            "Generar actas de reunion",
+            "Generar Lista de directivas",
+            "Generar Lista de niños",
+            "Generar Lista de recientregados",
+            "Generar Lista de familias",
+            "Generar Lista de bautizados",
+            "Generar Lista de caballeros",
+            "Generar Lista de damas dorcas",
+                }.Where(item => item.ToLower().Contains(filtro.ToLower())));
+            }
+            else if (textRol.Text == "Tesorero(a)")
+            {
+                itemsFiltrados.AddRange(new string[]
+                {
+            "Generar Informe General",
+            "Generar Informe Individual",
+            "Generar Informe Presupuestal",
+                }.Where(item => item.ToLower().Contains(filtro.ToLower())));
+            }
+
+            return itemsFiltrados;
         }
     }
 }
