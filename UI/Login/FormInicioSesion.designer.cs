@@ -561,14 +561,15 @@ namespace UI
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Image = global::UI.Properties.Resources.Fondo;
-            this.label1.Location = new System.Drawing.Point(87, 5);
+            this.label1.Location = new System.Drawing.Point(13, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 22);
+            this.label1.Size = new System.Drawing.Size(277, 32);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Iniciar sesion";
+            this.label1.Text = "-\"La mejor forma de gestionar \r\ntu congregacion\"";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // iconButton1
             // 

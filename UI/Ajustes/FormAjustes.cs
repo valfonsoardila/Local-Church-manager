@@ -214,15 +214,21 @@ namespace UI
             return iglesia;
         }
 
-        private void btnRegistrarInfo_Click(object sender, EventArgs e)
+        private async void btnRegistrarInfo_Click(object sender, EventArgs e)
         {
-            Iglesia iglesia = MapearIglesia();
-            string mensaje = iglesiaService.Guardar(iglesia);
-            MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            BuscarPorId();
-            ModificarCadenaConexion();
-            EstablecerCarpetasRaiz(rutasTxtService);
-            EstablecerCorreo();
+            try
+            {
+
+            }catch(Exception ex)
+            {
+                Iglesia iglesia = MapearIglesia();
+                string mensaje = iglesiaService.Guardar(iglesia);
+                MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                BuscarPorId();
+                ModificarCadenaConexion();
+                EstablecerCarpetasRaiz(rutasTxtService);
+                EstablecerCorreo();
+            }
         }
         private void btnEliminarInfo_Click(object sender, EventArgs e)
         {

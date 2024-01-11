@@ -357,9 +357,9 @@ namespace UI
             this.labelTituloRegistrarDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTituloRegistrarDatos.Location = new System.Drawing.Point(5, 4);
             this.labelTituloRegistrarDatos.Name = "labelTituloRegistrarDatos";
-            this.labelTituloRegistrarDatos.Size = new System.Drawing.Size(207, 16);
+            this.labelTituloRegistrarDatos.Size = new System.Drawing.Size(187, 16);
             this.labelTituloRegistrarDatos.TabIndex = 84;
-            this.labelTituloRegistrarDatos.Text = "Registrar datos de drogueria";
+            this.labelTituloRegistrarDatos.Text = "Registrar datos de iglesia";
             // 
             // panelConfigDeGuardado
             // 
@@ -583,7 +583,7 @@ namespace UI
             this.panelAvanzado.Controls.Add(this.labelCadenaConexion);
             this.panelAvanzado.Location = new System.Drawing.Point(86, 574);
             this.panelAvanzado.Name = "panelAvanzado";
-            this.panelAvanzado.Size = new System.Drawing.Size(630, 153);
+            this.panelAvanzado.Size = new System.Drawing.Size(630, 162);
             this.panelAvanzado.TabIndex = 93;
             // 
             // label8
@@ -699,7 +699,7 @@ namespace UI
             this.panelTituloAvanzado.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTituloAvanzado.Location = new System.Drawing.Point(0, 0);
             this.panelTituloAvanzado.Name = "panelTituloAvanzado";
-            this.panelTituloAvanzado.Size = new System.Drawing.Size(613, 25);
+            this.panelTituloAvanzado.Size = new System.Drawing.Size(630, 25);
             this.panelTituloAvanzado.TabIndex = 0;
             // 
             // labelInstruccionAvanzado
