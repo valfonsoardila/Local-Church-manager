@@ -60,9 +60,6 @@ namespace UI
                 dataGridInfoIglesia.DataSource = iglesias;
                 textNombreIglesia.Text = respuesta.Iglesia.NombreIglesia;
                 textNIT.Text= respuesta.Iglesia.NIT;
-                textCamaraDeComercio.Text = respuesta.Iglesia.CodigoDeCamara;
-                textFraseDistintiva.Text= respuesta.Iglesia.FraseDistintiva;
-                comboRegimen.Text= respuesta.Iglesia.Regimen;
                 textPBX.Text= respuesta.Iglesia.PBX;
                 textDireccion.Text = respuesta.Iglesia.Direccion;
                 textTelefono.Text= respuesta.Iglesia.Telefono;
@@ -205,9 +202,6 @@ namespace UI
             iglesia.IdIglesia = "#Iglesia";
             iglesia.NombreIglesia = textNombreIglesia.Text;
             iglesia.NIT = textNIT.Text;
-            iglesia.CodigoDeCamara = textCamaraDeComercio.Text;
-            iglesia.FraseDistintiva = textFraseDistintiva.Text;
-            iglesia.Regimen = comboRegimen.Text;
             iglesia.PBX = textPBX.Text;
             iglesia.Direccion = textDireccion.Text;
             iglesia.Telefono = textTelefono.Text;

@@ -20,14 +20,11 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into IGLESIA (Id_Iglesia, Nombre_De_Iglesia, NIT, CodigoCamara, Frase_Distintiva, Regimen, PBX,Direccion,Telefono) 
-                                        values (@Id_Iglesia, @Nombre_De_Iglesia, @NIT, @CodigoCamara, @Frase_Distintiva, @Regimen, @PBX, @Direccion, @Telefono)";
+                command.CommandText = @"Insert Into IGLESIA (Id_Iglesia, Nombre_De_Iglesia, NIT, PBX,Direccion,Telefono) 
+                                        values (@Id_Iglesia, @Nombre_De_Iglesia, @NIT, @PBX, @Direccion, @Telefono)";
                 command.Parameters.AddWithValue("@Id_Iglesia", iglesia.IdIglesia);
                 command.Parameters.AddWithValue("@Nombre_De_Iglesia", iglesia.NombreIglesia);
                 command.Parameters.AddWithValue("@NIT", iglesia.NIT);
-                command.Parameters.AddWithValue("@CodigoCamara", iglesia.CodigoDeCamara);
-                command.Parameters.AddWithValue("@Frase_Distintiva", iglesia.FraseDistintiva);
-                command.Parameters.AddWithValue("@Regimen", iglesia.Regimen);
                 command.Parameters.AddWithValue("@PBX", iglesia.PBX);
                 command.Parameters.AddWithValue("@Direccion", iglesia.Direccion);
                 command.Parameters.AddWithValue("@Telefono", iglesia.Telefono);
@@ -39,7 +36,7 @@ namespace DAL
             List<Iglesia> cajas = new List<Iglesia>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id_Iglesia, Nombre_De_Iglesia, NIT, CodigoCamara, Frase_Distintiva, Regimen, PBX, Direccion, Telefono from IGLESIA";
+                command.CommandText = "Select Id_Iglesia, Nombre_De_Iglesia, NIT, PBX, Direccion, Telefono from IGLESIA";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -56,14 +53,11 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update IGLESIA set Nombre_De_Iglesia=@Nombre_De_Iglesia, NIT=@NIT, CodigoCamara=@CodigoCamara, Frase_Distintiva=@Frase_Distintiva, Regimen=@Regimen, PBX=@PBX, Direccion=@Direccion, Telefono=@Telefono
+                command.CommandText = @"update IGLESIA set Nombre_De_Iglesia=@Nombre_De_Iglesia, NIT=@NIT, PBX=@PBX, Direccion=@Direccion, Telefono=@Telefono
                                         where Id_Iglesia=@Id_Iglesia";
                 command.Parameters.AddWithValue("@Id_Iglesia", iglesia.IdIglesia);
                 command.Parameters.AddWithValue("@Nombre_De_Iglesia", iglesia.NombreIglesia);
                 command.Parameters.AddWithValue("@NIT", iglesia.NIT);
-                command.Parameters.AddWithValue("@CodigoCamara", iglesia.CodigoDeCamara);
-                command.Parameters.AddWithValue("@Frase_Distintiva", iglesia.FraseDistintiva);
-                command.Parameters.AddWithValue("@Regimen", iglesia.Regimen);
                 command.Parameters.AddWithValue("@PBX", iglesia.PBX);
                 command.Parameters.AddWithValue("@Direccion", iglesia.Direccion);
                 command.Parameters.AddWithValue("@Telefono", iglesia.Telefono);
@@ -98,9 +92,6 @@ namespace DAL
             iglesia.IdIglesia = (string)dataReader["Id_Iglesia"];
             iglesia.NombreIglesia = (string)dataReader["Nombre_De_Iglesia"];
             iglesia.NIT = (string)dataReader["NIT"];
-            iglesia.CodigoDeCamara = (string)dataReader["CodigoCamara"];
-            iglesia.FraseDistintiva = (string)dataReader["Frase_Distintiva"];
-            iglesia.Regimen = (string)dataReader["Regimen"];
             iglesia.PBX = (string)dataReader["PBX"];
             iglesia.Direccion = (string)dataReader["Direccion"];
             iglesia.Telefono = (string)dataReader["Telefono"];
