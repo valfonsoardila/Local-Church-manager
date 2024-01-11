@@ -64,6 +64,11 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridEgresos = new System.Windows.Forms.DataGridView();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Imprimir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
             this.comboFiltroAño = new System.Windows.Forms.ComboBox();
             this.comboFiltroComite = new System.Windows.Forms.ComboBox();
@@ -99,11 +104,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Imprimir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Detallar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -380,7 +380,7 @@
             // 
             this.dateTimeEgreso.Location = new System.Drawing.Point(115, 47);
             this.dateTimeEgreso.Name = "dateTimeEgreso";
-            this.dateTimeEgreso.Size = new System.Drawing.Size(215, 20);
+            this.dateTimeEgreso.Size = new System.Drawing.Size(215, 22);
             this.dateTimeEgreso.TabIndex = 18;
             // 
             // label5
@@ -612,6 +612,7 @@
             this.tabEgresos.Controls.Add(tabRegistrar);
             this.tabEgresos.Controls.Add(this.tabDetalle);
             this.tabEgresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabEgresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabEgresos.Location = new System.Drawing.Point(0, 59);
             this.tabEgresos.Name = "tabEgresos";
             this.tabEgresos.SelectedIndex = 0;
@@ -623,10 +624,10 @@
             // 
             this.tabListaEgresos.Controls.Add(this.panel7);
             this.tabListaEgresos.Controls.Add(this.panel6);
-            this.tabListaEgresos.Location = new System.Drawing.Point(4, 22);
+            this.tabListaEgresos.Location = new System.Drawing.Point(4, 25);
             this.tabListaEgresos.Name = "tabListaEgresos";
             this.tabListaEgresos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabListaEgresos.Size = new System.Drawing.Size(871, 450);
+            this.tabListaEgresos.Size = new System.Drawing.Size(871, 447);
             this.tabListaEgresos.TabIndex = 0;
             this.tabListaEgresos.Text = "Lista de Egresos";
             this.tabListaEgresos.UseVisualStyleBackColor = true;
@@ -635,7 +636,7 @@
             // 
             this.panel7.Controls.Add(this.tableLayoutPanel2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(3, 391);
+            this.panel7.Location = new System.Drawing.Point(3, 388);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(865, 56);
             this.panel7.TabIndex = 3;
@@ -697,7 +698,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(865, 444);
+            this.panel6.Size = new System.Drawing.Size(865, 441);
             this.panel6.TabIndex = 2;
             // 
             // panel3
@@ -709,7 +710,7 @@
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(27, 8);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(803, 374);
+            this.panel3.Size = new System.Drawing.Size(803, 371);
             this.panel3.TabIndex = 0;
             // 
             // dataGridEgresos
@@ -736,9 +737,52 @@
             this.dataGridEgresos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridEgresos.RowTemplate.DividerHeight = 2;
             this.dataGridEgresos.RowTemplate.Height = 30;
-            this.dataGridEgresos.Size = new System.Drawing.Size(803, 342);
+            this.dataGridEgresos.Size = new System.Drawing.Size(803, 339);
             this.dataGridEgresos.TabIndex = 1;
             this.dataGridEgresos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEgresos_CellClick);
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Width = 85;
+            // 
+            // Imprimir
+            // 
+            this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
+            this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Imprimir.Name = "Imprimir";
+            this.Imprimir.ReadOnly = true;
+            this.Imprimir.Width = 60;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 48;
+            // 
+            // Detallar
+            // 
+            this.Detallar.HeaderText = "Detallar";
+            this.Detallar.Image = global::UI.Properties.Resources.Detallar;
+            this.Detallar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Detallar.Name = "Detallar";
+            this.Detallar.ReadOnly = true;
+            this.Detallar.Width = 60;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Width = 50;
             // 
             // panelContenedorDeDirectorio
             // 
@@ -1104,7 +1148,7 @@
             this.dataGridViewCheckBoxColumn1.HeaderText = "Seleccionar";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Width = 69;
+            this.dataGridViewCheckBoxColumn1.Width = 85;
             // 
             // Editar2
             // 
@@ -1113,7 +1157,7 @@
             this.Editar2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Editar2.Name = "Editar2";
             this.Editar2.ReadOnly = true;
-            this.Editar2.Width = 40;
+            this.Editar2.Width = 48;
             // 
             // Borrar2
             // 
@@ -1122,7 +1166,7 @@
             this.Borrar2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Borrar2.Name = "Borrar2";
             this.Borrar2.ReadOnly = true;
-            this.Borrar2.Width = 41;
+            this.Borrar2.Width = 50;
             // 
             // panel10
             // 
@@ -1341,49 +1385,6 @@
             this.label8.Size = new System.Drawing.Size(43, 16);
             this.label8.TabIndex = 0;
             this.label8.Text = "Libro";
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 69;
-            // 
-            // Imprimir
-            // 
-            this.Imprimir.HeaderText = "Imprimir";
-            this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
-            this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Imprimir.Name = "Imprimir";
-            this.Imprimir.ReadOnly = true;
-            this.Imprimir.Width = 48;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::UI.Properties.Resources.edit_user;
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Width = 40;
-            // 
-            // Detallar
-            // 
-            this.Detallar.HeaderText = "Detallar";
-            this.Detallar.Image = global::UI.Properties.Resources.Detallar;
-            this.Detallar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Detallar.Name = "Detallar";
-            this.Detallar.ReadOnly = true;
-            this.Detallar.Width = 49;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Image = global::UI.Properties.Resources.borrar;
-            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 41;
             // 
             // FormEgresos
             // 

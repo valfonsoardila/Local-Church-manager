@@ -97,9 +97,9 @@ namespace UI
             // tabRegistrar
             // 
             tabRegistrar.Controls.Add(this.panel4);
-            tabRegistrar.Location = new System.Drawing.Point(4, 22);
+            tabRegistrar.Location = new System.Drawing.Point(4, 25);
             tabRegistrar.Name = "tabRegistrar";
-            tabRegistrar.Size = new System.Drawing.Size(792, 468);
+            tabRegistrar.Size = new System.Drawing.Size(792, 465);
             tabRegistrar.TabIndex = 1;
             tabRegistrar.Text = "Registrar";
             tabRegistrar.UseVisualStyleBackColor = true;
@@ -461,7 +461,7 @@ namespace UI
             this.tabDirectorio.Controls.Add(this.tabLibreta);
             this.tabDirectorio.Controls.Add(tabRegistrar);
             this.tabDirectorio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabDirectorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabDirectorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabDirectorio.Location = new System.Drawing.Point(0, 0);
             this.tabDirectorio.Name = "tabDirectorio";
             this.tabDirectorio.SelectedIndex = 0;
@@ -472,10 +472,10 @@ namespace UI
             // 
             this.tabLibreta.Controls.Add(this.panel7);
             this.tabLibreta.Controls.Add(this.panel6);
-            this.tabLibreta.Location = new System.Drawing.Point(4, 24);
+            this.tabLibreta.Location = new System.Drawing.Point(4, 25);
             this.tabLibreta.Name = "tabLibreta";
             this.tabLibreta.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLibreta.Size = new System.Drawing.Size(792, 466);
+            this.tabLibreta.Size = new System.Drawing.Size(792, 465);
             this.tabLibreta.TabIndex = 0;
             this.tabLibreta.Text = "Libreta";
             this.tabLibreta.UseVisualStyleBackColor = true;
@@ -484,7 +484,7 @@ namespace UI
             // 
             this.panel7.Controls.Add(this.btnGestionarContactos);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(3, 407);
+            this.panel7.Location = new System.Drawing.Point(3, 406);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(786, 56);
             this.panel7.TabIndex = 3;
@@ -514,7 +514,7 @@ namespace UI
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(786, 460);
+            this.panel6.Size = new System.Drawing.Size(786, 459);
             this.panel6.TabIndex = 2;
             // 
             // panel3
@@ -526,7 +526,7 @@ namespace UI
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(27, 8);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(724, 390);
+            this.panel3.Size = new System.Drawing.Size(724, 389);
             this.panel3.TabIndex = 0;
             // 
             // dataGridContactos
@@ -552,7 +552,7 @@ namespace UI
             this.dataGridContactos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridContactos.RowTemplate.DividerHeight = 2;
             this.dataGridContactos.RowTemplate.Height = 30;
-            this.dataGridContactos.Size = new System.Drawing.Size(724, 358);
+            this.dataGridContactos.Size = new System.Drawing.Size(724, 357);
             this.dataGridContactos.TabIndex = 1;
             this.dataGridContactos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridContactos_CellClick);
             // 
@@ -561,7 +561,7 @@ namespace UI
             this.Seleccionar.HeaderText = "Seleccionar";
             this.Seleccionar.Name = "Seleccionar";
             this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 89;
+            this.Seleccionar.Width = 85;
             // 
             // Editar
             // 
@@ -570,7 +570,7 @@ namespace UI
             this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Editar.Name = "Editar";
             this.Editar.ReadOnly = true;
-            this.Editar.Width = 51;
+            this.Editar.Width = 48;
             // 
             // Borrar
             // 
@@ -579,7 +579,7 @@ namespace UI
             this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Borrar.Name = "Borrar";
             this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 53;
+            this.Borrar.Width = 50;
             // 
             // Whatsapp
             // 
@@ -588,7 +588,7 @@ namespace UI
             this.Whatsapp.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Whatsapp.Name = "Whatsapp";
             this.Whatsapp.ReadOnly = true;
-            this.Whatsapp.Width = 76;
+            this.Whatsapp.Width = 75;
             // 
             // panelContenedorDeDirectorio
             // 
@@ -671,41 +671,79 @@ namespace UI
             this.comboOficioLibreta.FormattingEnabled = true;
             this.comboOficioLibreta.Items.AddRange(new object[] {
             "Todos",
-            "Ingeniero(a) de sistemas",
-            "Ingeniero(a) de electronica",
-            "Ingeniero(a) Industrial",
-            "Enfermero(a)",
-            "Electricista",
-            "Albañil",
             "Abogado",
             "Acesor comercial",
-            "Estudiante",
-            "Medico(a)",
-            "Farmaceutico(a)",
-            "Odontologo(a)",
-            "Fontaneros(a)",
-            "Docente",
-            "Contadores",
-            "Psicologos",
+            "Actor/Actriz",
+            "Albañil",
+            "Analista de datos",
+            "Animador(a)",
+            "Arquitecto(a)",
+            "Asistente administrativo(a)",
+            "Asistente social",
+            "Bibliotecario(a)",
+            "Biólogo(a)",
+            "Biólogo(a) marino(a)",
+            "Carpintero(a)",
+            "Cartógrafo(a)",
             "Chef",
-            "Repostero(a)",
-            "Vigilante",
-            "Escolta",
-            "Ebanista",
-            "Peluquero",
+            "Chofer",
+            "Comerciante",
+            "Consultor(a) de negocios internacionales",
+            "Consultor(a) financiero(a)",
+            "Corrector(a) de estilo",
+            "Desarrollador(a) web",
             "Domiciliario",
-            "Soldador",
-            "Diseñador Grafico",
+            "Docente",
+            "Ebanista",
+            "Electricista",
+            "Electronico",
+            "Enfermero(a)",
+            "Entrenador(a) personal",
+            "Especialista en marketing digital",
+            "Estudiante",
+            "Farmaceutico(a)",
+            "Florista",
+            "Fontanero(a)",
+            "Fotógrafo(a)",
+            "Geólogo(a)",
+            "Impulsador",
+            "Ingeniero(a) Civil",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) Industrial",
+            "Inspector(a) de calidad",
+            "Inspector(a) de construcción",
+            "Investigador(a)",
+            "Investigador(a) de mercado",
+            "Investigador(a) forense",
             "Maestro de obra",
             "Mecanico",
-            "Chofer",
-            "Impulsador",
-            "Optometra",
-            "Naturista",
-            "Vendedor",
+            "Medico(a)",
             "Modista",
-            "Electronico",
-            "Tecnico"});
+            "Mototaxista",
+            "Naturista",
+            "Odontologo(a)",
+            "Optometra",
+            "Paisajista",
+            "Peluquero",
+            "Peluquero(a)",
+            "Periodista",
+            "Plomero(a)",
+            "Psicologo",
+            "Repostero(a)",
+            "Soldador",
+            "Surtidor",
+            "Taxista",
+            "Técnico(a)",
+            "Técnico(a) de laboratorio",
+            "Técnico(a) en energías renovables",
+            "Técnico(a) en radiología",
+            "Terapeuta físico(a)",
+            "Terapeuta ocupacional",
+            "Topógrafo(a)",
+            "Traductor(a)",
+            "Vendedor",
+            "Vigilante"});
             this.comboOficioLibreta.Location = new System.Drawing.Point(374, 4);
             this.comboOficioLibreta.Name = "comboOficioLibreta";
             this.comboOficioLibreta.Size = new System.Drawing.Size(121, 24);

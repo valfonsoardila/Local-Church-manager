@@ -56,6 +56,7 @@
             this.tabListaEnviables = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
             this.btnGestionarEnviables = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -73,7 +74,6 @@
             this.comboFecha = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -282,7 +282,7 @@
             // 
             this.dateFechaEnviable.Location = new System.Drawing.Point(115, 47);
             this.dateFechaEnviable.Name = "dateFechaEnviable";
-            this.dateFechaEnviable.Size = new System.Drawing.Size(200, 20);
+            this.dateFechaEnviable.Size = new System.Drawing.Size(200, 22);
             this.dateFechaEnviable.TabIndex = 18;
             // 
             // label5
@@ -486,6 +486,7 @@
             this.tabEnviables.Controls.Add(this.tabListaEnviables);
             this.tabEnviables.Controls.Add(tabRegistrar);
             this.tabEnviables.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabEnviables.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabEnviables.Location = new System.Drawing.Point(0, 59);
             this.tabEnviables.Name = "tabEnviables";
             this.tabEnviables.SelectedIndex = 0;
@@ -496,10 +497,10 @@
             // 
             this.tabListaEnviables.Controls.Add(this.panel7);
             this.tabListaEnviables.Controls.Add(this.panel6);
-            this.tabListaEnviables.Location = new System.Drawing.Point(4, 22);
+            this.tabListaEnviables.Location = new System.Drawing.Point(4, 25);
             this.tabListaEnviables.Name = "tabListaEnviables";
             this.tabListaEnviables.Padding = new System.Windows.Forms.Padding(3);
-            this.tabListaEnviables.Size = new System.Drawing.Size(792, 450);
+            this.tabListaEnviables.Size = new System.Drawing.Size(792, 447);
             this.tabListaEnviables.TabIndex = 0;
             this.tabListaEnviables.Text = "Lista de enviables";
             this.tabListaEnviables.UseVisualStyleBackColor = true;
@@ -508,7 +509,7 @@
             // 
             this.panel7.Controls.Add(this.tableLayoutPanel2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(3, 391);
+            this.panel7.Location = new System.Drawing.Point(3, 388);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(786, 56);
             this.panel7.TabIndex = 3;
@@ -527,6 +528,25 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(786, 56);
             this.tableLayoutPanel2.TabIndex = 17;
+            // 
+            // btnGenerarInforme
+            // 
+            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
+            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
+            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
+            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGenerarInforme.IconSize = 30;
+            this.btnGenerarInforme.Location = new System.Drawing.Point(396, 3);
+            this.btnGenerarInforme.Name = "btnGenerarInforme";
+            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
+            this.btnGenerarInforme.TabIndex = 16;
+            this.btnGenerarInforme.Text = "Generar informe";
+            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarInforme.UseVisualStyleBackColor = false;
+            this.btnGenerarInforme.Click += new System.EventHandler(this.btnGenerarInforme_Click);
             // 
             // btnGestionarEnviables
             // 
@@ -551,7 +571,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(786, 444);
+            this.panel6.Size = new System.Drawing.Size(786, 441);
             this.panel6.TabIndex = 2;
             // 
             // panel3
@@ -563,7 +583,7 @@
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(27, 8);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(724, 374);
+            this.panel3.Size = new System.Drawing.Size(724, 371);
             this.panel3.TabIndex = 0;
             // 
             // dataGridEnviables
@@ -588,7 +608,7 @@
             this.dataGridEnviables.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridEnviables.RowTemplate.DividerHeight = 2;
             this.dataGridEnviables.RowTemplate.Height = 30;
-            this.dataGridEnviables.Size = new System.Drawing.Size(724, 342);
+            this.dataGridEnviables.Size = new System.Drawing.Size(724, 339);
             this.dataGridEnviables.TabIndex = 1;
             this.dataGridEnviables.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEnviables_CellClick);
             // 
@@ -597,7 +617,7 @@
             this.Seleccionar.HeaderText = "Seleccionar";
             this.Seleccionar.Name = "Seleccionar";
             this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 69;
+            this.Seleccionar.Width = 85;
             // 
             // Editar
             // 
@@ -606,7 +626,7 @@
             this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Editar.Name = "Editar";
             this.Editar.ReadOnly = true;
-            this.Editar.Width = 40;
+            this.Editar.Width = 48;
             // 
             // Borrar
             // 
@@ -615,7 +635,7 @@
             this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Borrar.Name = "Borrar";
             this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 41;
+            this.Borrar.Width = 50;
             // 
             // panelContenedorDeDirectorio
             // 
@@ -826,25 +846,6 @@
             this.label1.Size = new System.Drawing.Size(43, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Lista";
-            // 
-            // btnGenerarInforme
-            // 
-            this.btnGenerarInforme.BackColor = System.Drawing.Color.Orange;
-            this.btnGenerarInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarInforme.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnGenerarInforme.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
-            this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
-            this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGenerarInforme.IconSize = 30;
-            this.btnGenerarInforme.Location = new System.Drawing.Point(396, 3);
-            this.btnGenerarInforme.Name = "btnGenerarInforme";
-            this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
-            this.btnGenerarInforme.TabIndex = 16;
-            this.btnGenerarInforme.Text = "Generar informe";
-            this.btnGenerarInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGenerarInforme.UseVisualStyleBackColor = false;
-            this.btnGenerarInforme.Click += new System.EventHandler(this.btnGenerarInforme_Click);
             // 
             // FormEnviables
             // 

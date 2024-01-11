@@ -136,6 +136,10 @@ namespace UI
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridMiembros = new System.Windows.Forms.DataGridView();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Imprimir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel20 = new System.Windows.Forms.Panel();
             this.label39 = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
@@ -179,10 +183,6 @@ namespace UI
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Imprimir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -240,9 +240,9 @@ namespace UI
             // tabRegistrar
             // 
             tabRegistrar.Controls.Add(this.panel4);
-            tabRegistrar.Location = new System.Drawing.Point(4, 24);
+            tabRegistrar.Location = new System.Drawing.Point(4, 25);
             tabRegistrar.Name = "tabRegistrar";
-            tabRegistrar.Size = new System.Drawing.Size(850, 457);
+            tabRegistrar.Size = new System.Drawing.Size(850, 456);
             tabRegistrar.TabIndex = 1;
             tabRegistrar.Text = "Nuevo registro";
             tabRegistrar.UseVisualStyleBackColor = true;
@@ -256,7 +256,7 @@ namespace UI
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(850, 457);
+            this.panel4.Size = new System.Drawing.Size(850, 456);
             this.panel4.TabIndex = 0;
             // 
             // panel8
@@ -270,7 +270,7 @@ namespace UI
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 32);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(850, 380);
+            this.panel8.Size = new System.Drawing.Size(850, 379);
             this.panel8.TabIndex = 18;
             // 
             // panel12
@@ -1173,41 +1173,79 @@ namespace UI
             this.comboOficio.FormattingEnabled = true;
             this.comboOficio.Items.AddRange(new object[] {
             "Todos",
-            "Ingeniero(a) de sistemas",
-            "Ingeniero(a) de electronica",
-            "Ingeniero(a) Industrial",
-            "Enfermero(a)",
-            "Electricista",
-            "Albañil",
             "Abogado",
             "Acesor comercial",
-            "Estudiante",
-            "Medico(a)",
-            "Farmaceutico(a)",
-            "Odontologo(a)",
-            "Fontaneros(a)",
-            "Docente",
-            "Contadores",
-            "Psicologos",
+            "Actor/Actriz",
+            "Albañil",
+            "Analista de datos",
+            "Animador(a)",
+            "Arquitecto(a)",
+            "Asistente administrativo(a)",
+            "Asistente social",
+            "Bibliotecario(a)",
+            "Biólogo(a)",
+            "Biólogo(a) marino(a)",
+            "Carpintero(a)",
+            "Cartógrafo(a)",
             "Chef",
-            "Repostero(a)",
-            "Vigilante",
-            "Escolta",
-            "Ebanista",
-            "Peluquero",
+            "Chofer",
+            "Comerciante",
+            "Consultor(a) de negocios internacionales",
+            "Consultor(a) financiero(a)",
+            "Corrector(a) de estilo",
+            "Desarrollador(a) web",
             "Domiciliario",
-            "Soldador",
-            "Diseñador Grafico",
+            "Docente",
+            "Ebanista",
+            "Electricista",
+            "Electronico",
+            "Enfermero(a)",
+            "Entrenador(a) personal",
+            "Especialista en marketing digital",
+            "Estudiante",
+            "Farmaceutico(a)",
+            "Florista",
+            "Fontanero(a)",
+            "Fotógrafo(a)",
+            "Geólogo(a)",
+            "Impulsador",
+            "Ingeniero(a) Civil",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) Industrial",
+            "Inspector(a) de calidad",
+            "Inspector(a) de construcción",
+            "Investigador(a)",
+            "Investigador(a) de mercado",
+            "Investigador(a) forense",
             "Maestro de obra",
             "Mecanico",
-            "Chofer",
-            "Impulsador",
-            "Optometra",
-            "Naturista",
-            "Vendedor",
+            "Medico(a)",
             "Modista",
-            "Electronico",
-            "Tecnico"});
+            "Mototaxista",
+            "Naturista",
+            "Odontologo(a)",
+            "Optometra",
+            "Paisajista",
+            "Peluquero",
+            "Peluquero(a)",
+            "Periodista",
+            "Plomero(a)",
+            "Psicologo",
+            "Repostero(a)",
+            "Soldador",
+            "Surtidor",
+            "Taxista",
+            "Técnico(a)",
+            "Técnico(a) de laboratorio",
+            "Técnico(a) en energías renovables",
+            "Técnico(a) en radiología",
+            "Terapeuta físico(a)",
+            "Terapeuta ocupacional",
+            "Topógrafo(a)",
+            "Traductor(a)",
+            "Vendedor",
+            "Vigilante"});
             this.comboOficio.Location = new System.Drawing.Point(56, 101);
             this.comboOficio.Name = "comboOficio";
             this.comboOficio.Size = new System.Drawing.Size(121, 24);
@@ -1229,7 +1267,7 @@ namespace UI
             "Femenino"});
             this.comboGeneroRegistrar.Location = new System.Drawing.Point(438, 73);
             this.comboGeneroRegistrar.Name = "comboGeneroRegistrar";
-            this.comboGeneroRegistrar.Size = new System.Drawing.Size(82, 23);
+            this.comboGeneroRegistrar.Size = new System.Drawing.Size(82, 24);
             this.comboGeneroRegistrar.TabIndex = 39;
             this.comboGeneroRegistrar.Text = "Masculino";
             this.comboGeneroRegistrar.Enter += new System.EventHandler(this.comboGeneroRegistrar_Enter);
@@ -1328,7 +1366,7 @@ namespace UI
             "OTRO"});
             this.comboTipoDocumento.Location = new System.Drawing.Point(162, 42);
             this.comboTipoDocumento.Name = "comboTipoDocumento";
-            this.comboTipoDocumento.Size = new System.Drawing.Size(76, 23);
+            this.comboTipoDocumento.Size = new System.Drawing.Size(76, 24);
             this.comboTipoDocumento.TabIndex = 31;
             this.comboTipoDocumento.Text = "CC";
             this.comboTipoDocumento.Enter += new System.EventHandler(this.comboTipoDocumento_Enter);
@@ -1370,7 +1408,7 @@ namespace UI
             // 
             this.dateFechaDeNacimiento.Location = new System.Drawing.Point(160, 75);
             this.dateFechaDeNacimiento.Name = "dateFechaDeNacimiento";
-            this.dateFechaDeNacimiento.Size = new System.Drawing.Size(208, 21);
+            this.dateFechaDeNacimiento.Size = new System.Drawing.Size(208, 22);
             this.dateFechaDeNacimiento.TabIndex = 27;
             // 
             // label5
@@ -1453,7 +1491,7 @@ namespace UI
             // 
             this.panel7.Controls.Add(this.tableLayoutPanel2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 412);
+            this.panel7.Location = new System.Drawing.Point(0, 411);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(850, 45);
             this.panel7.TabIndex = 17;
@@ -1590,7 +1628,7 @@ namespace UI
             this.tabMiembros.Controls.Add(tabRegistrar);
             this.tabMiembros.Controls.Add(this.tabSimpatizantes);
             this.tabMiembros.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabMiembros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabMiembros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabMiembros.Location = new System.Drawing.Point(0, 0);
             this.tabMiembros.Name = "tabMiembros";
             this.tabMiembros.SelectedIndex = 0;
@@ -1602,10 +1640,10 @@ namespace UI
             // 
             this.tabLista.Controls.Add(this.panel15);
             this.tabLista.Controls.Add(this.panel14);
-            this.tabLista.Location = new System.Drawing.Point(4, 24);
+            this.tabLista.Location = new System.Drawing.Point(4, 25);
             this.tabLista.Name = "tabLista";
             this.tabLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLista.Size = new System.Drawing.Size(850, 457);
+            this.tabLista.Size = new System.Drawing.Size(850, 456);
             this.tabLista.TabIndex = 0;
             this.tabLista.Text = "Lista de miembros";
             // 
@@ -1613,7 +1651,7 @@ namespace UI
             // 
             this.panel15.Controls.Add(this.tableLayoutPanel1);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel15.Location = new System.Drawing.Point(3, 405);
+            this.panel15.Location = new System.Drawing.Point(3, 404);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(844, 49);
             this.panel15.TabIndex = 17;
@@ -1623,7 +1661,7 @@ namespace UI
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 352F));
             this.tableLayoutPanel1.Controls.Add(this.btnVerListaSimpatizantes, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGestionarMiembros, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGenerarInforme, 2, 0);
@@ -1646,9 +1684,9 @@ namespace UI
             this.btnVerListaSimpatizantes.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnVerListaSimpatizantes.IconColor = System.Drawing.Color.Black;
             this.btnVerListaSimpatizantes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnVerListaSimpatizantes.Location = new System.Drawing.Point(310, 3);
+            this.btnVerListaSimpatizantes.Location = new System.Drawing.Point(309, 3);
             this.btnVerListaSimpatizantes.Name = "btnVerListaSimpatizantes";
-            this.btnVerListaSimpatizantes.Size = new System.Drawing.Size(180, 43);
+            this.btnVerListaSimpatizantes.Size = new System.Drawing.Size(179, 43);
             this.btnVerListaSimpatizantes.TabIndex = 45;
             this.btnVerListaSimpatizantes.Text = "Ver simpatizantes";
             this.btnVerListaSimpatizantes.UseVisualStyleBackColor = false;
@@ -1664,7 +1702,7 @@ namespace UI
             this.btnGestionarMiembros.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnGestionarMiembros.IconColor = System.Drawing.Color.Black;
             this.btnGestionarMiembros.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarMiembros.Location = new System.Drawing.Point(169, 3);
+            this.btnGestionarMiembros.Location = new System.Drawing.Point(168, 3);
             this.btnGestionarMiembros.Name = "btnGestionarMiembros";
             this.btnGestionarMiembros.Size = new System.Drawing.Size(135, 40);
             this.btnGestionarMiembros.TabIndex = 1;
@@ -1681,7 +1719,7 @@ namespace UI
             this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
             this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGenerarInforme.IconSize = 30;
-            this.btnGenerarInforme.Location = new System.Drawing.Point(496, 3);
+            this.btnGenerarInforme.Location = new System.Drawing.Point(494, 3);
             this.btnGenerarInforme.Name = "btnGenerarInforme";
             this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
@@ -1697,7 +1735,7 @@ namespace UI
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel14.Location = new System.Drawing.Point(3, 3);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(844, 451);
+            this.panel14.Size = new System.Drawing.Size(844, 450);
             this.panel14.TabIndex = 16;
             // 
             // panel3
@@ -1710,7 +1748,7 @@ namespace UI
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(26, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(781, 393);
+            this.panel3.Size = new System.Drawing.Size(781, 392);
             this.panel3.TabIndex = 1;
             // 
             // dataGridMiembros
@@ -1728,9 +1766,43 @@ namespace UI
             this.dataGridMiembros.ReadOnly = true;
             this.dataGridMiembros.RowHeadersVisible = false;
             this.dataGridMiembros.RowTemplate.Height = 30;
-            this.dataGridMiembros.Size = new System.Drawing.Size(781, 329);
+            this.dataGridMiembros.Size = new System.Drawing.Size(781, 328);
             this.dataGridMiembros.TabIndex = 43;
             this.dataGridMiembros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMiembros_CellClick);
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Width = 70;
+            // 
+            // Imprimir
+            // 
+            this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
+            this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Imprimir.Name = "Imprimir";
+            this.Imprimir.ReadOnly = true;
+            this.Imprimir.Width = 70;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 50;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Width = 60;
             // 
             // panel20
             // 
@@ -1742,7 +1814,7 @@ namespace UI
             this.panel20.Controls.Add(this.textTotalHombres);
             this.panel20.Controls.Add(this.textTotal);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel20.Location = new System.Drawing.Point(0, 361);
+            this.panel20.Location = new System.Drawing.Point(0, 360);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(781, 32);
             this.panel20.TabIndex = 2;
@@ -1977,10 +2049,10 @@ namespace UI
             // 
             this.tabSimpatizantes.Controls.Add(this.tableLayoutPanel3);
             this.tabSimpatizantes.Controls.Add(this.panel21);
-            this.tabSimpatizantes.Location = new System.Drawing.Point(4, 24);
+            this.tabSimpatizantes.Location = new System.Drawing.Point(4, 25);
             this.tabSimpatizantes.Name = "tabSimpatizantes";
             this.tabSimpatizantes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSimpatizantes.Size = new System.Drawing.Size(850, 457);
+            this.tabSimpatizantes.Size = new System.Drawing.Size(850, 456);
             this.tabSimpatizantes.TabIndex = 2;
             this.tabSimpatizantes.Text = "Simpatizantes";
             this.tabSimpatizantes.UseVisualStyleBackColor = true;
@@ -1990,10 +2062,10 @@ namespace UI
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.30367F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.69633F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 360F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 362F));
             this.tableLayoutPanel3.Controls.Add(this.iconButton3, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 405);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 404);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2010,10 +2082,10 @@ namespace UI
             this.iconButton3.IconColor = System.Drawing.Color.Black;
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 30;
-            this.iconButton3.Location = new System.Drawing.Point(304, 3);
+            this.iconButton3.Location = new System.Drawing.Point(303, 3);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton3.Size = new System.Drawing.Size(176, 40);
+            this.iconButton3.Size = new System.Drawing.Size(175, 40);
             this.iconButton3.TabIndex = 44;
             this.iconButton3.Text = "Imprimir Lista";
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -2025,7 +2097,7 @@ namespace UI
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel21.Location = new System.Drawing.Point(3, 3);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(844, 451);
+            this.panel21.Size = new System.Drawing.Size(844, 450);
             this.panel21.TabIndex = 17;
             // 
             // panel22
@@ -2038,7 +2110,7 @@ namespace UI
             this.panel22.Controls.Add(this.panel24);
             this.panel22.Location = new System.Drawing.Point(26, 3);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(781, 395);
+            this.panel22.Size = new System.Drawing.Size(781, 394);
             this.panel22.TabIndex = 1;
             // 
             // dataGridSimpatizantes
@@ -2055,7 +2127,7 @@ namespace UI
             this.dataGridSimpatizantes.ReadOnly = true;
             this.dataGridSimpatizantes.RowHeadersVisible = false;
             this.dataGridSimpatizantes.RowTemplate.Height = 30;
-            this.dataGridSimpatizantes.Size = new System.Drawing.Size(781, 331);
+            this.dataGridSimpatizantes.Size = new System.Drawing.Size(781, 330);
             this.dataGridSimpatizantes.TabIndex = 43;
             // 
             // dataGridViewCheckBoxColumn1
@@ -2093,7 +2165,7 @@ namespace UI
             this.panel23.Controls.Add(this.textTotalHombres2);
             this.panel23.Controls.Add(this.textTotal2);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel23.Location = new System.Drawing.Point(0, 363);
+            this.panel23.Location = new System.Drawing.Point(0, 362);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(781, 32);
             this.panel23.TabIndex = 2;
@@ -2322,40 +2394,6 @@ namespace UI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(858, 59);
             this.panel1.TabIndex = 2;
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 70;
-            // 
-            // Imprimir
-            // 
-            this.Imprimir.HeaderText = "Imprimir";
-            this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
-            this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Imprimir.Name = "Imprimir";
-            this.Imprimir.ReadOnly = true;
-            this.Imprimir.Width = 70;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::UI.Properties.Resources.edit_user;
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Width = 50;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Image = global::UI.Properties.Resources.borrar;
-            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 60;
             // 
             // FormMiembros
             // 

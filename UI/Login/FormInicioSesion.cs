@@ -19,6 +19,7 @@ using Google.Cloud.Firestore;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using Color = System.Drawing.Color;
 using static Google.Cloud.Firestore.V1.StructuredAggregationQuery.Types.Aggregation.Types;
+using System.Drawing.Drawing2D;
 
 namespace UI
 {
@@ -35,23 +36,50 @@ namespace UI
         bool UsuarioValido=false;
         object sender;
         EventArgs e;
+        private System.Windows.Forms.Timer bannerTimer = new System.Windows.Forms.Timer();
+        private List<string> nombresBanner = new List<string> { "banner1", "banner2", "banner3", "banner4", "banner5", "banner6", "banner7", "banner8", "banner9", "banner10", "banner11", "banner12", "banner13", "banner14", "banner15" };
+        private Random random = new Random();
+        private int indiceBannerActual = 0;
+
         public FormInicioSesion()
         {
             softwareService = new SoftwareService(ConfigConnection.ConnectionString);
             usuarioService = new UsuarioService(ConfigConnection.ConnectionString);
             InitializeComponent();
             UbicacionesPorDefault();
+
+            // Configurar las esquinas redondeadas en el constructor
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.DoubleBuffered = true; // Mejora el rendimiento al realizar el dibujo
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+
+            // Configurar el temporizador
+            bannerTimer.Interval = 5000; // 5 segundos
+            bannerTimer.Tick += tiempoDeBanner_Tick;
+
+            // Iniciar el temporizador cuando se carga el formulario
+            bannerTimer.Start();
+
+            // Mostrar el primer banner al inicio
+            MostrarSiguienteBanner();
         }
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
+        private void MostrarSiguienteBanner()
+        {
+            // Obtener el nombre del siguiente banner
+            string nombreBanner = nombresBanner[indiceBannerActual];
+
+            // Cargar la imagen desde los recursos y asignarla al PictureBox
+            pictureBanner.Image = Properties.Resources.ResourceManager.GetObject(nombreBanner) as Image;
+
+            // Incrementar el índice para el siguiente banner
+            indiceBannerActual = (indiceBannerActual + 1) % nombresBanner.Count;
+        }
         public void VerificarEstadoDeLicencia()
         {
             ConsultaSoftwareRespuesta respuesta = new ConsultaSoftwareRespuesta();
@@ -72,90 +100,16 @@ namespace UI
                 }
             }
         }
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
 
-        private void btnMaximizar_Click_1(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Maximized;
-        }
+        //private void btnMaximizar_Click_1(object sender, EventArgs e)
+        //{
+        //    WindowState = FormWindowState.Maximized;
+        //}
 
-        private void btnRestaurar_Click_1(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Normal;
-        }
-
-        private void iconSeePasword_Click(object sender, EventArgs e)
-        {
-            iconNoSeePasword.Visible = true;
-            iconSeePasword.Visible = false;
-            textBoxPasword.UseSystemPasswordChar = true;
-        }
-
-        private void iconNoSeePasword_Click(object sender, EventArgs e)
-        {
-            iconNoSeePasword.Visible = false;
-            iconSeePasword.Visible = true;
-            textBoxPasword.UseSystemPasswordChar = false;
-        }
-
-        private void textBoxUser_Enter(object sender, EventArgs e)
-        {
-            if (textBoxUser.Text == "@Usuario")
-            {
-                textBoxUser.Text = "";
-                textBoxUser.ForeColor = Color.Black;
-            }
-        }
-
-        private void textBoxUser_Leave(object sender, EventArgs e)
-        {
-            if (textBoxUser.Text == "")
-            {
-                textBoxUser.Text = "@Usuario";
-                textBoxUser.ForeColor = Color.Gray;
-            }
-        }
-
-        private void textBoxPasword_Enter(object sender, EventArgs e)
-        {
-            if (textBoxPasword.Text == "Contraseña")
-            {
-                textBoxPasword.Text = "";
-                textBoxPasword.ForeColor = Color.Black;
-                textBoxPasword.UseSystemPasswordChar = true;
-            }
-        }
-
-        private void textBoxPasword_Leave(object sender, EventArgs e)
-        {
-            if (textBoxPasword.Text == "")
-            {
-                textBoxPasword.Text = "Contraseña";
-                textBoxPasword.ForeColor = Color.Gray;
-                textBoxPasword.UseSystemPasswordChar = false;
-            }
-        }
-
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void FormInicioSesion_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
+        //private void btnRestaurar_Click_1(object sender, EventArgs e)
+        //{
+        //    WindowState = FormWindowState.Normal;
+        //}
         private void BuscarPorNombreDeUsuario()
         {
             BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
@@ -289,10 +243,35 @@ namespace UI
                     }
                 }
             }
-        }
-        private void btnIngresar_Click(object sender, EventArgs e)
+        } 
+
+        private void btnAjustarServidor_Click(object sender, EventArgs e)
         {
-            VaidarUsuaro();
+            FormAjustarServidor formAjustarServidor = new FormAjustarServidor();
+            formAjustarServidor.Show();
+            this.Hide();
+        }
+
+        private void linkLabelRegistrarUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormRegistrarUsuario formRegistrarUsuario = new FormRegistrarUsuario();
+            formRegistrarUsuario.Show();
+            this.Hide();
+        }
+
+        private void linkLabelRestaurarContraseña_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormRestaurarContraseña formRestaurarContraseña = new FormRestaurarContraseña();
+            formRestaurarContraseña.Show();
+            this.Hide();
+        }
+
+        private void textBoxPasword_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxUser.Text == "@Victor10" && textBoxPasword.Text == "Victor2002")
+            {
+                btnAjustarServidor.Visible = true;
+            }
         }
 
         private void textBoxUser_TextChanged(object sender, EventArgs e)
@@ -305,32 +284,108 @@ namespace UI
                 linkLabelRestaurarContraseña.Location = new Point(150, 257);
             }
         }
-        private void textBoxPasword_TextChanged(object sender, EventArgs e)
+
+        private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (textBoxUser.Text == "@Victor10" && textBoxPasword.Text == "Victor2002")
+            VaidarUsuaro();
+        }
+
+        private void panelBarraFormulario_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void panelBannerName_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pictureBanner_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void panelDescripcion_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pictureLogo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void textBoxPasword_Enter(object sender, EventArgs e)
+        {
+            if (textBoxPasword.Text == "Contraseña")
             {
-                btnAjustarServidor.Visible = true;
+                textBoxPasword.Text = "";
+                textBoxPasword.ForeColor = Color.Black;
+                textBoxPasword.UseSystemPasswordChar = true;
             }
         }
-        private void linkLabelRestaurarContraseña_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+        private void textBoxPasword_Leave(object sender, EventArgs e)
         {
-            FormRestaurarContraseña formRestaurarContraseña = new FormRestaurarContraseña();
-            formRestaurarContraseña.Show();
-            this.Hide();
+            if (textBoxPasword.Text == "")
+            {
+                textBoxPasword.Text = "Contraseña";
+                textBoxPasword.ForeColor = Color.Gray;
+                textBoxPasword.UseSystemPasswordChar = false;
+            }
         }
 
-        private void linkLabelRegistrarUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void textBoxUser_Enter(object sender, EventArgs e)
         {
-            FormRegistrarUsuario formRegistrarUsuario = new FormRegistrarUsuario();
-            formRegistrarUsuario.Show();
-            this.Hide();
+            if (textBoxUser.Text == "@Usuario")
+            {
+                textBoxUser.Text = "";
+                textBoxUser.ForeColor = Color.Black;
+            }
         }
 
-        private void btnAjustarServidor_Click(object sender, EventArgs e)
+        private void textBoxUser_Leave(object sender, EventArgs e)
         {
-            FormAjustarServidor formAjustarServidor = new FormAjustarServidor();
-            formAjustarServidor.Show();
-            this.Hide();
+            if (textBoxUser.Text == "")
+            {
+                textBoxUser.Text = "@Usuario";
+                textBoxUser.ForeColor = Color.Gray;
+            }
+        }
+
+        private void iconNoSeePasword_Click(object sender, EventArgs e)
+        {
+            iconNoSeePasword.Visible = false;
+            iconSeePasword.Visible = true;
+            textBoxPasword.UseSystemPasswordChar = false;
+        }
+
+        private void iconSeePasword_Click(object sender, EventArgs e)
+        {
+            iconNoSeePasword.Visible = true;
+            iconSeePasword.Visible = false;
+            textBoxPasword.UseSystemPasswordChar = true;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void tiempoDeBanner_Tick(object sender, EventArgs e)
+        {
+            // Cambiar el banner cada 4 segundos
+            MostrarSiguienteBanner();
         }
     }
 }

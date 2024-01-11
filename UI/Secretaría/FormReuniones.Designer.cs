@@ -63,6 +63,10 @@ namespace UI
             this.btnGestionarReuniones = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridReunion = new System.Windows.Forms.DataGridView();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Imprimir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.textTotal = new System.Windows.Forms.TextBox();
@@ -71,10 +75,6 @@ namespace UI
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.labelListaDeReuniones = new System.Windows.Forms.Label();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Imprimir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             tabRegistrar = new System.Windows.Forms.TabPage();
             tabRegistrar.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -212,7 +212,7 @@ namespace UI
             // 
             this.dateFechaDeReunion.Location = new System.Drawing.Point(146, 14);
             this.dateFechaDeReunion.Name = "dateFechaDeReunion";
-            this.dateFechaDeReunion.Size = new System.Drawing.Size(212, 21);
+            this.dateFechaDeReunion.Size = new System.Drawing.Size(212, 22);
             this.dateFechaDeReunion.TabIndex = 29;
             // 
             // label5
@@ -439,7 +439,7 @@ namespace UI
             this.tabReuniones.Controls.Add(this.tabLista);
             this.tabReuniones.Controls.Add(tabRegistrar);
             this.tabReuniones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabReuniones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabReuniones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabReuniones.Location = new System.Drawing.Point(0, 0);
             this.tabReuniones.Name = "tabReuniones";
             this.tabReuniones.SelectedIndex = 0;
@@ -450,10 +450,10 @@ namespace UI
             // 
             this.tabLista.Controls.Add(this.tableLayoutPanel1);
             this.tabLista.Controls.Add(this.panel3);
-            this.tabLista.Location = new System.Drawing.Point(4, 24);
+            this.tabLista.Location = new System.Drawing.Point(4, 25);
             this.tabLista.Name = "tabLista";
             this.tabLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLista.Size = new System.Drawing.Size(803, 464);
+            this.tabLista.Size = new System.Drawing.Size(803, 463);
             this.tabLista.TabIndex = 0;
             this.tabLista.Text = "Lista de reuniones";
             this.tabLista.UseVisualStyleBackColor = true;
@@ -466,7 +466,7 @@ namespace UI
             this.tableLayoutPanel1.Controls.Add(this.btnGenerarInforme, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGestionarReuniones, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 410);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 409);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -518,7 +518,7 @@ namespace UI
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(37, 14);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(714, 390);
+            this.panel3.Size = new System.Drawing.Size(714, 389);
             this.panel3.TabIndex = 0;
             // 
             // dataGridReunion
@@ -535,9 +535,43 @@ namespace UI
             this.dataGridReunion.Name = "dataGridReunion";
             this.dataGridReunion.ReadOnly = true;
             this.dataGridReunion.RowHeadersVisible = false;
-            this.dataGridReunion.Size = new System.Drawing.Size(714, 358);
+            this.dataGridReunion.Size = new System.Drawing.Size(714, 357);
             this.dataGridReunion.TabIndex = 1;
             this.dataGridReunion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridReunion_CellClick);
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Width = 70;
+            // 
+            // Imprimir
+            // 
+            this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
+            this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Imprimir.Name = "Imprimir";
+            this.Imprimir.ReadOnly = true;
+            this.Imprimir.Width = 70;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 50;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Width = 60;
             // 
             // panelContenedorDeDirectorio
             // 
@@ -647,40 +681,6 @@ namespace UI
             this.labelListaDeReuniones.Size = new System.Drawing.Size(145, 16);
             this.labelListaDeReuniones.TabIndex = 0;
             this.labelListaDeReuniones.Text = "Lista de reuniones";
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 70;
-            // 
-            // Imprimir
-            // 
-            this.Imprimir.HeaderText = "Imprimir";
-            this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
-            this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Imprimir.Name = "Imprimir";
-            this.Imprimir.ReadOnly = true;
-            this.Imprimir.Width = 70;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::UI.Properties.Resources.edit_user;
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Width = 50;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Image = global::UI.Properties.Resources.borrar;
-            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 60;
             // 
             // FormReuniones
             // 

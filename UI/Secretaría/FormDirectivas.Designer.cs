@@ -65,6 +65,10 @@ namespace UI
             this.btnGestionarDirectivas = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridDirectiva = new System.Windows.Forms.DataGridView();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Imprimir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelContenedorDeDirectorio = new System.Windows.Forms.Panel();
             this.comboFiltroAño = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -75,10 +79,6 @@ namespace UI
             this.textSerachLibreta = new System.Windows.Forms.TextBox();
             this.btnCloseSearchLibreta = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Imprimir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             tabNuevoIntegrante = new System.Windows.Forms.TabPage();
             tabNuevoIntegrante.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -578,7 +578,7 @@ namespace UI
             this.tabDirectivas.Controls.Add(this.tabLibro);
             this.tabDirectivas.Controls.Add(tabNuevoIntegrante);
             this.tabDirectivas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabDirectivas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabDirectivas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabDirectivas.Location = new System.Drawing.Point(0, 59);
             this.tabDirectivas.Name = "tabDirectivas";
             this.tabDirectivas.SelectedIndex = 0;
@@ -589,10 +589,10 @@ namespace UI
             // 
             this.tabLibro.Controls.Add(this.tableLayoutPanel1);
             this.tabLibro.Controls.Add(this.panel3);
-            this.tabLibro.Location = new System.Drawing.Point(4, 24);
+            this.tabLibro.Location = new System.Drawing.Point(4, 25);
             this.tabLibro.Name = "tabLibro";
             this.tabLibro.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLibro.Size = new System.Drawing.Size(836, 457);
+            this.tabLibro.Size = new System.Drawing.Size(836, 456);
             this.tabLibro.TabIndex = 0;
             this.tabLibro.Text = "Libro de directivas";
             this.tabLibro.UseVisualStyleBackColor = true;
@@ -605,7 +605,7 @@ namespace UI
             this.tableLayoutPanel1.Controls.Add(this.btnGenerarInforme, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnGestionarDirectivas, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 410);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 409);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -657,7 +657,7 @@ namespace UI
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(37, 14);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(759, 390);
+            this.panel3.Size = new System.Drawing.Size(759, 389);
             this.panel3.TabIndex = 0;
             // 
             // dataGridDirectiva
@@ -674,9 +674,43 @@ namespace UI
             this.dataGridDirectiva.Name = "dataGridDirectiva";
             this.dataGridDirectiva.ReadOnly = true;
             this.dataGridDirectiva.RowHeadersVisible = false;
-            this.dataGridDirectiva.Size = new System.Drawing.Size(759, 358);
+            this.dataGridDirectiva.Size = new System.Drawing.Size(759, 357);
             this.dataGridDirectiva.TabIndex = 1;
             this.dataGridDirectiva.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDirectiva_CellClick);
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Width = 70;
+            // 
+            // Imprimir
+            // 
+            this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
+            this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Imprimir.Name = "Imprimir";
+            this.Imprimir.ReadOnly = true;
+            this.Imprimir.Width = 70;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::UI.Properties.Resources.edit_user;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 50;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Image = global::UI.Properties.Resources.borrar;
+            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Width = 60;
             // 
             // panelContenedorDeDirectorio
             // 
@@ -895,40 +929,6 @@ namespace UI
             this.label1.Size = new System.Drawing.Size(82, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Directivas";
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
-            this.Seleccionar.Width = 70;
-            // 
-            // Imprimir
-            // 
-            this.Imprimir.HeaderText = "Imprimir";
-            this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
-            this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Imprimir.Name = "Imprimir";
-            this.Imprimir.ReadOnly = true;
-            this.Imprimir.Width = 70;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::UI.Properties.Resources.edit_user;
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Width = 50;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Image = global::UI.Properties.Resources.borrar;
-            this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 60;
             // 
             // FormDirectivas
             // 

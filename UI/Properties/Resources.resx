@@ -121,20 +121,26 @@
   <data name="edit_user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="doc_ico" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\doc_ico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="banner4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="banner11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner11.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BaseDatos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BaseDatos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Imprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LlavesLicencia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LlavesLicencia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Egresos2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Egresos2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="banner8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner8.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Ingresos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ingresos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,14 +166,14 @@
   <data name="User" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\User.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Apuntes1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Apuntes1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="banner12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner12.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gmail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gmail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Directorio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Directorio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Apuntes1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Apuntes1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="licencia_false" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\licencia_false.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,14 +181,35 @@
   <data name="WhatsApp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhatsApp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Reunion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Reunion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="banner13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner13.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="banner6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="conexion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\conexion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="banner3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="telefono" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\telefono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Contraseña" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contraseña.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Detallar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Detallar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="banner1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="banner10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Reunion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Reunion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Egresos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Egresos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,14 +217,20 @@
   <data name="Apuntes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Apuntes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="banner2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Licencia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Licencia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Contraseña" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Contraseña.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BaseDatos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BaseDatos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="telefono" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\telefono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="banner14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner14.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="banner7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner7.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Liquidacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Liquidacion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,17 +238,26 @@
   <data name="logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="doc_ico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\doc_ico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Directiva" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Directiva.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Directorio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Directorio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="deleRojBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\deleRojBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="banner9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Enviables" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Enviables.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Imagen Oficial " type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Imagen Oficial .jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="licencia_true" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\licencia_true.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,11 +265,17 @@
   <data name="Presupuesto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Presupuesto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Enviables" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Enviables.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Miembros" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Miembros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="selector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\selector.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="banner5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Enviables2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Enviables2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,7 +283,7 @@
   <data name="borrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\borrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Imprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="banner15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banner15.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

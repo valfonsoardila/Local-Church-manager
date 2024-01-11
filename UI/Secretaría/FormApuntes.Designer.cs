@@ -85,9 +85,9 @@ namespace UI
             // tabNuevoApunte
             // 
             tabNuevoApunte.Controls.Add(this.panel4);
-            tabNuevoApunte.Location = new System.Drawing.Point(4, 22);
+            tabNuevoApunte.Location = new System.Drawing.Point(4, 24);
             tabNuevoApunte.Name = "tabNuevoApunte";
-            tabNuevoApunte.Size = new System.Drawing.Size(792, 450);
+            tabNuevoApunte.Size = new System.Drawing.Size(792, 448);
             tabNuevoApunte.TabIndex = 1;
             tabNuevoApunte.Text = "Nuevo apunte";
             tabNuevoApunte.UseVisualStyleBackColor = true;
@@ -297,7 +297,7 @@ namespace UI
             this.tabApuntes.Controls.Add(this.tabLibro);
             this.tabApuntes.Controls.Add(tabNuevoApunte);
             this.tabApuntes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabApuntes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabApuntes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabApuntes.Location = new System.Drawing.Point(0, 59);
             this.tabApuntes.Name = "tabApuntes";
             this.tabApuntes.SelectedIndex = 0;
@@ -308,10 +308,10 @@ namespace UI
             // 
             this.tabLibro.Controls.Add(this.panel7);
             this.tabLibro.Controls.Add(this.panel3);
-            this.tabLibro.Location = new System.Drawing.Point(4, 24);
+            this.tabLibro.Location = new System.Drawing.Point(4, 25);
             this.tabLibro.Name = "tabLibro";
             this.tabLibro.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLibro.Size = new System.Drawing.Size(792, 448);
+            this.tabLibro.Size = new System.Drawing.Size(792, 447);
             this.tabLibro.TabIndex = 0;
             this.tabLibro.Text = "Libro";
             this.tabLibro.UseVisualStyleBackColor = true;
@@ -320,7 +320,7 @@ namespace UI
             // 
             this.panel7.Controls.Add(this.btnGestionarContactos);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(3, 402);
+            this.panel7.Location = new System.Drawing.Point(3, 401);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(786, 43);
             this.panel7.TabIndex = 4;
@@ -353,7 +353,7 @@ namespace UI
             this.panel3.Controls.Add(this.panelContenedorDeDirectorio);
             this.panel3.Location = new System.Drawing.Point(42, 6);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(714, 390);
+            this.panel3.Size = new System.Drawing.Size(714, 389);
             this.panel3.TabIndex = 0;
             // 
             // dataGridApunte
@@ -369,7 +369,7 @@ namespace UI
             this.dataGridApunte.Name = "dataGridApunte";
             this.dataGridApunte.ReadOnly = true;
             this.dataGridApunte.RowHeadersVisible = false;
-            this.dataGridApunte.Size = new System.Drawing.Size(714, 358);
+            this.dataGridApunte.Size = new System.Drawing.Size(714, 357);
             this.dataGridApunte.TabIndex = 1;
             this.dataGridApunte.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridApunte_CellClick);
             // 
