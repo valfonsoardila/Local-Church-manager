@@ -80,8 +80,6 @@ namespace UI
             dataGridInfoIglesia.DataSource = null;
             textNombreIglesia.Text = "";
             textNIT.Text = "";
-            textFraseDistintiva.Text = "";
-            comboRegimen.Text = "";
             textPBX.Text = "";
             textDireccion.Text = "";
             textTelefono.Text = "";

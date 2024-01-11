@@ -36,21 +36,15 @@ namespace UI
             this.labelNIT = new System.Windows.Forms.Label();
             this.dataGridInfoIglesia = new System.Windows.Forms.DataGridView();
             this.labelAdvertencia = new System.Windows.Forms.Label();
-            this.textCamaraDeComercio = new System.Windows.Forms.TextBox();
-            this.labelCamaraComercio = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAtras = new FontAwesome.Sharp.IconPictureBox();
             this.panelRegistrarDatos = new System.Windows.Forms.Panel();
-            this.comboRegimen = new System.Windows.Forms.ComboBox();
             this.textTelefono = new System.Windows.Forms.TextBox();
             this.labelTelefono = new System.Windows.Forms.Label();
             this.textDireccion = new System.Windows.Forms.TextBox();
             this.labelDireccion = new System.Windows.Forms.Label();
             this.textPBX = new System.Windows.Forms.TextBox();
             this.labelPBX = new System.Windows.Forms.Label();
-            this.labelRegimen = new System.Windows.Forms.Label();
-            this.textFraseDistintiva = new System.Windows.Forms.TextBox();
-            this.labelFraseDistintiva = new System.Windows.Forms.Label();
             this.panelTituloRegistrarDatos = new System.Windows.Forms.Panel();
             this.labelTituloRegistrarDatos = new System.Windows.Forms.Label();
             this.panelConfigDeGuardado = new System.Windows.Forms.Panel();
@@ -188,22 +182,6 @@ namespace UI
             this.labelAdvertencia.TabIndex = 79;
             this.labelAdvertencia.Text = "No hay productos registrados!!!";
             // 
-            // textCamaraDeComercio
-            // 
-            this.textCamaraDeComercio.Location = new System.Drawing.Point(146, 57);
-            this.textCamaraDeComercio.Name = "textCamaraDeComercio";
-            this.textCamaraDeComercio.Size = new System.Drawing.Size(118, 20);
-            this.textCamaraDeComercio.TabIndex = 81;
-            // 
-            // labelCamaraComercio
-            // 
-            this.labelCamaraComercio.AutoSize = true;
-            this.labelCamaraComercio.Location = new System.Drawing.Point(4, 60);
-            this.labelCamaraComercio.Name = "labelCamaraComercio";
-            this.labelCamaraComercio.Size = new System.Drawing.Size(142, 13);
-            this.labelCamaraComercio.TabIndex = 80;
-            this.labelCamaraComercio.Text = "Codigo camara de comercio:";
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -235,42 +213,25 @@ namespace UI
             // 
             this.panelRegistrarDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelRegistrarDatos.Controls.Add(this.comboRegimen);
             this.panelRegistrarDatos.Controls.Add(this.textTelefono);
             this.panelRegistrarDatos.Controls.Add(this.labelTelefono);
             this.panelRegistrarDatos.Controls.Add(this.textDireccion);
             this.panelRegistrarDatos.Controls.Add(this.labelDireccion);
             this.panelRegistrarDatos.Controls.Add(this.textPBX);
             this.panelRegistrarDatos.Controls.Add(this.labelPBX);
-            this.panelRegistrarDatos.Controls.Add(this.labelRegimen);
-            this.panelRegistrarDatos.Controls.Add(this.textFraseDistintiva);
-            this.panelRegistrarDatos.Controls.Add(this.labelFraseDistintiva);
             this.panelRegistrarDatos.Controls.Add(this.panelTituloRegistrarDatos);
             this.panelRegistrarDatos.Controls.Add(this.textNombreIglesia);
             this.panelRegistrarDatos.Controls.Add(this.labelNombreDrogueria);
             this.panelRegistrarDatos.Controls.Add(this.labelNIT);
-            this.panelRegistrarDatos.Controls.Add(this.textCamaraDeComercio);
             this.panelRegistrarDatos.Controls.Add(this.textNIT);
-            this.panelRegistrarDatos.Controls.Add(this.labelCamaraComercio);
             this.panelRegistrarDatos.Location = new System.Drawing.Point(86, 142);
             this.panelRegistrarDatos.Name = "panelRegistrarDatos";
-            this.panelRegistrarDatos.Size = new System.Drawing.Size(630, 177);
+            this.panelRegistrarDatos.Size = new System.Drawing.Size(630, 118);
             this.panelRegistrarDatos.TabIndex = 83;
-            // 
-            // comboRegimen
-            // 
-            this.comboRegimen.FormattingEnabled = true;
-            this.comboRegimen.Items.AddRange(new object[] {
-            "Simple",
-            "Comun"});
-            this.comboRegimen.Location = new System.Drawing.Point(332, 57);
-            this.comboRegimen.Name = "comboRegimen";
-            this.comboRegimen.Size = new System.Drawing.Size(121, 21);
-            this.comboRegimen.TabIndex = 91;
             // 
             // textTelefono
             // 
-            this.textTelefono.Location = new System.Drawing.Point(421, 104);
+            this.textTelefono.Location = new System.Drawing.Point(64, 57);
             this.textTelefono.Name = "textTelefono";
             this.textTelefono.Size = new System.Drawing.Size(100, 20);
             this.textTelefono.TabIndex = 90;
@@ -278,7 +239,7 @@ namespace UI
             // labelTelefono
             // 
             this.labelTelefono.AutoSize = true;
-            this.labelTelefono.Location = new System.Drawing.Point(363, 107);
+            this.labelTelefono.Location = new System.Drawing.Point(7, 60);
             this.labelTelefono.Name = "labelTelefono";
             this.labelTelefono.Size = new System.Drawing.Size(52, 13);
             this.labelTelefono.TabIndex = 89;
@@ -286,7 +247,7 @@ namespace UI
             // 
             // textDireccion
             // 
-            this.textDireccion.Location = new System.Drawing.Point(230, 146);
+            this.textDireccion.Location = new System.Drawing.Point(62, 85);
             this.textDireccion.Name = "textDireccion";
             this.textDireccion.Size = new System.Drawing.Size(202, 20);
             this.textDireccion.TabIndex = 88;
@@ -294,7 +255,7 @@ namespace UI
             // labelDireccion
             // 
             this.labelDireccion.AutoSize = true;
-            this.labelDireccion.Location = new System.Drawing.Point(176, 149);
+            this.labelDireccion.Location = new System.Drawing.Point(8, 88);
             this.labelDireccion.Name = "labelDireccion";
             this.labelDireccion.Size = new System.Drawing.Size(55, 13);
             this.labelDireccion.TabIndex = 87;
@@ -302,45 +263,19 @@ namespace UI
             // 
             // textPBX
             // 
-            this.textPBX.Location = new System.Drawing.Point(42, 146);
+            this.textPBX.Location = new System.Drawing.Point(216, 57);
             this.textPBX.Name = "textPBX";
-            this.textPBX.Size = new System.Drawing.Size(132, 20);
+            this.textPBX.Size = new System.Drawing.Size(278, 20);
             this.textPBX.TabIndex = 86;
             // 
             // labelPBX
             // 
             this.labelPBX.AutoSize = true;
-            this.labelPBX.Location = new System.Drawing.Point(5, 149);
+            this.labelPBX.Location = new System.Drawing.Point(173, 62);
             this.labelPBX.Name = "labelPBX";
-            this.labelPBX.Size = new System.Drawing.Size(31, 13);
+            this.labelPBX.Size = new System.Drawing.Size(41, 13);
             this.labelPBX.TabIndex = 85;
-            this.labelPBX.Text = "PBX:";
-            // 
-            // labelRegimen
-            // 
-            this.labelRegimen.AutoSize = true;
-            this.labelRegimen.Location = new System.Drawing.Point(278, 61);
-            this.labelRegimen.Name = "labelRegimen";
-            this.labelRegimen.Size = new System.Drawing.Size(52, 13);
-            this.labelRegimen.TabIndex = 84;
-            this.labelRegimen.Text = "Regimen:";
-            // 
-            // textFraseDistintiva
-            // 
-            this.textFraseDistintiva.Location = new System.Drawing.Point(91, 84);
-            this.textFraseDistintiva.Multiline = true;
-            this.textFraseDistintiva.Name = "textFraseDistintiva";
-            this.textFraseDistintiva.Size = new System.Drawing.Size(260, 52);
-            this.textFraseDistintiva.TabIndex = 83;
-            // 
-            // labelFraseDistintiva
-            // 
-            this.labelFraseDistintiva.AutoSize = true;
-            this.labelFraseDistintiva.Location = new System.Drawing.Point(5, 104);
-            this.labelFraseDistintiva.Name = "labelFraseDistintiva";
-            this.labelFraseDistintiva.Size = new System.Drawing.Size(80, 13);
-            this.labelFraseDistintiva.TabIndex = 82;
-            this.labelFraseDistintiva.Text = "Frase distintiva:";
+            this.labelPBX.Text = "Correo:";
             // 
             // panelTituloRegistrarDatos
             // 
@@ -383,7 +318,7 @@ namespace UI
             this.panelConfigDeGuardado.Controls.Add(this.labelRutaFacturaVentas);
             this.panelConfigDeGuardado.Controls.Add(this.textRutaInformeGeneral);
             this.panelConfigDeGuardado.Controls.Add(this.labelRutaCierreCaja);
-            this.panelConfigDeGuardado.Location = new System.Drawing.Point(86, 318);
+            this.panelConfigDeGuardado.Location = new System.Drawing.Point(87, 259);
             this.panelConfigDeGuardado.Name = "panelConfigDeGuardado";
             this.panelConfigDeGuardado.Size = new System.Drawing.Size(629, 175);
             this.panelConfigDeGuardado.TabIndex = 92;
@@ -581,7 +516,7 @@ namespace UI
             this.panelAvanzado.Controls.Add(this.pictureCadenaConexion);
             this.panelAvanzado.Controls.Add(this.panelTituloAvanzado);
             this.panelAvanzado.Controls.Add(this.labelCadenaConexion);
-            this.panelAvanzado.Location = new System.Drawing.Point(86, 574);
+            this.panelAvanzado.Location = new System.Drawing.Point(86, 514);
             this.panelAvanzado.Name = "panelAvanzado";
             this.panelAvanzado.Size = new System.Drawing.Size(630, 162);
             this.panelAvanzado.TabIndex = 93;
@@ -761,7 +696,7 @@ namespace UI
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.textCorreo);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(85, 492);
+            this.panel2.Location = new System.Drawing.Point(85, 433);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(630, 82);
             this.panel2.TabIndex = 94;
@@ -869,7 +804,7 @@ namespace UI
             this.btnEliminarInfo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEliminarInfo.IconSize = 30;
             this.btnEliminarInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarInfo.Location = new System.Drawing.Point(464, 742);
+            this.btnEliminarInfo.Location = new System.Drawing.Point(464, 687);
             this.btnEliminarInfo.Name = "btnEliminarInfo";
             this.btnEliminarInfo.Size = new System.Drawing.Size(123, 35);
             this.btnEliminarInfo.TabIndex = 77;
@@ -892,7 +827,7 @@ namespace UI
             this.btnModificarInfo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnModificarInfo.IconSize = 30;
             this.btnModificarInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModificarInfo.Location = new System.Drawing.Point(342, 742);
+            this.btnModificarInfo.Location = new System.Drawing.Point(342, 687);
             this.btnModificarInfo.Name = "btnModificarInfo";
             this.btnModificarInfo.Size = new System.Drawing.Size(123, 35);
             this.btnModificarInfo.TabIndex = 76;
@@ -915,7 +850,7 @@ namespace UI
             this.btnRegistrarInfo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRegistrarInfo.IconSize = 30;
             this.btnRegistrarInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegistrarInfo.Location = new System.Drawing.Point(220, 742);
+            this.btnRegistrarInfo.Location = new System.Drawing.Point(220, 687);
             this.btnRegistrarInfo.Name = "btnRegistrarInfo";
             this.btnRegistrarInfo.Size = new System.Drawing.Size(123, 35);
             this.btnRegistrarInfo.TabIndex = 75;
@@ -929,7 +864,7 @@ namespace UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(798, 788);
+            this.ClientSize = new System.Drawing.Size(798, 727);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelTituloDatos);
             this.Controls.Add(this.panelAvanzado);
@@ -987,20 +922,14 @@ namespace UI
         private FontAwesome.Sharp.IconButton btnEliminarInfo;
         private System.Windows.Forms.DataGridView dataGridInfoIglesia;
         private System.Windows.Forms.Label labelAdvertencia;
-        private System.Windows.Forms.TextBox textCamaraDeComercio;
-        private System.Windows.Forms.Label labelCamaraComercio;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelRegistrarDatos;
-        private System.Windows.Forms.ComboBox comboRegimen;
         private System.Windows.Forms.TextBox textTelefono;
         private System.Windows.Forms.Label labelTelefono;
         private System.Windows.Forms.TextBox textDireccion;
         private System.Windows.Forms.Label labelDireccion;
         private System.Windows.Forms.TextBox textPBX;
         private System.Windows.Forms.Label labelPBX;
-        private System.Windows.Forms.Label labelRegimen;
-        private System.Windows.Forms.TextBox textFraseDistintiva;
-        private System.Windows.Forms.Label labelFraseDistintiva;
         private System.Windows.Forms.Panel panelTituloRegistrarDatos;
         private System.Windows.Forms.Label labelTituloRegistrarDatos;
         private System.Windows.Forms.Panel panelConfigDeGuardado;
