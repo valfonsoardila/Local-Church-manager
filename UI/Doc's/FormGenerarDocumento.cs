@@ -20,12 +20,14 @@ namespace UI
         IdUsuarioTxt usuarioTxt;
         List<IdUsuarioTxt> idUsuarioTxts;
         Reporte reporte;
+        List<Miembro> miembros;
         string opcionSeleccionada = "";
         string genero = "";
         public FormGenerarDocumento()
         {
             validaciones = new Validaciones();
             reporte = new Reporte();
+            miembros = new List<Miembro>();
             InitializeComponent();
             ObtenerRol();
         }
@@ -116,7 +118,7 @@ namespace UI
         {
             if(opcionSeleccionada== "Generar Informe de miembros")
             {
-                reporte.GenerarLibroDeMiembrosSecretaria();
+                reporte.GenerarLibroDeMiembrosSecretaria(miembros);
             }
             else
             {

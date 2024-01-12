@@ -35,6 +35,7 @@ namespace UI
         List<MemberData> memberData;
         List<SympathizerData> sympathizerData;
         Miembro miembro;
+        Reporte reporte;
         Simpatizante simpatizante;
         List<Simpatizante> simpatizantes;
         ContactoService contactoService;
@@ -59,6 +60,7 @@ namespace UI
             miembroService = new MiembroService(ConfigConnection.ConnectionString);
             contactMaps = new ContactMaps();
             memberMaps = new MemberMaps();
+            reporte = new Reporte();
             InitializeComponent();
             Inicializar();
             validaciones = new Validaciones();
@@ -1737,6 +1739,20 @@ namespace UI
                         FiltroPorIdentificacion(id);
                         tabMiembros.SelectedIndex = 1;
                         btnRegistrar.Enabled = false;
+                    }
+                    else
+                    {
+                        if (dataGridMiembros.Columns[e.ColumnIndex].Name == "Imprimir")
+                        {
+                            id = Convert.ToString(dataGridMiembros.CurrentRow.Cells["Folio"].Value.ToString());
+                            FiltroPorIdentificacion(id);
+                            Miembro miembro = MapearDatosMiembro();
+                            List<Miembro> miembros = new List<Miembro>
+                            {
+                                miembro
+                            };
+                            reporte.GenerarLibroDeMiembrosSecretaria(miembros);
+                        }
                     }
                 }
             }
