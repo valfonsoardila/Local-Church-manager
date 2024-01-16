@@ -228,25 +228,21 @@ namespace UI
         }
         private void checkedListReportes_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            // Desmarcar todas las selecciones anteriores
-            for (int i = 0; i < checkedListReportes.Items.Count; i++)
+            // Verificar si hay algún elemento seleccionado
+            if (checkedListReportes.CheckedItems.Count > 0)
             {
-                checkedListReportes.SetItemChecked(i, false);
+                // Obtener el valor del elemento seleccionado (el último seleccionado)
+                opcionSeleccionada = checkedListReportes.CheckedItems[0].ToString();
+                ValidarSeleccion();
             }
-
-            // Obtener el valor del elemento seleccionado
-            string elementoSeleccionado = null;
-
-            foreach (object itemChecked in checkedListReportes.CheckedItems)
+            else
             {
-                elementoSeleccionado = itemChecked.ToString();
-                break; // Solo necesitas el primer elemento seleccionado
+                // No hay elementos seleccionados, puedes manejar esto según tus necesidades
+                opcionSeleccionada = null;
+                // Realizar acciones adicionales o mostrar mensajes, si es necesario
             }
-
-            opcionSeleccionada = elementoSeleccionado;
-            ValidarSeleccion();
         }
+
 
         private void textBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -266,33 +262,33 @@ namespace UI
                 {
                     checkedListReportes.Items.AddRange(new string[]
                     {
-                "Generar Informe de miembros",
-                "Generar actas de reunion",
-                "Generar Lista de directivas",
-                "Generar Lista de niños",
-                "Generar Lista de recientregados",
-                "Generar Lista de familias",
-                "Generar Lista de bautizados",
-                "Generar Lista de caballeros",
-                "Generar Lista de damas dorcas",
-                "Generar Informe General",
-                "Generar Informe Individual",
-                "Generar Informe Presupuestal"
+                        "Generar Informe de miembros",
+                        "Generar actas de reunion",
+                        "Generar Lista de directivas",
+                        "Generar Lista de niños",
+                        "Generar Lista de recientregados",
+                        "Generar Lista de familias",
+                        "Generar Lista de bautizados",
+                        "Generar Lista de caballeros",
+                        "Generar Lista de damas dorcas",
+                        "Generar Informe General",
+                        "Generar Informe Individual",
+                        "Generar Informe Presupuestal"
                     });
                 }
                 else if (textRol.Text == "Secretario(a)")
                 {
                     checkedListReportes.Items.AddRange(new string[]
                     {
-                "Generar Informe de miembros",
-                "Generar actas de reunion",
-                "Generar Lista de directivas",
-                "Generar Lista de niños",
-                "Generar Lista de recientregados",
-                "Generar Lista de familias",
-                "Generar Lista de bautizados",
-                "Generar Lista de caballeros",
-                "Generar Lista de damas dorcas",
+                        "Generar Informe de miembros",
+                        "Generar actas de reunion",
+                        "Generar Lista de directivas",
+                        "Generar Lista de niños",
+                        "Generar Lista de recientregados",
+                        "Generar Lista de familias",
+                        "Generar Lista de bautizados",
+                        "Generar Lista de caballeros",
+                        "Generar Lista de damas dorcas",
                     });
                 }
                 else if (textRol.Text == "Tesorero(a)")
@@ -321,33 +317,33 @@ namespace UI
             {
                 itemsFiltrados.AddRange(new string[]
                 {
-            "Generar Informe de miembros",
-            "Generar actas de reunion",
-            "Generar Lista de directivas",
-            "Generar Lista de niños",
-            "Generar Lista de recientregados",
-            "Generar Lista de familias",
-            "Generar Lista de bautizados",
-            "Generar Lista de caballeros",
-            "Generar Lista de damas dorcas",
-            "Generar Informe General",
-            "Generar Informe Individual",
-            "Generar Informe Presupuestal"
+                    "Generar Informe de miembros",
+                    "Generar actas de reunion",
+                    "Generar Lista de directivas",
+                    "Generar Lista de niños",
+                    "Generar Lista de recientregados",
+                    "Generar Lista de familias",
+                    "Generar Lista de bautizados",
+                    "Generar Lista de caballeros",
+                    "Generar Lista de damas dorcas",
+                    "Generar Informe General",
+                    "Generar Informe Individual",
+                    "Generar Informe Presupuestal"
                 }.Where(item => item.ToLower().Contains(filtro.ToLower())));
             }
             else if (textRol.Text == "Secretario(a)")
             {
                 itemsFiltrados.AddRange(new string[]
                 {
-            "Generar Informe de miembros",
-            "Generar actas de reunion",
-            "Generar Lista de directivas",
-            "Generar Lista de niños",
-            "Generar Lista de recientregados",
-            "Generar Lista de familias",
-            "Generar Lista de bautizados",
-            "Generar Lista de caballeros",
-            "Generar Lista de damas dorcas",
+                    "Generar Informe de miembros",
+                    "Generar actas de reunion",
+                    "Generar Lista de directivas",
+                    "Generar Lista de niños",
+                    "Generar Lista de recientregados",
+                    "Generar Lista de familias",
+                    "Generar Lista de bautizados",
+                    "Generar Lista de caballeros",
+                    "Generar Lista de damas dorcas",
                 }.Where(item => item.ToLower().Contains(filtro.ToLower())));
             }
             else if (textRol.Text == "Tesorero(a)")

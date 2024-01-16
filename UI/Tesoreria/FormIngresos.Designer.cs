@@ -137,9 +137,9 @@
             // tabRegistrar
             // 
             tabRegistrar.Controls.Add(this.panel4);
-            tabRegistrar.Location = new System.Drawing.Point(4, 22);
+            tabRegistrar.Location = new System.Drawing.Point(4, 25);
             tabRegistrar.Name = "tabRegistrar";
-            tabRegistrar.Size = new System.Drawing.Size(872, 450);
+            tabRegistrar.Size = new System.Drawing.Size(872, 447);
             tabRegistrar.TabIndex = 1;
             tabRegistrar.Text = "Registrar";
             tabRegistrar.UseVisualStyleBackColor = true;
@@ -300,6 +300,7 @@
             "Primeros Auxilios",
             "Vigilancia",
             "Labores",
+            "Restauracion",
             "Sonido",
             "Alabanza",
             "Adolescente",
@@ -1019,10 +1020,10 @@
             // tabDetalle
             // 
             this.tabDetalle.Controls.Add(this.panel2);
-            this.tabDetalle.Location = new System.Drawing.Point(4, 22);
+            this.tabDetalle.Location = new System.Drawing.Point(4, 25);
             this.tabDetalle.Name = "tabDetalle";
             this.tabDetalle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDetalle.Size = new System.Drawing.Size(872, 450);
+            this.tabDetalle.Size = new System.Drawing.Size(872, 447);
             this.tabDetalle.TabIndex = 2;
             this.tabDetalle.Text = "Detalle x Comite";
             // 
@@ -1033,7 +1034,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(866, 444);
+            this.panel2.Size = new System.Drawing.Size(866, 441);
             this.panel2.TabIndex = 3;
             // 
             // panel10
@@ -1042,7 +1043,7 @@
             this.panel10.Controls.Add(this.panel12);
             this.panel10.Controls.Add(this.panel11);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel10.Location = new System.Drawing.Point(0, 402);
+            this.panel10.Location = new System.Drawing.Point(0, 399);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(866, 42);
             this.panel10.TabIndex = 1;
@@ -1093,7 +1094,7 @@
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Location = new System.Drawing.Point(27, 8);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(804, 374);
+            this.panel8.Size = new System.Drawing.Size(804, 371);
             this.panel8.TabIndex = 0;
             // 
             // dataGridDetalle
@@ -1118,7 +1119,7 @@
             this.dataGridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridDetalle.RowTemplate.DividerHeight = 2;
             this.dataGridDetalle.RowTemplate.Height = 30;
-            this.dataGridDetalle.Size = new System.Drawing.Size(804, 342);
+            this.dataGridDetalle.Size = new System.Drawing.Size(804, 339);
             this.dataGridDetalle.TabIndex = 1;
             this.dataGridDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDetalle_CellClick);
             // 

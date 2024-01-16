@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Xceed.Document.NET;
 using Xceed.Words.NET;
 
@@ -73,6 +74,10 @@ namespace UI
                 if(miembros.Count > 1)
                 {
 
+                }
+                else
+                {
+                    MessageBox.Show("No se ha seleccionado los miembros", "Mensaje de base de datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 }
             }
         }

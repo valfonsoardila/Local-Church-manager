@@ -244,6 +244,12 @@
     <Compile Include="Doc%27s\FormGenerarDocumento.Designer.cs">
       <DependentUpon>FormGenerarDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Secretaría\FormCeremoniaNiños.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Secretaría\FormCeremoniaNiños.Designer.cs">
+      <DependentUpon>FormCeremoniaNiños.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tesoreria\FormPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -382,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Doc%27s\FormGenerarDocumento.resx">
       <DependentUpon>FormGenerarDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Secretaría\FormCeremoniaNiños.resx">
+      <DependentUpon>FormCeremoniaNiños.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tesoreria\FormEnviables.resx">
       <DependentUpon>FormEnviables.cs</DependentUpon>

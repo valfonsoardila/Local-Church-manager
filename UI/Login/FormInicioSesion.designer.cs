@@ -445,7 +445,7 @@ namespace UI
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
             this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 20;
+            this.iconPictureBox1.IconSize = 22;
             this.iconPictureBox1.Location = new System.Drawing.Point(268, 221);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(20, 20);
@@ -460,7 +460,7 @@ namespace UI
             this.btnLeftBanner.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
             this.btnLeftBanner.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnLeftBanner.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnLeftBanner.IconSize = 20;
+            this.btnLeftBanner.IconSize = 22;
             this.btnLeftBanner.Location = new System.Drawing.Point(3, 221);
             this.btnLeftBanner.Name = "btnLeftBanner";
             this.btnLeftBanner.Size = new System.Drawing.Size(20, 20);
