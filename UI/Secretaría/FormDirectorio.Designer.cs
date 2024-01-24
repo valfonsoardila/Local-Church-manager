@@ -791,7 +791,7 @@ namespace UI
             this.textSerachLibreta.Name = "textSerachLibreta";
             this.textSerachLibreta.Size = new System.Drawing.Size(180, 30);
             this.textSerachLibreta.TabIndex = 6;
-            this.textSerachLibreta.Text = "Buscar por nombre";
+            this.textSerachLibreta.Text = "Buscar";
             this.textSerachLibreta.Visible = false;
             this.textSerachLibreta.TextChanged += new System.EventHandler(this.textSerachLibreta_TextChanged);
             this.textSerachLibreta.Enter += new System.EventHandler(this.textSerachLibreta_Enter);

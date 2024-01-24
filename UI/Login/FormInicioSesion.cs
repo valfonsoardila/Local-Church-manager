@@ -172,7 +172,7 @@ namespace UI
         {
             nombreDeUsuario = textBoxUser.Text;
         }
-        private async void VaidarUsuaro()
+        private async void ValidarUsuario()
         {
             MapearDatos();
             var contraseña = textBoxPasword.Text;
@@ -208,6 +208,15 @@ namespace UI
                             // Lanzar el evento para notificar al formulario principal sobre la excepción
                             formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
                         }
+                    }
+                    else
+                    {
+                        labelAdvertencia.Visible = true;
+                        iconAdvertencia.Visible = true;
+                        labelAdvertencia.Text = "Contraseña incorrecta";
+                        linkLabelRegistrarUsuario.ForeColor = Color.Maroon;
+                        textBoxUser.ForeColor = Color.Maroon;
+                        UbicacionesPorAdvertencia();
                     }
                 }
                 else
@@ -287,7 +296,7 @@ namespace UI
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            VaidarUsuaro();
+            ValidarUsuario();
         }
 
         private void panelBarraFormulario_MouseDown(object sender, MouseEventArgs e)

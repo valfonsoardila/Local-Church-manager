@@ -751,14 +751,14 @@ namespace UI
                 {
                     // Guardamos local
                     //string mensaje = miembroService.Guardar(nuevoMiembro);
-                    // Guardamos el contacto
-                    var contact = contactMaps.ContactMap(contacto);
-                    docRef = db.Collection("ContactsData").Document(contact.IdContacto.ToString());
-                    docRef.SetAsync(contact);
                     //Guardamos el miembro
                     var member = memberMaps.MemberMap(nuevoMiembro);
                     docRef = db.Collection("MembersData").Document(member.Folio.ToString());
                     docRef.SetAsync(member);
+                    // Guardamos el contacto
+                    var contact = contactMaps.ContactMap(contacto);
+                    docRef = db.Collection("ContactsData").Document(contact.IdContacto.ToString());
+                    docRef.SetAsync(contact);
                     MessageBox.Show("Se ha registrado el nuevo miembro correctamente", "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     ConsultarYLlenarGridDeMiembros();
                     LimpiarCampos();
@@ -1303,7 +1303,7 @@ namespace UI
                         int i = 0;
                         foreach (DataGridViewCell celda in fila.Cells)
                         {
-                            if (i == 7)
+                            if (i >= 7 && i<=8)
                             {
                                 if ((celda.Value.ToString().ToUpper()).IndexOf(textSearch.Text.ToUpper()) == 0)
                                 {

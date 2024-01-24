@@ -350,13 +350,14 @@
             "Ayuda social",
             "Aporte al distrito",
             "EPS del Pastor",
-            "Aportes a comite",
+            "Aporte a comite",
             "Asamblea de pastores",
             "Insumos de tesoreria",
             "Insumos de secretaria ",
             "Imprevisto",
             "Proyecto de inversion NAL",
             "Refrigerios",
+            "Mantenimiento y reparacion de equipos",
             "Superávit",
             "Otro"});
             this.comboConcepto.Location = new System.Drawing.Point(115, 108);
