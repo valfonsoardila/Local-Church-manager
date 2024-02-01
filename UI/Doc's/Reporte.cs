@@ -28,7 +28,7 @@ namespace UI
         {
             string rutaCompleta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaDeDocumentosTesoreria[0], rutaDeDocumentosTesoreria[1], "InformeTesoreriaGeneral.docx");
             // Cargar el documento
-            if (!File.Exists(rutaCompleta))
+            if (File.Exists(rutaCompleta))
             {
                 using (DocX documento = DocX.Load(rutaCompleta))
                 {

@@ -187,9 +187,25 @@ namespace UI
                                             {
                                                 if (opcionSeleccionada == "Generar Informe General Tesoreria")
                                                 {
-                                                    comboFiltroAño.Visible = true;
-                                                    reporte.egress = egress;
-                                                    reporte.ingress = ingress;
+                                                    var filtro = comboFiltroAño.Text;
+                                                    var ingresosPorAño = new List<IngressData>();
+                                                    var egresosPorAño = new List<EgressData>();
+                                                    for (int i = 0; i < ingress.Count; i++)
+                                                    {
+                                                        if (ingress[i].FechaDeIngreso.Contains(filtro))
+                                                        {
+                                                            ingresosPorAño.Add(ingress[i]);
+                                                        }
+                                                    }
+                                                    for (int i = 0; i < egress.Count; i++)
+                                                    {
+                                                        if (egress[i].FechaDeEgreso.Contains(filtro))
+                                                        {
+                                                            egresosPorAño.Add(egress[i]);
+                                                        }
+                                                    }
+                                                    reporte.egress = egresosPorAño;
+                                                    reporte.ingress = ingresosPorAño;
                                                     reporte.GenerarInformeGeneralTesoreria();
                                                 }
                                                 else

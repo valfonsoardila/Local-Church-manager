@@ -337,7 +337,7 @@
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Searchengin;
             this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 28;
+            this.iconPictureBox1.IconSize = 30;
             this.iconPictureBox1.Location = new System.Drawing.Point(3, 4);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);
