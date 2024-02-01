@@ -72,6 +72,7 @@ namespace UI
 
         private void FormGenerarDocumento_Load(object sender, EventArgs e)
         {
+            comboFiltroAño.Text = DateTime.Now.Year.ToString();
             checkedListReportes.Items.Clear();
             if (textRol.Text == "Programador")
             {
@@ -204,6 +205,7 @@ namespace UI
                                                             egresosPorAño.Add(egress[i]);
                                                         }
                                                     }
+                                                    reporte.year = comboFiltroAño.Text;
                                                     reporte.egress = egresosPorAño;
                                                     reporte.ingress = ingresosPorAño;
                                                     reporte.GenerarInformeGeneralTesoreria();
