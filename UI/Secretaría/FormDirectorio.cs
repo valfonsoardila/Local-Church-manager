@@ -439,7 +439,7 @@ namespace UI
                         int i = 0;
                         foreach (DataGridViewCell celda in fila.Cells)
                         {
-                            if (i >= 5 && i>=6)
+                            if (i >= 5 && i<=6)
                             {
                                 if ((celda.Value.ToString().ToUpper()).IndexOf(textSerachLibreta.Text.ToUpper()) == 0)
                                 {

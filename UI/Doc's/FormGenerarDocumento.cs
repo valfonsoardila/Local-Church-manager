@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Cloud;
 using Entity;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,13 @@ namespace UI
         List<IdUsuarioTxt> idUsuarioTxts;
         Reporte reporte;
         List<Miembro> miembros;
+        public List<IngressData> ingress;
+        public List<EgressData> egress;
+        public List<MemberData> members;
+        public List<DirectivesData> directives;
+        public List<MeetingsData> meetings;
+        public List<NotesData> notes;
+        public List<SympathizerData> sympathizers;
         string opcionSeleccionada = "";
         string genero = "";
         public FormGenerarDocumento()
@@ -78,9 +86,9 @@ namespace UI
                     "Generar Lista de bautizados",
                     "Generar Lista de caballeros",
                     "Generar Lista de damas dorcas",
-                    "Generar Informe General",
-                    "Generar Informe Individual",
-                    "Generar Informe Presupuestal"
+                    "Generar Informe General Tesoreria",
+                    "Generar Informe Individual Tesoreria",
+                    "Generar Informe Presupuestal Tesoreria"
                 });
             }
             else
@@ -106,9 +114,9 @@ namespace UI
                     {
                         checkedListReportes.Items.AddRange(new string[]
                         {
-                            "Generar Informe General",
-                            "Generar Informe Individual",
-                            "Generar Informe Presupuestal",
+                            "Generar Informe General Tesoreria",
+                            "Generar Informe Individual Tesoreria",
+                            "Generar Informe Presupuestal Tesoreria",
                         });
                     }
                 }
@@ -124,12 +132,14 @@ namespace UI
             {
                 if (opcionSeleccionada == "Generar actas de reunion")
                 {
+                    comboFiltroAño.Visible = true;
                     reporte.GenerarActasDeReunionesSecretaria();
                 }
                 else
                 {
                     if (opcionSeleccionada == "Generar Lista de directivas")
                     {
+                        comboFiltroAño.Visible = true;
                         reporte.GenerarListaServidoresActualesSecretaria();
                     }
                     else
@@ -142,6 +152,7 @@ namespace UI
                         {
                             if(opcionSeleccionada=="Generar Lista de recientregados")
                             {
+                                comboFiltroAño.Visible = true;
                                 reporte.GenerarListasRecientregadosSecretaria();
                             }
                             else
@@ -160,6 +171,7 @@ namespace UI
                                     {
                                         if (opcionSeleccionada == "Generar Lista de caballeros")
                                         {
+                                            comboFiltroAño.Visible = true;
                                             genero = "Masculino";
                                             reporte.GenerarListaPorGeneroSecretaria(genero);
                                         }
@@ -167,25 +179,35 @@ namespace UI
                                         {
                                             if (opcionSeleccionada == "Generar Lista de damas dorcas")
                                             {
+                                                comboFiltroAño.Visible = true;
                                                 genero = "Femenino";
                                                 reporte.GenerarListaPorGeneroSecretaria(genero);
                                             }
                                             else
                                             {
-                                                if (opcionSeleccionada == "Generar Informe General")
+                                                if (opcionSeleccionada == "Generar Informe General Tesoreria")
                                                 {
+                                                    comboFiltroAño.Visible = true;
+                                                    reporte.egress = egress;
+                                                    reporte.ingress = ingress;
                                                     reporte.GenerarInformeGeneralTesoreria();
                                                 }
                                                 else
                                                 {
-                                                    if (opcionSeleccionada == "Generar Informe Individual")
+                                                    if (opcionSeleccionada == "Generar Informe Individual Tesoreria")
                                                     {
+                                                        comboFiltroAño.Visible = true;
+                                                        reporte.egress = egress;
+                                                        reporte.ingress = ingress;
                                                         reporte.GenerarInformeIndividualTesoreria();
                                                     }
                                                     else
                                                     {
-                                                        if(opcionSeleccionada== "Generar Informe Presupuestal")
+                                                        if(opcionSeleccionada== "Generar Informe Presupuestal Tesoreria")
                                                         {
+                                                            comboFiltroAño.Visible = true;
+                                                            reporte.egress = egress;
+                                                            reporte.ingress = ingress;
                                                             reporte.GenerarInformePresupuestalTesoreria();
                                                         }
                                                     }
@@ -202,7 +224,7 @@ namespace UI
         }
         private void btnAbrirInforme_Click(object sender, EventArgs e)
         {
-
+            ValidarSeleccion();
         }
         private void btnEliminarInforme_Click(object sender, EventArgs e)
         {
@@ -233,7 +255,6 @@ namespace UI
             {
                 // Obtener el valor del elemento seleccionado (el último seleccionado)
                 opcionSeleccionada = checkedListReportes.CheckedItems[0].ToString();
-                ValidarSeleccion();
             }
             else
             {
@@ -271,9 +292,9 @@ namespace UI
                         "Generar Lista de bautizados",
                         "Generar Lista de caballeros",
                         "Generar Lista de damas dorcas",
-                        "Generar Informe General",
-                        "Generar Informe Individual",
-                        "Generar Informe Presupuestal"
+                        "Generar Informe General Tesoreria",
+                        "Generar Informe Individual Tesoreria",
+                        "Generar Informe Presupuestal Tesoreria"
                     });
                 }
                 else if (textRol.Text == "Secretario(a)")
@@ -295,9 +316,9 @@ namespace UI
                 {
                     checkedListReportes.Items.AddRange(new string[]
                     {
-                "Generar Informe General",
-                "Generar Informe Individual",
-                "Generar Informe Presupuestal",
+                "Generar Informe General Tesoreria",
+                "Generar Informe Individual Tesoreria",
+                "Generar Informe Presupuestal Tesoreria",
                     });
                 }
             }
@@ -326,9 +347,9 @@ namespace UI
                     "Generar Lista de bautizados",
                     "Generar Lista de caballeros",
                     "Generar Lista de damas dorcas",
-                    "Generar Informe General",
-                    "Generar Informe Individual",
-                    "Generar Informe Presupuestal"
+                    "Generar Informe General Tesoreria",
+                    "Generar Informe Individual Tesoreria",
+                    "Generar Informe Presupuestal Tesoreria"
                 }.Where(item => item.ToLower().Contains(filtro.ToLower())));
             }
             else if (textRol.Text == "Secretario(a)")
@@ -350,9 +371,9 @@ namespace UI
             {
                 itemsFiltrados.AddRange(new string[]
                 {
-            "Generar Informe General",
-            "Generar Informe Individual",
-            "Generar Informe Presupuestal",
+            "Generar Informe General Tesoreria",
+            "Generar Informe Individual Tesoreria",
+            "Generar Informe Presupuestal Tesoreria",
                 }.Where(item => item.ToLower().Contains(filtro.ToLower())));
             }
 

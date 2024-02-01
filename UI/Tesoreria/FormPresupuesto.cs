@@ -2,6 +2,7 @@
 using Cloud;
 using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Office2013.WebExtension;
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Entity;
 using System;
@@ -31,6 +32,8 @@ namespace UI
         BudgetMaps budgetMaps;
         List<BudgetData> presupuestosComite;
         List<BudgetData> presupuestosGeneral;
+        List<IngressData> ingressData;
+        List<EgressData> egressData;
         int id = 0;
         int sumPresupuestos = 0;
         int ultimoId;
@@ -557,28 +560,29 @@ namespace UI
         }
         private async void ObtenerIngresosYEgresos()
         {
+            comite = comboComite.Text;
             if (comite != "Comite" && comite!="")
             {
                 try
                 {
                     var db = FirebaseService.Database;
                     var ingresosQuery = db.Collection("IngressData").WhereEqualTo("Comite", comite);
-                    var ingresos = new List<IngressData>();
+                    ingressData = new List<IngressData>();
                     // Realizar la suma directamente en la consulta Firestore
                     var snapshot = await ingresosQuery.GetSnapshotAsync();
-                    ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                    ingressData = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
                     // Filtrar ingresos por concepto y contar la cantidad de cada uno
-                    sumIgresos = ingresos.Sum(p => p.Valor);
-                    ofrendasIngresos = ingresos.Where(i => i.Concepto == "Ofrenda").Sum(p => p.Valor);
-                    votosIngresos = ingresos.Where(i => i.Concepto == "Voto").Sum(p => p.Valor);
-                    activIdadesIngresos = ingresos.Where(i => i.Concepto == "Actividades").Sum(p => p.Valor);
-                    otrosIngresos = ingresos.Where(i => i.Concepto == "Otros").Sum(p => p.Valor);
+                    sumIgresos = ingressData.Sum(p => p.Valor);
+                    ofrendasIngresos = ingressData.Where(i => i.Concepto == "Ofrenda").Sum(p => p.Valor);
+                    votosIngresos = ingressData.Where(i => i.Concepto == "Voto").Sum(p => p.Valor);
+                    activIdadesIngresos = ingressData.Where(i => i.Concepto == "Actividades").Sum(p => p.Valor);
+                    otrosIngresos = ingressData.Where(i => i.Concepto == "Otros").Sum(p => p.Valor);
                     var egresosQuery = db.Collection("EgressData").WhereEqualTo("Comite", comite);
-                    var egresos = new List<EgressData>();
+                    egressData = new List<EgressData>();
                     // Realizar la suma directamente en la consulta Firestore
                     snapshot = await egresosQuery.GetSnapshotAsync();
-                    egresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
-                    sumEgresos = egresos.Sum(p => p.Valor);
+                    egressData = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
+                    sumEgresos = egressData.Sum(p => p.Valor);
                     ObtenerDatosGenerales();
                     ObtenerDatosIndividuales();
                     AgregarAGridRubros();
@@ -592,6 +596,26 @@ namespace UI
                     }
                 }
                 catch (Exception ex)
+                {
+                }
+            }
+            else
+            {
+                try
+                {
+                    var db = FirebaseService.Database;
+                    var ingresosQuery = db.Collection("IngressData");
+                    ingressData = new List<IngressData>();
+                    // Realizar la suma directamente en la consulta Firestore
+                    var snapshots = await ingresosQuery.GetSnapshotAsync();
+                    ingressData = snapshots.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                    // Filtrar ingresos por concepto y contar la cantidad de cada uno
+                    var egresosQuery = db.Collection("EgressData");
+                    egressData = new List<EgressData>();
+                    snapshots = await egresosQuery.GetSnapshotAsync();
+                    egressData = snapshots.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
+                }
+                catch
                 {
 
                 }
@@ -764,6 +788,8 @@ namespace UI
         private void btnGenerarInforme_Click(object sender, EventArgs e)
         {
             FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
+            formGenerarDocumento.ingress = ingressData;
+            formGenerarDocumento.egress = egressData;
             formGenerarDocumento.Show();
         }
         private async void FiltroPorAño(string filtro)

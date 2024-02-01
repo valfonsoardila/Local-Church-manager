@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using Cloud;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,10 +14,27 @@ namespace UI
 {
     public class Reporte
     {
+        public List<IngressData> ingress;
+        public List<EgressData> egress;
+        public List<MemberData> members;
+        public List<DirectivesData> directives;
+        public List<MeetingsData> meetings;
+        public List<NotesData> notes;
+        public List<SympathizerData> sympathizers;
+        private readonly string[] rutaDeDocumentosSecretaria = { "Doc's", "Secretaria" };
+        private readonly string[] rutaDeDocumentosTesoreria = { "Doc's", "Tesoreria" };
         // Reportes de tesoreria
         public void GenerarInformeGeneralTesoreria()
         {
+            string rutaCompleta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaDeDocumentosTesoreria[0], rutaDeDocumentosTesoreria[1], "InformeTesoreriaGeneral.docx");
+            // Cargar el documento
+            if (!File.Exists(rutaCompleta))
+            {
+                using (DocX documento = DocX.Load(rutaCompleta))
+                {
 
+                }
+            }
         }
         public void GenerarInformeIndividualTesoreria()
         {

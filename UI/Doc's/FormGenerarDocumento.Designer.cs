@@ -44,8 +44,9 @@
             this.btnEliminarInforme = new FontAwesome.Sharp.IconButton();
             this.panelContenedorReportes = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBuscar = new System.Windows.Forms.TextBox();
+            this.comboFiltroAño = new System.Windows.Forms.ComboBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.textBuscar = new System.Windows.Forms.TextBox();
             this.panelHeaderGenerarInforme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -164,9 +165,9 @@
             this.checkedListReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkedListReportes.FormattingEnabled = true;
             this.checkedListReportes.Items.AddRange(new object[] {
-            "Generar Informe General ",
-            "Generar Informe Individual",
-            "Generar Informe Presupuestal"});
+            "Generar Informe General Tesoreria",
+            "Generar Informe Individual Tesoreria",
+            "Generar Informe Presupuestal Tesoreria"});
             this.checkedListReportes.Location = new System.Drawing.Point(0, 35);
             this.checkedListReportes.Name = "checkedListReportes";
             this.checkedListReportes.ScrollAlwaysVisible = true;
@@ -275,6 +276,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.comboFiltroAño);
             this.panel2.Controls.Add(this.iconPictureBox1);
             this.panel2.Controls.Add(this.textBuscar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -282,6 +284,65 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(341, 35);
             this.panel2.TabIndex = 8;
+            // 
+            // comboFiltroAño
+            // 
+            this.comboFiltroAño.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboFiltroAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltroAño.FormattingEnabled = true;
+            this.comboFiltroAño.Items.AddRange(new object[] {
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030",
+            "2031",
+            "2032",
+            "2033",
+            "2034",
+            "2035",
+            "2036",
+            "2037",
+            "2038",
+            "2039",
+            "2040",
+            "2041",
+            "2042",
+            "2043",
+            "2044",
+            "2045",
+            "2046",
+            "2047",
+            "2048",
+            "2049",
+            "2050"});
+            this.comboFiltroAño.Location = new System.Drawing.Point(250, 5);
+            this.comboFiltroAño.Name = "comboFiltroAño";
+            this.comboFiltroAño.Size = new System.Drawing.Size(87, 24);
+            this.comboFiltroAño.TabIndex = 12;
+            this.comboFiltroAño.Text = "2020";
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Searchengin;
+            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 28;
+            this.iconPictureBox1.Location = new System.Drawing.Point(3, 4);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox1.TabIndex = 9;
+            this.iconPictureBox1.TabStop = false;
             // 
             // textBuscar
             // 
@@ -296,20 +357,6 @@
             this.textBuscar.TextChanged += new System.EventHandler(this.textBuscar_TextChanged);
             this.textBuscar.Enter += new System.EventHandler(this.textBuscar_Enter);
             this.textBuscar.Leave += new System.EventHandler(this.textBuscar_Leave);
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Searchengin;
-            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 30;
-            this.iconPictureBox1.Location = new System.Drawing.Point(3, 4);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);
-            this.iconPictureBox1.TabIndex = 9;
-            this.iconPictureBox1.TabStop = false;
             // 
             // FormGenerarDocumento
             // 
@@ -359,5 +406,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBuscar;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private System.Windows.Forms.ComboBox comboFiltroAño;
     }
 }
