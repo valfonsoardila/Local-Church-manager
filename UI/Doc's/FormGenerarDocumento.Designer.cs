@@ -174,6 +174,7 @@
             this.checkedListReportes.Size = new System.Drawing.Size(341, 52);
             this.checkedListReportes.Sorted = true;
             this.checkedListReportes.TabIndex = 6;
+            this.checkedListReportes.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListReportes_ItemCheck);
             this.checkedListReportes.SelectedIndexChanged += new System.EventHandler(this.checkedListReportes_SelectedIndexChanged);
             // 
             // label3
@@ -337,7 +338,7 @@
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Searchengin;
             this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 30;
+            this.iconPictureBox1.IconSize = 28;
             this.iconPictureBox1.Location = new System.Drawing.Point(3, 4);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);

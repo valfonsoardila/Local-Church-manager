@@ -22,6 +22,7 @@ namespace UI
         List<IdUsuarioTxt> idUsuarioTxts;
         Reporte reporte;
         List<Miembro> miembros;
+        public List<BudgetData> presupuestosGeneral;
         public List<IngressData> ingress;
         public List<EgressData> egress;
         public List<MemberData> members;
@@ -206,6 +207,7 @@ namespace UI
                                                         }
                                                     }
                                                     reporte.year = comboFiltroAño.Text;
+                                                    reporte.presupuestosGeneral = presupuestosGeneral;
                                                     reporte.egress = egresosPorAño;
                                                     reporte.ingress = ingresosPorAño;
                                                     reporte.GenerarInformeGeneralTesoreria();
@@ -266,21 +268,21 @@ namespace UI
             string nombreDelComponente = ((System.Windows.Forms.Control)sender).Name;
             textBuscar.Text = validaciones.TextoPlaceHolderLeave(placeHolder, nombreDelComponente);
         }
-        private void checkedListReportes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Verificar si hay algún elemento seleccionado
-            if (checkedListReportes.CheckedItems.Count > 0)
-            {
-                // Obtener el valor del elemento seleccionado (el último seleccionado)
-                opcionSeleccionada = checkedListReportes.CheckedItems[0].ToString();
-            }
-            else
-            {
-                // No hay elementos seleccionados, puedes manejar esto según tus necesidades
-                opcionSeleccionada = null;
-                // Realizar acciones adicionales o mostrar mensajes, si es necesario
-            }
-        }
+        //private void checkedListReportes_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    // Verificar si hay algún elemento seleccionado
+        //    if (checkedListReportes.CheckedItems.Count > 0)
+        //    {
+        //        // Obtener el valor del elemento seleccionado (el último seleccionado)
+        //        opcionSeleccionada = checkedListReportes.CheckedItems[0].ToString();
+        //    }
+        //    else
+        //    {
+        //        // No hay elementos seleccionados, puedes manejar esto según tus necesidades
+        //        opcionSeleccionada = null;
+        //        // Realizar acciones adicionales o mostrar mensajes, si es necesario
+        //    }
+        //}
 
 
         private void textBuscar_TextChanged(object sender, EventArgs e)
@@ -396,6 +398,41 @@ namespace UI
             }
 
             return itemsFiltrados;
+        }
+
+        private void checkedListReportes_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            // Verificar si hay algún elemento seleccionado
+            if (checkedListReportes.SelectedItem != null)
+            {
+                // Obtener el valor del elemento seleccionado (el último seleccionado)
+                opcionSeleccionada = checkedListReportes.SelectedItem.ToString();
+            }
+            else
+            {
+                // No hay elementos seleccionados, puedes manejar esto según tus necesidades
+                opcionSeleccionada = null;
+                // Realizar acciones adicionales o mostrar mensajes, si es necesario
+            }
+        }
+
+        private void checkedListReportes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Verificar si hay algún elemento seleccionado
+            if (checkedListReportes.SelectedItem != null)
+            {
+                if (checkedListReportes.CheckedItems.Count > 0)
+                {
+                    // Obtener el valor del elemento seleccionado (el último seleccionado)
+                    opcionSeleccionada = checkedListReportes.SelectedItem.ToString();
+                }
+            }
+            else
+            {
+                // No hay elementos seleccionados, puedes manejar esto según tus necesidades
+                opcionSeleccionada = null;
+                // Realizar acciones adicionales o mostrar mensajes, si es necesario
+            }
         }
     }
 }

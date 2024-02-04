@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System.IO;
+using DocumentFormat.OpenXml.Office2013.WebExtension;
 
 namespace UI
 {
@@ -40,6 +41,7 @@ namespace UI
         int sumIngreso = 0;
         int sumEgreso = 0;
         int saldo = 0;
+        string filtro = "";
         public FormIngresos()
         {
             ingresoService = new IngresoService(ConfigConnection.ConnectionString);
@@ -67,54 +69,59 @@ namespace UI
             string valorFormateado = $"${cifraFormateada}";
             return valorFormateado;
         }
-        private async void CalculoDeSaldo()
+        //private async void CalculoDeSaldo()
+        //{
+        //    try
+        //    {
+        //        var db = FirebaseService.Database;
+        //        var ingresosQuery = db.Collection("IngressData");
+        //        var egresosQuery = db.Collection("EgressData");
+        //        // Realizar la suma directamente en la consulta Firestore
+        //        var snapshotIngress = await ingresosQuery.GetSnapshotAsync();
+        //        var snapshotEgress = await egresosQuery.GetSnapshotAsync();
+        //        sumIngreso = snapshotIngress.Documents.Sum(doc => doc.ConvertTo<IngressData>().Valor);
+        //        sumEgreso = snapshotEgress.Documents.Sum(doc => doc.ConvertTo<EgressData>().Valor);
+        //        textSaldo.Text=(sumIngreso-sumEgreso).ToString();
+        //        // Calcular el saldo después de procesar todos los documentos
+        //        // Obtener referencia al formulario principal
+        //        FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+        //        // Verificar si el formulario principal está abierto
+        //        if (formPrincipal != null)
+        //        {
+        //            // Lanzar el evento para notificar al formulario principal sobre la excepción
+        //            formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Obtener referencia al formulario principal
+        //        FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+        //        // Verificar si el formulario principal está abierto
+        //        if (formPrincipal != null)
+        //        {
+        //            // Lanzar el evento para notificar al formulario principal sobre la excepción
+        //            formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+        //        }
+        //    }
+        //}
+        private async void TotalizarIngresosYCalculoDeSaldo(string filtro)
         {
             try
             {
+                sumIngreso = 0;
+                sumEgreso = 0;
                 var db = FirebaseService.Database;
                 var ingresosQuery = db.Collection("IngressData");
                 var egresosQuery = db.Collection("EgressData");
                 // Realizar la suma directamente en la consulta Firestore
                 var snapshotIngress = await ingresosQuery.GetSnapshotAsync();
                 var snapshotEgress = await egresosQuery.GetSnapshotAsync();
-                sumIngreso = snapshotIngress.Documents.Sum(doc => doc.ConvertTo<IngressData>().Valor);
-                sumEgreso = snapshotEgress.Documents.Sum(doc => doc.ConvertTo<EgressData>().Valor);
-                // Calcular el saldo después de procesar todos los documentos
-                // Obtener referencia al formulario principal
-                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                // Verificar si el formulario principal está abierto
-                if (formPrincipal != null)
-                {
-                    // Lanzar el evento para notificar al formulario principal sobre la excepción
-                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
-                }
-            }
-            catch (Exception ex)
-            {
-                // Obtener referencia al formulario principal
-                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
-                // Verificar si el formulario principal está abierto
-                if (formPrincipal != null)
-                {
-                    // Lanzar el evento para notificar al formulario principal sobre la excepción
-                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
-                }
-            }
-        }
-        private async void TotalizarIngresos(string filtro)
-        {
-            try
-            {
-                sumIngreso = 0;
-                var db = FirebaseService.Database;
-                var ingresosQuery = db.Collection("IngressData");
-
-                // Realizar la suma directamente en la consulta Firestore
-                var snapshot = await ingresosQuery.GetSnapshotAsync();
-                var ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
-                var registrosFiltrados = ingresos.Where(registro => registro.FechaDeIngreso.Contains(filtro)).ToList();
-                sumIngreso = registrosFiltrados.Sum(doc => doc.Valor);
-
+                var ingresos = snapshotIngress.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
+                var egresos = snapshotEgress.Documents.Select(docsnap => docsnap.ConvertTo<EgressData>()).ToList();
+                var egresosPorAño = egresos.Where(registro => registro.FechaDeEgreso.Contains(filtro)).ToList();
+                var ingresosPorAño = ingresos.Where(registro => registro.FechaDeIngreso.Contains(filtro)).ToList();
+                sumIngreso = ingresosPorAño.Sum(doc => doc.Valor);
+                sumEgreso = egresosPorAño.Sum(doc => doc.Valor);
                 // Actualizar el texto después de procesar todos los documentos
                 textTotalIngresos.Text = LecturaCifra(sumIngreso);
                 saldo = sumIngreso > 0 ? sumIngreso - sumEgreso : 0;
@@ -122,7 +129,7 @@ namespace UI
 
                 if (textSaldo.Text != "" && textSaldo.Text != "0")
                 {
-                    CalculoDeSaldo();
+                    //CalculoDeSaldo();
                 }
 
                 // Obtener referencia al formulario principal
@@ -211,7 +218,7 @@ namespace UI
                 tabPage = tabLibroIngresos.TabPages["tabDetalle"];
                 tabLibroIngresos.TabPages.RemoveAt(2);
             }
-            comboFiltroAño.Text = DateTime.Now.Year.ToString();
+            filtro = comboFiltroAño.Text;
         }
         private async void CalcularComprobante()
         {
@@ -306,11 +313,12 @@ namespace UI
                 {
                     for (int i = 0; i < ingresos.Count; i++)
                     {
-                        if (ingresos[i].FechaDeIngreso.Contains(DateTime.Now.Year.ToString()))
+                        if (ingresos[i].FechaDeIngreso.Contains(filtro))
                         {
                             ingresosPorAñoActual.Add(ingresos[i]);
                         }
                     }
+                    TotalizarIngresosYCalculoDeSaldo(filtro);
                     dataGridIngresos.DataSource = null;
                     dataGridIngresos.DataSource = ingresosPorAñoActual;
                     textTotalNube.Text = ingresosPorAñoActual.Count.ToString();
@@ -444,7 +452,8 @@ namespace UI
                 ingresos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<IngressData>()).ToList();
                 // Filtrar elementos según el campo Valor y la variable id
                 var ingresosComite = ingresos.Where(ingreso => ingreso.Comite == comite).ToList();
-                dataGridIngresos.DataSource = ingresosComite;
+                var ingresosPorAñoComite = ingresosComite.Where(ingreso => ingreso.FechaDeIngreso.Contains(filtro)).ToList();
+                dataGridIngresos.DataSource = ingresosPorAñoComite;
                 Borrar.Visible = true;
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
@@ -811,7 +820,8 @@ namespace UI
                 docRef.SetAsync(ingress);
                 MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarIngresos();
-                CalculoDeSaldo();
+                TotalizarIngresosYCalculoDeSaldo(filtro);
+                //CalculoDeSaldo();
                 Limpiar();
                 tabLibroIngresos.SelectedIndex = 0;
                 // Obtener referencia al formulario principal
@@ -856,6 +866,7 @@ namespace UI
                 //string mensaje = ingresoService.Eliminar(codigo);
                 MessageBox.Show("Se ha eliminado satisfactoriamente el registro", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ConsultarIngresos();
+                TotalizarIngresosYCalculoDeSaldo(filtro);
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto
@@ -904,7 +915,8 @@ namespace UI
                 docRef.SetAsync(ingress);
                 MessageBox.Show("Se ha modificado satisfactoriamente el registro", "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 ConsultarIngresos();
-                CalculoDeSaldo();
+                TotalizarIngresosYCalculoDeSaldo(filtro);
+                //CalculoDeSaldo();
                 Limpiar();
                 tabLibroIngresos.SelectedIndex = 0;
                 btnRegistrar.Enabled = true;
@@ -944,8 +956,11 @@ namespace UI
             }
             else
             {
-                comboFiltroAño.Text = "2020";
-                FiltroPorComite(filtro);
+                if (comboFiltroAño.Text != "2024")
+                {
+                    comboFiltroAño.Text = "2024";
+                    FiltroPorComite(filtro);
+                }
             }
         }
 
@@ -1051,7 +1066,7 @@ namespace UI
                     }
                 }
                 dataGridIngresos.DataSource = ingresosPorAño;
-                TotalizarIngresos(filtro);
+                TotalizarIngresosYCalculoDeSaldo(filtro);
                 textTotalNube.Text = ingresosPorAño.Count.ToString();
                 Borrar.Visible = true;
                 // Obtener referencia al formulario principal
@@ -1085,13 +1100,16 @@ namespace UI
         private void comboFiltroAño_SelectedIndexChanged(object sender, EventArgs e)
         {
             string filtro = comboFiltroAño.Text;
-            if (filtro == "Todos" || filtro == "")
+            if (filtro == "2024" || filtro == "")
             {
                 ConsultarIngresos();
             }
             else
             {
-                comboFiltroComite.Text = "Comite";
+                if (comboFiltroComite.Text != "Comite" || comboFiltroComite.Text != "Todos")
+                {
+                    comboFiltroComite.Text = "Comite";
+                }
                 FiltroPorAño(filtro);
             }
         }

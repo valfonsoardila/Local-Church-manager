@@ -790,6 +790,7 @@ namespace UI
             FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
             formGenerarDocumento.ingress = ingressData;
             formGenerarDocumento.egress = egressData;
+            formGenerarDocumento.presupuestosGeneral = presupuestosGeneral;
             formGenerarDocumento.Show();
         }
         private async void FiltroPorAño(string filtro)
@@ -1173,6 +1174,11 @@ namespace UI
         {
             FormGenerarDocumento formGenerarDocumento = new FormGenerarDocumento();
             formGenerarDocumento.Show();
+        }
+
+        private void btnGestionarPresupuesto_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

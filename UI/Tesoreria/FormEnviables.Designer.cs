@@ -97,9 +97,9 @@
             // tabRegistrar
             // 
             tabRegistrar.Controls.Add(this.panel4);
-            tabRegistrar.Location = new System.Drawing.Point(4, 22);
+            tabRegistrar.Location = new System.Drawing.Point(4, 25);
             tabRegistrar.Name = "tabRegistrar";
-            tabRegistrar.Size = new System.Drawing.Size(792, 450);
+            tabRegistrar.Size = new System.Drawing.Size(792, 447);
             tabRegistrar.TabIndex = 1;
             tabRegistrar.Text = "Registrar";
             tabRegistrar.UseVisualStyleBackColor = true;
@@ -194,7 +194,8 @@
             "Ofenda gavillas para Cristo",
             "Ofrenda misionera mitad de año",
             "Ofrenda misionera fin de año",
-            "Ofrenda obra social"});
+            "Ofrenda obra social",
+            "Ofrenda domingo misionero"});
             this.comboConcepto.Location = new System.Drawing.Point(115, 113);
             this.comboConcepto.Name = "comboConcepto";
             this.comboConcepto.Size = new System.Drawing.Size(209, 24);
@@ -248,7 +249,8 @@
             "Damas dorcas",
             "Jovenes",
             "Junta local",
-            "Obra social"});
+            "Obra social",
+            "Misiones y evangelismo"});
             this.comboComite.Location = new System.Drawing.Point(115, 77);
             this.comboComite.Name = "comboComite";
             this.comboComite.Size = new System.Drawing.Size(209, 24);

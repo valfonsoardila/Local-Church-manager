@@ -849,7 +849,7 @@
             this.comboFiltroAño.Name = "comboFiltroAño";
             this.comboFiltroAño.Size = new System.Drawing.Size(87, 24);
             this.comboFiltroAño.TabIndex = 27;
-            this.comboFiltroAño.Text = "2020";
+            this.comboFiltroAño.Text = "2024";
             this.comboFiltroAño.SelectedIndexChanged += new System.EventHandler(this.comboFiltroAño_SelectedIndexChanged);
             // 
             // comboFiltroComite
