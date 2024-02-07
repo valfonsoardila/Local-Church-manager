@@ -91,8 +91,9 @@
             this.iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnRegistrarFondos = new FontAwesome.Sharp.IconButton();
+            this.btnRegistrarPresupuestos = new FontAwesome.Sharp.IconButton();
             this.btnGenerarInforme = new FontAwesome.Sharp.IconButton();
-            this.btnGestionarPresupuesto = new FontAwesome.Sharp.IconButton();
             this.tabRegistrarPresupuesto = new System.Windows.Forms.TabPage();
             this.panelRegistrar = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -128,6 +129,54 @@
             this.comboAño = new System.Windows.Forms.ComboBox();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tabRegistrarFondoLocal = new System.Windows.Forms.TabPage();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.textValorIngreso = new System.Windows.Forms.TextBox();
+            this.panel27 = new System.Windows.Forms.Panel();
+            this.dataGridIngresos = new System.Windows.Forms.DataGridView();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.EditarIngreso = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Concepto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboConceptoIngreso = new System.Windows.Forms.ComboBox();
+            this.comboFinIntervalo2 = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.comboInicioIntervalo2 = new System.Windows.Forms.ComboBox();
+            this.textTotalPresupuesto = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.comboComite2 = new System.Windows.Forms.ComboBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.label36 = new System.Windows.Forms.Label();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.textValorEgreso = new System.Windows.Forms.TextBox();
+            this.panel28 = new System.Windows.Forms.Panel();
+            this.dataGridEgresos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.EditarEgreso = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboConceptoEgreso = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textEgresosTotales = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.label38 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnModificarIngreso = new FontAwesome.Sharp.IconButton();
+            this.btnGuardarIngreso = new FontAwesome.Sharp.IconButton();
+            this.btnGuardarEgreso = new FontAwesome.Sharp.IconButton();
+            this.btnModificarEgreso = new FontAwesome.Sharp.IconButton();
+            this.panel26 = new System.Windows.Forms.Panel();
+            this.comboAñoFondoLocal = new System.Windows.Forms.ComboBox();
+            this.iconPictureBox10 = new FontAwesome.Sharp.IconPictureBox();
+            this.label39 = new System.Windows.Forms.Label();
             this.tabPorcentajes = new System.Windows.Forms.TabPage();
             this.panelPorcentajes = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -196,6 +245,20 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
+            this.tabRegistrarFondoLocal.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.panel22.SuspendLayout();
+            this.panel27.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridIngresos)).BeginInit();
+            this.panel23.SuspendLayout();
+            this.panel24.SuspendLayout();
+            this.panel28.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEgresos)).BeginInit();
+            this.panel25.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.panel26.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox10)).BeginInit();
             this.tabPorcentajes.SuspendLayout();
             this.panelPorcentajes.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -300,6 +363,7 @@
             // 
             this.tabPresupuestos.Controls.Add(this.tabListaPresupuestos);
             this.tabPresupuestos.Controls.Add(this.tabRegistrarPresupuesto);
+            this.tabPresupuestos.Controls.Add(this.tabRegistrarFondoLocal);
             this.tabPresupuestos.Controls.Add(this.tabPorcentajes);
             this.tabPresupuestos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPresupuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -828,11 +892,13 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.btnGenerarInforme, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnGestionarPresupuesto, 0, 0);
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.66929F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.33071F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 357F));
+            this.tableLayoutPanel2.Controls.Add(this.btnRegistrarFondos, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnRegistrarPresupuestos, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnGenerarInforme, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 385);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -840,6 +906,41 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(865, 56);
             this.tableLayoutPanel2.TabIndex = 21;
+            // 
+            // btnRegistrarFondos
+            // 
+            this.btnRegistrarFondos.BackColor = System.Drawing.Color.DarkGray;
+            this.btnRegistrarFondos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarFondos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnRegistrarFondos.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnRegistrarFondos.IconColor = System.Drawing.Color.Black;
+            this.btnRegistrarFondos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRegistrarFondos.IconSize = 30;
+            this.btnRegistrarFondos.Location = new System.Drawing.Point(362, 3);
+            this.btnRegistrarFondos.Name = "btnRegistrarFondos";
+            this.btnRegistrarFondos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnRegistrarFondos.Size = new System.Drawing.Size(142, 35);
+            this.btnRegistrarFondos.TabIndex = 17;
+            this.btnRegistrarFondos.Text = "Registrar fondos locales";
+            this.btnRegistrarFondos.UseVisualStyleBackColor = false;
+            this.btnRegistrarFondos.Click += new System.EventHandler(this.btnRegistrarFondos_Click);
+            // 
+            // btnRegistrarPresupuestos
+            // 
+            this.btnRegistrarPresupuestos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegistrarPresupuestos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnRegistrarPresupuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarPresupuestos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRegistrarPresupuestos.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnRegistrarPresupuestos.IconColor = System.Drawing.Color.Black;
+            this.btnRegistrarPresupuestos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRegistrarPresupuestos.Location = new System.Drawing.Point(198, 3);
+            this.btnRegistrarPresupuestos.Name = "btnRegistrarPresupuestos";
+            this.btnRegistrarPresupuestos.Size = new System.Drawing.Size(158, 35);
+            this.btnRegistrarPresupuestos.TabIndex = 1;
+            this.btnRegistrarPresupuestos.Text = "Registrar presupuestos";
+            this.btnRegistrarPresupuestos.UseVisualStyleBackColor = false;
+            this.btnRegistrarPresupuestos.Click += new System.EventHandler(this.btnRegistrarPresupuestos_Click);
             // 
             // btnGenerarInforme
             // 
@@ -850,7 +951,7 @@
             this.btnGenerarInforme.IconColor = System.Drawing.Color.Black;
             this.btnGenerarInforme.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGenerarInforme.IconSize = 30;
-            this.btnGenerarInforme.Location = new System.Drawing.Point(435, 3);
+            this.btnGenerarInforme.Location = new System.Drawing.Point(511, 3);
             this.btnGenerarInforme.Name = "btnGenerarInforme";
             this.btnGenerarInforme.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnGenerarInforme.Size = new System.Drawing.Size(142, 35);
@@ -860,23 +961,6 @@
             this.btnGenerarInforme.UseVisualStyleBackColor = false;
             this.btnGenerarInforme.Click += new System.EventHandler(this.btnGenerarInforme_Click);
             // 
-            // btnGestionarPresupuesto
-            // 
-            this.btnGestionarPresupuesto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGestionarPresupuesto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.btnGestionarPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionarPresupuesto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnGestionarPresupuesto.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnGestionarPresupuesto.IconColor = System.Drawing.Color.Black;
-            this.btnGestionarPresupuesto.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarPresupuesto.Location = new System.Drawing.Point(271, 3);
-            this.btnGestionarPresupuesto.Name = "btnGestionarPresupuesto";
-            this.btnGestionarPresupuesto.Size = new System.Drawing.Size(158, 35);
-            this.btnGestionarPresupuesto.TabIndex = 1;
-            this.btnGestionarPresupuesto.Text = "Gestionar presupuestos";
-            this.btnGestionarPresupuesto.UseVisualStyleBackColor = false;
-            this.btnGestionarPresupuesto.Click += new System.EventHandler(this.btnGestionarPresupuesto_Click_1);
-            // 
             // tabRegistrarPresupuesto
             // 
             this.tabRegistrarPresupuesto.Controls.Add(this.panelRegistrar);
@@ -885,7 +969,7 @@
             this.tabRegistrarPresupuesto.Padding = new System.Windows.Forms.Padding(3);
             this.tabRegistrarPresupuesto.Size = new System.Drawing.Size(871, 447);
             this.tabRegistrarPresupuesto.TabIndex = 1;
-            this.tabRegistrarPresupuesto.Text = "Registrar";
+            this.tabRegistrarPresupuesto.Text = "Registrar Presupuestos";
             this.tabRegistrarPresupuesto.UseVisualStyleBackColor = true;
             // 
             // panelRegistrar
@@ -1157,6 +1241,7 @@
             "Damas Jovenes",
             "Primeros Auxilios",
             "Vigilancia",
+            "Asistencia escuela dominical",
             "Labores",
             "Restauracion",
             "Sonido",
@@ -1407,7 +1492,7 @@
             this.comboAño.Name = "comboAño";
             this.comboAño.Size = new System.Drawing.Size(87, 24);
             this.comboAño.TabIndex = 12;
-            this.comboAño.Text = "2020";
+            this.comboAño.Text = "2024";
             // 
             // iconPictureBox4
             // 
@@ -1433,6 +1518,730 @@
             this.label3.Size = new System.Drawing.Size(151, 16);
             this.label3.TabIndex = 0;
             this.label3.Text = "Nuevo presupuesto";
+            // 
+            // tabRegistrarFondoLocal
+            // 
+            this.tabRegistrarFondoLocal.Controls.Add(this.panel12);
+            this.tabRegistrarFondoLocal.Location = new System.Drawing.Point(4, 25);
+            this.tabRegistrarFondoLocal.Name = "tabRegistrarFondoLocal";
+            this.tabRegistrarFondoLocal.Size = new System.Drawing.Size(871, 447);
+            this.tabRegistrarFondoLocal.TabIndex = 3;
+            this.tabRegistrarFondoLocal.Text = "Registrar fondos locales";
+            this.tabRegistrarFondoLocal.UseVisualStyleBackColor = true;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.tableLayoutPanel7);
+            this.panel12.Controls.Add(this.tableLayoutPanel8);
+            this.panel12.Controls.Add(this.panel26);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(0, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(871, 447);
+            this.panel12.TabIndex = 2;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.panel22, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.panel24, 1, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 32);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 359F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 359F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 359F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 359F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 359F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 359F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(871, 360);
+            this.tableLayoutPanel7.TabIndex = 17;
+            // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.textValorIngreso);
+            this.panel22.Controls.Add(this.panel27);
+            this.panel22.Controls.Add(this.comboConceptoIngreso);
+            this.panel22.Controls.Add(this.comboFinIntervalo2);
+            this.panel22.Controls.Add(this.label28);
+            this.panel22.Controls.Add(this.comboInicioIntervalo2);
+            this.panel22.Controls.Add(this.textTotalPresupuesto);
+            this.panel22.Controls.Add(this.label30);
+            this.panel22.Controls.Add(this.label32);
+            this.panel22.Controls.Add(this.comboComite2);
+            this.panel22.Controls.Add(this.label33);
+            this.panel22.Controls.Add(this.label35);
+            this.panel22.Controls.Add(this.panel23);
+            this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel22.Location = new System.Drawing.Point(4, 4);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(428, 352);
+            this.panel22.TabIndex = 0;
+            // 
+            // textValorIngreso
+            // 
+            this.textValorIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textValorIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textValorIngreso.Location = new System.Drawing.Point(280, 110);
+            this.textValorIngreso.Name = "textValorIngreso";
+            this.textValorIngreso.Size = new System.Drawing.Size(142, 26);
+            this.textValorIngreso.TabIndex = 73;
+            this.textValorIngreso.Text = "$ 000.00";
+            // 
+            // panel27
+            // 
+            this.panel27.Controls.Add(this.dataGridIngresos);
+            this.panel27.Location = new System.Drawing.Point(1, 179);
+            this.panel27.Name = "panel27";
+            this.panel27.Size = new System.Drawing.Size(427, 173);
+            this.panel27.TabIndex = 71;
+            // 
+            // dataGridIngresos
+            // 
+            this.dataGridIngresos.AllowUserToAddRows = false;
+            this.dataGridIngresos.AllowUserToDeleteRows = false;
+            this.dataGridIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridIngresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Eliminar,
+            this.EditarIngreso,
+            this.Concepto,
+            this.Año,
+            this.Valor});
+            this.dataGridIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridIngresos.Location = new System.Drawing.Point(0, 0);
+            this.dataGridIngresos.Name = "dataGridIngresos";
+            this.dataGridIngresos.RowHeadersVisible = false;
+            this.dataGridIngresos.Size = new System.Drawing.Size(427, 173);
+            this.dataGridIngresos.TabIndex = 0;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Image = global::UI.Properties.Resources.borrar;
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            // 
+            // EditarIngreso
+            // 
+            this.EditarIngreso.HeaderText = "EditarIngreso";
+            this.EditarIngreso.Image = global::UI.Properties.Resources.selector;
+            this.EditarIngreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.EditarIngreso.Name = "EditarIngreso";
+            // 
+            // Concepto
+            // 
+            this.Concepto.HeaderText = "Concepto";
+            this.Concepto.Name = "Concepto";
+            // 
+            // Año
+            // 
+            this.Año.HeaderText = "Año";
+            this.Año.Name = "Año";
+            // 
+            // Valor
+            // 
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            // 
+            // comboConceptoIngreso
+            // 
+            this.comboConceptoIngreso.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboConceptoIngreso.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboConceptoIngreso.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboConceptoIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboConceptoIngreso.FormattingEnabled = true;
+            this.comboConceptoIngreso.Items.AddRange(new object[] {
+            "Aporte del 12%"});
+            this.comboConceptoIngreso.Location = new System.Drawing.Point(135, 111);
+            this.comboConceptoIngreso.Name = "comboConceptoIngreso";
+            this.comboConceptoIngreso.Size = new System.Drawing.Size(139, 24);
+            this.comboConceptoIngreso.TabIndex = 70;
+            this.comboConceptoIngreso.Text = "Aporte del 12%";
+            // 
+            // comboFinIntervalo2
+            // 
+            this.comboFinIntervalo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFinIntervalo2.FormattingEnabled = true;
+            this.comboFinIntervalo2.Items.AddRange(new object[] {
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"});
+            this.comboFinIntervalo2.Location = new System.Drawing.Point(225, 48);
+            this.comboFinIntervalo2.Name = "comboFinIntervalo2";
+            this.comboFinIntervalo2.Size = new System.Drawing.Size(103, 23);
+            this.comboFinIntervalo2.TabIndex = 69;
+            this.comboFinIntervalo2.Text = "Enero";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(202, 52);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(16, 16);
+            this.label28.TabIndex = 68;
+            this.label28.Text = "a";
+            // 
+            // comboInicioIntervalo2
+            // 
+            this.comboInicioIntervalo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboInicioIntervalo2.FormattingEnabled = true;
+            this.comboInicioIntervalo2.Items.AddRange(new object[] {
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"});
+            this.comboInicioIntervalo2.Location = new System.Drawing.Point(93, 49);
+            this.comboInicioIntervalo2.Name = "comboInicioIntervalo2";
+            this.comboInicioIntervalo2.Size = new System.Drawing.Size(103, 23);
+            this.comboInicioIntervalo2.TabIndex = 67;
+            this.comboInicioIntervalo2.Text = "Enero";
+            // 
+            // textTotalPresupuesto
+            // 
+            this.textTotalPresupuesto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textTotalPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTotalPresupuesto.Location = new System.Drawing.Point(136, 147);
+            this.textTotalPresupuesto.Name = "textTotalPresupuesto";
+            this.textTotalPresupuesto.Size = new System.Drawing.Size(181, 26);
+            this.textTotalPresupuesto.TabIndex = 62;
+            this.textTotalPresupuesto.Text = "$ 000.00";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(32, 154);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(98, 16);
+            this.label30.TabIndex = 61;
+            this.label30.Text = "Presupuesto:";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(33, 114);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(85, 16);
+            this.label32.TabIndex = 57;
+            this.label32.Text = "Conceptos:";
+            // 
+            // comboComite2
+            // 
+            this.comboComite2.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboComite2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboComite2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboComite2.Enabled = false;
+            this.comboComite2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboComite2.FormattingEnabled = true;
+            this.comboComite2.Items.AddRange(new object[] {
+            "Comite",
+            "Junta Local"});
+            this.comboComite2.Location = new System.Drawing.Point(135, 79);
+            this.comboComite2.Name = "comboComite2";
+            this.comboComite2.Size = new System.Drawing.Size(181, 24);
+            this.comboComite2.TabIndex = 56;
+            this.comboComite2.Text = "Junta local";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(33, 84);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(59, 16);
+            this.label33.TabIndex = 55;
+            this.label33.Text = "Comite:";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(33, 52);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(54, 16);
+            this.label35.TabIndex = 52;
+            this.label35.Text = "Fecha:";
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.panel23.Controls.Add(this.label36);
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel23.Location = new System.Drawing.Point(0, 0);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(428, 32);
+            this.panel23.TabIndex = 2;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label36.Location = new System.Drawing.Point(100, 8);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(160, 16);
+            this.label36.TabIndex = 0;
+            this.label36.Text = "Registro de ingresos";
+            // 
+            // panel24
+            // 
+            this.panel24.Controls.Add(this.textValorEgreso);
+            this.panel24.Controls.Add(this.panel28);
+            this.panel24.Controls.Add(this.comboConceptoEgreso);
+            this.panel24.Controls.Add(this.label29);
+            this.panel24.Controls.Add(this.textEgresosTotales);
+            this.panel24.Controls.Add(this.label37);
+            this.panel24.Controls.Add(this.panel25);
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel24.Location = new System.Drawing.Point(439, 4);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(428, 352);
+            this.panel24.TabIndex = 1;
+            // 
+            // textValorEgreso
+            // 
+            this.textValorEgreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textValorEgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textValorEgreso.Location = new System.Drawing.Point(246, 62);
+            this.textValorEgreso.Name = "textValorEgreso";
+            this.textValorEgreso.Size = new System.Drawing.Size(142, 26);
+            this.textValorEgreso.TabIndex = 74;
+            this.textValorEgreso.Text = "$ 000.00";
+            // 
+            // panel28
+            // 
+            this.panel28.Controls.Add(this.dataGridEgresos);
+            this.panel28.Location = new System.Drawing.Point(0, 179);
+            this.panel28.Name = "panel28";
+            this.panel28.Size = new System.Drawing.Size(427, 173);
+            this.panel28.TabIndex = 73;
+            // 
+            // dataGridEgresos
+            // 
+            this.dataGridEgresos.AllowUserToAddRows = false;
+            this.dataGridEgresos.AllowUserToDeleteRows = false;
+            this.dataGridEgresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridEgresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewImageColumn1,
+            this.EditarEgreso,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.dataGridEgresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridEgresos.Location = new System.Drawing.Point(0, 0);
+            this.dataGridEgresos.Name = "dataGridEgresos";
+            this.dataGridEgresos.RowHeadersVisible = false;
+            this.dataGridEgresos.Size = new System.Drawing.Size(427, 173);
+            this.dataGridEgresos.TabIndex = 1;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn1.Image = global::UI.Properties.Resources.borrar;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // EditarEgreso
+            // 
+            this.EditarEgreso.HeaderText = "EditarEgreso";
+            this.EditarEgreso.Image = global::UI.Properties.Resources.selector;
+            this.EditarEgreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.EditarEgreso.Name = "EditarEgreso";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Concepto";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Año";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Valor";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // comboConceptoEgreso
+            // 
+            this.comboConceptoEgreso.AutoCompleteCustomSource.AddRange(new string[] {
+            "Ingeniero(a) de sistemas",
+            "Ingeniero(a) de electronica",
+            "Ingeniero(a) Industrial",
+            "Enfermero(a)",
+            "Electricista",
+            "Albañil",
+            "Abogado",
+            "Acesor comercial",
+            "Estudiante",
+            "Medico(a)",
+            "Farmaceutico(a)",
+            "Odontologo(a)",
+            "Fontaneros(a)",
+            "Docente",
+            "Contadores",
+            "Psicologos",
+            "Chef",
+            "Repostero(a)",
+            "Vigilante",
+            "Escolta",
+            "Ebanista",
+            "Peluquero",
+            "Domiciliario",
+            "Soldador",
+            "Diseñador Grafico",
+            "Maestro de obra",
+            "Mecanico",
+            "Chofer",
+            "Impulsador",
+            "Optometra",
+            "Naturista",
+            "Vendedor",
+            "Modista",
+            "Electronico",
+            "Tecnico"});
+            this.comboConceptoEgreso.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboConceptoEgreso.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboConceptoEgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboConceptoEgreso.FormattingEnabled = true;
+            this.comboConceptoEgreso.Items.AddRange(new object[] {
+            "Aporte del distrito",
+            "Proyecto de inversion",
+            "Servicios publicos",
+            "Pastor auxiliar",
+            "Santa cena",
+            "Transporte para envios",
+            "Reparacion de equipos",
+            "Aporte al comite",
+            "Aseo"});
+            this.comboConceptoEgreso.Location = new System.Drawing.Point(113, 64);
+            this.comboConceptoEgreso.Name = "comboConceptoEgreso";
+            this.comboConceptoEgreso.Size = new System.Drawing.Size(127, 24);
+            this.comboConceptoEgreso.TabIndex = 72;
+            this.comboConceptoEgreso.Text = "Santa cena";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(11, 67);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(85, 16);
+            this.label29.TabIndex = 71;
+            this.label29.Text = "Conceptos:";
+            // 
+            // textEgresosTotales
+            // 
+            this.textEgresosTotales.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textEgresosTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEgresosTotales.Location = new System.Drawing.Point(130, 95);
+            this.textEgresosTotales.Name = "textEgresosTotales";
+            this.textEgresosTotales.Size = new System.Drawing.Size(181, 26);
+            this.textEgresosTotales.TabIndex = 64;
+            this.textEgresosTotales.Text = "$ 000.00";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(7, 100);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(120, 16);
+            this.label37.TabIndex = 63;
+            this.label37.Text = "Egresos totales:";
+            // 
+            // panel25
+            // 
+            this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panel25.Controls.Add(this.label38);
+            this.panel25.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel25.Location = new System.Drawing.Point(0, 0);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(428, 32);
+            this.panel25.TabIndex = 3;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label38.Location = new System.Drawing.Point(110, 8);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(156, 16);
+            this.label38.TabIndex = 0;
+            this.label38.Text = "Registro de egresos";
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 4;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 217F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222F));
+            this.tableLayoutPanel8.Controls.Add(this.btnModificarIngreso, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btnGuardarIngreso, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btnGuardarEgreso, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btnModificarEgreso, 3, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 392);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(871, 55);
+            this.tableLayoutPanel8.TabIndex = 16;
+            // 
+            // btnModificarIngreso
+            // 
+            this.btnModificarIngreso.BackColor = System.Drawing.Color.Teal;
+            this.btnModificarIngreso.Enabled = false;
+            this.btnModificarIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificarIngreso.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnModificarIngreso.IconChar = FontAwesome.Sharp.IconChar.FileEdit;
+            this.btnModificarIngreso.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.btnModificarIngreso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnModificarIngreso.IconSize = 30;
+            this.btnModificarIngreso.Location = new System.Drawing.Point(219, 3);
+            this.btnModificarIngreso.Name = "btnModificarIngreso";
+            this.btnModificarIngreso.Size = new System.Drawing.Size(123, 41);
+            this.btnModificarIngreso.TabIndex = 15;
+            this.btnModificarIngreso.Text = "Modificar Ingreso";
+            this.btnModificarIngreso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModificarIngreso.UseVisualStyleBackColor = false;
+            this.btnModificarIngreso.Click += new System.EventHandler(this.btnModificarIngreso_Click);
+            // 
+            // btnGuardarIngreso
+            // 
+            this.btnGuardarIngreso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardarIngreso.BackColor = System.Drawing.Color.Green;
+            this.btnGuardarIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarIngreso.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGuardarIngreso.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnGuardarIngreso.IconColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnGuardarIngreso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuardarIngreso.IconSize = 30;
+            this.btnGuardarIngreso.Location = new System.Drawing.Point(99, 3);
+            this.btnGuardarIngreso.Name = "btnGuardarIngreso";
+            this.btnGuardarIngreso.Size = new System.Drawing.Size(114, 41);
+            this.btnGuardarIngreso.TabIndex = 14;
+            this.btnGuardarIngreso.Text = "Guardar Ingreso";
+            this.btnGuardarIngreso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardarIngreso.UseVisualStyleBackColor = false;
+            this.btnGuardarIngreso.Click += new System.EventHandler(this.btnGuardarIngreso_Click);
+            // 
+            // btnGuardarEgreso
+            // 
+            this.btnGuardarEgreso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardarEgreso.BackColor = System.Drawing.Color.Green;
+            this.btnGuardarEgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarEgreso.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGuardarEgreso.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnGuardarEgreso.IconColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnGuardarEgreso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuardarEgreso.IconSize = 30;
+            this.btnGuardarEgreso.Location = new System.Drawing.Point(532, 3);
+            this.btnGuardarEgreso.Name = "btnGuardarEgreso";
+            this.btnGuardarEgreso.Size = new System.Drawing.Size(114, 41);
+            this.btnGuardarEgreso.TabIndex = 16;
+            this.btnGuardarEgreso.Text = "Guardar Egreso";
+            this.btnGuardarEgreso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardarEgreso.UseVisualStyleBackColor = false;
+            this.btnGuardarEgreso.Click += new System.EventHandler(this.btnGuardarEgreso_Click);
+            // 
+            // btnModificarEgreso
+            // 
+            this.btnModificarEgreso.BackColor = System.Drawing.Color.Teal;
+            this.btnModificarEgreso.Enabled = false;
+            this.btnModificarEgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificarEgreso.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnModificarEgreso.IconChar = FontAwesome.Sharp.IconChar.FileEdit;
+            this.btnModificarEgreso.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.btnModificarEgreso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnModificarEgreso.IconSize = 30;
+            this.btnModificarEgreso.Location = new System.Drawing.Point(652, 3);
+            this.btnModificarEgreso.Name = "btnModificarEgreso";
+            this.btnModificarEgreso.Size = new System.Drawing.Size(123, 41);
+            this.btnModificarEgreso.TabIndex = 17;
+            this.btnModificarEgreso.Text = "Modificar Egreso";
+            this.btnModificarEgreso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModificarEgreso.UseVisualStyleBackColor = false;
+            this.btnModificarEgreso.Click += new System.EventHandler(this.btnModificarEgreso_Click);
+            // 
+            // panel26
+            // 
+            this.panel26.BackColor = System.Drawing.Color.Black;
+            this.panel26.Controls.Add(this.comboAñoFondoLocal);
+            this.panel26.Controls.Add(this.iconPictureBox10);
+            this.panel26.Controls.Add(this.label39);
+            this.panel26.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel26.Location = new System.Drawing.Point(0, 0);
+            this.panel26.Name = "panel26";
+            this.panel26.Size = new System.Drawing.Size(871, 32);
+            this.panel26.TabIndex = 1;
+            // 
+            // comboAñoFondoLocal
+            // 
+            this.comboAñoFondoLocal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboAñoFondoLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboAñoFondoLocal.FormattingEnabled = true;
+            this.comboAñoFondoLocal.Items.AddRange(new object[] {
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030",
+            "2031",
+            "2032",
+            "2033",
+            "2034",
+            "2035",
+            "2036",
+            "2037",
+            "2038",
+            "2039",
+            "2040",
+            "2041",
+            "2042",
+            "2043",
+            "2044",
+            "2045",
+            "2046",
+            "2047",
+            "2048",
+            "2049",
+            "2050"});
+            this.comboAñoFondoLocal.Location = new System.Drawing.Point(686, 3);
+            this.comboAñoFondoLocal.Name = "comboAñoFondoLocal";
+            this.comboAñoFondoLocal.Size = new System.Drawing.Size(87, 24);
+            this.comboAñoFondoLocal.TabIndex = 12;
+            this.comboAñoFondoLocal.Text = "2024";
+            // 
+            // iconPictureBox10
+            // 
+            this.iconPictureBox10.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox10.IconChar = FontAwesome.Sharp.IconChar.MoneyBill;
+            this.iconPictureBox10.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconPictureBox10.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox10.IconSize = 28;
+            this.iconPictureBox10.Location = new System.Drawing.Point(5, 3);
+            this.iconPictureBox10.Name = "iconPictureBox10";
+            this.iconPictureBox10.Size = new System.Drawing.Size(28, 28);
+            this.iconPictureBox10.TabIndex = 9;
+            this.iconPictureBox10.TabStop = false;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label39.Location = new System.Drawing.Point(36, 8);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(151, 16);
+            this.label39.TabIndex = 0;
+            this.label39.Text = "Nuevo presupuesto";
             // 
             // tabPorcentajes
             // 
@@ -1927,6 +2736,25 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
+            this.tabRegistrarFondoLocal.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.panel22.ResumeLayout(false);
+            this.panel22.PerformLayout();
+            this.panel27.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridIngresos)).EndInit();
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
+            this.panel28.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEgresos)).EndInit();
+            this.panel25.ResumeLayout(false);
+            this.panel25.PerformLayout();
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.panel26.ResumeLayout(false);
+            this.panel26.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox10)).EndInit();
             this.tabPorcentajes.ResumeLayout(false);
             this.panelPorcentajes.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
@@ -2034,7 +2862,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private FontAwesome.Sharp.IconButton btnGenerarInforme;
-        private FontAwesome.Sharp.IconButton btnGestionarPresupuesto;
+        private FontAwesome.Sharp.IconButton btnRegistrarPresupuestos;
         private System.Windows.Forms.Panel panelPorcentajes;
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
@@ -2074,5 +2902,54 @@
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Detallar;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private FontAwesome.Sharp.IconButton btnRegistrarFondos;
+        private System.Windows.Forms.TabPage tabRegistrarFondoLocal;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.ComboBox comboInicioIntervalo2;
+        private System.Windows.Forms.TextBox textTotalPresupuesto;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.ComboBox comboComite2;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.TextBox textEgresosTotales;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private FontAwesome.Sharp.IconButton btnModificarIngreso;
+        private FontAwesome.Sharp.IconButton btnGuardarIngreso;
+        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.ComboBox comboAñoFondoLocal;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox10;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.ComboBox comboConceptoIngreso;
+        private System.Windows.Forms.ComboBox comboConceptoEgreso;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Panel panel27;
+        private System.Windows.Forms.Panel panel28;
+        private System.Windows.Forms.DataGridView dataGridIngresos;
+        private System.Windows.Forms.DataGridView dataGridEgresos;
+        private System.Windows.Forms.TextBox textValorIngreso;
+        private System.Windows.Forms.TextBox textValorEgreso;
+        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        private System.Windows.Forms.DataGridViewImageColumn EditarIngreso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Concepto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Año;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn EditarEgreso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ComboBox comboFinIntervalo2;
+        private FontAwesome.Sharp.IconButton btnGuardarEgreso;
+        private FontAwesome.Sharp.IconButton btnModificarEgreso;
     }
 }

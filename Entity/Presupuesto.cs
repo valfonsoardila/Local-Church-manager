@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Presupuesto
+    public class PresupuestoComite
     {
-        public Presupuesto(
+        public PresupuestoComite(
             int id, 
             string añoPresupuesto, 
             string inicioIntervalo,
@@ -32,7 +32,7 @@ namespace Entity
             TotalEgresos=totalEgresos;
             TotalPresupuesto =totalPresupuesto;
         }
-        public Presupuesto()
+        public PresupuestoComite()
         {
 
         }
@@ -57,4 +57,71 @@ namespace Entity
             Id = b;
         }
     }
+    public class PresupuestoIngresoLocal
+    {
+        public PresupuestoIngresoLocal
+        (
+            int id,
+            string añoPresupuesto,
+            string inicioIntervalo,
+            string finIntervalo,
+            string comite,
+            string concepto,
+            string valor
+        )
+        {
+            Id = id;
+            AñoPresupuesto = añoPresupuesto;
+            InicioIntervalo = inicioIntervalo;
+            FinIntervalo = finIntervalo;
+            Comite = comite;
+            Concepto = concepto;
+            Valor = valor;
+        }
+        public PresupuestoIngresoLocal()
+        {
+
+        }
+        public int Id { get; set; }
+        public string AñoPresupuesto { get; set; }
+        public string InicioIntervalo { get; set; }
+        public string FinIntervalo { get; set; }
+        public string Comite { get; set; }
+        public string Concepto { get; set; }
+        public string Valor { get; set; }
+    }
+    public class PresupuestoEgresoLocal
+    {
+        public PresupuestoEgresoLocal
+        (
+            int id,
+            string añoPresupuesto,
+            string inicioIntervalo,
+            string finIntervalo,
+            string comite,
+            string concepto,
+            string valor
+        )
+        {
+            Id = id;
+            AñoPresupuesto = añoPresupuesto;
+            InicioIntervalo = inicioIntervalo;
+            FinIntervalo = finIntervalo;
+            Comite = comite;
+            Concepto = concepto;
+            Valor = valor;
+        }
+        public PresupuestoEgresoLocal()
+        {
+
+        }
+        public int Id { get; set; }
+        public string AñoPresupuesto { get; set; }
+        public string InicioIntervalo { get; set; }
+        public string FinIntervalo { get; set; }
+        public string Comite { get; set; }
+        public string Concepto { get; set; }
+        public string Valor { get; set; }
+    }
+
 }

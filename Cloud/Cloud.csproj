@@ -137,6 +137,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FirebaseData\BudgetLocalData.cs" />
     <Compile Include="FirebaseData\ChurchData.cs" />
     <Compile Include="FirebaseData\BudgetData.cs" />
     <Compile Include="FirebaseData\DirectivesData.cs" />

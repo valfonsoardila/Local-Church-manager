@@ -15,7 +15,7 @@ namespace DAL
         {
             _connection = connection._conexion;
         }
-        public void Guardar(Presupuesto presupuesto)
+        public void Guardar(PresupuestoComite presupuesto)
         {
             using (var command = _connection.CreateCommand())
             {
@@ -35,7 +35,7 @@ namespace DAL
                 command.ExecuteNonQuery();
             }
         }
-        public void Eliminar(Presupuesto presupuesto)
+        public void Eliminar(PresupuestoComite presupuesto)
         {
             using (var command = _connection.CreateCommand())
             {
@@ -44,9 +44,9 @@ namespace DAL
                 command.ExecuteNonQuery();
             }
         }
-        public List<Presupuesto> ConsultarTodos()
+        public List<PresupuestoComite> ConsultarTodos()
         {
-            List<Presupuesto> presupuestos = new List<Presupuesto>();
+            List<PresupuestoComite> presupuestos = new List<PresupuestoComite>();
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = "Select Id, AnoPresupuesto, InicioIntervalo, FinIntervalo, Comite, Ofrenda, Actividad, Voto, OtroConcepto, ValorOtroConcepto, TotalEgresos, TotalPresupuesto from PRESUPUESTO";
@@ -55,16 +55,16 @@ namespace DAL
                 {
                     while (dataReader.Read())
                     {
-                        Presupuesto presupuesto = DataReaderMapToPresupuesto(dataReader);
+                        PresupuestoComite presupuesto = DataReaderMapToPresupuesto(dataReader);
                         presupuestos.Add(presupuesto);
                     }
                 }
             }
             return presupuestos;
         }
-        public List<Presupuesto> FiltrarPresupuestosPorComite(string comite)
+        public List<PresupuestoComite> FiltrarPresupuestosPorComite(string comite)
         {
-            List<Presupuesto> presupuestos = new List<Presupuesto>();
+            List<PresupuestoComite> presupuestos = new List<PresupuestoComite>();
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = "select * from PRESUPUESTO where Comite=@Comite";
@@ -74,16 +74,16 @@ namespace DAL
                 {
                     while (dataReader.Read())
                     {
-                        Presupuesto presupuesto = DataReaderMapToPresupuesto(dataReader);
+                        PresupuestoComite presupuesto = DataReaderMapToPresupuesto(dataReader);
                         presupuestos.Add(presupuesto);
                     }
                 }
             }
             return presupuestos;
         }
-        public List<Presupuesto> FiltrarPresupuestosPorAño(string año)
+        public List<PresupuestoComite> FiltrarPresupuestosPorAño(string año)
         {
-            List<Presupuesto> presupuestos = new List<Presupuesto>();
+            List<PresupuestoComite> presupuestos = new List<PresupuestoComite>();
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = "select * from PRESUPUESTO where AnoPresupuesto=@AnoPresupuesto";
@@ -93,7 +93,7 @@ namespace DAL
                 {
                     while (dataReader.Read())
                     {
-                        Presupuesto presupuesto = DataReaderMapToPresupuesto(dataReader);
+                        PresupuestoComite presupuesto = DataReaderMapToPresupuesto(dataReader);
                         presupuestos.Add(presupuesto);
                     }
                 }
@@ -120,7 +120,7 @@ namespace DAL
         //    }
         //    return presupuestos;
         //}
-        public Presupuesto BuscarPorIdentificacion(int id)
+        public PresupuestoComite BuscarPorIdentificacion(int id)
         {
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
@@ -132,7 +132,7 @@ namespace DAL
                 return DataReaderMapToPresupuesto(dataReader);
             }
         }
-        public void Modificar(Presupuesto presupuesto)
+        public void Modificar(PresupuestoComite presupuesto)
         {
             using (var command = _connection.CreateCommand())
             {
@@ -151,10 +151,10 @@ namespace DAL
                 var filas = command.ExecuteNonQuery();
             }
         }
-        private Presupuesto DataReaderMapToPresupuesto(SqlDataReader dataReader)
+        private PresupuestoComite DataReaderMapToPresupuesto(SqlDataReader dataReader)
         {
             if (!dataReader.HasRows) return null;
-            Presupuesto presupuesto = new Presupuesto();
+            PresupuestoComite presupuesto = new PresupuestoComite();
             presupuesto.Id = (int)dataReader["Id"];
             presupuesto.AñoPresupuesto = (string)dataReader["AnoPresupuesto"];
             presupuesto.InicioIntervalo = (string)dataReader["InicioIntervalo"];

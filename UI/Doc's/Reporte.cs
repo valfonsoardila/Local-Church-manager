@@ -120,7 +120,7 @@ namespace UI
                         //Recorre celda tras celda de forma vertical
                         string contenidoCelda = tablaDeValores.Rows[i].Cells[0].Paragraphs[0].Text.Trim();
                         comiteActual = comites[indexComite].ToUpperInvariant();
-                        if (indexComite + 1 < comites.Length)
+                        if (indexComite + 1 <= comites.Length)
                         {
                             comiteSiguiente = comites[indexComite + 1].ToUpperInvariant();
                             //Compara si el comite actual de la lista esta en la tabla del documento
@@ -154,9 +154,8 @@ namespace UI
                             else
                             {
                                 // Agregamos el nuevo comite y sus conceptos
-                                int rowIndex = tablaDeValores.Rows.Count; // Obtener el índice de la última fila
-                                //tablaDeValores.InsertRow(tablaDeValores.Rows[rowIndex - 1], false); // Insertar una nueva fila
-                                //tablaDeValores.Rows[rowIndex].Cells[0].Paragraphs[0].InsertText(comiteActual, false, new Formatting() { FontFamily = new Xceed.Document.NET.Font("Agency FB"), Size = 16, Bold = true }); ; // Insertar el nombre del comite en negrilla
+                                //int rowIndex = tablaDeValores.Rows.Count; // Obtener el índice de la última fila
+                                //Row nuevaFila = tablaDeValores.InsertRow();
                             }
                         }
                     }

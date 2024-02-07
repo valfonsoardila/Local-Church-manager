@@ -17,7 +17,7 @@ namespace BLL
             conexion = new ConnectionManager(connectionString);
             repositorio = new PresupuestoRepository(conexion);
         }
-        public string Guardar(Presupuesto presupuesto)
+        public string Guardar(PresupuestoComite presupuesto)
         {
             try
             {
@@ -142,7 +142,7 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public string Modificar(Presupuesto presupuestoNuevo)
+        public string Modificar(PresupuestoComite presupuestoNuevo)
         {
             try
             {
@@ -236,13 +236,13 @@ namespace BLL
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Presupuesto> Presupuestos { get; set; }
+        public IList<PresupuestoComite> Presupuestos { get; set; }
     }
     public class BusquedaPresupuestoRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public Presupuesto Presupuesto { get; set; }
+        public PresupuestoComite Presupuesto { get; set; }
     }
     public class ConteoPresupuestoRespuesta
     {

@@ -11,7 +11,7 @@ namespace UI
     public class BudgetMaps
     {
         BudgetData budgetData;
-        public BudgetData BudgetMap(Presupuesto presupuesto)
+        public BudgetData BudgetMap(PresupuestoComite presupuesto)
         {
             if (CheckIfBudgetAlreadyExist(presupuesto.Id.ToString()))
             {
