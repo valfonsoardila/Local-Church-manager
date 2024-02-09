@@ -67,7 +67,7 @@ namespace Entity
             string finIntervalo,
             string comite,
             string concepto,
-            string valor
+            int valor
         )
         {
             Id = id;
@@ -88,7 +88,7 @@ namespace Entity
         public string FinIntervalo { get; set; }
         public string Comite { get; set; }
         public string Concepto { get; set; }
-        public string Valor { get; set; }
+        public int Valor { get; set; }
     }
     public class PresupuestoEgresoLocal
     {
@@ -100,7 +100,7 @@ namespace Entity
             string finIntervalo,
             string comite,
             string concepto,
-            string valor
+            int valor
         )
         {
             Id = id;
@@ -121,7 +121,7 @@ namespace Entity
         public string FinIntervalo { get; set; }
         public string Comite { get; set; }
         public string Concepto { get; set; }
-        public string Valor { get; set; }
+        public int Valor { get; set; }
     }
 
 }

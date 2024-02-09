@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea113 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend113 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series113 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea114 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend114 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series114 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea115 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend115 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series115 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea116 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend116 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series116 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea117 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend117 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series117 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea118 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend118 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series118 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea119 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend119 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series119 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.textTotalPresupuestos = new System.Windows.Forms.TextBox();
@@ -136,11 +136,6 @@
             this.textValorIngreso = new System.Windows.Forms.TextBox();
             this.panel27 = new System.Windows.Forms.Panel();
             this.dataGridIngresos = new System.Windows.Forms.DataGridView();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.EditarIngreso = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Concepto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboConceptoIngreso = new System.Windows.Forms.ComboBox();
             this.comboFinIntervalo2 = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
@@ -157,11 +152,6 @@
             this.textValorEgreso = new System.Windows.Forms.TextBox();
             this.panel28 = new System.Windows.Forms.Panel();
             this.dataGridEgresos = new System.Windows.Forms.DataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.EditarEgreso = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboConceptoEgreso = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.textEgresosTotales = new System.Windows.Forms.TextBox();
@@ -212,6 +202,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.EditarIngreso = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.EditarEgreso = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label31 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -457,12 +452,11 @@
             this.dataGridPresupuestos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridPresupuestos.Location = new System.Drawing.Point(0, 32);
             this.dataGridPresupuestos.Name = "dataGridPresupuestos";
-            this.dataGridPresupuestos.ReadOnly = true;
             this.dataGridPresupuestos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridPresupuestos.RowHeadersVisible = false;
             this.dataGridPresupuestos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridPresupuestos.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridPresupuestos.RowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridPresupuestos.RowTemplate.DividerHeight = 2;
             this.dataGridPresupuestos.RowTemplate.Height = 30;
             this.dataGridPresupuestos.Size = new System.Drawing.Size(540, 347);
@@ -473,7 +467,6 @@
             // 
             this.Seleccionar.HeaderText = "Seleccionar";
             this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.ReadOnly = true;
             this.Seleccionar.Width = 85;
             // 
             // Imprimir
@@ -482,7 +475,6 @@
             this.Imprimir.Image = global::UI.Properties.Resources.Imprimir;
             this.Imprimir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Imprimir.Name = "Imprimir";
-            this.Imprimir.ReadOnly = true;
             this.Imprimir.Width = 60;
             // 
             // Editar
@@ -491,7 +483,6 @@
             this.Editar.Image = global::UI.Properties.Resources.edit_user;
             this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
             this.Editar.Width = 48;
             // 
             // Detallar
@@ -500,7 +491,6 @@
             this.Detallar.Image = global::UI.Properties.Resources.porcentajes;
             this.Detallar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Detallar.Name = "Detallar";
-            this.Detallar.ReadOnly = true;
             this.Detallar.Width = 60;
             // 
             // Borrar
@@ -509,7 +499,6 @@
             this.Borrar.Image = global::UI.Properties.Resources.borrar;
             this.Borrar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
             this.Borrar.Width = 50;
             // 
             // panelContenedorDeDirectorio
@@ -726,21 +715,21 @@
             // 
             this.chartGeneral.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipY;
             this.chartGeneral.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.Name = "ChartArea1";
-            this.chartGeneral.ChartAreas.Add(chartArea1);
+            chartArea113.Name = "ChartArea1";
+            this.chartGeneral.ChartAreas.Add(chartArea113);
             this.chartGeneral.Dock = System.Windows.Forms.DockStyle.Top;
-            legend1.Name = "Legend1";
-            this.chartGeneral.Legends.Add(legend1);
+            legend113.Name = "Legend1";
+            this.chartGeneral.Legends.Add(legend113);
             this.chartGeneral.Location = new System.Drawing.Point(0, 502);
             this.chartGeneral.Name = "chartGeneral";
             this.chartGeneral.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 6;
-            this.chartGeneral.Series.Add(series1);
+            series113.ChartArea = "ChartArea1";
+            series113.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series113.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series113.Legend = "Legend1";
+            series113.Name = "Series1";
+            series113.YValuesPerPoint = 6;
+            this.chartGeneral.Series.Add(series113);
             this.chartGeneral.Size = new System.Drawing.Size(296, 194);
             this.chartGeneral.TabIndex = 10;
             this.chartGeneral.Text = "chart2";
@@ -772,19 +761,19 @@
             this.chartEgresoIndividual.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipY;
             this.chartEgresoIndividual.BackSecondaryColor = System.Drawing.Color.MistyRose;
             this.chartEgresoIndividual.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.Name = "ChartArea1";
-            this.chartEgresoIndividual.ChartAreas.Add(chartArea2);
+            chartArea114.Name = "ChartArea1";
+            this.chartEgresoIndividual.ChartAreas.Add(chartArea114);
             this.chartEgresoIndividual.Dock = System.Windows.Forms.DockStyle.Top;
-            legend2.Name = "Legend1";
-            this.chartEgresoIndividual.Legends.Add(legend2);
+            legend114.Name = "Legend1";
+            this.chartEgresoIndividual.Legends.Add(legend114);
             this.chartEgresoIndividual.Location = new System.Drawing.Point(0, 280);
             this.chartEgresoIndividual.Name = "chartEgresoIndividual";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartEgresoIndividual.Series.Add(series2);
+            series114.ChartArea = "ChartArea1";
+            series114.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series114.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series114.Legend = "Legend1";
+            series114.Name = "Series1";
+            this.chartEgresoIndividual.Series.Add(series114);
             this.chartEgresoIndividual.Size = new System.Drawing.Size(296, 194);
             this.chartEgresoIndividual.TabIndex = 8;
             this.chartEgresoIndividual.Text = "Presupuesto individual";
@@ -816,19 +805,19 @@
             this.chartIngresoIndividual.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipY;
             this.chartIngresoIndividual.BackSecondaryColor = System.Drawing.Color.MistyRose;
             this.chartIngresoIndividual.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea3.Name = "ChartArea1";
-            this.chartIngresoIndividual.ChartAreas.Add(chartArea3);
+            chartArea115.Name = "ChartArea1";
+            this.chartIngresoIndividual.ChartAreas.Add(chartArea115);
             this.chartIngresoIndividual.Dock = System.Windows.Forms.DockStyle.Top;
-            legend3.Name = "Legend1";
-            this.chartIngresoIndividual.Legends.Add(legend3);
+            legend115.Name = "Legend1";
+            this.chartIngresoIndividual.Legends.Add(legend115);
             this.chartIngresoIndividual.Location = new System.Drawing.Point(0, 58);
             this.chartIngresoIndividual.Name = "chartIngresoIndividual";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartIngresoIndividual.Series.Add(series3);
+            series115.ChartArea = "ChartArea1";
+            series115.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series115.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series115.Legend = "Legend1";
+            series115.Name = "Series1";
+            this.chartIngresoIndividual.Series.Add(series115);
             this.chartIngresoIndividual.Size = new System.Drawing.Size(296, 194);
             this.chartIngresoIndividual.TabIndex = 6;
             this.chartIngresoIndividual.Text = "Presupuesto individual";
@@ -1567,15 +1556,11 @@
             this.panel22.Controls.Add(this.textValorIngreso);
             this.panel22.Controls.Add(this.panel27);
             this.panel22.Controls.Add(this.comboConceptoIngreso);
-            this.panel22.Controls.Add(this.comboFinIntervalo2);
-            this.panel22.Controls.Add(this.label28);
-            this.panel22.Controls.Add(this.comboInicioIntervalo2);
             this.panel22.Controls.Add(this.textTotalPresupuesto);
             this.panel22.Controls.Add(this.label30);
             this.panel22.Controls.Add(this.label32);
             this.panel22.Controls.Add(this.comboComite2);
             this.panel22.Controls.Add(this.label33);
-            this.panel22.Controls.Add(this.label35);
             this.panel22.Controls.Add(this.panel23);
             this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel22.Location = new System.Drawing.Point(4, 4);
@@ -1587,11 +1572,14 @@
             // 
             this.textValorIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textValorIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textValorIngreso.Location = new System.Drawing.Point(280, 110);
+            this.textValorIngreso.Location = new System.Drawing.Point(277, 85);
             this.textValorIngreso.Name = "textValorIngreso";
             this.textValorIngreso.Size = new System.Drawing.Size(142, 26);
             this.textValorIngreso.TabIndex = 73;
             this.textValorIngreso.Text = "$ 000.00";
+            this.textValorIngreso.Enter += new System.EventHandler(this.textValorIngreso_Enter);
+            this.textValorIngreso.Leave += new System.EventHandler(this.textValorIngreso_Leave);
+            this.textValorIngreso.Validated += new System.EventHandler(this.textValorIngreso_Validated);
             // 
             // panel27
             // 
@@ -1608,45 +1596,14 @@
             this.dataGridIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridIngresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Eliminar,
-            this.EditarIngreso,
-            this.Concepto,
-            this.Año,
-            this.Valor});
+            this.EditarIngreso});
             this.dataGridIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridIngresos.Location = new System.Drawing.Point(0, 0);
             this.dataGridIngresos.Name = "dataGridIngresos";
             this.dataGridIngresos.RowHeadersVisible = false;
             this.dataGridIngresos.Size = new System.Drawing.Size(427, 173);
             this.dataGridIngresos.TabIndex = 0;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Image = global::UI.Properties.Resources.borrar;
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            // 
-            // EditarIngreso
-            // 
-            this.EditarIngreso.HeaderText = "EditarIngreso";
-            this.EditarIngreso.Image = global::UI.Properties.Resources.selector;
-            this.EditarIngreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.EditarIngreso.Name = "EditarIngreso";
-            // 
-            // Concepto
-            // 
-            this.Concepto.HeaderText = "Concepto";
-            this.Concepto.Name = "Concepto";
-            // 
-            // Año
-            // 
-            this.Año.HeaderText = "Año";
-            this.Año.Name = "Año";
-            // 
-            // Valor
-            // 
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
+            this.dataGridIngresos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridIngresos_CellClick);
             // 
             // comboConceptoIngreso
             // 
@@ -1692,7 +1649,7 @@
             this.comboConceptoIngreso.FormattingEnabled = true;
             this.comboConceptoIngreso.Items.AddRange(new object[] {
             "Aporte del 12%"});
-            this.comboConceptoIngreso.Location = new System.Drawing.Point(135, 111);
+            this.comboConceptoIngreso.Location = new System.Drawing.Point(132, 86);
             this.comboConceptoIngreso.Name = "comboConceptoIngreso";
             this.comboConceptoIngreso.Size = new System.Drawing.Size(139, 24);
             this.comboConceptoIngreso.TabIndex = 70;
@@ -1700,6 +1657,7 @@
             // 
             // comboFinIntervalo2
             // 
+            this.comboFinIntervalo2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboFinIntervalo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboFinIntervalo2.FormattingEnabled = true;
             this.comboFinIntervalo2.Items.AddRange(new object[] {
@@ -1715,7 +1673,7 @@
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.comboFinIntervalo2.Location = new System.Drawing.Point(225, 48);
+            this.comboFinIntervalo2.Location = new System.Drawing.Point(760, 4);
             this.comboFinIntervalo2.Name = "comboFinIntervalo2";
             this.comboFinIntervalo2.Size = new System.Drawing.Size(103, 23);
             this.comboFinIntervalo2.TabIndex = 69;
@@ -1723,9 +1681,11 @@
             // 
             // label28
             // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(202, 52);
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label28.Location = new System.Drawing.Point(737, 8);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(16, 16);
             this.label28.TabIndex = 68;
@@ -1733,6 +1693,7 @@
             // 
             // comboInicioIntervalo2
             // 
+            this.comboInicioIntervalo2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboInicioIntervalo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboInicioIntervalo2.FormattingEnabled = true;
             this.comboInicioIntervalo2.Items.AddRange(new object[] {
@@ -1748,7 +1709,7 @@
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.comboInicioIntervalo2.Location = new System.Drawing.Point(93, 49);
+            this.comboInicioIntervalo2.Location = new System.Drawing.Point(628, 5);
             this.comboInicioIntervalo2.Name = "comboInicioIntervalo2";
             this.comboInicioIntervalo2.Size = new System.Drawing.Size(103, 23);
             this.comboInicioIntervalo2.TabIndex = 67;
@@ -1758,17 +1719,20 @@
             // 
             this.textTotalPresupuesto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textTotalPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalPresupuesto.Location = new System.Drawing.Point(136, 147);
+            this.textTotalPresupuesto.Location = new System.Drawing.Point(133, 122);
             this.textTotalPresupuesto.Name = "textTotalPresupuesto";
             this.textTotalPresupuesto.Size = new System.Drawing.Size(181, 26);
             this.textTotalPresupuesto.TabIndex = 62;
             this.textTotalPresupuesto.Text = "$ 000.00";
+            this.textTotalPresupuesto.Enter += new System.EventHandler(this.textTotalPresupuesto_Enter);
+            this.textTotalPresupuesto.Leave += new System.EventHandler(this.textTotalPresupuesto_Leave);
+            this.textTotalPresupuesto.Validated += new System.EventHandler(this.textTotalPresupuesto_Validated);
             // 
             // label30
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(32, 154);
+            this.label30.Location = new System.Drawing.Point(29, 129);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(98, 16);
             this.label30.TabIndex = 61;
@@ -1778,7 +1742,7 @@
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(33, 114);
+            this.label32.Location = new System.Drawing.Point(30, 89);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(85, 16);
             this.label32.TabIndex = 57;
@@ -1830,7 +1794,7 @@
             this.comboComite2.Items.AddRange(new object[] {
             "Comite",
             "Junta Local"});
-            this.comboComite2.Location = new System.Drawing.Point(135, 79);
+            this.comboComite2.Location = new System.Drawing.Point(132, 54);
             this.comboComite2.Name = "comboComite2";
             this.comboComite2.Size = new System.Drawing.Size(181, 24);
             this.comboComite2.TabIndex = 56;
@@ -1840,7 +1804,7 @@
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(33, 84);
+            this.label33.Location = new System.Drawing.Point(30, 59);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(59, 16);
             this.label33.TabIndex = 55;
@@ -1848,9 +1812,11 @@
             // 
             // label35
             // 
+            this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(33, 52);
+            this.label35.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label35.Location = new System.Drawing.Point(568, 8);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(54, 16);
             this.label35.TabIndex = 52;
@@ -1901,6 +1867,9 @@
             this.textValorEgreso.Size = new System.Drawing.Size(142, 26);
             this.textValorEgreso.TabIndex = 74;
             this.textValorEgreso.Text = "$ 000.00";
+            this.textValorEgreso.Enter += new System.EventHandler(this.textValorEgreso_Enter);
+            this.textValorEgreso.Leave += new System.EventHandler(this.textValorEgreso_Leave);
+            this.textValorEgreso.Validated += new System.EventHandler(this.textValorEgreso_Validated);
             // 
             // panel28
             // 
@@ -1917,45 +1886,14 @@
             this.dataGridEgresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridEgresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewImageColumn1,
-            this.EditarEgreso,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.EditarEgreso});
             this.dataGridEgresos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridEgresos.Location = new System.Drawing.Point(0, 0);
             this.dataGridEgresos.Name = "dataGridEgresos";
             this.dataGridEgresos.RowHeadersVisible = false;
             this.dataGridEgresos.Size = new System.Drawing.Size(427, 173);
             this.dataGridEgresos.TabIndex = 1;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn1.Image = global::UI.Properties.Resources.borrar;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // EditarEgreso
-            // 
-            this.EditarEgreso.HeaderText = "EditarEgreso";
-            this.EditarEgreso.Image = global::UI.Properties.Resources.selector;
-            this.EditarEgreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.EditarEgreso.Name = "EditarEgreso";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Concepto";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Año";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Valor";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridEgresos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEgresos_CellClick);
             // 
             // comboConceptoEgreso
             // 
@@ -2034,6 +1972,9 @@
             this.textEgresosTotales.Size = new System.Drawing.Size(181, 26);
             this.textEgresosTotales.TabIndex = 64;
             this.textEgresosTotales.Text = "$ 000.00";
+            this.textEgresosTotales.Enter += new System.EventHandler(this.textEgresosTotales_Enter);
+            this.textEgresosTotales.Leave += new System.EventHandler(this.textEgresosTotales_Leave);
+            this.textEgresosTotales.Validated += new System.EventHandler(this.textEgresosTotales_Validated);
             // 
             // label37
             // 
@@ -2164,9 +2105,14 @@
             // panel26
             // 
             this.panel26.BackColor = System.Drawing.Color.Black;
+            this.panel26.Controls.Add(this.label31);
             this.panel26.Controls.Add(this.comboAñoFondoLocal);
             this.panel26.Controls.Add(this.iconPictureBox10);
             this.panel26.Controls.Add(this.label39);
+            this.panel26.Controls.Add(this.comboFinIntervalo2);
+            this.panel26.Controls.Add(this.label28);
+            this.panel26.Controls.Add(this.label35);
+            this.panel26.Controls.Add(this.comboInicioIntervalo2);
             this.panel26.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel26.Location = new System.Drawing.Point(0, 0);
             this.panel26.Name = "panel26";
@@ -2175,6 +2121,7 @@
             // 
             // comboAñoFondoLocal
             // 
+            this.comboAñoFondoLocal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboAñoFondoLocal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboAñoFondoLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboAñoFondoLocal.FormattingEnabled = true;
@@ -2212,7 +2159,7 @@
             "2048",
             "2049",
             "2050"});
-            this.comboAñoFondoLocal.Location = new System.Drawing.Point(686, 3);
+            this.comboAñoFondoLocal.Location = new System.Drawing.Point(475, 4);
             this.comboAñoFondoLocal.Name = "comboAñoFondoLocal";
             this.comboAñoFondoLocal.Size = new System.Drawing.Size(87, 24);
             this.comboAñoFondoLocal.TabIndex = 12;
@@ -2397,18 +2344,18 @@
             // 
             // chartOtroConcepto
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartOtroConcepto.ChartAreas.Add(chartArea4);
+            chartArea116.Name = "ChartArea1";
+            this.chartOtroConcepto.ChartAreas.Add(chartArea116);
             this.chartOtroConcepto.Dock = System.Windows.Forms.DockStyle.Top;
-            legend4.Name = "Legend1";
-            this.chartOtroConcepto.Legends.Add(legend4);
+            legend116.Name = "Legend1";
+            this.chartOtroConcepto.Legends.Add(legend116);
             this.chartOtroConcepto.Location = new System.Drawing.Point(0, 911);
             this.chartOtroConcepto.Name = "chartOtroConcepto";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series4.Legend = "Legend1";
-            series4.Name = "SeriesOtroConcepto";
-            this.chartOtroConcepto.Series.Add(series4);
+            series116.ChartArea = "ChartArea1";
+            series116.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series116.Legend = "Legend1";
+            series116.Name = "SeriesOtroConcepto";
+            this.chartOtroConcepto.Series.Add(series116);
             this.chartOtroConcepto.Size = new System.Drawing.Size(413, 261);
             this.chartOtroConcepto.TabIndex = 12;
             this.chartOtroConcepto.Text = "chart";
@@ -2451,18 +2398,18 @@
             // 
             // chartVotos
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartVotos.ChartAreas.Add(chartArea5);
+            chartArea117.Name = "ChartArea1";
+            this.chartVotos.ChartAreas.Add(chartArea117);
             this.chartVotos.Dock = System.Windows.Forms.DockStyle.Top;
-            legend5.Name = "Legend1";
-            this.chartVotos.Legends.Add(legend5);
+            legend117.Name = "Legend1";
+            this.chartVotos.Legends.Add(legend117);
             this.chartVotos.Location = new System.Drawing.Point(0, 618);
             this.chartVotos.Name = "chartVotos";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series5.Legend = "Legend1";
-            series5.Name = "SeriesVotos";
-            this.chartVotos.Series.Add(series5);
+            series117.ChartArea = "ChartArea1";
+            series117.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series117.Legend = "Legend1";
+            series117.Name = "SeriesVotos";
+            this.chartVotos.Series.Add(series117);
             this.chartVotos.Size = new System.Drawing.Size(413, 261);
             this.chartVotos.TabIndex = 10;
             this.chartVotos.Text = "chart";
@@ -2505,18 +2452,18 @@
             // 
             // chartActividades
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartActividades.ChartAreas.Add(chartArea6);
+            chartArea118.Name = "ChartArea1";
+            this.chartActividades.ChartAreas.Add(chartArea118);
             this.chartActividades.Dock = System.Windows.Forms.DockStyle.Top;
-            legend6.Name = "Legend1";
-            this.chartActividades.Legends.Add(legend6);
+            legend118.Name = "Legend1";
+            this.chartActividades.Legends.Add(legend118);
             this.chartActividades.Location = new System.Drawing.Point(0, 325);
             this.chartActividades.Name = "chartActividades";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series6.Legend = "Legend1";
-            series6.Name = "SeriesOfrenda";
-            this.chartActividades.Series.Add(series6);
+            series118.ChartArea = "ChartArea1";
+            series118.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series118.Legend = "Legend1";
+            series118.Name = "SeriesOfrenda";
+            this.chartActividades.Series.Add(series118);
             this.chartActividades.Size = new System.Drawing.Size(413, 261);
             this.chartActividades.TabIndex = 8;
             this.chartActividades.Text = "chart";
@@ -2559,18 +2506,18 @@
             // 
             // chartOfrendas
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chartOfrendas.ChartAreas.Add(chartArea7);
+            chartArea119.Name = "ChartArea1";
+            this.chartOfrendas.ChartAreas.Add(chartArea119);
             this.chartOfrendas.Dock = System.Windows.Forms.DockStyle.Top;
-            legend7.Name = "Legend1";
-            this.chartOfrendas.Legends.Add(legend7);
+            legend119.Name = "Legend1";
+            this.chartOfrendas.Legends.Add(legend119);
             this.chartOfrendas.Location = new System.Drawing.Point(0, 32);
             this.chartOfrendas.Name = "chartOfrendas";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series7.Legend = "Legend1";
-            series7.Name = "SeriesOfrenda";
-            this.chartOfrendas.Series.Add(series7);
+            series119.ChartArea = "ChartArea1";
+            series119.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series119.Legend = "Legend1";
+            series119.Name = "SeriesOfrenda";
+            this.chartOfrendas.Series.Add(series119);
             this.chartOfrendas.Size = new System.Drawing.Size(413, 261);
             this.chartOfrendas.TabIndex = 6;
             this.chartOfrendas.Text = "chart1";
@@ -2680,6 +2627,46 @@
             this.label8.Size = new System.Drawing.Size(182, 16);
             this.label8.TabIndex = 0;
             this.label8.Text = "Porcentajes por comite";
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Image = global::UI.Properties.Resources.borrar;
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            // 
+            // EditarIngreso
+            // 
+            this.EditarIngreso.HeaderText = "EditarIngreso";
+            this.EditarIngreso.Image = global::UI.Properties.Resources.selector;
+            this.EditarIngreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.EditarIngreso.Name = "EditarIngreso";
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn1.Image = global::UI.Properties.Resources.borrar;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // EditarEgreso
+            // 
+            this.EditarEgreso.HeaderText = "EditarEgreso";
+            this.EditarEgreso.Image = global::UI.Properties.Resources.selector;
+            this.EditarEgreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.EditarEgreso.Name = "EditarEgreso";
+            // 
+            // label31
+            // 
+            this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label31.Location = new System.Drawing.Point(436, 8);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(38, 16);
+            this.label31.TabIndex = 70;
+            this.label31.Text = "Año:";
             // 
             // FormPresupuesto
             // 
@@ -2937,19 +2924,14 @@
         private System.Windows.Forms.DataGridView dataGridEgresos;
         private System.Windows.Forms.TextBox textValorIngreso;
         private System.Windows.Forms.TextBox textValorEgreso;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.DataGridViewImageColumn EditarIngreso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Concepto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Año;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn EditarEgreso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ComboBox comboFinIntervalo2;
         private FontAwesome.Sharp.IconButton btnGuardarEgreso;
         private FontAwesome.Sharp.IconButton btnModificarEgreso;
+        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        private System.Windows.Forms.DataGridViewImageColumn EditarIngreso;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn EditarEgreso;
+        private System.Windows.Forms.Label label31;
     }
 }

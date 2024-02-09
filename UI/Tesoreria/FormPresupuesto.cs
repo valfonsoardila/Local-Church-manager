@@ -48,6 +48,8 @@ namespace UI
         int otrosIngresos;
         int sumEgresos;
         int sumIgresos;
+        int sumIngresosLocales;
+        int sumEgresosLocales;
         string comite = "";
         bool detallo = false;
         bool encontrado = false;
@@ -60,6 +62,8 @@ namespace UI
             budgetLocalMaps = new BudgetLocalMaps();
             InitializeComponent();
             ObtenerUltimoRegistro();
+            ConsultarIngresosFondosLocales();
+            ConsultarEgresosFondosLocales();
             ConsultarPresupuestos();
             ObtenerIngresosYEgresos();
         }
@@ -83,18 +87,19 @@ namespace UI
             {
                 var db = FirebaseService.Database;
                 var presupuestosQuery = db.Collection("BudgetData");
-                var  presupuestosLocalesQuery = db.Collection("BudgetLocalData");
+                var presupuestosLocalesQuery = db.Collection("BudgetLocalData");
                 presupuestosGeneral = new List<BudgetData>();
                 // Realizar la suma directamente en la consulta Firestore
                 var snapshot = await presupuestosQuery.GetSnapshotAsync();
                 presupuestosGeneral = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetData>()).ToList();
                 if (presupuestosGeneral.Count > 0)
                 {
+                    presupuestosGeneral = presupuestosGeneral.OrderBy(budgetData => int.Parse(budgetData.Id)).ToList();
                     dataGridPresupuestos.DataSource = null;
                     dataGridPresupuestos.DataSource = presupuestosGeneral;
                     textTotal.Text = presupuestosGeneral.Count.ToString();
                     sumPresupuestos= snapshot.Documents.Sum(doc => doc.ConvertTo<BudgetData>().TotalPresupuesto);
-                    textTotalPresupuestos.Text = snapshot.Documents.Sum(doc => doc.ConvertTo<BudgetData>().TotalPresupuesto).ToString();
+                    textTotalPresupuestos.Text = LecturaCifra(snapshot.Documents.Sum(doc => doc.ConvertTo<BudgetData>().TotalPresupuesto));
                 }
                 else
                 {
@@ -157,6 +162,7 @@ namespace UI
                 ConsultarPresupuestos();
                 ObtenerDatosGenerales();
                 ObtenerDatosIndividuales();
+                ObtenerUltimoRegistro();
                 // Obtener referencia al formulario principal
                 FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
                 // Verificar si el formulario principal está abierto
@@ -508,7 +514,11 @@ namespace UI
             presupuestoIngresoLocal.FinIntervalo = comboFinIntervalo2.Text;
             presupuestoIngresoLocal.Comite = comboComite2.Text;
             presupuestoIngresoLocal.Concepto = comboConceptoIngreso.Text;
-            presupuestoIngresoLocal.Valor = textValorIngreso.Text;
+            string cantidadConSigno = textValorIngreso.Text; // Esto contiene "$ 30000"
+            string cantidadSinSigno = cantidadConSigno.Replace("$", "").Trim(); // Esto quita el signo "$"
+            string cantidadSinPuntos = cantidadSinSigno.Replace(".", "").Trim();
+            int cantidadEntera = int.Parse(cantidadSinPuntos); // Convierte el valor a un entero
+            presupuestoIngresoLocal.Valor = cantidadEntera;
             return presupuestoIngresoLocal;
         }
         private PresupuestoEgresoLocal MapearPresupuestoEgresoLocal()
@@ -520,7 +530,11 @@ namespace UI
             presupuestoEgresoLocal.FinIntervalo = comboFinIntervalo2.Text;
             presupuestoEgresoLocal.Comite = comboComite2.Text;
             presupuestoEgresoLocal.Concepto = comboConceptoEgreso.Text;
-            presupuestoEgresoLocal.Valor = textValorEgreso.Text;
+            string cantidadConSigno = textValorEgreso.Text; // Esto contiene "$ 30000"
+            string cantidadSinSigno = cantidadConSigno.Replace("$", "").Trim(); // Esto quita el signo "$"
+            string cantidadSinPuntos = cantidadSinSigno.Replace(".", "").Trim();
+            int cantidadEntera = int.Parse(cantidadSinPuntos); // Convierte el valor a un entero
+            presupuestoEgresoLocal.Valor = cantidadEntera;
             return presupuestoEgresoLocal;
         }
         private void LimpiarFondoLocal()
@@ -528,7 +542,7 @@ namespace UI
             comboAñoFondoLocal.Text = DateTime.Now.Year.ToString();
             comboInicioIntervalo2.Text="Enero";
             comboFinIntervalo2.Text="Enero";
-            comboComite2.Text="Comite";
+            comboComite2.Text="Junta Local";
             comboConceptoIngreso.Text="Aporte del 12%";
             comboConceptoEgreso.Text="Santa cena";
             textValorEgreso.Text= "$ 000.00";
@@ -785,6 +799,8 @@ namespace UI
             formGenerarDocumento.ingress = ingressData;
             formGenerarDocumento.egress = egressData;
             formGenerarDocumento.presupuestosGeneral = presupuestosGeneral;
+            formGenerarDocumento.budgetIngressLocals = budgetIngressLocal;
+            formGenerarDocumento.budgetEgressLocals = budgetEgressLocal;
             formGenerarDocumento.Show();
         }
         private async void FiltroPorAño(string filtro)
@@ -924,12 +940,19 @@ namespace UI
 
                 // Obtener el máximo número de comprobante directamente desde Firestore
                 var budgetQuery = db.Collection("BudgetData").OrderByDescending("Id");
-                var snapshot = await budgetQuery.GetSnapshotAsync();
-
-                if (snapshot.Documents.Count > 0)
+                var budgetIngressLocal = db.Collection("BudgetIngressLocalData").OrderByDescending("Id");
+                var budgetEgressLocal = db.Collection("BudgetEgressLocalData").OrderByDescending("Id");
+                var budgetSnapshot = await budgetQuery.GetSnapshotAsync();
+                var budgetIngressLocalSnapshot = await budgetIngressLocal.GetSnapshotAsync();
+                var budgetEgressLocalSnapshot = await budgetEgressLocal.GetSnapshotAsync();
+                if (budgetSnapshot.Documents.Count > 0)
                 {
-                    var presupuestoCurrent = snapshot.Documents.Count;
-                    int numeroMayor = presupuestoCurrent + 1;
+                    var idPresupuestoCurrent = budgetSnapshot.Documents.Count!=0?budgetSnapshot.Documents.Max(p => Convert.ToInt32(p.Id)):1;
+                    var idIngresosFondosCurrent = budgetIngressLocalSnapshot.Documents.Count!=0?budgetIngressLocalSnapshot.Documents.Max(p => Convert.ToInt32(p.Id)):1;
+                    var idEgresosFondosCurrent = budgetEgressLocalSnapshot.Documents.Count!=0?budgetEgressLocalSnapshot.Documents.Max(p => Convert.ToInt32(p.Id)):1;
+                    // Usar LINQ para encontrar el máximo
+                    int maximo = new[] { idPresupuestoCurrent, idIngresosFondosCurrent, idEgresosFondosCurrent }.Max();
+                    int numeroMayor = maximo + 1;
                     ultimoId = numeroMayor;
                 }
                 else
@@ -964,7 +987,6 @@ namespace UI
                 }
             }
         }
-
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             //Obtenemos los datos del usuario y construimos el dato de la nube
@@ -1016,7 +1038,6 @@ namespace UI
                 }
             }
         }
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
             //Obtenemos los datos del usuario y construimos el dato de la nube
@@ -1068,6 +1089,116 @@ namespace UI
                 }
             }
         }
+        private async void ConsultarIngresosFondosLocales()
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var presupuestosQuery = db.Collection("BudgetIngressLocalData");
+                budgetIngressLocal = new List<BudgetIngressLocalData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await presupuestosQuery.GetSnapshotAsync();
+                budgetIngressLocal = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetIngressLocalData>()).ToList();
+                if (budgetIngressLocal.Count > 0)
+                {
+                    budgetIngressLocal = budgetIngressLocal.OrderBy(budgetData => int.Parse(budgetData.Id)).ToList();
+                    dataGridIngresos.DataSource = null;
+                    dataGridIngresos.DataSource = budgetIngressLocal;
+                    sumIngresosLocales = snapshot.Documents.Sum(doc => Convert.ToInt32(doc.ConvertTo<BudgetIngressLocalData>().Valor));
+                    textTotalPresupuesto.Text = LecturaCifra(sumIngresosLocales);
+                    sumPresupuestos = sumPresupuestos + sumIngresosLocales;
+                }
+                else
+                {
+                    dataGridPresupuestos.DataSource = null;
+                    textTotalPresupuesto.Text = "$ 000.00";
+                }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
+                respuesta = presupuestoService.ConsultarTodos();
+                if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
+                {
+                    dataGridPresupuestos.DataSource = null;
+                    presupuestosComites = respuesta.Presupuestos.ToList();
+                    dataGridPresupuestos.DataSource = presupuestosComites;
+                    Borrar.Visible = true;
+                    textTotal.Text = presupuestoService.Totalizar().Cuenta.ToString();
+                }
+            }
+        }
+        private async void ConsultarEgresosFondosLocales()
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var presupuestosQuery = db.Collection("BudgetEgressLocalData");
+                budgetEgressLocal = new List<BudgetEgressLocalData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await presupuestosQuery.GetSnapshotAsync();
+                budgetEgressLocal = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetEgressLocalData>()).ToList();
+                if (budgetEgressLocal.Count > 0)
+                {
+                    budgetEgressLocal = budgetEgressLocal.OrderBy(budgetData => int.Parse(budgetData.Id)).ToList();
+                    dataGridEgresos.DataSource = null;
+                    dataGridEgresos.DataSource = budgetEgressLocal;
+                    sumEgresosLocales = snapshot.Documents.Sum(doc => Convert.ToInt32(doc.ConvertTo<BudgetEgressLocalData>().Valor));
+                    textEgresosTotales.Text = LecturaCifra(sumEgresosLocales);
+                }
+                else
+                {
+                    dataGridPresupuestos.DataSource = null;
+                    textTotalPresupuesto.Text = "$ 000.00";
+                }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            } 
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                ConsultaPresupuestoRespuesta respuesta = new ConsultaPresupuestoRespuesta();
+                respuesta = presupuestoService.ConsultarTodos();
+                if (respuesta.Presupuestos.Count != 0 && respuesta.Presupuestos != null)
+                {
+                    dataGridPresupuestos.DataSource = null;
+                    presupuestosComites = respuesta.Presupuestos.ToList();
+                    dataGridPresupuestos.DataSource = presupuestosComites;
+                    Borrar.Visible = true;
+                    textTotal.Text = presupuestoService.Totalizar().Cuenta.ToString();
+                }
+            }
+
+        }
         private void btnGuardarIngreso_Click(object sender, EventArgs e)
         {
             //Obtenemos los datos del usuario y construimos el dato de la nube
@@ -1082,7 +1213,7 @@ namespace UI
                 // Guardamos localmente
                 string msg = "Ingreso agregado correctamente al presupuesto de junta local";
                 MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ConsultarPresupuestos();
+                ConsultarIngresosFondosLocales();
                 CalculoDeSaldo();
                 ObtenerUltimoRegistro();
                 LimpiarFondoLocal();
@@ -1120,7 +1251,55 @@ namespace UI
 
         private void btnModificarIngreso_Click(object sender, EventArgs e)
         {
-
+            //Obtenemos los datos del usuario y construimos el dato de la nube
+            PresupuestoIngresoLocal presupuestoIngresoLocal = MapearPresupuestoIngresoLocal();
+            try
+            {
+                //Guardamos en la nube
+                var db = FirebaseService.Database;
+                var budgetIngressLocalNuevo = budgetLocalMaps.BudgetIngressLocalMap(presupuestoIngresoLocal);
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetIngressLocalData").Document(budgetIngressLocalNuevo.Id);
+                docRef.SetAsync(budgetIngressLocalNuevo);
+                // Mostramos el mensaje de modificacion
+                string msg = "Se ha modificado el registro "+ budgetIngressLocalNuevo.Id+" correctamente";
+                MessageBox.Show(msg, "Modificado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarIngresosFondosLocales();
+                CalculoDeSaldo();
+                ObtenerUltimoRegistro();
+                LimpiarFondoLocal();
+                tabPresupuestos.SelectedIndex = 0;
+                btnGuardarIngreso.Enabled = true;
+                btnModificarIngreso.Enabled = false;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                int count = ex.Message.Length;
+                if (count > 0)
+                {
+                    // Guardamos localmente
+                    //var msg = presupuestoService.Guardar(presupuestoIngresoLocal);
+                    //MessageBox.Show(msg, "Modificado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConsultarPresupuestos();
+                    Limpiar();
+                    tabPresupuestos.SelectedIndex = 0;
+                }
+            }
         }
 
         private void btnGuardarEgreso_Click(object sender, EventArgs e)
@@ -1132,12 +1311,12 @@ namespace UI
                 //Guardamos en la nube
                 var db = FirebaseService.Database;
                 var budgetEgressLocalNuevo = budgetLocalMaps.BudgetEgressLocalMap(presupuestoEgresoLocal);
-                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetEgressLocalData").Document(presupuestoEgresoLocal.Id.ToString());
-                docRef.SetAsync(presupuestoEgresoLocal);
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetEgressLocalData").Document(budgetEgressLocalNuevo.Id);
+                docRef.SetAsync(budgetEgressLocalNuevo);
                 // Guardamos localmente
-                string msg = "Ingreso agregado correctamente al presupuesto de junta local";
+                string msg = "Egreso agregado correctamente al presupuesto de junta local";
                 MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ConsultarPresupuestos();
+                ConsultarEgresosFondosLocales();
                 CalculoDeSaldo();
                 ObtenerUltimoRegistro();
                 LimpiarFondoLocal();
@@ -1164,7 +1343,7 @@ namespace UI
                 if (count > 0)
                 {
                     // Guardamos localmente
-                    //var msg = presupuestoService.Guardar(presupuestoEgresoLocal);
+                    //var msg = presupuestoService.Guardar(presupuestoIngresoLocal);
                     //MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ConsultarPresupuestos();
                     //Limpiar();
@@ -1175,7 +1354,55 @@ namespace UI
 
         private void btnModificarEgreso_Click(object sender, EventArgs e)
         {
-
+            //Obtenemos los datos del usuario y construimos el dato de la nube
+            PresupuestoEgresoLocal presupuestoEgresoLocal = MapearPresupuestoEgresoLocal();
+            try
+            {
+                //Guardamos en la nube
+                var db = FirebaseService.Database;
+                var budgetEgressLocalNuevo = budgetLocalMaps.BudgetEgressLocalMap(presupuestoEgresoLocal);
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetEgressLocalData").Document(budgetEgressLocalNuevo.Id);
+                docRef.SetAsync(budgetEgressLocalNuevo);
+                // Mostramos el mensaje de modificacion
+                string msg = "Se ha modificado el registro " + budgetEgressLocalNuevo.Id + " correctamente";
+                MessageBox.Show(msg, "Modificado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarEgresosFondosLocales();
+                CalculoDeSaldo();
+                ObtenerUltimoRegistro();
+                LimpiarFondoLocal();
+                tabPresupuestos.SelectedIndex = 0;
+                btnGuardarEgreso.Enabled = true;
+                btnModificarEgreso.Enabled = false;
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                int count = ex.Message.Length;
+                if (count > 0)
+                {
+                    // Guardamos localmente
+                    //var msg = presupuestoService.Guardar(presupuestoEgresoLocal);
+                    //MessageBox.Show(msg, "Modificado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConsultarPresupuestos();
+                    Limpiar();
+                    tabPresupuestos.SelectedIndex = 0;
+                }
+            }
         }
         private void textOfrendas_Enter(object sender, EventArgs e)
         {
@@ -1336,6 +1563,354 @@ namespace UI
         private void btnRegistrarPresupuestos_Click(object sender, EventArgs e)
         {
             tabPresupuestos.SelectedIndex = 1;
+        }
+
+        private void textValorIngreso_Enter(object sender, EventArgs e)
+        {
+            if (textValorIngreso.Text != "")
+            {
+                textValorIngreso.Text = "";
+            }
+        }
+
+        private void textValorIngreso_Leave(object sender, EventArgs e)
+        {
+            if (textValorIngreso.Text == "")
+            {
+                textValorIngreso.Text = "$ 000.00";
+            }
+        }
+
+        private void textValorIngreso_Validated(object sender, EventArgs e)
+        {
+            if (textValorIngreso.Text != "" && textValorIngreso.Text != "$ 000.00")
+            {
+                int valorIngreso = int.Parse(textValorIngreso.Text);
+                textValorIngreso.Text = LecturaCifra(valorIngreso);
+            }
+        }
+
+        private void textTotalPresupuesto_Enter(object sender, EventArgs e)
+        {
+            if (textTotalPresupuesto.Text != "")
+            {
+                textTotalPresupuesto.Text = "";
+            }
+        }
+
+        private void textTotalPresupuesto_Leave(object sender, EventArgs e)
+        {
+            if (textTotalPresupuesto.Text == "")
+            {
+                textTotalPresupuesto.Text = "$ 000.00";
+            }
+        }
+
+        private void textTotalPresupuesto_Validated(object sender, EventArgs e)
+        {
+            if (textTotalPresupuesto.Text != "" && textTotalPresupuesto.Text != "$ 000.00")
+            {
+                int valorIngreso = int.Parse(textTotalPresupuesto.Text);
+                textTotalPresupuesto.Text = LecturaCifra(valorIngreso);
+            }
+        }
+
+        private void textValorEgreso_Enter(object sender, EventArgs e)
+        {
+            if (textValorEgreso.Text != "")
+            {
+                textValorEgreso.Text = "";
+            }
+        }
+
+        private void textValorEgreso_Leave(object sender, EventArgs e)
+        {
+            if (textValorEgreso.Text == "")
+            {
+                textValorEgreso.Text = "$ 000.00";
+            }
+        }
+
+        private void textValorEgreso_Validated(object sender, EventArgs e)
+        {
+            if (textValorEgreso.Text != "" && textValorEgreso.Text != "$ 000.00")
+            {
+                int valorIngreso = int.Parse(textValorEgreso.Text);
+                textValorEgreso.Text = LecturaCifra(valorIngreso);
+            }
+        }
+
+        private void textEgresosTotales_Enter(object sender, EventArgs e)
+        {
+            if (textEgresosTotales.Text != "")
+            {
+                textEgresosTotales.Text = "";
+            }
+        }
+
+        private void textEgresosTotales_Leave(object sender, EventArgs e)
+        {
+            if (textEgresosTotales.Text == "")
+            {
+                textEgresosTotales.Text = "$ 000.00";
+            }
+        }
+
+        private void textEgresosTotales_Validated(object sender, EventArgs e)
+        {
+            if (textEgresosTotales.Text != "" && textEgresosTotales.Text != "$ 000.00")
+            {
+                int valorIngreso = int.Parse(textEgresosTotales.Text);
+                textEgresosTotales.Text = LecturaCifra(valorIngreso);
+            }
+        }
+        private async void EliminarIngresoFondo(int id)
+        {
+            try
+            {
+                //Elimina primero de firebase o la nube
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetIngressLocalData").Document(id.ToString());
+                await docRef.DeleteAsync();
+                //string mensaje = presupuestoService.Eliminar(id);
+                MessageBox.Show("El registro " + id + " se ha eliminado satisfactoriamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridIngresos.DataSource = null;
+                ConsultarIngresosFondosLocales();
+                ObtenerDatosGenerales();
+                ObtenerDatosIndividuales();
+                ObtenerUltimoRegistro();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                string mensaje = presupuestoService.Eliminar(id);
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarIngresosFondosLocales();
+            }
+        }
+        private async void EliminarEgresoFondo(int id)
+        {
+            try
+            {
+                //Elimina primero de firebase o la nube
+                var db = FirebaseService.Database;
+                Google.Cloud.Firestore.DocumentReference docRef = db.Collection("BudgetEgressLocalData").Document(id.ToString());
+                await docRef.DeleteAsync();
+                //string mensaje = presupuestoService.Eliminar(id);
+                MessageBox.Show("El registro " + id + " se ha eliminado satisfactoriamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridEgresos.DataSource = null;
+                ConsultarEgresosFondosLocales();
+                ObtenerDatosGenerales();
+                ObtenerDatosIndividuales();
+                ObtenerUltimoRegistro();
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                string mensaje = presupuestoService.Eliminar(id);
+                MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConsultarEgresosFondosLocales();
+            }
+        }
+        private async void FiltrarIngresosLocales(int id)
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var presupuestoIngressLocalQuery = db.Collection("BudgetIngressLocalData");
+                var presupuestos = new List<BudgetIngressLocalData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await presupuestoIngressLocalQuery.GetSnapshotAsync();
+                presupuestos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetIngressLocalData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var presupuestosFiltrados = presupuestos.Where(presupuesto => presupuesto.Id == id.ToString()).ToList();
+                if (presupuestosFiltrados.Any())
+                {
+                    var presupuestoFiltrado = presupuestosFiltrados.First(); // Obtener el primer elemento de la lista
+                    //encontrado = true;
+                    ultimoId = Convert.ToInt32(presupuestoFiltrado.Id);
+                    comboAñoFondoLocal.Text = presupuestoFiltrado.AñoPresupuesto;
+                    comboInicioIntervalo2.Text = presupuestoFiltrado.InicioIntervalo;
+                    comboFinIntervalo2.Text = presupuestoFiltrado.FinIntervalo;
+                    comboComite2.Text = presupuestoFiltrado.Comite;
+                    comboConceptoIngreso.Text = presupuestoFiltrado.Concepto;
+                    textValorIngreso.Text = LecturaCifra(presupuestoFiltrado.Valor);
+                    encontrado = true;
+                    tabPresupuestos.SelectedIndex = 2;
+                }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                BusquedaPresupuestoRespuesta respuesta = new BusquedaPresupuestoRespuesta();
+                respuesta = presupuestoService.BuscarPorIdentificacion(id);
+                var registro = respuesta.Presupuesto;
+                if (registro != null)
+                {
+                    encontrado = true;
+                    var presupuestos = new List<PresupuestoComite> { registro };
+                    comboInicioIntervalo.Text = presupuestos[0].InicioIntervalo;
+                    comboFinIntervalo.Text = presupuestos[0].FinIntervalo;
+                    comboComite.Text = presupuestos[0].Comite;
+                    textOfrendas.Text = presupuestos[0].Ofrenda.ToString();
+                    textActividades.Text = presupuestos[0].Actividad.ToString();
+                    textVotos.Text = presupuestos[0].Voto.ToString();
+                    textPresupuesto.Text = presupuestos[0].TotalPresupuesto.ToString();
+                    textEgresos.Text = presupuestos[0].TotalEgresos.ToString();
+                }
+            }
+        }
+        private async void FiltrarEgresosLocales(int id)
+        {
+            try
+            {
+                var db = FirebaseService.Database;
+                var presupuestoEgressLocalQuery = db.Collection("BudgetEgressLocalData");
+                var presupuestos = new List<BudgetEgressLocalData>();
+                // Realizar la suma directamente en la consulta Firestore
+                var snapshot = await presupuestoEgressLocalQuery.GetSnapshotAsync();
+                presupuestos = snapshot.Documents.Select(docsnap => docsnap.ConvertTo<BudgetEgressLocalData>()).ToList();
+                // Filtrar elementos según el campo Valor y la variable id
+                var presupuestosFiltrados = presupuestos.Where(presupuesto => presupuesto.Id == id.ToString()).ToList();
+                if (presupuestosFiltrados.Any())
+                {
+                    var presupuestoFiltrado = presupuestosFiltrados.First(); // Obtener el primer elemento de la lista
+                    //encontrado = true;
+                    ultimoId = Convert.ToInt32(presupuestoFiltrado.Id);
+                    comboAñoFondoLocal.Text = presupuestoFiltrado.AñoPresupuesto;
+                    comboInicioIntervalo2.Text = presupuestoFiltrado.InicioIntervalo;
+                    comboFinIntervalo2.Text = presupuestoFiltrado.FinIntervalo;
+                    comboComite2.Text = presupuestoFiltrado.Comite;
+                    comboConceptoEgreso.Text = presupuestoFiltrado.Concepto;
+                    textValorEgreso.Text = LecturaCifra(Convert.ToInt32(presupuestoFiltrado.Valor));
+                    encontrado = true;
+                    tabPresupuestos.SelectedIndex = 2;
+                }
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnSuccesfulOperations(new SuccesfullEventArgs("Succesfull"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obtener referencia al formulario principal
+                FormMenu formPrincipal = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+                // Verificar si el formulario principal está abierto
+                if (formPrincipal != null)
+                {
+                    // Lanzar el evento para notificar al formulario principal sobre la excepción
+                    formPrincipal.OnExcepcionOcurrida(new ExcepcionEventArgs(ex.Message));
+                }
+                BusquedaPresupuestoRespuesta respuesta = new BusquedaPresupuestoRespuesta();
+                respuesta = presupuestoService.BuscarPorIdentificacion(id);
+                var registro = respuesta.Presupuesto;
+                if (registro != null)
+                {
+                    encontrado = true;
+                    var presupuestos = new List<PresupuestoComite> { registro };
+                    comboInicioIntervalo.Text = presupuestos[0].InicioIntervalo;
+                    comboFinIntervalo.Text = presupuestos[0].FinIntervalo;
+                    comboComite.Text = presupuestos[0].Comite;
+                    textOfrendas.Text = presupuestos[0].Ofrenda.ToString();
+                    textActividades.Text = presupuestos[0].Actividad.ToString();
+                    textVotos.Text = presupuestos[0].Voto.ToString();
+                    textPresupuesto.Text = presupuestos[0].TotalPresupuesto.ToString();
+                    textEgresos.Text = presupuestos[0].TotalEgresos.ToString();
+                }
+            }
+        }
+        private void dataGridIngresos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridIngresos.DataSource != null)
+            {
+                if (dataGridIngresos.Columns[e.ColumnIndex].Name == "Eliminar")
+                {
+                    id = Convert.ToInt32(dataGridIngresos.CurrentRow.Cells["Id"].Value.ToString());
+                    EliminarIngresoFondo(id);
+                    ConsultarIngresosFondosLocales();
+                }
+                else
+                {
+                    if (dataGridIngresos.Columns[e.ColumnIndex].Name == "EditarIngreso")
+                    {
+                        id = Convert.ToInt32(dataGridIngresos.CurrentRow.Cells["Id"].Value.ToString());
+                        btnGuardarIngreso.Enabled = false;
+                        btnModificarIngreso.Enabled = true;
+                        FiltrarIngresosLocales(id);
+                    }
+                }
+            }
+        }
+        private void dataGridEgresos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridEgresos.DataSource != null)
+            {
+                if (dataGridEgresos.Columns[e.ColumnIndex].Name == "Eliminar")
+                {
+                    id = Convert.ToInt32(dataGridEgresos.CurrentRow.Cells["Id"].Value.ToString());
+                    EliminarEgresoFondo(id);
+                    ConsultarEgresosFondosLocales();
+                }
+                else
+                {
+                    if (dataGridEgresos.Columns[e.ColumnIndex].Name == "EditarEgreso")
+                    {
+                        id = Convert.ToInt32(dataGridEgresos.CurrentRow.Cells["Id"].Value.ToString());
+                        btnGuardarEgreso.Enabled = false;
+                        btnModificarEgreso.Enabled = true;
+                        FiltrarEgresosLocales(id);
+                    }
+                }
+            }
         }
     }
 }

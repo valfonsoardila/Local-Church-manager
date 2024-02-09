@@ -350,7 +350,7 @@
             "Ayuda social",
             "Aporte al distrito",
             "EPS del Pastor",
-            "Aporte a comite",
+            "Aporte al comite",
             "Asamblea de pastores",
             "Insumos de tesoreria",
             "Insumos de secretaria ",

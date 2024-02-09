@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Xceed.Document.NET;
 using Xceed.Words.NET;
 using System.Drawing;
+using Cloud.FirebaseData;
 
 namespace UI
 {
@@ -24,10 +25,123 @@ namespace UI
         public List<MeetingsData> meetings;
         public List<NotesData> notes;
         public List<SympathizerData> sympathizers;
-        private readonly string[] comites = { "Junta local", "Damas Dorcas", "Jovenes", "Escuela dominical", "Evangelismo", "Adolescentes", "Musica", "Caballeros", "Familia", "Cultivadores", "Obra social", "Entre señas", "Damas jovenes", "Restauracion", "Sonido"};
+        public List<BudgetIngressLocalData> budgetIngressLocals;
+        public List<BudgetEgressLocalData> budgetEgressLocals;
+
+        private readonly string[] comites = {
+            "Junta Local",
+            "Damas Dorcas",
+            "Jovenes",
+            "Escuela Dominical",
+            "Misiones y Evangelismo",
+            "Adolescentes",
+            "Alabanza",
+            "Caballeros",
+            "Familia",
+            "Cultivadores",
+            "Obra Social",
+            "Entre Señas",
+            "Damas Jovenes",
+            "Primeros Auxilios",
+            "Vigilancia",
+            "Asistencia Escuela Dominical",
+            "Labores",
+            "Restauracion",
+            "Sonido",
+            "Edad Dorada",
+            "Intercesión",
+            "Decom",
+            "Ujieres",
+            "Decoración",
+            "Donacion",
+            "Aporte de Liquidación"
+        };
         private readonly string[] rutaDeDocumentosSecretaria = { "Doc's", "Secretaria" };
         private readonly string[] rutaDeDocumentosTesoreria = { "Doc's", "Tesoreria" };
-        // Reportes de tesoreria
+        //Reporte de tesoreria Junta local
+        private List<int> ObtenerValoresJuntaLocalPorConceptos(string comite, string concepto)
+        {
+            int sumConceptIngress = 0;
+            int sumConceptEgress = 0;
+            int valorBase = 0;
+            List<int> valoresRetorno = new List<int>(); ;
+            string[] conceptosIngresos = { "Saldo del año anterior", "Ofrenda Domingo", "Ofrenda Jueves", "Aporte del 12%", "Otro ingreso"};
+            string[] filasBase = { "SUBTOTAL INGRESOS, SUBTOTAL EGRESOS, EGRESOS, TOTAL, DEL FONDO LOCAL" };
+            //Determinar los ingresos
+            if (conceptosIngresos.Contains(concepto))
+            {
+                for (int i= 0; i < ingress.Count; i++)
+                {
+                    if (ingress[i].Comite.ToUpperInvariant().Trim() == comite)
+                    {
+                        if (ingress[i].Concepto == concepto)
+                        {
+                            sumConceptIngress = sumConceptIngress + ingress[i].Valor;
+                        }
+                    }
+                }
+                valoresRetorno.Add(sumConceptIngress);
+            }
+            else
+            {
+                if (filasBase.Contains(concepto))
+                {
+                    for(int i=0; i< filasBase.Length; i++)
+                    {
+                        if (filasBase[i]=="SUBTOTAL INGRESOS")
+                        {
+                            for (int j = 0; j < ingress.Count; j++)
+                            {
+                                if (ingress[j].Comite.ToUpperInvariant().Trim() == comite)
+                                {
+                                    valorBase = valorBase + ingress[j].Valor;
+                                }
+                            }
+                            valoresRetorno.Add(valorBase);
+                        }
+                        else
+                        {
+                            if (filasBase[i] == "SUBTOTAL EGRESOS")
+                            {
+                                for (int j = 0; j < egress.Count; j++)
+                                {
+                                    if (egress[j].Comite.ToUpperInvariant().Trim() == comite)
+                                    {
+                                        valorBase = valorBase + egress[j].Valor;
+                                    }
+                                }
+                                valoresRetorno.Add(valorBase);
+                            }
+                            else
+                            {
+                                if (filasBase[i] == "TOTAL, DEL FONDO LOCAL")
+                                {
+                                    valoresRetorno.Add(valorBase);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //Determina los egresos
+                    for (int i = 0; i < egress.Count; i++)
+                    {
+                        if (egress[i].Comite.ToUpperInvariant().Trim() == comite)
+                        {
+                            if (egress[i].Concepto == concepto)
+                            {
+                                sumConceptEgress = sumConceptEgress + egress[i].Valor;
+                            }
+                        }
+                    }
+                    valoresRetorno.Add(sumConceptEgress);
+                }
+            }
+            valoresRetorno.Add(0);
+            return valoresRetorno;
+        }
+        // Reportes de tesoreria Comite
         private List<int> ObtenerValoresComitePorConcepto(string comite, string concepto)
         {
             List<int> valores = new List<int>();
@@ -119,7 +233,7 @@ namespace UI
                     {
                         //Recorre celda tras celda de forma vertical
                         string contenidoCelda = tablaDeValores.Rows[i].Cells[0].Paragraphs[0].Text.Trim();
-                        comiteActual = comites[indexComite].ToUpperInvariant();
+                        comiteActual = comites[indexComite].ToUpperInvariant().Trim();
                         if (indexComite + 1 <= comites.Length)
                         {
                             comiteSiguiente = comites[indexComite + 1].ToUpperInvariant();
@@ -132,7 +246,9 @@ namespace UI
                                     string conceptoRubros = tablaDeValores.Rows[j].Cells[0].Paragraphs[0].Text.Trim();
                                     if (conceptoRubros != comiteActual && conceptoRubros != comiteSiguiente)
                                     {
-                                        List<int> valoresPorConcepto = ObtenerValoresComitePorConcepto(comiteActual, conceptoRubros);
+                                        List<int> valoresPorConcepto = comiteActual!="JUNTA LOCAL"?
+                                            ObtenerValoresComitePorConcepto(comiteActual, conceptoRubros):
+                                            ObtenerValoresJuntaLocalPorConceptos(comiteActual, conceptoRubros);
                                         int valor = valoresPorConcepto[0];
                                         int porcentaje = valoresPorConcepto[1];
                                         //Inserta valor

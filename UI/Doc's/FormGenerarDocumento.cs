@@ -1,5 +1,6 @@
 ﻿using BLL;
 using Cloud;
+using Cloud.FirebaseData;
 using Entity;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ namespace UI
         public List<MeetingsData> meetings;
         public List<NotesData> notes;
         public List<SympathizerData> sympathizers;
+        public List<BudgetIngressLocalData> budgetIngressLocals;
+        public List<BudgetEgressLocalData> budgetEgressLocals;
         string opcionSeleccionada = "";
         string genero = "";
         public FormGenerarDocumento()
@@ -37,6 +40,8 @@ namespace UI
             validaciones = new Validaciones();
             reporte = new Reporte();
             miembros = new List<Miembro>();
+            budgetIngressLocals = new List<BudgetIngressLocalData>();
+            budgetEgressLocals = new List<BudgetEgressLocalData>();
             InitializeComponent();
             ObtenerRol();
         }
@@ -210,6 +215,8 @@ namespace UI
                                                     reporte.presupuestosGeneral = presupuestosGeneral;
                                                     reporte.egress = egresosPorAño;
                                                     reporte.ingress = ingresosPorAño;
+                                                    reporte.budgetIngressLocals = budgetIngressLocals;
+                                                    reporte.budgetEgressLocals = budgetEgressLocals;
                                                     reporte.GenerarInformeGeneralTesoreria();
                                                 }
                                                 else

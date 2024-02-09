@@ -13,7 +13,7 @@ namespace UI
     public class BudgetLocalMaps
     {
         BudgetIngressLocalData budgetIngressLocalData;
-        BudgetEgressLocalData budgetEgressLocalData;
+        //BudgetEgressLocalData budgetEgressLocalData;
         public BudgetIngressLocalData BudgetIngressLocalMap(PresupuestoIngresoLocal presupuesto)
         {
             if (CheckIfBudgetIngressLocalAlreadyExist(presupuesto.Id.ToString()))

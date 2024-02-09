@@ -23,8 +23,9 @@ namespace Cloud.FirebaseData
         [FirestoreProperty]
         public string Concepto { get; set; }
         [FirestoreProperty]
-        public string Valor { get; set; }
+        public int Valor { get; set; }
     }
+    [FirestoreData]
     public class BudgetEgressLocalData
     {
         [FirestoreProperty]
@@ -40,6 +41,6 @@ namespace Cloud.FirebaseData
         [FirestoreProperty]
         public string Concepto { get; set; }
         [FirestoreProperty]
-        public string Valor { get; set; }
+        public int Valor { get; set; }
     }
 }
