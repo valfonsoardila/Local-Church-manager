@@ -64,7 +64,7 @@ namespace UI
             int sumConceptIngress = 0;
             int sumConceptEgress = 0;
             int valorBase = 0;
-            List<int> valoresRetorno = new List<int>(); ;
+            List<int> valoresRetorno = new List<int>();
             string[] conceptosIngresos = { "Saldo del año anterior", "Ofrenda Domingo", "Ofrenda Jueves", "Aporte del 12%", "Otro ingreso"};
             string[] filasBase = { "SUBTOTAL INGRESOS, SUBTOTAL EGRESOS, EGRESOS, TOTAL, DEL FONDO LOCAL" };
             //Determinar los ingresos

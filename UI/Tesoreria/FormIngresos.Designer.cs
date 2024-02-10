@@ -183,48 +183,22 @@
             // comboConcepto
             // 
             this.comboConcepto.AutoCompleteCustomSource.AddRange(new string[] {
-            "Ingeniero(a) de sistemas",
-            "Ingeniero(a) de electronica",
-            "Ingeniero(a) Industrial",
-            "Enfermero(a)",
-            "Electricista",
-            "Albañil",
-            "Abogado",
-            "Acesor comercial",
-            "Estudiante",
-            "Medico(a)",
-            "Farmaceutico(a)",
-            "Odontologo(a)",
-            "Fontaneros(a)",
-            "Docente",
-            "Contadores",
-            "Psicologos",
-            "Chef",
-            "Repostero(a)",
-            "Vigilante",
-            "Escolta",
-            "Ebanista",
-            "Peluquero",
-            "Domiciliario",
-            "Soldador",
-            "Diseñador Grafico",
-            "Maestro de obra",
-            "Mecanico",
-            "Chofer",
-            "Impulsador",
-            "Optometra",
-            "Naturista",
-            "Vendedor",
-            "Modista",
-            "Electronico",
-            "Tecnico"});
+            "Aporte de liquidacion",
+            "Ofrenda domingo",
+            "Ofrenda jueves",
+            "Voto",
+            "Ofrenda zona",
+            "Actividades",
+            "Saldo del año anterior",
+            "Otro"});
             this.comboConcepto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboConcepto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboConcepto.FormattingEnabled = true;
             this.comboConcepto.Items.AddRange(new object[] {
             "Aporte de liquidacion",
-            "Ofrenda",
+            "Ofrenda domingo",
+            "Ofrenda jueves",
             "Voto",
             "Ofrenda zona",
             "Actividades",
