@@ -137,15 +137,11 @@
             this.panel27 = new System.Windows.Forms.Panel();
             this.dataGridIngresos = new System.Windows.Forms.DataGridView();
             this.comboConceptoIngreso = new System.Windows.Forms.ComboBox();
-            this.comboFinIntervalo2 = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.comboInicioIntervalo2 = new System.Windows.Forms.ComboBox();
             this.textTotalPresupuesto = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.comboComite2 = new System.Windows.Forms.ComboBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
             this.panel23 = new System.Windows.Forms.Panel();
             this.label36 = new System.Windows.Forms.Label();
             this.panel24 = new System.Windows.Forms.Panel();
@@ -164,9 +160,14 @@
             this.btnGuardarEgreso = new FontAwesome.Sharp.IconButton();
             this.btnModificarEgreso = new FontAwesome.Sharp.IconButton();
             this.panel26 = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
             this.comboAñoFondoLocal = new System.Windows.Forms.ComboBox();
             this.iconPictureBox10 = new FontAwesome.Sharp.IconPictureBox();
             this.label39 = new System.Windows.Forms.Label();
+            this.comboFinIntervalo2 = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.comboInicioIntervalo2 = new System.Windows.Forms.ComboBox();
             this.tabPorcentajes = new System.Windows.Forms.TabPage();
             this.panelPorcentajes = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -202,11 +203,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.EditarIngreso = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.EliminarEgreso = new System.Windows.Forms.DataGridViewImageColumn();
             this.EditarEgreso = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label31 = new System.Windows.Forms.Label();
+            this.EliminarIngreso = new System.Windows.Forms.DataGridViewImageColumn();
+            this.EditarIngreso = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1595,7 +1595,7 @@
             this.dataGridIngresos.AllowUserToDeleteRows = false;
             this.dataGridIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridIngresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Eliminar,
+            this.EliminarIngreso,
             this.EditarIngreso});
             this.dataGridIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridIngresos.Location = new System.Drawing.Point(0, 0);
@@ -1648,72 +1648,15 @@
             this.comboConceptoIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboConceptoIngreso.FormattingEnabled = true;
             this.comboConceptoIngreso.Items.AddRange(new object[] {
-            "Aporte del 12%"});
+            "Aporte de liquidacion",
+            "Ofrenda jueves",
+            "Ofrenda domingo",
+            "Otros ingresos"});
             this.comboConceptoIngreso.Location = new System.Drawing.Point(132, 86);
             this.comboConceptoIngreso.Name = "comboConceptoIngreso";
             this.comboConceptoIngreso.Size = new System.Drawing.Size(139, 24);
             this.comboConceptoIngreso.TabIndex = 70;
             this.comboConceptoIngreso.Text = "Aporte del 12%";
-            // 
-            // comboFinIntervalo2
-            // 
-            this.comboFinIntervalo2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboFinIntervalo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboFinIntervalo2.FormattingEnabled = true;
-            this.comboFinIntervalo2.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.comboFinIntervalo2.Location = new System.Drawing.Point(760, 4);
-            this.comboFinIntervalo2.Name = "comboFinIntervalo2";
-            this.comboFinIntervalo2.Size = new System.Drawing.Size(103, 23);
-            this.comboFinIntervalo2.TabIndex = 69;
-            this.comboFinIntervalo2.Text = "Enero";
-            // 
-            // label28
-            // 
-            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label28.Location = new System.Drawing.Point(737, 8);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(16, 16);
-            this.label28.TabIndex = 68;
-            this.label28.Text = "a";
-            // 
-            // comboInicioIntervalo2
-            // 
-            this.comboInicioIntervalo2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboInicioIntervalo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboInicioIntervalo2.FormattingEnabled = true;
-            this.comboInicioIntervalo2.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.comboInicioIntervalo2.Location = new System.Drawing.Point(628, 5);
-            this.comboInicioIntervalo2.Name = "comboInicioIntervalo2";
-            this.comboInicioIntervalo2.Size = new System.Drawing.Size(103, 23);
-            this.comboInicioIntervalo2.TabIndex = 67;
-            this.comboInicioIntervalo2.Text = "Enero";
             // 
             // textTotalPresupuesto
             // 
@@ -1810,18 +1753,6 @@
             this.label33.TabIndex = 55;
             this.label33.Text = "Comite:";
             // 
-            // label35
-            // 
-            this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label35.Location = new System.Drawing.Point(568, 8);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(54, 16);
-            this.label35.TabIndex = 52;
-            this.label35.Text = "Fecha:";
-            // 
             // panel23
             // 
             this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1885,7 +1816,7 @@
             this.dataGridEgresos.AllowUserToDeleteRows = false;
             this.dataGridEgresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridEgresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewImageColumn1,
+            this.EliminarEgreso,
             this.EditarEgreso});
             this.dataGridEgresos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridEgresos.Location = new System.Drawing.Point(0, 0);
@@ -1939,14 +1870,26 @@
             this.comboConceptoEgreso.FormattingEnabled = true;
             this.comboConceptoEgreso.Items.AddRange(new object[] {
             "Aporte del distrito",
+            "Aporte al campamento",
             "Proyecto de inversion",
             "Servicios publicos",
             "Pastor auxiliar",
+            "Poliza",
+            "EPS del Pastor",
             "Santa cena",
             "Transporte para envios",
-            "Reparacion de equipos",
-            "Aporte al comite",
-            "Aseo"});
+            "Mantenimiento y reparacion de equipos",
+            "Aporte al comite de sonido",
+            "Aporte al comite de primeros auxilios",
+            "Aporte al comite de vigilancia",
+            "Aporte al comite de decoracion",
+            "Aporte al comite de recepcion",
+            "Aporte al comite de aseo",
+            "Insumos de tesoreria",
+            "Insumos de secretaria",
+            "Ayuda social",
+            "Refrigerios",
+            "Asamblea de pastores"});
             this.comboConceptoEgreso.Location = new System.Drawing.Point(113, 64);
             this.comboConceptoEgreso.Name = "comboConceptoEgreso";
             this.comboConceptoEgreso.Size = new System.Drawing.Size(127, 24);
@@ -2119,6 +2062,18 @@
             this.panel26.Size = new System.Drawing.Size(871, 32);
             this.panel26.TabIndex = 1;
             // 
+            // label31
+            // 
+            this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label31.Location = new System.Drawing.Point(436, 8);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(38, 16);
+            this.label31.TabIndex = 70;
+            this.label31.Text = "Año:";
+            // 
             // comboAñoFondoLocal
             // 
             this.comboAñoFondoLocal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2189,6 +2144,78 @@
             this.label39.Size = new System.Drawing.Size(151, 16);
             this.label39.TabIndex = 0;
             this.label39.Text = "Nuevo presupuesto";
+            // 
+            // comboFinIntervalo2
+            // 
+            this.comboFinIntervalo2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboFinIntervalo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFinIntervalo2.FormattingEnabled = true;
+            this.comboFinIntervalo2.Items.AddRange(new object[] {
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"});
+            this.comboFinIntervalo2.Location = new System.Drawing.Point(760, 4);
+            this.comboFinIntervalo2.Name = "comboFinIntervalo2";
+            this.comboFinIntervalo2.Size = new System.Drawing.Size(103, 23);
+            this.comboFinIntervalo2.TabIndex = 69;
+            this.comboFinIntervalo2.Text = "Enero";
+            // 
+            // label28
+            // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label28.Location = new System.Drawing.Point(737, 8);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(16, 16);
+            this.label28.TabIndex = 68;
+            this.label28.Text = "a";
+            // 
+            // label35
+            // 
+            this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label35.Location = new System.Drawing.Point(568, 8);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(54, 16);
+            this.label35.TabIndex = 52;
+            this.label35.Text = "Fecha:";
+            // 
+            // comboInicioIntervalo2
+            // 
+            this.comboInicioIntervalo2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboInicioIntervalo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboInicioIntervalo2.FormattingEnabled = true;
+            this.comboInicioIntervalo2.Items.AddRange(new object[] {
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"});
+            this.comboInicioIntervalo2.Location = new System.Drawing.Point(628, 5);
+            this.comboInicioIntervalo2.Name = "comboInicioIntervalo2";
+            this.comboInicioIntervalo2.Size = new System.Drawing.Size(103, 23);
+            this.comboInicioIntervalo2.TabIndex = 67;
+            this.comboInicioIntervalo2.Text = "Enero";
             // 
             // tabPorcentajes
             // 
@@ -2628,26 +2655,12 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Porcentajes por comite";
             // 
-            // Eliminar
+            // EliminarEgreso
             // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Image = global::UI.Properties.Resources.borrar;
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            // 
-            // EditarIngreso
-            // 
-            this.EditarIngreso.HeaderText = "EditarIngreso";
-            this.EditarIngreso.Image = global::UI.Properties.Resources.selector;
-            this.EditarIngreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.EditarIngreso.Name = "EditarIngreso";
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn1.Image = global::UI.Properties.Resources.borrar;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.EliminarEgreso.HeaderText = "Eliminar";
+            this.EliminarEgreso.Image = global::UI.Properties.Resources.borrar;
+            this.EliminarEgreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.EliminarEgreso.Name = "EliminarEgreso";
             // 
             // EditarEgreso
             // 
@@ -2656,17 +2669,19 @@
             this.EditarEgreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.EditarEgreso.Name = "EditarEgreso";
             // 
-            // label31
+            // EliminarIngreso
             // 
-            this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label31.Location = new System.Drawing.Point(436, 8);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(38, 16);
-            this.label31.TabIndex = 70;
-            this.label31.Text = "Año:";
+            this.EliminarIngreso.HeaderText = "Eliminar";
+            this.EliminarIngreso.Image = global::UI.Properties.Resources.borrar;
+            this.EliminarIngreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.EliminarIngreso.Name = "EliminarIngreso";
+            // 
+            // EditarIngreso
+            // 
+            this.EditarIngreso.HeaderText = "EditarIngreso";
+            this.EditarIngreso.Image = global::UI.Properties.Resources.selector;
+            this.EditarIngreso.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.EditarIngreso.Name = "EditarIngreso";
             // 
             // FormPresupuesto
             // 
@@ -2928,10 +2943,10 @@
         private System.Windows.Forms.ComboBox comboFinIntervalo2;
         private FontAwesome.Sharp.IconButton btnGuardarEgreso;
         private FontAwesome.Sharp.IconButton btnModificarEgreso;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.DataGridViewImageColumn EditarIngreso;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn EditarEgreso;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.DataGridViewImageColumn EliminarEgreso;
+        private System.Windows.Forms.DataGridViewImageColumn EditarEgreso;
+        private System.Windows.Forms.DataGridViewImageColumn EliminarIngreso;
+        private System.Windows.Forms.DataGridViewImageColumn EditarIngreso;
     }
 }

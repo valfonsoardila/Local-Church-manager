@@ -355,6 +355,7 @@
             "Insumos de tesoreria",
             "Insumos de secretaria ",
             "Imprevisto",
+            "Poliza",
             "Proyecto de inversion NAL",
             "Refrigerios",
             "Mantenimiento y reparacion de equipos",

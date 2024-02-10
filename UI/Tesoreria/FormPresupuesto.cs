@@ -1872,7 +1872,7 @@ namespace UI
         {
             if (dataGridIngresos.DataSource != null)
             {
-                if (dataGridIngresos.Columns[e.ColumnIndex].Name == "Eliminar")
+                if (dataGridIngresos.Columns[e.ColumnIndex].Name == "EliminarIngreso")
                 {
                     id = Convert.ToInt32(dataGridIngresos.CurrentRow.Cells["Id"].Value.ToString());
                     EliminarIngresoFondo(id);
@@ -1894,7 +1894,7 @@ namespace UI
         {
             if (dataGridEgresos.DataSource != null)
             {
-                if (dataGridEgresos.Columns[e.ColumnIndex].Name == "Eliminar")
+                if (dataGridEgresos.Columns[e.ColumnIndex].Name == "EliminarEgreso")
                 {
                     id = Convert.ToInt32(dataGridEgresos.CurrentRow.Cells["Id"].Value.ToString());
                     EliminarEgresoFondo(id);

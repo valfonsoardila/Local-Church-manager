@@ -203,7 +203,7 @@
             "Ofrenda zona",
             "Actividades",
             "Saldo del año anterior",
-            "Otro"});
+            "Otros ingresos"});
             this.comboConcepto.Location = new System.Drawing.Point(115, 110);
             this.comboConcepto.Name = "comboConcepto";
             this.comboConcepto.Size = new System.Drawing.Size(181, 24);
